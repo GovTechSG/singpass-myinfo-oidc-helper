@@ -1,0 +1,92 @@
+{
+	"extends": [
+		"tslint:recommended"
+	],
+	"jsRules": {
+		"indent": [
+			true,
+			"tabs"
+		],
+		"no-empty": false,
+		"ordered-imports": [
+			true,
+			{
+				"import-sources-order": "any",
+				"named-imports-order": "case-insensitive"
+			}
+		],
+		"object-literal-sort-keys": false,
+		"space-before-function-paren": [
+			true,
+			{
+				"anonymous": "always",
+				"named": "never",
+				"asyncArrow": "always"
+			}
+		],
+		"curly": false,
+		"no-string-literal": false,
+		"object-literal-key-quotes": false
+	},
+	"rules": {
+		"no-implicit-dependencies": false,
+		"no-console": false,
+		"whitespace": [
+			true,
+			"check-module"
+		],
+		"no-consecutive-blank-lines": false,
+		"semicolon": [
+			true,
+			"always"
+		],
+		"indent": [
+			true,
+			"tabs"
+		],
+		"ordered-imports": [
+			true,
+			{
+				"import-sources-order": "any",
+				"named-imports-order": "case-insensitive"
+			}
+		],
+		"class-name": true,
+		"jsx-alignment": false,
+		"align": false,
+		"variable-name": [
+			true,
+			"ban-keywords"
+		],
+		"max-classes-per-file": [
+			false
+		],
+		"member-ordering": [
+			false
+		],
+		"object-literal-sort-keys": false,
+		"curly": false,
+		"max-line-length": [
+			false
+		],
+		"no-namespace": [
+			false
+		],
+		"no-var-requires": false,
+		"no-empty": false,
+		"interface-name": [
+			false
+		],
+		"member-access": [
+			true,
+			"check-accessor"
+		],
+		"no-empty-interface": false,
+		"no-trailing-whitespace": false,
+		"arrow-return-shorthand": false,
+		"forin": false,
+		"no-string-literal": false,
+		"object-literal-key-quotes": false
+	},
+	"rulesDirectory": []
+}

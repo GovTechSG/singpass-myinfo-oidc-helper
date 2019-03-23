@@ -1,0 +1,7 @@
+dist/*
+.env
+node_modules/*
+jest.json
+*.tgz
+*.tar.gz
+package/*
