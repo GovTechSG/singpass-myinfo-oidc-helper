@@ -5,6 +5,7 @@
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"scripts": {
+		"test:spec": "node --max_old_space_size=4096 --expose-gc --trace-warnings --inspect=0.0.0.0:7001 ./node_modules/.bin/jest --config jest.spec.config.json",
 		"test": "node --max_old_space_size=4096 --expose-gc --trace-warnings --inspect=0.0.0.0:7001 ./node_modules/.bin/jest --config jest.config.json",
 		"watch": "./node_modules/.bin/webpack --config webpack.watch.config.js",
 		"build": "./node_modules/.bin/webpack --config webpack.config.js && npm pack"
