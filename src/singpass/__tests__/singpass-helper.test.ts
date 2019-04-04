@@ -1,9 +1,4 @@
-import {
-	OidcHelper,
-	OidcHelperConstructor,
-	SessionLogoutResult,
-	TokenPayload,
-} from "../singpass-helper";
+import { OidcHelper, OidcHelperConstructor, SessionLogoutResult, SessionRefreshResult, TokenPayload } from "../singpass-helper";
 
 const mockAuthUrl = "https://mocksingpass.sg/authorize";
 const mockLogoutUrl = "https://mocksingpass.sg/logout";
@@ -84,6 +79,71 @@ describe("Singpass Helper", () => {
 			});
 
 			expect(() => helper.extractNricAndUuidFromPayload(mockPayload)).toThrowError("Token payload sub property is invalid, does not contain valid NRIC and uuid string");
+		});
+	});
+
+	describe("refresh session", () => {
+		const constructedMockAuthUrl = "https://mocksingpass.sg/authorize?state=dummyState&redirect_uri=http%3A%2F%2Fmockme.sg%2Fcallback&scope=openid&client_id=CLIENT-ID&response_type=code";
+
+		describe("when refresh is successful", () => {
+			it("should set a cookie header with the session ID and call singpass authorize endpoint", async () => {
+				helper._testExports.singpassClient.get = jest.fn().mockReturnValue(Promise.resolve({
+					status: 200,
+					request: {
+						res: {
+							responseUrl: "https://localhost/singpass/callback?state=abc&code=xyz",
+						},
+					},
+				}));
+				const sessionId = "1_0jP8lQbVdNJWu/WNMclh6jynB9d+Ui/e3BmbiLccaVRREZkMoEQ=_AAAAAwA=_ehj7WNPdSF5ZR+ERSflwNaDaBPo=";
+
+				const result = await helper.refreshSession(sessionId);
+				expect(result).toEqual(SessionRefreshResult.SUCCESS);
+				expect(helper._testExports.singpassClient.get).toHaveBeenCalledWith(
+					constructedMockAuthUrl,
+					{ headers: { Cookie: `PD-S-SESSION-ID=${sessionId}` } },
+				);
+			});
+		});
+
+		describe("when refresh is unsuccessful", () => {
+			describe("when session ID is invalid", () => {
+				it("should set a cookie header with the session ID and call singpass authorize endpoint", async () => {
+					helper._testExports.singpassClient.get = jest.fn().mockReturnValue(Promise.resolve({
+						status: 200,
+						request: {
+							res: {
+								responseUrl: "https://stg-saml.singpass.gov.sg/authorize",
+							},
+						},
+					}));
+					const sessionId = "0_rubbish";
+
+					const result = await helper.refreshSession(sessionId);
+					expect(result).toEqual(SessionRefreshResult.INVALID_SESSION_ID);
+					expect(helper._testExports.singpassClient.get).toHaveBeenCalledWith(
+						constructedMockAuthUrl,
+						{ headers: { Cookie: `PD-S-SESSION-ID=${sessionId}` } },
+					);
+				});
+			});
+			describe("when Singpass server returns an error", () => {
+				it("should set a cookie header with the session ID and call singpass authorize endpoint", async () => {
+					helper._testExports.singpassClient.get = jest.fn(() => Promise.reject({
+						response: {
+							status: 500,
+						},
+					}));
+					const sessionId = "1_0jP8lQbVdNJWu/WNMclh6jynB9d+Ui/e3BmbiLccaVRREZkMoEQ=_AAAAAwA=_ehj7WNPdSF5ZR+ERSflwNaDaBPo=";
+
+					const result = await helper.refreshSession(sessionId);
+					expect(result).toEqual(SessionRefreshResult.SINGPASS_ERROR);
+					expect(helper._testExports.singpassClient.get).toHaveBeenCalledWith(
+						constructedMockAuthUrl,
+						{ headers: { Cookie: `PD-S-SESSION-ID=${sessionId}` } },
+					);
+				});
+			});
 		});
 	});
 

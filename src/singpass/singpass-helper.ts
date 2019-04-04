@@ -3,6 +3,12 @@ import { createClient } from "../client";
 import { JweUtil } from "../util";
 import { AxiosInstance, AxiosRequestConfig } from "axios-https-proxy-fix";
 
+export enum SessionRefreshResult {
+	SUCCESS = "SUCCESS",
+	SINGPASS_ERROR = "SINGPASS_ERROR",
+	INVALID_SESSION_ID = "INVALID_SESSION_ID",
+}
+
 export enum SessionLogoutResult {
 	SUCCESS = "SUCCESS",
 	SINGPASS_ERROR = "SINGPASS_ERROR",
@@ -154,7 +160,33 @@ export class OidcHelper {
 	}
 
 	/**
-	 * Log user out of Singpass, using a valid session id (that is retrieved from Singpass domain cookie)
+	 * [DEPRECATED] Refresh the Singpass session, using a valid session id (that is retrieved from Singpass domain cookie)
+	 * @param sessionId the session id extracted from PD-S-SESSION-ID in the user agent
+	 * @param state state that will be passed to the your redirect uri from this refresh call. defaults to "dummyState"
+	 * @returns INVALID_SESSION_ID - the sessionId param is no longer valid
+	 * @returns SINGPASS_ERROR - the call to Singpass server to refresh is not successful
+	 * @returns SUCCESS - refresh sessionId successfully
+	 */
+	public async refreshSession(sessionId: string, state: string = "dummyState"): Promise<SessionRefreshResult> {
+		const authorizationUrl = this.constructAuthorizationUrl(state);
+		const requestConfig = { headers: { Cookie: `${this.SINGPASS_SESSION_COOKIE_NAME}=${sessionId}` } };
+		try {
+			const result = await this.axiosClient.get(authorizationUrl, requestConfig);
+			if (result.request.res.responseUrl.includes("saml.singpass.gov.sg")) {
+				console.warn(`Attempted to refresh session with invalid session ID ${sessionId}`);
+				return SessionRefreshResult.INVALID_SESSION_ID;
+			}
+			return SessionRefreshResult.SUCCESS;
+		} catch (e) {
+			console.warn(`Singpass Error while attempting to refresh session for sessionId: ${sessionId}\nError:`, e);
+			return SessionRefreshResult.SINGPASS_ERROR;
+		}
+	}
+
+
+
+	/**
+	 * [DEPRECATED] Log user out of Singpass, using a valid session id (that is retrieved from Singpass domain cookie)
 	 * @param sessionId the session id extracted from PD-S-SESSION-ID in the user agent
 	 */
 	public async logoutOfSession(sessionId: string): Promise<SessionLogoutResult> {
