@@ -1,7 +1,7 @@
 # accepts 1 argument. If argument value is "version", push to version branch e.g. "1.0.0". Else, push to "built" branch
 
 # script must be run on a machine with the correct ssh credentials
-GIT_REPO_URL="ssh://git@github.com:GovTechSG/singpass-myinfo-oidc-helper.git"
+GIT_REPO_URL="git@github.com:GovTechSG/singpass-myinfo-oidc-helper.git"
 VERSION=$(cat ./version.json | jq -r '.version' package.json)
 GIT_REVISION=$(git rev-parse HEAD)
 COMMIT_MESSAGE="Built artifact based on: Version: v$VERSION - Bamboo build: $buildNumber - Commit: $GIT_REVISION"
@@ -12,7 +12,7 @@ else
 	BRANCH_TO_PUSH="built"
 fi
 echo "Preparing to push into branch: $BRANCH_TO_PUSH"
-tar xvf singpass-myinfo-helper-"$VERSION".tgz
+tar xvf singpass-myinfo-oidc-helper-"$VERSION".tgz
 
 # check branch exist
 git ls-remote --heads --exit-code $GIT_REPO_URL $BRANCH_TO_PUSH
