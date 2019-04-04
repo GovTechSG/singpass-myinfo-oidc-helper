@@ -1,0 +1,44 @@
+{
+	"name": "singpass-myinfo-oidc-helper",
+	"version": "1.0.0",
+	"description": "Helper for building a Relying Party to integrate with Singpass OIDC and MyInfo person basic API",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"test:spec": "node --max_old_space_size=4096 --expose-gc --trace-warnings --inspect=0.0.0.0:7001 ./node_modules/.bin/jest --config jest.spec.config.json",
+		"test": "node --max_old_space_size=4096 --expose-gc --trace-warnings --inspect=0.0.0.0:7001 ./node_modules/.bin/jest --config jest.config.json",
+		"watch": "./node_modules/.bin/webpack --config webpack.watch.config.js",
+		"build": "./node_modules/.bin/webpack --config webpack.config.js && npm pack"
+	},
+	"license": "MIT",
+	"dependencies": {
+		"axios-https-proxy-fix": "^0.17.1",
+		"http-status-codes": "^1.3.0",
+		"https-proxy-agent": "^2.2.1",
+		"is-base64": "^0.0.4",
+		"lodash": "^4.17.11",
+		"moment": "^2.24.0",
+		"node-apex-api-security": "^1.0.3",
+		"node-jose": "^1.1.0",
+		"request": "^2.88.0",
+		"request-promise-native": "^1.0.5",
+		"ts-loader": "^5.3.0",
+		"webpack": "^4.29.6",
+		"webpack-cli": "^3.2.3",
+		"webpack-node-externals": "^1.7.2",
+		"webpack-synchronizable-shell-plugin": "^0.0.7"
+	},
+	"devDependencies": {
+		"@types/jest": "^23.3.10",
+		"@types/lodash": "^4.14.118",
+		"@types/node": "^8.0.53",
+		"@types/request": "^2.48.1",
+		"@types/request-promise-native": "^1.0.15",
+		"dotenv": "^4.0.0",
+		"jest": "^24.1.0",
+		"jest-bamboo-formatter": "^1.0.1",
+		"ts-jest": "^23.10.5",
+		"tslint": "^5.11.0",
+		"typescript": "^3.2.2"
+	}
+}
