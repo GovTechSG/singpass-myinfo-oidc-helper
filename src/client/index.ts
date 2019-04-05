@@ -1,5 +1,6 @@
 import axios, { AxiosInstance, AxiosProxyConfig, AxiosRequestConfig } from "axios-https-proxy-fix";
 import * as url from "url";
+import { redactNricfinInString } from "../util/RedactorUtil";
 
 export const createClient = (requestConfig: AxiosRequestConfig = {}): AxiosInstance => {
 	// Note: Due to axios not being able to automatically pick up proxy env vars
@@ -45,7 +46,7 @@ const getProxyConfig = (): AxiosProxyConfig => {
 const addRequestLogs = (instance: AxiosInstance) => {
 	instance.interceptors.request.use((request) => {
 		if (!!request) {
-			log(`Requesting ${request.method} : ${request.url}`);
+			log(`Requesting ${request.method} : ${redactNricfinInString(request.url)}`);
 		}
 		return request;
 	}, (error) => {
@@ -57,12 +58,13 @@ const addRequestLogs = (instance: AxiosInstance) => {
 const addResponseLogs = (instance: AxiosInstance) => {
 	instance.interceptors.response.use((response) => {
 		if (!!response) {
-			log(`Responded ${response.config.method}  : ${response.config.url}`);
+			log(`Responded ${response.config.method}  : ${redactNricfinInString(response.config.url)}`);
 		}
 		return response;
 	}, (error) => {
 		if (!!error.response) {
-			log(`Error occurred while responding to request ${error.response.config.method} : ${error.response.config.url}`, error);
+			log(`Error occurred while responding to request ${error.response.config.method} :
+			${redactNricfinInString(error.response.config.url)}`, error);
 		} else {
 			log(`Error occurred while responding to request`, error);
 		}
