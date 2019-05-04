@@ -21,5 +21,6 @@
 	],
 	"testResultsProcessor": "./node_modules/jest-bamboo-formatter",
 	"verbose": true,
-	"bail": true
+	"bail": true,
+	"testEnvironment": "node"
 }
