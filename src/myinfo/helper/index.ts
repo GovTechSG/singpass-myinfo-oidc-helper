@@ -3,6 +3,7 @@ import { Person } from "../domain";
 
 export interface IMyInfoHelper {
 	getPersonData: <K extends keyof Person>(uinfin: string) => Promise<Pick<Person, K>>;
+	getPersonBasicV3: <K extends keyof Person>(uinfin: string) => Promise<Pick<Person, K>>;
 }
 
 export interface IMyInfoRequest {

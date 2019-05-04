@@ -1,4 +1,5 @@
 import { ConfigUtils, JestUtil, StringUtil } from "../../../util";
+import { extend, clone } from "lodash";
 
 require("dotenv").config();
 
@@ -7,18 +8,16 @@ if (JestUtil.isTest()) {
 	disableMissingEnvWarnings();
 }
 
-export const configs = Object.freeze({
-	singpassClientId: getValueFromEnv("SINGPASS_SSO_CLIENT_ID"),
+const configs = {
+	singpassClientId: getValueFromEnv("SINGPASS_ESERVICE_ID"),
 
-	myInfoApexSigningURL: getValueFromEnv("MY_INFO_APEX_URL_SIGNING"),
-	myInfoApexPrivateCert: StringUtil.replaceLineBreaks(getValueFromEnv("MY_INFO_APEX_PRIVATE_CERT")),
-	myInfoApexPrivateCertPass: getValueFromEnv("MY_INFO_APEX_PRIVATE_CERT_PASS"),
+	myinfoApexSigningURL: getValueFromEnv("MY_INFO_APEX_URL_SIGNING"),
+	myinfoAuthKey: StringUtil.replaceLineBreaks(getValueFromEnv("MY_INFO_APEX_PRIVATE_CERT")),
+	myinfoAuthKeyPassphrase: getValueFromEnv("MY_INFO_APEX_PRIVATE_CERT_PASS"),
 
-	myInfoGovFlowClientID: getValueFromEnv("MY_INFO_GOV_FLOW_CLIENT_ID"),
-	myInfoGovFlowClientSecret: getValueFromEnv("MY_INFO_GOV_FLOW_CLIENT_SECRET"),
-	myInfoPersonBasicURL: getValueFromEnv("MY_INFO_GOV_FLOW_URL_PERSON_BASIC"),
+	myinfoGovFlowClientID: getValueFromEnv("MY_INFO_GOV_FLOW_CLIENT_ID"),
 
-	myInfoJWEPrivateKey: StringUtil.replaceLineBreaks(getValueFromEnv("MY_INFO_JWE_PRIVATE_KEY")),
+	myinfoJWEPrivateKey: StringUtil.replaceLineBreaks(getValueFromEnv("MY_INFO_JWE_PRIVATE_KEY")),
 
 	attributes: [
 		"name",
@@ -40,6 +39,15 @@ export const configs = Object.freeze({
 		"edulevel",
 		"countryofmarriage",
 		"marriagecertno",
-		"childrenbirthrecords",
 	],
+}
+
+export const myinfoV2Configs = extend(clone(configs), {
+	myInfoPersonBasicURL: getValueFromEnv("MY_INFO_GOV_FLOW_URL_PERSON_BASIC_V2"),
+	myinfoApexSigningURL: getValueFromEnv("MY_INFO_APEX_URL_SIGNING"),
+});
+
+export const myinfoV3Configs = extend(clone(configs), {
+	myInfoPersonBasicURL: getValueFromEnv("MY_INFO_GOV_FLOW_URL_PERSON_BASIC_V3"),
+	myinfoJWSPublicCert: StringUtil.replaceLineBreaks(getValueFromEnv("MY_INFO_GOV_FLOW_PUBLIC_CERT")),
 });
