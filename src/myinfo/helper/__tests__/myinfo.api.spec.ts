@@ -3,6 +3,7 @@ import { MyInfoHelper, MyInfoHelperConstructor } from "..";
 import { myinfoV2Configs, myinfoV3Configs } from "./test.configs";
 
 describe("MyInfoClient", () => {
+	// not running test as MyInfo V2 test environment also requires Singpass login: { code: 401, message: 'Invalid SingPass Login', fields: '' }
 	xdescribe("STAGING Person basic API V2", () => {
 		it("should use the available env variables, call myinfo, and get back person", async () => {
 			const props: MyInfoHelperConstructor = {
@@ -17,10 +18,31 @@ describe("MyInfoClient", () => {
 				version: "v2",
 			};
 
+			type V2Attributes =
+				"name" |
+				"aliasname" |
+				"sex" |
+				"race" |
+				"secondaryrace" |
+				"dialect" |
+				"nationality" |
+				"dob" |
+				"birthcountry" |
+				"residentialstatus" |
+				"email" |
+				"mobileno" |
+				"regadd" |
+				"marital" |
+				"marriagedate" |
+				"occupation" |
+				"edulevel" |
+				"countryofmarriage" |
+				"marriagecertno";
+
 			const myInfoHelper = new MyInfoHelper(props);
 			const testNric = "S6005040F";
 
-			const result = await myInfoHelper.getPersonData(testNric);
+			const result = await myInfoHelper.getPersonBasicV2<V2Attributes>(testNric);
 
 			expect(result.aliasname.value).toEqual("JESSICA LIM JIA MIN");
 		});
@@ -40,10 +62,31 @@ describe("MyInfoClient", () => {
 				version: "v3",
 			};
 
+			type V3Attributes =
+				"name" |
+				"aliasname" |
+				"sex" |
+				"race" |
+				"secondaryrace" |
+				"dialect" |
+				"nationality" |
+				"dob" |
+				"birthcountry" |
+				"residentialstatus" |
+				"email" |
+				"mobileno" |
+				"regadd" |
+				"marital" |
+				"marriagedate" |
+				"occupation" |
+				"edulevel" |
+				"countryofmarriage" |
+				"marriagecertno";
+
 			const myInfoHelper = new MyInfoHelper(props);
 			const testNric = "S1627395C";
 
-			const result = await myInfoHelper.getPersonBasicV3(testNric);
+			const result = await myInfoHelper.getPersonBasicV3<V3Attributes>(testNric);
 
 			expect(result.aliasname.value).toEqual("JASCKSON LIM YONG XIANG");
 		});
