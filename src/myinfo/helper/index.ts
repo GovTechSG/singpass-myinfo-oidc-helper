@@ -1,9 +1,10 @@
 import * as request from "request";
 import { Person } from "../domain";
+import { Components } from "../domain/v3";
 
 export interface IMyInfoHelper {
-	getPersonData: <K extends keyof Person>(uinfin: string) => Promise<Pick<Person, K>>;
-	getPersonBasicV3: <K extends keyof Person>(uinfin: string) => Promise<Pick<Person, K>>;
+	getPersonBasicV2: <K extends keyof Person>(uinfin: string) => Promise<Pick<Person, K>>;
+	getPersonBasicV3: <K extends keyof Components.Schemas.Person>(uinfin: string) => Promise<Pick<Components.Schemas.Person, K>>;
 }
 
 export interface IMyInfoRequest {

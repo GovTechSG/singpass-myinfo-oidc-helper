@@ -6,6 +6,7 @@ import { Person } from "../domain";
 import { MyInfoRequestConstructor } from "./myinfo-request";
 import { decryptJWE, verifyJWS } from "../../util/JweUtil";
 import { IMyInfoHelper } from "./index";
+import { Components } from "../domain/v3";
 
 export interface MyInfoHelperConstructor {
 	attributes: string[];
@@ -59,12 +60,12 @@ export class MyInfoHelper implements IMyInfoHelper {
 	}
 
 	/**
-	 * Obtain person data using uinfin.
+	 * Obtain V2 person data using uinfin.
 	 * In the generic K, pass in the list of string literal of the attributes you expect to get back.
-	 * getPersonData will return an object with only the properties matching the keys.
-	 * e.g. when K = "name" | "email", getPersonData returns an object looking like { name, email }
+	 * getPersonBasicV2 will return an object with only the properties matching the keys.
+	 * e.g. when K = "name" | "email", getPersonBasicV2 returns an object looking like { name, email }
 	 */
-	public getPersonData = async<K extends keyof Person>(uinfin: string): Promise<Pick<Person, K>> => {
+	public getPersonBasicV2 = async<K extends keyof Person>(uinfin: string): Promise<Pick<Person, K>> => {
 		const url = `${this.personBasicURL}/${uinfin}`;
 		const params = {
 			client_id: this.clientID,
@@ -84,9 +85,9 @@ export class MyInfoHelper implements IMyInfoHelper {
 			// Decrypt person data
 			const encryptedPersonJWE = response.data;
 			const jwe = await decryptJWE(encryptedPersonJWE, this.keyToDecryptJWE);
-			const personData = JSON.parse(jwe.payload.toString());
+			const personData = JSON.parse(jwe.payload.toString()) as Pick<Person, K>;
 
-			if (personData === undefined || personData == null) {
+			if (personData == null) {
 				throw new Error("Person data cannot be null");
 			}
 
@@ -97,7 +98,13 @@ export class MyInfoHelper implements IMyInfoHelper {
 		}
 	}
 
-	public getPersonBasicV3 = async<K extends keyof Person>(uinfin: string): Promise<Pick<Person, K>> => {
+	/**
+	 * Obtain V3 person data using uinfin.
+	 * In the generic K, pass in the list of string literal of the attributes you expect to get back.
+	 * getPersonBasicV3 will return an object with only the properties matching the keys.
+	 * e.g. when K = "name" | "email", getPersonBasicV3 returns an object looking like { name, email }
+	 */
+	public getPersonBasicV3 = async<K extends keyof Components.Schemas.Person>(uinfin: string): Promise<Pick<Components.Schemas.Person, K>> => {
 		const url = `${this.personBasicURL}/${uinfin}`;
 		const params = {
 			client_id: this.clientID,
@@ -119,9 +126,9 @@ export class MyInfoHelper implements IMyInfoHelper {
 			const jwe = await decryptJWE(encryptedPersonJWE, this.keyToDecryptJWE);
 			const jws = JSON.parse(jwe.payload.toString());
 			const verifiedJws = await verifyJWS(jws, this.certToVerifyJWS);
-			const personData = JSON.parse(verifiedJws.payload.toString());
+			const personData = JSON.parse(verifiedJws.payload.toString()) as Pick<Components.Schemas.Person, K>;
 
-			if (personData === undefined || personData == null) {
+			if (personData == null) {
 				throw new Error("Person data cannot be null");
 			}
 
