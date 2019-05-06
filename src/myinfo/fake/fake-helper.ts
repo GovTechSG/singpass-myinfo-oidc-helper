@@ -1,6 +1,6 @@
 import * as _ from "lodash";
 
-import { Person } from "../domain";
+import { Person } from "../domain/v2";
 import { ProfileArchetype } from "./profiles/fake-profile";
 import { profiles } from "./profiles/fake-profiles";
 

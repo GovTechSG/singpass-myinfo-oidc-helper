@@ -1,9 +1,9 @@
 export {
 	MyInfoHelper as Helper, MyInfoHelperConstructor as HelperConstructor,
-	MyInfoRequest as Request, MyInfoRequestConstructor as MyInfoRequestConstructor,
+	MyInfoRequest as Request, MyInfoRequestConstructor as RequestConstructor,
 } from "./helper";
 
 import * as Fake from "./fake";
 export { Fake };
 
-export { AddressLocal, ChildBirthRecord, Person, PhoneNumLocal } from "./domain";
+export * from "./domain";

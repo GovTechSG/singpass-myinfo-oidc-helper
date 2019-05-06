@@ -2,7 +2,7 @@ import * as _ from "lodash";
 import * as moment from "moment";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
-import { ChildBirthRecord } from "../../domain";
+import { ChildBirthRecord } from "../../domain/v2";
 
 
 const id = "S0350934F";

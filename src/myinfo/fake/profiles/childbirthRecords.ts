@@ -1,4 +1,4 @@
-import { ChildBirthRecord } from "../../domain";
+import { ChildBirthRecord } from "../../domain/v2";
 import * as moment from "moment";
 
 const formatDateToString = (date?: moment.Moment): string => {

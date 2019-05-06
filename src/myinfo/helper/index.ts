@@ -1,5 +1,5 @@
 import * as request from "request";
-import { Person } from "../domain";
+import { Person } from "../domain/v2";
 import { Components } from "../domain/v3";
 
 export interface IMyInfoHelper {

@@ -1,4 +1,4 @@
-import { Person } from "../../domain";
+import { Person } from "../../domain/v2";
 
 export interface FakeProfile {
 	id: string;

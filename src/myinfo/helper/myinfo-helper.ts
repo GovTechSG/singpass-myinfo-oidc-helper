@@ -2,7 +2,7 @@ import { AxiosResponse } from "axios-https-proxy-fix";
 import * as _ from "lodash";
 
 import { MyInfoRequest } from "./myinfo-request";
-import { Person } from "../domain";
+import { Person } from "../domain/v2";
 import { MyInfoRequestConstructor } from "./myinfo-request";
 import { decryptJWE, verifyJWS } from "../../util/JweUtil";
 import { IMyInfoHelper } from "./index";
