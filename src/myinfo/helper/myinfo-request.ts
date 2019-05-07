@@ -5,7 +5,7 @@ import { createClient } from "../../client";
 
 export interface MyInfoRequestConstructor {
 	appId: string;
-	privateKeyContent: string;
+	privateKeyToSignRequest: string;
 	privateKeyPassword: string;
 }
 
@@ -25,7 +25,7 @@ export class MyInfoRequest {
 			timeout: 10000,
 		});
 		this.appId = props.appId;
-		this.privateKeyContent = props.privateKeyContent;
+		this.privateKeyContent = props.privateKeyToSignRequest;
 		this.privateKeyPassword = props.privateKeyPassword;
 	}
 

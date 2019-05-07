@@ -14,8 +14,8 @@ export interface MyInfoHelperConstructor {
 	singpassEserviceID: string;
 	keyToDecryptJWE: string;
 	certToVerifyJWS?: string;
-	apexPrivateCert: string;
-	apexPrivateCertPass?: string;
+	privateKeyToSignRequest: string;
+	privateKeyPassword?: string;
 }
 
 export class MyInfoHelper implements IMyInfoHelper {
@@ -42,8 +42,8 @@ export class MyInfoHelper implements IMyInfoHelper {
 
 		const requestProps: MyInfoRequestConstructor = {
 			appId: props.clientID,
-			privateKeyContent: props.apexPrivateCert,
-			privateKeyPassword: props.apexPrivateCertPass,
+			privateKeyToSignRequest: props.privateKeyToSignRequest,
+			privateKeyPassword: props.privateKeyPassword,
 		};
 		this.myInfoRequest = new MyInfoRequest(requestProps);
 	}
