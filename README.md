@@ -13,9 +13,9 @@ TODO: pending publish to npm registry
 
 `npm i singpass-myinfo-oidc-helper`
 
-For now, can start using the initial release of this module via the git repo branch:
+For now, can start using the releases of this module via our git repo tags:
 
-`git@github.com:GovTechSG/singpass-myinfo-oidc-helper.git#1.0.0`
+`git@github.com:GovTechSG/singpass-myinfo-oidc-helper.git#2.0.0`
 
 ---
 
@@ -25,7 +25,7 @@ For now, can start using the initial release of this module via the git repo bra
 
 ### MyInfoHelper
 
-Helper to get a MyInfo person
+Helper to get a V3 MyInfo person. Because our project only requires the person basic object, we have only written `getPersonBasic` method. Contributions for `getPerson` are welcomed.
 
 `import { MyInfo } from "singpass-myinfo-oidc-helper"`
 
@@ -33,18 +33,18 @@ MyInfo.Helper
 
 - `constructor`
 
-| Param              | Type     | Description                                                                                                                                       |
-|--------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------|
-| attributes         | string[] | Array of user attributes to retrieve from MyInfo. For full list of attributes, see [here](https://www.ndi-api.gov.sg/library/trusted-data/myinfo/ |
-| clientID           | string   | Your app's client ID when you onboarded with MyInfo                                                                                               |
-| personBasicURL     | string   | The full URL to the MyInfo person basic endpoint. Exposed for user to choose between staging, prod, and any mock server                           |
-| singpassEserviceID | string   | Your app's ID when you onboarded Singpass. Used by MyInfo to check if the NRIC you are trying to get has logged into your Singpass app recently.  |
-| keyToDecryptJWE    | string   | Your private key. The public key has been given to MyInfo during onboarding, for them to encrypt the JWE containing Person Data                   |
-| apexSigningURL     | string   | Used for constructing the Authorization header to Apex - what Apex calls realm. => Apex_L2_Eg realm="{realm}"                                     |
-| privateKeyContent  | string   | Used for signing the Authorization header to Apex. Needs to be an encrypted PKCS8 private key                                                     |
-| privateKeyPassword | string   | the password that you used to encrypt privateKeyContent                                                                                           |
+| Param                   | Type     | Description                                                                                                                                                              |
+|-------------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| attributes              | string[] | Array of user attributes to retrieve from MyInfo. For full list of attributes, see [here](https://public.cloud.myinfo.gov.sg/myinfo/tuo/myinfo-tuo-specs.html)           |
+| clientID                | string   | Your app's client ID when you onboarded with MyInfo                                                                                                                      |
+| personBasicURL          | string   | The full URL to the MyInfo person basic endpoint. Exposed for lib user to choose between staging, prod, and any mock server                                              |
+| singpassEserviceID      | string   | Your app's ID when you onboarded Singpass. Used by MyInfo to check if the NRIC you are trying to retrieve MyInfo data for has recently logged into your app via Singpass |
+| keyToDecryptJWE         | string   | Your private key to decrypt MyInfo's JWE payload. The public key has been given to MyInfo during onboarding, for them to encrypt the JWE containing Person Data          |
+| certToVerifyJWS         | string   | The public cert from MyInfo as MyInfo payloads are both encrypted with JWE, and signed with JWS                                                                          |
+| privateKeyToSignRequest | string   | Used for signing the request to MyInfo server. Needs to be an encrypted PKCS8 private key                                                                                |
+| privateKeyPassword      | string   | the password that you used to encrypt privateKeyToSignRequest                                                                                                            |
 
-- `getPersonData(uinfin: string) => MyInfoPerson` - get Person Data in the shape of MyInfoPerson
+- `getPersonBasic(uinfin: string) => MyInfo.PersonBasic` - get Person Data in the shape of MyInfo.PersonBasic
 
 ---
 
@@ -54,29 +54,23 @@ Usually not needed, for making any other custom requests to MyInfo not covered i
 
 - `constructor`
 
-| Param              | Type   | Description                                                                                                                       |
-|--------------------|--------|-----------------------------------------------------------------------------------------------------------------------------------|
-| appId              | string | Your app's client ID when you onboarded with MyInfo                                                                               |
-| realm              | string | Used for constructing the Authorization header to Apex. => Apex_L2_Eg realm="{realm}" In MyInfoHelper we called it apexSigningURL |
-| privateKeyContent  | string | Used for signing the Authorization header to Apex. Needs to be an encrypted private key                                     |
-| privateKeyPassword | string | the password that you used to encrypt privateKeyContent                                                                           |
+| Param                   | Type   | Description                                                                               |
+|-------------------------|--------|-------------------------------------------------------------------------------------------|
+| appId                   | string | Your app's client ID when you onboarded with MyInfo                                       |
+| privateKeyToSignRequest | string | Used for signing the request to MyInfo server. Needs to be an encrypted PKCS8 private key |
+| privateKeyPassword      | string | the password that you used to encrypt privateKeyToSignRequest                             |
 
-- `get(uri: string, params?: { [key: string]: any }, bearer?: string)` - make get request to the defined myinfo gov endpoint
+- `get(uri: string, params?: { [key: string]: any })` - make get request to the defined myinfo gov endpoint
 
     - `params` refer to the query params for the get request
-    - `bearer` is the bearer token for Apex
-
-- `postForm(uri: string, formData?: { [key: string]: any }, bearer?: string)` - make post request to the defined myinfo gov endpoint
-
-    - formData for the body
-    - `bearer` the bearer token for Apex
 
 ---
+
 ### Fake
 
 MyInfo.Fake.FakeMyInfoHelper
 
-Use getPersonData to get a fake MyInfo person
+Use getPersonBasic to get a fake MyInfo person
 
 - `constructor`
 
@@ -84,7 +78,7 @@ Use getPersonData to get a fake MyInfo person
 |------------|-----------|--------------------------------------------------------|
 | attributes | string[]? | List of MyInfo attributes that this helper will return |
 
-- `getPersonData({
+- `getPersonBasic({
 archetype: ProfileArchetype,
 marital?: string,
 marriagedate?: string,
@@ -93,7 +87,7 @@ countryofmarriage?: string,
 occupation?: string,
 occupationfreeform?: string,
 dob?: string,
-}) => MyInfoPerson` - get a fake person data.
+}) => MyInfo.PersonBasic` - get a fake person data.
 
 - enum MyInfo.Fake.ProfileArchetype
 suitably named profile archetypes to generate different types of fake MyInfo person
@@ -107,6 +101,7 @@ Helper for integrating with Singpass OIDC
 `import { Singpass } from "singpass-myinfo-oidc-helper"`
 
 Singpass.OidcHelper
+
 - `constructor`
 
 | Param            | Type   | Description                                                                                                |
@@ -120,12 +115,12 @@ Singpass.OidcHelper
 | jweDecryptKey    | string | Private key for decrypting the JWT that wraps the token                                                    |
 | jwsVerifyKey     | string | Public key for verifying the JWT that wraps the token                                                      |
 
-#### Login
+### Login
 
 - `constructAuthorizationUrl = (state: string, nonce?: string) => string` - constructs the authorization url with the necessary params, including the:
 
-	- state (later returned in redirectUri)
-	- nonce (later returned inside the JWT from token endpoint)
+- state (later returned in redirectUri)
+- nonce (later returned inside the JWT from token endpoint)
 
 - `getTokens (authCode: string, axiosRequestConfig?: AxiosRequestConfig) => Promise<TokenResponse>` - get back the tokens from SP token endpoint. Outputs TokenResponse, which is the input for getIdTokenPayload
 - `getIdTokenPayload(tokens: TokenResponse) => Promise<TokenPayload>` - decrypt and verify the JWT. Outputs TokenPayload, which is the input for extractNricAndUuidFromPayload
