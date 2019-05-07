@@ -12,7 +12,7 @@ declare namespace Components {
 			/**
 			 * Type of Address (SG or Unformatted for non SG)
 			 */
-			type?: "SG" | "Unformatted";
+			type?: "SG";
 			/**
 			 * Block of Address
 			 */
@@ -88,7 +88,7 @@ declare namespace Components {
 			/**
 			 * Type of Address (SG or Unformatted for non SG)
 			 */
-			type?: "SG" | "Unformatted";
+			type?: "Unformatted";
 			/**
 			 * Unregistered Foreign address line 1
 			 */
@@ -615,7 +615,7 @@ declare namespace Components {
 			/**
 			 * Type of Address (SG or Unformatted for non SG)
 			 */
-			type?: "SG" | "Unformatted";
+			type?: "SG";
 			/**
 			 * Block of Address
 			 */
@@ -722,7 +722,7 @@ declare namespace Components {
 			/**
 			 * Type of Address (SG or Unformatted for non SG)
 			 */
-			type?: "SG" | "Unformatted";
+			type?: "Unformatted";
 			/**
 			 * Unregistered Foreign address line 1
 			 */
@@ -7546,7 +7546,7 @@ declare namespace Components {
 			 * example:
 			 * [object Object]
 			 */
-			childrenbirthrecords?: {
+			childrenbirthrecords?: Array<{
 				/**
 				 * Birth certificate number of child.
 				 */
@@ -7757,7 +7757,7 @@ declare namespace Components {
 				 *
 				 */
 				unavailable?: boolean;
-			};
+			}>;
 			/**
 			 * example:
 			 * [object Object]
