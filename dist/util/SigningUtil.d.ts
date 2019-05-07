@@ -2,7 +2,6 @@ export declare enum HttpMethod {
     GET = "GET",
     POST = "POST"
 }
-export declare function generateApexAuthorizationHeader(realm: string, authPrefix: string, httpMethod: HttpMethod, url: string, appId: string, formJson: any, privateKeyContent: string, privateKeyPassword: string, bearer?: string, nonce?: string, timestamp?: number): string;
 /**
  * Generate the Authorization header for requests to V3 MyInfo
  * @param url

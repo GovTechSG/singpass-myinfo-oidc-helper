@@ -1,8 +1,8 @@
-import { Person } from "../../domain";
+import { domain } from "../../domain";
 export interface FakeProfile {
     id: string;
     name: ProfileArchetype;
-    generate: (profileName?: string) => Person;
+    generate: (profileName?: string) => domain.Components.Schemas.PersonBasic;
 }
 /**
  * Used in MyInfo.Fake.Helper.getPersonData to get a archetype person

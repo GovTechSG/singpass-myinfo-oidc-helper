@@ -1,7 +1,6 @@
 /**
  * Generated from OpenAPI specs: https://public.cloud.myinfo.gov.sg/myinfo/tuo/myinfo-tuo-specs.html
  * Converted into typings with: https://www.npmjs.com/package/dtsgenerator
-
  */
 declare namespace Components {
     namespace Schemas {
@@ -12,7 +11,7 @@ declare namespace Components {
             /**
              * Type of Address (SG or Unformatted for non SG)
              */
-            type?: "SG" | "Unformatted";
+            type?: "SG";
             /**
              * Block of Address
              */
@@ -88,7 +87,7 @@ declare namespace Components {
             /**
              * Type of Address (SG or Unformatted for non SG)
              */
-            type?: "SG" | "Unformatted";
+            type?: "Unformatted";
             /**
              * Unregistered Foreign address line 1
              */
@@ -615,7 +614,7 @@ declare namespace Components {
             /**
              * Type of Address (SG or Unformatted for non SG)
              */
-            type?: "SG" | "Unformatted";
+            type?: "SG";
             /**
              * Block of Address
              */
@@ -722,7 +721,7 @@ declare namespace Components {
             /**
              * Type of Address (SG or Unformatted for non SG)
              */
-            type?: "SG" | "Unformatted";
+            type?: "Unformatted";
             /**
              * Unregistered Foreign address line 1
              */
@@ -7546,7 +7545,7 @@ declare namespace Components {
              * example:
              * [object Object]
              */
-            childrenbirthrecords?: {
+            childrenbirthrecords?: Array<{
                 /**
                  * Birth certificate number of child.
                  */
@@ -7757,7 +7756,7 @@ declare namespace Components {
                  *
                  */
                 unavailable?: boolean;
-            };
+            }>;
             /**
              * example:
              * [object Object]

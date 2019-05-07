@@ -1,17 +1,21 @@
-import { Person } from "../domain";
 import { ProfileArchetype } from "./profiles/fake-profile";
+import { domain } from "../domain";
 export interface MockParams {
     archetype: ProfileArchetype;
-    marital?: string;
+    marital?: "SINGLE" | "MARRIED" | "WIDOWED" | "DIVORCED";
     marriagedate?: string;
     marriagecertno?: string;
-    countryofmarriage?: string;
+    countryofmarriage?: {
+        desc: string;
+        code: string;
+    };
     occupation?: string;
     occupationfreeform?: string;
     dob?: string;
 }
+declare type PersonBasic = domain.Components.Schemas.PersonBasic;
 export interface IFakeMyInfoHelper {
-    getPersonData: (mockParams: MockParams) => Person;
+    getPersonBasic: (mockParams: MockParams) => PersonBasic;
 }
 export declare class FakeMyInfoHelper implements IFakeMyInfoHelper {
     private readonly attributes?;
@@ -24,5 +28,6 @@ export declare class FakeMyInfoHelper implements IFakeMyInfoHelper {
      * @param input the mock profile parameters.
      * See FakeMyInfoPersonArchetypes for the actual person.
      */
-    getPersonData: (mockParams: MockParams) => Person;
+    getPersonBasic: (mockParams: MockParams) => domain.Components.Schemas.PersonBasic;
 }
+export {};
