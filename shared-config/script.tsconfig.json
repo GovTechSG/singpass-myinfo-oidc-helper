@@ -1,0 +1,13 @@
+// =============================================================================
+// This is the typescript config file meant for project scripts
+// =============================================================================
+{
+	"compilerOptions": {
+		"target": "es6",
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"allowJs": true,
+		"allowSyntheticDefaultImports": true,
+		"strict": true,
+	}
+}
