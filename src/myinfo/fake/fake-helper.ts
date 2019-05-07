@@ -1,6 +1,6 @@
 import { ProfileArchetype } from "./profiles/fake-profile";
 import { profiles } from "./profiles/fake-profiles";
-import { domainMap, V3 } from "../domain";
+import { domain, domainMap } from "../domain";
 import { isEmpty, toPairs } from "lodash";
 
 export interface MockParams {
@@ -13,7 +13,7 @@ export interface MockParams {
 	occupationfreeform?: string;
 	dob?: string;
 }
-type PersonBasic = V3.Components.Schemas.PersonBasic;
+type PersonBasic = domain.Components.Schemas.PersonBasic;
 
 export interface IFakeMyInfoHelper {
 	getPersonBasic: (mockParams: MockParams) => PersonBasic;

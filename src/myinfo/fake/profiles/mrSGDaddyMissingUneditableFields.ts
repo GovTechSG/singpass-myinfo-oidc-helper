@@ -1,7 +1,6 @@
 import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
-import { Components } from "../../domain/v3";
 import { unavailableField } from "./common";
 
 

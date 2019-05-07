@@ -5,7 +5,7 @@ import { MyInfoRequest } from "./myinfo-request";
 import { MyInfoRequestConstructor } from "./myinfo-request";
 import { decryptJWE, verifyJWS } from "../../util/JweUtil";
 import { IMyInfoHelper } from "./index";
-import { Components } from "../domain/v3";
+import { domain } from "../domain";
 
 export interface MyInfoHelperConstructor {
 	attributes: string[];
@@ -54,7 +54,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 	 * getPersonBasicV3 will return an object with only the properties matching the keys.
 	 * e.g. when K = "name" | "email", getPersonBasicV3 returns an object looking like { name, email }
 	 */
-	public getPersonBasic = async<K extends keyof Components.Schemas.PersonBasic>(uinfin: string): Promise<Pick<Components.Schemas.PersonBasic, K>> => {
+	public getPersonBasic = async<K extends keyof domain.Components.Schemas.PersonBasic>(uinfin: string): Promise<Pick<domain.Components.Schemas.PersonBasic, K>> => {
 		const url = `${this.personBasicURL}/${uinfin}`;
 		const params = {
 			client_id: this.clientID,
@@ -76,7 +76,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 			const jwe = await decryptJWE(encryptedPersonJWE, this.keyToDecryptJWE);
 			const jws = JSON.parse(jwe.payload.toString());
 			const verifiedJws = await verifyJWS(jws, this.certToVerifyJWS);
-			const personData = JSON.parse(verifiedJws.payload.toString()) as Pick<Components.Schemas.PersonBasic, K>;
+			const personData = JSON.parse(verifiedJws.payload.toString()) as Pick<domain.Components.Schemas.PersonBasic, K>;
 
 			if (personData == null) {
 				throw new Error("Person data cannot be null");

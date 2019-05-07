@@ -1,9 +1,9 @@
-import { V3 } from "../../domain";
+import { domain } from "../../domain";
 
 export interface FakeProfile {
 	id: string;
 	name: ProfileArchetype;
-	generate: (profileName?: string) => V3.Components.Schemas.PersonBasic;
+	generate: (profileName?: string) => domain.Components.Schemas.PersonBasic;
 }
 
 /**
