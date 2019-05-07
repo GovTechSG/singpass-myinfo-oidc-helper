@@ -1,22 +1,22 @@
-import * as _ from "lodash";
-
-import { Person } from "../domain/v2";
 import { ProfileArchetype } from "./profiles/fake-profile";
 import { profiles } from "./profiles/fake-profiles";
+import { domainMap, V3 } from "../domain";
+import { isEmpty, toPairs } from "lodash";
 
 export interface MockParams {
 	archetype: ProfileArchetype;
-	marital?: string;
+	marital?: "SINGLE" | "MARRIED" | "WIDOWED" | "DIVORCED";
 	marriagedate?: string;
 	marriagecertno?: string;
-	countryofmarriage?: string;
+	countryofmarriage?: { desc: string, code: string };
 	occupation?: string;
 	occupationfreeform?: string;
 	dob?: string;
 }
+type PersonBasic = V3.Components.Schemas.PersonBasic;
 
 export interface IFakeMyInfoHelper {
-	getPersonData: (mockParams: MockParams) => Person;
+	getPersonBasic: (mockParams: MockParams) => PersonBasic;
 }
 
 export class FakeMyInfoHelper implements IFakeMyInfoHelper {
@@ -32,7 +32,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 	 * @param input the mock profile parameters.
 	 * See FakeMyInfoPersonArchetypes for the actual person.
 	 */
-	public getPersonData = (mockParams: MockParams): Person => {
+	public getPersonBasic = (mockParams: MockParams): PersonBasic => {
 		const mockProfile = profiles.find((profile) => profile.name === mockParams.archetype);
 		if (!mockProfile)
 			return null;
@@ -41,30 +41,33 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 			...mockProfile.generate(),
 		};
 
-		if (!_.isEmpty(mockParams.marital)) {
-			myinfoPerson.marital.value = mockParams.marital;
+		if (!isEmpty(mockParams.marital)) {
+			myinfoPerson.marital.desc = mockParams.marital;
+
+			myinfoPerson.marital.code = domainMap.sex.map.descToCode[mockParams.marital];
 		}
 
-		if (!_.isEmpty(mockParams.marriagedate)) {
+		if (!isEmpty(mockParams.marriagedate)) {
 			myinfoPerson.marriagedate.value = mockParams.marriagedate;
 		}
 
-		if (!_.isEmpty(mockParams.marriagecertno)) {
+		if (!isEmpty(mockParams.marriagecertno)) {
 			myinfoPerson.marriagecertno.value = mockParams.marriagecertno;
 		}
 
-		if (!_.isEmpty(mockParams.countryofmarriage)) {
-			myinfoPerson.countryofmarriage.value = mockParams.countryofmarriage;
+		if (!isEmpty(mockParams.countryofmarriage)) {
+			myinfoPerson.countryofmarriage.desc = mockParams.countryofmarriage.desc;
+			myinfoPerson.countryofmarriage.code = mockParams.countryofmarriage.code;
 		}
 
-		if (!_.isEmpty(mockParams.dob)) {
+		if (!isEmpty(mockParams.dob)) {
 			myinfoPerson.dob.value = mockParams.dob;
 		}
 
-		if (!_.isEmpty(mockParams.occupation)) {
+		if (!isEmpty(mockParams.occupation)) {
 			myinfoPerson.occupation.value = mockParams.occupation;
 		} else {
-			if (!_.isEmpty(mockParams.occupationfreeform)) {
+			if (!isEmpty(mockParams.occupationfreeform)) {
 				myinfoPerson.occupation.value = "";
 				myinfoPerson.occupation.desc = mockParams.occupationfreeform;
 			}
@@ -83,10 +86,10 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
  * @param person fake MyInfo person
  * @param attributes array of attributes to filter for
  */
-function filterThroughMyInfoAttributes(person: Person, attributes: ReadonlyArray<string>): Person {
+function filterThroughMyInfoAttributes(person: PersonBasic, attributes: ReadonlyArray<string>): PersonBasic {
 	const attrs = new Set(attributes);
 
-	return _.toPairs(person)
+	return toPairs(person)
 		.filter(([k]) => attrs.has(k))
-		.reduce((accumulator, [k, v]) => ({ ...accumulator, [k]: v }), {} as Person);
+		.reduce((accumulator, [k, v]) => ({ ...accumulator, [k]: v }), {} as PersonBasic);
 }

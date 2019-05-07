@@ -1,6 +1,7 @@
 import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
+import { sex } from "../../domain/map";
 
 
 const id = "T2446959F";
@@ -13,7 +14,9 @@ export const mrsSGMommyPerfect: FakeProfile = {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
-		profile.sex.value = "F";
+
+		profile.sex.code = "F";
+		profile.sex.desc = sex.map.codeToDesc[profile.sex.code];
 
 		return profile;
 	},

@@ -15,7 +15,7 @@ export const mrSGDaddyLongNames: FakeProfile = {
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
 		profile.childrenbirthrecords = _.values(ChildrenRecords);
-		profile.childrenbirthrecords[0].name = longName + " JR";
+		profile.childrenbirthrecords[0].name.value = longName + " JR";
 
 		return profile;
 	},

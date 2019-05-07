@@ -1,6 +1,7 @@
 import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
+import { unavailableField } from "./common";
 
 
 const id = "S8779834H";
@@ -13,19 +14,19 @@ export const mrSGDaddyMissingFields: FakeProfile = {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
-		profile.hanyupinyinname.value = "";
-		profile.aliasname.value = null;
-		profile.hanyupinyinaliasname.value = "";
-		profile.secondaryrace.value = "";
-		profile.residentialstatus.value = "U";
-		profile.homeno.nbr = "";
-		profile.marriagecertno.value = "";
-		profile.countryofmarriage.value = "";
-		profile.childrenbirthrecords = profile.childrenbirthrecords.slice(0, 1);
-		profile.edulevel.value = "0";
-		profile.occupation.desc = "SPACE PIRATE";
-		profile.occupation.value = "";
-		profile.cpfcontributions.cpfcontribution = profile.cpfcontributions.cpfcontribution.slice(0, 1);
+		profile.hanyupinyinname = unavailableField;
+		profile.aliasname = unavailableField;
+		profile.hanyupinyinaliasname = unavailableField;
+		profile.secondaryrace = unavailableField;
+		profile.residentialstatus = unavailableField;
+		profile.homeno = unavailableField;
+		profile.marriagecertno = unavailableField;
+		profile.countryofmarriage = unavailableField;
+		if (!!profile.childrenbirthrecords) {
+			profile.childrenbirthrecords = profile.childrenbirthrecords.slice(0, 1);
+		}
+		profile.edulevel = unavailableField;
+		profile.occupation = unavailableField;
 
 		return profile;
 	},

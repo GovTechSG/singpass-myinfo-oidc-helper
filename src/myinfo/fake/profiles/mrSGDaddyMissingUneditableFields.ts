@@ -1,6 +1,8 @@
 import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
+import { Components } from "../../domain/v3";
+import { unavailableField } from "./common";
 
 
 const id = "S8974352D";
@@ -15,17 +17,9 @@ export const mrSGDaddyMissingUneditableFields: FakeProfile = {
 		const profile = mrSGDaddyPerfect.generate(profileName);
 
 		// Uneditable field
-		profile.nationality.value = "";
-		profile.dob.value = "";
-
-		profile.regadd.block = "";
-		profile.regadd.building = "";
-		profile.regadd.classification = "";
-		profile.regadd.country = "";
-		profile.regadd.floor = "";
-		profile.regadd.postal = "";
-		profile.regadd.street = "";
-		profile.regadd.unit = "";
+		profile.nationality = unavailableField;
+		profile.dob = unavailableField;
+		profile.regadd = unavailableField;
 
 		return profile;
 	},
