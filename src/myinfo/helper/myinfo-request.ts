@@ -32,7 +32,6 @@ export class MyInfoRequest {
 	public async get(
 		uri: string,
 		queryParams?: { [key: string]: any },
-		bearer?: string,
 	): Promise<AxiosResponse> {
 
 		let authHeader: string = "";
