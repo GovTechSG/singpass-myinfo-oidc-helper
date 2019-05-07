@@ -19,7 +19,6 @@
 		"js-joda": "^1.10.1",
 		"lodash": "^4.17.11",
 		"moment": "^2.24.0",
-		"node-apex-api-security": "^1.0.3",
 		"node-jose": "^1.1.0",
 		"nonce": "^1.0.4",
 		"request": "^2.88.0",

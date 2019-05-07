@@ -2,7 +2,6 @@ import { AxiosResponse } from "axios-https-proxy-fix";
 import * as _ from "lodash";
 
 import { MyInfoRequest } from "./myinfo-request";
-import { Person } from "../domain/v2";
 import { MyInfoRequestConstructor } from "./myinfo-request";
 import { decryptJWE, verifyJWS } from "../../util/JweUtil";
 import { IMyInfoHelper } from "./index";
@@ -15,10 +14,8 @@ export interface MyInfoHelperConstructor {
 	singpassEserviceID: string;
 	keyToDecryptJWE: string;
 	certToVerifyJWS?: string;
-	apexSigningURL?: string;
 	apexPrivateCert: string;
 	apexPrivateCertPass?: string;
-	version?: "v2" | "v3";
 }
 
 export class MyInfoHelper implements IMyInfoHelper {
@@ -36,12 +33,6 @@ export class MyInfoHelper implements IMyInfoHelper {
 		if (_.isEmpty(props.attributes)) {
 			throw new Error("Attribute list must contain values");
 		}
-		if (props.version === "v3" && _.isEmpty(props.certToVerifyJWS)) {
-			throw new Error("The MyInfo public cert to verify returned JWS must be added for MyInfo v3 onwards");
-		}
-		if (props.version === "v2" && _.isEmpty(props.apexSigningURL)) {
-			throw new Error("The APEX signing URL cannot be empty for MyInfo v2");
-		}
 		this.attributes = props.attributes;
 		this.clientID = props.clientID;
 		this.personBasicURL = props.personBasicURL;
@@ -50,52 +41,11 @@ export class MyInfoHelper implements IMyInfoHelper {
 		this.certToVerifyJWS = props.certToVerifyJWS;
 
 		const requestProps: MyInfoRequestConstructor = {
-			realm: props.apexSigningURL,
 			appId: props.clientID,
 			privateKeyContent: props.apexPrivateCert,
 			privateKeyPassword: props.apexPrivateCertPass,
-			version: props.version,
 		};
 		this.myInfoRequest = new MyInfoRequest(requestProps);
-	}
-
-	/**
-	 * Obtain V2 person data using uinfin.
-	 * In the generic K, pass in the list of string literal of the attributes you expect to get back.
-	 * getPersonBasicV2 will return an object with only the properties matching the keys.
-	 * e.g. when K = "name" | "email", getPersonBasicV2 returns an object looking like { name, email }
-	 */
-	public getPersonBasicV2 = async<K extends keyof Person>(uinfin: string): Promise<Pick<Person, K>> => {
-		const url = `${this.personBasicURL}/${uinfin}`;
-		const params = {
-			client_id: this.clientID,
-			singpassEserviceId: this.singpassEserviceID,
-			attributes: _.join(this.attributes, ","),
-		};
-
-		let response: AxiosResponse;
-		try {
-			response = await this.myInfoRequest.get(url, params);
-		} catch (error) {
-			console.error("Error requesting for person data (JWE) from MyInfo", error);
-			throw error;
-		}
-
-		try {
-			// Decrypt person data
-			const encryptedPersonJWE = response.data;
-			const jwe = await decryptJWE(encryptedPersonJWE, this.keyToDecryptJWE);
-			const personData = JSON.parse(jwe.payload.toString()) as Pick<Person, K>;
-
-			if (personData == null) {
-				throw new Error("Person data cannot be null");
-			}
-
-			return personData;
-		} catch (error) {
-			console.error("Error verifying person data from MyInfo", error);
-			throw error;
-		}
 	}
 
 	/**
@@ -104,7 +54,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 	 * getPersonBasicV3 will return an object with only the properties matching the keys.
 	 * e.g. when K = "name" | "email", getPersonBasicV3 returns an object looking like { name, email }
 	 */
-	public getPersonBasicV3 = async<K extends keyof Components.Schemas.Person>(uinfin: string): Promise<Pick<Components.Schemas.Person, K>> => {
+	public getPersonBasic = async<K extends keyof Components.Schemas.PersonBasic>(uinfin: string): Promise<Pick<Components.Schemas.PersonBasic, K>> => {
 		const url = `${this.personBasicURL}/${uinfin}`;
 		const params = {
 			client_id: this.clientID,
@@ -126,7 +76,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 			const jwe = await decryptJWE(encryptedPersonJWE, this.keyToDecryptJWE);
 			const jws = JSON.parse(jwe.payload.toString());
 			const verifiedJws = await verifyJWS(jws, this.certToVerifyJWS);
-			const personData = JSON.parse(verifiedJws.payload.toString()) as Pick<Components.Schemas.Person, K>;
+			const personData = JSON.parse(verifiedJws.payload.toString()) as Pick<Components.Schemas.PersonBasic, K>;
 
 			if (personData == null) {
 				throw new Error("Person data cannot be null");
