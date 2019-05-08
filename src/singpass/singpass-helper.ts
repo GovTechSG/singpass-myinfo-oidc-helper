@@ -1,7 +1,7 @@
+import { AxiosInstance, AxiosRequestConfig } from "axios-https-proxy-fix";
 import * as querystringUtil from "querystring";
 import { createClient } from "../client";
-import { JweUtil } from "../util";
-import { AxiosInstance, AxiosRequestConfig } from "axios-https-proxy-fix";
+import { JweUtil, Logger } from "../util";
 
 export enum SessionRefreshResult {
 	SUCCESS = "SUCCESS",
@@ -112,7 +112,7 @@ export class OidcHelper {
 		};
 		const response = await this.axiosClient.post(this.tokenUrl, body, config);
 		if (!response.data.id_token) {
-			console.error("Failed to get ID token: invalid response data", response.data);
+			Logger.error("Failed to get ID token: invalid response data", response.data);
 			throw new Error("Failed to get ID token");
 		}
 		return response.data;
@@ -131,7 +131,7 @@ export class OidcHelper {
 			const verifiedJws = await JweUtil.verifyJWS(jwsPayload, this.jwsVerifyKey);
 			return JSON.parse(verifiedJws.payload.toString()) as TokenPayload;
 		} catch (e) {
-			console.error("Failed to get token payload", e);
+			Logger.error("Failed to get token payload", e);
 			throw e;
 		}
 	}
@@ -173,12 +173,12 @@ export class OidcHelper {
 		try {
 			const result = await this.axiosClient.get(authorizationUrl, requestConfig);
 			if (result.request.res.responseUrl.includes("saml.singpass.gov.sg")) {
-				console.warn(`Attempted to refresh session with invalid session ID ${sessionId}`);
+				Logger.warn(`Attempted to refresh session with invalid session ID ${sessionId}`);
 				return SessionRefreshResult.INVALID_SESSION_ID;
 			}
 			return SessionRefreshResult.SUCCESS;
 		} catch (e) {
-			console.warn(`Singpass Error while attempting to refresh session for sessionId: ${sessionId}\nError:`, e);
+			Logger.warn(`Singpass Error while attempting to refresh session for sessionId: ${sessionId}\nError:`, e);
 			return SessionRefreshResult.SINGPASS_ERROR;
 		}
 	}
@@ -195,7 +195,7 @@ export class OidcHelper {
 			await this.axiosClient.get(this.logoutUrl, requestConfig);
 			return SessionLogoutResult.SUCCESS;
 		} catch (e) {
-			console.warn("Singpass Error while attempting to logout of Singpass session", e);
+			Logger.warn("Singpass Error while attempting to logout of Singpass session", e);
 			return SessionLogoutResult.SINGPASS_ERROR;
 		}
 	}

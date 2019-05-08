@@ -1,11 +1,10 @@
 import { AxiosResponse } from "axios-https-proxy-fix";
 import * as _ from "lodash";
-
-import { MyInfoRequest } from "./myinfo-request";
-import { MyInfoRequestConstructor } from "./myinfo-request";
+import { Logger } from "../../util";
 import { decryptJWE, verifyJWS } from "../../util/JweUtil";
-import { IMyInfoHelper } from "./index";
 import { domain } from "../domain";
+import { IMyInfoHelper } from "./index";
+import { MyInfoRequest, MyInfoRequestConstructor } from "./myinfo-request";
 
 export interface MyInfoHelperConstructor {
 	attributes: string[];
@@ -66,7 +65,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 		try {
 			response = await this.myInfoRequest.get(url, params);
 		} catch (error) {
-			console.error("Error requesting for person data (JWE) from MyInfo", error);
+			Logger.error("Error requesting for person data (JWE) from MyInfo", error);
 			throw error;
 		}
 
@@ -84,7 +83,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 
 			return personData;
 		} catch (error) {
-			console.error("Error verifying person data from MyInfo", error);
+			Logger.error("Error verifying person data from MyInfo", error);
 			throw error;
 		}
 	}

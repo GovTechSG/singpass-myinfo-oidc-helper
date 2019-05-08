@@ -1,7 +1,8 @@
 import * as ConfigUtils from "./ConfigUtils";
-import * as StringUtil from "./StringUtil";
 import * as JestUtil from "./JestUtil";
-import * as SigningUtil from "./SigningUtil";
 import * as JweUtil from "./JweUtil";
+import { Logger } from "./Logger";
+import * as SigningUtil from "./SigningUtil";
+import * as StringUtil from "./StringUtil";
 
-export { ConfigUtils, StringUtil, JestUtil, SigningUtil, JweUtil };
+export { ConfigUtils, StringUtil, JestUtil, SigningUtil, JweUtil, Logger };

@@ -5,6 +5,7 @@ import { isEmpty, toPairs } from "lodash";
 
 export interface MockParams {
 	archetype: ProfileArchetype;
+	// tslint:disable-next-line: max-union-size
 	marital?: "SINGLE" | "MARRIED" | "WIDOWED" | "DIVORCED";
 	marriagedate?: string;
 	marriagecertno?: string;

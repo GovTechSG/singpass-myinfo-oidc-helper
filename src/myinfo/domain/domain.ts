@@ -1,3 +1,4 @@
+/* tslint:disable */
 /**
  * Generated from OpenAPI specs: https://public.cloud.myinfo.gov.sg/myinfo/tuo/myinfo-tuo-specs.html
  * Converted into typings with: https://www.npmjs.com/package/dtsgenerator

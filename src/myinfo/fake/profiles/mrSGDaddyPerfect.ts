@@ -1,13 +1,13 @@
 import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 
-
 const id = "S8399420G";
 const name = ProfileArchetype.MR_SG_DADDY_PERFECT;
 
 export const mrSGDaddyPerfect: FakeProfile = {
 	id,
 	name,
+	// tslint:disable-next-line: no-big-function
 	generate: (profileName) => {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
@@ -279,7 +279,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"lastupdated": "2018-06-01",
 				"source": "1",
 				"classification": "C",
-				"value": "LIM YONG XIANG",
+				"value": profileName,
 			},
 			"secondaryrace": {
 				"lastupdated": "2018-06-01",

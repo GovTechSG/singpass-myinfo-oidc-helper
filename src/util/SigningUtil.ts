@@ -24,6 +24,7 @@ interface AuthHeader {
  * @param signingKey
  * @param signingKeyPassphrase
  */
+// tslint:disable-next-line: parameters-max-number
 export function generateMyInfoAuthorizationHeader(
 	url: string,
 	queryParams: { [key: string]: any },
