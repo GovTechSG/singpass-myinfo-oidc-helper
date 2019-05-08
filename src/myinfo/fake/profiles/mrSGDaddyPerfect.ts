@@ -104,7 +104,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"source": "1",
 				"classification": "C",
 				"message": {
-					"code": 2,
+					"code": "2",
 					"desc": "You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888.",
 				},
 			},

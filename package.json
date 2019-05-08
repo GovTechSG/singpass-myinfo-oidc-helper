@@ -1,6 +1,6 @@
 {
 	"name": "singpass-myinfo-oidc-helper",
-	"version": "2.0.1",
+	"version": "2.1.0",
 	"description": "Helper for building a Relying Party to integrate with Singpass OIDC and MyInfo person basic API",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -10,6 +10,11 @@
 		"lint": "./scripts/lint.sh",
 		"build": "export TS_NODE_PROJECT=./shared-config/script.tsconfig.json && ./node_modules/.bin/webpack --config webpack.config.ts && npm pack",
 		"watch": "export TS_NODE_PROJECT=./shared-config/script.tsconfig.json && ./node_modules/.bin/webpack --config webpack.watch.config.ts && npm pack"
+	},
+	"husky": {
+		"hooks": {
+			"pre-push": "npm run lint && npm run test && npm run build"
+		}
 	},
 	"license": "MIT",
 	"dependencies": {
@@ -38,6 +43,7 @@
 		"clean-webpack-plugin": "^2.0.1",
 		"copy-webpack-plugin": "^5.0.3",
 		"dts-bundle-webpack": "^1.0.2",
+		"husky": "^2.2.0",
 		"jest": "^24.7.1",
 		"jest-bamboo-formatter": "^1.0.1",
 		"ts-jest": "^24.0.2",

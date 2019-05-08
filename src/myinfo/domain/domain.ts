@@ -5900,6 +5900,62 @@ declare namespace Components {
 				 */
 				unavailable?: boolean;
 			};
+
+			/**
+			 * FIXME: Appended manually as these aren't published in the specs
+			 */
+			merdekagen?: {
+				eligibility: {
+					value: boolean;
+				};
+				lastupdated: string; // date
+				quantum: {
+					value: number,
+				},
+				source: "1" | "2" | "3" | "4";
+				classification: "C";
+				message: {
+					code: "2",
+					desc: "You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888.",
+				},
+			};
+			gstvoucher?: {
+				gstregular: {
+					value: number;
+				};
+				year: {
+					value: number;
+				};
+				exclusion: {
+					value: false;
+				};
+				gstmedisave: {
+					value: number;
+				};
+				lastupdated: string;
+				gstspecial: {
+					value: number;
+				};
+				source: "1" | "2" | "3" | "4";
+				classification: "C";
+				signup: {
+					value: boolean;
+				};
+			};
+			silversupport?: {
+				eligibility: {
+					value: boolean;
+				};
+				lastupdated: string;
+				amount: {
+					value: number;
+				};
+				source: "1" | "2" | "3" | "4";
+				classification: "C";
+				year: {
+					value: number;
+				};
+			};
 		}
 		/**
 		 * Person instance's details (Basic Profile)
@@ -9205,6 +9261,62 @@ declare namespace Components {
 				 *
 				 */
 				unavailable?: boolean;
+			};
+
+			/**
+			 * FIXME: Appended manually as these aren't published in the specs
+			 */
+			merdekagen?: {
+				eligibility: {
+					value: boolean;
+				};
+				lastupdated: string; // date
+				quantum: {
+					value: number,
+				},
+				source: "1" | "2" | "3" | "4";
+				classification: "C";
+				message: {
+					code: "2",
+					desc: "You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888.",
+				},
+			};
+			gstvoucher?: {
+				gstregular: {
+					value: number;
+				};
+				year: {
+					value: number;
+				};
+				exclusion: {
+					value: false;
+				};
+				gstmedisave: {
+					value: number;
+				};
+				lastupdated: string;
+				gstspecial: {
+					value: number;
+				};
+				source: "1" | "2" | "3" | "4";
+				classification: "C";
+				signup: {
+					value: boolean;
+				};
+			};
+			silversupport?: {
+				eligibility: {
+					value: boolean;
+				};
+				lastupdated: string;
+				amount: {
+					value: number;
+				};
+				source: "1" | "2" | "3" | "4";
+				classification: "C";
+				year: {
+					value: number;
+				};
 			};
 		}
 		export interface PhoneNumLocal {
