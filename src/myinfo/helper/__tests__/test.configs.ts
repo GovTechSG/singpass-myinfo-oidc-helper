@@ -39,6 +39,7 @@ export const configs = {
 		"edulevel",
 		"countryofmarriage",
 		"marriagecertno",
+		"childrenbirthrecords.name",
 	],
 
 };

@@ -13,8 +13,8 @@ describe("MyInfoClient", () => {
 				singpassEserviceID: configs.singpassClientId,
 				keyToDecryptJWE: configs.myinfoJWEPrivateKey,
 				certToVerifyJWS: configs.myinfoJWSPublicCert,
-				apexPrivateCert: configs.myinfoAuthKey,
-				apexPrivateCertPass: configs.myinfoAuthKeyPassphrase,
+				privateKeyToSignRequest: configs.myinfoAuthKey,
+				privateKeyPassword: configs.myinfoAuthKeyPassphrase,
 			};
 
 			type V3Attributes =
@@ -36,7 +36,8 @@ describe("MyInfoClient", () => {
 				"occupation" |
 				"edulevel" |
 				"countryofmarriage" |
-				"marriagecertno";
+				"marriagecertno" |
+				"childrenbirthrecords";
 
 			const myInfoHelper = new MyInfoHelper(props);
 			const testNric = "S1627395C";
