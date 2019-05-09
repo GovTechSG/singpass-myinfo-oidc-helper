@@ -7,4 +7,5 @@ module.exports = {
 	testMatch: [
 		"<rootDir>/src/**/?(*.)(apispec).(js|ts)?(x)",
 	],
+	"testEnvironment": "node",
 };
