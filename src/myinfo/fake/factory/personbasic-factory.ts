@@ -1,6 +1,12 @@
 import { Factory } from "rosie";
 
 export const PersonBasicFactory = new Factory()
+	.sequence("uinfin", (i) => ({
+		"lastupdated": "2018-06-01",
+		"value": "S123456" + i + "A",
+		"source": "1",
+		"classification": "C",
+	}))
 	.attrs({
 		"edulevel": {
 			"lastupdated": "2018-05-10",
