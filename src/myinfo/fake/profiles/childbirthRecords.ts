@@ -1,5 +1,5 @@
-import { domain } from "../../domain";
 import * as moment from "moment";
+import { domain } from "../../domain";
 
 const formatDateToString = (date?: moment.Moment): string => {
 	if (date) {
@@ -20,13 +20,11 @@ const child1MonthOld = {
 	dob: { value: formatDateToString(moment().subtract(1, "months")) },
 } as domain.Components.Schemas.Childrenbirthrecords;
 
-
 const child2MonthsOld = {
 	birthcertno: { value: "T7153144E" },
 	name: { value: "2 Months Tan Keh Guan" },
 	dob: { value: formatDateToString(moment().subtract(2, "months")) },
 } as domain.Components.Schemas.Childrenbirthrecords;
-
 
 const childMiddle1 = {
 	birthcertno: { value: "T1694727F" },
@@ -34,13 +32,11 @@ const childMiddle1 = {
 	dob: { value: formatDateToString(moment().subtract(2, "years")) },
 } as domain.Components.Schemas.Childrenbirthrecords;
 
-
 const childMiddle2 = {
 	birthcertno: { value: "T1669632Z" },
 	name: { value: "Middle Tan Twin2" },
 	dob: { value: formatDateToString(moment().subtract(2, "years")) },
 } as domain.Components.Schemas.Childrenbirthrecords;
-
 
 const childMiddle3 = {
 	birthcertno: { value: "T1509027D" },
@@ -55,13 +51,11 @@ const childMiddle4 = {
 	dob: { value: formatDateToString(moment().subtract(4, "years")) },
 } as domain.Components.Schemas.Childrenbirthrecords;
 
-
 const childMiddle5 = {
 	birthcertno: { value: "T1511326F" },
 	name: { value: "Tan Girl Younger" },
 	dob: { value: formatDateToString(moment().subtract(5, "years")) },
 } as domain.Components.Schemas.Childrenbirthrecords;
-
 
 const childSuperOld = {
 	birthcertno: { value: "T0050832I" },
@@ -69,20 +63,17 @@ const childSuperOld = {
 	dob: { value: formatDateToString(moment().subtract(8, "years")) },
 } as domain.Components.Schemas.Childrenbirthrecords;
 
-
 const child6YearsOld = {
 	birthcertno: { value: "T1364674G" },
 	name: { value: "Turning 6 Tan Kid born Jan 1st" },
 	dob: { value: formatDateToString(moment().subtract(6, "years").startOf("year")) },
 } as domain.Components.Schemas.Childrenbirthrecords;
 
-
 const child7YearsOld = {
 	birthcertno: { value: "T1210114C" },
 	name: { value: "Turning 7 Tan Kid born Dec 31" },
 	dob: { value: formatDateToString(moment().subtract(7, "years").endOf("year")) },
 } as domain.Components.Schemas.Childrenbirthrecords;
-
 
 export const ChildrenRecords = {
 	childYoungest,
