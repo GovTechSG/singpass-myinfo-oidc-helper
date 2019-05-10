@@ -14,8 +14,6 @@ export const mrSGDaddyLongNames: FakeProfile = {
 		profileName = _.isEmpty(profileName) ? longName : profileName;
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
-		profile.uinfin.value = id;
-
 		profile.childrenbirthrecords = _.values(ChildrenRecords);
 		profile.childrenbirthrecords[0].name.value = longName + " JR";
 

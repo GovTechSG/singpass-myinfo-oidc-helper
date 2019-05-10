@@ -12,12 +12,6 @@ export const mrSGDaddyPerfect: FakeProfile = {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
 		return {
-			"uinfin": {
-				"lastupdated": "",
-				"source": "1",
-				"classification": "C",
-				"value": id,
-			},
 			"edulevel": {
 				"lastupdated": "2018-05-10",
 				"code": "8",

@@ -13,8 +13,6 @@ export const mrSGDaddyChildIsOld: FakeProfile = {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
-		profile.uinfin.value = id;
-
 		profile.childrenbirthrecords = [ChildrenRecords.childSuperOld];
 
 		return profile;

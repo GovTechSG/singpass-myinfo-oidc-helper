@@ -14,7 +14,6 @@ export const mrsMYMommyPerfect: FakeProfile = {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
-		profile.uinfin.value = id;
 
 		profile.sex.code = "F";
 		profile.sex.desc = sex.map.codeToDesc[profile.sex.code];

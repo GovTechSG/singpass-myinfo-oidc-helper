@@ -14,7 +14,6 @@ export const mrSGDaddyMissingUneditableFields: FakeProfile = {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
-		profile.uinfin.value = id;
 
 		// Uneditable field
 		profile.nationality = unavailableField;
