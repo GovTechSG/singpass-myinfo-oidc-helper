@@ -13,12 +13,18 @@ export const mrMYDaddyPerfect: FakeProfile = {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
+		profile.uinfin.value = id;
+
 		profile.sex.code = "M";
 		profile.sex.desc = sex.map.codeToDesc[profile.residentialstatus.code];
+
 		profile.nationality.code = "MY";
+
 		profile.birthcountry.code = "MY";
+
 		profile.residentialstatus.code = "A";
 		profile.residentialstatus.desc = residentialstatus.map.codeToDesc[profile.residentialstatus.code];
+
 		profile.passportnumber.value = "A00000000";
 
 		return profile;

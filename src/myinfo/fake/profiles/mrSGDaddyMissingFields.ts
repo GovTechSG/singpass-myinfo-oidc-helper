@@ -14,6 +14,7 @@ export const mrSGDaddyMissingFields: FakeProfile = {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
+		profile.uinfin.value = id;
 		profile.hanyupinyinname = unavailableField;
 		profile.aliasname = unavailableField;
 		profile.hanyupinyinaliasname = unavailableField;

@@ -4,6 +4,7 @@ import { domain, domainMap } from "../domain";
 import { isEmpty, toPairs } from "lodash";
 
 export interface MockParams {
+	uinfin?: string;
 	archetype: ProfileArchetype;
 	// tslint:disable-next-line: max-union-size
 	marital?: "SINGLE" | "MARRIED" | "WIDOWED" | "DIVORCED";
@@ -14,6 +15,7 @@ export interface MockParams {
 	occupationfreeform?: string;
 	dob?: string;
 }
+
 type PersonBasic = domain.Components.Schemas.PersonBasic;
 
 export interface IFakeMyInfoHelper {
@@ -41,6 +43,10 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		const myinfoPerson = {
 			...mockProfile.generate(),
 		};
+
+		if (!isEmpty(mockParams.uinfin)) {
+			myinfoPerson.uinfin.value = mockParams.uinfin;
+		}
 
 		if (!isEmpty(mockParams.marital)) {
 			myinfoPerson.marital.desc = mockParams.marital;

@@ -14,6 +14,8 @@ export const mrPRDaddyOneChild: FakeProfile = {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
+		profile.uinfin.value = id;
+
 		profile.residentialstatus.code = "P";
 		profile.residentialstatus.desc = residentialstatus.map.codeToDesc[profile.residentialstatus.code];
 

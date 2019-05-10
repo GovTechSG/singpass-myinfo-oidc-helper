@@ -15,6 +15,8 @@ export const mrPreschoolRegister: FakeProfile = {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
+		profile.uinfin.value = id;
+
 		profile.childrenbirthrecords = _.values(ChildrenRecords);
 
 		return profile;
