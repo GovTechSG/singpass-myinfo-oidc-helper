@@ -1,6 +1,7 @@
 import axios, { AxiosInstance, AxiosProxyConfig, AxiosRequestConfig } from "axios-https-proxy-fix";
 import * as url from "url";
 import { redactNricfinInString } from "../util/RedactorUtil";
+import { set } from "lodash";
 
 export const createClient = (requestConfig: AxiosRequestConfig = {}): AxiosInstance => {
 	// Note: Due to axios not being able to automatically pick up proxy env vars
@@ -29,15 +30,20 @@ const getProxyConfig = (): AxiosProxyConfig => {
 
 	if (proxyUrl) {
 		const parsed = url.parse(proxyUrl);
-		const [username, password] = parsed.auth.split(":");
-		return {
+		const proxyConfig = {
 			host: parsed.hostname,
 			port: parseInt(parsed.port, 10),
-			auth: {
+		};
+
+		if (!!parsed.auth) {
+			const [username, password] = parsed.auth.split(":");
+			set(proxyConfig, "auth", {
 				username,
 				password,
-			},
-		};
+			});
+		}
+
+		return proxyConfig;
 	}
 
 	return null;
