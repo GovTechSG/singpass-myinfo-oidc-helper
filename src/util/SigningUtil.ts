@@ -74,14 +74,16 @@ function generateSignature(
 	keyPassphrase?: string,
 ): string {
 	const baseParams = _.merge(authHeader, queryParams);
-	const sortedListOfKeysForBaseString = ["app_id", "attributes", "client_id", "nonce", "signature_method", "sp_esvcId", "timestamp"];
 
-	const sortedParams = sortedListOfKeysForBaseString.reduce((object, prop) => {
-		return _.set(object, prop, baseParams[prop]);
-	}, {});
+	const sortedKeys = Object.keys(baseParams).sort();
+	const initialAccObj = {};
+	const sortedParams = sortedKeys.reduce((accObj, paramKey) => {
+		return _.set(accObj, paramKey, baseParams[paramKey]);
+	}, initialAccObj);
 
 	const baseParamsStr = qs.unescape(qs.stringify(sortedParams)); // url safe
 	const baseString = method.toUpperCase() + "&" + url + "&" + baseParamsStr;
+
 	const signWith = { key };
 	if (!!keyPassphrase) {
 		_.set(signWith, "passphrase", keyPassphrase);
