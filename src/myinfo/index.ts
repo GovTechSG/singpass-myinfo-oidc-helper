@@ -1,5 +1,5 @@
 export {
-	MyInfoHelper as Helper, MyInfoHelperConstructor as HelperConstructor,
+	MyInfoHelper as Helper, MyInfoHelperConstructor as HelperConstructor, EnvType,
 	MyInfoRequest as Request, MyInfoRequestConstructor as RequestConstructor,
 } from "./helper";
 

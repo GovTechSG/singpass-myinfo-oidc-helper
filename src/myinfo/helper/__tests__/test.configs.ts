@@ -20,8 +20,8 @@ export const configs = {
 
 	myinfoJWEPrivateKey: StringUtil.replaceLineBreaks(getValueFromEnv("MY_INFO_JWE_PRIVATE_KEY")),
 
-	overridePersonBasicUrl: getValueFromEnv("MY_INFO_PERSON_BASIC_URL"),
-	overrideProfileStatusUrl: getValueFromEnv("MY_INFO_PROFILE_STATUS_URL"),
+	overridePersonBasicUrl: getValueFromEnv("MY_INFO_OVERRIDE_PERSON_BASIC_URL"),
+	overrideProfileStatusUrl: getValueFromEnv("MY_INFO_OVERRIDE_PROFILE_STATUS_URL"),
 
 	attributes: [
 		"name",

@@ -60,5 +60,4 @@ export class MyInfoRequest {
 		const response = await this.axiosClient.get(uri, requestConfig);
 		return response;
 	}
-
 }
