@@ -5,17 +5,25 @@ import { decryptJWE, verifyJWS } from "../../util/JweUtil";
 import { domain } from "../domain";
 import { IMyInfoHelper } from "./index";
 import { MyInfoRequest, MyInfoRequestConstructor } from "./myinfo-request";
+import { ProfileStatus } from "../domain/profilestatus-domain";
+
+export type EnvType = "test" | "sandbox" | "prod";
 
 export interface MyInfoHelperConstructor {
 	attributes: string[];
 	clientID: string;
-	personBasicURL: string;
+	environment: EnvType;
 	singpassEserviceID: string;
 	keyToDecryptJWE: string;
-	certToVerifyJWS?: string;
+	certToVerifyJWS: string;
 	privateKeyToSignRequest: string;
 	privateKeyPassword?: string;
+	overridePersonBasicUrl?: string;
+	overrideProfileStatusUrl?: string;
 }
+
+const PERSON_BASIC_BASE_URL = "api.myinfo.gov.sg/gov/v3/person-basic";
+const PROFILE_STATUS_BASE_URL = "api.myinfo.gov.sg/gov/v3/person-basic/status";
 
 export class MyInfoHelper implements IMyInfoHelper {
 
@@ -23,10 +31,13 @@ export class MyInfoHelper implements IMyInfoHelper {
 
 	private readonly attributes: string[];
 	private readonly clientID: string;
-	private readonly personBasicURL: string;
 	private readonly singpassEserviceID: string;
+
 	private readonly keyToDecryptJWE: string;
 	private readonly certToVerifyJWS: string;
+
+	private readonly personBasicUrl: string;
+	private readonly profileStatusUrl: string;
 
 	public constructor(props: MyInfoHelperConstructor) {
 		if (_.isEmpty(props.attributes)) {
@@ -34,10 +45,15 @@ export class MyInfoHelper implements IMyInfoHelper {
 		}
 		this.attributes = props.attributes;
 		this.clientID = props.clientID;
-		this.personBasicURL = props.personBasicURL;
 		this.singpassEserviceID = props.singpassEserviceID;
 		this.keyToDecryptJWE = props.keyToDecryptJWE;
 		this.certToVerifyJWS = props.certToVerifyJWS;
+		this.personBasicUrl = !!props.overridePersonBasicUrl
+			? props.overridePersonBasicUrl
+			: this.constructUrl(props.environment, PERSON_BASIC_BASE_URL);
+		this.profileStatusUrl = !!props.overridePersonBasicUrl
+			? props.overridePersonBasicUrl
+			: this.constructUrl(props.environment, PROFILE_STATUS_BASE_URL);
 
 		const requestProps: MyInfoRequestConstructor = {
 			appId: props.clientID,
@@ -54,7 +70,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 	 * e.g. when K = "name" | "email", getPersonBasicV3 returns an object looking like { name, email }
 	 */
 	public getPersonBasic = async<K extends keyof domain.Components.Schemas.PersonBasic>(uinfin: string): Promise<Pick<domain.Components.Schemas.PersonBasic, K>> => {
-		const url = `${this.personBasicURL}/${uinfin}`;
+		const url = `${this.personBasicUrl}/${uinfin}`;
 		const params = {
 			client_id: this.clientID,
 			sp_esvcId: this.singpassEserviceID,
@@ -85,6 +101,33 @@ export class MyInfoHelper implements IMyInfoHelper {
 		} catch (error) {
 			Logger.error("Error verifying person data from MyInfo", error);
 			throw error;
+		}
+	}
+
+	/**
+	 * Obtain myinfo profile status of an individual using uinfin.
+	 * This is an endpoint that requires permission from the myinfo team.
+	 * Do approach the team if you need to access it.
+	 */
+	public getProfileStatus = async (uinfin: string): Promise<ProfileStatus> => {
+		const url = `${this.profileStatusUrl}/${uinfin}`;
+		const response = await this.myInfoRequest.get(url);
+
+		if (!!response.data.msg && typeof response.data.msg === "string") {
+			return JSON.parse(response.data.msg);
+		}
+		throw new Error("getProfileStatus response does not include the `msg` field as singpass-myinfo lib expected");
+	}
+
+	private constructUrl(environment: EnvType, baseUrl: string) {
+		switch (environment) {
+			case "sandbox":
+				return `https://sandbox.${baseUrl}`;
+			case "prod":
+				return `https://${baseUrl}`;
+			case "test":
+			default:
+				return `https://test.${baseUrl}`;
 		}
 	}
 }

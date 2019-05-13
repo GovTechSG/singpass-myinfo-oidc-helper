@@ -10,6 +10,7 @@ if (JestUtil.isTest()) {
 export const configs = {
 	singpassClientId: getValueFromEnv("SINGPASS_ESERVICE_ID"),
 
+	environment: getValueFromEnv("MY_INFO_ENVIRONMENT") as "test" | "sandbox" | "prod",
 	myInfoPersonBasicURL: getValueFromEnv("MY_INFO_URL_PERSON_BASIC"),
 	myinfoJWSPublicCert: StringUtil.replaceLineBreaks(getValueFromEnv("MY_INFO_PUBLIC_CERT")),
 	myinfoAuthKey: StringUtil.replaceLineBreaks(getValueFromEnv("MY_INFO_PRIVATE_KEY")),
@@ -18,6 +19,9 @@ export const configs = {
 	myinfoGovFlowClientID: getValueFromEnv("MY_INFO_CLIENT_ID"),
 
 	myinfoJWEPrivateKey: StringUtil.replaceLineBreaks(getValueFromEnv("MY_INFO_JWE_PRIVATE_KEY")),
+
+	overridePersonBasicUrl: getValueFromEnv("MY_INFO_PERSON_BASIC_URL"),
+	overrideProfileStatusUrl: getValueFromEnv("MY_INFO_PROFILE_STATUS_URL"),
 
 	attributes: [
 		"name",

@@ -1,11 +1,11 @@
 {
 	"name": "singpass-myinfo-oidc-helper",
-	"version": "2.1.3",
+	"version": "2.1.4",
 	"description": "Helper for building a Relying Party to integrate with Singpass OIDC and MyInfo person basic API",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"scripts": {
-		"test": "node --max_old_space_size=4096 --expose-gc --trace-warnings --inspect=0.0.0.0:7001 ./node_modules/.bin/jest",
+		"test": "./scripts/test.sh",
 		"test:api": "node --max_old_space_size=4096 --expose-gc --trace-warnings --inspect=0.0.0.0:7001 ./node_modules/.bin/jest --config jest.api.config.js",
 		"lint": "./scripts/lint.sh",
 		"build": "export TS_NODE_PROJECT=./shared-config/script.tsconfig.json && ./node_modules/.bin/webpack --config webpack.config.ts && npm pack",

@@ -9,7 +9,7 @@ describe("MyInfoClient", () => {
 			const props: MyInfoHelperConstructor = {
 				attributes: configs.attributes,
 				clientID: configs.myinfoGovFlowClientID,
-				personBasicURL: configs.myInfoPersonBasicURL,
+				environment: configs.environment,
 				singpassEserviceID: configs.singpassClientId,
 				keyToDecryptJWE: configs.myinfoJWEPrivateKey,
 				certToVerifyJWS: configs.myinfoJWSPublicCert,
@@ -45,6 +45,27 @@ describe("MyInfoClient", () => {
 			const result = await myInfoHelper.getPersonBasic<V3Attributes>(testNric);
 
 			expect(result.aliasname.value).toEqual("JASCKSON LIM YONG XIANG");
+		});
+	});
+
+	describe("STAGING Profile status API V3", () => {
+		it("should pass", async () => {
+			const props: MyInfoHelperConstructor = {
+				attributes: configs.attributes,
+				clientID: configs.myinfoGovFlowClientID,
+				environment: configs.environment,
+				singpassEserviceID: configs.singpassClientId,
+				keyToDecryptJWE: configs.myinfoJWEPrivateKey,
+				certToVerifyJWS: configs.myinfoJWSPublicCert,
+				privateKeyToSignRequest: configs.myinfoAuthKey,
+				privateKeyPassword: configs.myinfoAuthKeyPassphrase,
+			};
+
+			const myInfoHelper = new MyInfoHelper(props);
+			const testNric = "S1627395C";
+
+			const result = await myInfoHelper.getProfileStatus(testNric);
+			expect(result.status).toEqual("03");
 		});
 	});
 });
