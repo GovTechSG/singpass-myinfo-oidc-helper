@@ -48,12 +48,8 @@ export class MyInfoHelper implements IMyInfoHelper {
 		this.singpassEserviceID = props.singpassEserviceID;
 		this.keyToDecryptJWE = props.keyToDecryptJWE;
 		this.certToVerifyJWS = props.certToVerifyJWS;
-		this.personBasicUrl = !!props.overridePersonBasicUrl
-			? props.overridePersonBasicUrl
-			: this.constructUrl(props.environment, PERSON_BASIC_BASE_URL);
-		this.profileStatusUrl = !!props.overridePersonBasicUrl
-			? props.overridePersonBasicUrl
-			: this.constructUrl(props.environment, PROFILE_STATUS_BASE_URL);
+		this.personBasicUrl = this.getUrl(props.overridePersonBasicUrl, PERSON_BASIC_BASE_URL, props.environment);
+		this.profileStatusUrl = this.getUrl(props.overrideProfileStatusUrl, PROFILE_STATUS_BASE_URL, props.environment);
 
 		const requestProps: MyInfoRequestConstructor = {
 			appId: props.clientID,
@@ -102,7 +98,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 			Logger.error("Error verifying person data from MyInfo", error);
 			throw error;
 		}
-	}
+	};
 
 	/**
 	 * Obtain myinfo profile status of an individual using uinfin.
@@ -117,6 +113,12 @@ export class MyInfoHelper implements IMyInfoHelper {
 			return JSON.parse(response.data.msg);
 		}
 		throw new Error("getProfileStatus response does not include the `msg` field as singpass-myinfo lib expected");
+	};
+
+	private getUrl(overrideUrl: string, defaultUrl: string, env: EnvType) {
+		return (!_.isEmpty(overrideUrl))
+			? overrideUrl
+			: this.constructUrl(env, defaultUrl);
 	}
 
 	private constructUrl(environment: EnvType, baseUrl: string) {

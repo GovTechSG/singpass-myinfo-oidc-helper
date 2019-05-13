@@ -5,3 +5,5 @@ jest.json
 *.tgz
 *.tar.gz
 package/*
+*.xml
+*.iml
