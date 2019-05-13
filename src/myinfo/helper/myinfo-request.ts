@@ -2,6 +2,7 @@ import * as nonceFactory from "nonce";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios-https-proxy-fix";
 import { SigningUtil } from "../../util";
 import { createClient } from "../../client";
+import * as querystringUtil from "querystring";
 
 export interface MyInfoRequestConstructor {
 	appId: string;
@@ -51,6 +52,7 @@ export class MyInfoRequest {
 
 		const requestConfig: AxiosRequestConfig = {
 			params: queryParams,
+			paramsSerializer: querystringUtil.stringify,
 			headers: {
 				Authorization: authHeader,
 			},
