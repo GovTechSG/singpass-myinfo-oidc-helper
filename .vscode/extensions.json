@@ -1,6 +1,11 @@
+// This file is a copy of the original found in mol-lib-config, please make modifications there instead
+// =============================================================================
+// This is a list of extensions we commonly use for the project
+// =============================================================================
 {
 	"recommendations": [
 		// General
+		"robertohuertasm.vscode-icons",
 		"PeterJausovec.vscode-docker",
 		"wayou.vscode-todo-highlight",
 		"christian-kohler.path-intellisense",
@@ -12,13 +17,19 @@
 		"mikestead.dotenv",
 		"eamodio.gitlens",
 		"redhat.vscode-xml",
+		"richie5um2.vscode-sort-json",
 		// JS
 		"eg2.vscode-npm-script",
+		"orta.vscode-jest",
 		// TypeScript
 		"ms-vscode.vscode-typescript-tslint-plugin",
+		// React
+		"vsmobile.vscode-react-native",
 		// Database
 		"jakebathman.mysql-syntax",
 		// Diagramming
-		"aleksandardev.vscode-sequence-diagrams"
+		"jebbs.plantuml",
+		// AWS
+		"mauve.terraform"
 	]
 }

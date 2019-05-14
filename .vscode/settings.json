@@ -1,3 +1,36 @@
+// This file is a copy of the original found in mol-lib-config, please make modifications there instead
+// =============================================================================
+// The settings in this file will overwrite default and user settings for a project.
+// =============================================================================
 {
-	"sequencediagrams.diagram.style": "simple"
+	"[sql]": {
+		"editor.formatOnSave": false
+	},
+	"auto-close-tag.activationOnLanguage": [
+		"html",
+		"javascriptreact",
+		"typescriptreact"
+	],
+	"editor.codeActionsOnSave": {
+		"source.fixAll.tslint": true
+	},
+	"editor.detectIndentation": false,
+	"editor.formatOnSave": true,
+	"editor.insertSpaces": false,
+	"files.associations": {
+		"*.tsconfig.json": "jsonc",
+		"*.tslint.json": "jsonc"
+	},
+	"files.insertFinalNewline": true,
+	"files.trimTrailingWhitespace": true,
+	"plantuml.diagramsRoot": "diagrams/src",
+	"plantuml.exportFormat": "svg",
+	"plantuml.exportOutDir": "diagrams/out",
+	"search.useIgnoreFilesByDefault": true,
+	"sequencediagrams.diagram.style": "simple",
+	"tslint.autoFixOnSave": true,
+	"tslint.jsEnable": true,
+	"typescript.tsdk": "./node_modules/typescript/lib",
+	"typescriptHero.imports.multiLineWrapThreshold": 120,
+	"typescriptHero.imports.stringQuoteStyle": "\""
 }

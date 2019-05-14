@@ -1,38 +1,3 @@
 {
-	"compilerOptions": {
-		/* General settings */
-		"target": "es5",
-		/* Module settings */
-		"module": "commonjs",
-		"moduleResolution": "node",
-		/* Compiler settings */
-		"skipLibCheck": true,
-		"forceConsistentCasingInFileNames": true,
-		"alwaysStrict": true,
-		/* Output Files */
-		"outDir": "./dist/",
-		"sourceMap": true,
-		"experimentalDecorators": true,
-		"emitDecoratorMetadata": true,
-		"declaration": true,
-		"preserveConstEnums": true,
-		/* Paths */
-		"types": [
-			"node",
-			"jest"
-		],
-		"lib": [
-			"es6",
-			"es7"
-		]
-	},
-	"include": [
-		"src/**/*"
-	],
-	"exclude": [
-		"node_modules",
-		"dist",
-		"**/__tests__",
-		"**/*.test.ts",
-	],
+	"extends": "./shared-config/tsconfig.json"
 }
