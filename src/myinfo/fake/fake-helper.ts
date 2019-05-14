@@ -6,10 +6,10 @@ import { isEmpty, toPairs } from "lodash";
 export interface MockParams {
 	archetype: ProfileArchetype;
 	// tslint:disable-next-line: max-union-size
-	marital?: "SINGLE" | "MARRIED" | "WIDOWED" | "DIVORCED";
+	marital?: "1" | "2" | "3" | "5";
 	marriagedate?: string;
 	marriagecertno?: string;
-	countryofmarriage?: { desc: string, code: string };
+	countryofmarriage?: string;
 	occupation?: string;
 	occupationfreeform?: string;
 	dob?: string;
@@ -43,9 +43,8 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		};
 
 		if (!isEmpty(mockParams.marital)) {
-			myinfoPerson.marital.desc = mockParams.marital;
-
-			myinfoPerson.marital.code = domainMap.sex.map.descToCode[mockParams.marital];
+			myinfoPerson.marital.code = mockParams.marital;
+			myinfoPerson.marital.desc = domainMap.sex.map.codeToDesc[mockParams.marital];
 		}
 
 		if (!isEmpty(mockParams.marriagedate)) {
@@ -57,8 +56,8 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		}
 
 		if (!isEmpty(mockParams.countryofmarriage)) {
-			myinfoPerson.countryofmarriage.desc = mockParams.countryofmarriage.desc;
-			myinfoPerson.countryofmarriage.code = mockParams.countryofmarriage.code;
+			// FIXME: to add code to desc mapping for countries
+			myinfoPerson.countryofmarriage.code = mockParams.countryofmarriage;
 		}
 
 		if (!isEmpty(mockParams.dob)) {
@@ -66,11 +65,11 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		}
 
 		if (!isEmpty(mockParams.occupation)) {
-			myinfoPerson.occupation.value = mockParams.occupation;
+			// FIXME: to add code to desc mapping for occupations
+			myinfoPerson.occupation.code = mockParams.occupation;
 		} else {
 			if (!isEmpty(mockParams.occupationfreeform)) {
-				myinfoPerson.occupation.value = "";
-				myinfoPerson.occupation.desc = mockParams.occupationfreeform;
+				myinfoPerson.occupation.value = mockParams.occupationfreeform;
 			}
 		}
 
