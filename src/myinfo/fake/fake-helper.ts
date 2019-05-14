@@ -35,8 +35,9 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 	 */
 	public getPersonBasic = (mockParams: MockParams): PersonBasic => {
 		const mockProfile = profiles.find((profile) => profile.name === mockParams.archetype);
-		if (!mockProfile)
+		if (!mockProfile) {
 			return null;
+		}
 
 		const myinfoPerson = {
 			...mockProfile.generate(),
@@ -44,7 +45,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 
 		if (!isEmpty(mockParams.marital)) {
 			myinfoPerson.marital.code = mockParams.marital;
-			myinfoPerson.marital.desc = domainMap.sex.map.codeToDesc[mockParams.marital];
+			myinfoPerson.marital.desc = domainMap.marital.map.codeToDesc[mockParams.marital];
 		}
 
 		if (!isEmpty(mockParams.marriagedate)) {
@@ -58,6 +59,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		if (!isEmpty(mockParams.countryofmarriage)) {
 			// FIXME: to add code to desc mapping for countries
 			myinfoPerson.countryofmarriage.code = mockParams.countryofmarriage;
+			myinfoPerson.countryofmarriage.desc = "";
 		}
 
 		if (!isEmpty(mockParams.dob)) {
@@ -67,9 +69,12 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		if (!isEmpty(mockParams.occupation)) {
 			// FIXME: to add code to desc mapping for occupations
 			myinfoPerson.occupation.code = mockParams.occupation;
+			myinfoPerson.occupation.desc = "";
 		} else {
 			if (!isEmpty(mockParams.occupationfreeform)) {
 				myinfoPerson.occupation.value = mockParams.occupationfreeform;
+				myinfoPerson.occupation.code = "";
+				myinfoPerson.occupation.desc = "";
 			}
 		}
 
