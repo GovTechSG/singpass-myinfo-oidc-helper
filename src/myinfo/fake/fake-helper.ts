@@ -1,7 +1,7 @@
 import { ProfileArchetype } from "./profiles/fake-profile";
 import { profiles } from "./profiles/fake-profiles";
 import { domain, domainMap } from "../domain";
-import { isEmpty, toPairs } from "lodash";
+import { isEmpty, map, partition, set, toPairs } from "lodash";
 
 export interface MockParams {
 	archetype: ProfileArchetype;
@@ -83,13 +83,27 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 
 /**
  * @description Returns new fake person with only the attributes listed in attributes param. Does not mutate.
+ *
+ * For the special field childrenbirthrecords, attributes can include childrenbirthrecords.name, childrenbirthrecords.sex etc.
  * @param person fake MyInfo person
  * @param attributes array of attributes to filter for
  */
 function filterThroughMyInfoAttributes(person: PersonBasic, attributes: ReadonlyArray<string>): PersonBasic {
-	const attrs = new Set(attributes);
+	const [rawCbrAttributes, normalAttributes] = partition(attributes, (value) => value.startsWith("childrenbirthrecords."));
+	const filteredPerson = filterThroughAttributes(person, normalAttributes);
 
-	return toPairs(person)
+	if (rawCbrAttributes.length > 0) {
+		const childrenbirthrecordsAttributes = map(rawCbrAttributes, (cbrAttribute) => cbrAttribute.split(".")[1]);
+		// get filtered childrenbirthrecords
+		const filteredChildrenbirthrecords = map(person.childrenbirthrecords, (cbr) => filterThroughAttributes(cbr, childrenbirthrecordsAttributes));
+		set(filteredPerson, "childrenbirthrecords", filteredChildrenbirthrecords);
+	}
+	return filteredPerson;
+}
+
+function filterThroughAttributes(object: object, attributes: ReadonlyArray<string>): object {
+	const attrs = new Set(attributes);
+	return toPairs(object)
 		.filter(([k]) => attrs.has(k))
-		.reduce((accumulator, [k, v]) => ({ ...accumulator, [k]: v }), {} as PersonBasic);
+		.reduce((accumulator, [k, v]) => ({ ...accumulator, [k]: v }), {});
 }
