@@ -1,6 +1,6 @@
 {
 	"name": "singpass-myinfo-oidc-helper",
-	"version": "2.1.4",
+	"version": "1.1.0",
 	"description": "Helper for building a Relying Party to integrate with Singpass OIDC and MyInfo person basic API",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -11,26 +11,18 @@
 		"build": "export TS_NODE_PROJECT=./shared-config/script.tsconfig.json && ./node_modules/.bin/webpack --config webpack.config.ts && npm pack",
 		"watch": "export TS_NODE_PROJECT=./shared-config/script.tsconfig.json && ./node_modules/.bin/webpack --config webpack.watch.config.ts && npm pack"
 	},
-	"husky": {
-		"hooks": {
-			"pre-push": "npm run lint && npm run test && npm run build"
-		}
-	},
 	"license": "MIT",
 	"dependencies": {
-		"@types/rosie": "0.0.36",
 		"axios-https-proxy-fix": "^0.17.1",
 		"http-status-codes": "^1.3.2",
 		"https-proxy-agent": "^2.2.1",
-		"is-base64": "^0.1.0",
-		"js-joda": "^1.10.1",
+		"is-base64": "^0.0.4",
 		"lodash": "^4.17.11",
 		"moment": "^2.24.0",
-		"node-jose": "^1.1.3",
-		"nonce": "^1.0.4",
+		"node-apex-api-security": "^1.0.3",
+		"node-jose": "^1.1.0",
 		"request": "^2.88.0",
-		"request-promise-native": "^1.0.7",
-		"rosie": "^2.0.1"
+		"request-promise-native": "^1.0.7"
 	},
 	"devDependencies": {
 		"@types/clean-webpack-plugin": "^0.1.3",
@@ -44,9 +36,7 @@
 		"@types/webpack-node-externals": "^1.6.3",
 		"clean-webpack-plugin": "^2.0.1",
 		"copy-webpack-plugin": "^5.0.3",
-		"dotenv": "^8.0.0",
 		"dts-bundle-webpack": "^1.0.2",
-		"husky": "^2.2.0",
 		"jest": "^24.7.1",
 		"jest-bamboo-formatter": "^1.0.1",
 		"ts-jest": "^24.0.2",
