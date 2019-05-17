@@ -58,9 +58,8 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		}
 
 		if (!isEmpty(mockParams.countryofmarriage)) {
-			// FIXME: to add code to desc mapping for countries
 			myinfoPerson.countryofmarriage.code = mockParams.countryofmarriage;
-			myinfoPerson.countryofmarriage.desc = "";
+			myinfoPerson.countryofmarriage.desc = domainMap.countryofmarriage.map.codeToDesc[mockParams.countryofmarriage];
 		}
 
 		if (!isEmpty(mockParams.dob)) {
@@ -68,14 +67,14 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		}
 
 		if (!isEmpty(mockParams.occupation)) {
-			// FIXME: to add code to desc mapping for occupations
 			myinfoPerson.occupation.code = mockParams.occupation;
-			myinfoPerson.occupation.desc = "";
+			myinfoPerson.occupation.desc = domainMap.occupation.map.codeToDesc[mockParams.occupation];
+			myinfoPerson.occupation.value = null;
 		} else {
 			if (!isEmpty(mockParams.occupationfreeform)) {
 				myinfoPerson.occupation.value = mockParams.occupationfreeform;
-				myinfoPerson.occupation.code = "";
-				myinfoPerson.occupation.desc = "";
+				myinfoPerson.occupation.code = null;
+				myinfoPerson.occupation.desc = null;
 			}
 		}
 
