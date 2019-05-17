@@ -2,10 +2,10 @@ import { AxiosResponse } from "axios-https-proxy-fix";
 import * as _ from "lodash";
 import { Logger } from "../../util";
 import { decryptJWE, verifyJWS } from "../../util/JweUtil";
-import { domain } from "../domain";
+import { myInfoDomain } from "../domain";
+import { ProfileStatus } from "../domain/profilestatus-domain";
 import { IMyInfoHelper } from "./index";
 import { MyInfoRequest, MyInfoRequestConstructor } from "./myinfo-request";
-import { ProfileStatus } from "../domain/profilestatus-domain";
 
 export type EnvType = "test" | "sandbox" | "prod";
 
@@ -65,7 +65,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 	 * getPersonBasicV3 will return an object with only the properties matching the keys.
 	 * e.g. when K = "name" | "email", getPersonBasicV3 returns an object looking like { name, email }
 	 */
-	public getPersonBasic = async<K extends keyof domain.Components.Schemas.PersonBasic>(uinfin: string): Promise<Pick<domain.Components.Schemas.PersonBasic, K>> => {
+	public getPersonBasic = async<K extends keyof myInfoDomain.Components.Schemas.PersonBasic>(uinfin: string): Promise<Pick<myInfoDomain.Components.Schemas.PersonBasic, K>> => {
 		const url = `${this.personBasicUrl}/${uinfin}`;
 		const params = {
 			client_id: this.clientID,
@@ -87,7 +87,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 			const jwe = await decryptJWE(encryptedPersonJWE, this.keyToDecryptJWE);
 			const jws = JSON.parse(jwe.payload.toString());
 			const verifiedJws = await verifyJWS(jws, this.certToVerifyJWS);
-			const personData = JSON.parse(verifiedJws.payload.toString()) as Pick<domain.Components.Schemas.PersonBasic, K>;
+			const personData = JSON.parse(verifiedJws.payload.toString()) as Pick<myInfoDomain.Components.Schemas.PersonBasic, K>;
 
 			if (personData == null) {
 				throw new Error("Person data cannot be null");

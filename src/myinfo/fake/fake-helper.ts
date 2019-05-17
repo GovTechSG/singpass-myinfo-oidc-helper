@@ -1,7 +1,7 @@
+import { isEmpty, map, partition, set, toPairs } from "lodash";
+import { domainMap, myInfoDomain } from "../domain";
 import { ProfileArchetype } from "./profiles/fake-profile";
 import { profiles } from "./profiles/fake-profiles";
-import { domain, domainMap } from "../domain";
-import { isEmpty, map, partition, set, toPairs } from "lodash";
 
 export interface MockParams {
 	archetype: ProfileArchetype;
@@ -14,7 +14,8 @@ export interface MockParams {
 	occupationfreeform?: string;
 	dob?: string;
 }
-type PersonBasic = domain.Components.Schemas.PersonBasic;
+
+type PersonBasic = myInfoDomain.Components.Schemas.PersonBasic;
 
 export interface IFakeMyInfoHelper {
 	getPersonBasic: (mockParams: MockParams) => PersonBasic;

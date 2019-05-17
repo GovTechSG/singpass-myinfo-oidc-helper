@@ -1,6 +1,5 @@
-import * as domain from "./myinfo-domain";
-import * as profileStatusDomain from "./profilestatus-domain";
 import * as domainMap from "./map";
+import * as myInfoDomain from "./myinfo-domain";
+import * as profileStatusDomain from "./profilestatus-domain";
 
-export { domain, domainMap, profileStatusDomain };
-
+export { myInfoDomain, domainMap, profileStatusDomain };
