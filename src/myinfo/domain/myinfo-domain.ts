@@ -5916,7 +5916,7 @@ declare namespace Components {
 				source: "1" | "2" | "3" | "4";
 				classification: "C";
 				message: {
-					code: "2",
+					code: "1" | "2" | "3" | "4" | "5" | "6" | "7",
 					desc: "You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888.",
 				},
 			};
@@ -9278,7 +9278,7 @@ declare namespace Components {
 				source: "1" | "2" | "3" | "4";
 				classification: "C";
 				message: {
-					code: "2",
+					code: "1" | "2" | "3" | "4" | "5" | "6" | "7",
 					desc: "You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888.",
 				},
 			};

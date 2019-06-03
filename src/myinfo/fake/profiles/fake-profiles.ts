@@ -11,6 +11,7 @@ import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 import { mrsMYMommyPerfect } from "./mrsMYMommyPerfect";
 import { mrsSGMommyPerfect } from "./mrsSGMommyPerfect";
 import { mrMYDaddyPerfect } from "./mrMYDaddyPerfect";
+import { mrSGUncleMgNeedAddress } from "./mrSGUncleMgNeedAddress";
 
 /**
  * Exhaustive list of our MyInfo archetype profiles
@@ -29,4 +30,5 @@ export const profiles = [
 	mrSGDaddyMissingFields,
 	mrSGDaddyMissingUneditableFields,
 	mrMYDaddyPerfect,
+	mrSGUncleMgNeedAddress,
 ];

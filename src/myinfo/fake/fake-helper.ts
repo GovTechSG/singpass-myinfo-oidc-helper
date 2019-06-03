@@ -13,6 +13,9 @@ export interface MockParams {
 	occupation?: string;
 	occupationfreeform?: string;
 	dob?: string;
+	merdekageneligible?: boolean;
+	merdekagenquantum?: number;
+	merdekagenmessagecode?: "1" | "2" | "3" | "4" | "5" | "6" | "7";
 }
 
 type PersonBasic = myInfoDomain.Components.Schemas.PersonBasic;
@@ -76,6 +79,18 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 				myinfoPerson.occupation.code = null;
 				myinfoPerson.occupation.desc = null;
 			}
+		}
+
+		if (!isEmpty(mockParams.merdekageneligible)) {
+			myinfoPerson.merdekagen.eligibility = { value: mockParams.merdekageneligible };
+		}
+
+		if (!isEmpty(mockParams.merdekagenmessagecode)) {
+			myinfoPerson.merdekagen.message.code = mockParams.merdekagenmessagecode;
+		}
+
+		if (!isEmpty(mockParams.merdekagenquantum)) {
+			myinfoPerson.merdekagen.quantum = { value: mockParams.merdekagenquantum };
 		}
 
 		if (!this.attributes) {

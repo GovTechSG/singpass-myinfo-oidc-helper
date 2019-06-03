@@ -23,4 +23,5 @@ export enum ProfileArchetype {
 	MRS_MY_MOMMY_PERFECT = "Mrs MY Mommy Perfect",
 	MRS_SG_MOMMY_PERFECT = "Mrs SG Mommy Perfect",
 	MR_MY_DADDY_PERFECT = "Mr MY Daddy Perfect",
+	MR_SG_UNCLE_MG_NEED_ADDR_UPDATE = "Mr SG Uncle, MG needs address update",
 }
