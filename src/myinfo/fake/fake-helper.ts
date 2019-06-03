@@ -15,6 +15,7 @@ export interface MockParams {
 	dob?: string;
 	merdekageneligible?: boolean;
 	merdekagenquantum?: number;
+	// tslint:disable-next-line: max-union-size
 	merdekagenmessagecode?: "1" | "2" | "3" | "4" | "5" | "6" | "7";
 }
 
