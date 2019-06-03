@@ -23,5 +23,11 @@ export enum ProfileArchetype {
 	MRS_MY_MOMMY_PERFECT = "Mrs MY Mommy Perfect",
 	MRS_SG_MOMMY_PERFECT = "Mrs SG Mommy Perfect",
 	MR_MY_DADDY_PERFECT = "Mr MY Daddy Perfect",
-	MR_SG_UNCLE_MG_NEED_ADDR_UPDATE = "Mr SG Uncle, MG needs address update",
+	MR_SG_UNCLE_NON_MG = "Mr SG Uncle Non MG",
+	MR_SG_UNCLE_MG_ALL_OK = "Mr SG Uncle MG All Ok",
+	MR_SG_UNCLE_MG_NEED_ADDR_UPDATE = "Mr SG Uncle MG needs address update",
+	MR_SG_UNCLE_MG_NEED_MEDISAVE = "Mr SG Uncle MG need medisave",
+	MR_SG_UNCLE_MG_CALL_RECEIVE = "Mr SG Uncle MG call to receive",
+	MR_SG_UNCLE_OPT_OUT = "Mr SG Uncle Opt-out",
+	MR_SG_UNCLE_MG_NIL_STATUS = "Mr SG Uncle MG nil status",
 }

@@ -11,7 +11,13 @@ import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 import { mrsMYMommyPerfect } from "./mrsMYMommyPerfect";
 import { mrsSGMommyPerfect } from "./mrsSGMommyPerfect";
 import { mrMYDaddyPerfect } from "./mrMYDaddyPerfect";
+import { mrSGUncleNonMg } from "./mrSGUncleNonMg";
+import { mrSGUncleMgAllOk } from "./mrSGUncleMgAllOk";
 import { mrSGUncleMgNeedAddress } from "./mrSGUncleMgNeedAddress";
+import { mrSGUncleMgNeedMedisave } from "./mrSGUncleMgNeedMedisave";
+import { mrSGUncleMgCallReceive } from "./mrSGUncleMgCallReceive";
+import { mrSGUncleOptOut } from "./mrSGUncleOptOut";
+import { mrSGUncleMgNilStatus } from "./mrSGUncleMgNilStatus";
 
 /**
  * Exhaustive list of our MyInfo archetype profiles
@@ -31,4 +37,10 @@ export const profiles = [
 	mrSGDaddyMissingUneditableFields,
 	mrMYDaddyPerfect,
 	mrSGUncleMgNeedAddress,
+	mrSGUncleNonMg,
+	mrSGUncleMgAllOk,
+	mrSGUncleMgNeedMedisave,
+	mrSGUncleMgCallReceive,
+	mrSGUncleOptOut,
+	mrSGUncleMgNilStatus,
 ];
