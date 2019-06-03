@@ -5916,8 +5916,27 @@ declare namespace Components {
 				source: "1" | "2" | "3" | "4";
 				classification: "C";
 				message: {
+					/**
+					 * Message code
+					 *
+					 * * '1' - MGP Eligibility Tag: N
+					 * * '2' - MGP Eligibility Tag: Y, Sign-up Tag: Y, Invalid Address Tag: N
+					 * * '3' - MGP Eligibility Tag: Y, Sign-up Tag: Y, Invalid Address Tag: Y
+					 * * '4' - MGP Eligibility Tag: Y, Sign-up Tag: N, Invalid Address Tag: N
+					 * * '5' - MGP Eligibility Tag: Y, Sign-up Tag: N, Invalid Address Tag: Y
+					 * * '6' - MGP Eligibility Tag: Y, Opt-Out Tag: Y
+					 * * '7' - MGP Eligibility Tag: Y, Sign-up Tag: Y, NIL Status: Y
+					 *
+					 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+					 */
 					code: "1" | "2" | "3" | "4" | "5" | "6" | "7",
-					desc: "You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888.",
+					desc: "We regret that you are not eligible for the Merdeka Generation Package.  For further enquiries, please contact 1800-2222-888." |
+					"You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888." |
+					"You are eligible for the Merdeka Generation Package. Please call 6391 6100 to update your NRIC address with ICA and then contact 1800-2222-888 to receive your Merdeka Generation card." |
+					"You are eligible for the Merdeka Generation Package. Please contact 1800-2222-888 to receive your Merdeka Generation MediSave top-up." |
+					"You are eligible for the Merdeka Generation Package. Please call 6391 6100 to update your NRIC address with ICA, and then contact 1800-2222-888 to receive your Merdeka Generation card." |
+					"We understand that you have opted out of receiving the benefits under the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888." |
+					"Please contact 1800-2222-888 for further details on your eligibility.",
 				},
 			};
 			gstvoucher?: {
@@ -9278,8 +9297,27 @@ declare namespace Components {
 				source: "1" | "2" | "3" | "4";
 				classification: "C";
 				message: {
+					/**
+					 * Message code
+					 *
+					 * * '1' - MGP Eligibility Tag: N
+					 * * '2' - MGP Eligibility Tag: Y, Sign-up Tag: Y, Invalid Address Tag: N
+					 * * '3' - MGP Eligibility Tag: Y, Sign-up Tag: Y, Invalid Address Tag: Y
+					 * * '4' - MGP Eligibility Tag: Y, Sign-up Tag: N, Invalid Address Tag: N
+					 * * '5' - MGP Eligibility Tag: Y, Sign-up Tag: N, Invalid Address Tag: Y
+					 * * '6' - MGP Eligibility Tag: Y, Opt-Out Tag: Y
+					 * * '7' - MGP Eligibility Tag: Y, Sign-up Tag: Y, NIL Status: Y
+					 *
+					 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+					 */
 					code: "1" | "2" | "3" | "4" | "5" | "6" | "7",
-					desc: "You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888.",
+					desc: "We regret that you are not eligible for the Merdeka Generation Package.  For further enquiries, please contact 1800-2222-888." |
+					"You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888." |
+					"You are eligible for the Merdeka Generation Package. Please call 6391 6100 to update your NRIC address with ICA and then contact 1800-2222-888 to receive your Merdeka Generation card." |
+					"You are eligible for the Merdeka Generation Package. Please contact 1800-2222-888 to receive your Merdeka Generation MediSave top-up." |
+					"You are eligible for the Merdeka Generation Package. Please call 6391 6100 to update your NRIC address with ICA, and then contact 1800-2222-888 to receive your Merdeka Generation card." |
+					"We understand that you have opted out of receiving the benefits under the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888." |
+					"Please contact 1800-2222-888 for further details on your eligibility.",
 				},
 			};
 			gstvoucher?: {
