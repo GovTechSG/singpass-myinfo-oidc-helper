@@ -113,7 +113,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 					"value": 300,
 				},
 				"year": {
-					"value": 2018,
+					"value": 2019,
 				},
 				"exclusion": {
 					"value": false,
@@ -123,12 +123,12 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				},
 				"lastupdated": "2019-04-01",
 				"gstspecial": {
-					"value": 55,
+					"value": 300,
 				},
 				"source": "1",
 				"classification": "C",
 				"signup": {
-					"value": true,
+					"value": false,
 				},
 			},
 			"email": {

@@ -109,7 +109,7 @@ export const PersonBasicFactory = new Factory()
 				"value": 300,
 			},
 			"year": {
-				"value": 2018,
+				"value": 2019,
 			},
 			"exclusion": {
 				"value": false,
@@ -119,7 +119,7 @@ export const PersonBasicFactory = new Factory()
 			},
 			"lastupdated": "2019-04-01",
 			"gstspecial": {
-				"value": 55,
+				"value": 0,
 			},
 			"source": "1",
 			"classification": "C",
