@@ -18,6 +18,12 @@ import { mrSGUncleMgNeedMedisave } from "./mrSGUncleMgNeedMedisave";
 import { mrSGUncleMgCallReceive } from "./mrSGUncleMgCallReceive";
 import { mrSGUncleOptOut } from "./mrSGUncleOptOut";
 import { mrSGUncleMgNilStatus } from "./mrSGUncleMgNilStatus";
+import { mrGstvUncle1a } from "./mrGSTVUncleScenario1a";
+import { mrGstvUncle1b } from "./mrGSTVUncleScenario1b";
+import { mrGstvUncle2a } from "./mrGSTVUncleScenario2a";
+import { mrGstvUncle2b } from "./mrGSTVUncleScenario2b";
+import { mrGstvUncle3 } from "./mrGSTVUncleScenario3";
+import { mrGstvUncle4 } from "./mrGSTVUncleScenario4";
 
 /**
  * Exhaustive list of our MyInfo archetype profiles
@@ -43,4 +49,10 @@ export const profiles = [
 	mrSGUncleMgCallReceive,
 	mrSGUncleOptOut,
 	mrSGUncleMgNilStatus,
+	mrGstvUncle1a,
+	mrGstvUncle1b,
+	mrGstvUncle2a,
+	mrGstvUncle2b,
+	mrGstvUncle3,
+	mrGstvUncle4
 ];

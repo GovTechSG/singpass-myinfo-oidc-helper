@@ -5947,7 +5947,7 @@ declare namespace Components {
 					value: number;
 				};
 				exclusion: {
-					value: false;
+					value: boolean;
 				};
 				gstmedisave: {
 					value: number;
@@ -9328,7 +9328,7 @@ declare namespace Components {
 					value: number;
 				};
 				exclusion: {
-					value: false;
+					value: boolean;
 				};
 				gstmedisave: {
 					value: number;

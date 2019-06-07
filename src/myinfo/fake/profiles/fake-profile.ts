@@ -30,4 +30,11 @@ export enum ProfileArchetype {
 	MR_SG_UNCLE_MG_CALL_RECEIVE = "Mr SG Uncle MG call to receive",
 	MR_SG_UNCLE_OPT_OUT = "Mr SG Uncle Opt-out",
 	MR_SG_UNCLE_MG_NIL_STATUS = "Mr SG Uncle MG nil status",
+	MR_SG_UNCLE_GST_SCENARIO_1A = "Mr GSTV Uncle 1a no exclusion got signup got $",
+	MR_SG_UNCLE_GST_SCENARIO_1B = "Mr GSTV Uncle 1b no exclusion got signup no $",
+	MR_SG_UNCLE_GST_SCENARIO_2A = "Mr GSTV Uncle 2a no exclusion no signup got $",
+	MR_SG_UNCLE_GST_SCENARIO_2B = "Mr GSTV Uncle 2b no exclusion no signup no $",
+	MR_SG_UNCLE_GST_SCENARIO_3 = "Mr GSTV Uncle 3 got exclusion got signup got $",
+	MR_SG_UNCLE_GST_SCENARIO_4 = "Mr GSTV Uncle 4 got exclusion no signup got $",
+
 }
