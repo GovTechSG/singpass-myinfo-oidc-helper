@@ -2,13 +2,8 @@ import { AxiosInstance, AxiosRequestConfig } from "axios-https-proxy-fix";
 import * as querystringUtil from "querystring";
 import { createClient } from "../client";
 import { JweUtil, Logger } from "../util";
+import { isNil } from "lodash";
 import { SingpassMyInfoError } from "../util/error/SingpassMyinfoError";
-
-export enum SessionRefreshResult {
-	SUCCESS = "SUCCESS",
-	SINGPASS_ERROR = "SINGPASS_ERROR",
-	INVALID_SESSION_ID = "INVALID_SESSION_ID",
-}
 
 export enum SessionLogoutResult {
 	SUCCESS = "SUCCESS",
@@ -39,7 +34,7 @@ export interface TokenPayload {
 
 export interface OidcHelperConstructor {
 	authorizationUrl: string;
-	logoutUrl: string;
+	logoutUrl?: string;
 	tokenUrl: string;
 	clientID: string;
 	clientSecret: string;
@@ -161,36 +156,17 @@ export class OidcHelper {
 	}
 
 	/**
-	 * [DEPRECATED] Refresh the Singpass session, using a valid session id (that is retrieved from Singpass domain cookie)
-	 * @param sessionId the session id extracted from PD-S-SESSION-ID in the user agent
-	 * @param state state that will be passed to the your redirect uri from this refresh call. defaults to "dummyState"
-	 * @returns INVALID_SESSION_ID - the sessionId param is no longer valid
-	 * @returns SINGPASS_ERROR - the call to Singpass server to refresh is not successful
-	 * @returns SUCCESS - refresh sessionId successfully
-	 */
-	public async refreshSession(sessionId: string, state: string = "dummyState"): Promise<SessionRefreshResult> {
-		const authorizationUrl = this.constructAuthorizationUrl(state);
-		const requestConfig = { headers: { Cookie: `${this.SINGPASS_SESSION_COOKIE_NAME}=${sessionId}` } };
-		try {
-			const result = await this.axiosClient.get(authorizationUrl, requestConfig);
-			if (result.request.res.responseUrl.includes("saml.singpass.gov.sg")) {
-				Logger.warn(`Attempted to refresh session with invalid session ID ${sessionId}`);
-				return SessionRefreshResult.INVALID_SESSION_ID;
-			}
-			return SessionRefreshResult.SUCCESS;
-		} catch (e) {
-			Logger.warn(`Singpass Error while attempting to refresh session for sessionId: ${sessionId}\nError:`, e);
-			return SessionRefreshResult.SINGPASS_ERROR;
-		}
-	}
-
-
-
-	/**
-	 * [DEPRECATED] Log user out of Singpass, using a valid session id (that is retrieved from Singpass domain cookie)
+	 * [DEPRECATED] Singpass is not managing the logged in user's session anymore thus there is no need to log out.
+	 * Keeping for other use cases.
+	 *
+	 * Log user out of Singpass, using a valid session id (that is retrieved from Singpass domain cookie)
 	 * @param sessionId the session id extracted from PD-S-SESSION-ID in the user agent
 	 */
 	public async logoutOfSession(sessionId: string): Promise<SessionLogoutResult> {
+		if (isNil(this.logoutUrl)) {
+			throw new SingpassMyInfoError("Trying to call singpass-helper logoutOfSession without setting the logout URL");
+		}
+
 		const requestConfig = { headers: { Cookie: `${this.SINGPASS_SESSION_COOKIE_NAME}=${sessionId}` } };
 		try {
 			await this.axiosClient.get(this.logoutUrl, requestConfig);
