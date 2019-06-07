@@ -54,5 +54,5 @@ export const profiles = [
 	mrGstvUncle2a,
 	mrGstvUncle2b,
 	mrGstvUncle3,
-	mrGstvUncle4
+	mrGstvUncle4,
 ];
