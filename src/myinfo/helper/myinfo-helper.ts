@@ -6,6 +6,7 @@ import { myInfoDomain } from "../domain";
 import { ProfileStatus } from "../domain/profilestatus-domain";
 import { IMyInfoHelper } from "./index";
 import { MyInfoRequest, MyInfoRequestConstructor } from "./myinfo-request";
+import { SingpassMyInfoError } from "../../util/error/SingpassMyinfoError";
 
 export type EnvType = "test" | "sandbox" | "prod";
 
@@ -41,7 +42,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 
 	public constructor(props: MyInfoHelperConstructor) {
 		if (_.isEmpty(props.attributes)) {
-			throw new Error("Attribute list must contain values");
+			throw new SingpassMyInfoError("Attribute list must contain values");
 		}
 		this.attributes = props.attributes;
 		this.clientID = props.clientID;
@@ -90,7 +91,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 			const personData = JSON.parse(verifiedJws.payload.toString()) as Pick<myInfoDomain.Components.Schemas.PersonBasic, K>;
 
 			if (personData == null) {
-				throw new Error("Person data cannot be null");
+				throw new SingpassMyInfoError("Person data cannot be null");
 			}
 
 			return personData;
@@ -112,7 +113,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 		if (!!response.data.msg && typeof response.data.msg === "string") {
 			return JSON.parse(response.data.msg);
 		}
-		throw new Error("getProfileStatus response does not include the `msg` field as singpass-myinfo lib expected");
+		throw new SingpassMyInfoError("getProfileStatus response does not include the `msg` field as singpass-myinfo lib expected");
 	};
 
 	private getUrl(overrideUrl: string, defaultUrl: string, env: EnvType) {

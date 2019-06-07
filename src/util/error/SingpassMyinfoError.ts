@@ -7,11 +7,13 @@
  * in axios response interceptors, the error actually contains a config property, this is lost.
  */
 export class SingpassMyInfoError extends Error {
-	constructor(message: string, wrappedError: Error) {
-		super(message);
+	constructor(message: string, wrappedError?: Error) {
+		super(`[singpass-myinfo-oidc-helper] ${message}`);
 		Error.captureStackTrace(this, SingpassMyInfoError);
 		Object.setPrototypeOf(this, SingpassMyInfoError.prototype);
-		this.stack = this.stack + "\n" + wrappedError.stack;
+		if (wrappedError) {
+			this.stack = this.stack + "\n" + wrappedError.stack;
+		}
 		return this;
 	}
 }

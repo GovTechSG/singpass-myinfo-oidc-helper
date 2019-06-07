@@ -2,6 +2,7 @@ import { AxiosInstance, AxiosRequestConfig } from "axios-https-proxy-fix";
 import * as querystringUtil from "querystring";
 import { createClient } from "../client";
 import { JweUtil, Logger } from "../util";
+import { SingpassMyInfoError } from "../util/error/SingpassMyinfoError";
 
 export enum SessionRefreshResult {
 	SUCCESS = "SUCCESS",
@@ -113,7 +114,7 @@ export class OidcHelper {
 		const response = await this.axiosClient.post(this.tokenUrl, body, config);
 		if (!response.data.id_token) {
 			Logger.error("Failed to get ID token: invalid response data", response.data);
-			throw new Error("Failed to get ID token");
+			throw new SingpassMyInfoError("Failed to get ID token");
 		}
 		return response.data;
 	}
