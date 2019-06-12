@@ -17,6 +17,9 @@ export const mrSGUncleNonBenefits: FakeProfile = {
 		profile.merdekagen.eligibility.value = false;
 		profile.gstvoucher.exclusion.value = false;
 		profile.gstvoucher.signup.value = false;
+		profile.gstvoucher.gstregular.value = 0;
+		profile.gstvoucher.gstmedisave.value = 0;
+		profile.gstvoucher.gstspecial.value = 0;
 		return profile;
 	},
 };
