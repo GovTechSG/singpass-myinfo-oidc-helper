@@ -14,7 +14,7 @@ export const mrSGUncleOptOut: FakeProfile = {
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
 		profile.merdekagen.message.code = "6";
-
+		profile.merdekagen.eligibility.value = false;
 		return profile;
 	},
 };

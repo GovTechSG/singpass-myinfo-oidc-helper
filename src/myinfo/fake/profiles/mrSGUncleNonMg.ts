@@ -14,6 +14,7 @@ export const mrSGUncleNonMg: FakeProfile = {
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
 		profile.merdekagen.message.code = "1";
+		profile.merdekagen.eligibility.value = false;
 
 		return profile;
 	},
