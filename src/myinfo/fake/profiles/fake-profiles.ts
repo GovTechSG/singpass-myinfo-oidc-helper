@@ -18,6 +18,7 @@ import { mrSGUncleMgNeedMedisave } from "./mrSGUncleMgNeedMedisave";
 import { mrSGUncleMgCallReceive } from "./mrSGUncleMgCallReceive";
 import { mrSGUncleOptOut } from "./mrSGUncleOptOut";
 import { mrSGUncleMgNilStatus } from "./mrSGUncleMgNilStatus";
+import { mrSGUncleNonBenefits } from "./mrSGUncleNonBenefits";
 import { mrGstvUncle1a } from "./mrGSTVUncleScenario1a";
 import { mrGstvUncle1b } from "./mrGSTVUncleScenario1b";
 import { mrGstvUncle2a } from "./mrGSTVUncleScenario2a";
@@ -52,6 +53,7 @@ export const profiles = [
 	mrSGUncleMgCallReceive,
 	mrSGUncleOptOut,
 	mrSGUncleMgNilStatus,
+	mrSGUncleNonBenefits,
 	mrGstvUncle1a,
 	mrGstvUncle1a2,
 	mrGstvUncle1b,

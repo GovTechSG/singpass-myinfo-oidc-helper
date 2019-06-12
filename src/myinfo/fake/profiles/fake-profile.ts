@@ -30,6 +30,7 @@ export enum ProfileArchetype {
 	MR_SG_UNCLE_MG_CALL_RECEIVE = "Mr SG Uncle MG call to receive",
 	MR_SG_UNCLE_OPT_OUT = "Mr SG Uncle Opt-out",
 	MR_SG_UNCLE_MG_NIL_STATUS = "Mr SG Uncle MG nil status",
+	MR_SG_UNCLE_NON_BENEFITS = "Mr SG Uncle Non Benefits",
 	MR_SG_UNCLE_GST_SCENARIO_1A = "Mr GSTV Uncle 1a no exclusion got signup got $",
 	MR_SG_UNCLE_GST_SCENARIO_1A2 = "Mr GSTV Uncle 1a2 no exclusion got signup got gst regular only",
 	MR_SG_UNCLE_GST_SCENARIO_1B = "Mr GSTV Uncle 1b no exclusion got signup no $",
