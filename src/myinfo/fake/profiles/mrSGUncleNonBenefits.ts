@@ -20,6 +20,21 @@ export const mrSGUncleNonBenefits: FakeProfile = {
 		profile.gstvoucher.gstregular.value = 0;
 		profile.gstvoucher.gstmedisave.value = 0;
 		profile.gstvoucher.gstspecial.value = 0;
+
+		profile.silversupport = {
+			"eligibility": {
+				"value": false,
+			},
+			"lastupdated": "2019-04-01",
+			"amount": {
+				"value": 0,
+			},
+			"source": "1",
+			"classification": "C",
+			"year": {
+				"value": 2019,
+			},
+		};
 		return profile;
 	},
 };
