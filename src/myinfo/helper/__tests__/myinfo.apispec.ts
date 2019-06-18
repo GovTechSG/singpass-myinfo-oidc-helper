@@ -1,6 +1,7 @@
 
 import { MyInfoHelper, MyInfoHelperConstructor } from "..";
 import { configs } from "./test.configs";
+import { set } from "lodash";
 
 describe("MyInfoClient", () => {
 
@@ -16,6 +17,9 @@ describe("MyInfoClient", () => {
 				privateKeyToSignRequest: configs.myinfoAuthKey,
 				privateKeyPassword: configs.myinfoAuthKeyPassphrase,
 			};
+			if (!!configs.overridePersonBasicUrl) {
+				set(props, "overridePersonBasicUrl", configs.overridePersonBasicUrl);
+			}
 
 			type V3Attributes =
 				"name" |
@@ -60,6 +64,9 @@ describe("MyInfoClient", () => {
 				privateKeyToSignRequest: configs.myinfoAuthKey,
 				privateKeyPassword: configs.myinfoAuthKeyPassphrase,
 			};
+			if (!!configs.overrideProfileStatusUrl) {
+				set(props, "overridePersonBasicUrl", configs.overrideProfileStatusUrl);
+			}
 
 			const myInfoHelper = new MyInfoHelper(props);
 			const testNric = "S1627395C";
