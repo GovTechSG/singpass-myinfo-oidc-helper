@@ -11,7 +11,6 @@ export const configs = {
 	singpassClientId: getValueFromEnv("SINGPASS_ESERVICE_ID"),
 
 	environment: getValueFromEnv("MY_INFO_ENVIRONMENT") as "test" | "sandbox" | "prod",
-	myInfoPersonBasicURL: getValueFromEnv("MY_INFO_URL_PERSON_BASIC"),
 	myinfoJWSPublicCert: StringUtil.replaceLineBreaks(getValueFromEnv("MY_INFO_PUBLIC_CERT")),
 	myinfoAuthKey: StringUtil.replaceLineBreaks(getValueFromEnv("MY_INFO_PRIVATE_KEY")),
 	myinfoAuthKeyPassphrase: getValueFromEnv("MY_INFO_PRIVATE_KEY_PASS"),
