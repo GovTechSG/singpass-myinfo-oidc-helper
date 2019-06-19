@@ -3,6 +3,10 @@ import { domainMap, myInfoDomain } from "../domain";
 import { ProfileArchetype } from "./profiles/fake-profile";
 import { profiles } from "./profiles/fake-profiles";
 
+enum GVS {
+	true = "true",
+	false = "false"
+}
 export interface MockParams {
 	archetype: ProfileArchetype;
 	// tslint:disable-next-line: max-union-size
@@ -14,6 +18,7 @@ export interface MockParams {
 	occupationfreeform?: string;
 	dob?: string;
 	gstvyear?: number;
+	gvs?: GVS;
 	merdekageneligible?: boolean;
 	merdekagenquantum?: number;
 	// tslint:disable-next-line: max-union-size
@@ -73,6 +78,10 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 
 		if (!isEmpty(mockParams.gstvyear)) {
 			myinfoPerson.gstvoucher.year.value = mockParams.gstvyear;
+		}
+
+		if (!isEmpty(mockParams.gvs)) {
+			myinfoPerson.gstvoucher.signup.value = mockParams.gvs === GVS.true;
 		}
 
 		if (!isEmpty(mockParams.occupation)) {
