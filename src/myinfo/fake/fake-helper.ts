@@ -13,6 +13,7 @@ export interface MockParams {
 	occupation?: string;
 	occupationfreeform?: string;
 	dob?: string;
+	gstvyear?: number;
 	merdekageneligible?: boolean;
 	merdekagenquantum?: number;
 	// tslint:disable-next-line: max-union-size
@@ -68,6 +69,10 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 
 		if (!isEmpty(mockParams.dob)) {
 			myinfoPerson.dob.value = mockParams.dob;
+		}
+
+		if (!isEmpty(mockParams.gstvyear)) {
+			myinfoPerson.gstvoucher.year.value = mockParams.gstvyear;
 		}
 
 		if (!isEmpty(mockParams.occupation)) {
