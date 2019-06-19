@@ -81,7 +81,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		}
 
 		if (!isEmpty(mockParams.gvs)) {
-			myinfoPerson.gstvoucher.signup.value = mockParams.gvs === GVS.true;
+			myinfoPerson.gstvoucher.signup.value = (mockParams.gvs || "").toLocaleLowerCase() === GVS.true;
 		}
 
 		if (!isEmpty(mockParams.occupation)) {
