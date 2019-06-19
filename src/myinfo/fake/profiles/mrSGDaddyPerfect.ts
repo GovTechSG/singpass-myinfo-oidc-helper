@@ -113,7 +113,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 					"value": 300,
 				},
 				"year": {
-					"value": 2019,
+					"value": 2018,
 				},
 				"exclusion": {
 					"value": false,
