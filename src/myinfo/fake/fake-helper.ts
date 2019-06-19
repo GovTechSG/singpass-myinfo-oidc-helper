@@ -5,8 +5,9 @@ import { profiles } from "./profiles/fake-profiles";
 
 enum GVS {
 	true = "true",
-	false = "false"
+	false = "false",
 }
+
 export interface MockParams {
 	archetype: ProfileArchetype;
 	// tslint:disable-next-line: max-union-size
