@@ -40,5 +40,6 @@ export enum ProfileArchetype {
 	MR_SG_UNCLE_GST_SCENARIO_2B = "Mr GSTV Uncle 2b no exclusion no signup no $",
 	MR_SG_UNCLE_GST_SCENARIO_3 = "Mr GSTV Uncle 3 got exclusion got signup got $",
 	MR_SG_UNCLE_GST_SCENARIO_4 = "Mr GSTV Uncle 4 got exclusion no signup got $",
+	MR_SG_FOREIGNER = "Mr SG Foreigner",
 
 }
