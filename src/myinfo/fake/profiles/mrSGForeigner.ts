@@ -13,7 +13,13 @@ export const mrSGForeigner: FakeProfile = {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
 		const profile = mrMYDaddyPerfect.generate(profileName);
-		profile.occupation = null;
+		profile.occupation = {
+			"lastupdated": null,
+			"code": null,
+			"source": null,
+			"classification": null,
+			"desc": null,
+		};
 
 		return profile;
 	},
