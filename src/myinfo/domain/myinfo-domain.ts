@@ -7837,7 +7837,7 @@ declare namespace Components {
 			 * example:
 			 * [object Object]
 			 */
-			sponsoredchildrenrecords?: {
+			sponsoredchildrenrecords?: Array<{
 				/**
 				 * NRIC of child
 				 */
@@ -8096,7 +8096,7 @@ declare namespace Components {
 				 *
 				 */
 				unavailable?: boolean;
-			};
+			}>;
 			/**
 			 * EduLevel
 			 * Highest Education Level of Person.

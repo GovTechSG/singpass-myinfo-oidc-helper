@@ -1,3 +1,4 @@
+import { mrSGDaddyWithSponsoredChildren } from "./mySGDaddyWithSponsoredChildren";
 import { mrPRDaddyPerfect } from "./mrPRDaddyPerfect";
 import { mrSGDaddyChildIsOld } from "./mrSGDaddyChildIsOld";
 import { mrSGDaddyChildNone } from "./mrSGDaddyChildNone";
@@ -34,6 +35,7 @@ import { mrSGForeigner } from "./mrSGForeigner";
  * Exhaustive list of our MyInfo archetype profiles
  */
 export const profiles = [
+	mrSGDaddyWithSponsoredChildren,
 	mrSGDaddyPerfect,
 	mrsSGMommyPerfect,
 	mrPRDaddyPerfect,

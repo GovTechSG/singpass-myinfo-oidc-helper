@@ -10,6 +10,7 @@ export interface FakeProfile {
  * Used in MyInfo.Fake.Helper.getPersonData to get a archetype person
  */
 export enum ProfileArchetype {
+	MR_SG_DADDY_MANY_SPONSORED_CHILDREN = "Mr SG with many sponsored children",
 	MR_PR_DADDY_ONE_CHILD = "Mr PR Daddy with One Child",
 	MR_PR_DADDY_PERFECT = "Mr PR Daddy Perfect",
 	MR_SG_DADDY_CHILD_IS_OLD = "Mr SG with 1 old child",
