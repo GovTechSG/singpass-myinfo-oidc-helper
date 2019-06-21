@@ -234,6 +234,7 @@ export const PersonBasicFactory = new Factory()
 			"desc": "GERMAN",
 		},
 	})
+	.attr("sponsoredChildRecords", () => [sponsoredchildrecordFactory.build(), sponsoredchildrecordFactory.build()])
 	.attr("childrenBirthRecords", () => [childrenbirthrecordFactory.build(), childrenbirthrecordFactory.build()]);
 
 export const childrenbirthrecordFactory = new Factory()
@@ -279,6 +280,57 @@ export const childrenbirthrecordFactory = new Factory()
 		},
 		"dob": {
 			"value": "2011-09-10",
+		},
+		"lastupdated": "2018-05-16",
+		"secondaryrace": {
+			"code": "",
+			"desc": "",
+		},
+	});
+
+export const sponsoredchildrecordFactory = new Factory()
+	.sequence("birthcertno", (i) => ({
+		"value": "S556288" + i,
+	}))
+	.sequence("name", (i) => ({
+		"value": "child" + i,
+	}))
+	.attrs({
+		"dialect": {
+			"code": "HK",
+			"desc": "Hokkien",
+		},
+		"race": {
+			"code": "CN",
+			"desc": "Chinese",
+		},
+		"lifestatus": {
+			"code": "A",
+			"desc": "ALIVE",
+		},
+		"tob": {
+			"value": "0901",
+		},
+		"sex": {
+			"code": "M",
+			"desc": "MALE",
+		},
+		"source": "1",
+		"classification": "C",
+		"hanyupinyinname": {
+			"value": "Sponsored Child",
+		},
+		"hanyupinyinaliasname": {
+			"value": "",
+		},
+		"marriedname": {
+			"value": "",
+		},
+		"aliasname": {
+			"value": "",
+		},
+		"dob": {
+			"value": "2012-09-10",
 		},
 		"lastupdated": "2018-05-16",
 		"secondaryrace": {
