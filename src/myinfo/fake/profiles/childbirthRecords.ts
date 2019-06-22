@@ -75,6 +75,20 @@ const child7YearsOld = {
 	dob: { value: formatDateToString(moment().subtract(7, "years").endOf("year")) },
 } as myInfoDomain.Components.Schemas.Childrenbirthrecords;
 
+const childDeceased1 = {
+	birthcertno: { value: "T0492081Z" },
+	name: { value: "Deceased child 1" },
+	dob: { value: formatDateToString(moment().subtract(4, "years").endOf("year")) },
+	lifestatus: { code: "D", desc: "DECEASED" },
+} as myInfoDomain.Components.Schemas.Childrenbirthrecords;
+
+const childDeceased2 = {
+	birthcertno: { value: "T1756880E" },
+	name: { value: "Deceased child 2" },
+	dob: { value: formatDateToString(moment().subtract(5, "years").endOf("year")) },
+	lifestatus: { code: "D", desc: "DECEASED" },
+} as myInfoDomain.Components.Schemas.Childrenbirthrecords;
+
 export const ChildrenRecords = {
 	childYoungest,
 	child1MonthOld,
@@ -87,4 +101,6 @@ export const ChildrenRecords = {
 	childSuperOld,
 	child6YearsOld,
 	child7YearsOld,
+	childDeceased1,
+	childDeceased2,
 };
