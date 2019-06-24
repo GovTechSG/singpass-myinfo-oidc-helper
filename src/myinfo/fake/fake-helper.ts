@@ -125,16 +125,27 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
  * @param attributes array of attributes to filter for
  */
 function filterThroughMyInfoAttributes(person: PersonBasic, attributes: ReadonlyArray<string>): PersonBasic {
-	const [rawCbrAttributes, normalAttributes] = partition(attributes, (value) => value.startsWith("childrenbirthrecords."));
-	const filteredPerson = filterThroughAttributes(person, normalAttributes);
+	const [childrenRawCbrAttributes, childrenNormalAttributes] = partition(attributes, (value) => value.startsWith("childrenbirthrecords."));
+	const [sponsoredRawCbrAttributes, sponsoredNormalAttributes] = partition(attributes, (value) => value.startsWith("sponsoredchildrenrecords."));
+	const childrenFilteredPerson = filterThroughAttributes(person, childrenNormalAttributes);
+	const sponsoredFilteredPerson = filterThroughAttributes(person, sponsoredNormalAttributes);
 
-	if (rawCbrAttributes.length > 0) {
-		const childrenbirthrecordsAttributes = map(rawCbrAttributes, (cbrAttribute) => cbrAttribute.split(".")[1]);
+	if (childrenRawCbrAttributes.length > 0) {
+		const childrenbirthrecordsAttributes = map(childrenRawCbrAttributes, (cbrAttribute) => cbrAttribute.split(".")[1]);
 		// get filtered childrenbirthrecords
 		const filteredChildrenbirthrecords = map(person.childrenbirthrecords, (cbr) => filterThroughAttributes(cbr, childrenbirthrecordsAttributes));
-		set(filteredPerson, "childrenbirthrecords", filteredChildrenbirthrecords);
+		set(childrenFilteredPerson, "childrenbirthrecords", filteredChildrenbirthrecords);
 	}
-	return filteredPerson;
+	if (sponsoredRawCbrAttributes.length > 0) {
+		const sponsoredBirthrecordsAttributes = map(sponsoredRawCbrAttributes, (cbrAttribute) => cbrAttribute.split(".")[1]);
+		// get filtered childrenbirthrecords
+		const filteredSponsoredChildrenbirthrecords = map(person.sponsoredchildrenrecords, (cbr) => filterThroughAttributes(cbr, sponsoredBirthrecordsAttributes));
+		set(sponsoredFilteredPerson, "sponsoredchildrenrecords", filteredSponsoredChildrenbirthrecords);
+	}
+	return {
+		...childrenFilteredPerson,
+		...sponsoredFilteredPerson,
+	};
 }
 
 function filterThroughAttributes(object: object, attributes: ReadonlyArray<string>): object {
