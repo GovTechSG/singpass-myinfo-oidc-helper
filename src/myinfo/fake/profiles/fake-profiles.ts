@@ -30,6 +30,7 @@ import { mrGstvUncle1a2 } from "./mrGSTVUncleScenario1a2";
 import { mrGstvUncle2a3 } from "./mrGSTVUncleScenario2a3";
 import { mrGstvUncle2a2 } from "./mrGSTVUncleScenario2a2";
 import { mrSGForeigner } from "./mrSGForeigner";
+import { mrSGJobless } from "./mrSGJobless";
 
 /**
  * Exhaustive list of our MyInfo archetype profiles
@@ -67,4 +68,5 @@ export const profiles = [
 	mrGstvUncle3,
 	mrGstvUncle4,
 	mrSGForeigner,
+	mrSGJobless,
 ];
