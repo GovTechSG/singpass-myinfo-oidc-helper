@@ -34,7 +34,7 @@ describe("FakeMyInfoHelper", () => {
 		});
 		it("should filter with the attributes passed into constructor", () => {
 			const fakeHelper = new FakeMyInfoHelper(testAttributes);
-			const person = fakeHelper.getPersonBasic({ archetype: ProfileArchetype.MR_SG_DADDY_MANY_SPONSORED_CHILDREN });
+			const person = fakeHelper.getPersonBasic({ archetype: ProfileArchetype.MR_SG_DADDY_CHILD_NONE });
 			expect(person).toHaveProperty("sex");
 			expect(person).toHaveProperty("marriagedate");
 			expect(person).toHaveProperty("residentialstatus");

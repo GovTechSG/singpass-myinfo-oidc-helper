@@ -262,69 +262,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 					},
 				},
 			],
-			"sponsoredchildrenrecords": [
-				{
-					"dialect": {
-						"code": "HK",
-						"desc": "Hokkien",
-					},
-					"race": {
-						"code": "CN",
-						"desc": "Chinese",
-					},
-					"lifestatus": {
-						"code": "A",
-						"desc": "ALIVE",
-					},
-					"sex": {
-						"code": "F",
-						"desc": "Female",
-					},
-					"source": "1",
-					"classification": "C",
-					"nric": {
-						"value": "S5562882C",
-					},
-					"hanyupinyinname": {
-						"value": "Cheng Pei Ni",
-					},
-					"hanyupinyinaliasname": {
-						"value": "",
-					},
-					"marriedname": {
-						"value": "",
-					},
-					"aliasname": {
-						"value": "",
-					},
-					"dob": {
-						"value": "2011-09-10",
-					},
-					"residentialstatus": {
-						"code": "A",
-						"desc": "Alien",
-					},
-					"scprgrantdate": {
-						"value": "",
-					},
-					"birthcountry": {
-						"code": "",
-						"desc": "",
-					},
-					"name": {
-						"value": "Jo Tan Pei Ni",
-					},
-					"nationality": {
-						"code": "",
-						"desc": "",
-					},
-					"lastupdated": "2018-05-16",
-					"secondaryrace": {
-						"code": "",
-						"desc": "",
-					},
-				},
-			],
+			"sponsoredchildrenrecords": [],
 			"nationality": {
 				"lastupdated": "2018-06-01",
 				"code": "SG",
