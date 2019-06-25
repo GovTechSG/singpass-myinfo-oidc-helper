@@ -29,7 +29,8 @@ import { mrGstvUncle4 } from "./mrGSTVUncleScenario4";
 import { mrGstvUncle1a2 } from "./mrGSTVUncleScenario1a2";
 import { mrGstvUncle2a3 } from "./mrGSTVUncleScenario2a3";
 import { mrGstvUncle2a2 } from "./mrGSTVUncleScenario2a2";
-import { mrSGForeigner } from "./mrSGForeigner";
+import { mrMYDadJobless } from "./mrMYDadJobless";
+import { mrsMYMomJobless } from "./mrsMYMomJobless";
 import { mrSGJobless } from "./mrSGJobless";
 import { mrSGDaddyTwoDeceasedChild } from "./mrSGDaddyTwoDeceasedChild";
 
@@ -68,7 +69,8 @@ export const profiles = [
 	mrGstvUncle2b,
 	mrGstvUncle3,
 	mrGstvUncle4,
-	mrSGForeigner,
+	mrMYDadJobless,
+	mrsMYMomJobless,
 	mrSGJobless,
 	mrSGDaddyTwoDeceasedChild,
 ];

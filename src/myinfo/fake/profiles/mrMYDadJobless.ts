@@ -2,10 +2,10 @@ import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrMYDaddyPerfect } from "./mrMYDaddyPerfect";
 
-const id = "S8399420G";
-const name = ProfileArchetype.MR_SG_FOREIGNER;
+const id = "G9403340W";
+const name = ProfileArchetype.MR_MY_DAD_JOBLESS;
 
-export const mrSGForeigner: FakeProfile = {
+export const mrMYDadJobless: FakeProfile = {
 	id,
 	name,
 	// tslint:disable-next-line: no-big-function
