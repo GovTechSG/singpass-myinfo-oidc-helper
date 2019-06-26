@@ -1,6 +1,6 @@
 {
 	"name": "singpass-myinfo-oidc-helper",
-	"version": "2.2.18",
+	"version": "2.2.19",
 	"description": "Helper for building a Relying Party to integrate with Singpass OIDC and MyInfo person basic API",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",

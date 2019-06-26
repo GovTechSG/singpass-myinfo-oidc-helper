@@ -32,6 +32,7 @@ import { mrGstvUncle2a2 } from "./mrGSTVUncleScenario2a2";
 import { mrMYDadJobless } from "./mrMYDadJobless";
 import { mrsMYMomJobless } from "./mrsMYMomJobless";
 import { mrSGJobless } from "./mrSGJobless";
+import { mrPRJobless } from "./mrPRJobless";
 import { mrSGDaddyTwoDeceasedChild } from "./mrSGDaddyTwoDeceasedChild";
 
 /**
@@ -72,5 +73,6 @@ export const profiles = [
 	mrMYDadJobless,
 	mrsMYMomJobless,
 	mrSGJobless,
+	mrPRJobless,
 	mrSGDaddyTwoDeceasedChild,
 ];

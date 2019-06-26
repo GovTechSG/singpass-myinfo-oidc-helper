@@ -44,5 +44,6 @@ export enum ProfileArchetype {
 	MR_MY_DAD_JOBLESS = "Mr MY Dad Jobless",
 	MRS_MY_MOM_JOBLESS = "Mrs MY Mom Jobless",
 	MR_SG_JOBLESS = "Mr SG Jobless",
+	MR_PR_JOBLESS = "Mr PR Jobless",
 	MR_SG_DADDY_TWO_DECEASED_CHILD = "My SG Daddy with Two Deceased Child",
 }
