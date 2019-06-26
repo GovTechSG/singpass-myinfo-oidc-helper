@@ -15,6 +15,7 @@ export interface MockParams {
 	marriagedate?: string;
 	marriagecertno?: string;
 	countryofmarriage?: string;
+	// tslint:disable-next-line: max-union-size
 	residentialstatus?: "A" | "C" | "P" | "U" | "N";
 	occupation?: string;
 	occupationfreeform?: string;
