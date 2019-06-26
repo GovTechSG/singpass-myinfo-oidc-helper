@@ -15,6 +15,7 @@ export interface MockParams {
 	marriagedate?: string;
 	marriagecertno?: string;
 	countryofmarriage?: string;
+	residentialstatus?: "A" | "C" | "P" | "U" | "N";
 	occupation?: string;
 	occupationfreeform?: string;
 	dob?: string;
@@ -54,6 +55,11 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		const myinfoPerson = {
 			...mockProfile.generate(),
 		};
+
+		if (!isEmpty(mockParams.residentialstatus)) {
+			myinfoPerson.residentialstatus.code = mockParams.residentialstatus;
+			myinfoPerson.residentialstatus.desc = domainMap.residentialstatus.map.codeToDesc[mockParams.residentialstatus];
+		}
 
 		if (!isEmpty(mockParams.marital)) {
 			myinfoPerson.marital.code = mockParams.marital;
