@@ -16,7 +16,13 @@ export const mrPRJobless: FakeProfile = {
 		profile.nationality.code = "AD";
 		profile.residentialstatus.code = "P";
 		profile.residentialstatus.desc = residentialstatus.map.codeToDesc[profile.residentialstatus.code];
-		profile.occupation = null;
+		profile.occupation = {
+			"lastupdated": null,
+			"code": null,
+			"source": null,
+			"classification": null,
+			"desc": null,
+		};
 
 		return profile;
 	},
