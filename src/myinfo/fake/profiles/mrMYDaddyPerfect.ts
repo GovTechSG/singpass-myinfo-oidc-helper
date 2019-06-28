@@ -17,8 +17,8 @@ export const mrMYDaddyPerfect: FakeProfile = {
 		profile.sex.desc = sex.map.codeToDesc[profile.residentialstatus.code];
 		profile.nationality.code = "MY";
 		profile.birthcountry.code = "MY";
-		profile.residentialstatus.code = "A";
-		profile.residentialstatus.desc = residentialstatus.map.codeToDesc[profile.residentialstatus.code];
+		profile.residentialstatus.code = "";
+		profile.residentialstatus.desc = "";
 		profile.passportnumber.value = "A00000000";
 
 		return profile;

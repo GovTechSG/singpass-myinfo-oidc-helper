@@ -21,8 +21,8 @@ export const mrsMYMommyPerfect: FakeProfile = {
 		profile.nationality.code = "MY";
 		profile.birthcountry.code = "MY";
 
-		profile.residentialstatus.code = "A";
-		profile.residentialstatus.desc = residentialstatus.map.codeToDesc[profile.residentialstatus.code];
+		profile.residentialstatus.code = "";
+		profile.residentialstatus.desc = "";
 
 		profile.passportnumber.value = "A00000000";
 
