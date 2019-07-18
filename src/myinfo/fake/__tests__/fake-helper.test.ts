@@ -5,7 +5,7 @@ describe("FakeMyInfoHelper", () => {
 	describe("getPersonBasic", () => {
 		it("should successfully get based on archetype", () => {
 			const fakeHelper = new FakeMyInfoHelper();
-			const person = fakeHelper.getPersonBasic({ archetype: ProfileArchetype.MR_SG_DADDY_MANY_SPONSORED_CHILDREN });
+			const person = fakeHelper.getPersonBasic({ archetype: ProfileArchetype.MR_SG_FATHER_ONLY_SPONSORED });
 
 			expect(person).toHaveProperty("dialect");
 			expect(person).toHaveProperty("occupation");
