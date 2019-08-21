@@ -1,6 +1,7 @@
 import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrsMYMommyPerfect } from "./mrsMYMommyPerfect";
+import { ChildrenRecords } from "./childbirthRecords";
 
 const id = "G9403340W";
 const name = ProfileArchetype.MRS_MY_MOM_JOBLESS;
@@ -20,6 +21,7 @@ export const mrsMYMomJobless: FakeProfile = {
 			"classification": null,
 			"desc": null,
 		};
+		profile.childrenbirthrecords = _.values(ChildrenRecords);
 
 		return profile;
 	},
