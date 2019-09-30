@@ -48,6 +48,10 @@ export enum ProfileArchetype {
 	MR_MY_DAD_JOBLESS = "Mr MY Dad Jobless",
 	MRS_MY_MOM_JOBLESS = "Mrs MY Mom Jobless",
 	MR_SG_JOBLESS = "Mr SG Jobless",
+	MR_SG_NO_LOCAL_ADDRESS = "Mr SG No Local Address",
+	MR_PR_NO_LOCAL_ADDRESS = "Mr PR No Local Address",
+	MR_JAPANESE_NO_ADDRESS_OBJECT = "Mr Japanese No Address Object",
+	MR_JAPANESE_ADDRESS_BLANK = "Mr Japanese Address Blank",
 	MR_PR_JOBLESS = "Mr PR Jobless",
 	MR_SG_DADDY_TWO_DECEASED_CHILD = "My SG Daddy with Two Deceased Child",
 }

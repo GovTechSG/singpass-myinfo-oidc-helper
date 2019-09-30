@@ -36,6 +36,10 @@ import { mrsMYMommyPerfect } from "./mrsMYMommyPerfect";
 import { mrsSGMommyPerfect } from "./mrsSGMommyPerfect";
 import { mrSGFatherNormalChildrenOnly } from "./sponsored-children/mrSGFatherNormalChildrenOnly";
 import { msSGMotherBothChildren } from "./sponsored-children/msSGMotherBothChildren";
+import { mrSGNoLocalAddress } from "./mrSGNoLocalAddress ";
+import { mrPRNoLocalAddress } from "./mrPRNoLocalAddress";
+import { mrJapaneseAddressBlank } from "./mrJapaneseAddressBlank";
+import { mrJapaneseNoAddressObject } from "./mrJapaneseNoAddressObject";
 
 /**
  * Exhaustive list of our MyInfo archetype profiles
@@ -46,6 +50,10 @@ export const profiles = [
 	msSGMotherBothChildren,
 	mrSGDaddyPerfect,
 	mrsSGMommyPerfect,
+	mrSGNoLocalAddress,
+	mrPRNoLocalAddress,
+	mrJapaneseNoAddressObject,
+	mrJapaneseAddressBlank,
 	mrPRDaddyPerfect,
 	mrsMYMommyPerfect,
 	mrSGDaddyChildNone,
