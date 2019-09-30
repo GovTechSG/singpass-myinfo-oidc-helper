@@ -8,6 +8,6 @@
 		"moduleResolution": "node",
 		"allowJs": true,
 		"allowSyntheticDefaultImports": true,
-		"strict": true,
+		"alwaysStrict": true,
 	}
 }

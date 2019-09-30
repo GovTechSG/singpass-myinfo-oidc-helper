@@ -39,20 +39,23 @@ echo "Checking variables"
 ASSERT_VAR_SCRIPT=$( ${READLINK} -f ${SCRIPT_DIR}/../helpers/assert-variable.sh )
 
 # Path to the packaged tarball to be published
-PACKAGE_PATH=$1
+export PACKAGE_PATH=$1
 source ${ASSERT_VAR_SCRIPT} PACKAGE_PATH
 
-# The git repo url to commit to
-export GIT_REPO_URL
-source ${ASSERT_VAR_SCRIPT} GIT_REPO_URL
+# The destination git repo url
+export DEST_GIT_REPO_URL=${DEST_GIT_REPO_URL:=${bamboo_planRepository_repositoryUrl}}
+source ${ASSERT_VAR_SCRIPT} DEST_GIT_REPO_URL
 
-# The git repo branch to commit to
-export GIT_REPO_BRANCH
-source ${ASSERT_VAR_SCRIPT} GIT_REPO_BRANCH
+# The destination git repo branch name
+export DEST_GIT_REPO_BRANCH=${DEST_GIT_REPO_BRANCH:="${bamboo_planRepository_branch}-published"}
+source ${ASSERT_VAR_SCRIPT} DEST_GIT_REPO_BRANCH
 
-# Build number for record
+# Build details for commit message (Optional)
+export bamboo_planRepository_name
+
+export bamboo_planRepository_branch
+
 export bamboo_buildNumber
-source ${ASSERT_VAR_SCRIPT} bamboo_buildNumber
 
 # ==============================================================================
 # Script
@@ -65,8 +68,8 @@ PACKAGE_PATH=$( ${READLINK} -f ${PACKAGE_PATH} )
 rm -rf ./publish_repo
 mkdir -p ./publish_repo
 cd ./publish_repo
-git clone --no-checkout ${GIT_REPO_URL} $( pwd )
-git checkout -B ${GIT_REPO_BRANCH}
+git clone --no-checkout ${DEST_GIT_REPO_URL} $( pwd )
+git checkout -B ${DEST_GIT_REPO_BRANCH}
 
 # Remove everything except for .git
 shopt -s extglob
@@ -77,12 +80,12 @@ tar -C $( pwd ) --strip-components=1 -xvzf ${PACKAGE_PATH}
 
 # Push extracted files
 VERSION=$(cat ./version.json | jq -r '.version' package.json)
-COMMIT_MESSAGE="Built package based on: Version: v${VERSION} - Bamboo build: ${bamboo_buildNumber}"
+COMMIT_MESSAGE="Built package | Version: v${VERSION} | Bamboo: ${bamboo_planRepository_name} ${bamboo_planRepository_branch} #${bamboo_buildNumber}"
 echo ${COMMIT_MESSAGE}
 git add -A
 git commit -m "${COMMIT_MESSAGE}"
 git status
-git push ${GIT_REPO_URL} +HEAD:${GIT_REPO_BRANCH} --force
+git push ${DEST_GIT_REPO_URL} +HEAD:${DEST_GIT_REPO_BRANCH} --force
 
 # Clean up publish directory
 cd ..

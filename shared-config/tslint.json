@@ -93,7 +93,8 @@
 		"whitespace": [
 			true,
 			"check-module"
-		]
+		],
+		"ban-types": false
 	},
 	"rulesDirectory": []
 }

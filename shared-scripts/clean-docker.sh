@@ -3,8 +3,8 @@
 echo ==============================================================================
 echo Script: $(basename "$0")
 echo This script helps you to clean up everything related to docker
-echo Passing in no arguments will simply clear away dangling images and volumes (e.g. sh clean-docker.sh)
-echo Passing in an argument will cause all you docker primitives to be nuked, even if they are currently running (e.g. sh clean-docker.sh true)
+echo "Passing in no arguments will simply clear away dangling images and volumes (e.g. sh clean-docker.sh)"
+echo "Passing in an argument will cause all you docker primitives to be nuked, even if they are currently running (e.g. sh clean-docker.sh true)"
 echo ==============================================================================
 
 # ==============================================================================
@@ -53,16 +53,10 @@ if [ ! -z ${NUKE_DOCKER} ]; then
 		docker volume ls -q | ${XARGS} -r docker volume rm
 	fi
 else
-	# Remove dangling images and volumes
+	# Remove only dangling images and volumes
 	echo "Removing dangling images"
-	DANGLING_IMAGES=$(docker images -f "dangling=true" -q)
-	if [ -n "$DANGLING_IMAGES" ]; then
-		docker rmi $DANGLING_IMAGES
-	fi
+	docker image prune -af
 
 	echo "Removing dangling volumes"
-	DANGLING_VOLUMES=$(docker volume ls -f "dangling=true" -q)
-	if [ -n "$DANGLING_VOLUMES" ]; then
-		docker volume rm $DANGLING_VOLUMES
-	fi
+	docker volume prune -f
 fi

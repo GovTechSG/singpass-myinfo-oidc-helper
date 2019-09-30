@@ -4,7 +4,7 @@
 {
 	"compilerOptions": {
 		/* General settings */
-		"target": "es5",
+		"target": "es6",
 		/* Module settings */
 		"module": "es6",
 		"moduleResolution": "node",
@@ -14,6 +14,7 @@
 		"allowSyntheticDefaultImports": true,
 		"forceConsistentCasingInFileNames": true,
 		"alwaysStrict": true,
+		"strictBindCallApply": true,
 		/* Output Files */
 		"sourceMap": true,
 		"experimentalDecorators": true,
@@ -21,7 +22,6 @@
 		"preserveConstEnums": true,
 		/* Paths */
 		"lib": [
-			"es6",
 			"es7"
 		]
 	},

@@ -18,9 +18,9 @@ set -e
 
 # MacOS installs
 if [ "$(uname)" = "Darwin" ]; then
-	# NVM
-	echo "Checking if nvm is installed..."
-	if [ "$(command -v nvm)" = "nvm" ]; then
+	# NPM (We prefer to use NVM)
+	echo "Checking if NPM is installed..."
+	if ! [ -x "$(command -v npm)" ]; then
 		echo "NVM is not installed, installing now..."
 		curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 		export NVM_DIR="$HOME/.nvm"
@@ -30,6 +30,8 @@ if [ "$(uname)" = "Darwin" ]; then
 		echo "export NVM_DIR=\"$HOME/.nvm"
 		echo "[ -s \"$NVM_DIR/nvm.sh\" ] && \. \"$NVM_DIR/nvm.sh\" # This loads nvm"
 		echo "[ -s \"$NVM_DIR/bash_completion\" ] && \. \"$NVM_DIR/bash_completion\" # This loads nvm bash_completion"
+		echo ""
+		echo "If you are using fish shell, follow this guide https://medium.com/@joshuacrass/nvm-on-mac-for-fish-users-e00af124c540"
 	else
 		echo "NVM is already installed, skipping..."
 	fi
@@ -40,7 +42,13 @@ if [ "$(uname)" = "Darwin" ]; then
 	brew doctor
 
 	# Homebrew modules
-	brew install terraform
+	brew install warrensbox/tap/tfswitch
+	brew cask install java
+	brew cask install android-platform-tools
+	brew cask install react-native-debugger
+	brew install git-crypt
+	brew install awscli
+	brew install jq
 fi
 
 # Install global npm packages

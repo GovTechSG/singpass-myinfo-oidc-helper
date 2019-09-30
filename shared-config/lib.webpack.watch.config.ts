@@ -11,32 +11,26 @@ const WebpackSynchronizableShellPlugin = require("webpack-synchronizable-shell-p
 // =============================================================================
 
 export const createBaseLibWatchConfig = (config: Config): webpack.Configuration => {
-	let libWatchConfig = createBaseLibConfig(config);
+	const libWatchConfig = createBaseLibConfig(config);
 
-	libWatchConfig = {
-		...libWatchConfig,
-		cache: true,
-		watch: true,
-		stats: "errors-only",
-		plugins: [
-			...libWatchConfig.plugins as any,
-			new WebpackSynchronizableShellPlugin({
-				onBuildStart: {
-					scripts: [
-						"echo '\\n\\033[34mBuild is starting...\\033[0m\n'",
-						"npm run build",
-					],
-					blocking: true,
-					parallel: false,
-				},
-				dev: false,
-				safe: true,
-			}),
-		],
-	}
+	libWatchConfig.cache = true;
+	libWatchConfig.watch = true;
+	libWatchConfig.stats = "errors-only";
+	libWatchConfig.plugins.push(new WebpackSynchronizableShellPlugin({
+		onBuildStart: {
+			scripts: [
+				"echo '\\n\\033[34mBuild is starting...\\033[0m\n'",
+				"npm run build",
+			],
+			blocking: true,
+			parallel: false,
+		},
+		dev: false,
+		safe: true,
+	}));
 
 	return libWatchConfig;
-}
+};
 
 // =============================================================================
 // Re-export

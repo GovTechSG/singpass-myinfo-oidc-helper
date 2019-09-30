@@ -2,12 +2,7 @@
 
 echo ==============================================================================
 echo Script: $(basename "$0")
-echo This script is meant to be called by the bamboo CI
-echo This script prepares the package and publishes it
-echo
-echo It has the following assumptions:
-echo 1. The repo has been checked out by the CI
-echo 2. The required environment variables have been set
+echo Run jest tests
 echo ==============================================================================
 
 # ==============================================================================
@@ -30,31 +25,21 @@ fi
 
 SCRIPT_PATH=$( ${READLINK} -f $0 )
 SCRIPT_DIR=$( dirname $( ${READLINK} -f $0 ) )
-PROJECT_DIR=$( cd ${SCRIPT_DIR} && cd .. && pwd )
+
+# ==============================================================================
+# Inputs
+# ==============================================================================
+
+export DEBUG_PORT=${DEBUG_PORT:-7000}
+
+export JEST_PATH=${JEST_PATH:-"./node_modules/.bin/jest"}
 
 # ==============================================================================
 # Script
 # ==============================================================================
 
-# Set project directory
-pushd ${PROJECT_DIR}
+# Resolve jest path
+JEST_PATH=$( ${READLINK} -f ${JEST_PATH} )
 
-# Install node_modules
-echo "[CI] Running npm install"
-npm install
-
-# Run linter
-echo "[CI] Running linter"
-npm run lint
-
-# Run tests
-echo "[CI] Running tests"
-npm test
-
-# Build and pack
-echo "[CI] Running build and generating tgz"
-export BUILD_ENV=production
-./scripts/build.sh
-
-# Return to invocation dir
-popd
+# Run test
+node --max_old_space_size=4096 --expose-gc --trace-warnings --inspect=0.0.0.0:${DEBUG_PORT} ${JEST_PATH} $@

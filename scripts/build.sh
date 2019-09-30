@@ -2,7 +2,7 @@
 
 echo ==============================================================================
 echo Script: $(basename "$0")
-echo Runs the tests
+echo Builds and prepares the distribution
 echo ==============================================================================
 
 # ==============================================================================
@@ -28,15 +28,31 @@ SCRIPT_DIR=$( dirname $( ${READLINK} -f $0 ) )
 PROJECT_DIR=$( cd ${SCRIPT_DIR} && cd .. && pwd )
 
 # ==============================================================================
+# Inputs
+# ==============================================================================
+
+# Variables
+echo "Checking variables"
+ASSERT_VAR_SCRIPT="${PROJECT_DIR}/shared-scripts/helpers/assert-variable.sh"
+
+export BUILD_ENV=${1:-development}	# development or production only
+source ${ASSERT_VAR_SCRIPT} BUILD_ENV
+
+# ==============================================================================
 # Script
 # ==============================================================================
 
 # Set project directory
 pushd ${PROJECT_DIR}
 
-# Test
-echo "[Test] Testing jest files"
-node --max_old_space_size=4096 --expose-gc --trace-warnings --inspect=0.0.0.0:7000 ./node_modules/.bin/jest
+# Build and pack
+echo "Webpacking"
+export TS_NODE_PROJECT=./shared-config/script.tsconfig.json
+./node_modules/.bin/webpack
+
+pushd dist
+npm pack
+popd
 
 # Return to invocation dir
 popd
