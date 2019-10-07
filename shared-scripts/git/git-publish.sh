@@ -50,6 +50,8 @@ source ${ASSERT_VAR_SCRIPT} DEST_GIT_REPO_URL
 export DEST_GIT_REPO_BRANCH=${DEST_GIT_REPO_BRANCH:="${bamboo_planRepository_branch}-published"}
 source ${ASSERT_VAR_SCRIPT} DEST_GIT_REPO_BRANCH
 
+export TAG_IF_NEW=${TAG_IF_NEW:=true}
+
 # Build details for commit message (Optional)
 export bamboo_planRepository_name
 
@@ -86,6 +88,17 @@ git add -A
 git commit -m "${COMMIT_MESSAGE}"
 git status
 git push ${DEST_GIT_REPO_URL} +HEAD:${DEST_GIT_REPO_BRANCH} --force
+
+# Set version tag if new
+if [ ${TAG_IF_NEW} == "true" ]; then
+	TAG="v${VERSION}"
+	TAG_HASH=$(echo $(git rev-parse -q --verify "refs/tags/${TAG}"))	# Echo to silence exit error
+	COMMIT_HASH=$(git rev-parse HEAD)
+	if [ -z ${TAG_HASH} ]; then
+		git tag -fa "${TAG}" -m "${TAG}" ${COMMIT_HASH}
+		git push -f origin "${TAG}"
+	fi
+fi
 
 # Clean up publish directory
 cd ..
