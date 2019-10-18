@@ -64,7 +64,7 @@ const childSuperOld = {
 } as myInfoDomain.Components.Schemas.Childrenbirthrecords;
 
 const child6YearsOld = {
-	birthcertno: { value: "T1364674G" },
+	birthcertno: { value: "T0202564C" },
 	name: { value: "Turning 6 Tan Kid born Jan 1st" },
 	dob: { value: formatDateToString(moment().subtract(6, "years").startOf("year")) },
 } as myInfoDomain.Components.Schemas.Childrenbirthrecords;
