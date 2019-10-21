@@ -1,5 +1,5 @@
 import * as nonceFactory from "nonce";
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios-https-proxy-fix";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import { SigningUtil } from "../../util";
 import { createClient } from "../../client";
 import * as querystringUtil from "querystring";

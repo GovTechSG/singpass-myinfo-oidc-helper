@@ -1,12 +1,12 @@
-import { AxiosResponse } from "axios-https-proxy-fix";
+import { AxiosResponse } from "axios";
 import * as _ from "lodash";
 import { Logger } from "../../util";
+import { SingpassMyInfoError } from "../../util/error/SingpassMyinfoError";
 import { decryptJWE, verifyJWS } from "../../util/JweUtil";
 import { myInfoDomain } from "../domain";
 import { ProfileStatus } from "../domain/profilestatus-domain";
 import { IMyInfoHelper } from "./index";
 import { MyInfoRequest, MyInfoRequestConstructor } from "./myinfo-request";
-import { SingpassMyInfoError } from "../../util/error/SingpassMyinfoError";
 
 export type EnvType = "test" | "sandbox" | "prod";
 

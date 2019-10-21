@@ -1,5 +1,9 @@
 # Changelogs
 
+## 2.3.2
+
+- Replaced with axios-https-proxy-fix with axios (https://github.com/axios/axios/issues/925)
+
 ## 2.3.0
 
 - Sync'd configurations with mol-lib-connfig

@@ -1,4 +1,4 @@
-import { AxiosInstance, AxiosRequestConfig } from "axios-https-proxy-fix";
+import { AxiosInstance, AxiosRequestConfig } from "axios";
 import * as querystringUtil from "querystring";
 import { createClient } from "../client";
 import { JweUtil, Logger } from "../util";

@@ -1,16 +1,12 @@
-import axios, { AxiosInstance, AxiosProxyConfig, AxiosRequestConfig } from "axios-https-proxy-fix";
+import axios, { AxiosInstance, AxiosProxyConfig, AxiosRequestConfig } from "axios";
+import { set } from "lodash";
 import * as url from "url";
 import { redactNricfinInString } from "../util/RedactorUtil";
-import { set } from "lodash";
 
 export const createClient = (requestConfig: AxiosRequestConfig = {}): AxiosInstance => {
-	// Note: Due to axios not being able to automatically pick up proxy env vars
-	// correctly, we have manually set the proxy config here.
-	// That alone is not enough to resolve the issue as there is a bug with axios
-	// where requesting a https endpoint through Nectar's http proxy does not work
-	// Hence, we have to use a forked library called axios-https-proxy-fix
-	// Hopefully the next stable release of axios (post 0.18.0) will fix this
-	// Also to note: tested 0.19.0-beta.1 version of axios and still encountering proxy errors
+	// Note: Due to axios not being able to automatically pick up proxy env vars, we have manually set the proxy config here
+	// We were using axios-https-proxy-fix because of this issue: https://github.com/axios/axios/issues/925
+	// Axios 0.19.0 has since fixed the issue and we are now once again using official axios releases
 	const proxyConfig = getProxyConfig();
 	requestConfig = proxyConfig ?
 		{ proxy: proxyConfig, ...requestConfig }
