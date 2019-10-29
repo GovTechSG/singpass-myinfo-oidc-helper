@@ -1,4 +1,5 @@
 import axios, { AxiosInstance, AxiosProxyConfig, AxiosRequestConfig } from "axios";
+import * as ProxyAgent from "proxy-agent";
 import { set } from "lodash";
 import * as url from "url";
 import { redactNricfinInString } from "../util/RedactorUtil";
@@ -7,10 +8,18 @@ export const createClient = (requestConfig: AxiosRequestConfig = {}): AxiosInsta
 	// Note: Due to axios not being able to automatically pick up proxy env vars, we have manually set the proxy config here
 	// We were using axios-https-proxy-fix because of this issue: https://github.com/axios/axios/issues/925
 	// Axios 0.19.0 has since fixed the issue and we are now once again using official axios releases
+	// const proxyConfig = getProxyConfig();
 	const proxyConfig = getProxyConfig();
-	requestConfig = proxyConfig ?
-		{ proxy: proxyConfig, ...requestConfig }
-		: requestConfig;
+	if (!!proxyConfig) {
+		const proxyAgent = new ProxyAgent(proxyConfig);
+		requestConfig = {
+			httpAgent: proxyAgent,
+			httpsAgent: proxyAgent,
+			// proxy: proxyConfig,
+			proxy: false,
+			...requestConfig,
+		};
+	}
 
 	const instance = axios.create({
 		...requestConfig,
@@ -21,28 +30,8 @@ export const createClient = (requestConfig: AxiosRequestConfig = {}): AxiosInsta
 	return instance;
 };
 
-const getProxyConfig = (): AxiosProxyConfig => {
-	const proxyUrl = process.env.HTTPS_PROXY || process.env.https_proxy || process.env.HTTP_PROXY || process.env.http_proxy;
-
-	if (proxyUrl) {
-		const parsed = url.parse(proxyUrl);
-		const proxyConfig = {
-			host: parsed.hostname,
-			port: parseInt(parsed.port, 10),
-		};
-
-		if (!!parsed.auth) {
-			const [username, password] = parsed.auth.split(":");
-			set(proxyConfig, "auth", {
-				username,
-				password,
-			});
-		}
-
-		return proxyConfig;
-	}
-
-	return null;
+const getProxyConfig = (): string => {
+	return process.env.HTTPS_PROXY || process.env.https_proxy || process.env.HTTP_PROXY || process.env.http_proxy;
 };
 
 const addRequestLogs = (instance: AxiosInstance) => {
