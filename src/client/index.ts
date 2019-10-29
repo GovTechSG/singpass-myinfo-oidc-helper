@@ -1,21 +1,16 @@
-import axios, { AxiosInstance, AxiosProxyConfig, AxiosRequestConfig } from "axios";
+import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 import * as ProxyAgent from "proxy-agent";
-import { set } from "lodash";
-import * as url from "url";
 import { redactNricfinInString } from "../util/RedactorUtil";
 
 export const createClient = (requestConfig: AxiosRequestConfig = {}): AxiosInstance => {
-	// Note: Due to axios not being able to automatically pick up proxy env vars, we have manually set the proxy config here
-	// We were using axios-https-proxy-fix because of this issue: https://github.com/axios/axios/issues/925
-	// Axios 0.19.0 has since fixed the issue and we are now once again using official axios releases
-	// const proxyConfig = getProxyConfig();
+	// Note: Due to axios not being able to automatically pick up proxy env vars, we have to manually define a custom proxy agent
+	// Axios 0.19.0 has not fixed this issue yet, so we are using this workaround: https://github.com/axios/axios/issues/925#issuecomment-419352052
 	const proxyConfig = getProxyConfig();
 	if (!!proxyConfig) {
 		const proxyAgent = new ProxyAgent(proxyConfig);
 		requestConfig = {
 			httpAgent: proxyAgent,
 			httpsAgent: proxyAgent,
-			// proxy: proxyConfig,
 			proxy: false,
 			...requestConfig,
 		};
