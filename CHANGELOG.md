@@ -1,5 +1,18 @@
 # Changelogs
 
+## 2.3.4
+
+- Updated comments regarding axios proxy-agent
+- Organized imports for index.ts
+
+---
+
+## 2.3.3
+
+- Update axios client to use proxy-agent (https://github.com/axios/axios/issues/925#issuecomment-419352052)
+
+---
+
 ## 2.3.2
 
 - Replaced with axios-https-proxy-fix with axios (https://github.com/axios/axios/issues/925)
