@@ -25,18 +25,23 @@ fi
 
 SCRIPT_PATH=$( ${READLINK} -f $0 )
 SCRIPT_DIR=$( dirname $( ${READLINK} -f $0 ) )
-PROJECT_DIR=$( cd ${SCRIPT_DIR} && cd .. && pwd )
+
+# ==============================================================================
+# Inputs
+# ==============================================================================
+
+export LINT_PATH=${JEST_PATH:-"./node_modules/.bin/tslint"}
+
+export TS_CONFIG_PATH=${TS_CONFIG_PATH:-"./tsconfig.json"}
+
+export TSLINT_CONFIG_PATH=${TSLINT_CONFIG_PATH:-"./tslint.json"}
+
+export FILES=${@:-"src/**/*.ts"}
 
 # ==============================================================================
 # Script
 # ==============================================================================
 
-# Set project directory
-pushd ${PROJECT_DIR}
-
 # Lint
-echo "[Lint] Linting with tslint"
-./node_modules/.bin/tslint -p ./tsconfig.json -c ./tslint.json 'src/**/*.ts'
-
-# Return to invocation dir
-popd
+echo "Linting with tslint"
+${LINT_PATH} -p ${TS_CONFIG_PATH} -c ${TSLINT_CONFIG_PATH} --fix ${FILES}

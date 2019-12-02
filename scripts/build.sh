@@ -46,10 +46,15 @@ source ${ASSERT_VAR_SCRIPT} BUILD_ENV
 pushd ${PROJECT_DIR}
 
 # Build and pack
-echo "Webpacking"
-export TS_NODE_PROJECT=./shared-config/script.tsconfig.json
-./node_modules/.bin/webpack
+rm -rf ./dist
 
+echo "Building"
+./node_modules/.bin/tsc --module commonjs --project tsconfig.build.json
+
+cp ./package.json ./dist/
+cp ./package-lock.json ./dist/
+
+echo "Packaging"
 pushd dist
 npm pack
 popd

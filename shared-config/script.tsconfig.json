@@ -3,11 +3,22 @@
 // =============================================================================
 {
 	"compilerOptions": {
+		/* General settings */
 		"target": "es6",
+		/* Module settings */
 		"module": "commonjs",
 		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		/* Compiler settings */
 		"allowJs": true,
 		"allowSyntheticDefaultImports": true,
 		"alwaysStrict": true,
+		/* Paths */
+		"lib": [
+			"es2016",
+			"es2017",
+			"es2018",
+			"es2019"
+		]
 	}
 }

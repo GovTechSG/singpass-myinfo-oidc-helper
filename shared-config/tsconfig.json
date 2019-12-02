@@ -8,6 +8,7 @@
 		/* Module settings */
 		"module": "es6",
 		"moduleResolution": "node",
+		"resolveJsonModule": true,
 		/* Compiler settings */
 		"skipLibCheck": true,
 		"keyofStringsOnly": true,
@@ -22,7 +23,10 @@
 		"preserveConstEnums": true,
 		/* Paths */
 		"lib": [
-			"es7"
+			"es2016",
+			"es2017",
+			"es2018",
+			"es2019"
 		]
 	},
 	"exclude": [

@@ -42,4 +42,5 @@ export JEST_PATH=${JEST_PATH:-"./node_modules/.bin/jest"}
 JEST_PATH=$( ${READLINK} -f ${JEST_PATH} )
 
 # Run test
+echo "Testing with jest"
 node --max_old_space_size=4096 --expose-gc --trace-warnings --inspect=0.0.0.0:${DEBUG_PORT} ${JEST_PATH} $@

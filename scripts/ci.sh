@@ -54,7 +54,7 @@ npm test
 # Build and pack
 echo "[CI] Running build and generating tgz"
 export BUILD_ENV=production
-./scripts/build.sh
+npm run build
 
 # Return to invocation dir
 popd
