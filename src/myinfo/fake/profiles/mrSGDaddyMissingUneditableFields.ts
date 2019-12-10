@@ -19,6 +19,7 @@ export const mrSGDaddyMissingUneditableFields: FakeProfile = {
 		profile.nationality = unavailableField;
 		profile.dob = unavailableField;
 		profile.regadd = unavailableField;
+		profile.sex = unavailableField;
 
 		return profile;
 	},

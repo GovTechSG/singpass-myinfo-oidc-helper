@@ -1,5 +1,11 @@
 # Changelogs
 
+## 3.0.1
+
+- added uneditable field sex to mrSGDaddyMissingUneditableFields mock profile
+
+---
+
 ## 2.3.4
 
 - Updated comments regarding axios proxy-agent
