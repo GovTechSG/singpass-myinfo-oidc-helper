@@ -59,7 +59,7 @@ export const BaseProfile: FakeProfile = {
 				lastupdated: "2018-06-01",
 				source: "1",
 				classification: "C",
-				value: "1960-01-01",
+				value: `${new Date().getFullYear() - 60 + 1}-01-01`,
 			},
 			secondaryrace: {
 				lastupdated: "2018-06-01",
