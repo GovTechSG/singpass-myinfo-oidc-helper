@@ -123,6 +123,7 @@ Singpass.OidcHelper
 - nonce (later returned inside the JWT from token endpoint)
 
 - `getTokens (authCode: string, axiosRequestConfig?: AxiosRequestConfig) => Promise<TokenResponse>` - get back the tokens from SP token endpoint. Outputs TokenResponse, which is the input for getIdTokenPayload
+- `refreshTokens (refreshToken: string, axiosRequestConfig?: AxiosRequestConfig) => Promise<TokenResponse>` - get fresh tokens from SP token endpoint. Outputs TokenResponse, which is the input for getIdTokenPayload
 - `getIdTokenPayload(tokens: TokenResponse) => Promise<TokenPayload>` - decrypt and verify the JWT. Outputs TokenPayload, which is the input for extractNricAndUuidFromPayload
 - `extractNricAndUuidFromPayload(payload: TokenPayload) => { nric: string, uuid: string }` - finally, get the nric and WOG (Whole-of-government) UUID of the user from the ID Token TokenPayload
 
