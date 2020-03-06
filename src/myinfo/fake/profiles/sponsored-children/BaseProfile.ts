@@ -240,6 +240,6 @@ const mobileno = (): any => ({
 		value: "+",
 	},
 	nbr: {
-		value: "91234567",
+		value: "83416847",
 	},
 });

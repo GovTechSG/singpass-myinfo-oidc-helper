@@ -1,4 +1,10 @@
 # Changelogs
+## 3.0.3
+- Changed basic person and Mr SG Daddy Perfect email addresses from "myinfotesting@gmail.com" to test email address
+- Changed the phone numbers of basic person, Mr SG Perfect, and profiles with sponsored children to the test number
+
+## 3.0.2
+- Added dynamic dob to baseProfile to ensure profile is always age 59
 
 ## 3.0.1
 

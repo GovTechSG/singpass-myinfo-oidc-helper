@@ -72,7 +72,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 					"value": "+",
 				},
 				"nbr": {
-					"value": "97399245",
+					"value": "83416847",
 				},
 			},
 			"passportexpirydate": {
@@ -135,7 +135,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"lastupdated": "2019-04-03",
 				"source": "4",
 				"classification": "C",
-				"value": "myinfotesting@gmail.com",
+				"value": "gt.govandi@gmail.com",
 			},
 			"birthcountry": {
 				"lastupdated": "2018-06-01",
