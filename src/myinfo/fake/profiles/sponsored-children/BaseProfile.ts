@@ -135,7 +135,7 @@ export const BaseProfile: FakeProfile = {
 				lastupdated: "2019-04-03",
 				source: "4",
 				classification: "C",
-				value: "baseprofile@singapore.sg",
+				value: "gt.govandi@gmail.com",
 			},
 			birthcountry: {
 				lastupdated: "2018-06-01",
