@@ -115,6 +115,32 @@ export class OidcHelper {
 	}
 
 	/**
+	 * Get fresh tokens from Singpass endpoint. Note: This will fail if not on an IP whitelisted by SP.
+	 * Use getIdTokenPayload on returned Token Response to get the token payload
+	 */
+	public refreshTokens = async (refreshToken: string, axiosRequestConfig?: AxiosRequestConfig): Promise<TokenResponse> => {
+	  const params = {
+	    scope: "openid",
+	    grant_type: "refresh_token",
+	    client_id: this.clientID,
+	    client_secret: this.clientSecret,
+	    refresh_token: refreshToken,
+	  };
+	  const body = querystringUtil.stringify(params);
+
+	  const config = {
+	    headers: { "content-type": "application/x-www-form-urlencoded" },
+	    ...axiosRequestConfig,
+	  };
+	  const response = await this.axiosClient.post(this.tokenUrl, body, config);
+	  if (!response.data.id_token) {
+	    Logger.error("Failed to get ID token: invalid response data", response.data);
+	    throw new SingpassMyInfoError("Failed to get ID token");
+	  }
+	  return response.data;
+	}
+
+	/**
 	 * Decrypts the ID Token JWT inside the TokenResponse to get the payload
 	 * Use extractNricAndUuidFromPayload on the returned Token Payload to get the NRIC and UUID
 	 */
