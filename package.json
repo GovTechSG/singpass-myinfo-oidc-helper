@@ -1,9 +1,11 @@
 {
 	"name": "@govtechsg/singpass-myinfo-oidc-helper",
-	"version": "3.0.5",
+	"version": "3.0.6",
 	"description": "Helper for building a Relying Party to integrate with Singpass OIDC and MyInfo person basic API",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
+	"repository": "github:GovTechSG/singpass-myinfo-oidc-helper",
+	"bugs": "https://github.com/GovTechSG/singpass-myinfo-oidc-helper/issues",
 	"scripts": {
 		"prepublishOnly": "npm run build",
 		"test": "./shared-scripts/jest-test.sh --maxWorkers=10 --coverage",
