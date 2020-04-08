@@ -8,14 +8,7 @@ Use this module to build client applications that can:
 ---
 
 ## Installation
-
-TODO: pending publish to npm registry
-
-`npm i singpass-myinfo-oidc-helper`
-
-For now, can start using the releases of this module via our git repo tags:
-
-`git@github.com:GovTechSG/singpass-myinfo-oidc-helper.git#2.0.0`
+`npm i @govtechsg/singpass-myinfo-oidc-helper`
 
 ---
 
@@ -34,7 +27,7 @@ MyInfo.Helper
 - `constructor`
 
 | Param                   | Type     | Description                                                                                                                                                              |
-|-------------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ----------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | attributes              | string[] | Array of user attributes to retrieve from MyInfo. For full list of attributes, see [here](https://public.cloud.myinfo.gov.sg/myinfo/tuo/myinfo-tuo-specs.html)           |
 | clientID                | string   | Your app's client ID when you onboarded with MyInfo                                                                                                                      |
 | personBasicURL          | string   | The full URL to the MyInfo person basic endpoint. Exposed for lib user to choose between staging, prod, and any mock server                                              |
@@ -55,7 +48,7 @@ Usually not needed, for making any other custom requests to MyInfo not covered i
 - `constructor`
 
 | Param                   | Type   | Description                                                                               |
-|-------------------------|--------|-------------------------------------------------------------------------------------------|
+| ----------------------- | ------ | ----------------------------------------------------------------------------------------- |
 | appId                   | string | Your app's client ID when you onboarded with MyInfo                                       |
 | privateKeyToSignRequest | string | Used for signing the request to MyInfo server. Needs to be an encrypted PKCS8 private key |
 | privateKeyPassword      | string | the password that you used to encrypt privateKeyToSignRequest                             |
@@ -75,7 +68,7 @@ Use getPersonBasic to get a fake MyInfo person
 - `constructor`
 
 | Param      | Type      | Description                                            |
-|------------|-----------|--------------------------------------------------------|
+| ---------- | --------- | ------------------------------------------------------ |
 | attributes | string[]? | List of MyInfo attributes that this helper will return |
 
 - `getPersonBasic({
@@ -105,7 +98,7 @@ Singpass.OidcHelper
 - `constructor`
 
 | Param            | Type   | Description                                                                                                |
-|------------------|--------|------------------------------------------------------------------------------------------------------------|
+| ---------------- | ------ | ---------------------------------------------------------------------------------------------------------- |
 | authorizationUrl | string | The URL for Singpass /authorize endpoint                                                                   |
 | logoutUrl        | string | The URL for Singpass /logout endpoint                                                                      |
 | tokenUrl         | string | The URL for Singpass /token endpoint                                                                       |
