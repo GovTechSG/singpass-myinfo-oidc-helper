@@ -1,12 +1,6 @@
 import * as moment from "moment";
 import { myInfoDomain } from "../../domain";
-
-const formatDateToString = (date?: moment.Moment): string => {
-	if (date) {
-		return date.format("YYYY-MM-DD").toString();
-	}
-	return moment().format("YYYY-MM-DD").toString();
-};
+import { formatDateToString } from "../../../util/DateUtils";
 
 const childYoungest = {
 	birthcertno: { value: "T1828432J" },
