@@ -9,13 +9,13 @@ export const formatDateToString = (date?: moment.Moment): string => {
 };
 
 export const preschoolEligibleChild_IC = {
-	birthcertno: { value: "T1901543I" },
+	birthcertno: { value: "T1937132D" },
 	name: { value: "Ezra Lee" },
 	dob: { value: formatDateToString(moment().subtract(2, "months")) },
 } as myInfoDomain.Components.Schemas.Childrenbirthrecords;
 
 export const preschoolEligibleChild_N2 = {
-	birthcertno: { value: "T1689953J" },
+	birthcertno: { value: "T1670135H" },
 	name: { value: "Elliot Lee" },
 	dob: { value: formatDateToString(moment().subtract(4, "years")) },
 } as myInfoDomain.Components.Schemas.Childrenbirthrecords;
