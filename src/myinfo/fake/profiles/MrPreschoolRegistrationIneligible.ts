@@ -18,6 +18,12 @@ export const mrPreschoolRegistrationIneligible: FakeProfile = {
 			preschoolEligibleChild_N2,
 			preschoolIneligibleChild2,
 		];
+		profile.dob = {
+			lastupdated: "2020-01-01",
+			source: "1",
+			classification: "C",
+			value: "1985-10-06",
+		};
 
 		return profile;
 	},
