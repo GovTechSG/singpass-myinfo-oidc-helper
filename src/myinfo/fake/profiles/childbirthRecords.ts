@@ -38,6 +38,49 @@ export const preschoolEligibleChild_K1 = {
 	dob: { value: formatDateToString(moment().subtract(5, "years")) },
 } as myInfoDomain.Components.Schemas.Childrenbirthrecords;
 
+export const preschoolEligibleChild_K2 = {
+	birthcertno: { value: "T1421105A" },
+	name: { value: "Kelly Lee" },
+	dob: { value: formatDateToString(moment().subtract(6, "years")) },
+} as myInfoDomain.Components.Schemas.Childrenbirthrecords;
+
+export const preschoolEligibleChild2_N1 = {
+	birthcertno: { value: "T1750682F" },
+	name: { value: "Kylie Lee" },
+	dob: { value: formatDateToString(moment().subtract(3, "years")) },
+} as myInfoDomain.Components.Schemas.Childrenbirthrecords;
+
+export const preschoolEligibleChild2_IC = {
+	birthcertno: { value: "T1933334A" },
+	name: { value: "Karol Lee" },
+	dob: { value: formatDateToString(moment().subtract(6, "months")) },
+} as myInfoDomain.Components.Schemas.Childrenbirthrecords;
+
+export const preschoolEligibleChild2_K1 = {
+	birthcertno: { value: "T1519414B" },
+	name: { value: "Kara Lee" },
+	dob: { value: formatDateToString(moment().subtract(5, "years")) },
+} as myInfoDomain.Components.Schemas.Childrenbirthrecords;
+
+export const preschoolEligibleChild2_N2 = {
+	birthcertno: { value: "T1650521D" },
+	name: { value: "Sara Lee" },
+	dob: { value: formatDateToString(moment().subtract(4, "years")) },
+} as myInfoDomain.Components.Schemas.Childrenbirthrecords;
+
+export const preschoolEligibleChild2_PG = {
+	birthcertno: { value: "T1810525F" },
+	name: { value: "Stella Lee" },
+	dob: { value: formatDateToString(moment().subtract(22, "months")) },
+} as myInfoDomain.Components.Schemas.Childrenbirthrecords;
+
+export const preschoolEligibleChild2_K2 = {
+	birthcertno: { value: "T1914574Z" },
+	name: { value: "Sonia Lee" },
+	dob: { value: formatDateToString(moment().subtract(9, "months")) },
+} as myInfoDomain.Components.Schemas.Childrenbirthrecords;
+
+
 export const preschoolIneligibleChild1 = {
 	birthcertno: { value: "T1279642G" },
 	name: { value: "Emmy Lee" },

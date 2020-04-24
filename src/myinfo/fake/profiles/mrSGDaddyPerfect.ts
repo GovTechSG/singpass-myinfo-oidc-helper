@@ -1,5 +1,6 @@
 import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
+import { preschoolEligibleChild2_IC, preschoolEligibleChild2_K1 } from "./childbirthRecords";
 
 const id = "S8399420G";
 const name = ProfileArchetype.MR_SG_DADDY_PERFECT;
@@ -253,7 +254,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 						"value": "2011-09-10",
 					},
 					"name": {
-						"value": "Jo Tan Pei Ni",
+						"value": "Jo Lee Pei Ni",
 					},
 					"lastupdated": "2018-05-16",
 					"secondaryrace": {
@@ -261,6 +262,8 @@ export const mrSGDaddyPerfect: FakeProfile = {
 						"desc": "",
 					},
 				},
+				preschoolEligibleChild2_IC,
+				preschoolEligibleChild2_K1,
 			],
 			"sponsoredchildrenrecords": [],
 			"nationality": {
@@ -274,7 +277,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"lastupdated": "2018-06-01",
 				"source": "1",
 				"classification": "C",
-				"value": "1953-10-06",
+				"value": "1975-10-06",
 			},
 			"name": {
 				"lastupdated": "2018-06-01",

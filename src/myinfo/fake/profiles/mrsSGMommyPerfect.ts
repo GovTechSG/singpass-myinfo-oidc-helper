@@ -2,6 +2,7 @@ import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 import { sex } from "../../domain/map";
+import { preschoolEligibleChild2_N1, preschoolEligibleChild_K2 } from "./childbirthRecords";
 
 
 const id = "T2446959F";
@@ -17,6 +18,18 @@ export const mrsSGMommyPerfect: FakeProfile = {
 
 		profile.sex.code = "F";
 		profile.sex.desc = sex.map.codeToDesc[profile.sex.code];
+
+		profile.dob = {
+			lastupdated: "2020-01-01",
+			source: "1",
+			classification: "C",
+			value: "1988-10-16",
+		};
+
+		profile.childrenbirthrecords = [
+			preschoolEligibleChild_K2,
+			preschoolEligibleChild2_N1,
+		];
 
 		return profile;
 	},
