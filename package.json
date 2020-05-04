@@ -54,7 +54,7 @@
 		"jest": "^24.9.0",
 		"jest-bamboo-formatter": "^1.0.1",
 		"lint-staged": "^9.5.0",
-		"ts-jest": "^24.2.0",
+		"ts-jest": "^25.4.0",
 		"ts-node": "^8.5.4",
 		"tslint": "^5.20.1",
 		"tslint-config-security": "^1.16.0",
