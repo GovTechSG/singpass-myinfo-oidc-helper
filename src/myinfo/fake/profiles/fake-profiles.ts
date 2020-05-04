@@ -40,8 +40,8 @@ import { mrSGNoLocalAddress } from "./mrSGNoLocalAddress ";
 import { mrPRNoLocalAddress } from "./mrPRNoLocalAddress";
 import { mrJapaneseAddressBlank } from "./mrJapaneseAddressBlank";
 import { mrJapaneseNoAddressObject } from "./mrJapaneseNoAddressObject";
-import { mrPreschoolRegistrationEligible } from "./MrPreschoolRegistrationEligible";
-import { mrPreschoolRegistrationIneligible } from "./MrPreschoolRegistrationIneligible";
+import { mrPreschoolRegistration } from "./MrPreschoolRegistration";
+import { mrsPreschoolRegistration } from "./MrsPreschoolRegistration";
 
 /**
  * Exhaustive list of our MyInfo archetype profiles
@@ -89,6 +89,6 @@ export const profiles = [
 	mrSGJobless,
 	mrPRJobless,
 	mrSGDaddyTwoDeceasedChild,
-	mrPreschoolRegistrationEligible,
-	mrPreschoolRegistrationIneligible,
+	mrPreschoolRegistration,
+	mrsPreschoolRegistration,
 ];

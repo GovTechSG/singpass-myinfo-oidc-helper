@@ -10,8 +10,8 @@ export interface FakeProfile {
  * Used in MyInfo.Fake.Helper.getPersonData to get a archetype person
  */
 export enum ProfileArchetype {
-	MR_PRESCHOOL_REGISTRATION_ELIGIBLE = "Mr SG Father with children eligible for interest registration",
-	MR_PRESCHOOL_REGISTRATION_INELIGIBLE = "Mr SG Father with no eligible children for interest registration",
+	MR_PRESCHOOL_REGISTRATION = "Mr SG Father with preschool children",
+	MRS_PRESCHOOL_REGISTRATION = "Mrs SG Mother with preschool children",
 	// Sponsored Children profiles
 	MR_SG_FATHER_ONLY_SPONSORED = "Mr SG Father with only sponsored children",
 	MR_SG_FATHER_NORMAL_CHILDREN = "Mr SG Father with only normal children",

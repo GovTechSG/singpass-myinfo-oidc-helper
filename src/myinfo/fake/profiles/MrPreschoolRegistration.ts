@@ -4,9 +4,9 @@ import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 import { preschoolEligibleChild_K1, preschoolEligibleChild_N1, preschoolEligibleChild_PG, preschoolIneligibleChild1 } from "./childbirthRecords";
 
 const id = "T2446959F";
-const name = ProfileArchetype.MR_PRESCHOOL_REGISTRATION_ELIGIBLE;
+const name = ProfileArchetype.MR_PRESCHOOL_REGISTRATION;
 
-export const mrPreschoolRegistrationEligible: FakeProfile = {
+export const mrPreschoolRegistration: FakeProfile = {
 	id,
 	name,
 	generate: (profileName) => {

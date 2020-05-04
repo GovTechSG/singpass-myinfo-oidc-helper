@@ -2,17 +2,21 @@ import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 import { preschoolEligibleChild_IC, preschoolEligibleChild_N2, preschoolIneligibleChild2 } from "./childbirthRecords";
+import { sex } from "../../domain/map";
 
 const id = "T2446959F";
-const name = ProfileArchetype.MR_PRESCHOOL_REGISTRATION_INELIGIBLE;
+const name = ProfileArchetype.MRS_PRESCHOOL_REGISTRATION;
 
-export const mrPreschoolRegistrationIneligible: FakeProfile = {
+export const mrsPreschoolRegistration: FakeProfile = {
 	id,
 	name,
 	generate: (profileName) => {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
+		profile.sex.code = "F";
+		profile.sex.desc = sex.map.codeToDesc[profile.sex.code];
+
 		profile.childrenbirthrecords = [
 			preschoolEligibleChild_IC,
 			preschoolEligibleChild_N2,
