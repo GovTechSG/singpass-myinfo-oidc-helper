@@ -21,19 +21,19 @@ export const preschoolEligibleChild_N2 = {
 } as myInfoDomain.Components.Schemas.Childrenbirthrecords;
 
 export const preschoolEligibleChild_PG = {
-	birthcertno: { value: "T1827544E" },
+	birthcertno: { value: "T7150959H" },
 	name: { value: "Ella Lee" },
 	dob: { value: formatDateToString(moment().subtract(18, "months")) },
 } as myInfoDomain.Components.Schemas.Childrenbirthrecords;
 
 export const preschoolEligibleChild_N1 = {
-	birthcertno: { value: "T1759066E" },
+	birthcertno: { value: "T9430661I" },
 	name: { value: "Ellie Lee" },
 	dob: { value: formatDateToString(moment().subtract(3, "years")) },
 } as myInfoDomain.Components.Schemas.Childrenbirthrecords;
 
 export const preschoolEligibleChild_K1 = {
-	birthcertno: { value: "T1559422A" },
+	birthcertno: { value: "T6774286E" },
 	name: { value: "Emma Lee" },
 	dob: { value: formatDateToString(moment().subtract(5, "years")) },
 } as myInfoDomain.Components.Schemas.Childrenbirthrecords;
