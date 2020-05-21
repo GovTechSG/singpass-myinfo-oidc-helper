@@ -9,67 +9,67 @@ const formatDateToString = (date?: moment.Moment): string => {
 };
 
 const childYoungest = {
-	birthcertno: { value: "S1915980I" },
+	birthcertno: { value: "S5426346E" },
 	name: { value: "Tan Ke Xuan" },
 	dob: { value: formatDateToString() },
 } as myInfoDomain.Components.Schemas.Childrenbirthrecords;
 
 const child1MonthOld = {
-	birthcertno: { value: "S1985973H" },
+	birthcertno: { value: "S1097168C" },
 	name: { value: "Tan Ke Yu" },
 	dob: { value: formatDateToString(moment().subtract(1, "months")) },
 } as myInfoDomain.Components.Schemas.Childrenbirthrecords;
 
 const child2MonthsOld = {
-	birthcertno: { value: "S1934480J" },
+	birthcertno: { value: "S0944537D" },
 	name: { value: "Tan Keh Guan" },
 	dob: { value: formatDateToString(moment().subtract(2, "months")) },
 } as myInfoDomain.Components.Schemas.Childrenbirthrecords;
 
 const childMiddle1 = {
-	birthcertno: { value: "S7337031J" },
+	birthcertno: { value: "S8292340C" },
 	name: { value: "Tan Chiu" },
 	dob: { value: formatDateToString(moment().subtract(2, "years")) },
 } as myInfoDomain.Components.Schemas.Childrenbirthrecords;
 
 const childMiddle2 = {
-	birthcertno: { value: "S0836115J" },
+	birthcertno: { value: "S5149176I" },
 	name: { value: "Tan Chua" },
 	dob: { value: formatDateToString(moment().subtract(2, "years")) },
 } as myInfoDomain.Components.Schemas.Childrenbirthrecords;
 
 const childMiddle3 = {
-	birthcertno: { value: "S3159159G" },
+	birthcertno: { value: "S0040277Z" },
 	name: { value: "Tan Su" },
 	dob: { value: formatDateToString(moment().subtract(3, "years")) },
 } as myInfoDomain.Components.Schemas.Childrenbirthrecords;
 
 const childMiddle4 = {
-	birthcertno: { value: "S0758717A" },
+	birthcertno: { value: "S5143858B" },
 	name: { value: "Tan Go" },
 	dob: { value: formatDateToString(moment().subtract(4, "years")) },
 } as myInfoDomain.Components.Schemas.Childrenbirthrecords;
 
 const childMiddle5 = {
-	birthcertno: { value: "S4886773A" },
+	birthcertno: { value: "S6853145D" },
 	name: { value: "Tan Sy" },
 	dob: { value: formatDateToString(moment().subtract(5, "years")) },
 } as myInfoDomain.Components.Schemas.Childrenbirthrecords;
 
 const child6YearsOld = {
-	birthcertno: { value: "S8767263H" },
+	birthcertno: { value: "S5289396H" },
 	name: { value: "Tan Kim" },
 	dob: { value: formatDateToString(moment().subtract(6, "years").startOf("year")) },
 } as myInfoDomain.Components.Schemas.Childrenbirthrecords;
 
 const child7YearsOld = {
-	birthcertno: { value: "S8359810G" },
+	birthcertno: { value: "S0582108H" },
 	name: { value: "Tan Liu" },
 	dob: { value: formatDateToString(moment().subtract(7, "years").endOf("year")) },
 } as myInfoDomain.Components.Schemas.Childrenbirthrecords;
 
 const childSuperOld = {
-	birthcertno: { value: "S6680318Z" },
+	birthcertno: { value: "S9165733C" },
 	name: { value: "Tan Ke Wei" },
 	dob: { value: formatDateToString(moment().subtract(8, "years")) },
 } as myInfoDomain.Components.Schemas.Childrenbirthrecords;
