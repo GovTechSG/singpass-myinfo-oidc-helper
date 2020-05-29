@@ -95,7 +95,7 @@ export const BaseProfile: FakeProfile = {
 			},
 			merdekagen: {
 				eligibility: {
-					value: true,
+					value: false,
 				},
 				lastupdated: "2019-04-01",
 				quantum: {
