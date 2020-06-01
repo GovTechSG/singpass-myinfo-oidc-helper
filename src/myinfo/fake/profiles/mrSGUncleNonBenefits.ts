@@ -21,6 +21,13 @@ export const mrSGUncleNonBenefits: FakeProfile = {
 		profile.gstvoucher.gstmedisave.value = 0;
 		profile.gstvoucher.gstspecial.value = 0;
 
+		profile.dob = {
+			lastupdated: "2020-01-01",
+			source: "1",
+			classification: "C",
+			value: `${new Date().getFullYear() - 61}-01-01`,
+		};
+
 		profile.silversupport = {
 			"eligibility": {
 				"value": false,
