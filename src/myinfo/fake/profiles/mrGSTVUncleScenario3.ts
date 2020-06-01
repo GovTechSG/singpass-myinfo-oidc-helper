@@ -18,6 +18,13 @@ export const mrGstvUncle3: FakeProfile = {
 		profile.gstvoucher.gstregular.value = 100;
 		profile.gstvoucher.gstmedisave.value = 200;
 		profile.gstvoucher.gstspecial.value = 0;
+		profile.merdekagen.eligibility.value = true;
+		profile.dob = {
+			lastupdated: "2020-01-01",
+			source: "1",
+			classification: "C",
+			value: `${new Date().getFullYear() - 61}-01-01`,
+		};
 
 		return profile;
 	},

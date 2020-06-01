@@ -14,6 +14,13 @@ export const mrSGUncleMgNeedAddress: FakeProfile = {
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
 		profile.merdekagen.message.code = "3";
+		profile.merdekagen.eligibility.value = true;
+		profile.dob = {
+			lastupdated: "2020-01-01",
+			source: "1",
+			classification: "C",
+			value: `${new Date().getFullYear() - 61}-01-01`,
+		};
 
 		return profile;
 	},
