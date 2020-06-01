@@ -1,4 +1,9 @@
 # Changelogs
+## 3.2.2
+- change baseProfile merdekagen.eligibility value to false
+- add merdekagen.eligibility value of True to all uncle profiles
+- add logic to handle merdekagen.eligibility value to True if overwrite age is higher than 60
+
 ## 3.0.3
 - Changed basic person and Mr SG Daddy Perfect email addresses from "myinfotesting@gmail.com" to test email address
 - Changed the phone numbers of basic person, Mr SG Perfect, and profiles with sponsored children to the test number
