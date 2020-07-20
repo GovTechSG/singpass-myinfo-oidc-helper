@@ -1,4 +1,8 @@
 # Changelogs
+
+## 3.2.4
+- add `MR_APP_REVIEWER` as fake profile
+
 ## 3.2.2
 - change baseProfile merdekagen.eligibility value to false
 - add merdekagen.eligibility value of True to all uncle profiles
