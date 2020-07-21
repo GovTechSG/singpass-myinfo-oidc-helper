@@ -57,5 +57,5 @@ export enum ProfileArchetype {
 	MR_PR_JOBLESS = "Mr PR Jobless",
 	MR_SG_DADDY_TWO_DECEASED_CHILD = "My SG Daddy with Two Deceased Child",
 	// Dedicated for iOS app Reviewer
-	MR_APP_REVIEWER = "My App Reviewer",
+	MR_APP_REVIEWER = "Mr App Reviewer",
 }
