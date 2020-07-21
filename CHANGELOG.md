@@ -1,5 +1,8 @@
 # Changelogs
 
+## 3.2.5
+- add `MrAppReviewer` in fake-profiles.ts
+
 ## 3.2.4
 - add `MR_APP_REVIEWER` as fake profile
 
