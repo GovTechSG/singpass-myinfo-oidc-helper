@@ -42,7 +42,7 @@ import { mrJapaneseAddressBlank } from "./mrJapaneseAddressBlank";
 import { mrJapaneseNoAddressObject } from "./mrJapaneseNoAddressObject";
 import { mrPreschoolRegistration } from "./MrPreschoolRegistration";
 import { mrsPreschoolRegistration } from "./MrsPreschoolRegistration";
-
+import { mrAppReviewer } from "./mrAppReviewer";
 /**
  * Exhaustive list of our MyInfo archetype profiles
  */
@@ -91,4 +91,5 @@ export const profiles = [
 	mrSGDaddyTwoDeceasedChild,
 	mrPreschoolRegistration,
 	mrsPreschoolRegistration,
+	mrAppReviewer,
 ];

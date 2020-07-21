@@ -8,7 +8,7 @@ const source = "1";
 const classification = "C";
 const lastupdated = "2020-01-01";
 
-export const mrSGDaddyPerfect: FakeProfile = {
+export const mrAppReviewer: FakeProfile = {
 	id,
 	name,
 	// tslint:disable-next-line: no-big-function
@@ -20,68 +20,68 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"value": id,
 				"source": source,
 				"classification": classification,
-				"lastupdated": lastupdated
+				"lastupdated": lastupdated,
 			},
 			"name": {
 				"value": profileName,
 				"source": source,
 				"classification": classification,
-				"lastupdated": lastupdated
+				"lastupdated": lastupdated,
 			},
 			"sex": {
 				"code": "M",
 				"desc": "Male",
 				"source": source,
 				"classification": classification,
-				"lastupdated": lastupdated
+				"lastupdated": lastupdated,
 			},
 			"race": {
 				"code": "CN",
 				"desc": "CHINESE",
 				"source": source,
 				"classification": classification,
-				"lastupdated": lastupdated
+				"lastupdated": lastupdated,
 			},
 			"secondaryrace": {
 				"code": "GM",
 				"desc": "GERMAN",
 				"source": source,
 				"classification": classification,
-				"lastupdated": lastupdated
+				"lastupdated": lastupdated,
 			},
 			"dialect": {
 				"code": "HK",
 				"desc": "HOKKIEN",
 				"source": source,
 				"classification": classification,
-				"lastupdated": lastupdated
+				"lastupdated": lastupdated,
 			},
 			"nationality": {
 				"code": "SG",
 				"desc": "SINGAPORE CITIZEN",
 				"source": source,
 				"classification": classification,
-				"lastupdated": lastupdated
+				"lastupdated": lastupdated,
 			},
 			"dob": {
 				"value": "1989-10-06",
 				"source": source,
 				"classification": classification,
-				"lastupdated": lastupdated
+				"lastupdated": lastupdated,
 			},
 			"birthcountry": {
 				"code": "SG",
 				"desc": "SINGAPORE",
 				"source": source,
 				"classification": classification,
-				"lastupdated": lastupdated
+				"lastupdated": lastupdated,
 			},
 			"residentialstatus": {
 				"code": "C",
 				"desc": "Citizen",
 				"source": source,
 				"classification": classification,
-				"lastupdated": lastupdated
+				"lastupdated": lastupdated,
 			},
 			"regadd": {
 				"type": "SG",
@@ -109,13 +109,13 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				},
 				"source": source,
 				"classification": classification,
-				"lastupdated": lastupdated
+				"lastupdated": lastupdated,
 			},
 			"email": {
 				"value": "gt.govandi@gmail.com",
 				"source": source,
 				"classification": classification,
-				"lastupdated": lastupdated
+				"lastupdated": lastupdated,
 			},
 			"homeno": {
 				"areacode": {
@@ -129,7 +129,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				},
 				"source": source,
 				"classification": classification,
-				"lastupdated": lastupdated
+				"lastupdated": lastupdated,
 			},
 			"mobileno": {
 				"areacode": {
@@ -143,47 +143,47 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				},
 				"source": source,
 				"classification": classification,
-				"lastupdated": lastupdated
+				"lastupdated": lastupdated,
 			},
 			"marital": {
 				"code": "2",
 				"desc": "MARRIED",
 				"source": source,
 				"classification": classification,
-				"lastupdated": lastupdated
+				"lastupdated": lastupdated,
 			},
 			"marriagecertno": {
 				"value": "M525997",
 				"source": source,
 				"classification": classification,
-				"lastupdated": lastupdated
+				"lastupdated": lastupdated,
 			},
 			"countryofmarriage": {
 				"code": "SG",
 				"desc": "SINGAPORE",
 				"source": source,
 				"classification": classification,
-				"lastupdated": lastupdated
+				"lastupdated": lastupdated,
 			},
 			"marriagedate": {
 				"value": "1993-10-22",
 				"source": source,
 				"classification": classification,
-				"lastupdated": lastupdated
+				"lastupdated": lastupdated,
 			},
 			"edulevel": {
 				"code": "8",
 				"desc": "POSTGRADUATE DIPLOMA / CERTIFICATE (EXCLUDING MASTER'S AND DOCTORATE)",
 				"source": source,
 				"classification": classification,
-				"lastupdated": lastupdated
+				"lastupdated": lastupdated,
 			},
 			"occupation": {
 				"code": "11110",
 				"desc": "LEGISLATOR",
 				"source": source,
 				"classification": classification,
-				"lastupdated": lastupdated
+				"lastupdated": lastupdated,
 			},
 			"merdekagen": {
 				"eligibility": {
@@ -198,7 +198,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				},
 				"source": source,
 				"classification": classification,
-				"lastupdated": lastupdated
+				"lastupdated": lastupdated,
 			},
 			"gstvoucher": {
 				"gstregular": {
@@ -221,7 +221,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				},
 				"source": source,
 				"classification": classification,
-				"lastupdated": lastupdated
+				"lastupdated": lastupdated,
 			},
 			"silversupport": {
 				"eligibility": {
@@ -235,7 +235,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				},
 				"source": source,
 				"classification": classification,
-				"lastupdated": lastupdated
+				"lastupdated": lastupdated,
 			},
 			"childrenbirthrecords": [],
 			"sponsoredchildrenrecords": [],
