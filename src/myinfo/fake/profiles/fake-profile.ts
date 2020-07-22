@@ -56,6 +56,9 @@ export enum ProfileArchetype {
 	MR_JAPANESE_ADDRESS_BLANK = "Mr Japanese Address Blank",
 	MR_PR_JOBLESS = "Mr PR Jobless",
 	MR_SG_DADDY_TWO_DECEASED_CHILD = "My SG Daddy with Two Deceased Child",
+	MR_SG_FRESH_GRAD_YOUNG_PARENT = "Mr SG Fresh Grad, Young Parent",
+	MRS_PR_HDB_OWNER_WORKING_ADULT_MID_CAREER_PMETS = "Mrs PR HDB Owner, Working adults (Mid-career PMETs)",
+	MR_SG_UNCLE_RETIREE = "Mr SG Uncle Retiree",
 	// Dedicated for iOS app Reviewer
 	MR_APP_REVIEWER = "Mr App Reviewer",
 }
