@@ -1,5 +1,8 @@
 # Changelogs
 
+## 3.2.6
+- add `mrSGFreshGradYoungParent`, `mrsPRHdbOwnerWorkingAdult`, `mrSGUncleRetiree` in fake-profiles.ts
+
 ## 3.2.5
 - add `MrAppReviewer` in fake-profiles.ts
 
