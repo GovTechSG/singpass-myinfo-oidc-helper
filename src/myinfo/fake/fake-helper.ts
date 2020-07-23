@@ -1,4 +1,4 @@
-import { isEmpty, map, partition, set, toPairs } from "lodash";
+import { get, isEmpty, map, partition, set } from "lodash";
 import { domainMap, myInfoDomain } from "../domain";
 import { ProfileArchetype } from "./profiles/fake-profile";
 import { profiles } from "./profiles/fake-profiles";
@@ -136,6 +136,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 function filterThroughMyInfoAttributes(person: PersonBasic, attributes: ReadonlyArray<string>): PersonBasic {
 	const [childrenRawCbrAttributes, childrenNormalAttributes] = partition(attributes, (value) => value.startsWith("childrenbirthrecords."));
 	const [sponsoredRawCbrAttributes, sponsoredNormalAttributes] = partition(attributes, (value) => value.startsWith("sponsoredchildrenrecords."));
+
 	const childrenFilteredPerson = filterThroughAttributes(person, childrenNormalAttributes);
 	const sponsoredFilteredPerson = filterThroughAttributes(person, sponsoredNormalAttributes);
 
@@ -157,9 +158,18 @@ function filterThroughMyInfoAttributes(person: PersonBasic, attributes: Readonly
 	};
 }
 
+/**
+ * @description Checks for nested attribute paths, does not work for object paths with array values
+ * @param object fake person object
+ * @param attributes array of attributes to filter for, e.g ['vehicles.status', 'drivinglicence.qdl.validity']
+ */
 function filterThroughAttributes(object: object, attributes: ReadonlyArray<string>): object {
-	const attrs = new Set(attributes);
-	return toPairs(object)
-		.filter(([k]) => attrs.has(k))
-		.reduce((accumulator, [k, v]) => ({ ...accumulator, [k]: v }), {});
+	return attributes.reduce((accumulator, attrPath) => {
+		const key = attrPath.split(".")[0];
+		const attrValue = get(object, attrPath, null);
+		if (!!attrValue) {
+			return { ...accumulator, [key]: object[key] };
+		}
+		return accumulator;
+	}, {});
 }

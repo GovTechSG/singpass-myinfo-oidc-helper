@@ -1,5 +1,8 @@
 # Changelogs
 
+## 3.2.7
+- refactored `filterThroughAttributes` method in fake-helper to checked for nested paths
+
 ## 3.2.6
 - add `mrSGFreshGradYoungParent`, `mrsPRHdbOwnerWorkingAdult`, `mrSGUncleRetiree` in fake-profiles.ts
 
