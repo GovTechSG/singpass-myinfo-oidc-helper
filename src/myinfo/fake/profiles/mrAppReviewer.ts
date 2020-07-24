@@ -16,12 +16,6 @@ export const mrAppReviewer: FakeProfile = {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
 		return {
-			"uinfin": {
-				"value": id,
-				"source": source,
-				"classification": classification,
-				"lastupdated": lastupdated,
-			},
 			"name": {
 				"value": profileName,
 				"source": source,
