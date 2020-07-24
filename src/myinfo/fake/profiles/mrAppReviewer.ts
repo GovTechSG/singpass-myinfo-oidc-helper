@@ -22,6 +22,12 @@ export const mrAppReviewer: FakeProfile = {
 				"classification": classification,
 				"lastupdated": lastupdated,
 			},
+			"aliasname": {
+				"value": "TEST PROFILE",
+				"source": source,
+				"classification": classification,
+				"lastupdated": lastupdated,
+			},
 			"sex": {
 				"code": "M",
 				"desc": "Male",
