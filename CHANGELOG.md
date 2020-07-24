@@ -1,5 +1,8 @@
 # Changelogs
 
+## 3.2.9
+- add aliasname for MrAppReviewer profile
+
 ## 3.2.8
 - removed uinfin from MrAppReviewer profile
 
