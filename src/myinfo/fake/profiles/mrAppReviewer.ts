@@ -233,6 +233,36 @@ export const mrAppReviewer: FakeProfile = {
 			},
 			"childrenbirthrecords": [],
 			"sponsoredchildrenrecords": [],
+			"hdbtype": {
+				"lastupdated": "2018-06-01",
+				"source": "1",
+				"classification": "C",
+			},
+			"ownerprivate": {
+				"lastupdated": "2018-06-01",
+				"source": "1",
+				"classification": "C",
+			},
+			"housingtype": {
+				"lastupdated": "2018-06-01",
+				"source": "1",
+				"classification": "C",
+			},
+			"drivinglicence": {
+				"lastupdated": "2018-06-01",
+				"source": "1",
+				"classification": "C",
+			},
+			"vehicles": {
+				"lastupdated": "2018-06-01",
+				"source": "1",
+				"classification": "C",
+			},
+			"householdincome": {
+				"lastupdated": "2018-06-01",
+				"source": "1",
+				"classification": "C",
+			},
 		};
 	},
 };
