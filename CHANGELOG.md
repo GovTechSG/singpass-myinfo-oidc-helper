@@ -1,5 +1,8 @@
 # Changelogs
 
+## 3.2.10
+- updated default values of some params in base mock profiles
+
 ## 3.2.9
 - add aliasname for MrAppReviewer profile
 
