@@ -243,31 +243,37 @@ export const mrAppReviewer: FakeProfile = {
 				"lastupdated": "2018-06-01",
 				"source": "1",
 				"classification": "C",
+				"unavailable": true,
 			},
 			"ownerprivate": {
 				"lastupdated": "2018-06-01",
 				"source": "1",
 				"classification": "C",
+				"value": false,
 			},
 			"housingtype": {
 				"lastupdated": "2018-06-01",
 				"source": "1",
 				"classification": "C",
+				"unavailable": true,
 			},
 			"drivinglicence": {
 				"lastupdated": "2018-06-01",
 				"source": "1",
 				"classification": "C",
+				"unavailable": true,
 			},
 			"vehicles": {
 				"lastupdated": "2018-06-01",
 				"source": "1",
 				"classification": "C",
+				"unavailable": true,
 			},
 			"householdincome": {
 				"lastupdated": "2018-06-01",
 				"source": "1",
 				"classification": "C",
+				"unavailable": true,
 			},
 		};
 	},
