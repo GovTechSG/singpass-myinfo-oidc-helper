@@ -66,79 +66,12 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 			code: "2",
 		};
 		profile.childrenbirthrecords = [ChildrenRecords.child1MonthOld, ChildrenRecords.child6YearsOld, ChildrenRecords.childMiddle1];
-
-		profile.hdbownership = {
-			list: [
-				{
-					noofowners: {
-						value: 2,
-					},
-					address: {
-						type: "SG",
-						block: {
-							value: "548",
-						},
-						building: {
-							value: "",
-						},
-						floor: {
-							value: "09",
-						},
-						unit: {
-							value: "128",
-						},
-						street: {
-							value: "BEDOK NORTH AVENUE 1",
-						},
-						postal: {
-							value: "460548",
-						},
-						country: {
-							code: "SG",
-							desc: "SINGAPORE",
-						},
-					},
-					hdbtype: {
-						code: "112",
-						desc: "2-ROOM FLAT (HDB)",
-					},
-					leasecommencementdate: {
-						value: "2008-06-13",
-					},
-					termoflease: {
-						value: 99,
-					},
-					dateofpurchase: {
-						value: "2008-06-13",
-					},
-					dateofownershiptransfer: {
-						value: "2018-06-13",
-					},
-					loangranted: {
-						value: 310000.01,
-					},
-					originalloanrepayment: {
-						value: 25,
-					},
-					balanceloanrepayment: {
-						years: {
-							value: 2,
-						},
-						months: {
-							value: 6,
-						},
-					},
-					outstandingloanbalance: {
-						value: 50000.01,
-					},
-					monthlyloaninstalment: {
-						value: 1000.01,
-					},
-					classification: "C",
-					source: "1",
-					lastupdated: "2019-03-26",
-				},
-			],
+		profile.hdbtype = {
+			lastupdated: "2020-01-01",
+			source: "1",
+			classification: "C",
+			code: "112",
+			desc: "2-ROOM FLAT (HDB)",
 		};
 		profile.drivinglicence = {
 			lastupdated: "2020-01-01",
