@@ -298,12 +298,6 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"classification": "C",
 				"unavailable": true,
 			},
-			"ownerprivate": {
-				"lastupdated": "2018-06-01",
-				"source": "1",
-				"classification": "C",
-				"value": false,
-			},
 			"housingtype": {
 				"lastupdated": "2018-06-01",
 				"source": "1",
@@ -317,12 +311,6 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"unavailable": true,
 			},
 			"vehicles": {
-				"lastupdated": "2018-06-01",
-				"source": "1",
-				"classification": "C",
-				"unavailable": true,
-			},
-			"householdincome": {
 				"lastupdated": "2018-06-01",
 				"source": "1",
 				"classification": "C",

@@ -14,12 +14,11 @@ const name = ProfileArchetype.MR_SG_FRESH_GRAD_YOUNG_PARENT;
  * Marital Status	2
  * Local Registered Birth Records	1
  * HDB Ownership	No
- * Ownership of Private Residential Property	No
  * Type of Housing for Registered Address	null
  * Driving License	No
  * Vehicle Ownership	No
  * Highest Education Level	7
- * Monthly Household Income	4000
+ * Occupation 21441, MECHANICAL_ENGINEER_GENERAL
  */
 export const mrSGFreshGradYoungParent: FakeProfile = {
 	id,
@@ -65,16 +64,12 @@ export const mrSGFreshGradYoungParent: FakeProfile = {
 			classification: "C",
 			code: "7",
 		};
-		profile.householdincome = {
+		profile.occupation = {
 			lastupdated: "2020-01-01",
 			source: "1",
 			classification: "C",
-			high: {
-				value: 4000,
-			},
-			low: {
-				value: 4000,
-			},
+			code: "21441",
+			desc: "MECHANICAL_ENGINEER_GENERAL",
 		};
 		return profile;
 	},

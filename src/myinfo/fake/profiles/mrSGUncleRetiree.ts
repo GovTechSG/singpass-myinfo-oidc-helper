@@ -13,12 +13,11 @@ const name = ProfileArchetype.MR_SG_UNCLE_RETIREE;
  * Marital Status	2
  * Local Registered Birth Records	2
  * HDB Ownership	No
- * Ownership of Private Residential Property	Yes
  * Type of Housing for Registered Address	null
  * Driving License	Yes
  * Vehicle Ownership	No
  * Highest Education Level	4
- * Monthly Household Income	0
+ * Occupation None
  */
 export const mrSGUncleRetiree: FakeProfile = {
 	id,
@@ -54,12 +53,6 @@ export const mrSGUncleRetiree: FakeProfile = {
 			code: "2",
 		};
 		profile.childrenbirthrecords = [ChildrenRecords.childMiddle1, ChildrenRecords.childMiddle2];
-		profile.ownerprivate = {
-			lastupdated: "2020-01-01",
-			source: "1",
-			classification: "C",
-			value: true,
-		};
 		profile.housingtype = {
 			lastupdated: "2020-01-01",
 			source: "1",
@@ -82,16 +75,11 @@ export const mrSGUncleRetiree: FakeProfile = {
 			classification: "C",
 			code: "4",
 		};
-		profile.householdincome = {
+		profile.occupation = {
 			lastupdated: "2020-01-01",
 			source: "1",
 			classification: "C",
-			high: {
-				value: 0,
-			},
-			low: {
-				value: 0,
-			},
+			unavailable: true,
 		};
 		return profile;
 	},

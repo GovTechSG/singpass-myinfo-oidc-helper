@@ -14,12 +14,11 @@ const name = ProfileArchetype.MRS_PR_HDB_OWNER_WORKING_ADULT_MID_CAREER_PMETS;
  * Marital Status	2
  * Local Registered Birth Records	3
  * HDB Ownership	Yes
- * Ownership of Private Residential Property	No
  * Type of Housing for Registered Address	null
  * Driving License	Yes
  * Vehicle Ownership	Yes
  * Highest Education Level	7
- * Monthly Household Income	5500
+ * Occupation 21441, SOFTWARE_DEVELOPER
  */
 export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 	id,
@@ -152,121 +151,13 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 			},
 		};
 		profile.vehicles = {
-			"vehicleno": {
-				"value": "SDF1235A",
+			status: {
+				code: "1",
+				desc: "LIVE",
 			},
-			"type": {
-				"value": "PASSENGER MOTOR CAR",
-			},
-			"iulabelno": {
-				"value": "",
-			},
-			"make": {
-				"value": "TOYOTA",
-			},
-			"model": {
-				"value": "COROLLA ALTIS",
-			},
-			"chassisno": {
-				"value": "ZC11S1735800",
-			},
-			"engineno": {
-				"value": "M13A1837453",
-			},
-			"motorno": {
-				"value": "",
-			},
-			"yearofmanufacture": {
-				"value": "2010",
-			},
-			"firstregistrationdate": {
-				"value": "2010-06-06",
-			},
-			"originalregistrationdate": {
-				"value": "2010-06-06",
-			},
-			"coecategory": {
-				"value": "A - CAR UP TO 1600CC & 97KW (130BHP)",
-			},
-			"coeexpirydate": {
-				"value": "2020-06-05",
-			},
-			"roadtaxexpirydate": {
-				"value": "2020-06-05",
-			},
-			"quotapremium": {
-				"value": 14000.01,
-			},
-			"openmarketvalue": {
-				"value": 25000.01,
-			},
-			"co2emission": {
-				"value": 146.01,
-			},
-			"status": {
-				"code": "1",
-				"desc": "LIVE",
-			},
-			"primarycolour": {
-				"value": "BLACK",
-			},
-			"secondarycolour": {
-				"value": "WHITE",
-			},
-			"attachment1": {
-				"value": "DISABLED",
-			},
-			"attachment2": {
-				"value": "WITH SUN ROOF",
-			},
-			"attachment3": {
-				"value": "SIDE CURTAIN",
-			},
-			"scheme": {
-				"value": "REVISED OFF-PEAK CAR",
-			},
-			"thcemission": {
-				"value": 1.011001,
-			},
-			"coemission": {
-				"value": 1.100001,
-			},
-			"noxemission": {
-				"value": 0.011001,
-			},
-			"pmemission": {
-				"value": 0.007,
-			},
-			"enginecapacity": {
-				"value": 1600,
-			},
-			"powerrate": {
-				"value": 1.41,
-			},
-			"effectiveownership": {
-				"value": "2010-08-31T20:12:12+08:00",
-			},
-			"propellant": {
-				"value": "Compressed Natural Gas",
-			},
-			"maximumunladenweight": {
-				"value": 1500,
-			},
-			"maximumladenweight": {
-				"value": 1795,
-			},
-			"minimumparfbenefit": {
-				"value": 8770.01,
-			},
-			"nooftransfers": {
-				"value": 2,
-			},
-			"vpc": {
-				"value": "1234567890",
-			},
-			"classification": "C",
-			"source": "1",
-			"lastupdated": "2019-03-26",
+			lastupdated: "2020-01-01",
+			source: "1",
+			classification: "C",
 		};
 		profile.edulevel = {
 			lastupdated: "2020-01-01",
@@ -274,16 +165,12 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 			classification: "C",
 			code: "7",
 		};
-		profile.householdincome = {
+		profile.occupation = {
 			lastupdated: "2020-01-01",
 			source: "1",
 			classification: "C",
-			high: {
-				value: 5500,
-			},
-			low: {
-				value: 5500,
-			},
+			code: "25121",
+			desc: "SOFTWARE_DEVELOPER",
 		};
 		return profile;
 	},
