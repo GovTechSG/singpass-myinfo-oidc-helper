@@ -1,5 +1,10 @@
 # Changelogs
 
+## 3.2.11
+- removed `ownerprivate` and `householdincome` from mock profiles
+- updated `mrSGFreshGradYoungParent`, `mrsPRHdbOwnerWorkingAdult`, `mrSGUncleRetiree` mock profiles
+- updated fake-helper to handle new mock params `hdbtype`, `housingtype`, `drivingqdlvalidity`, `vehiclestatus`
+
 ## 3.2.10
 - updated default values of some params in base mock profiles
 
