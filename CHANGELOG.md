@@ -1,5 +1,9 @@
 # Changelogs
 
+## 3.2.12
+- fixed handling for new params in fake-helper
+- added `qdlValidity` in myinfo domain map
+
 ## 3.2.11
 - removed `ownerprivate` and `householdincome` from mock profiles
 - updated `mrSGFreshGradYoungParent`, `mrsPRHdbOwnerWorkingAdult`, `mrSGUncleRetiree` mock profiles
