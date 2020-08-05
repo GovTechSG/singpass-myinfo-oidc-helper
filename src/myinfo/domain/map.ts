@@ -4249,6 +4249,29 @@ export namespace validity {
 	export const map = generateTwoWayMap<Code2Desc, Desc2Code>(codeToDesc);
 }
 
+export namespace qdlValidity {
+	interface Code2Desc {
+		"V": "Valid";
+		"E": "Expired";
+		"I": "Invalid";
+		"N": "Not Holding QDL";
+	}
+	interface Desc2Code {
+		"Valid": "V";
+		"Expired": "E";
+		"Invalid": "I";
+		"Not Holding QDL": "N";
+	}
+
+	const codeToDesc: Code2Desc = {
+		"V": "Valid",
+		"E": "Expired",
+		"I": "Invalid",
+		"N": "Not Holding QDL",
+	};
+	export const map = generateTwoWayMap<Code2Desc, Desc2Code>(codeToDesc);
+}
+
 export namespace hdbtype {
 	interface Code2Desc {
 		"111": "1-ROOM FLAT (HDB)";

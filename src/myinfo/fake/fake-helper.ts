@@ -27,12 +27,12 @@ export interface MockParams {
 	// tslint:disable-next-line: max-union-size
 	merdekagenmessagecode?: "1" | "2" | "3" | "4" | "5" | "6" | "7";
 	// tslint:disable-next-line:max-union-size
-	hdbtype?: "1-ROOM FLAT (HDB)" | "2-ROOM FLAT (HDB)" | "3-ROOM FLAT (HDB)" | "4-ROOM FLAT (HDB)" | "5-ROOM FLAT (HDB)" | "EXECUTIVE FLAT (HDB)" | "STUDIO APARTMENT (HDB)";
+	hdbtype?: "111" | "112" | "113" | "114" | "115" | "116" | "118";
 	// tslint:disable-next-line:max-union-size
-	housingtype?: "DETACHED HOUSE" | "SEMI-DETACHED HOUSE" | "TERRACE HOUSE" | "CONDOMINIUM" | "EXECUTIVE CONDOMINIUM" | "APARTMENT";
+	housingtype?: "121" | "122" | "123" | "131" | "132" | "139";
 	// tslint:disable-next-line:max-union-size
-	drivingqdlvalidity?: "Valid" | "Expired" | "Invalid" | "Not Holding QDL";
-	vehiclestatus?: "LIVE" | "DE-REGISTERED";
+	drivingqdlvalidity?: "V" | "E" | "I" | "N";
+	vehiclestatus?: "1" | "2";
 }
 
 type PersonBasic = myInfoDomain.Components.Schemas.PersonBasic;
@@ -130,8 +130,8 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 				lastupdated: "2018-06-01",
 				source: "1",
 				classification: "C",
-				code: domainMap.hdbtype.map.descToCode[mockParams.hdbtype],
-				desc: mockParams.hdbtype,
+				code: mockParams.hdbtype,
+				desc: domainMap.hdbtype.map.codeToDesc[mockParams.hdbtype],
 			};
 		}
 
@@ -140,8 +140,8 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 				lastupdated: "2018-06-01",
 				source: "1",
 				classification: "C",
-				code: domainMap.housingtype.map.descToCode[mockParams.housingtype],
-				desc: mockParams.housingtype,
+				code: mockParams.housingtype,
+				desc: domainMap.housingtype.map.codeToDesc[mockParams.housingtype],
 			};
 		}
 
@@ -152,7 +152,8 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 				classification: "C",
 				qdl: {
 					validity: {
-						code: domainMap.validity.map.descToCode[mockParams.drivingqdlvalidity],
+						code: mockParams.drivingqdlvalidity,
+						desc: domainMap.qdlValidity.map.codeToDesc[mockParams.drivingqdlvalidity],
 					},
 				},
 			};
@@ -164,7 +165,8 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 				source: "1",
 				classification: "C",
 				status: {
-					code: domainMap.status.map.descToCode[mockParams.vehiclestatus],
+					code: mockParams.vehiclestatus,
+					desc: domainMap.status.map.codeToDesc[mockParams.vehiclestatus],
 				},
 			};
 		}
