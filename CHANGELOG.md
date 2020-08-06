@@ -1,5 +1,9 @@
 # Changelogs
 
+## 3.2.13
+- udpated handling in fake-helper for hdb and housing params
+- updated `mrSGFreshGradYoungParent`, `mrsPRHdbOwnerWorkingAdult`, `mrSGUncleRetiree` mock profiles
+
 ## 3.2.12
 - fixed handling for new params in fake-helper
 - added `qdlValidity` in myinfo domain map
