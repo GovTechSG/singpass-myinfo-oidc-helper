@@ -39,6 +39,7 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 			source: "1",
 			classification: "C",
 			code: "P",
+			desc: "PR",
 		};
 		profile.nationality = {
 			lastupdated: "2020-01-01",
@@ -58,12 +59,14 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 			source: "1",
 			classification: "C",
 			code: "F",
+			desc: "Female",
 		};
 		profile.marital = {
 			lastupdated: "2020-01-01",
 			source: "1",
 			classification: "C",
 			code: "2",
+			desc: "MARRIED",
 		};
 		profile.childrenbirthrecords = [ChildrenRecords.child1MonthOld, ChildrenRecords.child6YearsOld, ChildrenRecords.childMiddle1];
 		profile.hdbtype = {
@@ -73,6 +76,7 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 			code: "112",
 			desc: "2-ROOM FLAT (HDB)",
 		};
+		profile.housingtype = null;
 		profile.drivinglicence = {
 			lastupdated: "2020-01-01",
 			source: "1",
@@ -80,6 +84,7 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 			qdl: {
 				validity: {
 					code: "V",
+					desc: "Valid",
 				},
 			},
 		};
@@ -97,6 +102,7 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 			source: "1",
 			classification: "C",
 			code: "7",
+			desc: "BACHELOR'S OR EQUIVALENT",
 		};
 		profile.occupation = {
 			lastupdated: "2020-01-01",

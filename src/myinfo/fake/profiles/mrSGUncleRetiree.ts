@@ -45,12 +45,14 @@ export const mrSGUncleRetiree: FakeProfile = {
 			source: "1",
 			classification: "C",
 			code: "M",
+			desc: "Male",
 		};
 		profile.marital = {
 			lastupdated: "2020-01-01",
 			source: "1",
 			classification: "C",
 			code: "2",
+			desc: "MARRIED",
 		};
 		profile.childrenbirthrecords = [ChildrenRecords.childMiddle1, ChildrenRecords.childMiddle2];
 		profile.housingtype = {
@@ -58,7 +60,9 @@ export const mrSGUncleRetiree: FakeProfile = {
 			source: "1",
 			classification: "C",
 			code: "121",
+			desc: "DETACHED HOUSE",
 		};
+		profile.hdbtype = null;
 		profile.drivinglicence = {
 			lastupdated: "2020-01-01",
 			source: "1",
@@ -66,6 +70,7 @@ export const mrSGUncleRetiree: FakeProfile = {
 			qdl: {
 				validity: {
 					code: "V",
+					desc: "Valid",
 				},
 			},
 		};
@@ -74,6 +79,7 @@ export const mrSGUncleRetiree: FakeProfile = {
 			source: "1",
 			classification: "C",
 			code: "4",
+			desc: "POST-SECONDARY (NON-TERTIARY): GENERAL & VOCATION",
 		};
 		profile.occupation = {
 			lastupdated: "2020-01-01",

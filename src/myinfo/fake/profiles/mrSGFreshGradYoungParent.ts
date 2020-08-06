@@ -44,12 +44,14 @@ export const mrSGFreshGradYoungParent: FakeProfile = {
 			source: "1",
 			classification: "C",
 			code: "M",
+			desc: "Male",
 		};
 		profile.marital = {
 			lastupdated: "2020-01-01",
 			source: "1",
 			classification: "C",
 			code: "2",
+			desc: "MARRIED",
 		};
 		profile.marriagedate = {
 			lastupdated: "2020-01-01",
@@ -63,6 +65,7 @@ export const mrSGFreshGradYoungParent: FakeProfile = {
 			source: "1",
 			classification: "C",
 			code: "7",
+			desc: "BACHELOR'S OR EQUIVALENT",
 		};
 		profile.occupation = {
 			lastupdated: "2020-01-01",
