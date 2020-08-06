@@ -133,9 +133,8 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 				code: mockParams.hdbtype,
 				desc: domainMap.hdbtype.map.codeToDesc[mockParams.hdbtype],
 			};
-		}
-
-		if (!isEmpty(mockParams.housingtype)) {
+			myinfoPerson.housingtype = null;
+		} else if (!isEmpty(mockParams.housingtype)) {
 			myinfoPerson.housingtype = {
 				lastupdated: "2018-06-01",
 				source: "1",
@@ -143,6 +142,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 				code: mockParams.housingtype,
 				desc: domainMap.housingtype.map.codeToDesc[mockParams.housingtype],
 			};
+			myinfoPerson.hdbtype = null;
 		}
 
 		if (!isEmpty(mockParams.drivingqdlvalidity)) {
