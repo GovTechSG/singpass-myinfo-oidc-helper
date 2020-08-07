@@ -1,4 +1,8 @@
 # Changelogs
+
+## 3.2.16
+- added default lifestatus param to children mock data
+
 ## 3.2.15
 - udpated bypass to allow customise name
 
