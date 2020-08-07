@@ -172,7 +172,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 			};
 		}
 		if (!isEmpty(mockParams.userdisplayname)) {
-			myinfoPerson.aliasname.value = mockParams.userdisplayname;
+			myinfoPerson.name.value = mockParams.userdisplayname;
 		}
 
 		if (!this.attributes) {

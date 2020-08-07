@@ -1,4 +1,7 @@
 # Changelogs
+## 3.2.15
+- udpated bypass to allow customise name
+
 ## 3.2.14
 - udpated bypass to allow customise alias name
 
