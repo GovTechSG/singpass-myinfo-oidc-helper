@@ -1,4 +1,6 @@
 # Changelogs
+## 3.2.14
+- udpated bypass to allow customise alias name
 
 ## 3.2.13
 - udpated handling in fake-helper for hdb and housing params

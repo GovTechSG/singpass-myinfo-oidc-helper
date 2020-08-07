@@ -10,6 +10,7 @@ enum GVS {
 
 export interface MockParams {
 	archetype: ProfileArchetype;
+	userdisplayname?: string;
 	// tslint:disable-next-line: max-union-size
 	marital?: "1" | "2" | "3" | "5";
 	marriagedate?: string;
@@ -169,6 +170,9 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 					desc: domainMap.status.map.codeToDesc[mockParams.vehiclestatus],
 				},
 			};
+		}
+		if (!isEmpty(mockParams.userdisplayname)) {
+			myinfoPerson.aliasname.value = mockParams.userdisplayname;
 		}
 
 		if (!this.attributes) {
