@@ -1,5 +1,8 @@
 # Changelogs
 
+## 3.2.19
+- updated edulevel and residentialstatus typing with empty string
+
 ## 3.2.18
 - updated person and personbasic with prod resemblance response
 - updated vehicles to array for personbasic (so that it is the same structure as person)

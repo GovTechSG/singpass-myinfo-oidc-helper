@@ -1059,12 +1059,12 @@ declare namespace Components {
 			 * example:
 			 * 7
 			 */
-			code?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "N";
+			code?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "N" | "";
 			/**
 			 * example:
 			 * BACHELOR'S OR EQUIVALENT
 			 */
-			desc?: "NO FORMAL QUALIFICATION / PRE-PRIMARY / LOWER PRIMARY" | "PRIMARY" | "LOWER SECONDARY" | "SECONDARY" | "POST-SECONDARY (NON-TERTIARY): GENERAL & VOCATION" | "POLYTECHNIC DIPLOMA" | "PROFESSIONAL QUALIFICATION AND OTHER DIPLOMA" | "BACHELOR'S OR EQUIVALENT" | "POSTGRADUATE DIPLOMA / CERTIFICATE (EXCLUDING MASTER'S AND DOCTORATE)" | "MASTER'S AND DOCTORATE OR EQUIVALENT" | "MODULAR CERTIFICATION (NON-AWARD COURSES / NON-FULL QUALIFICATIONS)";
+			desc?: "NO FORMAL QUALIFICATION / PRE-PRIMARY / LOWER PRIMARY" | "PRIMARY" | "LOWER SECONDARY" | "SECONDARY" | "POST-SECONDARY (NON-TERTIARY): GENERAL & VOCATION" | "POLYTECHNIC DIPLOMA" | "PROFESSIONAL QUALIFICATION AND OTHER DIPLOMA" | "BACHELOR'S OR EQUIVALENT" | "POSTGRADUATE DIPLOMA / CERTIFICATE (EXCLUDING MASTER'S AND DOCTORATE)" | "MASTER'S AND DOCTORATE OR EQUIVALENT" | "MODULAR CERTIFICATION (NON-AWARD COURSES / NON-FULL QUALIFICATIONS)" | "";
 		}
 		/**
 		 * Email
@@ -4238,12 +4238,12 @@ declare namespace Components {
 					 * example:
 					 * C
 					 */
-					code?: "A" | "C" | "P" | "U" | "N"; // [a-zA-Z]{1}
+					code?: "A" | "C" | "P" | "U" | "N" | ""; // [a-zA-Z]{1}
 					/**
 					 * example:
 					 * Citizen
 					 */
-					desc?: "Alien" | "Citizen" | "PR" | "Unknown" | "NOT APPLICABLE";
+					desc?: "Alien" | "Citizen" | "PR" | "Unknown" | "NOT APPLICABLE" | "";
 				};
 				/**
 				 * Nationality of child.
@@ -8031,12 +8031,12 @@ declare namespace Components {
 					 * example:
 					 * C
 					 */
-					code?: "A" | "C" | "P" | "U" | "N"; // [a-zA-Z]{1}
+					code?: "A" | "C" | "P" | "U" | "N" | ""; // [a-zA-Z]{1}
 					/**
 					 * example:
 					 * Citizen
 					 */
-					desc?: "Alien" | "Citizen" | "PR" | "Unknown" | "NOT APPLICABLE";
+					desc?: "Alien" | "Citizen" | "PR" | "Unknown" | "NOT APPLICABLE" | "";
 				};
 				/**
 				 * Nationality of child.
@@ -9714,12 +9714,12 @@ declare namespace Components {
 				 * example:
 				 * C
 				 */
-				code?: "A" | "C" | "P" | "U" | "N"; // [a-zA-Z]{1}
+				code?: "A" | "C" | "P" | "U" | "N" | ""; // [a-zA-Z]{1}
 				/**
 				 * example:
 				 * Citizen
 				 */
-				desc?: "Alien" | "Citizen" | "PR" | "Unknown" | "NOT APPLICABLE";
+				desc?: "Alien" | "Citizen" | "PR" | "Unknown" | "NOT APPLICABLE" | "";
 			};
 			/**
 			 * Nationality of child.
