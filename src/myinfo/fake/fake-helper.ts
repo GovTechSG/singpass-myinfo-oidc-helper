@@ -55,6 +55,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 	 * @param input the mock profile parameters.
 	 * See FakeMyInfoPersonArchetypes for the actual person.
 	 */
+	// tslint:disable-next-line: no-big-function
 	public getPersonBasic = (mockParams: MockParams): PersonBasic => {
 		const mockProfile = profiles.find((profile) => profile.name === mockParams.archetype);
 		if (!mockProfile) {
@@ -134,7 +135,13 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 				code: mockParams.hdbtype,
 				desc: domainMap.hdbtype.map.codeToDesc[mockParams.hdbtype],
 			};
-			myinfoPerson.housingtype = null;
+			myinfoPerson.housingtype = {
+				lastupdated: "2020-08-26",
+				code: "",
+				source: "1",
+				classification: "C",
+				desc: "",
+			};
 		} else if (!isEmpty(mockParams.housingtype)) {
 			myinfoPerson.housingtype = {
 				lastupdated: "2018-06-01",
@@ -143,33 +150,209 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 				code: mockParams.housingtype,
 				desc: domainMap.housingtype.map.codeToDesc[mockParams.housingtype],
 			};
-			myinfoPerson.hdbtype = null;
+			myinfoPerson.hdbtype = {
+				lastupdated: "2020-08-26",
+				code: "",
+				source: "1",
+				classification: "C",
+				desc: "",
+			};
 		}
 
 		if (!isEmpty(mockParams.drivingqdlvalidity)) {
 			myinfoPerson.drivinglicence = {
-				lastupdated: "2018-06-01",
-				source: "1",
-				classification: "C",
+				revocation: {
+					startdate: {
+						value: "",
+					},
+					enddate: {
+						value: "",
+					},
+				},
+				totaldemeritpoints: {
+					value: 0,
+				},
+				disqualification: {
+					startdate: {
+						value: "",
+					},
+					enddate: {
+						value: "",
+					},
+				},
 				qdl: {
+					expirydate: {
+						value: "",
+					},
 					validity: {
 						code: mockParams.drivingqdlvalidity,
 						desc: domainMap.qdlValidity.map.codeToDesc[mockParams.drivingqdlvalidity],
 					},
+					classes: [
+						{
+							class: {
+								value: "3CA",
+							},
+							issuedate: {
+								value: "2017-12-31",
+							},
+						},
+					],
+				},
+				lastupdated: "2020-08-26",
+				pdl: {
+					expirydate: {
+						value: "",
+					},
+					validity: {
+						code: "",
+						desc: "",
+					},
+					classes: [],
+				},
+				source: "1",
+				classification: "C",
+				comstatus: {
+					code: "Y",
+					desc: "Eligible",
+				},
+				photocardserialno: {
+					value: "",
+				},
+				suspension: {
+					startdate: {
+						value: "",
+					},
+					enddate: {
+						value: "",
+					},
 				},
 			};
+			if (mockParams.drivingqdlvalidity === "N") {
+				myinfoPerson.drivinglicence.qdl.classes = [];
+			}
 		}
 
 		if (!isEmpty(mockParams.vehiclestatus)) {
-			myinfoPerson.vehicles = {
-				lastupdated: "2018-06-01",
-				source: "1",
-				classification: "C",
-				status: {
-					code: mockParams.vehiclestatus,
-					desc: domainMap.status.map.codeToDesc[mockParams.vehiclestatus],
+			myinfoPerson.vehicles = [
+				{
+					roadtaxexpirydate: {
+						value: "2020-06-06",
+					},
+					engineno: {
+						value: "4G13NU1453",
+					},
+					attachment3: {
+						value: "",
+					},
+					effectiveownership: {
+						value: "2010-06-06T12:09:05",
+					},
+					scheme: {
+						value: "OPC - OFF PEAK CAR",
+					},
+					powerrate: {
+						value: 1.7,
+					},
+					source: "1",
+					primarycolour: {
+						value: "MAROON",
+					},
+					type: {
+						value: "STATION WAGON/JEEP/LAND ROVER",
+					},
+					vehicleno: {
+						value: "SBP1818T",
+					},
+					coeexpirydate: {
+						value: "2020-06-06",
+					},
+					chassisno: {
+						value: "TUU28391334KL189",
+					},
+					noxemission: {
+						value: 0.013456,
+					},
+					model: {
+						value: "FORESTER",
+					},
+					openmarketvalue: {
+						value: 23485.3,
+					},
+					coemission: {
+						value: 0.153209,
+					},
+					attachment2: {
+						value: "",
+					},
+					attachment1: {
+						value: "CONTINENTAL TIRE",
+					},
+					make: {
+						value: "SUBARU",
+					},
+					pmemission: {
+						value: 0.199,
+					},
+					originalregistrationdate: {
+						value: "2009-12-06",
+					},
+					yearofmanufacture: {
+						value: "2010",
+					},
+					vpc: {
+						value: "",
+					},
+					enginecapacity: {
+						value: 1600,
+					},
+					classification: "C",
+					nooftransfers: {
+						value: 1,
+					},
+					propellant: {
+						value: "Petrol",
+					},
+					co2emission: {
+						value: 145,
+					},
+					motorno: {
+						value: "",
+					},
+					minimumparfbenefit: {
+						value: 2500,
+					},
+					thcemission: {
+						value: 0.187765,
+					},
+					firstregistrationdate: {
+						value: "2010-06-06",
+					},
+					lastupdated: "2020-08-26",
+					maximumunladenweight: {
+						value: 1500,
+					},
+					coecategory: {
+						value: "A - CAR UP TO 1600CC & 97KW (130BHP)",
+					},
+					maximumladenweight: {
+						value: 2000,
+					},
+					secondarycolour: {
+						value: "",
+					},
+					iulabelno: {
+						value: "",
+					},
+					quotapremium: {
+						value: 0,
+					},
+					status: {
+						code: mockParams.vehiclestatus,
+						desc: domainMap.status.map.codeToDesc[mockParams.vehiclestatus],
+					},
 				},
-			};
+			];
 		}
 		if (!isEmpty(mockParams.userdisplayname)) {
 			myinfoPerson.name.value = mockParams.userdisplayname;

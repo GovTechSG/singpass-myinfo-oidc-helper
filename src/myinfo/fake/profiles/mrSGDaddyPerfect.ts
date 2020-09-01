@@ -293,29 +293,79 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"desc": "GERMAN",
 			},
 			"hdbtype": {
-				"lastupdated": "2018-06-01",
+				"lastupdated": "2020-08-26",
+				"code": "",
 				"source": "1",
 				"classification": "C",
-				"unavailable": true,
+				"desc": "",
 			},
 			"housingtype": {
-				"lastupdated": "2018-06-01",
+				"lastupdated": "2020-08-26",
+				"code": "",
 				"source": "1",
 				"classification": "C",
-				"unavailable": true,
+				"desc": "",
 			},
 			"drivinglicence": {
-				"lastupdated": "2018-06-01",
+				"revocation": {
+					"startdate": {
+						"value": "",
+					},
+					"enddate": {
+						"value": "",
+					},
+				},
+				"totaldemeritpoints": {
+					"value": 0,
+				},
+				"disqualification": {
+					"startdate": {
+						"value": "",
+					},
+					"enddate": {
+						"value": "",
+					},
+				},
+				"qdl": {
+					"expirydate": {
+						"value": "",
+					},
+					"validity": {
+						"code": "",
+						"desc": "",
+					},
+					"classes": [],
+				},
+				"lastupdated": "2020-08-26",
+				"pdl": {
+					"expirydate": {
+						"value": "",
+					},
+					"validity": {
+						"code": "",
+						"desc": "",
+					},
+					"classes": [],
+				},
 				"source": "1",
 				"classification": "C",
-				"unavailable": true,
+				"comstatus": {
+					"code": "",
+					"desc": "",
+				},
+				"photocardserialno": {
+					"value": "",
+				},
+				"suspension": {
+					"startdate": {
+						"value": "",
+					},
+					"enddate": {
+						"value": "",
+					},
+				},
 			},
-			"vehicles": {
-				"lastupdated": "2018-06-01",
-				"source": "1",
-				"classification": "C",
-				"unavailable": true,
-			},
+			"vehicles": [],
 		};
 	},
 };

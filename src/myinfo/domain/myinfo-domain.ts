@@ -839,13 +839,13 @@ declare namespace Components {
 				 * example:
 				 * Y
 				 */
-				code?: "Y" | "N";
+				code?: "Y" | "N" | "";
 				/**
 				 *
 				 * example:
 				 * Eligible
 				 */
-				desc?: "Eligible" | "Not Eligible";
+				desc?: "Eligible" | "Not Eligible" | "";
 			};
 			/**
 			 * Total Demerit Points
@@ -949,13 +949,13 @@ declare namespace Components {
 					 * example:
 					 * V
 					 */
-					code?: "V" | "E" | "I" | "N";
+					code?: "V" | "E" | "I" | "N" | "";
 					/**
 					 *
 					 * example:
 					 * Valid
 					 */
-					desc?: "Valid" | "Expired" | "Invalid" | "Not Holding PDL";
+					desc?: "Valid" | "Expired" | "Invalid" | "Not Holding PDL" | "";
 				};
 				/**
 				 * PDL Expiry Date
@@ -995,13 +995,13 @@ declare namespace Components {
 					 * example:
 					 * V
 					 */
-					code?: "V" | "E" | "I" | "N";
+					code?: "V" | "E" | "I" | "N" | "";
 					/**
 					 *
 					 * example:
 					 * validation
 					 */
-					desc?: "Valid" | "Expired" | "Invalid" | "Not Holding QDL";
+					desc?: "Valid" | "Expired" | "Invalid" | "Not Holding QDL" | "";
 				};
 				/**
 				 * QDL Expiry Date
@@ -1236,13 +1236,13 @@ declare namespace Components {
 				 * example:
 				 * 112
 				 */
-				code?: "111" | "112" | "113" | "114" | "115" | "116" | "118";
+				code?: "111" | "112" | "113" | "114" | "115" | "116" | "118" | "";
 				/**
 				 *
 				 * example:
 				 * 2-ROOM FLAT (HDB)
 				 */
-				desc?: "1-ROOM FLAT (HDB)" | "2-ROOM FLAT (HDB)" | "3-ROOM FLAT (HDB)" | "4-ROOM FLAT (HDB)" | "5-ROOM FLAT (HDB)" | "EXECUTIVE FLAT (HDB)" | "STUDIO APARTMENT (HDB)";
+				desc?: "1-ROOM FLAT (HDB)" | "2-ROOM FLAT (HDB)" | "3-ROOM FLAT (HDB)" | "4-ROOM FLAT (HDB)" | "5-ROOM FLAT (HDB)" | "EXECUTIVE FLAT (HDB)" | "STUDIO APARTMENT (HDB)" | "";
 			};
 			/**
 			 * Date from which the lease period starts. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
@@ -1489,13 +1489,13 @@ declare namespace Components {
 				 * example:
 				 * 112
 				 */
-				code?: "111" | "112" | "113" | "114" | "115" | "116" | "118";
+				code?: "111" | "112" | "113" | "114" | "115" | "116" | "118" | "";
 				/**
 				 *
 				 * example:
 				 * 2-ROOM FLAT (HDB)
 				 */
-				desc?: "1-ROOM FLAT (HDB)" | "2-ROOM FLAT (HDB)" | "3-ROOM FLAT (HDB)" | "4-ROOM FLAT (HDB)" | "5-ROOM FLAT (HDB)" | "EXECUTIVE FLAT (HDB)" | "STUDIO APARTMENT (HDB)";
+				desc?: "1-ROOM FLAT (HDB)" | "2-ROOM FLAT (HDB)" | "3-ROOM FLAT (HDB)" | "4-ROOM FLAT (HDB)" | "5-ROOM FLAT (HDB)" | "EXECUTIVE FLAT (HDB)" | "STUDIO APARTMENT (HDB)" | "";
 			};
 			/**
 			 * Date from which the lease period starts. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
@@ -1622,13 +1622,13 @@ declare namespace Components {
 			 * example:
 			 * 112
 			 */
-			code?: "111" | "112" | "113" | "114" | "115" | "116" | "118";
+			code?: "111" | "112" | "113" | "114" | "115" | "116" | "118" | "";
 			/**
 			 *
 			 * example:
 			 * 2-ROOM FLAT (HDB)
 			 */
-			desc?: "1-ROOM FLAT (HDB)" | "2-ROOM FLAT (HDB)" | "3-ROOM FLAT (HDB)" | "4-ROOM FLAT (HDB)" | "5-ROOM FLAT (HDB)" | "EXECUTIVE FLAT (HDB)" | "STUDIO APARTMENT (HDB)";
+			desc?: "1-ROOM FLAT (HDB)" | "2-ROOM FLAT (HDB)" | "3-ROOM FLAT (HDB)" | "4-ROOM FLAT (HDB)" | "5-ROOM FLAT (HDB)" | "EXECUTIVE FLAT (HDB)" | "STUDIO APARTMENT (HDB)" | "";
 		}
 		/**
 		 * HomeNo
@@ -1712,13 +1712,13 @@ declare namespace Components {
 			 * example:
 			 * 123
 			 */
-			code?: "121" | "122" | "123" | "131" | "132" | "139";
+			code?: "121" | "122" | "123" | "131" | "132" | "139" | "";
 			/**
 			 *
 			 * example:
 			 * TERRACE HOUSE
 			 */
-			desc?: "DETACHED HOUSE" | "SEMI-DETACHED HOUSE" | "TERRACE HOUSE" | "CONDOMINIUM" | "EXECUTIVE CONDOMINIUM" | "APARTMENT";
+			desc?: "DETACHED HOUSE" | "SEMI-DETACHED HOUSE" | "TERRACE HOUSE" | "CONDOMINIUM" | "EXECUTIVE CONDOMINIUM" | "APARTMENT" | "";
 		}
 		/**
 		 * JWTAccessToken
@@ -2993,13 +2993,13 @@ declare namespace Components {
 				 * example:
 				 * 123
 				 */
-				code?: "121" | "122" | "123" | "131" | "132" | "139";
+				code?: "121" | "122" | "123" | "131" | "132" | "139" | "";
 				/**
 				 *
 				 * example:
 				 * TERRACE HOUSE
 				 */
-				desc?: "DETACHED HOUSE" | "SEMI-DETACHED HOUSE" | "TERRACE HOUSE" | "CONDOMINIUM" | "EXECUTIVE CONDOMINIUM" | "APARTMENT";
+				desc?: "DETACHED HOUSE" | "SEMI-DETACHED HOUSE" | "TERRACE HOUSE" | "CONDOMINIUM" | "EXECUTIVE CONDOMINIUM" | "APARTMENT" | "";
 				/**
 				 * Data classification of data field. Default 'C' - Confidential.
 				 */
@@ -3051,13 +3051,13 @@ declare namespace Components {
 				 * example:
 				 * 112
 				 */
-				code?: "111" | "112" | "113" | "114" | "115" | "116" | "118";
+				code?: "111" | "112" | "113" | "114" | "115" | "116" | "118" | "";
 				/**
 				 *
 				 * example:
 				 * 2-ROOM FLAT (HDB)
 				 */
-				desc?: "1-ROOM FLAT (HDB)" | "2-ROOM FLAT (HDB)" | "3-ROOM FLAT (HDB)" | "4-ROOM FLAT (HDB)" | "5-ROOM FLAT (HDB)" | "EXECUTIVE FLAT (HDB)" | "STUDIO APARTMENT (HDB)";
+				desc?: "1-ROOM FLAT (HDB)" | "2-ROOM FLAT (HDB)" | "3-ROOM FLAT (HDB)" | "4-ROOM FLAT (HDB)" | "5-ROOM FLAT (HDB)" | "EXECUTIVE FLAT (HDB)" | "STUDIO APARTMENT (HDB)" | "";
 				/**
 				 * Data classification of data field. Default 'C' - Confidential.
 				 */
@@ -3199,13 +3199,13 @@ declare namespace Components {
 					 * example:
 					 * 112
 					 */
-					code?: "111" | "112" | "113" | "114" | "115" | "116" | "118";
+					code?: "111" | "112" | "113" | "114" | "115" | "116" | "118" | "";
 					/**
 					 *
 					 * example:
 					 * 2-ROOM FLAT (HDB)
 					 */
-					desc?: "1-ROOM FLAT (HDB)" | "2-ROOM FLAT (HDB)" | "3-ROOM FLAT (HDB)" | "4-ROOM FLAT (HDB)" | "5-ROOM FLAT (HDB)" | "EXECUTIVE FLAT (HDB)" | "STUDIO APARTMENT (HDB)";
+					desc?: "1-ROOM FLAT (HDB)" | "2-ROOM FLAT (HDB)" | "3-ROOM FLAT (HDB)" | "4-ROOM FLAT (HDB)" | "5-ROOM FLAT (HDB)" | "EXECUTIVE FLAT (HDB)" | "STUDIO APARTMENT (HDB)" | "";
 				};
 				/**
 				 * Date from which the lease period starts. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
@@ -4327,12 +4327,12 @@ declare namespace Components {
 				 * example:
 				 * 7
 				 */
-				code?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "N";
+				code?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "N" | "";
 				/**
 				 * example:
 				 * BACHELOR'S OR EQUIVALENT
 				 */
-				desc?: "NO FORMAL QUALIFICATION / PRE-PRIMARY / LOWER PRIMARY" | "PRIMARY" | "LOWER SECONDARY" | "SECONDARY" | "POST-SECONDARY (NON-TERTIARY): GENERAL & VOCATION" | "POLYTECHNIC DIPLOMA" | "PROFESSIONAL QUALIFICATION AND OTHER DIPLOMA" | "BACHELOR'S OR EQUIVALENT" | "POSTGRADUATE DIPLOMA / CERTIFICATE (EXCLUDING MASTER'S AND DOCTORATE)" | "MASTER'S AND DOCTORATE OR EQUIVALENT" | "MODULAR CERTIFICATION (NON-AWARD COURSES / NON-FULL QUALIFICATIONS)";
+				desc?: "NO FORMAL QUALIFICATION / PRE-PRIMARY / LOWER PRIMARY" | "PRIMARY" | "LOWER SECONDARY" | "SECONDARY" | "POST-SECONDARY (NON-TERTIARY): GENERAL & VOCATION" | "POLYTECHNIC DIPLOMA" | "PROFESSIONAL QUALIFICATION AND OTHER DIPLOMA" | "BACHELOR'S OR EQUIVALENT" | "POSTGRADUATE DIPLOMA / CERTIFICATE (EXCLUDING MASTER'S AND DOCTORATE)" | "MASTER'S AND DOCTORATE OR EQUIVALENT" | "MODULAR CERTIFICATION (NON-AWARD COURSES / NON-FULL QUALIFICATIONS)" | "";
 				/**
 				 * Data classification of data field. Default 'C' - Confidential.
 				 */
@@ -5673,13 +5673,13 @@ declare namespace Components {
 					 * example:
 					 * Y
 					 */
-					code?: "Y" | "N";
+					code?: "Y" | "N" | "";
 					/**
 					 *
 					 * example:
 					 * Eligible
 					 */
-					desc?: "Eligible" | "Not Eligible";
+					desc?: "Eligible" | "Not Eligible" | "";
 				};
 				/**
 				 * Total Demerit Points
@@ -5783,13 +5783,13 @@ declare namespace Components {
 						 * example:
 						 * V
 						 */
-						code?: "V" | "E" | "I" | "N";
+						code?: "V" | "E" | "I" | "N" | "";
 						/**
 						 *
 						 * example:
 						 * Valid
 						 */
-						desc?: "Valid" | "Expired" | "Invalid" | "Not Holding PDL";
+						desc?: "Valid" | "Expired" | "Invalid" | "Not Holding PDL" | "";
 					};
 					/**
 					 * PDL Expiry Date
@@ -5829,13 +5829,13 @@ declare namespace Components {
 						 * example:
 						 * V
 						 */
-						code?: "V" | "E" | "I" | "N";
+						code?: "V" | "E" | "I" | "N" | "";
 						/**
 						 *
 						 * example:
 						 * validation
 						 */
-						desc?: "Valid" | "Expired" | "Invalid" | "Not Holding QDL";
+						desc?: "Valid" | "Expired" | "Invalid" | "Not Holding QDL" | "";
 					};
 					/**
 					 * QDL Expiry Date
@@ -6794,13 +6794,13 @@ declare namespace Components {
 				 * example:
 				 * 123
 				 */
-				code?: "121" | "122" | "123" | "131" | "132" | "139";
+				code?: "121" | "122" | "123" | "131" | "132" | "139" | "";
 				/**
 				 *
 				 * example:
 				 * TERRACE HOUSE
 				 */
-				desc?: "DETACHED HOUSE" | "SEMI-DETACHED HOUSE" | "TERRACE HOUSE" | "CONDOMINIUM" | "EXECUTIVE CONDOMINIUM" | "APARTMENT";
+				desc?: "DETACHED HOUSE" | "SEMI-DETACHED HOUSE" | "TERRACE HOUSE" | "CONDOMINIUM" | "EXECUTIVE CONDOMINIUM" | "APARTMENT" | "";
 				/**
 				 * Data classification of data field. Default 'C' - Confidential.
 				 */
@@ -6852,13 +6852,13 @@ declare namespace Components {
 				 * example:
 				 * 112
 				 */
-				code?: "111" | "112" | "113" | "114" | "115" | "116" | "118";
+				code?: "111" | "112" | "113" | "114" | "115" | "116" | "118" | "";
 				/**
 				 *
 				 * example:
 				 * 2-ROOM FLAT (HDB)
 				 */
-				desc?: "1-ROOM FLAT (HDB)" | "2-ROOM FLAT (HDB)" | "3-ROOM FLAT (HDB)" | "4-ROOM FLAT (HDB)" | "5-ROOM FLAT (HDB)" | "EXECUTIVE FLAT (HDB)" | "STUDIO APARTMENT (HDB)";
+				desc?: "1-ROOM FLAT (HDB)" | "2-ROOM FLAT (HDB)" | "3-ROOM FLAT (HDB)" | "4-ROOM FLAT (HDB)" | "5-ROOM FLAT (HDB)" | "EXECUTIVE FLAT (HDB)" | "STUDIO APARTMENT (HDB)" | "";
 				/**
 				 * Data classification of data field. Default 'C' - Confidential.
 				 */
@@ -7001,13 +7001,13 @@ declare namespace Components {
 						 * example:
 						 * 112
 						 */
-						code?: "111" | "112" | "113" | "114" | "115" | "116" | "118";
+						code?: "111" | "112" | "113" | "114" | "115" | "116" | "118" | "";
 						/**
 						 *
 						 * example:
 						 * 2-ROOM FLAT (HDB)
 						 */
-						desc?: "1-ROOM FLAT (HDB)" | "2-ROOM FLAT (HDB)" | "3-ROOM FLAT (HDB)" | "4-ROOM FLAT (HDB)" | "5-ROOM FLAT (HDB)" | "EXECUTIVE FLAT (HDB)" | "STUDIO APARTMENT (HDB)";
+						desc?: "1-ROOM FLAT (HDB)" | "2-ROOM FLAT (HDB)" | "3-ROOM FLAT (HDB)" | "4-ROOM FLAT (HDB)" | "5-ROOM FLAT (HDB)" | "EXECUTIVE FLAT (HDB)" | "STUDIO APARTMENT (HDB)" | "";
 					};
 					/**
 					 * Date from which the lease period starts. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
@@ -8120,12 +8120,12 @@ declare namespace Components {
 				 * example:
 				 * 7
 				 */
-				code?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "N";
+				code?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "N" | "";
 				/**
 				 * example:
 				 * BACHELOR'S OR EQUIVALENT
 				 */
-				desc?: "NO FORMAL QUALIFICATION / PRE-PRIMARY / LOWER PRIMARY" | "PRIMARY" | "LOWER SECONDARY" | "SECONDARY" | "POST-SECONDARY (NON-TERTIARY): GENERAL & VOCATION" | "POLYTECHNIC DIPLOMA" | "PROFESSIONAL QUALIFICATION AND OTHER DIPLOMA" | "BACHELOR'S OR EQUIVALENT" | "POSTGRADUATE DIPLOMA / CERTIFICATE (EXCLUDING MASTER'S AND DOCTORATE)" | "MASTER'S AND DOCTORATE OR EQUIVALENT" | "MODULAR CERTIFICATION (NON-AWARD COURSES / NON-FULL QUALIFICATIONS)";
+				desc?: "NO FORMAL QUALIFICATION / PRE-PRIMARY / LOWER PRIMARY" | "PRIMARY" | "LOWER SECONDARY" | "SECONDARY" | "POST-SECONDARY (NON-TERTIARY): GENERAL & VOCATION" | "POLYTECHNIC DIPLOMA" | "PROFESSIONAL QUALIFICATION AND OTHER DIPLOMA" | "BACHELOR'S OR EQUIVALENT" | "POSTGRADUATE DIPLOMA / CERTIFICATE (EXCLUDING MASTER'S AND DOCTORATE)" | "MASTER'S AND DOCTORATE OR EQUIVALENT" | "MODULAR CERTIFICATION (NON-AWARD COURSES / NON-FULL QUALIFICATIONS)" | "";
 				/**
 				 * Data classification of data field. Default 'C' - Confidential.
 				 */
@@ -8627,7 +8627,7 @@ declare namespace Components {
 			 * example:
 			 * [object Object]
 			 */
-			vehicles?: {
+			vehicles?: Array<{
 				/**
 				 * Vehicle Registration Number displayed on the vehicle number plates
 				 */
@@ -9035,7 +9035,7 @@ declare namespace Components {
 				 *
 				 */
 				unavailable?: boolean;
-			};
+			}>;
 			/**
 			 * Driving Licence details of Person.
 			 *
@@ -9054,13 +9054,13 @@ declare namespace Components {
 					 * example:
 					 * Y
 					 */
-					code?: "Y" | "N";
+					code?: "Y" | "N" | "";
 					/**
 					 *
 					 * example:
 					 * Eligible
 					 */
-					desc?: "Eligible" | "Not Eligible";
+					desc?: "Eligible" | "Not Eligible" | "";
 				};
 				/**
 				 * Total Demerit Points
@@ -9164,13 +9164,13 @@ declare namespace Components {
 						 * example:
 						 * V
 						 */
-						code?: "V" | "E" | "I" | "N";
+						code?: "V" | "E" | "I" | "N" | "";
 						/**
 						 *
 						 * example:
 						 * Valid
 						 */
-						desc?: "Valid" | "Expired" | "Invalid" | "Not Holding PDL";
+						desc?: "Valid" | "Expired" | "Invalid" | "Not Holding PDL" | "";
 					};
 					/**
 					 * PDL Expiry Date
@@ -9210,13 +9210,13 @@ declare namespace Components {
 						 * example:
 						 * V
 						 */
-						code?: "V" | "E" | "I" | "N";
+						code?: "V" | "E" | "I" | "N" | "";
 						/**
 						 *
 						 * example:
 						 * validation
 						 */
-						desc?: "Valid" | "Expired" | "Invalid" | "Not Holding QDL";
+						desc?: "Valid" | "Expired" | "Invalid" | "Not Holding QDL" | "";
 					};
 					/**
 					 * QDL Expiry Date

@@ -257,12 +257,7 @@ export const mrAppReviewer: FakeProfile = {
 				"classification": "C",
 				"unavailable": true,
 			},
-			"vehicles": {
-				"lastupdated": "2018-06-01",
-				"source": "1",
-				"classification": "C",
-				"unavailable": true,
-			},
+			"vehicles": [],
 		};
 	},
 };

@@ -1,5 +1,13 @@
 # Changelogs
 
+## 3.2.18
+- updated person and personbasic with prod resemblance response
+- updated vehicles to array for personbasic (so that it is the same structure as person)
+- updated housingtype, hdbtype, comstatus with empty strings
+- updated base profile with updated personbasic interface
+- updated `mrSGFreshGradYoungParent`, `mrsPRHdbOwnerWorkingAdult`, `mrSGUncleRetiree`, `mrSGDaddyPerfect`, `mrAppReviewer` mock profiles
+- updated fake-helper with corrected response
+
 ## 3.2.16
 - added default lifestatus param to children mock data
 

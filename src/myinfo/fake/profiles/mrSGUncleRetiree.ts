@@ -62,15 +62,78 @@ export const mrSGUncleRetiree: FakeProfile = {
 			code: "121",
 			desc: "DETACHED HOUSE",
 		};
-		profile.hdbtype = null;
-		profile.drivinglicence = {
+		profile.hdbtype = {
 			lastupdated: "2020-01-01",
 			source: "1",
 			classification: "C",
+			code: "",
+			desc: "",
+		};
+		profile.drivinglicence = {
+			revocation: {
+				startdate: {
+					value: "",
+				},
+				enddate: {
+					value: "",
+				},
+			},
+			totaldemeritpoints: {
+				value: 0,
+			},
+			disqualification: {
+				startdate: {
+					value: "",
+				},
+				enddate: {
+					value: "",
+				},
+			},
 			qdl: {
+				expirydate: {
+					value: "",
+				},
 				validity: {
 					code: "V",
 					desc: "Valid",
+				},
+				classes: [
+					{
+						class: {
+							value: "3CA",
+						},
+						issuedate: {
+							value: "2017-12-31",
+						},
+					},
+				],
+			},
+			lastupdated: "2020-08-26",
+			pdl: {
+				expirydate: {
+					value: "",
+				},
+				validity: {
+					code: "",
+					desc: "",
+				},
+				classes: [],
+			},
+			source: "1",
+			classification: "C",
+			comstatus: {
+				code: "Y",
+				desc: "Eligible",
+			},
+			photocardserialno: {
+				value: "",
+			},
+			suspension: {
+				startdate: {
+					value: "",
+				},
+				enddate: {
+					value: "",
 				},
 			},
 		};
