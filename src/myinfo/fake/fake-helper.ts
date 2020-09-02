@@ -376,9 +376,11 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 function filterThroughMyInfoAttributes(person: PersonBasic, attributes: ReadonlyArray<string>): PersonBasic {
 	const [childrenRawCbrAttributes, childrenNormalAttributes] = partition(attributes, (value) => value.startsWith("childrenbirthrecords."));
 	const [sponsoredRawCbrAttributes, sponsoredNormalAttributes] = partition(attributes, (value) => value.startsWith("sponsoredchildrenrecords."));
+	const [vehiclesRawCbrAttributes, vehiclesNormalAttributes] = partition(attributes, (value) => value.startsWith("vehicles."));
 
 	const childrenFilteredPerson = filterThroughAttributes(person, childrenNormalAttributes);
 	const sponsoredFilteredPerson = filterThroughAttributes(person, sponsoredNormalAttributes);
+	const vehicleFilteredPerson = filterThroughAttributes(person, vehiclesNormalAttributes);
 
 	if (childrenRawCbrAttributes.length > 0) {
 		const childrenbirthrecordsAttributes = map(childrenRawCbrAttributes, (cbrAttribute) => cbrAttribute.split(".")[1]);
@@ -392,9 +394,16 @@ function filterThroughMyInfoAttributes(person: PersonBasic, attributes: Readonly
 		const filteredSponsoredChildrenbirthrecords = map(person.sponsoredchildrenrecords, (cbr) => filterThroughAttributes(cbr, sponsoredBirthrecordsAttributes));
 		set(sponsoredFilteredPerson, "sponsoredchildrenrecords", filteredSponsoredChildrenbirthrecords);
 	}
+	if (vehiclesRawCbrAttributes.length > 0) {
+		const vehicleBirthrecordsAttributes = map(vehiclesRawCbrAttributes, (cbrAttribute) => cbrAttribute.split(".")[1]);
+		// get filtered vehicles
+		const filteredVehicleChildrenbirthrecords = map(person.vehicles, (cbr) => filterThroughAttributes(cbr, vehicleBirthrecordsAttributes));
+		set(vehicleFilteredPerson, "vehicles", filteredVehicleChildrenbirthrecords);
+	}
 	return {
 		...childrenFilteredPerson,
 		...sponsoredFilteredPerson,
+		...vehicleFilteredPerson,
 	};
 }
 

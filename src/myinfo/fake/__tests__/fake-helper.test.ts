@@ -31,6 +31,7 @@ describe("FakeMyInfoHelper", () => {
 			expect(person).toHaveProperty("dob");
 			expect(person).toHaveProperty("name");
 			expect(person).toHaveProperty("secondaryrace");
+			expect(person).toHaveProperty("vehicles");
 		});
 		it("should filter with the attributes passed into constructor", () => {
 			const fakeHelper = new FakeMyInfoHelper(testAttributes);
@@ -42,6 +43,7 @@ describe("FakeMyInfoHelper", () => {
 			expect(person).toHaveProperty("marital");
 			expect(person).toHaveProperty("childrenbirthrecords");
 			expect(person).toHaveProperty("sponsoredchildrenrecords");
+			expect(person).toHaveProperty("vehicles");
 		});
 	});
 });
@@ -56,4 +58,5 @@ export const testAttributes: string[] = [
 	"childrenbirthrecords.name",
 	"sponsoredchildrenrecords.nric",
 	"sponsoredchildrenrecords.name",
+	"vehicles.status",
 ];

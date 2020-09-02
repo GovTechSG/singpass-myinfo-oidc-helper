@@ -1,4 +1,6 @@
 # Changelogs
+## 3.2.20
+- updated filterThroughMyInfoAttributes to include vehicle array
 
 ## 3.2.19
 - updated edulevel and residentialstatus typing with empty string
