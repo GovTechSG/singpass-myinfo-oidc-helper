@@ -1,4 +1,8 @@
 # Changelogs
+
+## 3.2.21
+- update child6YearsOld to use nric which is valid for immunisation records
+
 ## 3.2.20
 - updated filterThroughMyInfoAttributes to include vehicle array
 
