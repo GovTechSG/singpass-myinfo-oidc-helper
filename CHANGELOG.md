@@ -1,5 +1,8 @@
 # Changelogs
 
+## 3.2.22
+- remove http-status-codes lib
+
 ## 3.2.21
 - update child6YearsOld to use nric which is valid for immunisation records
 
