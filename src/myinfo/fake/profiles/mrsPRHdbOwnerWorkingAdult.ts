@@ -213,13 +213,6 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 				},
 			},
 		];
-		profile.edulevel = {
-			lastupdated: "2020-01-01",
-			source: "1",
-			classification: "C",
-			code: "7",
-			desc: "BACHELOR'S OR EQUIVALENT",
-		};
 		return profile;
 	},
 };

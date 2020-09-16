@@ -9,11 +9,11 @@ export const PersonBasicFactory = new Factory()
 	}))
 	.attrs({
 		"edulevel": {
-			"lastupdated": "2018-05-10",
-			"code": "8",
+			"lastupdated": "2020-09-10",
+			"code": "",
 			"source": "2",
 			"classification": "C",
-			"desc": "POSTGRADUATE DIPLOMA / CERTIFICATE (EXCLUDING MASTER'S AND DOCTORATE)",
+			"desc": "",
 		},
 		"dialect": {
 			"lastupdated": "2018-06-01",

@@ -172,11 +172,11 @@ export const mrAppReviewer: FakeProfile = {
 				"lastupdated": lastupdated,
 			},
 			"edulevel": {
-				"code": "8",
-				"desc": "POSTGRADUATE DIPLOMA / CERTIFICATE (EXCLUDING MASTER'S AND DOCTORATE)",
-				"source": source,
-				"classification": classification,
-				"lastupdated": lastupdated,
+				"lastupdated": "2020-09-10",
+				"code": "",
+				"source": "2",
+				"classification": "C",
+				"desc": "",
 			},
 			"occupation": {
 				"code": "11110",

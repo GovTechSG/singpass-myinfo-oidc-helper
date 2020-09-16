@@ -60,13 +60,6 @@ export const mrSGFreshGradYoungParent: FakeProfile = {
 			value: `${new Date().getFullYear() - 1}-02-10`,
 		};
 		profile.childrenbirthrecords = [ChildrenRecords.child1MonthOld];
-		profile.edulevel = {
-			lastupdated: "2020-01-01",
-			source: "1",
-			classification: "C",
-			code: "7",
-			desc: "BACHELOR'S OR EQUIVALENT",
-		};
 		return profile;
 	},
 };
