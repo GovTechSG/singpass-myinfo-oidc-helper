@@ -57,6 +57,14 @@ export const mrJapaneseNoAddressObject: FakeProfile = {
 			"value": "",
 		};
 
+		profile.occupation = {
+			"lastupdated": "2018-05-21",
+			"code": "11110",
+			"source": "2",
+			"classification": "C",
+			"desc": "LEGISLATOR",
+		};
+
 		return profile;
 	},
 };
