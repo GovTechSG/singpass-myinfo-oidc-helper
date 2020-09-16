@@ -27,6 +27,12 @@ export const mrMYDaddyPerfect: FakeProfile = {
 			"classification": "C",
 			"desc": "",
 		};
+		profile.marriagedate = {
+			"lastupdated": "2020-09-10",
+			"source": "2",
+			"classification": "C",
+			"value": "",
+		};
 
 		return profile;
 	},
