@@ -57,6 +57,14 @@ export const mrJapaneseAddressBlank: FakeProfile = {
 			"value": "1983-10-06",
 		};
 
+		profile.marital = {
+			"lastupdated": "2020-09-10",
+			"code": "",
+			"source": "2",
+			"classification": "C",
+			"desc": "",
+		};
+
 		return profile;
 	},
 };

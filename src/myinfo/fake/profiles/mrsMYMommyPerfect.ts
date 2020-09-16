@@ -26,6 +26,14 @@ export const mrsMYMommyPerfect: FakeProfile = {
 
 		profile.passportnumber.value = "A00000000";
 
+		profile.marital = {
+			"lastupdated": "2020-09-10",
+			"code": "",
+			"source": "2",
+			"classification": "C",
+			"desc": "",
+		};
+
 		return profile;
 	},
 };

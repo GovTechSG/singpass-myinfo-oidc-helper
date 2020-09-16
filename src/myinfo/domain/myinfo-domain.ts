@@ -7387,12 +7387,12 @@ declare namespace Components {
 				 * example:
 				 * 2
 				 */
-				code?: "1" | "2" | "3" | "5";
+				code?: "1" | "2" | "3" | "5" | "";
 				/**
 				 * example:
 				 * MARRIED
 				 */
-				desc?: "SINGLE" | "MARRIED" | "WIDOWED" | "DIVORCED";
+				desc?: "SINGLE" | "MARRIED" | "WIDOWED" | "DIVORCED" | "";
 				/**
 				 * Data classification of data field. Default 'C' - Confidential.
 				 */
