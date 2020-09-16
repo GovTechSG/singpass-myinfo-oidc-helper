@@ -179,11 +179,11 @@ export const mrAppReviewer: FakeProfile = {
 				"desc": "",
 			},
 			"occupation": {
-				"code": "11110",
-				"desc": "LEGISLATOR",
-				"source": source,
-				"classification": classification,
-				"lastupdated": lastupdated,
+				"lastupdated": "2020-09-10",
+				"code": "",
+				"source": "2",
+				"classification": "C",
+				"desc": "",
 			},
 			"merdekagen": {
 				"eligibility": {

@@ -23,11 +23,11 @@ export const PersonBasicFactory = new Factory()
 			"desc": "HOKKIEN",
 		},
 		"occupation": {
-			"lastupdated": "2018-05-21",
-			"code": "11110",
+			"lastupdated": "2020-09-10",
+			"code": "",
 			"source": "2",
 			"classification": "C",
-			"desc": "LEGISLATOR",
+			"desc": "",
 		},
 		"regadd": {
 			"country": {
