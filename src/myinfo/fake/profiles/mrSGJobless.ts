@@ -12,13 +12,6 @@ export const mrSGJobless: FakeProfile = {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
-		profile.occupation = {
-			"lastupdated": null,
-			"code": null,
-			"source": null,
-			"classification": null,
-			"desc": null,
-		};
 
 		return profile;
 	},

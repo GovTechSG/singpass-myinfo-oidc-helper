@@ -67,13 +67,6 @@ export const mrSGFreshGradYoungParent: FakeProfile = {
 			code: "7",
 			desc: "BACHELOR'S OR EQUIVALENT",
 		};
-		profile.occupation = {
-			lastupdated: "2020-01-01",
-			source: "1",
-			classification: "C",
-			code: "21441",
-			desc: "MECHANICAL_ENGINEER_GENERAL",
-		};
 		return profile;
 	},
 };

@@ -144,12 +144,6 @@ export const mrSGUncleRetiree: FakeProfile = {
 			code: "4",
 			desc: "POST-SECONDARY (NON-TERTIARY): GENERAL & VOCATION",
 		};
-		profile.occupation = {
-			lastupdated: "2020-01-01",
-			source: "1",
-			classification: "C",
-			unavailable: true,
-		};
 		return profile;
 	},
 };
