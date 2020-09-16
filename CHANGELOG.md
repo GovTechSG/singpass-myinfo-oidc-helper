@@ -1,5 +1,8 @@
 # Changelogs
 
+## 4.0.0
+- **[BREAKING]** Update mock profiles to match new deprecated myinfo fields
+
 ## 3.2.22
 - remove http-status-codes lib
 
