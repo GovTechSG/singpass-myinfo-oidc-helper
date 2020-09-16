@@ -17,7 +17,6 @@ const name = ProfileArchetype.MR_SG_UNCLE_RETIREE;
  * Driving License	Yes
  * Vehicle Ownership	No
  * Highest Education Level	4
- * Occupation None
  */
 export const mrSGUncleRetiree: FakeProfile = {
 	id,

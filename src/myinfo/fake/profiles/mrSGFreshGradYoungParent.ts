@@ -17,8 +17,6 @@ const name = ProfileArchetype.MR_SG_FRESH_GRAD_YOUNG_PARENT;
  * Type of Housing for Registered Address	null
  * Driving License	No
  * Vehicle Ownership	No
- * Highest Education Level	7
- * Occupation 21441, MECHANICAL_ENGINEER_GENERAL
  */
 export const mrSGFreshGradYoungParent: FakeProfile = {
 	id,

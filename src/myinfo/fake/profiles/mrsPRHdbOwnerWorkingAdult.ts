@@ -17,8 +17,6 @@ const name = ProfileArchetype.MRS_PR_HDB_OWNER_WORKING_ADULT_MID_CAREER_PMETS;
  * Type of Housing for Registered Address	null
  * Driving License	Yes
  * Vehicle Ownership	Yes
- * Highest Education Level	7
- * Occupation 21441, SOFTWARE_DEVELOPER
  */
 export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 	id,
