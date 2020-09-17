@@ -118,18 +118,18 @@ export const mrAppReviewer: FakeProfile = {
 				"lastupdated": lastupdated,
 			},
 			"homeno": {
+				"lastupdated": "2020-09-10",
+				"source": "2",
+				"classification": "C",
 				"areacode": {
-					"value": "65",
+					"value": "",
 				},
 				"prefix": {
-					"value": "+",
+					"value": "",
 				},
 				"nbr": {
-					"value": "69876543",
+					"value": "",
 				},
-				"source": source,
-				"classification": classification,
-				"lastupdated": lastupdated,
 			},
 			"mobileno": {
 				"areacode": {
