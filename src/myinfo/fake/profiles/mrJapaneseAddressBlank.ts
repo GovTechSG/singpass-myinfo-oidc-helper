@@ -80,6 +80,14 @@ export const mrJapaneseAddressBlank: FakeProfile = {
 			"desc": "LEGISLATOR",
 		};
 
+		profile.dialect = {
+			"lastupdated": "2020-09-10",
+			"code": "",
+			"source": "2",
+			"classification": "C",
+			"desc": "",
+		};
+
 		return profile;
 	},
 };
