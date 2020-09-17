@@ -19,7 +19,6 @@ export const mrMYDaddyPerfect: FakeProfile = {
 		profile.birthcountry.code = "MY";
 		profile.residentialstatus.code = "";
 		profile.residentialstatus.desc = "";
-		profile.passportnumber.value = "A00000000";
 		profile.marital = {
 			"lastupdated": "2020-09-10",
 			"code": "",
