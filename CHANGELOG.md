@@ -1,4 +1,7 @@
 # Changelogs
+## 4.1.0
+- updated mock profile to include drivinglicence
+- added default response fields for mock profile (lastupdated, source, classification)
 
 ## 4.0.0
 - **[BREAKING]** Update mock profiles to match new deprecated myinfo fields
