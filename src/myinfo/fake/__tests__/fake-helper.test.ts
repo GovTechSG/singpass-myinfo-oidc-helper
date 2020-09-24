@@ -33,17 +33,38 @@ describe("FakeMyInfoHelper", () => {
 			expect(person).toHaveProperty("secondaryrace");
 			expect(person).toHaveProperty("vehicles");
 		});
-		it("should filter with the attributes passed into constructor", () => {
+		it("should filter for parents with children", () => {
 			const fakeHelper = new FakeMyInfoHelper(testAttributes);
-			const person = fakeHelper.getPersonBasic({ archetype: ProfileArchetype.MR_SG_DADDY_CHILD_NONE });
+			const person = fakeHelper.getPersonBasic({ archetype: ProfileArchetype.MR_SG_DADDY_MANY_CHILDREN });
+			expect(person).toHaveProperty("sex");
+			expect(person).toHaveProperty("marriagedate");
+			expect(person).toHaveProperty("residentialstatus");
+			expect(person).toHaveProperty("passportnumber");
+			expect(person).toHaveProperty("marital");
+			expect(person.childrenbirthrecords[0]).toHaveProperty("birthcertno");
+			expect(person.childrenbirthrecords[0]).toHaveProperty("name");
+			expect(person.childrenbirthrecords[0]).toHaveProperty("lastupdated");
+			expect(person).toHaveProperty("sponsoredchildrenrecords");
+			expect(person).toHaveProperty("vehicles");
+			expect(person).toHaveProperty("drivinglicence.pdl.validity");
+			expect(person).toHaveProperty("drivinglicence.lastupdated");
+		});
+
+		it("should filter for parents with sponsor children", () => {
+			const fakeHelper = new FakeMyInfoHelper(testAttributes);
+			const person = fakeHelper.getPersonBasic({ archetype: ProfileArchetype.MR_SG_FATHER_ONLY_SPONSORED });
 			expect(person).toHaveProperty("sex");
 			expect(person).toHaveProperty("marriagedate");
 			expect(person).toHaveProperty("residentialstatus");
 			expect(person).toHaveProperty("passportnumber");
 			expect(person).toHaveProperty("marital");
 			expect(person).toHaveProperty("childrenbirthrecords");
-			expect(person).toHaveProperty("sponsoredchildrenrecords");
+			expect(person.sponsoredchildrenrecords[0]).toHaveProperty("nric");
+			expect(person.sponsoredchildrenrecords[0]).toHaveProperty("name");
+			expect(person.sponsoredchildrenrecords[0]).toHaveProperty("lastupdated");
 			expect(person).toHaveProperty("vehicles");
+			expect(person).toHaveProperty("drivinglicence.pdl.validity");
+			expect(person).toHaveProperty("drivinglicence.lastupdated");
 		});
 	});
 });
@@ -59,4 +80,6 @@ export const testAttributes: string[] = [
 	"sponsoredchildrenrecords.nric",
 	"sponsoredchildrenrecords.name",
 	"vehicles.status",
+	"drivinglicence.pdl.validity",
+	"drivinglicence.totaldemeritpoints",
 ];

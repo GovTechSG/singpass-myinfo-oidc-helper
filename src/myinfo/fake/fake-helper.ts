@@ -377,33 +377,55 @@ function filterThroughMyInfoAttributes(person: PersonBasic, attributes: Readonly
 	const [childrenRawCbrAttributes, childrenNormalAttributes] = partition(attributes, (value) => value.startsWith("childrenbirthrecords."));
 	const [sponsoredRawCbrAttributes, sponsoredNormalAttributes] = partition(attributes, (value) => value.startsWith("sponsoredchildrenrecords."));
 	const [vehiclesRawCbrAttributes, vehiclesNormalAttributes] = partition(attributes, (value) => value.startsWith("vehicles."));
+	const [drivinglicenceRawCbrAttributes] = partition(attributes, (value) => value.startsWith("drivinglicence."));
 
 	const childrenFilteredPerson = filterThroughAttributes(person, childrenNormalAttributes);
 	const sponsoredFilteredPerson = filterThroughAttributes(person, sponsoredNormalAttributes);
 	const vehicleFilteredPerson = filterThroughAttributes(person, vehiclesNormalAttributes);
+	let drivinglicenceFilteredPerson = {};
 
 	if (childrenRawCbrAttributes.length > 0) {
 		const childrenbirthrecordsAttributes = map(childrenRawCbrAttributes, (cbrAttribute) => cbrAttribute.split(".")[1]);
 		// get filtered childrenbirthrecords
-		const filteredChildrenbirthrecords = map(person.childrenbirthrecords, (cbr) => filterThroughAttributes(cbr, childrenbirthrecordsAttributes));
+		const filteredChildrenbirthrecords = map(person.childrenbirthrecords, (cbr) => {
+			const result = filterThroughAttributes(cbr, childrenbirthrecordsAttributes);
+			return { ...result, ...generateDefaultMockResponse() };
+		});
 		set(childrenFilteredPerson, "childrenbirthrecords", filteredChildrenbirthrecords);
 	}
 	if (sponsoredRawCbrAttributes.length > 0) {
 		const sponsoredBirthrecordsAttributes = map(sponsoredRawCbrAttributes, (cbrAttribute) => cbrAttribute.split(".")[1]);
 		// get filtered childrenbirthrecords
-		const filteredSponsoredChildrenbirthrecords = map(person.sponsoredchildrenrecords, (cbr) => filterThroughAttributes(cbr, sponsoredBirthrecordsAttributes));
+		const filteredSponsoredChildrenbirthrecords = map(person.sponsoredchildrenrecords, (cbr) => {
+			const result = filterThroughAttributes(cbr, sponsoredBirthrecordsAttributes);
+			return { ...result, ...generateDefaultMockResponse() };
+		});
 		set(sponsoredFilteredPerson, "sponsoredchildrenrecords", filteredSponsoredChildrenbirthrecords);
 	}
 	if (vehiclesRawCbrAttributes.length > 0) {
 		const vehicleBirthrecordsAttributes = map(vehiclesRawCbrAttributes, (cbrAttribute) => cbrAttribute.split(".")[1]);
 		// get filtered vehicles
-		const filteredVehicleChildrenbirthrecords = map(person.vehicles, (cbr) => filterThroughAttributes(cbr, vehicleBirthrecordsAttributes));
+		const filteredVehicleChildrenbirthrecords = map(person.vehicles, (cbr) => {
+			const result = filterThroughAttributes(cbr, vehicleBirthrecordsAttributes);
+			return { ...result, ...generateDefaultMockResponse() };
+		});
 		set(vehicleFilteredPerson, "vehicles", filteredVehicleChildrenbirthrecords);
+	}
+	if (drivinglicenceRawCbrAttributes.length > 0) {
+		// get filtered driving licences
+		const drivingLicence = filterThroughDeepAttributes(person, drivinglicenceRawCbrAttributes);
+		drivinglicenceFilteredPerson = {
+			drivinglicence: {
+				...drivingLicence["drivinglicence"],
+				...generateDefaultMockResponse(),
+			},
+		};
 	}
 	return {
 		...childrenFilteredPerson,
 		...sponsoredFilteredPerson,
 		...vehicleFilteredPerson,
+		...drivinglicenceFilteredPerson,
 	};
 }
 
@@ -421,4 +443,30 @@ function filterThroughAttributes(object: object, attributes: ReadonlyArray<strin
 		}
 		return accumulator;
 	}, {});
+}
+
+/**
+ * @description Checks for nested attribute paths, it only works for deep attributes objects with 3 layers e.g ['a.b.c']
+ * @param object fake person object
+ * @param attributes array of attributes to filter for, e.g ['drivinglicence.qdl.validity', 'drivinglicence.qdl.validity']
+ */
+function filterThroughDeepAttributes(object: object, attributes: ReadonlyArray<string>): object {
+	return attributes.reduce((acc, current) => {
+		const result = get(object, current);
+		const tmp = { ...acc };
+		set(tmp, current, result);
+		return tmp;
+	}, {});
+}
+
+
+/**
+ * @description Return a set of require fields event if the consent attributes are not requesting such keys
+ */
+function generateDefaultMockResponse(): object {
+	return {
+		lastupdated: "2020-09-10",
+		source: "1",
+		classification: "C",
+	};
 }
