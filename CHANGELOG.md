@@ -1,5 +1,8 @@
 # Changelogs
 
+## 4.2.1
+- Add empty string for remaining marital types
+
 ## 4.2.0
 
 - updated node-jose to v2.0.0, only compatible with node 10 and above
