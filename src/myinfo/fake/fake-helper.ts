@@ -12,7 +12,7 @@ export interface MockParams {
 	archetype: ProfileArchetype;
 	userdisplayname?: string;
 	// tslint:disable-next-line: max-union-size
-	marital?: "1" | "2" | "3" | "5";
+	marital?: "1" | "2" | "3" | "5" | "";
 	marriagedate?: string;
 	marriagecertno?: string;
 	countryofmarriage?: string;
