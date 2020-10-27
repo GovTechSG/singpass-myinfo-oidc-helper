@@ -46,6 +46,7 @@ import { mrAppReviewer } from "./mrAppReviewer";
 import { mrSGFreshGradYoungParent } from "./mrSGFreshGradYoungParent";
 import { mrsPRHdbOwnerWorkingAdult } from "./mrsPRHdbOwnerWorkingAdult";
 import { mrSGUncleRetiree } from "./mrSGUncleRetiree";
+import { mrSgTeenager17 } from "./mrSGTeenager17";
 
 /**
  * Exhaustive list of our MyInfo archetype profiles
@@ -99,4 +100,5 @@ export const profiles = [
 	mrSGFreshGradYoungParent,
 	mrsPRHdbOwnerWorkingAdult,
 	mrSGUncleRetiree,
+	mrSgTeenager17,
 ];

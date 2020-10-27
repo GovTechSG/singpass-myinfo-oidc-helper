@@ -5,7 +5,7 @@ import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 const id = "T0834325F";
 const name = ProfileArchetype.MR_SG_TEENAGER_17;
 
-export const mrSgTeenager: FakeProfile = {
+export const mrSgTeenager17: FakeProfile = {
 	id,
 	name,
 	// tslint:disable-next-line: no-big-function
