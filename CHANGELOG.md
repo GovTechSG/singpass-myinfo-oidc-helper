@@ -1,5 +1,8 @@
 # Changelogs
 
+## 4.2.2
+- added new mock profile aged 17
+
 ## 4.2.1
 - Add empty string for remaining marital types
 
