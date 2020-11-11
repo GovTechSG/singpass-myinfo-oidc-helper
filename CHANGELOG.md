@@ -1,5 +1,8 @@
 # Changelogs
 
+## 4.2.4
+- Updated `request` module to fix `ajv` lib vulnerability
+
 ## 4.2.3
 - export new mock profile aged 17
 
