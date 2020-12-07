@@ -1,5 +1,8 @@
 # Changelogs
 
+## 4.2.5
+- Reset child nric for testing
+
 ## 4.2.4
 - Updated `request` module to fix `ajv` lib vulnerability
 
