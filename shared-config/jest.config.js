@@ -12,7 +12,7 @@ exports.createBaseConfig = (config) => {
 			".(js|ts|jsx|tsx)$": "ts-jest",
 		},
 		testMatch: [
-			"<rootDir>/src/**/?(*.)(spec|unit|test).(js|ts)?(x)",
+			"<rootDir>/src/**/?(*.)+(spec|unit|test).[jt]s?(x)",
 		],
 		modulePaths: [
 			"src",
