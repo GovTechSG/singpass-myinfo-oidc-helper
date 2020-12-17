@@ -1,5 +1,10 @@
 # Changelogs
 
+## 4.2.6
+- Restore refreshSession for singpass-helper
+- Fix vulnerability 1598
+- Upgrade jest to 26
+
 ## 4.2.5
 - Reset child nric for testing
 
