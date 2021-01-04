@@ -84,7 +84,7 @@ export class OidcHelper {
 		const queryParams = {
 			state,
 			...(nonce ? { nonce } : {}),
-			...(this.redirectUri ? { redirect_uri: this.redirectUri } : {}),
+			redirect_uri: this.redirectUri,
 			scope: "openid",
 			client_id: this.clientID,
 			response_type: "code",
