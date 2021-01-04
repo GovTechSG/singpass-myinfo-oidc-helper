@@ -1,5 +1,8 @@
 # Changelogs
 
+## 4.2.7
+- Update constructAuthorizationUrl to set redirectUri if exist
+
 ## 4.2.6
 - Restore refreshSession for singpass-helper
 - Fix vulnerability 1598
