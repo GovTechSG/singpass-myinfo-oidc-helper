@@ -1,5 +1,8 @@
 # Changelogs
 
+## 4.2.8
+- Revert update constructAuthorizationUrl
+
 ## 4.2.7
 - Update constructAuthorizationUrl to set redirectUri if exist
 
