@@ -47,6 +47,8 @@ import { mrSGFreshGradYoungParent } from "./mrSGFreshGradYoungParent";
 import { mrsPRHdbOwnerWorkingAdult } from "./mrsPRHdbOwnerWorkingAdult";
 import { mrSGUncleRetiree } from "./mrSGUncleRetiree";
 import { mrSgTeenager17 } from "./mrSGTeenager17";
+import { mrSGValidPassport } from "./mrSGValidPassport";
+import { mrSGExpiredPassport } from "./mrSGExpiredPassport";
 
 /**
  * Exhaustive list of our MyInfo archetype profiles
@@ -56,6 +58,8 @@ export const profiles = [
 	mrSGFatherSponsoredChildrenOnly,
 	msSGMotherBothChildren,
 	mrSGDaddyPerfect,
+	mrSGValidPassport,
+	mrSGExpiredPassport,
 	mrsSGMommyPerfect,
 	mrSGNoLocalAddress,
 	mrPRNoLocalAddress,
