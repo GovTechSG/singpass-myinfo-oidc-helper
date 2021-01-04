@@ -26,6 +26,8 @@ export enum ProfileArchetype {
 	MR_SG_DADDY_MISSING_FIELDS = "Mr SG Daddy Missing Fields",
 	MR_SG_DADDY_MISSING_UNEDITABLE_FIELDS = "Mr SG Daddy Missing Uneditable Fields",
 	MR_SG_DADDY_PERFECT = "Mr SG Daddy Perfect",
+	MR_SG_VALID_PASSPORT = "Mr SG Valid Passport",
+	MR_SG_EXPIRED_PASSPORT = "Mr SG Expired Passport",
 	MR_SG_PRESCHOOL_CHILDREN = "Mr SG Preschool Children",
 	MRS_MY_MOMMY_PERFECT = "Mrs MY Mommy Perfect",
 	MRS_SG_MOMMY_PERFECT = "Mrs SG Mommy Perfect",

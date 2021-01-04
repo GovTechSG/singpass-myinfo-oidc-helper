@@ -3,7 +3,7 @@ import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 
 const id = "S8399420G";
-const name = ProfileArchetype.MR_SG_DADDY_PERFECT;
+const name = ProfileArchetype.MR_SG_EXPIRED_PASSPORT;
 
 export const mrSGExpiredPassport: FakeProfile = {
 	id,
