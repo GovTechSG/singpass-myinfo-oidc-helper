@@ -1,4 +1,6 @@
 # Changelogs
+## 4.2.9
+- Add tob & sex to child
 
 ## 4.2.8
 - Revert update constructAuthorizationUrl
