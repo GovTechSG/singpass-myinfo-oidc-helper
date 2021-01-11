@@ -75,11 +75,17 @@ export const BaseProfile: FakeProfile = {
 				classification: "C",
 				desc: "",
 			},
-			passportexpirydate: {
-				lastupdated: "",
+			passportnumber: {
+				lastupdated: "2021-01-01",
 				source: "1",
 				classification: "C",
-				value: "",
+				value: "L3280033",
+			},
+			passportexpirydate: {
+				lastupdated: "2021-01-01",
+				source: "1",
+				classification: "C",
+				value: "2030-09-10",
 			},
 			divorcedate: {
 				lastupdated: "",
@@ -177,12 +183,6 @@ export const BaseProfile: FakeProfile = {
 				source: "1",
 				classification: "C",
 				desc: "Citizen",
-			},
-			passportnumber: {
-				lastupdated: "",
-				source: "1",
-				classification: "C",
-				value: "",
 			},
 			marital: {
 				lastupdated: "2018-05-10",

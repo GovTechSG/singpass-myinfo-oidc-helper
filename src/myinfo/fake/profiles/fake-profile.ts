@@ -17,7 +17,7 @@ export enum ProfileArchetype {
 	MR_SG_FATHER_NORMAL_CHILDREN = "Mr SG Father with only normal children",
 	MS_SG_MOTHER_HAVING_BOTH_CHILDREN = "Ms SG Mother having normal and sponsored children",
 	// Regular Profiles
-	MR_PR_DADDY_ONE_CHILD = "Mr PR Daddy with One Child",
+	MR_PR_DADDY_ONE_CHILD = "Mr PR Daddy with One Child and Expired Passport",
 	MR_PR_DADDY_PERFECT = "Mr PR Daddy Perfect",
 	MR_SG_DADDY_CHILD_IS_OLD = "Mr SG with 1 old child",
 	MR_SG_DADDY_CHILD_NONE = "Mr SG with no children",
@@ -26,8 +26,6 @@ export enum ProfileArchetype {
 	MR_SG_DADDY_MISSING_FIELDS = "Mr SG Daddy Missing Fields",
 	MR_SG_DADDY_MISSING_UNEDITABLE_FIELDS = "Mr SG Daddy Missing Uneditable Fields",
 	MR_SG_DADDY_PERFECT = "Mr SG Daddy Perfect",
-	MR_SG_VALID_PASSPORT = "Mr SG Valid Passport",
-	MR_SG_EXPIRED_PASSPORT = "Mr SG Expired Passport",
 	MR_SG_PRESCHOOL_CHILDREN = "Mr SG Preschool Children",
 	MRS_MY_MOMMY_PERFECT = "Mrs MY Mommy Perfect",
 	MRS_SG_MOMMY_PERFECT = "Mrs SG Mommy Perfect",

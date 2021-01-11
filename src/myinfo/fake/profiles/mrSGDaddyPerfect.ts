@@ -77,10 +77,10 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				},
 			},
 			"passportexpirydate": {
-				"lastupdated": "",
+				"lastupdated": "2021-01-01",
 				"source": "1",
 				"classification": "C",
-				"value": "",
+				"value": "2030-09-10",
 			},
 			"divorcedate": {
 				"lastupdated": "",
@@ -194,10 +194,10 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"desc": "Citizen",
 			},
 			"passportnumber": {
-				"lastupdated": "",
+				"lastupdated": "2021-01-01",
 				"source": "1",
 				"classification": "C",
-				"value": "",
+				"value": "L3280033",
 			},
 			"marital": {
 				"lastupdated": "2018-05-10",

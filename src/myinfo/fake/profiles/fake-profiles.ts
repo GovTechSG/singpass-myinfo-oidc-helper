@@ -10,7 +10,7 @@ import { mrGstvUncle3 } from "./mrGSTVUncleScenario3";
 import { mrGstvUncle4 } from "./mrGSTVUncleScenario4";
 import { mrMYDaddyPerfect } from "./mrMYDaddyPerfect";
 import { mrMYDadJobless } from "./mrMYDadJobless";
-import { mrPRDaddyOneChild } from "./mrPRDaddyOneChild";
+import { mrPRDaddyOneChildAndExpiredPassport } from "./mrPRDaddyOneChildAndExpiredPassport";
 import { mrPRDaddyPerfect } from "./mrPRDaddyPerfect";
 import { mrPRJobless } from "./mrPRJobless";
 import { mrSGDaddyChildIsOld } from "./mrSGDaddyChildIsOld";
@@ -47,8 +47,6 @@ import { mrSGFreshGradYoungParent } from "./mrSGFreshGradYoungParent";
 import { mrsPRHdbOwnerWorkingAdult } from "./mrsPRHdbOwnerWorkingAdult";
 import { mrSGUncleRetiree } from "./mrSGUncleRetiree";
 import { mrSgTeenager17 } from "./mrSGTeenager17";
-import { mrSGValidPassport } from "./mrSGValidPassport";
-import { mrSGExpiredPassport } from "./mrSGExpiredPassport";
 
 /**
  * Exhaustive list of our MyInfo archetype profiles
@@ -58,8 +56,6 @@ export const profiles = [
 	mrSGFatherSponsoredChildrenOnly,
 	msSGMotherBothChildren,
 	mrSGDaddyPerfect,
-	mrSGValidPassport,
-	mrSGExpiredPassport,
 	mrsSGMommyPerfect,
 	mrSGNoLocalAddress,
 	mrPRNoLocalAddress,
@@ -68,7 +64,7 @@ export const profiles = [
 	mrPRDaddyPerfect,
 	mrsMYMommyPerfect,
 	mrSGDaddyChildNone,
-	mrPRDaddyOneChild,
+	mrPRDaddyOneChildAndExpiredPassport,
 	mrSGDaddyChildIsOld,
 	mrSGDaddyManyChildren,
 	mrPreschoolRegister,
