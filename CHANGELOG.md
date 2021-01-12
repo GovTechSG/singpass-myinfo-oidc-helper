@@ -1,4 +1,6 @@
 # Changelogs
+## 4.2.11
+- Update profile to have default passportNumber and passport expiryDate
 
 ## 4.2.10
 - Add tob & sex to child
