@@ -1,4 +1,7 @@
 # Changelogs
+
+## 4.2.12
+- Add pioneergen property in myinfo-domain
 ## 4.2.11
 - Update profile to have default passportNumber and passport expiryDate
 
