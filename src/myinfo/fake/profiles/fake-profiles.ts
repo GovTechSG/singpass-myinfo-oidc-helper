@@ -30,7 +30,7 @@ import { mrSGUncleMgNeedMedisave } from "./mrSGUncleMgNeedMedisave";
 import { mrSGUncleMgNilStatus } from "./mrSGUncleMgNilStatus";
 import { mrSGUncleNonBenefits } from "./mrSGUncleNonBenefits";
 import { mrSGUncleNonMg } from "./mrSGUncleNonMg";
-import { mrSGUncleOptOut } from "./mrSGUncleOptOut";
+import { mrSGUncleMgOptOut } from "./mrSGUncleMgOptOut";
 import { mrsMYMomJobless } from "./mrsMYMomJobless";
 import { mrsMYMommyPerfect } from "./mrsMYMommyPerfect";
 import { mrsSGMommyPerfect } from "./mrsSGMommyPerfect";
@@ -47,6 +47,13 @@ import { mrSGFreshGradYoungParent } from "./mrSGFreshGradYoungParent";
 import { mrsPRHdbOwnerWorkingAdult } from "./mrsPRHdbOwnerWorkingAdult";
 import { mrSGUncleRetiree } from "./mrSGUncleRetiree";
 import { mrSgTeenager17 } from "./mrSGTeenager17";
+import { mrSGUnclePgAllOk } from "./mrSGUnclePgAllOk";
+import { mrSGUnclePgCallReceive } from "./mrSGUnclePgCallReceive";
+import { mrSGUnclePgNeedAddress } from "./mrSGUnclePgNeedAddress";
+import { mrSGUnclePgNeedMedisave } from "./mrSGUnclePgNeedMedisave";
+import { mrSGUnclePgNilStatus } from "./mrSGUnclePgNilStatus";
+import { mrSGUnclePgOptOut } from "./mrSGUnclePgOptOut";
+import { mrSGUncleNonPg } from "./mrSGUncleNonPg";
 
 /**
  * Exhaustive list of our MyInfo archetype profiles
@@ -77,8 +84,15 @@ export const profiles = [
 	mrSGUncleMgAllOk,
 	mrSGUncleMgNeedMedisave,
 	mrSGUncleMgCallReceive,
-	mrSGUncleOptOut,
+	mrSGUncleMgOptOut,
 	mrSGUncleMgNilStatus,
+	mrSGUnclePgNeedAddress,
+	mrSGUncleNonPg,
+	mrSGUnclePgAllOk,
+	mrSGUnclePgNeedMedisave,
+	mrSGUnclePgCallReceive,
+	mrSGUnclePgOptOut,
+	mrSGUnclePgNilStatus,
 	mrSGUncleNonBenefits,
 	mrGstvUncle1a,
 	mrGstvUncle1a2,

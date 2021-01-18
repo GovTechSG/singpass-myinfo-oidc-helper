@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import { FakeProfile, ProfileArchetype } from "../fake-profile";
+import { FakeProfile } from "../fake-profile";
 import { myInfoDomain } from "../../../domain";
 
 const id = "S8399420G";
@@ -112,6 +112,21 @@ export const BaseProfile: FakeProfile = {
 				message: {
 					code: "2",
 					desc: "You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888.",
+				},
+			},
+			pioneergen: {
+				eligibility: {
+					value: false,
+				},
+				lastupdated: "2021-01-15",
+				quantum: {
+					value: 200,
+				},
+				source: "1",
+				classification: "C",
+				message: {
+					code: "1",
+					desc: "We regret that you are not eligible for the Pioneer Generation Package.  For further enquiries, please contact 1800-2222-888.",
 				},
 			},
 			gstvoucher: {
