@@ -15,6 +15,7 @@ describe("FakeMyInfoHelper", () => {
 			expect(person).toHaveProperty("divorcedate");
 			expect(person).toHaveProperty("marriagecertno");
 			expect(person).toHaveProperty("merdekagen");
+			expect(person).toHaveProperty("pioneergen");
 			expect(person).toHaveProperty("gstvoucher");
 			expect(person).toHaveProperty("email");
 			expect(person).toHaveProperty("birthcountry");
