@@ -5945,7 +5945,7 @@ declare namespace Components {
 				};
 				lastupdated: string; // date
 				quantum: {
-					value: number,
+					value: string,
 				},
 				source: "1" | "2" | "3" | "4";
 				classification: "C";
@@ -9354,13 +9354,17 @@ declare namespace Components {
 					"Please contact 1800-2222-888 for further details on your eligibility.",
 				},
 			};
+
+			/**
+			 * FIXME: Appended manually as these aren't published in the specs
+			 */
 			pioneergen?: {
 				eligibility: {
 					value: boolean;
 				};
 				lastupdated: string; // date
 				quantum: {
-					value: number,
+					value: string,
 				},
 				source: "1" | "2" | "3" | "4";
 				classification: "C";
