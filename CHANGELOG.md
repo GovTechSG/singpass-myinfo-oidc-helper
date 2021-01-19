@@ -1,5 +1,7 @@
 # Changelogs
 
+## 4.2.15
+- Update fake profiles
 ## 4.2.14
 - Change pioneergen quantum from number to string in myinfo-domain
 ## 4.2.13

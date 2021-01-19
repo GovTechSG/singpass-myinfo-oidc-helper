@@ -115,7 +115,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				},
 				"lastupdated": "2021-01-15",
 				"quantum": {
-					"value": 0,
+					"value": "0.00",
 				},
 				"source": "1",
 				"classification": "C",

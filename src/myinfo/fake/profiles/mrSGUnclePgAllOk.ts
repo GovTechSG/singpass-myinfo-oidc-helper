@@ -16,7 +16,7 @@ export const mrSGUnclePgAllOk: FakeProfile = {
 		profile.pioneergen.message.code = "2";
 		profile.pioneergen.message.desc = "You are eligible for the Pioneer Generation Package. For further enquiries, please contact 1800-2222-888.";
 		profile.pioneergen.eligibility.value = true;
-		profile.pioneergen.quantum.value = 200;
+		profile.pioneergen.quantum.value = "200.00";
 		profile.dob = {
 			lastupdated: "2021-01-01",
 			source: "1",

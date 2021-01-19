@@ -120,7 +120,7 @@ export const BaseProfile: FakeProfile = {
 				},
 				lastupdated: "2021-01-15",
 				quantum: {
-					value: 200,
+					value: "200.00",
 				},
 				source: "1",
 				classification: "C",
