@@ -1,4 +1,6 @@
 # Changelogs
+## 4.2.16
+- Update merdekagen and pioneergen eligibility values when dob is given during login
 
 ## 4.2.15
 - Update fake profiles

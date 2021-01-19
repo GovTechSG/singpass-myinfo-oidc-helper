@@ -91,8 +91,16 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 
 		if (!isEmpty(mockParams.dob)) {
 			myinfoPerson.dob.value = mockParams.dob;
-			const age = new Date().getFullYear() - new Date(myinfoPerson.dob.value).getFullYear();
-			myinfoPerson.merdekagen.eligibility.value = (age >= 60);
+			const birthYear = new Date(myinfoPerson.dob.value).getFullYear();
+			if (birthYear <= 1949) {
+				// pioneergen
+				myinfoPerson.merdekagen.eligibility.value = false;
+				myinfoPerson.pioneergen.eligibility.value = true;
+			} else if (birthYear > 1949 && birthYear <= 1959) {
+				// merdekagen
+				myinfoPerson.merdekagen.eligibility.value = true;
+				myinfoPerson.pioneergen.eligibility.value = false;
+			}
 		}
 
 		if (!isEmpty(mockParams.gstvyear)) {
