@@ -1,4 +1,7 @@
 # Changelogs
+## 4.2.17
+- Update pioneergen quantum value when dob is given during login
+
 ## 4.2.16
 - Update merdekagen and pioneergen eligibility values when dob is given during login
 
