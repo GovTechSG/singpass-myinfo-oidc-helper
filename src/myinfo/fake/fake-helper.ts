@@ -98,9 +98,9 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 				myinfoPerson.pioneergen.eligibility.value = true;
 				if (birthYear >= 1945) {
 					myinfoPerson.pioneergen.quantum.value = "200.00";
-				} else if (birthYear >= 1940 && birthYear < 1945) {
+				} else if (birthYear >= 1940) {
 					myinfoPerson.pioneergen.quantum.value = "400.00";
-				} else if (birthYear >= 1935 && birthYear < 1940) {
+				} else if (birthYear >= 1935) {
 					myinfoPerson.pioneergen.quantum.value = "600.00";
 				} else {
 					myinfoPerson.pioneergen.quantum.value = "800.00";

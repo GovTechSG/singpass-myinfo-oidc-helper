@@ -1,4 +1,6 @@
 # Changelogs
+## 4.2.18
+- minor changes in pioneergen quantum value when dob is given during login
 ## 4.2.17
 - Update pioneergen quantum value when dob is given during login
 
