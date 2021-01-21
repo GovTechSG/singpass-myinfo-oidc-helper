@@ -1,6 +1,11 @@
 # Changelogs
+
+## 4.2.19
+- add divorcedate in fake-helper
+
 ## 4.2.18
 - minor changes in pioneergen quantum value when dob is given during login
+
 ## 4.2.17
 - Update pioneergen quantum value when dob is given during login
 
@@ -8,7 +13,8 @@
 - Update merdekagen and pioneergen eligibility values when dob is given during login
 
 ## 4.2.15
-- Update fake profiles
+- Update fake profiles quantum value
+
 ## 4.2.14
 - Change pioneergen quantum from number to string in myinfo-domain
 ## 4.2.13

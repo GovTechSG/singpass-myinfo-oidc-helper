@@ -14,6 +14,7 @@ export interface MockParams {
 	// tslint:disable-next-line: max-union-size
 	marital?: "1" | "2" | "3" | "5" | "";
 	marriagedate?: string;
+	divorcedate?: string;
 	marriagecertno?: string;
 	countryofmarriage?: string;
 	// tslint:disable-next-line: max-union-size
@@ -78,6 +79,10 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 
 		if (!isEmpty(mockParams.marriagedate)) {
 			myinfoPerson.marriagedate.value = mockParams.marriagedate;
+		}
+
+		if (!isEmpty(mockParams.divorcedate)) {
+			myinfoPerson.divorcedate.value = mockParams.divorcedate;
 		}
 
 		if (!isEmpty(mockParams.marriagecertno)) {
