@@ -8,6 +8,12 @@ enum GVS {
 	false = "false",
 }
 
+enum ChildrenOverrideMode {
+	partial = "partial",
+	full = "full",
+	appendToExisting = "append",
+}
+
 export interface MockParams {
 	archetype: ProfileArchetype;
 	userdisplayname?: string;
@@ -17,6 +23,15 @@ export interface MockParams {
 	divorcedate?: string;
 	marriagecertno?: string;
 	countryofmarriage?: string;
+	childrenbirthrecords?: Array<{
+		birthcertno: string;
+		name?: string;
+		dob?: string;
+		tob?: string;
+		sex?: string;
+		lifestatus?: string;
+	}>;
+	childrenoverridemode?: ChildrenOverrideMode;
 	// tslint:disable-next-line: max-union-size
 	residentialstatus?: "A" | "C" | "P" | "U" | "N";
 	occupation?: string;
@@ -378,6 +393,39 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		}
 		if (!isEmpty(mockParams.userdisplayname)) {
 			myinfoPerson.name.value = mockParams.userdisplayname;
+		}
+
+		if (!isEmpty(mockParams.childrenbirthrecords)) {
+			// transform
+			const childrenBirthRecords = mockParams.childrenbirthrecords.map((childBirthRecords, index) => {
+				return {
+					birthcertno: { value: childBirthRecords.birthcertno },
+					name: { value: childBirthRecords.name ?? `nameless child ${index + 1}` },
+					sex: { code: childBirthRecords.sex.charAt(0), desc: childBirthRecords.sex },
+					lifestatus: { code: childBirthRecords.lifestatus.charAt(0), desc: childBirthRecords.lifestatus },
+					dob: { value: isNaN(Date.parse(childBirthRecords.dob)) ? "2020-01-01" : childBirthRecords.dob },
+					tob: { value: childBirthRecords.tob ?? "0000" },
+				} as myInfoDomain.Components.Schemas.Childrenbirthrecords;
+			});
+
+			switch (mockParams.childrenoverridemode) {
+				case ChildrenOverrideMode.appendToExisting:
+					myinfoPerson.childrenbirthrecords = [...myinfoPerson.childrenbirthrecords, ...childrenBirthRecords];
+					break;
+
+				case ChildrenOverrideMode.partial:
+					if (childrenBirthRecords.length < myinfoPerson.childrenbirthrecords.length) {
+						childrenBirthRecords.forEach((childBirthRecord, index) => {
+							myinfoPerson.childrenbirthrecords[index] = childBirthRecord;
+						});
+					} else {
+						myinfoPerson.childrenbirthrecords = childrenBirthRecords;
+					}
+					break;
+				case ChildrenOverrideMode.full:
+					myinfoPerson.childrenbirthrecords = childrenBirthRecords;
+					break;
+			}
 		}
 
 		if (!this.attributes) {
