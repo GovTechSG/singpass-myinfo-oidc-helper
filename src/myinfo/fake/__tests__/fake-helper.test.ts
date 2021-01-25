@@ -1,5 +1,7 @@
-import { FakeMyInfoHelper } from "../fake-helper";
+import { ChildrenOverrideMode, FakeMyInfoHelper, transformChildBirthRecord } from "../fake-helper";
 import { ProfileArchetype } from "../profiles/fake-profile";
+import { myInfoDomain } from "../../domain";
+import { mrSGDaddyPerfect } from "../profiles/mrSGDaddyPerfect";
 
 describe("FakeMyInfoHelper", () => {
 	describe("getPersonBasic", () => {
@@ -34,6 +36,7 @@ describe("FakeMyInfoHelper", () => {
 			expect(person).toHaveProperty("secondaryrace");
 			expect(person).toHaveProperty("vehicles");
 		});
+
 		it("should filter for parents with children", () => {
 			const fakeHelper = new FakeMyInfoHelper(testAttributes);
 			const person = fakeHelper.getPersonBasic({ archetype: ProfileArchetype.MR_SG_DADDY_MANY_CHILDREN });
@@ -66,6 +69,121 @@ describe("FakeMyInfoHelper", () => {
 			expect(person).toHaveProperty("vehicles");
 			expect(person).toHaveProperty("drivinglicence.pdl.validity");
 			expect(person).toHaveProperty("drivinglicence.lastupdated");
+		});
+
+		describe("childrenbirthrecords", () => {
+			const mockChildrenbirthrecords = [
+				{
+					birthcertno: "T8298488E",
+					name: "",
+					dob: "",
+					tob: "",
+					sex: "Female",
+					lifestatus: "ALIVE",
+				},
+				{
+					birthcertno: "S9846203A",
+					name: "",
+					dob: "",
+					tob: "",
+					sex: "Female",
+					lifestatus: "ALIVE",
+				},
+			];
+
+			describe("childrenoverridemode = full", () => {
+				it("should override all exisiting children of archetype if childrenbirthrecords is NOT empty", () => {
+					const fakeHelper = new FakeMyInfoHelper();
+
+					const person = fakeHelper.getPersonBasic({
+						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
+						childrenoverridemode: ChildrenOverrideMode.full,
+						childrenbirthrecords: mockChildrenbirthrecords,
+					});
+
+					expect(person.childrenbirthrecords).toStrictEqual(mockChildrenbirthrecords.map(transformChildBirthRecord));
+				});
+
+				it("should NOT override all exisiting children of archetype if childrenbirthrecords is empty", () => {
+					const fakeHelper = new FakeMyInfoHelper();
+
+					const childrenbirthrecords = [];
+
+					const person = fakeHelper.getPersonBasic({
+						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
+						childrenoverridemode: ChildrenOverrideMode.full,
+						childrenbirthrecords,
+					});
+
+					expect(person.childrenbirthrecords).toStrictEqual(mrSGDaddyPerfect.generate().childrenbirthrecords);
+				});
+			});
+
+			describe("childrenoverridemode = partial", () => {
+				it("should override only the first two children of archetype if there are two children childrenbirthrecords", () => {
+					const fakeHelper = new FakeMyInfoHelper();
+
+					const person = fakeHelper.getPersonBasic({
+						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
+						childrenoverridemode: ChildrenOverrideMode.partial,
+						childrenbirthrecords: mockChildrenbirthrecords,
+					});
+
+					const mrSGDaddyPerfectChildren = mrSGDaddyPerfect.generate().childrenbirthrecords;
+
+					expect(person.childrenbirthrecords).toStrictEqual([
+						...mockChildrenbirthrecords.map(transformChildBirthRecord),
+						...mrSGDaddyPerfectChildren.slice(mockChildrenbirthrecords.length, mrSGDaddyPerfectChildren.length),
+					]);
+				});
+
+				it("should NOT override any of the exisiting children of archetype if childrenbirthrecords is empty", () => {
+					const fakeHelper = new FakeMyInfoHelper();
+
+					const childrenbirthrecords = [];
+
+					const person = fakeHelper.getPersonBasic({
+						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
+						childrenoverridemode: ChildrenOverrideMode.partial,
+						childrenbirthrecords,
+					});
+
+					expect(person.childrenbirthrecords).toStrictEqual(mrSGDaddyPerfect.generate().childrenbirthrecords);
+				});
+			});
+
+			describe("childrenoverridemode = appendToExisting", () => {
+				it("should append to the existing children of archetype", () => {
+					const fakeHelper = new FakeMyInfoHelper();
+
+					const person = fakeHelper.getPersonBasic({
+						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
+						childrenoverridemode: ChildrenOverrideMode.appendToExisting,
+						childrenbirthrecords: mockChildrenbirthrecords,
+					});
+
+					const mrSGDaddyPerfectChildren = mrSGDaddyPerfect.generate().childrenbirthrecords;
+
+					expect(person.childrenbirthrecords).toStrictEqual([
+						...mrSGDaddyPerfectChildren,
+						...mockChildrenbirthrecords.map(transformChildBirthRecord),
+					]);
+				});
+
+				it("should NOT append to the exisiting children of archetype if childrenbirthrecords is empty", () => {
+					const fakeHelper = new FakeMyInfoHelper();
+
+					const childrenbirthrecords = [];
+
+					const person = fakeHelper.getPersonBasic({
+						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
+						childrenoverridemode: ChildrenOverrideMode.appendToExisting,
+						childrenbirthrecords,
+					});
+
+					expect(person.childrenbirthrecords).toStrictEqual(mrSGDaddyPerfect.generate().childrenbirthrecords);
+				});
+			});
 		});
 	});
 });

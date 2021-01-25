@@ -396,7 +396,6 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		}
 
 		if (!isEmpty(mockParams.childrenbirthrecords)) {
-			// transform
 			const childrenBirthRecords = mockParams.childrenbirthrecords.map(transformChildBirthRecord);
 
 			switch (mockParams.childrenoverridemode) {
