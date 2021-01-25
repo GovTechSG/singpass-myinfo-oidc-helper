@@ -8,12 +8,19 @@ enum GVS {
 	false = "false",
 }
 
-enum ChildrenOverrideMode {
+export enum ChildrenOverrideMode {
 	partial = "partial",
 	full = "full",
 	appendToExisting = "append",
 }
-
+export interface ChildrenBirthRecord {
+	birthcertno: string;
+	name?: string;
+	dob?: string;
+	tob?: string;
+	sex?: string;
+	lifestatus?: string;
+}
 export interface MockParams {
 	archetype: ProfileArchetype;
 	userdisplayname?: string;
@@ -23,14 +30,7 @@ export interface MockParams {
 	divorcedate?: string;
 	marriagecertno?: string;
 	countryofmarriage?: string;
-	childrenbirthrecords?: Array<{
-		birthcertno: string;
-		name?: string;
-		dob?: string;
-		tob?: string;
-		sex?: string;
-		lifestatus?: string;
-	}>;
+	childrenbirthrecords?: ChildrenBirthRecord[];
 	childrenoverridemode?: ChildrenOverrideMode;
 	// tslint:disable-next-line: max-union-size
 	residentialstatus?: "A" | "C" | "P" | "U" | "N";
@@ -397,16 +397,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 
 		if (!isEmpty(mockParams.childrenbirthrecords)) {
 			// transform
-			const childrenBirthRecords = mockParams.childrenbirthrecords.map((childBirthRecords, index) => {
-				return {
-					birthcertno: { value: childBirthRecords.birthcertno },
-					name: { value: childBirthRecords.name ?? `nameless child ${index + 1}` },
-					sex: { code: childBirthRecords.sex.charAt(0), desc: childBirthRecords.sex },
-					lifestatus: { code: childBirthRecords.lifestatus.charAt(0), desc: childBirthRecords.lifestatus },
-					dob: { value: isNaN(Date.parse(childBirthRecords.dob)) ? "2020-01-01" : childBirthRecords.dob },
-					tob: { value: childBirthRecords.tob ?? "0000" },
-				} as myInfoDomain.Components.Schemas.Childrenbirthrecords;
-			});
+			const childrenBirthRecords = mockParams.childrenbirthrecords.map(transformChildBirthRecord);
 
 			switch (mockParams.childrenoverridemode) {
 				case ChildrenOverrideMode.appendToExisting:
@@ -539,4 +530,16 @@ function generateDefaultMockResponse(): object {
 		source: "1",
 		classification: "C",
 	};
+}
+
+
+export function transformChildBirthRecord(childbirthrecord: ChildrenBirthRecord, index: number) {
+	return {
+		birthcertno: { value: childbirthrecord.birthcertno },
+		name: { value: childbirthrecord.name || `nameless child ${index + 1}` },
+		sex: { code: childbirthrecord.sex.charAt(0), desc: childbirthrecord.sex },
+		lifestatus: { code: childbirthrecord.lifestatus.charAt(0), desc: childbirthrecord.lifestatus },
+		dob: { value: isNaN(Date.parse(childbirthrecord.dob)) ? "2020-01-01" : childbirthrecord.dob },
+		tob: { value: childbirthrecord.tob || "0000" },
+	} as myInfoDomain.Components.Schemas.Childrenbirthrecords;
 }
