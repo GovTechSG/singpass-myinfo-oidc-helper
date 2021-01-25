@@ -1,5 +1,8 @@
 # Changelogs
 
+## 4.2.21
+- add children in fake-helper
+
 ## 4.2.19
 - add divorcedate in fake-helper
 
