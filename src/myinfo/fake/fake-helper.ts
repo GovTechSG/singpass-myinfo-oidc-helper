@@ -109,13 +109,13 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 			myinfoPerson.countryofmarriage.desc = domainMap.countryofmarriage.map.codeToDesc[mockParams.countryofmarriage];
 		}
 
-		if (!isEmpty(mockParams.dob)) {
-			myinfoPerson.dob.value = mockParams.dob;
+		if (!isEmpty(mockParams.dob) || !isEmpty(myinfoPerson.dob?.value)) {
+			myinfoPerson.dob.value = mockParams.dob || myinfoPerson.dob.value;
 			const birthYear = new Date(myinfoPerson.dob.value).getFullYear();
 			if (birthYear <= 1949) {
 				// pioneergen
 				myinfoPerson.merdekagen.eligibility.value = false;
-				myinfoPerson.pioneergen.eligibility.value = true;
+				if (myinfoPerson.pioneergen.message.code !== "6") myinfoPerson.pioneergen.eligibility.value = true;
 				if (birthYear >= 1945) {
 					myinfoPerson.pioneergen.quantum.value = "200.00";
 				} else if (birthYear >= 1940) {
@@ -127,8 +127,12 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 				}
 			} else if (birthYear > 1949 && birthYear <= 1959) {
 				// merdekagen
-				myinfoPerson.merdekagen.eligibility.value = true;
+				if (myinfoPerson.merdekagen.message.code !== "6") myinfoPerson.merdekagen.eligibility.value = true;
 				myinfoPerson.pioneergen.eligibility.value = false;
+			} else {
+				myinfoPerson.merdekagen.eligibility.value = false;
+				myinfoPerson.pioneergen.eligibility.value = false;
+				myinfoPerson.merdekagen.quantum.value = 0;
 			}
 		}
 

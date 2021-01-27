@@ -25,7 +25,7 @@ export const mrSGUncleNonBenefits: FakeProfile = {
 			lastupdated: "2020-01-01",
 			source: "1",
 			classification: "C",
-			value: `${new Date().getFullYear() - 61}-01-01`,
+			value: `1959-01-01`,
 		};
 
 		profile.silversupport = {

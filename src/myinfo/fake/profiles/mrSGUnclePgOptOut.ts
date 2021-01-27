@@ -15,6 +15,12 @@ export const mrSGUnclePgOptOut: FakeProfile = {
 		const profile = mrSGUncleNonPg.generate(profileName);
 		profile.pioneergen.message.code = "6";
 		profile.pioneergen.message.desc = "We understand that you have opted out of receiving the benefits under the Pioneer Generation Package. For further enquiries, please contact 1800-2222-888.";
+		profile.dob = {
+			lastupdated: "2021-01-01",
+			source: "1",
+			classification: "C",
+			value: "1948-01-01",
+		};
 
 		return profile;
 	},
