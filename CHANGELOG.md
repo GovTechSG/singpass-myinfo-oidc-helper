@@ -1,5 +1,13 @@
 # Changelogs
 
+## 4.2.22
+- Update pioneergen and merdekagen profile generation
+- dob check to fallback to archetype dob
+- set eligibility to false for opt out archetypes
+- set MG archetypes dob year to 1959
+- clear eligibility / quantum values from PG archetypes
+- add dob to PG archetypes
+
 ## 4.2.21
 - add children in fake-helper
 
