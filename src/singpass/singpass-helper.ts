@@ -206,7 +206,6 @@ export class OidcHelper {
 		};
 		try {
 			const result = await this.axiosClient.get(authorizationUrl, requestConfig);
-			console.log(">>> result", result)
 			if (result.headers.location?.includes("saml.singpass.gov.sg")) {
 				Logger.warn(`Attempted to refresh session with invalid session ID ${sessionId}`);
 				return SessionRefreshResult.INVALID_SESSION_ID;
