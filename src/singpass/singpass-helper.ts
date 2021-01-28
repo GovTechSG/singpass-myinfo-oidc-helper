@@ -197,10 +197,17 @@ export class OidcHelper {
 	 */
 	public async refreshSession(sessionId: string, state: string = "dummyState"): Promise<SessionRefreshResult> {
 		const authorizationUrl = this.constructAuthorizationUrl(state);
-		const requestConfig = { headers: { Cookie: `${this.SINGPASS_SESSION_COOKIE_NAME}=${sessionId}` } };
+
+		// Max redirects 0 to prevent calling callback endpoint with singpass session cookie
+		const requestConfig: AxiosRequestConfig = {
+			headers: { Cookie: `${this.SINGPASS_SESSION_COOKIE_NAME}=${sessionId}` },
+			maxRedirects: 0,
+			validateStatus: this.validateStatus,
+		};
 		try {
 			const result = await this.axiosClient.get(authorizationUrl, requestConfig);
-			if (result.request.res.responseUrl.includes("saml.singpass.gov.sg")) {
+			console.log(">>> result", result)
+			if (result.headers.location?.includes("saml.singpass.gov.sg")) {
 				Logger.warn(`Attempted to refresh session with invalid session ID ${sessionId}`);
 				return SessionRefreshResult.INVALID_SESSION_ID;
 			}
@@ -233,7 +240,12 @@ export class OidcHelper {
 		}
 	}
 
+	private validateStatus(status) {
+		return status === 302 || (status >= 200 && status < 300);
+	}
+
 	public _testExports = {
 		singpassClient: this.axiosClient,
+		validateStatusFn: this.validateStatus,
 	};
 }

@@ -1,6 +1,11 @@
 # Changelogs
 
 ## 4.2.22
+
+- Update logic for refreshSession: set maxRedirects to 0 to prevent calling callback API with session id header
+
+## 4.2.22
+
 - Update pioneergen and merdekagen profile generation
 - dob check to fallback to archetype dob
 - set eligibility to false for opt out archetypes
@@ -9,64 +14,85 @@
 - add dob to PG archetypes
 
 ## 4.2.21
+
 - add children in fake-helper
 
 ## 4.2.19
+
 - add divorcedate in fake-helper
 
 ## 4.2.18
+
 - minor changes in pioneergen quantum value when dob is given during login
 
 ## 4.2.17
+
 - Update pioneergen quantum value when dob is given during login
 
 ## 4.2.16
+
 - Update merdekagen and pioneergen eligibility values when dob is given during login
 
 ## 4.2.15
+
 - Update fake profiles quantum value
 
 ## 4.2.14
+
 - Change pioneergen quantum from number to string in myinfo-domain
+
 ## 4.2.13
+
 - Add fake profiles for Pioneergen
 
 ## 4.2.12
+
 - Add pioneergen property in myinfo-domain
 
 ## 4.2.11
+
 - Update profile to have default passportNumber and passport expiryDate
 
 ## 4.2.10
+
 - Add tob & sex to child
 
 ## 4.2.9
+
 - Add tob & sex to child
 
 ## 4.2.8
+
 - Revert update constructAuthorizationUrl
 
 ## 4.2.7
+
 - Update constructAuthorizationUrl to set redirectUri if exist
 
 ## 4.2.6
+
 - Restore refreshSession for singpass-helper
 - Fix vulnerability 1598
 - Upgrade jest to 26
 
 ## 4.2.5
+
 - Reset child nric for testing
 
 ## 4.2.4
+
 - Updated `request` module to fix `ajv` lib vulnerability
 
 ## 4.2.3
+
 - export new mock profile aged 17
 
 ## 4.2.2
+
 - added new mock profile aged 17
 
 ## 4.2.1
+
 - Add empty string for remaining marital types
 
 ## 4.2.0

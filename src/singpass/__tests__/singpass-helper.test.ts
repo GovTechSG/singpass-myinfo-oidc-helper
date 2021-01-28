@@ -88,11 +88,9 @@ describe("Singpass Helper", () => {
 		describe("when refresh is successful", () => {
 			it("should set a cookie header with the session ID and call singpass authorize endpoint", async () => {
 				helper._testExports.singpassClient.get = jest.fn((): any => Promise.resolve({
-					status: 200,
-					request: {
-						res: {
-							responseUrl: "https://localhost/singpass/callback?state=abc&code=xyz",
-						},
+					status: 302,
+					headers: {
+						location: "https://localhost/singpass/callback?state=abc&code=xyz",
 					},
 				}));
 				const sessionId = "1_0jP8lQbVdNJWu/WNMclh6jynB9d+Ui/e3BmbiLccaVRREZkMoEQ=_AAAAAwA=_ehj7WNPdSF5ZR+ERSflwNaDaBPo=";
@@ -101,7 +99,11 @@ describe("Singpass Helper", () => {
 				expect(result).toEqual(SessionRefreshResult.SUCCESS);
 				expect(helper._testExports.singpassClient.get).toHaveBeenCalledWith(
 					constructedMockAuthUrl,
-					{ headers: { Cookie: `PD-S-SESSION-ID=${sessionId}` } },
+					{
+						headers: { Cookie: `PD-S-SESSION-ID=${sessionId}` },
+						maxRedirects: 0,
+						validateStatus: helper._testExports.validateStatusFn,
+					},
 				);
 			});
 		});
@@ -110,11 +112,9 @@ describe("Singpass Helper", () => {
 			describe("when session ID is invalid", () => {
 				it("should set a cookie header with the session ID and call singpass authorize endpoint", async () => {
 					helper._testExports.singpassClient.get = jest.fn((): any => Promise.resolve({
-						status: 200,
-						request: {
-							res: {
-								responseUrl: "https://stg-saml.singpass.gov.sg/spauth/TAMOperationHandler?TAM_OP=login&URL=%2Fmga%2Fsps%2Foauth%2Foauth20%2Fauthorize%3Fstate%3DCkxPR0lOAA%253D%253D%26nonce%3D%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3001%252Fsingpass%252Fcallback%26scope%3Dopenid%26client_id%3DBLAH-BLAH%26response_type%3Dcode%26esrvcID%3DBLAH-BLAH&AUTHNLEVEL=5",
-							},
+						status: 302,
+						headers: {
+							location: "https://stg-saml.singpass.gov.sg/spauth/TAMOperationHandler?TAM_OP=login&URL=%2Fmga%2Fsps%2Foauth%2Foauth20%2Fauthorize%3Fstate%3DCkxPR0lOAA%253D%253D%26nonce%3D%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3001%252Fsingpass%252Fcallback%26scope%3Dopenid%26client_id%3DBLAH-BLAH%26response_type%3Dcode%26esrvcID%3DBLAH-BLAH&AUTHNLEVEL=5",
 						},
 					}));
 					const sessionId = "0_rubbish";
@@ -123,7 +123,11 @@ describe("Singpass Helper", () => {
 					expect(result).toEqual(SessionRefreshResult.INVALID_SESSION_ID);
 					expect(helper._testExports.singpassClient.get).toHaveBeenCalledWith(
 						constructedMockAuthUrl,
-						{ headers: { Cookie: `PD-S-SESSION-ID=${sessionId}` } },
+						{
+							headers: { Cookie: `PD-S-SESSION-ID=${sessionId}` },
+							maxRedirects: 0,
+							validateStatus: helper._testExports.validateStatusFn,
+						},
 					);
 				});
 			});
@@ -140,7 +144,11 @@ describe("Singpass Helper", () => {
 					expect(result).toEqual(SessionRefreshResult.SINGPASS_ERROR);
 					expect(helper._testExports.singpassClient.get).toHaveBeenCalledWith(
 						constructedMockAuthUrl,
-						{ headers: { Cookie: `PD-S-SESSION-ID=${sessionId}` } },
+						{
+							headers: { Cookie: `PD-S-SESSION-ID=${sessionId}` },
+							maxRedirects: 0,
+							validateStatus: helper._testExports.validateStatusFn,
+						},
 					);
 				});
 			});
