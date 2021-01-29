@@ -1,6 +1,10 @@
 # Changelogs
 
-## 4.2.22
+## 4.2.24
+
+- Remove logs on SingpassSessionId in refreshSession in singpass-helper.
+
+## 4.2.23
 
 - Update logic for refreshSession: set maxRedirects to 0 to prevent calling callback API with session id header
 

@@ -207,12 +207,12 @@ export class OidcHelper {
 		try {
 			const result = await this.axiosClient.get(authorizationUrl, requestConfig);
 			if (result.headers.location?.includes("saml.singpass.gov.sg")) {
-				Logger.warn(`Attempted to refresh session with invalid session ID ${sessionId}`);
+				Logger.warn(`Attempted to refresh session with invalid session ID`);
 				return SessionRefreshResult.INVALID_SESSION_ID;
 			}
 			return SessionRefreshResult.SUCCESS;
 		} catch (e) {
-			Logger.warn(`Singpass Error while attempting to refresh session for sessionId: ${sessionId}\nError:`, e);
+			Logger.warn(`Singpass Error while attempting to refresh session for sessionId \nError:`, e);
 			return SessionRefreshResult.SINGPASS_ERROR;
 		}
 	}
