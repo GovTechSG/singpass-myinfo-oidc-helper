@@ -14,8 +14,8 @@ export const mrSGNoLocalAddress: FakeProfile = {
 		const profile = mrSGDaddyPerfect.generate(profileName);
 		profile.regadd = {
 			"type": "Unformatted",
-			"line1": { "value": "96 Guild Street" },
-			"line2": { "value": "London SE16 1BE" },
+			"line1": { "value": "96 GUILD STREET" },
+			"line2": { "value": "LONDON SE16 1BE" },
 			"classification": "C",
 			"source": "1",
 			"lastupdated": "2018-05-10",

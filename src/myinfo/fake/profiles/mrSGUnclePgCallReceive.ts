@@ -15,12 +15,6 @@ export const mrSGUnclePgCallReceive: FakeProfile = {
 		const profile = mrSGUnclePgAllOk.generate(profileName);
 		profile.pioneergen.message.code = "5";
 		profile.pioneergen.message.desc = "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to start receiving your Pioneer Generation benefits.";
-		profile.dob = {
-			lastupdated: "2021-01-01",
-			source: "1",
-			classification: "C",
-			value: "1948-01-01",
-		};
 
 		return profile;
 	},
