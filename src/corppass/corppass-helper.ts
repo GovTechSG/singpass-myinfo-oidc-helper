@@ -155,7 +155,7 @@ export class OidcHelper {
 
 	/**
 	 * Get tokens from Corppass endpoint. Note: This will fail if not on an IP whitelisted by SP.
-	 * Use getIdTokenPayload on returned Token Response to get the token payload
+	 * Use getAccessTokenPayload and getIdTokenPayload on returned Token Response to get the token payload
 	 */
 	public getTokens = async (authCode: string, axiosRequestConfig?: AxiosRequestConfig): Promise<TokenResponse> => {
 		const params = {
