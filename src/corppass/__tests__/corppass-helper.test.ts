@@ -1,7 +1,6 @@
 import { IdTokenPayload, OidcHelper, OidcHelperConstructor } from "../corppass-helper";
 
 const mockAuthUrl = "https://mockcorppass.sg/authorize";
-const mockLogoutUrl = "https://mockcorppass.sg/logout";
 const mockTokenUrl = "https://mockcorppass.sg/token";
 const mockClientId = "CLIENT-ID";
 const mockClientSecret = "sshh-secret";
@@ -35,7 +34,6 @@ describe("Corppass Helper", () => {
 		redirectUri: mockRedirectUri,
 		jweDecryptKey: mockDecryptKey,
 		jwsVerifyKey: mockVerifyKey,
-		logoutUrl: mockLogoutUrl,
 	};
 	const helper = new OidcHelper(props);
 
