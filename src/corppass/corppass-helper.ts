@@ -105,7 +105,6 @@ export interface IdTokenPayload {
 
 export interface OidcHelperConstructor {
 	authorizationUrl: string;
-	logoutUrl?: string;
 	tokenUrl: string;
 	clientID: string;
 	clientSecret: string;
