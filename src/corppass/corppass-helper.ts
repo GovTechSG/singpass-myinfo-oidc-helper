@@ -149,7 +149,6 @@ export class OidcHelper {
 			scope: "openid",
 			client_id: this.clientID,
 			response_type: "code",
-
 		};
 		const queryString = querystringUtil.stringify(queryParams);
 		return `${this.authorizationUrl}?${queryString}`;
@@ -208,25 +207,38 @@ export class OidcHelper {
 	}
 
 	/**
+	 * Decodes the access Token JWT inside the TokenResponse to get the payload
+	 */
+	public async getAccessTokenPayload(tokens: TokenResponse): Promise<AccessTokenPayload> {
+		try {
+			const { access_token } = tokens;
+			const verifiedJws = await JweUtil.verifyJWS(access_token, this.jwsVerifyKey);
+			return JSON.parse(verifiedJws.payload.toString()) as AccessTokenPayload;
+		} catch (e) {
+			Logger.error("Failed to get access token payload", e);
+			throw e;
+		}
+	}
+
+	/**
 	 * Decrypts the ID Token JWT inside the TokenResponse to get the payload
-	 * Use extractNricAndUuidFromPayload on the returned Token Payload to get the NRIC and UUID
+	 * Use extractInfoFromIdTokenSubject on the returned Token Payload to get the NRIC, system defined ID and country code
 	 */
 	public async getIdTokenPayload(tokens: TokenResponse): Promise<IdTokenPayload> {
 		try {
-
 			const { id_token } = tokens;
 			const decryptedJwe = await JweUtil.decryptJWE(id_token, this.jweDecryptKey);
 			const jwsPayload = decryptedJwe.payload.toString();
 			const verifiedJws = await JweUtil.verifyJWS(jwsPayload, this.jwsVerifyKey);
 			return JSON.parse(verifiedJws.payload.toString()) as IdTokenPayload;
 		} catch (e) {
-			Logger.error("Failed to get token payload", e);
+			Logger.error("Failed to get ID token payload", e);
 			throw e;
 		}
 	}
 
 	/**
-	 * Returns the nric, system defined Id and country code from the id token payload
+	 * Returns the NRIC, system defined ID and country code from the ID token payload
 	 */
 	public extractInfoFromIdTokenSubject(payload: IdTokenPayload): { nric: string, uuid: string, countryCode: string } {
 		const { sub } = payload;
