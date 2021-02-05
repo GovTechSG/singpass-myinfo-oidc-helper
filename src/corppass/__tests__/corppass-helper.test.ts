@@ -55,7 +55,7 @@ describe("Corppass Helper", () => {
 			const mockCountryCode = "SG";
 
 			const mockPayload = createMockIdTokenPayload({
-				sub: `s=${mockNric},u=${mockUuid},cc=${mockCountryCode}`,
+				sub: `s=${mockNric},u=${mockUuid},c=${mockCountryCode}`,
 			});
 			const { nric, uuid, countryCode } = helper.extractInfoFromIdTokenSubject(mockPayload);
 			expect(nric).toEqual(mockNric);
