@@ -20,6 +20,21 @@ export const mrSgTeenager17: FakeProfile = {
 			classification: "C",
 			value: `${new Date().getFullYear() - 17}-01-01`,
 		};
+		profile.marital = {
+			lastupdated: "2021-03-19",
+			code: "",
+			source: "2",
+			classification: "C",
+			desc: "",
+		};
+		profile.marriagedate = {
+			lastupdated: "2021-03-19",
+			source: "2",
+			classification: "C",
+			value: "",
+		};
+		profile.childrenbirthrecords = [];
+		profile.sponsoredchildrenrecords = [];
 
 		return profile;
 	},
