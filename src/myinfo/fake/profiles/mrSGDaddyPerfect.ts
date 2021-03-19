@@ -1,6 +1,7 @@
 import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { preschoolEligibleChild2_IC, preschoolEligibleChild2_K1 } from "./childbirthRecords";
+import { aliasName } from "../profiles/common";
 
 const id = "S8399420G";
 const name = ProfileArchetype.MR_SG_DADDY_PERFECT;
@@ -225,7 +226,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"lastupdated": "2018-06-01",
 				"source": "1",
 				"classification": "C",
-				"value": "JASCKSON LIM YONG XIANG",
+				"value": aliasName.JASCKSON_LIM_YONG_XIANG,
 			},
 			"childrenbirthrecords": [
 				{

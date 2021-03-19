@@ -12,3 +12,8 @@ interface UnavailableField {
 	lastupdated: string; // date
 	unavailable: boolean;
 }
+
+export enum aliasName {
+	LEE_XIU = "LEE XIU",
+	JASCKSON_LIM_YONG_XIANG = "JASCKSON LIM YONG XIANG",
+}

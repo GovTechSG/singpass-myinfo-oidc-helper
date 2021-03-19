@@ -1,6 +1,7 @@
 import * as _ from "lodash";
 import { FakeProfile } from "../fake-profile";
 import { myInfoDomain } from "../../../domain";
+import { aliasName } from "../common";
 
 const id = "S8399420G";
 
@@ -210,7 +211,7 @@ export const BaseProfile: FakeProfile = {
 				lastupdated: "2018-06-01",
 				source: "1",
 				classification: "C",
-				value: "LEE XIU",
+				value: aliasName.LEE_XIU,
 			},
 			childrenbirthrecords: [],
 			sponsoredchildrenrecords: [],

@@ -2,6 +2,7 @@
 import { MyInfoHelper, MyInfoHelperConstructor } from "..";
 import { configs } from "./test.configs";
 import { set } from "lodash";
+import { aliasName } from "../../fake/profiles/common";
 
 describe("MyInfoClient", () => {
 
@@ -48,7 +49,7 @@ describe("MyInfoClient", () => {
 
 			const result = await myInfoHelper.getPersonBasic<V3Attributes>(testNric);
 
-			expect(result.aliasname.value).toEqual("JASCKSON LIM YONG XIANG");
+			expect(result.aliasname.value).toEqual(aliasName.JASCKSON_LIM_YONG_XIANG);
 		});
 	});
 

@@ -1,4 +1,6 @@
 import { Factory } from "rosie";
+import { aliasName } from "../profiles/common";
+
 
 export const PersonBasicFactory = new Factory()
 	.sequence("uinfin", (i) => ({
@@ -205,7 +207,7 @@ export const PersonBasicFactory = new Factory()
 			"lastupdated": "2018-06-01",
 			"source": "1",
 			"classification": "C",
-			"value": "JASCKSON LIM YONG XIANG",
+			"value": aliasName.JASCKSON_LIM_YONG_XIANG,
 		},
 		"nationality": {
 			"lastupdated": "2018-06-01",

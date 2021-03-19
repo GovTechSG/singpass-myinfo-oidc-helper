@@ -2,7 +2,7 @@ import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 import { ChildrenRecords } from "./childbirthRecords";
-
+import { aliasName } from "../profiles/common";
 
 const id = "T2446959F";
 const name = ProfileArchetype.MRS_PR_HDB_OWNER_WORKING_ADULT_MID_CAREER_PMETS;
@@ -26,6 +26,13 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
+
+		profile.aliasname = {
+			lastupdated: "2021-03-19",
+			source: "1",
+			classification: "C",
+			value: aliasName.LEE_XIU,
+		};
 		profile.dob = {
 			lastupdated: "2020-01-01",
 			source: "1",
