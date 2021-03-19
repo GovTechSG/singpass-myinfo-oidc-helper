@@ -1,5 +1,8 @@
 # Changelogs
 
+## 4.2.28
+- Add msSGTeenager17 female
+
 ## 4.2.27
 
 - Update mrSGTeenager17 to be single and no child
