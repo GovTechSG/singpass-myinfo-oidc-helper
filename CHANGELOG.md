@@ -1,5 +1,9 @@
 # Changelogs
 
+## 4.2.27
+
+- Update mrSGTeenager17 to be single and no child
+
 ## 4.2.24
 
 - Remove logs on SingpassSessionId in refreshSession in singpass-helper.
