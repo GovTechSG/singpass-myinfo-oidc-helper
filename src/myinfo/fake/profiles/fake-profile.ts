@@ -67,6 +67,7 @@ export enum ProfileArchetype {
 	MRS_PR_HDB_OWNER_WORKING_ADULT_MID_CAREER_PMETS = "Mrs PR HDB Owner, Working adults (Mid-career PMETs)",
 	MR_SG_UNCLE_RETIREE = "Mr SG Uncle Retiree",
 	MR_SG_TEENAGER_17 = "Mr SG Teenager 17",
+	MS_SG_TEENAGER_17 = "Ms SG Teenager 17",
 	// Dedicated for iOS app Reviewer
 	MR_APP_REVIEWER = "Mr App Reviewer",
 }

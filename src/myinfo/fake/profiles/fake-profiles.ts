@@ -47,6 +47,7 @@ import { mrSGFreshGradYoungParent } from "./mrSGFreshGradYoungParent";
 import { mrsPRHdbOwnerWorkingAdult } from "./mrsPRHdbOwnerWorkingAdult";
 import { mrSGUncleRetiree } from "./mrSGUncleRetiree";
 import { mrSgTeenager17 } from "./mrSGTeenager17";
+import { msSgTeenager17 } from "./msSGTeenager17";
 import { mrSGUnclePgAllOk } from "./mrSGUnclePgAllOk";
 import { mrSGUnclePgCallReceive } from "./mrSGUnclePgCallReceive";
 import { mrSGUnclePgNeedAddress } from "./mrSGUnclePgNeedAddress";
@@ -115,4 +116,5 @@ export const profiles = [
 	mrsPRHdbOwnerWorkingAdult,
 	mrSGUncleRetiree,
 	mrSgTeenager17,
+	msSgTeenager17,
 ];
