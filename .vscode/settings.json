@@ -3,6 +3,9 @@
 // The settings in this file will overwrite default and user settings for a project.
 // =============================================================================
 {
+	"[handlebars]": {
+		"editor.formatOnSave": false
+	},
 	"[sql]": {
 		"editor.formatOnSave": false
 	},
@@ -23,9 +26,6 @@
 	},
 	"files.insertFinalNewline": true,
 	"files.trimTrailingWhitespace": true,
-	"plantuml.diagramsRoot": "diagrams/src",
-	"plantuml.exportFormat": "svg",
-	"plantuml.exportOutDir": "diagrams/out",
 	"search.useIgnoreFiles": true,
 	"sequencediagrams.diagram.style": "simple",
 	"tslint.jsEnable": true,

@@ -1,9 +1,19 @@
 # Changelogs
 
+## 5.0.0
+
+- **[WARNING]** Updated Myinfo model typings and renamed the namespace from `Components` to `MyinfoComponents`
+- **[WARNING]** Myinfo enum descriptions are now capitalized as per latest Myinfo swagger
+- **[WARNING]** Updated npm dependencies
+- Added `generate-myinfo-typings` script to dynamically generate typings from Myinfo swagger to keep them in sync
+- Added Myinfo enum typings (e.g. `MyinfoEdulevel`)
+
 ## 4.2.29
+
 - Update female profiles to have alias name = LEE XIU
 
 ## 4.2.28
+
 - Add msSGTeenager17 female
 
 ## 4.2.27

@@ -1,0 +1,16 @@
+import { EnumUtils } from "../../util/EnumUtils";
+
+export enum {{enumName}} {
+	{{#each enumEntries}}
+	"{{this.key}}" = "{{this.value}}",
+	{{/each}}
+}
+
+export namespace {{enumName}} {
+	export const fn = {
+		keys: EnumUtils.keysFunc<{{enumName}}>({{enumName}}),
+		values: EnumUtils.valuesFunc<{{enumName}}>({{enumName}}),
+		toEnumKey: EnumUtils.toEnumKeyFunc<{{enumName}}>({{enumName}}),
+		toEnumValue: EnumUtils.toEnumValueFunc<{{enumName}}>({{enumName}}),
+	};
+}
