@@ -23,14 +23,13 @@
 	},
 	"files.insertFinalNewline": true,
 	"files.trimTrailingWhitespace": true,
-	"search.useIgnoreFiles": true,
-	"typescript.tsdk": "./node_modules/typescript/lib",
-	"tslint.jsEnable": true,
-	"tslint.autoFixOnSave": true, // Legacy
 	"plantuml.diagramsRoot": "diagrams/src",
 	"plantuml.exportFormat": "svg",
 	"plantuml.exportOutDir": "diagrams/out",
+	"search.useIgnoreFiles": true,
 	"sequencediagrams.diagram.style": "simple",
+	"tslint.jsEnable": true,
+	"typescript.tsdk": "./node_modules/typescript/lib",
 	"typescriptHero.imports.multiLineWrapThreshold": 120,
 	"typescriptHero.imports.stringQuoteStyle": "\""
 }

@@ -2,7 +2,7 @@
 
 echo ==============================================================================
 echo "Script: $(basename "$0")"
-echo "This script runs ts-lint"
+echo "This script runs the jest external tests"
 echo ==============================================================================
 
 # ==============================================================================
@@ -30,18 +30,20 @@ SCRIPT_DIR=$( dirname $( ${READLINK} -f $0 ) )
 # Inputs
 # ==============================================================================
 
-export LINT_PATH=${JEST_PATH:-"./node_modules/.bin/tslint"}
+# Variables
+echo "Checking variables"
+ASSERT_VAR_SCRIPT=$( ${READLINK} -f ${SCRIPT_DIR}/helpers/assert-variable.sh )
 
-export TS_CONFIG_PATH=${TS_CONFIG_PATH:-"./tsconfig.json"}
+export DEBUG_PORT=${DEBUG_PORT:-7000}
 
-export TSLINT_CONFIG_PATH=${TSLINT_CONFIG_PATH:-"./tslint.json"}
+export JEST_PATH=${JEST_PATH:-"./node_modules/.bin/jest"}
 
-export FILES=${@:-""}
+export JEST_CONFIG_PATH=${JEST_CONFIG_PATH:-"./jest.ext.config.js"}
 
 # ==============================================================================
 # Script
 # ==============================================================================
 
-# Lint
-echo "Linting with tslint"
-${LINT_PATH} -p ${TS_CONFIG_PATH} -c ${TSLINT_CONFIG_PATH} --fix ${FILES}
+# Run test
+echo "External integration testing with jest"
+${SCRIPT_DIR}/jest-test.sh --config ${JEST_CONFIG_PATH} $@

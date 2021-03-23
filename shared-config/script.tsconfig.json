@@ -11,6 +11,7 @@
 		"resolveJsonModule": true,
 		/* Compiler settings */
 		"allowJs": true,
+		"skipLibCheck": true,
 		"allowSyntheticDefaultImports": true,
 		"alwaysStrict": true,
 		/* Paths */

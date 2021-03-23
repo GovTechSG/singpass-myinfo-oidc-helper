@@ -13,11 +13,6 @@
 	"exclude": [
 		"**/node_modules/*",
 		"**/__tests__/*",
-		"**/__mocks__/*",
-		"src/**/*.unit.ts",
-		"src/**/*.test.ts",
-		"src/**/*.spec.ts",
-		"src/**/*.apispec.ts",
-		"src/**/*.bench.ts"
+		"**/__mocks__/*"
 	]
 }
