@@ -5,6 +5,7 @@ import * as fs from "fs";
 import * as handlebars from "handlebars";
 import * as _ from "lodash";
 import * as shell from "shelljs";
+import * as xlsx from "xlsx";
 import * as yargs from "yargs";
 
 console.log(`==============================================================================`);
@@ -65,8 +66,7 @@ const swaggerPath = argv["swagger-path"];
 const outputDir = argv["output-dir"];
 const myinfoCodeRefTableUrl = argv["myinfo-code-ref-tables-url"];
 
-const header = `
-// tslint:disable
+const header = `// tslint:disable
 // =============================================================================
 // This file was generated with \`npm run generate-myinfo-typings\` on ${new Date().toISOString().split('T')[0]}
 // Any modifications to this file may be overwritten when the script runs again
@@ -79,19 +79,40 @@ const header = `
 
 async function executeScript() {
 	shell.mkdir("-p", outputDir);
+	shell.mkdir("-p", outputDir + "/generated");
+
+	console.log("Deleting old generated files...");
+	clearGeneratedFiles();
 
 	console.log("Generating API typings from Myinfo API swaggger file...");
 	const apiSwaggerTypingsFileName = await generateApiSwaggerTypings();
 
 
 	console.log("Generating enums typings from Myinfo codes table...");
-	const myinfoCodesEnumsFileNames = await generateMyinfoCodesEnums();
+	const myinfoCodesEnumsFileNames = await generateMyinfoCodeEnums();
 
 	console.log("Generating index...");
 	await generateIndex([
 		apiSwaggerTypingsFileName,
 		...myinfoCodesEnumsFileNames,
 		"profilestatus-domain.ts"]);
+}
+
+// =============================================================================
+// Files
+// =============================================================================
+
+function clearGeneratedFiles() {
+	const generatedDir = outputDir + '/generated';
+	fs.readdir(generatedDir, (err, files) => {
+		if (err) throw err;
+
+		for (const file of files) {
+			fs.unlink(`${generatedDir}/${file}`, e => {
+				if (e) throw e;
+			});
+		}
+	});
 }
 
 // =============================================================================
@@ -111,7 +132,7 @@ async function generateApiSwaggerTypings(): Promise<string> {
 }
 
 /**
- * Recusrively executes the map fn for nested array/objects
+ * Recursively executes the map fn for nested array/objects
  */
 function deepMapObject(input: any, mapFn: (value: any, key?: string, parent?: any) => any, key?: string): any {
 	if (_.isArray(input) && !_.isString(input)) {
@@ -176,7 +197,7 @@ async function writeSwaggerTypingsSource(swagger: any): Promise<string> {
 	typingsSource = typingsSource.replace("namespace Schemas {", "export namespace Schemas {");
 
 	const filename = "myinfo-domain.ts";
-	fs.writeFileSync(`${outputDir}/${filename}`, header + typingsSource);
+	fs.writeFileSync(`${outputDir}/generated/${filename}`, header + typingsSource);
 	return filename;
 }
 
@@ -186,13 +207,13 @@ async function writeSwaggerTypingsSource(swagger: any): Promise<string> {
 
 interface EnumTyping {
 	enumName: string;
-	enumEntries: Record<string, string>;
+	enumEntries: Record<string, string>[];
 }
 
 function writeEnumTypingsSource(enumTyping: EnumTyping): string {
 	// Ensure that there is a proper prefix
 	if (!enumTyping.enumName.startsWith("Myinfo")) {
-		enumTyping.enumName = `Myinfo${_.startCase(enumTyping.enumName)}`
+		enumTyping.enumName = `Myinfo${_.startCase(enumTyping.enumName).replace(/\s/g, "")}`;
 	}
 
 	// Validate the enum
@@ -202,20 +223,20 @@ function writeEnumTypingsSource(enumTyping: EnumTyping): string {
 	}
 
 	// Remove empty keys or values
-	enumTyping.enumEntries = _.omitBy(enumTyping.enumEntries, (value, key) => {
+	enumTyping.enumEntries = _.omitBy<Record<string, string>[]>(enumTyping.enumEntries, (value, key) => {
 		if (_.isEmpty(key) || _.isEmpty(value)) {
 			console.warn(`${enumTyping.enumName} has an empty enum entry { key: "${key}" value: "${value}" }, skipping entry...`);
 			return true;
 		}
 		return false;
-	})
+	});
 
 	// Write enum file
 	const enumsHbs = fs.readFileSync(`${outputDir}/enums.hbs`, "utf8");
 	const enumsTemplate = handlebars.compile(enumsHbs, { noEscape: true });
 	const typingsSource = header + enumsTemplate(enumTyping);
 
-	const filename = `${enumTyping.enumName}.ts`;
+	const filename = `generated/${_.kebabCase(enumTyping.enumName)}.ts`;
 	fs.writeFileSync(`${outputDir}/${filename}`, typingsSource);
 	return filename;
 }
@@ -224,18 +245,45 @@ function writeEnumTypingsSource(enumTyping: EnumTyping): string {
 // Myinfo codes enums
 // =============================================================================
 
-async function generateMyinfoCodesEnums(): Promise<string[]> {
+async function generateMyinfoCodeEnums(): Promise<string[]> {
 	// Fetch xls
-	const myInfoCodesTableResponse = await axios.get(myinfoCodeRefTableUrl);
-	const myInfoCodesTableXls = myInfoCodesTableResponse?.data;
+	const { data } = await axios.get(myinfoCodeRefTableUrl, { responseType: "arraybuffer" });
+	const myInfoCodesXslx = xlsx.read(new Uint8Array(data), { type: "array" });
 
 	// Parse xls
-	// TODO
-	const enumTypingsArr: EnumTyping[] = []
+	const enumTypingsArr: EnumTyping[] = myInfoCodesXslx.SheetNames.map((sheetName): EnumTyping => {
+		// Skip unnecessary sheets
+		if (sheetName === "Version") return null;
+
+		// Convert to JSON and format accordingly
+		const myInfoCodesSheet = xlsx.utils.sheet_to_json(myInfoCodesXslx.Sheets[sheetName], { header: ["key", "value"], raw: false, defval: null, blankrows: true });
+		const entries = formatMyInfoCodeEntries(sheetName, myInfoCodesSheet);
+		return { enumName: sheetName, enumEntries: entries };
+	}).filter(entry => entry);
 
 	// Write to files
 	const fileNames = _.map(enumTypingsArr, (enumTypings) => writeEnumTypingsSource(enumTypings));
 	return fileNames;
+}
+
+function formatMyInfoCodeEntries(sheetName: string, myInfoCodesSheet: any[]): Record<string, string>[] {
+	// Rudimentary validation by cell value in case the sheet changed its format
+	// Expecting row 6 to be the header; values should contain code and description
+	if (myInfoCodesSheet[5]?.value?.match(/code/gi) === -1 || myInfoCodesSheet[5]?.value?.toLowerCase() !== "description") {
+		throw new Error(`Unexpected cell values in Myinfo xlsx sheet ${sheetName} row 6, format has likely changed`);
+	}
+
+	// Enums can't have numeric keys, thus checking here
+	const hasNumericKeys = !!myInfoCodesSheet.find((entry: Record<string, any>) => !!entry.key && !isNaN(Number(entry.key)));
+
+	return myInfoCodesSheet.map((entry: Record<string, string>, i: number) => {
+		if (i >= 6) {
+			// Prepend key with `CODE_` if there are numeric keys
+			if (hasNumericKeys) entry.key = "CODE_" + entry.key;
+			return entry;
+		}
+		return null;
+	}).filter((entry: Record<string, any>) => entry);
 }
 
 // =============================================================================
@@ -247,9 +295,9 @@ async function generateMyinfoCodesEnums(): Promise<string[]> {
  */
 function generateIndex(fileNames: string[]): string {
 	// Prepare module names
-	let moduleNames = fileNames.map((fileName) => {
+	const moduleNames = fileNames.map((fileName) => {
 		return fileName.endsWith(".ts") ? fileName.slice(0, -3) : fileName;
-	})
+	});
 	moduleNames.sort();
 
 	const indexHbs = fs.readFileSync(`${outputDir}/index.hbs`, "utf8");
