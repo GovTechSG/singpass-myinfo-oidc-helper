@@ -78,7 +78,6 @@ const header = `// tslint:disable
 // =============================================================================
 
 async function executeScript() {
-	shell.mkdir("-p", outputDir);
 	shell.mkdir("-p", outputDir + "/generated");
 
 	console.log("Deleting old generated files...");
@@ -197,7 +196,7 @@ async function writeSwaggerTypingsSource(swagger: any): Promise<string> {
 	typingsSource = typingsSource.replace("namespace Schemas {", "export namespace Schemas {");
 
 	const filename = "myinfo-domain.ts";
-	fs.writeFileSync(`${outputDir}/generated/${filename}`, header + typingsSource);
+	fs.writeFileSync(`${outputDir}/${filename}`, header + typingsSource);
 	return filename;
 }
 
@@ -256,7 +255,7 @@ async function generateMyinfoCodeEnums(): Promise<string[]> {
 		if (sheetName === "Version") return null;
 
 		// Convert to JSON and format accordingly
-		const myInfoCodesSheet = xlsx.utils.sheet_to_json(myInfoCodesXslx.Sheets[sheetName], { header: ["key", "value"], raw: false, defval: null, blankrows: true });
+		const myInfoCodesSheet = xlsx.utils.sheet_to_json(myInfoCodesXslx.Sheets[sheetName], { header: ["code", "description"], raw: false, defval: null, blankrows: true });
 		const entries = formatMyInfoCodeEntries(sheetName, myInfoCodesSheet);
 		return { enumName: sheetName, enumEntries: entries };
 	}).filter(entry => entry);
@@ -269,21 +268,46 @@ async function generateMyinfoCodeEnums(): Promise<string[]> {
 function formatMyInfoCodeEntries(sheetName: string, myInfoCodesSheet: any[]): Record<string, string>[] {
 	// Rudimentary validation by cell value in case the sheet changed its format
 	// Expecting row 6 to be the header; values should contain code and description
-	if (myInfoCodesSheet[5]?.value?.match(/code/gi) === -1 || myInfoCodesSheet[5]?.value?.toLowerCase() !== "description") {
+	if (myInfoCodesSheet[5]?.code?.match(/code/gi) === -1 || myInfoCodesSheet[5]?.description?.toLowerCase() !== "description") {
 		throw new Error(`Unexpected cell values in Myinfo xlsx sheet ${sheetName} row 6, format has likely changed`);
 	}
 
-	// Enums can't have numeric keys, thus checking here
-	const hasNumericKeys = !!myInfoCodesSheet.find((entry: Record<string, any>) => !!entry.key && !isNaN(Number(entry.key)));
-
-	return myInfoCodesSheet.map((entry: Record<string, string>, i: number) => {
+	const keyList: string[] = [];
+	return myInfoCodesSheet.map((row: Record<string, string>, i: number) => {
 		if (i >= 6) {
-			// Prepend key with `CODE_` if there are numeric keys
-			if (hasNumericKeys) entry.key = "CODE_" + entry.key;
-			return entry;
+			const key = assignUniqueKey(sheetName, keyList, _.snakeCase(row.description).toUpperCase());
+			keyList.push(key);
+			return {
+				key,
+				value: isNaN(Number(row.code)) ? `"${row.code}"` : row.code,
+			};
 		}
 		return null;
 	}).filter((entry: Record<string, any>) => entry);
+}
+
+function assignUniqueKey(sheetName: string, keyList: string[], key: string) {
+	if (keyList.includes(key)) {
+		// count instances of key
+		// tslint:disable-next-line: tsr-detect-non-literal-regexp
+		const countInstances = new RegExp(`^${key}`, "i");
+		const instanceCount = keyList.filter(k => k.match(countInstances)).length;
+
+		// extract max trailing counter (if any)
+		// tslint:disable-next-line: tsr-detect-non-literal-regexp
+		const extractCounter = new RegExp(`^${key}_(.*)`, "i");
+		const counter = keyList.map(k => {
+			const matches = k.match(extractCounter);
+			return matches ? Number(matches[1]) : null;
+		}).filter(k => k).sort((a, b) => (b - a))[0] || 0;
+
+		// assign unique key by finding highest number to append
+		const append = Math.max(instanceCount, counter);
+		const newKey = `${key}_${append + 1}`;
+		console.warn(`Myinfo sheet ${sheetName} contains duplicated keys: ${key}, renaming as ${newKey}`);
+		return newKey;
+	}
+	return key;
 }
 
 // =============================================================================
