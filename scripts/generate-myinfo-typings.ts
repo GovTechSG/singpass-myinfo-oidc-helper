@@ -221,6 +221,34 @@ function writeEnumTypingsSource(enumTyping: EnumTyping): string {
 		return;
 	}
 
+	// Append number to duplicated keys
+	const enumEntryKeyList: string[] = [];
+	enumTyping.enumEntries = enumTyping.enumEntries.map(entry => {
+		let key = entry.key;
+		if (enumEntryKeyList.includes(key)) {
+			// tslint:disable: tsr-detect-non-literal-regexp
+			const countInstances = new RegExp(`^${key}`, "i");
+			const extractCounter = new RegExp(`^${key}_(.*)`, "i");
+			// tslint:enable: tsr-detect-non-literal-regexp
+
+			// count instances of key
+			const instanceCount = enumEntryKeyList.filter(k => k.match(countInstances)).length;
+
+			// extract max trailing counter (if any)
+			const counter = enumEntryKeyList.map(k => {
+				const matches = k.match(extractCounter);
+				return matches ? Number(matches[1]) : null;
+			}).filter(k => k).sort((a, b) => (b - a))[0] || 0;
+
+			// assign unique key by finding highest number to append
+			const append = Math.max(instanceCount, counter);
+			key = `${key}_${append + 1}`;
+			console.warn(`Myinfo sheet ${enumTyping.enumName} contains duplicated keys: ${key}, renaming as ${key}`);
+		}
+		enumEntryKeyList.push(key);
+		return { ...entry, key };
+	});
+
 	// Remove empty keys or values
 	enumTyping.enumEntries = _.omitBy<Record<string, string>[]>(enumTyping.enumEntries, (value, key) => {
 		if (_.isEmpty(key) || _.isEmpty(value)) {
@@ -255,59 +283,28 @@ async function generateMyinfoCodeEnums(): Promise<string[]> {
 		if (sheetName === "Version") return null;
 
 		// Convert to JSON and format accordingly
-		const myInfoCodesSheet = xlsx.utils.sheet_to_json(myInfoCodesXslx.Sheets[sheetName], { header: ["code", "description"], raw: false, defval: null, blankrows: true });
-		const entries = formatMyInfoCodeEntries(sheetName, myInfoCodesSheet);
-		return { enumName: sheetName, enumEntries: entries };
+		const myInfoCodesSheet: Record<string, string>[] = xlsx.utils.sheet_to_json(myInfoCodesXslx.Sheets[sheetName], { header: ["code", "description"], raw: false, defval: null, blankrows: true });
+
+		// Rudimentary validation by cell value in case the sheet changed its format
+		// Expecting row 6 to be the header; values should contain code and description
+		if (!myInfoCodesSheet[5]?.code?.match(/code/gi) || myInfoCodesSheet[5]?.description?.toLowerCase() !== "description") {
+			throw new Error(`Unexpected cell values in Myinfo xlsx sheet ${sheetName} row 6, format has likely changed`);
+		}
+
+		const enumEntries = myInfoCodesSheet.map((row: Record<string, string>, i: number) => {
+			if (i >= 6) {
+				return {
+					key: _.snakeCase(row.description).toUpperCase(),
+					value: isNaN(Number(row.code)) ? `"${row.code}"` : row.code,
+				};
+			}
+			return null;
+		}).filter((entry: Record<string, string>) => entry);
+		return { enumName: sheetName, enumEntries };
 	}).filter(entry => entry);
 
 	// Write to files
-	const fileNames = _.map(enumTypingsArr, (enumTypings) => writeEnumTypingsSource(enumTypings));
-	return fileNames;
-}
-
-function formatMyInfoCodeEntries(sheetName: string, myInfoCodesSheet: any[]): Record<string, string>[] {
-	// Rudimentary validation by cell value in case the sheet changed its format
-	// Expecting row 6 to be the header; values should contain code and description
-	if (myInfoCodesSheet[5]?.code?.match(/code/gi) === -1 || myInfoCodesSheet[5]?.description?.toLowerCase() !== "description") {
-		throw new Error(`Unexpected cell values in Myinfo xlsx sheet ${sheetName} row 6, format has likely changed`);
-	}
-
-	const keyList: string[] = [];
-	return myInfoCodesSheet.map((row: Record<string, string>, i: number) => {
-		if (i >= 6) {
-			const key = assignUniqueKey(sheetName, keyList, _.snakeCase(row.description).toUpperCase());
-			keyList.push(key);
-			return {
-				key,
-				value: isNaN(Number(row.code)) ? `"${row.code}"` : row.code,
-			};
-		}
-		return null;
-	}).filter((entry: Record<string, any>) => entry);
-}
-
-function assignUniqueKey(sheetName: string, keyList: string[], key: string) {
-	if (keyList.includes(key)) {
-		// count instances of key
-		// tslint:disable-next-line: tsr-detect-non-literal-regexp
-		const countInstances = new RegExp(`^${key}`, "i");
-		const instanceCount = keyList.filter(k => k.match(countInstances)).length;
-
-		// extract max trailing counter (if any)
-		// tslint:disable-next-line: tsr-detect-non-literal-regexp
-		const extractCounter = new RegExp(`^${key}_(.*)`, "i");
-		const counter = keyList.map(k => {
-			const matches = k.match(extractCounter);
-			return matches ? Number(matches[1]) : null;
-		}).filter(k => k).sort((a, b) => (b - a))[0] || 0;
-
-		// assign unique key by finding highest number to append
-		const append = Math.max(instanceCount, counter);
-		const newKey = `${key}_${append + 1}`;
-		console.warn(`Myinfo sheet ${sheetName} contains duplicated keys: ${key}, renaming as ${newKey}`);
-		return newKey;
-	}
-	return key;
+	return _.map(enumTypingsArr, (enumTypings) => writeEnumTypingsSource(enumTypings));
 }
 
 // =============================================================================
