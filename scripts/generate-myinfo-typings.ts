@@ -191,7 +191,21 @@ function sanitizeSwagger(swagger: any): any {
 }
 
 async function writeSwaggerTypingsSource(swagger: any): Promise<string> {
-	let typingsSource = await dtsgenerator({ contents: [parseSchema(swagger)] });
+	const customDirectory = outputDir + "/custom";
+	const schema = parseSchema(swagger);
+	const { components } = (schema.content as any);
+
+	// add custom definitions
+	const filenames = fs.readdirSync(customDirectory);
+	filenames.forEach(file => {
+		const customDomain = JSON.parse(fs.readFileSync(`${customDirectory}/${file}`, "utf8"));
+		components.schemas = { ...components.schemas, ...customDomain };
+		Object.keys(customDomain).forEach((key) => {
+			components.schemas.PersonCommon.properties[key] = { "allOf": [{ "$ref": "#/components/schemas/" + key }] };
+		});
+	});
+
+	let typingsSource = await dtsgenerator({ contents: [schema] });
 	typingsSource = typingsSource.replace("declare namespace Components {", "export declare namespace MyInfoComponents {");
 	typingsSource = typingsSource.replace("namespace Schemas {", "export namespace Schemas {");
 
@@ -243,7 +257,7 @@ function writeEnumTypingsSource(enumTyping: EnumTyping): string {
 			// assign unique key by finding highest number to append
 			const append = Math.max(instanceCount, counter);
 			key = `${key}_${append + 1}`;
-			console.warn(`Myinfo sheet ${enumTyping.enumName} contains duplicated keys: ${key}, renaming as ${key}`);
+			console.warn(`Myinfo sheet ${enumTyping.enumName} contains duplicated keys: ${entry.key}, renaming as ${key}`);
 		}
 		enumEntryKeyList.push(key);
 		return { ...entry, key };

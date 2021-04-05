@@ -1,0 +1,96 @@
+{
+	"merdekagen": {
+		"type": "object",
+		"required": [
+			"eligibility",
+			"lastupdated",
+			"quantum",
+			"source",
+			"classification",
+			"message"
+		],
+		"properties": {
+			"eligibility": {
+				"type": "object",
+				"required": [
+					"value"
+				],
+				"properties": {
+					"value": {
+						"type": "boolean"
+					}
+				}
+			},
+			"lastupdated": {
+				"type": "string",
+				"format": "date",
+				"description": "Last updated date of data field. See \"full-date\" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14"
+			},
+			"quantum": {
+				"type": "object",
+				"required": [
+					"value"
+				],
+				"properties": {
+					"value": {
+						"type": "number"
+					}
+				}
+			},
+			"source": {
+				"type": "string",
+				"maxLength": 1,
+				"enum": [
+					"1",
+					"2",
+					"3",
+					"4"
+				],
+				"description": "Source of data.\n\n* '1' - Government-verified\n* '2' - User provided\n* '3' - Field is Not Applicable to Person\n* '4' - Verified by SingPass\n\n**Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions)."
+			},
+			"classification": {
+				"type": "string",
+				"maxLength": 1,
+				"enum": [
+					"C"
+				],
+				"default": "C",
+				"description": "Data classification of data field. Default 'C' - Confidential."
+			},
+			"message": {
+				"type": "object",
+				"description": "Message code\n* '1' - MGP Eligibility Tag: N\n* '2' - MGP Eligibility Tag: Y, Sign-up Tag: Y, Invalid Address Tag: N\n* '3' - MGP Eligibility Tag: Y, Sign-up Tag: Y, Invalid Address Tag: Y\n* '4' - MGP Eligibility Tag: Y, Sign-up Tag: N, Invalid Address Tag: N\n* '5' - MGP Eligibility Tag: Y, Sign-up Tag: N, Invalid Address Tag: Y\n* '6' - MGP Eligibility Tag: Y, Opt-Out Tag: Y\n* '7' - MGP Eligibility Tag: Y, Sign-up Tag: Y, NIL Status: Y\n\n**Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).",
+				"required": [
+					"code",
+					"desc"
+				],
+				"properties": {
+					"code": {
+						"type": "string",
+						"enum": [
+							"1",
+							"2",
+							"3",
+							"4",
+							"5",
+							"6",
+							"7"
+						]
+					},
+					"desc": {
+						"type": "string",
+						"enum": [
+							"We regret that you are not eligible for the Merdeka Generation Package.  For further enquiries, please contact 1800-2222-888.",
+							"You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888.",
+							"You are eligible for the Merdeka Generation Package. Please call 6391 6100 to update your NRIC address with ICA and then contact 1800-2222-888 to receive your Merdeka Generation card.",
+							"You are eligible for the Merdeka Generation Package. Please contact 1800-2222-888 to receive your Merdeka Generation MediSave top-up.",
+							"You are eligible for the Merdeka Generation Package. Please call 6391 6100 to update your NRIC address with ICA, and then contact 1800-2222-888 to receive your Merdeka Generation card.",
+							"We understand that you have opted out of receiving the benefits under the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888.",
+							"Please contact 1800-2222-888 for further details on your eligibility."
+						]
+					}
+				}
+			}
+		}
+	}
+}
