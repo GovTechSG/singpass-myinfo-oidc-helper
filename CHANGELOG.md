@@ -1,9 +1,15 @@
 # Changelogs
 
+## 4.2.30
+
+- Update dependencies
+
 ## 4.2.29
+
 - Update female profiles to have alias name = LEE XIU
 
 ## 4.2.28
+
 - Add msSGTeenager17 female
 
 ## 4.2.27
