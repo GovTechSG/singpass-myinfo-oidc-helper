@@ -1,4 +1,5 @@
 import * as _ from "lodash";
+import { MyinfoCountryCode, MyinfoNationalityCode, MyinfoOccupationCode } from "../../domain";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 
@@ -18,20 +19,23 @@ export const mrJapaneseAddressBlank: FakeProfile = {
 			"source": "3",
 			"classification": "C",
 			"lastupdated": "",
+			"unavailable": false,
 		};
 		profile.nationality = {
-			"code": "JP",
-			"desc": "JAPANESE",
+			"code": MyinfoNationalityCode.JAPANESE,
+			"desc": MyinfoNationalityCode.fn.toEnumKey(MyinfoNationalityCode.JAPANESE),
 			"source": "1",
 			"classification": "C",
 			"lastupdated": "2019-09-18",
+			"unavailable": false,
 		};
 		profile.birthcountry = {
-			"code": "JP",
-			"desc": "JAPAN",
+			"code": MyinfoCountryCode.JAPAN,
+			"desc": MyinfoCountryCode.fn.toEnumKey(MyinfoCountryCode.JAPAN),
 			"source": "1",
 			"classification": "C",
 			"lastupdated": "2019-09-18",
+			"unavailable": false,
 
 		};
 		(profile as any).regadd = {
@@ -55,14 +59,16 @@ export const mrJapaneseAddressBlank: FakeProfile = {
 			"source": "1",
 			"classification": "C",
 			"value": "1983-10-06",
+			"unavailable": false,
 		};
 
 		profile.marital = {
 			"lastupdated": "2020-09-10",
-			"code": "",
+			"code": null,
 			"source": "2",
 			"classification": "C",
-			"desc": "",
+			"desc": null,
+			"unavailable": false,
 		};
 
 		profile.marriagedate = {
@@ -70,14 +76,16 @@ export const mrJapaneseAddressBlank: FakeProfile = {
 			"source": "2",
 			"classification": "C",
 			"value": "",
+			"unavailable": false,
 		};
 
 		profile.occupation = {
 			"lastupdated": "2018-05-21",
-			"code": "11110",
+			"code": MyinfoOccupationCode.LEGISLATOR,
 			"source": "2",
 			"classification": "C",
-			"desc": "LEGISLATOR",
+			"desc": MyinfoOccupationCode.fn.toEnumKey(MyinfoOccupationCode.LEGISLATOR),
+			"unavailable": false,
 		};
 
 		profile.dialect = {
@@ -86,6 +94,7 @@ export const mrJapaneseAddressBlank: FakeProfile = {
 			"source": "2",
 			"classification": "C",
 			"desc": "",
+			"unavailable": false,
 		};
 
 		return profile;

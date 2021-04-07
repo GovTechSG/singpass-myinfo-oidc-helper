@@ -1,4 +1,5 @@
 import * as _ from "lodash";
+import { MyinfoPioneerGenerationMessageCode } from "../../domain";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGUnclePgAllOk } from "./mrSGUnclePgAllOk";
 
@@ -13,13 +14,14 @@ export const mrSGUnclePgNilStatus: FakeProfile = {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
 		const profile = mrSGUnclePgAllOk.generate(profileName);
-		profile.pioneergen.message.code = "7";
+		profile.pioneergen.message.code = MyinfoPioneerGenerationMessageCode.NIL_STATUS;
 		profile.pioneergen.message.desc = "Please call 1800-2222-888 to start receiving your PG benefits.";
 		profile.dob = {
 			lastupdated: "2021-01-01",
 			source: "1",
 			classification: "C",
 			value: "1948-01-01",
+			unavailable: false,
 		};
 
 		return profile;

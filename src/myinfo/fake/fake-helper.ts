@@ -1,5 +1,6 @@
 import { get, isEmpty, map, partition, set } from "lodash";
-import { domainMap, myInfoDomain } from "../domain";
+// tslint:disable-next-line: max-line-length
+import { MyInfoComponents, MyinfoComStatusCode, MyinfoCountryCode, MyinfoDrivingLicenceValidityCode, MyinfoHDBTypeCode, MyinfoHousingTypeCode, MyinfoLifeStatusCode, MyinfoMaritialStatusCode, MyinfoMerdekaGenerationMessageCode, MyinfoOccupationCode, MyinfoResidentialCode, MyinfoSexCode, MyinfoVehicleStatus } from "../domain";
 import { ProfileArchetype } from "./profiles/fake-profile";
 import { profiles } from "./profiles/fake-profiles";
 
@@ -18,44 +19,39 @@ export interface ChildrenBirthRecord {
 	name?: string;
 	dob?: string;
 	tob?: string;
-	sex?: string;
-	lifestatus?: string;
+	sex?: MyinfoSexCode;
+	lifestatus?: MyinfoLifeStatusCode;
 }
+
 export interface MockParams {
 	archetype: ProfileArchetype;
 	userdisplayname?: string;
-	// tslint:disable-next-line: max-union-size
-	marital?: "1" | "2" | "3" | "5" | "";
+	marital?: MyinfoMaritialStatusCode;
 	marriagedate?: string;
 	divorcedate?: string;
 	marriagecertno?: string;
-	countryofmarriage?: string;
+	countryofmarriage?: MyinfoCountryCode;
 	childrenbirthrecords?: ChildrenBirthRecord[];
 	childrenoverridemode?: ChildrenOverrideMode;
-	// tslint:disable-next-line: max-union-size
-	residentialstatus?: "A" | "C" | "P" | "U" | "N";
-	occupation?: string;
+	residentialstatus?: MyinfoResidentialCode;
+	occupation?: MyinfoOccupationCode;
 	occupationfreeform?: string;
 	dob?: string;
 	gstvyear?: number;
 	gvs?: GVS;
 	merdekageneligible?: boolean;
 	merdekagenquantum?: number;
-	// tslint:disable-next-line: max-union-size
-	merdekagenmessagecode?: "1" | "2" | "3" | "4" | "5" | "6" | "7";
-	// tslint:disable-next-line:max-union-size
-	hdbtype?: "111" | "112" | "113" | "114" | "115" | "116" | "118";
-	// tslint:disable-next-line:max-union-size
-	housingtype?: "121" | "122" | "123" | "131" | "132" | "139";
-	// tslint:disable-next-line:max-union-size
-	drivingqdlvalidity?: "V" | "E" | "I" | "N";
-	vehiclestatus?: "1" | "2";
+	merdekagenmessagecode?: MyinfoMerdekaGenerationMessageCode;
+	hdbtype?: MyinfoHDBTypeCode;
+	housingtype?: MyinfoHousingTypeCode;
+	drivingqdlvalidity?: MyinfoDrivingLicenceValidityCode;
+	vehiclestatus?: MyinfoVehicleStatus;
 }
 
-type PersonBasic = myInfoDomain.Components.Schemas.PersonBasic;
+type PersonCommon = MyInfoComponents.Schemas.PersonCommon;
 
 export interface IFakeMyInfoHelper {
-	getPersonBasic: (mockParams: MockParams) => PersonBasic;
+	getPersonCommon: (mockParams: MockParams) => PersonCommon;
 }
 
 export class FakeMyInfoHelper implements IFakeMyInfoHelper {
@@ -72,7 +68,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 	 * See FakeMyInfoPersonArchetypes for the actual person.
 	 */
 	// tslint:disable-next-line: no-big-function
-	public getPersonBasic = (mockParams: MockParams): PersonBasic => {
+	public getPersonCommon = (mockParams: MockParams): PersonCommon => {
 		const mockProfile = profiles.find((profile) => profile.name === mockParams.archetype);
 		if (!mockProfile) {
 			return null;
@@ -84,12 +80,12 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 
 		if (!isEmpty(mockParams.residentialstatus)) {
 			myinfoPerson.residentialstatus.code = mockParams.residentialstatus;
-			myinfoPerson.residentialstatus.desc = domainMap.residentialstatus.map.codeToDesc[mockParams.residentialstatus];
+			myinfoPerson.residentialstatus.desc = MyinfoResidentialCode.fn.toEnumKey(mockParams.residentialstatus);
 		}
 
 		if (!isEmpty(mockParams.marital)) {
 			myinfoPerson.marital.code = mockParams.marital;
-			myinfoPerson.marital.desc = domainMap.marital.map.codeToDesc[mockParams.marital];
+			myinfoPerson.marital.desc = MyinfoMaritialStatusCode.fn.toEnumKey(mockParams.marital);
 		}
 
 		if (!isEmpty(mockParams.marriagedate)) {
@@ -106,7 +102,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 
 		if (!isEmpty(mockParams.countryofmarriage)) {
 			myinfoPerson.countryofmarriage.code = mockParams.countryofmarriage;
-			myinfoPerson.countryofmarriage.desc = domainMap.countryofmarriage.map.codeToDesc[mockParams.countryofmarriage];
+			myinfoPerson.countryofmarriage.desc = MyinfoCountryCode.fn.toEnumKey(mockParams.countryofmarriage);
 		}
 
 		if (!isEmpty(mockParams.dob) || !isEmpty(myinfoPerson.dob?.value)) {
@@ -141,12 +137,12 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		}
 
 		if (!isEmpty(mockParams.gvs)) {
-			myinfoPerson.gstvoucher.signup.value = (mockParams.gvs || "").toLocaleLowerCase() === GVS.true;
+			myinfoPerson.gstvoucher.signup.value = (mockParams.gvs || null).toLocaleLowerCase() === GVS.true;
 		}
 
 		if (!isEmpty(mockParams.occupation)) {
 			myinfoPerson.occupation.code = mockParams.occupation;
-			myinfoPerson.occupation.desc = domainMap.occupation.map.codeToDesc[mockParams.occupation];
+			myinfoPerson.occupation.desc = MyinfoOccupationCode.fn.toEnumKey(mockParams.occupation);
 			myinfoPerson.occupation.value = null;
 		} else {
 			if (!isEmpty(mockParams.occupationfreeform)) {
@@ -174,14 +170,16 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 				source: "1",
 				classification: "C",
 				code: mockParams.hdbtype,
-				desc: domainMap.hdbtype.map.codeToDesc[mockParams.hdbtype],
+				desc: MyinfoHDBTypeCode.fn.toEnumKey(mockParams.hdbtype),
+				unavailable: false,
 			};
 			myinfoPerson.housingtype = {
 				lastupdated: "2020-08-26",
-				code: "",
+				code: null,
 				source: "1",
 				classification: "C",
-				desc: "",
+				desc: null,
+				unavailable: false,
 			};
 		} else if (!isEmpty(mockParams.housingtype)) {
 			myinfoPerson.housingtype = {
@@ -189,14 +187,16 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 				source: "1",
 				classification: "C",
 				code: mockParams.housingtype,
-				desc: domainMap.housingtype.map.codeToDesc[mockParams.housingtype],
+				desc: MyinfoHousingTypeCode.fn.toEnumKey(mockParams.housingtype),
+				unavailable: false,
 			};
 			myinfoPerson.hdbtype = {
 				lastupdated: "2020-08-26",
-				code: "",
+				code: null,
 				source: "1",
 				classification: "C",
-				desc: "",
+				desc: null,
+				unavailable: false,
 			};
 		}
 
@@ -204,10 +204,10 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 			myinfoPerson.drivinglicence = {
 				revocation: {
 					startdate: {
-						value: "",
+						value: null,
 					},
 					enddate: {
-						value: "",
+						value: null,
 					},
 				},
 				totaldemeritpoints: {
@@ -215,19 +215,19 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 				},
 				disqualification: {
 					startdate: {
-						value: "",
+						value: null,
 					},
 					enddate: {
-						value: "",
+						value: null,
 					},
 				},
 				qdl: {
 					expirydate: {
-						value: "",
+						value: null,
 					},
 					validity: {
 						code: mockParams.drivingqdlvalidity,
-						desc: domainMap.qdlValidity.map.codeToDesc[mockParams.drivingqdlvalidity],
+						desc: MyinfoDrivingLicenceValidityCode.fn.toEnumKey(mockParams.drivingqdlvalidity),
 					},
 					classes: [
 						{
@@ -243,31 +243,32 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 				lastupdated: "2020-08-26",
 				pdl: {
 					expirydate: {
-						value: "",
+						value: null,
 					},
 					validity: {
-						code: "",
-						desc: "",
+						code: null,
+						desc: null,
 					},
 					classes: [],
 				},
 				source: "1",
 				classification: "C",
 				comstatus: {
-					code: "Y",
-					desc: "Eligible",
+					code: MyinfoComStatusCode.ELIGIBLE,
+					desc: MyinfoComStatusCode.fn.toEnumKey(MyinfoComStatusCode.ELIGIBLE),
 				},
 				photocardserialno: {
-					value: "",
+					value: null,
 				},
 				suspension: {
 					startdate: {
-						value: "",
+						value: null,
 					},
 					enddate: {
-						value: "",
+						value: null,
 					},
 				},
+				unavailable: false,
 			};
 			if (mockParams.drivingqdlvalidity === "N") {
 				myinfoPerson.drivinglicence.qdl.classes = [];
@@ -275,125 +276,125 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		}
 
 		if (!isEmpty(mockParams.vehiclestatus)) {
-			myinfoPerson.vehicles = [
-				{
-					roadtaxexpirydate: {
-						value: "2020-06-06",
-					},
-					engineno: {
-						value: "4G13NU1453",
-					},
-					attachment3: {
-						value: "",
-					},
-					effectiveownership: {
-						value: "2010-06-06T12:09:05",
-					},
-					scheme: {
-						value: "OPC - OFF PEAK CAR",
-					},
-					powerrate: {
-						value: 1.7,
-					},
-					source: "1",
-					primarycolour: {
-						value: "MAROON",
-					},
-					type: {
-						value: "STATION WAGON/JEEP/LAND ROVER",
-					},
-					vehicleno: {
-						value: "SBP1818T",
-					},
-					coeexpirydate: {
-						value: "2020-06-06",
-					},
-					chassisno: {
-						value: "TUU28391334KL189",
-					},
-					noxemission: {
-						value: 0.013456,
-					},
-					model: {
-						value: "FORESTER",
-					},
-					openmarketvalue: {
-						value: 23485.3,
-					},
-					coemission: {
-						value: 0.153209,
-					},
-					attachment2: {
-						value: "",
-					},
-					attachment1: {
-						value: "CONTINENTAL TIRE",
-					},
-					make: {
-						value: "SUBARU",
-					},
-					pmemission: {
-						value: 0.199,
-					},
-					originalregistrationdate: {
-						value: "2009-12-06",
-					},
-					yearofmanufacture: {
-						value: "2010",
-					},
-					vpc: {
-						value: "",
-					},
-					enginecapacity: {
-						value: 1600,
-					},
-					classification: "C",
-					nooftransfers: {
-						value: 1,
-					},
-					propellant: {
-						value: "Petrol",
-					},
-					co2emission: {
-						value: 145,
-					},
-					motorno: {
-						value: "",
-					},
-					minimumparfbenefit: {
-						value: 2500,
-					},
-					thcemission: {
-						value: 0.187765,
-					},
-					firstregistrationdate: {
-						value: "2010-06-06",
-					},
-					lastupdated: "2020-08-26",
-					maximumunladenweight: {
-						value: 1500,
-					},
-					coecategory: {
-						value: "A - CAR UP TO 1600CC & 97KW (130BHP)",
-					},
-					maximumladenweight: {
-						value: 2000,
-					},
-					secondarycolour: {
-						value: "",
-					},
-					iulabelno: {
-						value: "",
-					},
-					quotapremium: {
-						value: 0,
-					},
-					status: {
-						code: mockParams.vehiclestatus,
-						desc: domainMap.status.map.codeToDesc[mockParams.vehiclestatus],
-					},
+			myinfoPerson.vehicles =
+			{
+				roadtaxexpirydate: {
+					value: "2020-06-06",
 				},
-			];
+				engineno: {
+					value: "4G13NU1453",
+				},
+				attachment3: {
+					value: null,
+				},
+				effectiveownership: {
+					value: "2010-06-06T12:09:05",
+				},
+				scheme: {
+					value: "OPC - OFF PEAK CAR",
+				},
+				powerrate: {
+					value: 1.7,
+				},
+				source: "1",
+				primarycolour: {
+					value: "MAROON",
+				},
+				type: {
+					value: "STATION WAGON/JEEP/LAND ROVER",
+				},
+				vehicleno: {
+					value: "SBP1818T",
+				},
+				coeexpirydate: {
+					value: "2020-06-06",
+				},
+				chassisno: {
+					value: "TUU28391334KL189",
+				},
+				noxemission: {
+					value: 0.013456,
+				},
+				model: {
+					value: "FORESTER",
+				},
+				openmarketvalue: {
+					value: 23485.3,
+				},
+				coemission: {
+					value: 0.153209,
+				},
+				attachment2: {
+					value: null,
+				},
+				attachment1: {
+					value: "CONTINENTAL TIRE",
+				},
+				make: {
+					value: "SUBARU",
+				},
+				pmemission: {
+					value: 0.199,
+				},
+				originalregistrationdate: {
+					value: "2009-12-06",
+				},
+				yearofmanufacture: {
+					value: "2010",
+				},
+				vpc: {
+					value: null,
+				},
+				enginecapacity: {
+					value: 1600,
+				},
+				classification: "C",
+				nooftransfers: {
+					value: 1,
+				},
+				propellant: {
+					value: "Petrol",
+				},
+				co2emission: {
+					value: 145,
+				},
+				motorno: {
+					value: null,
+				},
+				minimumparfbenefit: {
+					value: 2500,
+				},
+				thcemission: {
+					value: 0.187765,
+				},
+				firstregistrationdate: {
+					value: "2010-06-06",
+				},
+				lastupdated: "2020-08-26",
+				maximumunladenweight: {
+					value: 1500,
+				},
+				coecategory: {
+					value: "A - CAR UP TO 1600CC & 97KW (130BHP)",
+				},
+				maximumladenweight: {
+					value: 2000,
+				},
+				secondarycolour: {
+					value: null,
+				},
+				iulabelno: {
+					value: null,
+				},
+				quotapremium: {
+					value: 0,
+				},
+				status: {
+					code: mockParams.vehiclestatus,
+					desc: MyinfoVehicleStatus.fn.toEnumKey(mockParams.vehiclestatus),
+				},
+				unavailable: false,
+			};
 		}
 		if (!isEmpty(mockParams.userdisplayname)) {
 			myinfoPerson.name.value = mockParams.userdisplayname;
@@ -437,7 +438,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
  * @param person fake MyInfo person
  * @param attributes array of attributes to filter for
  */
-function filterThroughMyInfoAttributes(person: PersonBasic, attributes: ReadonlyArray<string>): PersonBasic {
+function filterThroughMyInfoAttributes(person: PersonCommon, attributes: ReadonlyArray<string>): PersonCommon {
 	const [childrenRawCbrAttributes, childrenNormalAttributes] = partition(attributes, (value) => value.startsWith("childrenbirthrecords."));
 	const [sponsoredRawCbrAttributes, sponsoredNormalAttributes] = partition(attributes, (value) => value.startsWith("sponsoredchildrenrecords."));
 	const [vehiclesRawCbrAttributes, vehiclesNormalAttributes] = partition(attributes, (value) => value.startsWith("vehicles."));
@@ -469,10 +470,7 @@ function filterThroughMyInfoAttributes(person: PersonBasic, attributes: Readonly
 	if (vehiclesRawCbrAttributes.length > 0) {
 		const vehicleBirthrecordsAttributes = map(vehiclesRawCbrAttributes, (cbrAttribute) => cbrAttribute.split(".")[1]);
 		// get filtered vehicles
-		const filteredVehicleChildrenbirthrecords = map(person.vehicles, (cbr) => {
-			const result = filterThroughAttributes(cbr, vehicleBirthrecordsAttributes);
-			return { ...result, ...generateDefaultMockResponse() };
-		});
+		const filteredVehicleChildrenbirthrecords = { ...filterThroughAttributes(person.vehicles, vehicleBirthrecordsAttributes), ...generateDefaultMockResponse() };
 		set(vehicleFilteredPerson, "vehicles", filteredVehicleChildrenbirthrecords);
 	}
 	if (drivinglicenceRawCbrAttributes.length > 0) {
@@ -536,13 +534,18 @@ function generateDefaultMockResponse(): object {
 }
 
 
-export function transformChildBirthRecord(childbirthrecord: ChildrenBirthRecord, index: number) {
+export function transformChildBirthRecord(childbirthrecord: ChildrenBirthRecord, index: number): MyInfoComponents.Schemas.Childrenbirthrecords {
 	return {
+		source: "1",
+		classification: "C",
+		lastupdated: null,
 		birthcertno: { value: childbirthrecord.birthcertno },
 		name: { value: childbirthrecord.name || `nameless child ${index + 1}` },
-		sex: { code: childbirthrecord.sex.charAt(0), desc: childbirthrecord.sex },
-		lifestatus: { code: childbirthrecord.lifestatus.charAt(0), desc: childbirthrecord.lifestatus },
+		sex: { code: childbirthrecord.sex, desc: MyinfoSexCode.fn.toEnumKey(childbirthrecord.sex) },
+		lifestatus: { code: childbirthrecord.lifestatus, desc: MyinfoLifeStatusCode.fn.toEnumKey(childbirthrecord.lifestatus) },
 		dob: { value: isNaN(Date.parse(childbirthrecord.dob)) ? "2020-01-01" : childbirthrecord.dob },
 		tob: { value: childbirthrecord.tob || "0000" },
-	} as myInfoDomain.Components.Schemas.Childrenbirthrecords;
+		unavailable: false,
+
+	} as MyInfoComponents.Schemas.Childrenbirthrecords;
 }

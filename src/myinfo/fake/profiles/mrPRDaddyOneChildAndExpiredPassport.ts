@@ -23,12 +23,14 @@ export const mrPRDaddyOneChildAndExpiredPassport: FakeProfile = {
 			"source": "1",
 			"classification": "C",
 			"value": "L3280034",
+			"unavailable": false,
 		},
 			profile.passportexpirydate = {
 				"lastupdated": "2018-05-10",
 				"source": "1",
 				"classification": "C",
 				"value": "2011-09-10",
+				"unavailable": false,
 			};
 		return profile;
 	},

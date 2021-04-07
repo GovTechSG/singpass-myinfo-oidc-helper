@@ -1,4 +1,5 @@
 import * as _ from "lodash";
+import { EnumType } from "typescript";
 
 export namespace EnumUtils {
 
@@ -60,13 +61,14 @@ export namespace EnumUtils {
 	 * Automatically does type coercion (i.e. conversion to string or number)
 	 * Returns undefined if the value is no in the enum set
 	 */
-	export function toEnumKeyFunc<T>(enumType: any, shouldThrowIfInvalid: boolean = false): (value: T) => string {
+	export function toEnumKeyFunc<T>(enumType: any, shouldThrowIfInvalid: boolean = false): <U = keyof typeof enumType>(value: T) => U {
 		const isNumber = _.some(_.values(enumType), _.isNumber);	// Memoized
 		const invertedMap: _.Dictionary<any> = _.invert(enumType);	// Memoized
+		type EnumKeyType = keyof typeof enumType;
 
-		return (value: T) => {
+		return (value: T): any => {
 			const findValue = (isNumber ? _.toNumber(value) : _.toString(value)); // Type coercion
-			const foundKey = invertedMap[findValue];
+			const foundKey: EnumKeyType = invertedMap[findValue];
 			if (_.isNil(foundKey) && shouldThrowIfInvalid) {
 				throw new Error(`Invalid enum value: ${value}`);
 			}

@@ -2,6 +2,7 @@ import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 import { residentialstatus, sex } from "../../domain/map";
+import { MyinfoOccupationCode } from "../../domain";
 
 const id = "F5994458N";
 const name = ProfileArchetype.MR_MY_DADDY_PERFECT;
@@ -21,23 +22,26 @@ export const mrMYDaddyPerfect: FakeProfile = {
 		profile.residentialstatus.desc = "";
 		profile.marital = {
 			"lastupdated": "2020-09-10",
-			"code": "",
+			"code": null,
 			"source": "2",
 			"classification": "C",
-			"desc": "",
+			"desc": null,
+			"unavailable": false,
 		};
 		profile.marriagedate = {
 			"lastupdated": "2020-09-10",
 			"source": "2",
 			"classification": "C",
 			"value": "",
+			"unavailable": false,
 		};
 		profile.occupation = {
 			"lastupdated": "2018-05-21",
-			"code": "11110",
+			"code": MyinfoOccupationCode.LEGISLATOR,
 			"source": "2",
 			"classification": "C",
-			"desc": "LEGISLATOR",
+			"desc": MyinfoOccupationCode.fn.toEnumKey(MyinfoOccupationCode.LEGISLATOR),
+			"unavailable": false,
 		};
 
 		profile.dialect = {
@@ -46,6 +50,7 @@ export const mrMYDaddyPerfect: FakeProfile = {
 			"source": "2",
 			"classification": "C",
 			"desc": "",
+			"unavailable": false,
 		};
 
 		return profile;

@@ -1,4 +1,5 @@
 import * as _ from "lodash";
+import { MyinfoCountryCode, MyinfoDialectCode, MyinfoEduLevelCode, MyinfoMaritialStatusCode, MyinfoMerdekaGenerationMessageCode, MyinfoNationalityCode, MyinfoRaceCode, MyinfoResidentialCode, MyinfoSexCode } from "../../domain";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 
 const id = "S1111111D";
@@ -21,75 +22,85 @@ export const mrAppReviewer: FakeProfile = {
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
+				"unavailable": false,
 			},
 			"aliasname": {
 				"value": "TEST PROFILE",
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
+				"unavailable": false,
 			},
 			"sex": {
-				"code": "M",
-				"desc": "Male",
+				"code": MyinfoSexCode.MALE,
+				"desc": MyinfoSexCode.fn.toEnumKey(MyinfoSexCode.MALE),
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
+				"unavailable": false,
 			},
 			"race": {
-				"code": "CN",
-				"desc": "CHINESE",
+				"code": MyinfoRaceCode.CHINESE,
+				"desc": MyinfoRaceCode.fn.toEnumKey(MyinfoRaceCode.CHINESE),
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
+				"unavailable": false,
 			},
 			"secondaryrace": {
-				"code": "GM",
-				"desc": "GERMAN",
+				"code": MyinfoRaceCode.GERMAN,
+				"desc": MyinfoRaceCode.fn.toEnumKey(MyinfoRaceCode.GERMAN),
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
+				"unavailable": false,
 			},
 			"dialect": {
-				"code": "HK",
-				"desc": "HOKKIEN",
+				"code": MyinfoDialectCode.HOKKIEN,
+				"desc": MyinfoDialectCode.fn.toEnumValue(MyinfoDialectCode.HOKKIEN),
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
+				"unavailable": false,
 			},
 			"nationality": {
-				"code": "SG",
-				"desc": "SINGAPORE CITIZEN",
+				"code": MyinfoNationalityCode.SINGAPORE_CITIZEN,
+				"desc": MyinfoNationalityCode.fn.toEnumKey(MyinfoNationalityCode.SINGAPORE_CITIZEN),
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
+				"unavailable": false,
 			},
 			"dob": {
 				"value": "1989-10-06",
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
+				"unavailable": false,
 			},
 			"birthcountry": {
-				"code": "SG",
-				"desc": "SINGAPORE",
+				"code": MyinfoCountryCode.SINGAPORE,
+				"desc": MyinfoCountryCode.fn.toEnumKey(MyinfoCountryCode.SINGAPORE),
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
+				"unavailable": false,
 			},
 			"residentialstatus": {
-				"code": "C",
-				"desc": "Citizen",
+				"code": MyinfoResidentialCode.CITIZEN,
+				"desc": MyinfoResidentialCode.fn.toEnumKey(MyinfoResidentialCode.CITIZEN),
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
+				"unavailable": false,
 			},
 			"regadd": {
-				"type": "SG",
+				"type": MyinfoCountryCode.SINGAPORE,
 				"block": {
 					"value": "123",
 				},
 				"building": {
-					"value": "",
+					"value": null,
 				},
 				"floor": {
 					"value": "12",
@@ -101,8 +112,8 @@ export const mrAppReviewer: FakeProfile = {
 					"value": "TEST ACCT STREET",
 				},
 				"country": {
-					"code": "SG",
-					"desc": "SINGAPORE",
+					"code": MyinfoCountryCode.SINGAPORE,
+					"desc": MyinfoCountryCode.fn.toEnumKey(MyinfoCountryCode.SINGAPORE),
 				},
 				"postal": {
 					"value": "310123",
@@ -110,26 +121,29 @@ export const mrAppReviewer: FakeProfile = {
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
+				"unavailable": false,
 			},
 			"email": {
 				"value": "gt.govandi@gmail.com",
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
+				"unavailable": false,
 			},
 			"homeno": {
 				"lastupdated": "2020-09-10",
 				"source": "2",
 				"classification": "C",
 				"areacode": {
-					"value": "",
+					"value": null,
 				},
 				"prefix": {
-					"value": "",
+					"value": null,
 				},
 				"nbr": {
-					"value": "",
+					"value": null,
 				},
+				"unavailable": false,
 			},
 			"mobileno": {
 				"areacode": {
@@ -144,46 +158,53 @@ export const mrAppReviewer: FakeProfile = {
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
+				"unavailable": false,
 			},
 			"marital": {
-				"code": "2",
-				"desc": "MARRIED",
+				"code": MyinfoMaritialStatusCode.MARRIED,
+				"desc": MyinfoMaritialStatusCode.fn.toEnumKey(MyinfoMaritialStatusCode.MARRIED),
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
+				"unavailable": false,
 			},
 			"marriagecertno": {
 				"value": "M525997",
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
+				"unavailable": false,
 			},
 			"countryofmarriage": {
-				"code": "SG",
-				"desc": "SINGAPORE",
+				"code": MyinfoCountryCode.SINGAPORE,
+				"desc": MyinfoCountryCode.fn.toEnumKey(MyinfoCountryCode.SINGAPORE),
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
+				"unavailable": false,
 			},
 			"marriagedate": {
 				"value": "1993-10-22",
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
+				"unavailable": false,
 			},
 			"edulevel": {
 				"lastupdated": "2020-09-10",
-				"code": "",
+				"code": MyinfoEduLevelCode.PRIMARY,
+				"desc": MyinfoEduLevelCode.fn.toEnumKey(MyinfoEduLevelCode.PRIMARY),
 				"source": "2",
 				"classification": "C",
-				"desc": "",
+				"unavailable": false,
 			},
 			"occupation": {
 				"lastupdated": "2020-09-10",
-				"code": "",
+				"code": null,
+				"desc": null,
 				"source": "2",
 				"classification": "C",
-				"desc": "",
+				"unavailable": false,
 			},
 			"merdekagen": {
 				"eligibility": {
@@ -193,7 +214,7 @@ export const mrAppReviewer: FakeProfile = {
 					"value": 100,
 				},
 				"message": {
-					"code": "2",
+					"code": MyinfoMerdekaGenerationMessageCode.ALL_OK,
 					"desc": "You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888.",
 				},
 				"source": source,
@@ -256,8 +277,7 @@ export const mrAppReviewer: FakeProfile = {
 				"source": "1",
 				"classification": "C",
 				"unavailable": true,
-			},
-			"vehicles": [],
+			}
 		};
 	},
 };

@@ -2,6 +2,7 @@ import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { preschoolEligibleChild2_IC, preschoolEligibleChild2_K1 } from "./childbirthRecords";
 import { aliasName } from "../profiles/common";
+import { MyinfoCountryCode, MyinfoDialectCode, MyinfoLifeStatusCode, MyinfoMaritialStatusCode, MyinfoMerdekaGenerationMessageCode, MyinfoNationalityCode, MyinfoPioneerGenerationMessageCode, MyinfoRaceCode, MyinfoResidentialCode, MyinfoSexCode } from "../../domain";
 
 const id = "S8399420G";
 const name = ProfileArchetype.MR_SG_DADDY_PERFECT;
@@ -16,29 +17,32 @@ export const mrSGDaddyPerfect: FakeProfile = {
 		return {
 			"edulevel": {
 				"lastupdated": "2020-09-10",
-				"code": "",
+				"code": null,
+				"desc": null,
 				"source": "2",
 				"classification": "C",
-				"desc": "",
+				"unavailable": false,
 			},
 			"dialect": {
 				"lastupdated": "2018-06-01",
-				"code": "HK",
+				"code": MyinfoDialectCode.HOKKIEN,
+				"desc": MyinfoDialectCode.fn.toEnumKey(MyinfoDialectCode.HOKKIEN),
 				"source": "1",
 				"classification": "C",
-				"desc": "HOKKIEN",
+				"unavailable": false,
 			},
 			"occupation": {
 				"lastupdated": "2020-09-10",
-				"code": "",
+				"code": null,
+				"desc": null,
 				"source": "2",
 				"classification": "C",
-				"desc": "",
+				"unavailable": false,
 			},
 			"regadd": {
 				"country": {
-					"code": "SG",
-					"desc": "SINGAPORE",
+					"code": MyinfoCountryCode.SINGAPORE,
+					"desc": MyinfoCountryCode.fn.toEnumKey(MyinfoCountryCode.SINGAPORE),
 				},
 				"unit": {
 					"value": "22",
@@ -60,8 +64,9 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				},
 				"type": "SG",
 				"building": {
-					"value": "",
+					"value": null,
 				},
+				"unavailable": false,
 			},
 			"mobileno": {
 				"lastupdated": "2019-04-03",
@@ -76,24 +81,28 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"nbr": {
 					"value": "88158701",
 				},
+				"unavailable": false,
 			},
 			"passportexpirydate": {
 				"lastupdated": "2021-01-01",
 				"source": "1",
 				"classification": "C",
 				"value": "2030-09-10",
+				"unavailable": false,
 			},
 			"divorcedate": {
-				"lastupdated": "",
+				"lastupdated": null,
 				"source": "1",
 				"classification": "C",
-				"value": "",
+				"value": null,
+				"unavailable": false,
 			},
 			"marriagecertno": {
 				"lastupdated": "2018-05-10",
 				"source": "1",
 				"classification": "C",
 				"value": "M525997",
+				"unavailable": false,
 			},
 			"merdekagen": {
 				"eligibility": {
@@ -106,7 +115,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"source": "1",
 				"classification": "C",
 				"message": {
-					"code": "2",
+					"code": MyinfoMerdekaGenerationMessageCode.ALL_OK,
 					"desc": "You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888.",
 				},
 			},
@@ -121,7 +130,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"source": "1",
 				"classification": "C",
 				"message": {
-					"code": "1",
+					"code": MyinfoPioneerGenerationMessageCode.NON_PG,
 					"desc": "We regret that you are not eligible for the Pioneer Generation Package.  For further enquiries, please contact 1800-2222-888.",
 				},
 			},
@@ -147,26 +156,30 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"signup": {
 					"value": false,
 				},
+				"unavailable": false,
 			},
 			"email": {
 				"lastupdated": "2019-04-03",
 				"source": "4",
 				"classification": "C",
 				"value": "gt.govandi@gmail.com",
+				"unavailable": false,
 			},
 			"birthcountry": {
 				"lastupdated": "2018-06-01",
-				"code": "SG",
+				"code": MyinfoCountryCode.SINGAPORE,
+				"desc": MyinfoCountryCode.fn.toEnumKey(MyinfoCountryCode.SINGAPORE),
 				"source": "1",
 				"classification": "C",
-				"desc": "SINGAPORE",
+				"unavailable": false,
 			},
 			"race": {
 				"lastupdated": "2018-06-01",
-				"code": "CN",
+				"code": MyinfoRaceCode.CHINESE,
+				"desc": MyinfoRaceCode.fn.toEnumKey(MyinfoRaceCode.CHINESE),
 				"source": "1",
 				"classification": "C",
-				"desc": "CHINESE",
+				"unavailable": false,
 			},
 			"silversupport": {
 				"eligibility": {
@@ -181,73 +194,81 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"year": {
 					"value": 2019,
 				},
+				"unavailable": false,
 			},
 			"countryofmarriage": {
 				"lastupdated": "2018-05-10",
-				"code": "SG",
+				"code": MyinfoCountryCode.SINGAPORE,
+				"desc": MyinfoCountryCode.fn.toEnumKey(MyinfoCountryCode.SINGAPORE),
 				"source": "1",
 				"classification": "C",
-				"desc": "SINGAPORE",
+				"unavailable": false,
 			},
 			"sex": {
 				"lastupdated": "2018-06-01",
-				"code": "M",
+				"code": MyinfoSexCode.MALE,
+				"desc": MyinfoSexCode.fn.toEnumKey(MyinfoSexCode.MALE),
 				"source": "1",
 				"classification": "C",
-				"desc": "Male",
+				"unavailable": false,
 			},
 			"marriagedate": {
 				"lastupdated": "1993-10-22",
 				"source": "1",
 				"classification": "C",
 				"value": "1993-10-22",
+				"unavailable": false,
 			},
 			"residentialstatus": {
 				"lastupdated": "2018-06-01",
-				"code": "C",
+				"code": MyinfoResidentialCode.CITIZEN,
+				"desc": MyinfoResidentialCode.fn.toEnumKey(MyinfoResidentialCode.CITIZEN),
 				"source": "1",
 				"classification": "C",
-				"desc": "Citizen",
+				"unavailable": false,
 			},
 			"passportnumber": {
 				"lastupdated": "2021-01-01",
 				"source": "1",
 				"classification": "C",
 				"value": "L3280033",
+				"unavailable": false,
 			},
 			"marital": {
 				"lastupdated": "2018-05-10",
-				"code": "2",
+				"code": MyinfoMaritialStatusCode.MARRIED,
+				"desc": MyinfoMaritialStatusCode.fn.toEnumKey(MyinfoMaritialStatusCode.MARRIED),
 				"source": "1",
 				"classification": "C",
-				"desc": "MARRIED",
+				"unavailable": false,
 			},
 			"aliasname": {
 				"lastupdated": "2018-06-01",
 				"source": "1",
 				"classification": "C",
 				"value": aliasName.JASCKSON_LIM_YONG_XIANG,
+				"unavailable": false,
 			},
 			"childrenbirthrecords": [
 				{
 					"dialect": {
-						"code": "HK",
-						"desc": "Hokkien",
+						"code": MyinfoDialectCode.HOKKIEN,
+						"desc": MyinfoDialectCode.fn.toEnumKey(MyinfoDialectCode.HOKKIEN),
 					},
 					"race": {
-						"code": "CN",
-						"desc": "Chinese",
+						"code": MyinfoRaceCode.CHINESE,
+						"desc": MyinfoRaceCode.fn.toEnumKey(MyinfoRaceCode.CHINESE),
 					},
 					"lifestatus": {
-						"code": "A",
-						"desc": "ALIVE",
+						"code": MyinfoLifeStatusCode.ALIVE,
+						"desc": MyinfoLifeStatusCode.fn.toEnumKey(MyinfoLifeStatusCode.ALIVE),
 					},
 					"tob": {
 						"value": "0901",
 					},
 					"sex": {
-						"code": "F",
-						"desc": "Female",
+						"code": MyinfoSexCode.FEMALE,
+						"desc": MyinfoSexCode.fn.toEnumKey(MyinfoSexCode.FEMALE),
 					},
 					"source": "1",
 					"classification": "C",
@@ -258,13 +279,13 @@ export const mrSGDaddyPerfect: FakeProfile = {
 						"value": "Cheng Pei Ni",
 					},
 					"hanyupinyinaliasname": {
-						"value": "",
+						"value": null,
 					},
 					"marriedname": {
-						"value": "",
+						"value": null,
 					},
 					"aliasname": {
-						"value": "",
+						"value": null,
 					},
 					"dob": {
 						"value": "2011-09-10",
@@ -274,9 +295,10 @@ export const mrSGDaddyPerfect: FakeProfile = {
 					},
 					"lastupdated": "2018-05-16",
 					"secondaryrace": {
-						"code": "",
-						"desc": "",
+						"code": null,
+						"desc": null,
 					},
+					"unavailable": false,
 				},
 				preschoolEligibleChild2_IC,
 				preschoolEligibleChild2_K1,
@@ -284,51 +306,57 @@ export const mrSGDaddyPerfect: FakeProfile = {
 			"sponsoredchildrenrecords": [],
 			"nationality": {
 				"lastupdated": "2018-06-01",
-				"code": "SG",
+				"code": MyinfoNationalityCode.SINGAPORE_CITIZEN,
+				"desc": MyinfoNationalityCode.fn.toEnumKey(MyinfoNationalityCode.SINGAPORE_CITIZEN),
 				"source": "1",
 				"classification": "C",
-				"desc": "SINGAPORE CITIZEN",
+				"unavailable": false,
 			},
 			"dob": {
 				"lastupdated": "2018-06-01",
 				"source": "1",
 				"classification": "C",
 				"value": "1975-10-06",
+				"unavailable": false,
 			},
 			"name": {
 				"lastupdated": "2018-06-01",
 				"source": "1",
 				"classification": "C",
 				"value": profileName,
+				"unavailable": false,
 			},
 			"secondaryrace": {
 				"lastupdated": "2018-06-01",
-				"code": "GM",
+				"code": MyinfoRaceCode.GERMAN,
+				"desc": MyinfoRaceCode.fn.toEnumKey(MyinfoRaceCode.GERMAN),
 				"source": "1",
 				"classification": "C",
-				"desc": "GERMAN",
+				"unavailable": false,
 			},
 			"hdbtype": {
 				"lastupdated": "2020-08-26",
-				"code": "",
+				"code": null,
+				"desc": null,
 				"source": "1",
 				"classification": "C",
-				"desc": "",
+				"unavailable": false,
 			},
 			"housingtype": {
 				"lastupdated": "2020-08-26",
-				"code": "",
+				"code": null,
+				"desc": null,
 				"source": "1",
 				"classification": "C",
-				"desc": "",
+				"unavailable": false,
 			},
 			"drivinglicence": {
 				"revocation": {
 					"startdate": {
-						"value": "",
+						"value": null,
 					},
 					"enddate": {
-						"value": "",
+						"value": null,
 					},
 				},
 				"totaldemeritpoints": {
@@ -336,52 +364,52 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				},
 				"disqualification": {
 					"startdate": {
-						"value": "",
+						"value": null,
 					},
 					"enddate": {
-						"value": "",
+						"value": null,
 					},
 				},
 				"qdl": {
 					"expirydate": {
-						"value": "",
+						"value": null,
 					},
 					"validity": {
-						"code": "",
-						"desc": "",
+						"code": null,
+						"desc": null,
 					},
 					"classes": [],
 				},
 				"lastupdated": "2020-08-26",
 				"pdl": {
 					"expirydate": {
-						"value": "",
+						"value": null,
 					},
 					"validity": {
-						"code": "",
-						"desc": "",
+						"code": null,
+						"desc": null,
 					},
 					"classes": [],
 				},
 				"source": "1",
 				"classification": "C",
 				"comstatus": {
-					"code": "",
-					"desc": "",
+					"code": null,
+					"desc": null,
 				},
 				"photocardserialno": {
-					"value": "",
+					"value": null,
 				},
 				"suspension": {
 					"startdate": {
-						"value": "",
+						"value": null,
 					},
 					"enddate": {
-						"value": "",
+						"value": null,
 					},
 				},
-			},
-			"vehicles": [],
+				"unavailable": false,
+			}
 		};
 	},
 };

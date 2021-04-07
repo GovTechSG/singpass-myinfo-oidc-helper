@@ -2,8 +2,8 @@ import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 import { preschoolEligibleChild_IC, preschoolEligibleChild_N2, preschoolIneligibleChild2 } from "./childbirthRecords";
-import { sex } from "../../domain/map";
 import { aliasName } from "../profiles/common";
+import { MyinfoSexCode } from "../../domain";
 
 const id = "T2446959F";
 const name = ProfileArchetype.MRS_PRESCHOOL_REGISTRATION;
@@ -21,9 +21,10 @@ export const mrsPreschoolRegistration: FakeProfile = {
 			source: "1",
 			classification: "C",
 			value: aliasName.LEE_XIU,
+			unavailable: false,
 		};
-		profile.sex.code = "F";
-		profile.sex.desc = sex.map.codeToDesc[profile.sex.code];
+		profile.sex.code = MyinfoSexCode.FEMALE;
+		profile.sex.desc = MyinfoSexCode.fn.toEnumKey(MyinfoSexCode.FEMALE);
 
 		profile.childrenbirthrecords = [
 			preschoolEligibleChild_IC,
@@ -35,6 +36,7 @@ export const mrsPreschoolRegistration: FakeProfile = {
 			source: "1",
 			classification: "C",
 			value: "1985-10-06",
+			unavailable: false,
 		};
 
 		return profile;

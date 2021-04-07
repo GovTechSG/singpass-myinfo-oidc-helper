@@ -1,9 +1,9 @@
-import { myInfoDomain } from "../../domain";
+import { MyInfoComponents } from "../../domain";
 
 export interface FakeProfile {
 	id: string;
 	name: ProfileArchetype;
-	generate: (profileName?: string) => myInfoDomain.Components.Schemas.PersonBasic;
+	generate: (profileName?: string) => MyInfoComponents.Schemas.PersonCommon;
 }
 
 /**

@@ -8,7 +8,6 @@ const name = ProfileArchetype.MR_SG_UNCLE_GST_SCENARIO_4;
 export const mrGstvUncle4: FakeProfile = {
 	id,
 	name,
-	// tslint:disable-next-line: no-big-function
 	generate: (profileName) => {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
@@ -24,6 +23,7 @@ export const mrGstvUncle4: FakeProfile = {
 			source: "1",
 			classification: "C",
 			value: `${new Date().getFullYear() - 61}-01-01`,
+			unavailable: false,
 		};
 
 		return profile;
