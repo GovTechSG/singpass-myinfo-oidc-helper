@@ -191,7 +191,7 @@ function sanitizeSwagger(swagger: any): any {
 }
 
 async function writeSwaggerTypingsSource(swagger: any): Promise<string> {
-	const customDirectory = outputDir + "/custom";
+	const customDirectory = outputDir + "/custom/person-common";
 	const schema = parseSchema(swagger);
 	const { components } = (schema.content as any);
 
@@ -309,7 +309,7 @@ async function generateMyinfoCodeEnums(): Promise<string[]> {
 			if (i >= 6) {
 				return {
 					key: _.snakeCase(row.description).toUpperCase(),
-					value: isNaN(Number(row.code)) ? `"${row.code}"` : row.code,
+					value: row.code,
 				};
 			}
 			return null;

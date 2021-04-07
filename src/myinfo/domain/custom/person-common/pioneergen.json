@@ -33,7 +33,7 @@
 				],
 				"properties": {
 					"value": {
-						"type": "number"
+						"type": "string"
 					}
 				}
 			},
