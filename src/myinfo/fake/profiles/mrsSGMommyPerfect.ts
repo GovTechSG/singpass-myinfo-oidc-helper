@@ -1,7 +1,6 @@
 import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
-import { sex } from "../../domain/map";
 import { preschoolEligibleChild2_N1, preschoolEligibleChild_K2 } from "./childbirthRecords";
 import { aliasName } from "../profiles/common";
 import { MyinfoSexCode } from "../../domain";
@@ -25,7 +24,7 @@ export const mrsSGMommyPerfect: FakeProfile = {
 			unavailable: false,
 		};
 		profile.sex.code = MyinfoSexCode.FEMALE;
-		profile.sex.desc = MyinfoSexCode.fn.toEnumKey(MyinfoSexCode.FEMALE);
+		profile.sex.desc = MyinfoSexCode.fn.toEnumDesc(MyinfoSexCode.FEMALE);
 
 		profile.dob = {
 			lastupdated: "2020-01-01",

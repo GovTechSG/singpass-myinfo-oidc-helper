@@ -26,7 +26,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 			"dialect": {
 				"lastupdated": "2018-06-01",
 				"code": MyinfoDialectCode.HOKKIEN,
-				"desc": MyinfoDialectCode.fn.toEnumKey(MyinfoDialectCode.HOKKIEN),
+				"desc": MyinfoDialectCode.fn.toEnumDesc(MyinfoDialectCode.HOKKIEN),
 				"source": "1",
 				"classification": "C",
 				"unavailable": false,
@@ -42,7 +42,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 			"regadd": {
 				"country": {
 					"code": MyinfoCountryCode.SINGAPORE,
-					"desc": MyinfoCountryCode.fn.toEnumKey(MyinfoCountryCode.SINGAPORE),
+					"desc": MyinfoCountryCode.fn.toEnumDesc(MyinfoCountryCode.SINGAPORE),
 				},
 				"unit": {
 					"value": "22",
@@ -116,7 +116,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"classification": "C",
 				"message": {
 					"code": MyinfoMerdekaGenerationMessageCode.ALL_OK,
-					"desc": "You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888.",
+					"desc": MyinfoMerdekaGenerationMessageCode.fn.toEnumDesc(MyinfoMerdekaGenerationMessageCode.ALL_OK),
 				},
 			},
 			"pioneergen": {
@@ -131,7 +131,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"classification": "C",
 				"message": {
 					"code": MyinfoPioneerGenerationMessageCode.NON_PG,
-					"desc": "We regret that you are not eligible for the Pioneer Generation Package.  For further enquiries, please contact 1800-2222-888.",
+					"desc": MyinfoPioneerGenerationMessageCode.fn.toEnumDesc(MyinfoPioneerGenerationMessageCode.NON_PG),
 				},
 			},
 			"gstvoucher": {
@@ -168,7 +168,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 			"birthcountry": {
 				"lastupdated": "2018-06-01",
 				"code": MyinfoCountryCode.SINGAPORE,
-				"desc": MyinfoCountryCode.fn.toEnumKey(MyinfoCountryCode.SINGAPORE),
+				"desc": MyinfoCountryCode.fn.toEnumDesc(MyinfoCountryCode.SINGAPORE),
 				"source": "1",
 				"classification": "C",
 				"unavailable": false,
@@ -176,7 +176,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 			"race": {
 				"lastupdated": "2018-06-01",
 				"code": MyinfoRaceCode.CHINESE,
-				"desc": MyinfoRaceCode.fn.toEnumKey(MyinfoRaceCode.CHINESE),
+				"desc": MyinfoRaceCode.fn.toEnumDesc(MyinfoRaceCode.CHINESE),
 				"source": "1",
 				"classification": "C",
 				"unavailable": false,
@@ -199,7 +199,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 			"countryofmarriage": {
 				"lastupdated": "2018-05-10",
 				"code": MyinfoCountryCode.SINGAPORE,
-				"desc": MyinfoCountryCode.fn.toEnumKey(MyinfoCountryCode.SINGAPORE),
+				"desc": MyinfoCountryCode.fn.toEnumDesc(MyinfoCountryCode.SINGAPORE),
 				"source": "1",
 				"classification": "C",
 				"unavailable": false,
@@ -207,7 +207,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 			"sex": {
 				"lastupdated": "2018-06-01",
 				"code": MyinfoSexCode.MALE,
-				"desc": MyinfoSexCode.fn.toEnumKey(MyinfoSexCode.MALE),
+				"desc": MyinfoSexCode.fn.toEnumDesc(MyinfoSexCode.MALE),
 				"source": "1",
 				"classification": "C",
 				"unavailable": false,
@@ -222,7 +222,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 			"residentialstatus": {
 				"lastupdated": "2018-06-01",
 				"code": MyinfoResidentialCode.CITIZEN,
-				"desc": MyinfoResidentialCode.fn.toEnumKey(MyinfoResidentialCode.CITIZEN),
+				"desc": MyinfoResidentialCode.fn.toEnumDesc(MyinfoResidentialCode.CITIZEN),
 				"source": "1",
 				"classification": "C",
 				"unavailable": false,
@@ -237,7 +237,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 			"marital": {
 				"lastupdated": "2018-05-10",
 				"code": MyinfoMaritialStatusCode.MARRIED,
-				"desc": MyinfoMaritialStatusCode.fn.toEnumKey(MyinfoMaritialStatusCode.MARRIED),
+				"desc": MyinfoMaritialStatusCode.fn.toEnumDesc(MyinfoMaritialStatusCode.MARRIED),
 				"source": "1",
 				"classification": "C",
 				"unavailable": false,
@@ -253,22 +253,22 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				{
 					"dialect": {
 						"code": MyinfoDialectCode.HOKKIEN,
-						"desc": MyinfoDialectCode.fn.toEnumKey(MyinfoDialectCode.HOKKIEN),
+						"desc": MyinfoDialectCode.fn.toEnumDesc(MyinfoDialectCode.HOKKIEN),
 					},
 					"race": {
 						"code": MyinfoRaceCode.CHINESE,
-						"desc": MyinfoRaceCode.fn.toEnumKey(MyinfoRaceCode.CHINESE),
+						"desc": MyinfoRaceCode.fn.toEnumDesc(MyinfoRaceCode.CHINESE),
 					},
 					"lifestatus": {
 						"code": MyinfoLifeStatusCode.ALIVE,
-						"desc": MyinfoLifeStatusCode.fn.toEnumKey(MyinfoLifeStatusCode.ALIVE),
+						"desc": MyinfoLifeStatusCode.fn.toEnumDesc(MyinfoLifeStatusCode.ALIVE),
 					},
 					"tob": {
 						"value": "0901",
 					},
 					"sex": {
 						"code": MyinfoSexCode.FEMALE,
-						"desc": MyinfoSexCode.fn.toEnumKey(MyinfoSexCode.FEMALE),
+						"desc": MyinfoSexCode.fn.toEnumDesc(MyinfoSexCode.FEMALE),
 					},
 					"source": "1",
 					"classification": "C",
@@ -307,7 +307,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 			"nationality": {
 				"lastupdated": "2018-06-01",
 				"code": MyinfoNationalityCode.SINGAPORE_CITIZEN,
-				"desc": MyinfoNationalityCode.fn.toEnumKey(MyinfoNationalityCode.SINGAPORE_CITIZEN),
+				"desc": MyinfoNationalityCode.fn.toEnumDesc(MyinfoNationalityCode.SINGAPORE_CITIZEN),
 				"source": "1",
 				"classification": "C",
 				"unavailable": false,
@@ -329,7 +329,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 			"secondaryrace": {
 				"lastupdated": "2018-06-01",
 				"code": MyinfoRaceCode.GERMAN,
-				"desc": MyinfoRaceCode.fn.toEnumKey(MyinfoRaceCode.GERMAN),
+				"desc": MyinfoRaceCode.fn.toEnumDesc(MyinfoRaceCode.GERMAN),
 				"source": "1",
 				"classification": "C",
 				"unavailable": false,

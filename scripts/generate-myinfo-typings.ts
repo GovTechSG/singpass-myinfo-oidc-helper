@@ -198,11 +198,13 @@ async function writeSwaggerTypingsSource(swagger: any): Promise<string> {
 	// add custom definitions
 	const filenames = fs.readdirSync(customDirectory);
 	filenames.forEach(file => {
-		const customDomain = JSON.parse(fs.readFileSync(`${customDirectory}/${file}`, "utf8"));
-		components.schemas = { ...components.schemas, ...customDomain };
-		Object.keys(customDomain).forEach((key) => {
-			components.schemas.PersonCommon.properties[key] = { "allOf": [{ "$ref": "#/components/schemas/" + key }] };
-		});
+		if (file.match(/.json$/)) {
+			const customDomain = JSON.parse(fs.readFileSync(`${customDirectory}/${file}`, "utf8"));
+			components.schemas = { ...components.schemas, ...customDomain };
+			Object.keys(customDomain).forEach((key) => {
+				components.schemas.PersonCommon.properties[key] = { "allOf": [{ "$ref": "#/components/schemas/" + key }] };
+			});
+		}
 	});
 
 	let typingsSource = await dtsgenerator({ contents: [schema] });
@@ -292,7 +294,7 @@ async function generateMyinfoCodeEnums(): Promise<string[]> {
 	const myInfoCodesXslx = xlsx.read(new Uint8Array(data), { type: "array" });
 
 	// Parse xls
-	const enumTypingsArr: EnumTyping[] = myInfoCodesXslx.SheetNames.map((sheetName): EnumTyping => {
+	let enumTypingsArr: EnumTyping[] = myInfoCodesXslx.SheetNames.map((sheetName): EnumTyping => {
 		// Skip unnecessary sheets
 		if (sheetName === "Version") return null;
 
@@ -310,12 +312,37 @@ async function generateMyinfoCodeEnums(): Promise<string[]> {
 				return {
 					key: _.snakeCase(row.description).toUpperCase(),
 					value: row.code,
+					desc: row.description.toUpperCase(),
 				};
 			}
 			return null;
 		}).filter((entry: Record<string, string>) => entry);
 		return { enumName: sheetName, enumEntries };
 	}).filter(entry => entry);
+
+	// add custom enums
+	const customDirectory = outputDir + "/custom/enums";
+	const filenames = fs.readdirSync(customDirectory);
+	filenames.forEach(file => {
+		if (file.match(/.json$/)) {
+			const customEnum = JSON.parse(fs.readFileSync(`${customDirectory}/${file}`, "utf8"));
+			enumTypingsArr.push(customEnum);
+		}
+	});
+
+	// remove duplicated sheets
+	// custom enums will overwrite enums from xlsx
+	const enumSheetNameList: string[] = [];
+	enumTypingsArr.reverse();
+	enumTypingsArr = enumTypingsArr.filter(enumTyping => {
+		const sheetNameWithoutPrependMatches = enumTyping.enumName.match(/^myinfo(.*)/i);
+		const sheetNameWithoutPrepend = sheetNameWithoutPrependMatches ? sheetNameWithoutPrependMatches[1].toLowerCase() : enumTyping.enumName.toLowerCase();
+		if (!!enumTyping && enumSheetNameList.indexOf(sheetNameWithoutPrepend) === -1 && enumSheetNameList.indexOf("myinfo" + sheetNameWithoutPrepend) === -1) {
+			enumSheetNameList.push(enumTyping.enumName.toLowerCase());
+			return enumTyping;
+		}
+		return null;
+	});
 
 	// Write to files
 	return _.map(enumTypingsArr, (enumTypings) => writeEnumTypingsSource(enumTypings));

@@ -14,7 +14,7 @@ export const mrSGUnclePgNeedMedisave: FakeProfile = {
 
 		const profile = mrSGUnclePgAllOk.generate(profileName);
 		profile.pioneergen.message.code = MyinfoPioneerGenerationMessageCode.NEED_MEDISAVE_TOPUP;
-		profile.pioneergen.message.desc = "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to start receiving your Pioneer Generation benefits, such as your MediSave top-up.";
+		profile.pioneergen.message.desc = MyinfoPioneerGenerationMessageCode.fn.toEnumDesc(MyinfoPioneerGenerationMessageCode.NEED_MEDISAVE_TOPUP);
 
 		return profile;
 	},

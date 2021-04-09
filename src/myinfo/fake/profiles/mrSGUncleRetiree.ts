@@ -46,7 +46,7 @@ export const mrSGUncleRetiree: FakeProfile = {
 			source: "1",
 			classification: "C",
 			code: MyinfoSexCode.MALE,
-			desc: MyinfoSexCode.fn.toEnumKey(MyinfoSexCode.MALE),
+			desc: MyinfoSexCode.fn.toEnumDesc(MyinfoSexCode.MALE),
 			unavailable: false,
 		};
 		profile.marital = {
@@ -54,7 +54,7 @@ export const mrSGUncleRetiree: FakeProfile = {
 			source: "1",
 			classification: "C",
 			code: MyinfoMaritialStatusCode.MARRIED,
-			desc: MyinfoMaritialStatusCode.fn.toEnumKey(MyinfoMaritialStatusCode.MARRIED),
+			desc: MyinfoMaritialStatusCode.fn.toEnumDesc(MyinfoMaritialStatusCode.MARRIED),
 			unavailable: false,
 		};
 		profile.childrenbirthrecords = [ChildrenRecords.childMiddle1, ChildrenRecords.childMiddle2];
@@ -63,7 +63,7 @@ export const mrSGUncleRetiree: FakeProfile = {
 			source: "1",
 			classification: "C",
 			code: MyinfoHousingTypeCode.DETACHED_HOUSE,
-			desc: MyinfoHousingTypeCode.fn.toEnumKey(MyinfoHousingTypeCode.DETACHED_HOUSE),
+			desc: MyinfoHousingTypeCode.fn.toEnumDesc(MyinfoHousingTypeCode.DETACHED_HOUSE),
 			unavailable: false,
 		};
 		profile.hdbtype = {
@@ -100,7 +100,7 @@ export const mrSGUncleRetiree: FakeProfile = {
 				},
 				validity: {
 					code: MyinfoDrivingLicenceValidityCode.VALID,
-					desc: MyinfoDrivingLicenceValidityCode.fn.toEnumKey(MyinfoDrivingLicenceValidityCode.VALID),
+					desc: MyinfoDrivingLicenceValidityCode.fn.toEnumDesc(MyinfoDrivingLicenceValidityCode.VALID),
 				},
 				classes: [
 					{
@@ -128,7 +128,7 @@ export const mrSGUncleRetiree: FakeProfile = {
 			classification: "C",
 			comstatus: {
 				code: MyinfoComStatusCode.ELIGIBLE,
-				desc: MyinfoComStatusCode.fn.toEnumKey(MyinfoComStatusCode.ELIGIBLE),
+				desc: MyinfoComStatusCode.fn.toEnumDesc(MyinfoComStatusCode.ELIGIBLE),
 			},
 			photocardserialno: {
 				value: "",
@@ -148,7 +148,7 @@ export const mrSGUncleRetiree: FakeProfile = {
 			source: "1",
 			classification: "C",
 			code: MyinfoEduLevelCode.POST_SECONDARY_NON_TERTIARY_GENERAL_VOCATION,
-			desc: MyinfoEduLevelCode.fn.toEnumKey(MyinfoEduLevelCode.POST_SECONDARY_NON_TERTIARY_GENERAL_VOCATION),
+			desc: MyinfoEduLevelCode.fn.toEnumDesc(MyinfoEduLevelCode.POST_SECONDARY_NON_TERTIARY_GENERAL_VOCATION),
 			unavailable: false,
 		};
 		return profile;

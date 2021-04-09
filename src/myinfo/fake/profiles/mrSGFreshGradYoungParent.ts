@@ -38,7 +38,7 @@ export const mrSGFreshGradYoungParent: FakeProfile = {
 			source: "1",
 			classification: "C",
 			code: MyinfoResidentialCode.CITIZEN,
-			desc: MyinfoResidentialCode.fn.toEnumKey(MyinfoResidentialCode.CITIZEN),
+			desc: MyinfoResidentialCode.fn.toEnumDesc(MyinfoResidentialCode.CITIZEN),
 			unavailable: false,
 		};
 		profile.sex = {
@@ -46,7 +46,7 @@ export const mrSGFreshGradYoungParent: FakeProfile = {
 			source: "1",
 			classification: "C",
 			code: MyinfoSexCode.MALE,
-			desc: MyinfoSexCode.fn.toEnumKey(MyinfoSexCode.MALE),
+			desc: MyinfoSexCode.fn.toEnumDesc(MyinfoSexCode.MALE),
 			unavailable: false,
 		};
 		profile.marital = {
@@ -54,7 +54,7 @@ export const mrSGFreshGradYoungParent: FakeProfile = {
 			source: "1",
 			classification: "C",
 			code: MyinfoMaritialStatusCode.MARRIED,
-			desc: MyinfoMaritialStatusCode.fn.toEnumKey(MyinfoMaritialStatusCode.MARRIED),
+			desc: MyinfoMaritialStatusCode.fn.toEnumDesc(MyinfoMaritialStatusCode.MARRIED),
 			unavailable: false,
 		};
 		profile.marriagedate = {

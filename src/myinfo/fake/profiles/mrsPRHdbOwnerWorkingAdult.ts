@@ -47,7 +47,7 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 			source: "1",
 			classification: "C",
 			code: MyinfoResidentialCode.PR,
-			desc: MyinfoResidentialCode.fn.toEnumKey(MyinfoResidentialCode.PR),
+			desc: MyinfoResidentialCode.fn.toEnumDesc(MyinfoResidentialCode.PR),
 			unavailable: false,
 		};
 		profile.nationality = {
@@ -62,7 +62,7 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 			source: "1",
 			classification: "C",
 			code: MyinfoCountryCode.MALAYSIA,
-			desc: MyinfoCountryCode.fn.toEnumKey(MyinfoCountryCode.MALAYSIA),
+			desc: MyinfoCountryCode.fn.toEnumDesc(MyinfoCountryCode.MALAYSIA),
 			unavailable: false,
 		};
 		profile.sex = {
@@ -70,7 +70,7 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 			source: "1",
 			classification: "C",
 			code: MyinfoSexCode.FEMALE,
-			desc: MyinfoSexCode.fn.toEnumKey(MyinfoSexCode.FEMALE),
+			desc: MyinfoSexCode.fn.toEnumDesc(MyinfoSexCode.FEMALE),
 			unavailable: false,
 		};
 		profile.marital = {
@@ -78,7 +78,7 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 			source: "1",
 			classification: "C",
 			code: MyinfoMaritialStatusCode.MARRIED,
-			desc: MyinfoMaritialStatusCode.fn.toEnumKey(MyinfoMaritialStatusCode.MARRIED),
+			desc: MyinfoMaritialStatusCode.fn.toEnumDesc(MyinfoMaritialStatusCode.MARRIED),
 			unavailable: false,
 		};
 		profile.childrenbirthrecords = [ChildrenRecords.child1MonthOld, ChildrenRecords.child6YearsOld, ChildrenRecords.childMiddle1];
@@ -87,7 +87,7 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 			source: "1",
 			classification: "C",
 			code: MyinfoHDBTypeCode["2_ROOM_FLAT_HDB"],
-			desc: MyinfoHDBTypeCode.fn.toEnumKey(MyinfoHDBTypeCode["2_ROOM_FLAT_HDB"]),
+			desc: MyinfoHDBTypeCode.fn.toEnumDesc(MyinfoHDBTypeCode["2_ROOM_FLAT_HDB"]),
 			unavailable: false,
 		};
 		profile.housingtype = {
@@ -105,7 +105,7 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 			qdl: {
 				validity: {
 					code: MyinfoDrivingLicenceValidityCode.VALID,
-					desc: MyinfoDrivingLicenceValidityCode.fn.toEnumKey(MyinfoDrivingLicenceValidityCode.VALID),
+					desc: MyinfoDrivingLicenceValidityCode.fn.toEnumDesc(MyinfoDrivingLicenceValidityCode.VALID),
 				},
 			},
 			unavailable: false,

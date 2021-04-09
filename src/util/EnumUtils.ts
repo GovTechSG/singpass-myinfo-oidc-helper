@@ -61,14 +61,32 @@ export namespace EnumUtils {
 	 * Automatically does type coercion (i.e. conversion to string or number)
 	 * Returns undefined if the value is no in the enum set
 	 */
-	export function toEnumKeyFunc<T>(enumType: any, shouldThrowIfInvalid: boolean = false): <U = keyof typeof enumType>(value: T) => U {
+	export function toEnumKeyFunc<T>(enumType: any, shouldThrowIfInvalid: boolean = false): (value: T) => string {
 		const isNumber = _.some(_.values(enumType), _.isNumber);	// Memoized
 		const invertedMap: _.Dictionary<any> = _.invert(enumType);	// Memoized
-		type EnumKeyType = keyof typeof enumType;
 
-		return (value: T): any => {
+		return (value: T): string => {
 			const findValue = (isNumber ? _.toNumber(value) : _.toString(value)); // Type coercion
-			const foundKey: EnumKeyType = invertedMap[findValue];
+			const foundKey = invertedMap[findValue];
+			if (_.isNil(foundKey) && shouldThrowIfInvalid) {
+				throw new Error(`Invalid enum value: ${value}`);
+			}
+
+			return foundKey;
+		};
+	}
+
+	/**
+	 * Generates a function that returns a matching desc value from another enum with the same key
+	 * Automatically does type coercion (i.e. conversion to string or number)
+	 * Returns undefined if the value is no in the enum set
+	 */
+	export function toEnumDescFunc<T, U>(enumType: any, enumDesc: any, shouldThrowIfInvalid: boolean = false): (value: T) => U {
+		const invertedMap: _.Dictionary<any> = _.invert(enumType);	// Memoized
+
+		return (value: T): U => {
+			const findValue = _.toString(value); // Type coercion
+			const foundKey = enumDesc[invertedMap[findValue]] as unknown as U;
 			if (_.isNil(foundKey) && shouldThrowIfInvalid) {
 				throw new Error(`Invalid enum value: ${value}`);
 			}

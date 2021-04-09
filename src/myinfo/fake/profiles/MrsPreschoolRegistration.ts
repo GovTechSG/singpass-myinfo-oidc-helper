@@ -24,7 +24,7 @@ export const mrsPreschoolRegistration: FakeProfile = {
 			unavailable: false,
 		};
 		profile.sex.code = MyinfoSexCode.FEMALE;
-		profile.sex.desc = MyinfoSexCode.fn.toEnumKey(MyinfoSexCode.FEMALE);
+		profile.sex.desc = MyinfoSexCode.fn.toEnumDesc(MyinfoSexCode.FEMALE);
 
 		profile.childrenbirthrecords = [
 			preschoolEligibleChild_IC,

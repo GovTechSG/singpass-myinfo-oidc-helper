@@ -33,7 +33,7 @@ export const mrAppReviewer: FakeProfile = {
 			},
 			"sex": {
 				"code": MyinfoSexCode.MALE,
-				"desc": MyinfoSexCode.fn.toEnumKey(MyinfoSexCode.MALE),
+				"desc": MyinfoSexCode.fn.toEnumDesc(MyinfoSexCode.MALE),
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
@@ -41,7 +41,7 @@ export const mrAppReviewer: FakeProfile = {
 			},
 			"race": {
 				"code": MyinfoRaceCode.CHINESE,
-				"desc": MyinfoRaceCode.fn.toEnumKey(MyinfoRaceCode.CHINESE),
+				"desc": MyinfoRaceCode.fn.toEnumDesc(MyinfoRaceCode.CHINESE),
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
@@ -49,7 +49,7 @@ export const mrAppReviewer: FakeProfile = {
 			},
 			"secondaryrace": {
 				"code": MyinfoRaceCode.GERMAN,
-				"desc": MyinfoRaceCode.fn.toEnumKey(MyinfoRaceCode.GERMAN),
+				"desc": MyinfoRaceCode.fn.toEnumDesc(MyinfoRaceCode.GERMAN),
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
@@ -65,7 +65,7 @@ export const mrAppReviewer: FakeProfile = {
 			},
 			"nationality": {
 				"code": MyinfoNationalityCode.SINGAPORE_CITIZEN,
-				"desc": MyinfoNationalityCode.fn.toEnumKey(MyinfoNationalityCode.SINGAPORE_CITIZEN),
+				"desc": MyinfoNationalityCode.fn.toEnumDesc(MyinfoNationalityCode.SINGAPORE_CITIZEN),
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
@@ -80,7 +80,7 @@ export const mrAppReviewer: FakeProfile = {
 			},
 			"birthcountry": {
 				"code": MyinfoCountryCode.SINGAPORE,
-				"desc": MyinfoCountryCode.fn.toEnumKey(MyinfoCountryCode.SINGAPORE),
+				"desc": MyinfoCountryCode.fn.toEnumDesc(MyinfoCountryCode.SINGAPORE),
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
@@ -88,7 +88,7 @@ export const mrAppReviewer: FakeProfile = {
 			},
 			"residentialstatus": {
 				"code": MyinfoResidentialCode.CITIZEN,
-				"desc": MyinfoResidentialCode.fn.toEnumKey(MyinfoResidentialCode.CITIZEN),
+				"desc": MyinfoResidentialCode.fn.toEnumDesc(MyinfoResidentialCode.CITIZEN),
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
@@ -113,7 +113,7 @@ export const mrAppReviewer: FakeProfile = {
 				},
 				"country": {
 					"code": MyinfoCountryCode.SINGAPORE,
-					"desc": MyinfoCountryCode.fn.toEnumKey(MyinfoCountryCode.SINGAPORE),
+					"desc": MyinfoCountryCode.fn.toEnumDesc(MyinfoCountryCode.SINGAPORE),
 				},
 				"postal": {
 					"value": "310123",
@@ -162,7 +162,7 @@ export const mrAppReviewer: FakeProfile = {
 			},
 			"marital": {
 				"code": MyinfoMaritialStatusCode.MARRIED,
-				"desc": MyinfoMaritialStatusCode.fn.toEnumKey(MyinfoMaritialStatusCode.MARRIED),
+				"desc": MyinfoMaritialStatusCode.fn.toEnumDesc(MyinfoMaritialStatusCode.MARRIED),
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
@@ -177,7 +177,7 @@ export const mrAppReviewer: FakeProfile = {
 			},
 			"countryofmarriage": {
 				"code": MyinfoCountryCode.SINGAPORE,
-				"desc": MyinfoCountryCode.fn.toEnumKey(MyinfoCountryCode.SINGAPORE),
+				"desc": MyinfoCountryCode.fn.toEnumDesc(MyinfoCountryCode.SINGAPORE),
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
@@ -193,7 +193,7 @@ export const mrAppReviewer: FakeProfile = {
 			"edulevel": {
 				"lastupdated": "2020-09-10",
 				"code": MyinfoEduLevelCode.PRIMARY,
-				"desc": MyinfoEduLevelCode.fn.toEnumKey(MyinfoEduLevelCode.PRIMARY),
+				"desc": MyinfoEduLevelCode.fn.toEnumDesc(MyinfoEduLevelCode.PRIMARY),
 				"source": "2",
 				"classification": "C",
 				"unavailable": false,
@@ -215,7 +215,7 @@ export const mrAppReviewer: FakeProfile = {
 				},
 				"message": {
 					"code": MyinfoMerdekaGenerationMessageCode.ALL_OK,
-					"desc": "You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888.",
+					"desc": MyinfoMerdekaGenerationMessageCode.fn.toEnumDesc(MyinfoMerdekaGenerationMessageCode.ALL_OK),
 				},
 				"source": source,
 				"classification": classification,

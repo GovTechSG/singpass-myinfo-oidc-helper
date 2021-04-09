@@ -16,7 +16,7 @@ export const mrPRDaddyPerfect: FakeProfile = {
 		const profile = mrSGDaddyPerfect.generate(profileName);
 		profile.nationality.code = MyinfoNationalityCode.ANDORRAN;
 		profile.residentialstatus.code = MyinfoResidentialCode.PR;
-		profile.residentialstatus.desc = MyinfoResidentialCode.fn.toEnumKey(MyinfoResidentialCode.PR);
+		profile.residentialstatus.desc = MyinfoResidentialCode.fn.toEnumDesc(MyinfoResidentialCode.PR);
 
 		profile.dob = {
 			lastupdated: "2020-01-01",

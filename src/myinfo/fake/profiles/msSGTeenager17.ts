@@ -25,7 +25,7 @@ export const msSgTeenager17: FakeProfile = {
 			unavailable: false,
 		};
 		profile.sex.code = MyinfoSexCode.FEMALE;
-		profile.sex.desc = MyinfoSexCode.fn.toEnumKey(MyinfoSexCode.FEMALE);
+		profile.sex.desc = MyinfoSexCode.fn.toEnumDesc(MyinfoSexCode.FEMALE);
 
 		profile.dob = {
 			lastupdated: "2020-01-01",

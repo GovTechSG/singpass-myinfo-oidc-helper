@@ -1,7 +1,6 @@
 import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
-import { sex } from "../../domain/map";
 import { aliasName } from "../profiles/common";
 import { MyinfoCountryCode, MyinfoNationalityCode, MyinfoOccupationCode, MyinfoSexCode } from "../../domain";
 
@@ -24,7 +23,7 @@ export const mrsMYMommyPerfect: FakeProfile = {
 			unavailable: false,
 		};
 		profile.sex.code = MyinfoSexCode.FEMALE;
-		profile.sex.desc = MyinfoSexCode.fn.toEnumKey(MyinfoSexCode.FEMALE);
+		profile.sex.desc = MyinfoSexCode.fn.toEnumDesc(MyinfoSexCode.FEMALE);
 
 		profile.nationality.code = MyinfoNationalityCode.MALAYSIAN;
 		profile.birthcountry.code = MyinfoCountryCode.MALAYSIA;
@@ -52,7 +51,7 @@ export const mrsMYMommyPerfect: FakeProfile = {
 		profile.occupation = {
 			"lastupdated": "2018-05-21",
 			"code": MyinfoOccupationCode.LEGISLATOR,
-			"desc": MyinfoOccupationCode.fn.toEnumKey(MyinfoOccupationCode.LEGISLATOR),
+			"desc": MyinfoOccupationCode.fn.toEnumDesc(MyinfoOccupationCode.LEGISLATOR),
 			"source": "2",
 			"classification": "C",
 			"unavailable": false,

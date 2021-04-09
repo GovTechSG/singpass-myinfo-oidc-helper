@@ -1,8 +1,7 @@
 import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
-import { residentialstatus, sex } from "../../domain/map";
-import { MyinfoOccupationCode } from "../../domain";
+import { MyinfoCountryCode, MyinfoNationalityCode, MyinfoOccupationCode, MyinfoSexCode } from "../../domain";
 
 const id = "F5994458N";
 const name = ProfileArchetype.MR_MY_DADDY_PERFECT;
@@ -14,10 +13,10 @@ export const mrMYDaddyPerfect: FakeProfile = {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
-		profile.sex.code = "M";
-		profile.sex.desc = sex.map.codeToDesc[profile.residentialstatus.code];
-		profile.nationality.code = "MY";
-		profile.birthcountry.code = "MY";
+		profile.sex.code = MyinfoSexCode.MALE;
+		profile.sex.desc = MyinfoSexCode.fn.toEnumDesc(MyinfoSexCode.MALE);
+		profile.nationality.code = MyinfoNationalityCode.MALAYSIAN;
+		profile.birthcountry.code = MyinfoCountryCode.MALAYSIA;
 		profile.residentialstatus.code = "";
 		profile.residentialstatus.desc = "";
 		profile.marital = {
@@ -40,7 +39,7 @@ export const mrMYDaddyPerfect: FakeProfile = {
 			"code": MyinfoOccupationCode.LEGISLATOR,
 			"source": "2",
 			"classification": "C",
-			"desc": MyinfoOccupationCode.fn.toEnumKey(MyinfoOccupationCode.LEGISLATOR),
+			"desc": MyinfoOccupationCode.fn.toEnumDesc(MyinfoOccupationCode.LEGISLATOR),
 			"unavailable": false,
 		};
 

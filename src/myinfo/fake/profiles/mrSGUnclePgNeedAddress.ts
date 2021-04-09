@@ -14,7 +14,7 @@ export const mrSGUnclePgNeedAddress: FakeProfile = {
 
 		const profile = mrSGUnclePgAllOk.generate(profileName);
 		profile.pioneergen.message.code = MyinfoPioneerGenerationMessageCode.CALL_TO_RECEIVE;
-		profile.pioneergen.message.desc = "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to receive your Pioneer Generation card.";
+		profile.pioneergen.message.desc = MyinfoPioneerGenerationMessageCode.fn.toEnumDesc(MyinfoPioneerGenerationMessageCode.CALL_TO_RECEIVE);
 
 		return profile;
 	},

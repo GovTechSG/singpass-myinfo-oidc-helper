@@ -23,7 +23,7 @@ export const mrJapaneseNoAddressObject: FakeProfile = {
 		};
 		profile.nationality = {
 			"code": MyinfoNationalityCode.JAPANESE,
-			"desc": MyinfoNationalityCode.fn.toEnumKey(MyinfoNationalityCode.JAPANESE),
+			"desc": MyinfoNationalityCode.fn.toEnumDesc(MyinfoNationalityCode.JAPANESE),
 			"source": "1",
 			"classification": "C",
 			"lastupdated": "2019-09-18",
@@ -31,7 +31,7 @@ export const mrJapaneseNoAddressObject: FakeProfile = {
 		};
 		profile.birthcountry = {
 			"code": MyinfoCountryCode.JAPAN,
-			"desc": MyinfoCountryCode.fn.toEnumKey(MyinfoCountryCode.JAPAN),
+			"desc": MyinfoCountryCode.fn.toEnumDesc(MyinfoCountryCode.JAPAN),
 			"source": "1",
 			"classification": "C",
 			"lastupdated": "2019-09-18",
@@ -69,7 +69,7 @@ export const mrJapaneseNoAddressObject: FakeProfile = {
 			"code": MyinfoOccupationCode.LEGISLATOR,
 			"source": "2",
 			"classification": "C",
-			"desc": MyinfoOccupationCode.fn.toEnumKey(MyinfoOccupationCode.LEGISLATOR),
+			"desc": MyinfoOccupationCode.fn.toEnumDesc(MyinfoOccupationCode.LEGISLATOR),
 			"unavailable": false,
 		};
 

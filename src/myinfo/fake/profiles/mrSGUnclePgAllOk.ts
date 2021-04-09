@@ -14,7 +14,7 @@ export const mrSGUnclePgAllOk: FakeProfile = {
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
 		profile.pioneergen.message.code = MyinfoPioneerGenerationMessageCode.ALL_OK;
-		profile.pioneergen.message.desc = "You are eligible for the Pioneer Generation Package. For further enquiries, please contact 1800-2222-888.";
+		profile.pioneergen.message.desc = MyinfoPioneerGenerationMessageCode.fn.toEnumDesc(MyinfoPioneerGenerationMessageCode.ALL_OK);
 		profile.dob = {
 			lastupdated: "2021-01-01",
 			source: "1",

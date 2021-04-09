@@ -17,7 +17,7 @@ export const msSGMotherBothChildren: FakeProfile = {
 		const profile = BaseProfile.generate(profileName);
 
 		profile.sex.code = MyinfoSexCode.FEMALE;
-		profile.sex.desc = MyinfoSexCode.fn.toEnumKey(MyinfoSexCode.FEMALE);
+		profile.sex.desc = MyinfoSexCode.fn.toEnumDesc(MyinfoSexCode.FEMALE);
 		profile.sex.unavailable = false;
 
 		profile.childrenbirthrecords = _.values(Childrenbirthrecords);
