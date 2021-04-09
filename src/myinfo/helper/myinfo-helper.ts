@@ -1,14 +1,26 @@
 import { AxiosResponse } from "axios";
 import * as _ from "lodash";
+import * as request from "request";
 import { Logger } from "../../util";
 import { SingpassMyInfoError } from "../../util/error/SingpassMyinfoError";
 import { decryptJWE, verifyJWS } from "../../util/JweUtil";
-import { myInfoDomain } from "../domain";
+import { MyInfoComponents } from "../domain";
 import { ProfileStatus } from "../domain/profilestatus-domain";
-import { IMyInfoHelper } from "./index";
 import { MyInfoRequest, MyInfoRequestConstructor } from "./myinfo-request";
 
 export type EnvType = "test" | "sandbox" | "prod";
+
+export interface IMyInfoHelper {
+	getPersonCommon: <K extends keyof MyInfoComponents.Schemas.PersonCommon>(uinfin: string) => Promise<Pick<MyInfoComponents.Schemas.PersonCommon, K>>;
+}
+
+export interface IMyInfoRequest {
+	get: (
+		uri: string,
+		params?: { [key: string]: any },
+		bearer?: string,
+	) => Promise<request.RequestResponse>;
+}
 
 export interface MyInfoHelperConstructor {
 	attributes: string[];
@@ -19,12 +31,12 @@ export interface MyInfoHelperConstructor {
 	certToVerifyJWS: string;
 	privateKeyToSignRequest: string;
 	privateKeyPassword?: string;
-	overridePersonBasicUrl?: string;
+	overridePersonCommonUrl?: string;
 	overrideProfileStatusUrl?: string;
 }
 
-const PERSON_BASIC_BASE_URL = "api.myinfo.gov.sg/gov/v3/person-basic";
-const PROFILE_STATUS_BASE_URL = "api.myinfo.gov.sg/gov/v3/person-basic/status";
+const PERSON_COMMON_BASE_URL = "api.myinfo.gov.sg/gov/v3/person";
+const PROFILE_STATUS_BASE_URL = "api.myinfo.gov.sg/gov/v3/person/status";
 
 export class MyInfoHelper implements IMyInfoHelper {
 
@@ -37,7 +49,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 	private readonly keyToDecryptJWE: string;
 	private readonly certToVerifyJWS: string;
 
-	private readonly personBasicUrl: string;
+	private readonly personCommonUrl: string;
 	private readonly profileStatusUrl: string;
 
 	public constructor(props: MyInfoHelperConstructor) {
@@ -49,7 +61,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 		this.singpassEserviceID = props.singpassEserviceID;
 		this.keyToDecryptJWE = props.keyToDecryptJWE;
 		this.certToVerifyJWS = props.certToVerifyJWS;
-		this.personBasicUrl = this.getUrl(props.overridePersonBasicUrl, PERSON_BASIC_BASE_URL, props.environment);
+		this.personCommonUrl = this.getUrl(props.overridePersonCommonUrl, PERSON_COMMON_BASE_URL, props.environment);
 		this.profileStatusUrl = this.getUrl(props.overrideProfileStatusUrl, PROFILE_STATUS_BASE_URL, props.environment);
 
 		const requestProps: MyInfoRequestConstructor = {
@@ -63,11 +75,11 @@ export class MyInfoHelper implements IMyInfoHelper {
 	/**
 	 * Obtain V3 person data using uinfin.
 	 * In the generic K, pass in the list of string literal of the attributes you expect to get back.
-	 * getPersonBasicV3 will return an object with only the properties matching the keys.
-	 * e.g. when K = "name" | "email", getPersonBasicV3 returns an object looking like { name, email }
+	 * getPersonCommon will return an object with only the properties matching the keys.
+	 * e.g. when K = "name" | "email", getPersonCommon returns an object looking like { name, email }
 	 */
-	public getPersonBasic = async<K extends keyof myInfoDomain.Components.Schemas.PersonBasic>(uinfin: string): Promise<Pick<myInfoDomain.Components.Schemas.PersonBasic, K>> => {
-		const url = `${this.personBasicUrl}/${uinfin}`;
+	public getPersonCommon = async<K extends keyof MyInfoComponents.Schemas.PersonCommon>(uinfin: string): Promise<Pick<MyInfoComponents.Schemas.PersonCommon, K>> => {
+		const url = `${this.personCommonUrl}/${uinfin}`;
 		const params = {
 			client_id: this.clientID,
 			sp_esvcId: this.singpassEserviceID,
@@ -88,7 +100,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 			const jwe = await decryptJWE(encryptedPersonJWE, this.keyToDecryptJWE);
 			const jws = JSON.parse(jwe.payload.toString());
 			const verifiedJws = await verifyJWS(jws, this.certToVerifyJWS);
-			const personData = JSON.parse(verifiedJws.payload.toString()) as Pick<myInfoDomain.Components.Schemas.PersonBasic, K>;
+			const personData = JSON.parse(verifiedJws.payload.toString()) as Pick<MyInfoComponents.Schemas.PersonCommon, K>;
 
 			if (personData == null) {
 				throw new SingpassMyInfoError("Person data cannot be null");

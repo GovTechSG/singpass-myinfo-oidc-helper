@@ -1,8 +1,9 @@
 import { Factory } from "rosie";
+import { MyInfoComponents, MyinfoCountryCode, MyinfoDialectCode, MyinfoLifeStatusCode, MyinfoMaritialStatusCode, MyinfoMerdekaGenerationMessageCode, MyinfoNationalityCode, MyinfoRaceCode, MyinfoResidentialCode, MyinfoSexCode } from "../../domain";
 import { aliasName } from "../profiles/common";
 
 
-export const PersonBasicFactory = new Factory()
+export const PersonCommonFactory = new Factory<MyInfoComponents.Schemas.PersonCommon>()
 	.sequence("uinfin", (i) => ({
 		"lastupdated": "2018-06-01",
 		"value": "S123456" + i + "A",
@@ -12,17 +13,19 @@ export const PersonBasicFactory = new Factory()
 	.attrs({
 		"edulevel": {
 			"lastupdated": "2020-09-10",
-			"code": "",
+			"code": null,
 			"source": "2",
 			"classification": "C",
-			"desc": "",
+			"desc": null,
+			"unavailable": false,
 		},
 		"dialect": {
 			"lastupdated": "2018-06-01",
-			"code": "HK",
+			"code": MyinfoDialectCode.HOKKIEN,
 			"source": "1",
 			"classification": "C",
-			"desc": "HOKKIEN",
+			"desc": MyinfoDialectCode.fn.toEnumDesc(MyinfoDialectCode.HOKKIEN),
+			"unavailable": false,
 		},
 		"occupation": {
 			"lastupdated": "2020-09-10",
@@ -30,11 +33,12 @@ export const PersonBasicFactory = new Factory()
 			"source": "2",
 			"classification": "C",
 			"desc": "",
+			"unavailable": false,
 		},
 		"regadd": {
 			"country": {
-				"code": "SG",
-				"desc": "SINGAPORE",
+				"code": MyinfoCountryCode.SINGAPORE,
+				"desc": MyinfoCountryCode.fn.toEnumDesc(MyinfoCountryCode.SINGAPORE),
 			},
 			"unit": {
 				"value": "22",
@@ -58,6 +62,7 @@ export const PersonBasicFactory = new Factory()
 			"building": {
 				"value": "",
 			},
+			"unavailable": false,
 		},
 		"mobileno": {
 			"lastupdated": "2019-04-03",
@@ -72,24 +77,28 @@ export const PersonBasicFactory = new Factory()
 			"nbr": {
 				"value": "88158701",
 			},
+			"unavailable": false,
 		},
 		"passportexpirydate": {
 			"lastupdated": "",
 			"source": "1",
 			"classification": "C",
 			"value": "",
+			"unavailable": false,
 		},
 		"divorcedate": {
 			"lastupdated": "",
 			"source": "1",
 			"classification": "C",
 			"value": "",
+			"unavailable": false,
 		},
 		"marriagecertno": {
 			"lastupdated": "2018-05-10",
 			"source": "1",
 			"classification": "C",
 			"value": "M525997",
+			"unavailable": false,
 		},
 		"merdekagen": {
 			"eligibility": {
@@ -102,8 +111,8 @@ export const PersonBasicFactory = new Factory()
 			"source": "1",
 			"classification": "C",
 			"message": {
-				"code": "2",
-				"desc": "You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888.",
+				"code": MyinfoMerdekaGenerationMessageCode.ALL_OK,
+				"desc": MyinfoMerdekaGenerationMessageCode.fn.toEnumDesc(MyinfoMerdekaGenerationMessageCode.ALL_OK),
 			},
 		},
 		"gstvoucher": {
@@ -134,20 +143,23 @@ export const PersonBasicFactory = new Factory()
 			"source": "4",
 			"classification": "C",
 			"value": "gt.govandi@gmail.com",
+			"unavailable": false,
 		},
 		"birthcountry": {
 			"lastupdated": "2018-06-01",
-			"code": "SG",
+			"code": MyinfoCountryCode.SINGAPORE,
 			"source": "1",
 			"classification": "C",
-			"desc": "SINGAPORE",
+			"desc": MyinfoCountryCode.fn.toEnumDesc(MyinfoCountryCode.SINGAPORE),
+			"unavailable": false,
 		},
 		"race": {
 			"lastupdated": "2018-06-01",
-			"code": "CN",
+			"code": MyinfoRaceCode.CHINESE,
 			"source": "1",
 			"classification": "C",
-			"desc": "CHINESE",
+			"desc": MyinfoRaceCode.fn.toEnumDesc(MyinfoRaceCode.CHINESE),
+			"unavailable": false,
 		},
 		"silversupport": {
 			"eligibility": {
@@ -165,81 +177,92 @@ export const PersonBasicFactory = new Factory()
 		},
 		"countryofmarriage": {
 			"lastupdated": "2018-05-10",
-			"code": "SG",
+			"code": MyinfoCountryCode.SINGAPORE,
 			"source": "1",
 			"classification": "C",
-			"desc": "SINGAPORE",
+			"desc": MyinfoCountryCode.fn.toEnumDesc(MyinfoCountryCode.SINGAPORE),
+			"unavailable": false,
 		},
 		"sex": {
 			"lastupdated": "2018-06-01",
-			"code": "M",
+			"code": MyinfoSexCode.MALE,
 			"source": "1",
 			"classification": "C",
-			"desc": "Male",
+			"desc": MyinfoSexCode.fn.toEnumDesc(MyinfoSexCode.MALE),
+			"unavailable": false,
 		},
 		"marriagedate": {
 			"lastupdated": "1993-10-22",
 			"source": "1",
 			"classification": "C",
 			"value": "1993-10-22",
+			"unavailable": false,
 		},
 		"residentialstatus": {
 			"lastupdated": "2018-06-01",
-			"code": "C",
+			"code": MyinfoResidentialCode.CITIZEN,
 			"source": "1",
 			"classification": "C",
-			"desc": "Citizen",
+			"desc": MyinfoResidentialCode.fn.toEnumDesc(MyinfoResidentialCode.CITIZEN),
+			"unavailable": false,
 		},
 		"passportnumber": {
 			"lastupdated": "",
 			"source": "1",
 			"classification": "C",
 			"value": "",
+			"unavailable": false,
 		},
 		"marital": {
 			"lastupdated": "2018-05-10",
-			"code": "2",
+			"code": MyinfoMaritialStatusCode.MARRIED,
 			"source": "1",
 			"classification": "C",
-			"desc": "MARRIED",
+			"desc": MyinfoMaritialStatusCode.fn.toEnumDesc(MyinfoMaritialStatusCode.MARRIED),
+			"unavailable": false,
 		},
 		"aliasname": {
 			"lastupdated": "2018-06-01",
 			"source": "1",
 			"classification": "C",
 			"value": aliasName.JASCKSON_LIM_YONG_XIANG,
+			"unavailable": false,
 		},
 		"nationality": {
 			"lastupdated": "2018-06-01",
-			"code": "SG",
+			"code": MyinfoNationalityCode.SINGAPORE_CITIZEN,
 			"source": "1",
 			"classification": "C",
-			"desc": "SINGAPORE CITIZEN",
+			"desc": MyinfoNationalityCode.fn.toEnumDesc(MyinfoNationalityCode.SINGAPORE_CITIZEN),
+			"unavailable": false,
 		},
 		"dob": {
 			"lastupdated": "2018-06-01",
 			"source": "1",
 			"classification": "C",
 			"value": "1953-10-06",
+			"unavailable": false,
 		},
 		"name": {
 			"lastupdated": "2018-06-01",
 			"source": "1",
 			"classification": "C",
 			"value": "User-Name",
+			"unavailable": false,
 		},
 		"secondaryrace": {
 			"lastupdated": "2018-06-01",
-			"code": "GM",
+			"code": MyinfoRaceCode.GERMAN,
 			"source": "1",
 			"classification": "C",
-			"desc": "GERMAN",
+			"desc": MyinfoRaceCode.fn.toEnumDesc(MyinfoRaceCode.GERMAN),
+			"unavailable": false,
 		},
 	})
-	.attr("sponsoredChildRecords", () => [sponsoredchildrecordFactory.build(), sponsoredchildrecordFactory.build()])
-	.attr("childrenBirthRecords", () => [childrenbirthrecordFactory.build(), childrenbirthrecordFactory.build()]);
+	.attr("sponsoredchildrenrecords", () => [sponsoredchildrecordFactory.build(), sponsoredchildrecordFactory.build()])
+	.attr("childrenbirthrecords", () => [childrenbirthrecordFactory.build(), childrenbirthrecordFactory.build()]);
 
-export const childrenbirthrecordFactory = new Factory()
+export const childrenbirthrecordFactory = new Factory<MyInfoComponents.Schemas.Childrenbirthrecords>()
 	.sequence("birthcertno", (i) => ({
 		"value": "S556288" + i,
 	}))
@@ -248,23 +271,23 @@ export const childrenbirthrecordFactory = new Factory()
 	}))
 	.attrs({
 		"dialect": {
-			"code": "HK",
-			"desc": "Hokkien",
+			"code": MyinfoDialectCode.HOKKIEN,
+			"desc": MyinfoDialectCode.fn.toEnumValue(MyinfoDialectCode.HOKKIEN),
 		},
 		"race": {
-			"code": "CN",
-			"desc": "Chinese",
+			"code": MyinfoRaceCode.CHINESE,
+			"desc": MyinfoRaceCode.fn.toEnumDesc(MyinfoRaceCode.CHINESE),
 		},
 		"lifestatus": {
-			"code": "A",
-			"desc": "ALIVE",
+			"code": MyinfoLifeStatusCode.ALIVE,
+			"desc": MyinfoLifeStatusCode.fn.toEnumDesc(MyinfoLifeStatusCode.ALIVE),
 		},
 		"tob": {
 			"value": "0901",
 		},
 		"sex": {
-			"code": "F",
-			"desc": "Female",
+			"code": MyinfoSexCode.FEMALE,
+			"desc": MyinfoSexCode.fn.toEnumDesc(MyinfoSexCode.FEMALE),
 		},
 		"source": "1",
 		"classification": "C",
@@ -290,32 +313,26 @@ export const childrenbirthrecordFactory = new Factory()
 		},
 	});
 
-export const sponsoredchildrecordFactory = new Factory()
-	.sequence("birthcertno", (i) => ({
-		"value": "S556288" + i,
-	}))
+export const sponsoredchildrecordFactory = new Factory<MyInfoComponents.Schemas.Sponsoredchildrenrecords>()
 	.sequence("name", (i) => ({
 		"value": "child" + i,
 	}))
 	.attrs({
 		"dialect": {
-			"code": "HK",
-			"desc": "Hokkien",
+			"code": MyinfoDialectCode.HOKKIEN,
+			"desc": MyinfoDialectCode.fn.toEnumDesc(MyinfoDialectCode.HOKKIEN),
 		},
 		"race": {
-			"code": "CN",
-			"desc": "Chinese",
+			"code": MyinfoRaceCode.CHINESE,
+			"desc": MyinfoRaceCode.fn.toEnumDesc(MyinfoRaceCode.CHINESE),
 		},
 		"lifestatus": {
-			"code": "A",
-			"desc": "ALIVE",
-		},
-		"tob": {
-			"value": "0901",
+			"code": MyinfoLifeStatusCode.ALIVE,
+			"desc": MyinfoLifeStatusCode.fn.toEnumDesc(MyinfoLifeStatusCode.ALIVE),
 		},
 		"sex": {
-			"code": "M",
-			"desc": "MALE",
+			"code": MyinfoSexCode.MALE,
+			"desc": MyinfoSexCode.fn.toEnumDesc(MyinfoSexCode.MALE),
 		},
 		"source": "1",
 		"classification": "C",
