@@ -18,7 +18,7 @@ Use this module to build client applications that can:
 
 ### MyInfoHelper
 
-Helper to get a V3 MyInfo person. Because our project only requires the person basic object, we have only written `getPersonBasic` method. Contributions for `getPerson` are welcomed.
+Helper to get a V3 MyInfo person. Because our project only requires the person basic object, we have only written `getPersonCommon` method. Contributions for `getPerson` are welcomed.
 
 `import { MyInfo } from "singpass-myinfo-oidc-helper"`
 
@@ -37,7 +37,7 @@ MyInfo.Helper
 | privateKeyToSignRequest | string   | Used for signing the request to MyInfo server. Needs to be an encrypted PKCS8 private key                                                                                |
 | privateKeyPassword      | string   | the password that you used to encrypt privateKeyToSignRequest                                                                                                            |
 
-- `getPersonBasic(uinfin: string) => MyInfo.PersonBasic` - get Person Data in the shape of MyInfo.PersonBasic
+- `getPersonCommon(uinfin: string) => MyInfoComponents.Schemas.PersonCommon` - get Person Data in the shape of `MyInfoComponents.Schemas.PersonCommon`
 
 ---
 
@@ -63,7 +63,7 @@ Usually not needed, for making any other custom requests to MyInfo not covered i
 
 MyInfo.Fake.FakeMyInfoHelper
 
-Use getPersonBasic to get a fake MyInfo person
+Use `getPersonCommon` to get a fake MyInfo person
 
 - `constructor`
 
@@ -71,16 +71,35 @@ Use getPersonBasic to get a fake MyInfo person
 | ---------- | --------- | ------------------------------------------------------ |
 | attributes | string[]? | List of MyInfo attributes that this helper will return |
 
-- `getPersonBasic({
-archetype: ProfileArchetype,
-marital?: string,
-marriagedate?: string,
-marriagecertno?: string,
-countryofmarriage?: string,
-occupation?: string,
-occupationfreeform?: string,
-dob?: string,
-}) => MyInfo.PersonBasic` - get a fake person data.
+
+```ts
+getPersonCommon({
+	archetype: ProfileArchetype;
+	userdisplayname?: string;
+	marital?: MyinfoMaritialStatusCode;
+	marriagedate?: string;
+	divorcedate?: string;
+	marriagecertno?: string;
+	countryofmarriage?: MyinfoCountryCode;
+	childrenbirthrecords?: ChildrenBirthRecord[];
+	childrenoverridemode?: ChildrenOverrideMode;
+	residentialstatus?: MyinfoResidentialCode;
+	occupation?: MyinfoOccupationCode;
+	occupationfreeform?: string;
+	dob?: string;
+	gstvyear?: number;
+	gvs?: GVS;
+	merdekageneligible?: boolean;
+	merdekagenquantum?: number;
+	merdekagenmessagecode?: MyinfoMerdekaGenerationMessageCode;
+	hdbtype?: MyinfoHDBTypeCode;
+	housingtype?: MyinfoHousingTypeCode;
+	drivingqdlvalidity?: MyinfoDrivingLicenceValidityCode;
+	vehiclestatus?: MyinfoVehicleStatus;
+}) => MyInfoComponents.Schemas.PersonCommon
+```
+
+- get a fake person data.
 
 - enum MyInfo.Fake.ProfileArchetype
 suitably named profile archetypes to generate different types of fake MyInfo person
@@ -123,3 +142,36 @@ Singpass.OidcHelper
 #### Logout Singpass SSO session
 
 - `logoutOfSession(sessionId: string) => Promise<SessionLogoutResult>`- Log user out of Singpass session, using a valid session id (that is retrieved from Singpass domain cookie)
+
+---
+
+## Updating Myinfo domains
+
+- Myinfo domains including `MyinfoComponents` and various enums are auto generated via `npm run generate-myinfo-typings '<swagger file>'`
+- Swagger file needs to be downloaded from https://api.singpass.gov.sg/developers
+- The script will also fetch and generate enums from https://api.singpass.gov.sg/assets/api-lib/myinfo/downloads/myinfo-api-code-tables.xlsx
+
+### Folder / file structure of `src/myinfo/domain`
+|Path|What is does|
+|----|------------|
+|custom/enums|Custom defined enums in json|
+|custom/person-common|Additional swagger definitions to go into the `PersonCommon` object|
+|generated|Auto generated enums from `generate-myinfo-typings` script, do not add files here!|
+
+### Help! The swagger file is missing `<insert data item name>`!
+- Myinfo REST API does not publish every data item
+- You will need to manually add its OpenAPI specification it in `custom/person-common` then run `npm run generate-myinfo-typings '<swagger file>'`
+- An interface will be created and the corresponding data item will be added to the `PersonCommon` object
+
+### Help! `myinfo-api-code-tables.xlsx` is missing `<insert code name>`!
+- `myinfo-api-code-tables.xlsx` lists general codes only
+- More detailed lists can be found at https://www.singstat.gov.sg/standards/standards-and-classifications
+- If the missing code list can be found in SingStat, update `generate-myinfo-typings` script to import accordingly
+- Otherwise
+	1. Manually add the enum definition (json) to `custom/enums` folder
+		- *Hint: Refer to existing files for format*
+	2. Run `npm run generate-myinfo-typings '<swagger file>'`
+
+### Help! `myinfo-api-code-tables.xlsx's <insert code name>` does not match the swagger definition!
+- Follow the solution above to add enum definition manually
+- That enum will overwrite the auto generated enum

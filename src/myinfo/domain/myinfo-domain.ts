@@ -2,6 +2,7 @@
 // =============================================================================
 // This file was generated with `npm run generate-myinfo-typings` on 2021-04-09
 // Any modifications to this file may be overwritten when the script runs again
+// Check README.md for more information
 // =============================================================================
 export declare namespace MyInfoComponents {
     export namespace Schemas {
