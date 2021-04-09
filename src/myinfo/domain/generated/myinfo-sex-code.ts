@@ -6,26 +6,26 @@
 // =============================================================================
 import { EnumUtils } from "../../../util/EnumUtils";
 
-export enum MyinfoSexCode {
+export enum MyInfoSexCode {
 	"FEMALE" = "F",
 	"MALE" = "M",
 	"UNKNOWN" = "U",
 }
 
-enum MyinfoSexCodeMapping {
+enum MyInfoSexCodeMapping {
 	"FEMALE" = "FEMALE",
 	"MALE" = "MALE",
 	"UNKNOWN" = "UNKNOWN",
 }
 
-type MyinfoSexCodeDesc = `${ MyinfoSexCodeMapping }`;
+type MyInfoSexCodeDesc = `${ MyInfoSexCodeMapping }`;
 
-export namespace MyinfoSexCode {
+export namespace MyInfoSexCode {
 	export const fn = {
-		keys: EnumUtils.keysFunc<MyinfoSexCode>(MyinfoSexCode),
-		values: EnumUtils.valuesFunc<MyinfoSexCode>(MyinfoSexCode),
-		toEnumKey: EnumUtils.toEnumKeyFunc<MyinfoSexCode>(MyinfoSexCode),
-		toEnumValue: EnumUtils.toEnumValueFunc<MyinfoSexCode>(MyinfoSexCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyinfoSexCode, MyinfoSexCodeDesc>(MyinfoSexCode, MyinfoSexCodeMapping),
+		keys: EnumUtils.keysFunc<MyInfoSexCode>(MyInfoSexCode),
+		values: EnumUtils.valuesFunc<MyInfoSexCode>(MyInfoSexCode),
+		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoSexCode>(MyInfoSexCode),
+		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoSexCode>(MyInfoSexCode),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoSexCode, MyInfoSexCodeDesc>(MyInfoSexCode, MyInfoSexCodeMapping),
 	};
 }

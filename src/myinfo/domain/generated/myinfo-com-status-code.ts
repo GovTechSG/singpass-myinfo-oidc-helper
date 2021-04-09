@@ -6,24 +6,24 @@
 // =============================================================================
 import { EnumUtils } from "../../../util/EnumUtils";
 
-export enum MyinfoComStatusCode {
+export enum MyInfoComStatusCode {
 	"ELIGIBLE" = "Y",
 	"NOT_ELIGIBLE" = "N",
 }
 
-enum MyinfoComStatusCodeMapping {
+enum MyInfoComStatusCodeMapping {
 	"ELIGIBLE" = "ELIGIBLE",
 	"NOT_ELIGIBLE" = "NOT ELIGIBLE",
 }
 
-type MyinfoComStatusCodeDesc = `${ MyinfoComStatusCodeMapping }`;
+type MyInfoComStatusCodeDesc = `${ MyInfoComStatusCodeMapping }`;
 
-export namespace MyinfoComStatusCode {
+export namespace MyInfoComStatusCode {
 	export const fn = {
-		keys: EnumUtils.keysFunc<MyinfoComStatusCode>(MyinfoComStatusCode),
-		values: EnumUtils.valuesFunc<MyinfoComStatusCode>(MyinfoComStatusCode),
-		toEnumKey: EnumUtils.toEnumKeyFunc<MyinfoComStatusCode>(MyinfoComStatusCode),
-		toEnumValue: EnumUtils.toEnumValueFunc<MyinfoComStatusCode>(MyinfoComStatusCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyinfoComStatusCode, MyinfoComStatusCodeDesc>(MyinfoComStatusCode, MyinfoComStatusCodeMapping),
+		keys: EnumUtils.keysFunc<MyInfoComStatusCode>(MyInfoComStatusCode),
+		values: EnumUtils.valuesFunc<MyInfoComStatusCode>(MyInfoComStatusCode),
+		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoComStatusCode>(MyInfoComStatusCode),
+		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoComStatusCode>(MyInfoComStatusCode),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoComStatusCode, MyInfoComStatusCodeDesc>(MyInfoComStatusCode, MyInfoComStatusCodeMapping),
 	};
 }

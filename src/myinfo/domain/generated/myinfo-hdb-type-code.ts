@@ -6,7 +6,7 @@
 // =============================================================================
 import { EnumUtils } from "../../../util/EnumUtils";
 
-export enum MyinfoHDBTypeCode {
+export enum MyInfoHDBTypeCode {
 	"1_ROOM_FLAT_HDB" = "111",
 	"2_ROOM_FLAT_HDB" = "112",
 	"3_ROOM_FLAT_HDB" = "113",
@@ -16,7 +16,7 @@ export enum MyinfoHDBTypeCode {
 	"STUDIO_APARTMENT_HDB" = "118",
 }
 
-enum MyinfoHDBTypeCodeMapping {
+enum MyInfoHDBTypeCodeMapping {
 	"1_ROOM_FLAT_HDB" = "1-ROOM FLAT (HDB)",
 	"2_ROOM_FLAT_HDB" = "2-ROOM FLAT (HDB)",
 	"3_ROOM_FLAT_HDB" = "3-ROOM FLAT (HDB)",
@@ -26,14 +26,14 @@ enum MyinfoHDBTypeCodeMapping {
 	"STUDIO_APARTMENT_HDB" = "STUDIO APARTMENT (HDB)",
 }
 
-type MyinfoHDBTypeCodeDesc = `${ MyinfoHDBTypeCodeMapping }`;
+type MyInfoHDBTypeCodeDesc = `${ MyInfoHDBTypeCodeMapping }`;
 
-export namespace MyinfoHDBTypeCode {
+export namespace MyInfoHDBTypeCode {
 	export const fn = {
-		keys: EnumUtils.keysFunc<MyinfoHDBTypeCode>(MyinfoHDBTypeCode),
-		values: EnumUtils.valuesFunc<MyinfoHDBTypeCode>(MyinfoHDBTypeCode),
-		toEnumKey: EnumUtils.toEnumKeyFunc<MyinfoHDBTypeCode>(MyinfoHDBTypeCode),
-		toEnumValue: EnumUtils.toEnumValueFunc<MyinfoHDBTypeCode>(MyinfoHDBTypeCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyinfoHDBTypeCode, MyinfoHDBTypeCodeDesc>(MyinfoHDBTypeCode, MyinfoHDBTypeCodeMapping),
+		keys: EnumUtils.keysFunc<MyInfoHDBTypeCode>(MyInfoHDBTypeCode),
+		values: EnumUtils.valuesFunc<MyInfoHDBTypeCode>(MyInfoHDBTypeCode),
+		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoHDBTypeCode>(MyInfoHDBTypeCode),
+		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoHDBTypeCode>(MyInfoHDBTypeCode),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoHDBTypeCode, MyInfoHDBTypeCodeDesc>(MyInfoHDBTypeCode, MyInfoHDBTypeCodeMapping),
 	};
 }

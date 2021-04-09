@@ -6,7 +6,7 @@
 // =============================================================================
 import { EnumUtils } from "../../../util/EnumUtils";
 
-export enum MyinfoHousingTypeCode {
+export enum MyInfoHousingTypeCode {
 	"DETACHED_HOUSE" = "121",
 	"SEMI_DETACHED_HOUSE" = "122",
 	"TERRACE_HOUSE" = "123",
@@ -15,7 +15,7 @@ export enum MyinfoHousingTypeCode {
 	"APARTMENT" = "139",
 }
 
-enum MyinfoHousingTypeCodeMapping {
+enum MyInfoHousingTypeCodeMapping {
 	"DETACHED_HOUSE" = "DETACHED HOUSE",
 	"SEMI_DETACHED_HOUSE" = "SEMI-DETACHED HOUSE",
 	"TERRACE_HOUSE" = "TERRACE HOUSE",
@@ -24,14 +24,14 @@ enum MyinfoHousingTypeCodeMapping {
 	"APARTMENT" = "APARTMENT",
 }
 
-type MyinfoHousingTypeCodeDesc = `${ MyinfoHousingTypeCodeMapping }`;
+type MyInfoHousingTypeCodeDesc = `${ MyInfoHousingTypeCodeMapping }`;
 
-export namespace MyinfoHousingTypeCode {
+export namespace MyInfoHousingTypeCode {
 	export const fn = {
-		keys: EnumUtils.keysFunc<MyinfoHousingTypeCode>(MyinfoHousingTypeCode),
-		values: EnumUtils.valuesFunc<MyinfoHousingTypeCode>(MyinfoHousingTypeCode),
-		toEnumKey: EnumUtils.toEnumKeyFunc<MyinfoHousingTypeCode>(MyinfoHousingTypeCode),
-		toEnumValue: EnumUtils.toEnumValueFunc<MyinfoHousingTypeCode>(MyinfoHousingTypeCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyinfoHousingTypeCode, MyinfoHousingTypeCodeDesc>(MyinfoHousingTypeCode, MyinfoHousingTypeCodeMapping),
+		keys: EnumUtils.keysFunc<MyInfoHousingTypeCode>(MyInfoHousingTypeCode),
+		values: EnumUtils.valuesFunc<MyInfoHousingTypeCode>(MyInfoHousingTypeCode),
+		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoHousingTypeCode>(MyInfoHousingTypeCode),
+		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoHousingTypeCode>(MyInfoHousingTypeCode),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoHousingTypeCode, MyInfoHousingTypeCodeDesc>(MyInfoHousingTypeCode, MyInfoHousingTypeCodeMapping),
 	};
 }

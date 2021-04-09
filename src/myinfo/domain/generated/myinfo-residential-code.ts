@@ -6,7 +6,7 @@
 // =============================================================================
 import { EnumUtils } from "../../../util/EnumUtils";
 
-export enum MyinfoResidentialCode {
+export enum MyInfoResidentialCode {
 	"ALIEN" = "A",
 	"CITIZEN" = "C",
 	"PR" = "P",
@@ -14,7 +14,7 @@ export enum MyinfoResidentialCode {
 	"NOT_APPLICABLE" = "N",
 }
 
-enum MyinfoResidentialCodeMapping {
+enum MyInfoResidentialCodeMapping {
 	"ALIEN" = "ALIEN",
 	"CITIZEN" = "CITIZEN",
 	"PR" = "PR",
@@ -22,14 +22,14 @@ enum MyinfoResidentialCodeMapping {
 	"NOT_APPLICABLE" = "NOT APPLICABLE",
 }
 
-type MyinfoResidentialCodeDesc = `${ MyinfoResidentialCodeMapping }`;
+type MyInfoResidentialCodeDesc = `${ MyInfoResidentialCodeMapping }`;
 
-export namespace MyinfoResidentialCode {
+export namespace MyInfoResidentialCode {
 	export const fn = {
-		keys: EnumUtils.keysFunc<MyinfoResidentialCode>(MyinfoResidentialCode),
-		values: EnumUtils.valuesFunc<MyinfoResidentialCode>(MyinfoResidentialCode),
-		toEnumKey: EnumUtils.toEnumKeyFunc<MyinfoResidentialCode>(MyinfoResidentialCode),
-		toEnumValue: EnumUtils.toEnumValueFunc<MyinfoResidentialCode>(MyinfoResidentialCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyinfoResidentialCode, MyinfoResidentialCodeDesc>(MyinfoResidentialCode, MyinfoResidentialCodeMapping),
+		keys: EnumUtils.keysFunc<MyInfoResidentialCode>(MyInfoResidentialCode),
+		values: EnumUtils.valuesFunc<MyInfoResidentialCode>(MyInfoResidentialCode),
+		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoResidentialCode>(MyInfoResidentialCode),
+		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoResidentialCode>(MyInfoResidentialCode),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoResidentialCode, MyInfoResidentialCodeDesc>(MyInfoResidentialCode, MyInfoResidentialCodeMapping),
 	};
 }

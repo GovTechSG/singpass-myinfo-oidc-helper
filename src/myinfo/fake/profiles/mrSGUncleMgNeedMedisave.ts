@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import { MyinfoMerdekaGenerationMessageCode } from "../../domain";
+import { MyInfoMerdekaGenerationMessageCode } from "../../domain";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 
@@ -13,7 +13,7 @@ export const mrSGUncleMgNeedMedisave: FakeProfile = {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
-		profile.merdekagen.message.code = MyinfoMerdekaGenerationMessageCode.NEED_MEDISAVE_TOPUP;
+		profile.merdekagen.message.code = MyInfoMerdekaGenerationMessageCode.NEED_MEDISAVE_TOPUP;
 		profile.merdekagen.eligibility.value = true;
 		profile.dob = {
 			lastupdated: "2020-01-01",

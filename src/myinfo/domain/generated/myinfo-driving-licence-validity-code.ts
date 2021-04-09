@@ -6,28 +6,28 @@
 // =============================================================================
 import { EnumUtils } from "../../../util/EnumUtils";
 
-export enum MyinfoDrivingLicenceValidityCode {
+export enum MyInfoDrivingLicenceValidityCode {
 	"VALID" = "V",
 	"INVALID" = "I",
 	"EXPIRED" = "E",
 	"NOT_HOLDING" = "N",
 }
 
-enum MyinfoDrivingLicenceValidityCodeMapping {
+enum MyInfoDrivingLicenceValidityCodeMapping {
 	"VALID" = "VALID",
 	"INVALID" = "INVALID",
 	"EXPIRED" = "EXPIRED",
 	"NOT_HOLDING" = "NOT HOLDING",
 }
 
-type MyinfoDrivingLicenceValidityCodeDesc = `${ MyinfoDrivingLicenceValidityCodeMapping }`;
+type MyInfoDrivingLicenceValidityCodeDesc = `${ MyInfoDrivingLicenceValidityCodeMapping }`;
 
-export namespace MyinfoDrivingLicenceValidityCode {
+export namespace MyInfoDrivingLicenceValidityCode {
 	export const fn = {
-		keys: EnumUtils.keysFunc<MyinfoDrivingLicenceValidityCode>(MyinfoDrivingLicenceValidityCode),
-		values: EnumUtils.valuesFunc<MyinfoDrivingLicenceValidityCode>(MyinfoDrivingLicenceValidityCode),
-		toEnumKey: EnumUtils.toEnumKeyFunc<MyinfoDrivingLicenceValidityCode>(MyinfoDrivingLicenceValidityCode),
-		toEnumValue: EnumUtils.toEnumValueFunc<MyinfoDrivingLicenceValidityCode>(MyinfoDrivingLicenceValidityCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyinfoDrivingLicenceValidityCode, MyinfoDrivingLicenceValidityCodeDesc>(MyinfoDrivingLicenceValidityCode, MyinfoDrivingLicenceValidityCodeMapping),
+		keys: EnumUtils.keysFunc<MyInfoDrivingLicenceValidityCode>(MyInfoDrivingLicenceValidityCode),
+		values: EnumUtils.valuesFunc<MyInfoDrivingLicenceValidityCode>(MyInfoDrivingLicenceValidityCode),
+		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoDrivingLicenceValidityCode>(MyInfoDrivingLicenceValidityCode),
+		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoDrivingLicenceValidityCode>(MyInfoDrivingLicenceValidityCode),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoDrivingLicenceValidityCode, MyInfoDrivingLicenceValidityCodeDesc>(MyInfoDrivingLicenceValidityCode, MyInfoDrivingLicenceValidityCodeMapping),
 	};
 }

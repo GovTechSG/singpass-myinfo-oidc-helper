@@ -2,7 +2,7 @@ import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 import { ChildrenRecords } from "./childbirthRecords";
-import { MyinfoResidentialCode } from "../../domain";
+import { MyInfoResidentialCode } from "../../domain";
 
 const id = "S7936715Z";
 const name = ProfileArchetype.MR_PR_DADDY_ONE_CHILD;
@@ -14,8 +14,8 @@ export const mrPRDaddyOneChildAndExpiredPassport: FakeProfile = {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
-		profile.residentialstatus.code = MyinfoResidentialCode.PR;
-		profile.residentialstatus.desc = MyinfoResidentialCode.fn.toEnumDesc(MyinfoResidentialCode.PR);
+		profile.residentialstatus.code = MyInfoResidentialCode.PR;
+		profile.residentialstatus.desc = MyInfoResidentialCode.fn.toEnumDesc(MyInfoResidentialCode.PR);
 
 		profile.childrenbirthrecords = [ChildrenRecords.childYoungest];
 		profile.passportnumber = {

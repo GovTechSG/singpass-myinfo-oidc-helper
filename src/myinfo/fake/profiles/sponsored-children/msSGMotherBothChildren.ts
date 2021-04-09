@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import { MyinfoSexCode } from "../../../domain";
+import { MyInfoSexCode } from "../../../domain";
 import { FakeProfile, ProfileArchetype } from "../fake-profile";
 import { BaseProfile } from "./BaseProfile";
 import { Childrenbirthrecords } from "./normalChildren";
@@ -16,8 +16,8 @@ export const msSGMotherBothChildren: FakeProfile = {
 
 		const profile = BaseProfile.generate(profileName);
 
-		profile.sex.code = MyinfoSexCode.FEMALE;
-		profile.sex.desc = MyinfoSexCode.fn.toEnumDesc(MyinfoSexCode.FEMALE);
+		profile.sex.code = MyInfoSexCode.FEMALE;
+		profile.sex.desc = MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE);
 		profile.sex.unavailable = false;
 
 		profile.childrenbirthrecords = _.values(Childrenbirthrecords);

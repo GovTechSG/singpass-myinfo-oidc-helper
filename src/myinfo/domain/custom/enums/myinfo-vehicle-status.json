@@ -1,5 +1,5 @@
 {
-	"enumName": "MyinfoVehicleStatus",
+	"enumName": "MyInfoVehicleStatus",
 	"enumEntries": [
 		{
 			"key": "LIVE",

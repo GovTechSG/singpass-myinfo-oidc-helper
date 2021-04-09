@@ -2,7 +2,7 @@ import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 import { ChildrenRecords } from "./childbirthRecords";
-import { MyinfoMaritialStatusCode, MyinfoResidentialCode, MyinfoSexCode } from "../../domain";
+import { MyInfoMaritialStatusCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
 
 
 const id = "T2446959F";
@@ -37,24 +37,24 @@ export const mrSGFreshGradYoungParent: FakeProfile = {
 			lastupdated: "2020-01-01",
 			source: "1",
 			classification: "C",
-			code: MyinfoResidentialCode.CITIZEN,
-			desc: MyinfoResidentialCode.fn.toEnumDesc(MyinfoResidentialCode.CITIZEN),
+			code: MyInfoResidentialCode.CITIZEN,
+			desc: MyInfoResidentialCode.fn.toEnumDesc(MyInfoResidentialCode.CITIZEN),
 			unavailable: false,
 		};
 		profile.sex = {
 			lastupdated: "2020-01-01",
 			source: "1",
 			classification: "C",
-			code: MyinfoSexCode.MALE,
-			desc: MyinfoSexCode.fn.toEnumDesc(MyinfoSexCode.MALE),
+			code: MyInfoSexCode.MALE,
+			desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE),
 			unavailable: false,
 		};
 		profile.marital = {
 			lastupdated: "2020-01-01",
 			source: "1",
 			classification: "C",
-			code: MyinfoMaritialStatusCode.MARRIED,
-			desc: MyinfoMaritialStatusCode.fn.toEnumDesc(MyinfoMaritialStatusCode.MARRIED),
+			code: MyInfoMaritialStatusCode.MARRIED,
+			desc: MyInfoMaritialStatusCode.fn.toEnumDesc(MyInfoMaritialStatusCode.MARRIED),
 			unavailable: false,
 		};
 		profile.marriagedate = {

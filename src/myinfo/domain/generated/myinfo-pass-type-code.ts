@@ -6,7 +6,7 @@
 // =============================================================================
 import { EnumUtils } from "../../../util/EnumUtils";
 
-export enum MyinfoPassTypeCode {
+export enum MyInfoPassTypeCode {
 	"WORK_PERMIT" = "RPass",
 	"S_PASS" = "SPass",
 	"EMPLOYMENT_PASS" = "P1Pass",
@@ -24,7 +24,7 @@ export enum MyinfoPassTypeCode {
 	"LONG_TERM_VISIT_PASS_2" = "LTVP+",
 }
 
-enum MyinfoPassTypeCodeMapping {
+enum MyInfoPassTypeCodeMapping {
 	"WORK_PERMIT" = "WORK PERMIT",
 	"S_PASS" = "S PASS",
 	"EMPLOYMENT_PASS" = "EMPLOYMENT PASS",
@@ -42,14 +42,14 @@ enum MyinfoPassTypeCodeMapping {
 	"LONG_TERM_VISIT_PASS_2" = "LONG TERM VISIT PASS +",
 }
 
-type MyinfoPassTypeCodeDesc = `${ MyinfoPassTypeCodeMapping }`;
+type MyInfoPassTypeCodeDesc = `${ MyInfoPassTypeCodeMapping }`;
 
-export namespace MyinfoPassTypeCode {
+export namespace MyInfoPassTypeCode {
 	export const fn = {
-		keys: EnumUtils.keysFunc<MyinfoPassTypeCode>(MyinfoPassTypeCode),
-		values: EnumUtils.valuesFunc<MyinfoPassTypeCode>(MyinfoPassTypeCode),
-		toEnumKey: EnumUtils.toEnumKeyFunc<MyinfoPassTypeCode>(MyinfoPassTypeCode),
-		toEnumValue: EnumUtils.toEnumValueFunc<MyinfoPassTypeCode>(MyinfoPassTypeCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyinfoPassTypeCode, MyinfoPassTypeCodeDesc>(MyinfoPassTypeCode, MyinfoPassTypeCodeMapping),
+		keys: EnumUtils.keysFunc<MyInfoPassTypeCode>(MyInfoPassTypeCode),
+		values: EnumUtils.valuesFunc<MyInfoPassTypeCode>(MyInfoPassTypeCode),
+		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoPassTypeCode>(MyInfoPassTypeCode),
+		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoPassTypeCode>(MyInfoPassTypeCode),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoPassTypeCode, MyInfoPassTypeCodeDesc>(MyInfoPassTypeCode, MyInfoPassTypeCodeMapping),
 	};
 }

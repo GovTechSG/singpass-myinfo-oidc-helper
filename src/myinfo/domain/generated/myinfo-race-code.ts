@@ -6,7 +6,7 @@
 // =============================================================================
 import { EnumUtils } from "../../../util/EnumUtils";
 
-export enum MyinfoRaceCode {
+export enum MyInfoRaceCode {
 	"ANGLO_BURMESE" = "AB",
 	"ANGLO_CHINESE" = "AC",
 	"AMERINDIAN" = "AD",
@@ -235,7 +235,7 @@ export enum MyinfoRaceCode {
 	"ZIMBABWEAN" = "ZW",
 }
 
-enum MyinfoRaceCodeMapping {
+enum MyInfoRaceCodeMapping {
 	"ANGLO_BURMESE" = "ANGLO BURMESE",
 	"ANGLO_CHINESE" = "ANGLO CHINESE",
 	"AMERINDIAN" = "AMERINDIAN",
@@ -464,14 +464,14 @@ enum MyinfoRaceCodeMapping {
 	"ZIMBABWEAN" = "ZIMBABWEAN",
 }
 
-type MyinfoRaceCodeDesc = `${ MyinfoRaceCodeMapping }`;
+type MyInfoRaceCodeDesc = `${ MyInfoRaceCodeMapping }`;
 
-export namespace MyinfoRaceCode {
+export namespace MyInfoRaceCode {
 	export const fn = {
-		keys: EnumUtils.keysFunc<MyinfoRaceCode>(MyinfoRaceCode),
-		values: EnumUtils.valuesFunc<MyinfoRaceCode>(MyinfoRaceCode),
-		toEnumKey: EnumUtils.toEnumKeyFunc<MyinfoRaceCode>(MyinfoRaceCode),
-		toEnumValue: EnumUtils.toEnumValueFunc<MyinfoRaceCode>(MyinfoRaceCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyinfoRaceCode, MyinfoRaceCodeDesc>(MyinfoRaceCode, MyinfoRaceCodeMapping),
+		keys: EnumUtils.keysFunc<MyInfoRaceCode>(MyInfoRaceCode),
+		values: EnumUtils.valuesFunc<MyInfoRaceCode>(MyInfoRaceCode),
+		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoRaceCode>(MyInfoRaceCode),
+		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoRaceCode>(MyInfoRaceCode),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoRaceCode, MyInfoRaceCodeDesc>(MyInfoRaceCode, MyInfoRaceCodeMapping),
 	};
 }

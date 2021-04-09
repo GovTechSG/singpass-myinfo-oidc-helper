@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import { MyinfoMerdekaGenerationMessageCode } from "../../domain";
+import { MyInfoMerdekaGenerationMessageCode } from "../../domain";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 
@@ -13,7 +13,7 @@ export const mrSGUncleMgNilStatus: FakeProfile = {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
-		profile.merdekagen.message.code = MyinfoMerdekaGenerationMessageCode.NIL_STATUS;
+		profile.merdekagen.message.code = MyInfoMerdekaGenerationMessageCode.NIL_STATUS;
 		profile.merdekagen.eligibility.value = false;
 		profile.dob = {
 			lastupdated: "2020-01-01",

@@ -6,28 +6,28 @@
 // =============================================================================
 import { EnumUtils } from "../../../util/EnumUtils";
 
-export enum MyinfoMaritialStatusCode {
+export enum MyInfoMaritialStatusCode {
 	"SINGLE" = "1",
 	"MARRIED" = "2",
 	"WIDOWED" = "3",
 	"DIVORCED" = "5",
 }
 
-enum MyinfoMaritialStatusCodeMapping {
+enum MyInfoMaritialStatusCodeMapping {
 	"SINGLE" = "SINGLE",
 	"MARRIED" = "MARRIED",
 	"WIDOWED" = "WIDOWED",
 	"DIVORCED" = "DIVORCED",
 }
 
-type MyinfoMaritialStatusCodeDesc = `${ MyinfoMaritialStatusCodeMapping }`;
+type MyInfoMaritialStatusCodeDesc = `${ MyInfoMaritialStatusCodeMapping }`;
 
-export namespace MyinfoMaritialStatusCode {
+export namespace MyInfoMaritialStatusCode {
 	export const fn = {
-		keys: EnumUtils.keysFunc<MyinfoMaritialStatusCode>(MyinfoMaritialStatusCode),
-		values: EnumUtils.valuesFunc<MyinfoMaritialStatusCode>(MyinfoMaritialStatusCode),
-		toEnumKey: EnumUtils.toEnumKeyFunc<MyinfoMaritialStatusCode>(MyinfoMaritialStatusCode),
-		toEnumValue: EnumUtils.toEnumValueFunc<MyinfoMaritialStatusCode>(MyinfoMaritialStatusCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyinfoMaritialStatusCode, MyinfoMaritialStatusCodeDesc>(MyinfoMaritialStatusCode, MyinfoMaritialStatusCodeMapping),
+		keys: EnumUtils.keysFunc<MyInfoMaritialStatusCode>(MyInfoMaritialStatusCode),
+		values: EnumUtils.valuesFunc<MyInfoMaritialStatusCode>(MyInfoMaritialStatusCode),
+		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoMaritialStatusCode>(MyInfoMaritialStatusCode),
+		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoMaritialStatusCode>(MyInfoMaritialStatusCode),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoMaritialStatusCode, MyInfoMaritialStatusCodeDesc>(MyInfoMaritialStatusCode, MyInfoMaritialStatusCodeMapping),
 	};
 }

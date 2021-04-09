@@ -6,7 +6,7 @@
 // =============================================================================
 import { EnumUtils } from "../../../util/EnumUtils";
 
-export enum MyinfoCountryCode {
+export enum MyInfoCountryCode {
 	"ARUBA" = "AB",
 	"ANDORRA" = "AD",
 	"UNITED_ARAB_EMIRATES" = "AE",
@@ -263,7 +263,7 @@ export enum MyinfoCountryCode {
 	"ZIMBABWE" = "ZW",
 }
 
-enum MyinfoCountryCodeMapping {
+enum MyInfoCountryCodeMapping {
 	"ARUBA" = "ARUBA",
 	"ANDORRA" = "ANDORRA",
 	"UNITED_ARAB_EMIRATES" = "UNITED ARAB EMIRATES",
@@ -520,14 +520,14 @@ enum MyinfoCountryCodeMapping {
 	"ZIMBABWE" = "ZIMBABWE",
 }
 
-type MyinfoCountryCodeDesc = `${ MyinfoCountryCodeMapping }`;
+type MyInfoCountryCodeDesc = `${ MyInfoCountryCodeMapping }`;
 
-export namespace MyinfoCountryCode {
+export namespace MyInfoCountryCode {
 	export const fn = {
-		keys: EnumUtils.keysFunc<MyinfoCountryCode>(MyinfoCountryCode),
-		values: EnumUtils.valuesFunc<MyinfoCountryCode>(MyinfoCountryCode),
-		toEnumKey: EnumUtils.toEnumKeyFunc<MyinfoCountryCode>(MyinfoCountryCode),
-		toEnumValue: EnumUtils.toEnumValueFunc<MyinfoCountryCode>(MyinfoCountryCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyinfoCountryCode, MyinfoCountryCodeDesc>(MyinfoCountryCode, MyinfoCountryCodeMapping),
+		keys: EnumUtils.keysFunc<MyInfoCountryCode>(MyInfoCountryCode),
+		values: EnumUtils.valuesFunc<MyInfoCountryCode>(MyInfoCountryCode),
+		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoCountryCode>(MyInfoCountryCode),
+		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoCountryCode>(MyInfoCountryCode),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoCountryCode, MyInfoCountryCodeDesc>(MyInfoCountryCode, MyInfoCountryCodeMapping),
 	};
 }

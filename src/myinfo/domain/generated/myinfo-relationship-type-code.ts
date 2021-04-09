@@ -6,7 +6,7 @@
 // =============================================================================
 import { EnumUtils } from "../../../util/EnumUtils";
 
-export enum MyinfoRelationshipTypeCode {
+export enum MyInfoRelationshipTypeCode {
 	"HUSBAND" = "REL101",
 	"WIFE" = "REL102",
 	"MOTHER" = "REL201",
@@ -17,7 +17,7 @@ export enum MyinfoRelationshipTypeCode {
 	"SISTER" = "REL602",
 }
 
-enum MyinfoRelationshipTypeCodeMapping {
+enum MyInfoRelationshipTypeCodeMapping {
 	"HUSBAND" = "HUSBAND",
 	"WIFE" = "WIFE",
 	"MOTHER" = "MOTHER",
@@ -28,14 +28,14 @@ enum MyinfoRelationshipTypeCodeMapping {
 	"SISTER" = "SISTER",
 }
 
-type MyinfoRelationshipTypeCodeDesc = `${ MyinfoRelationshipTypeCodeMapping }`;
+type MyInfoRelationshipTypeCodeDesc = `${ MyInfoRelationshipTypeCodeMapping }`;
 
-export namespace MyinfoRelationshipTypeCode {
+export namespace MyInfoRelationshipTypeCode {
 	export const fn = {
-		keys: EnumUtils.keysFunc<MyinfoRelationshipTypeCode>(MyinfoRelationshipTypeCode),
-		values: EnumUtils.valuesFunc<MyinfoRelationshipTypeCode>(MyinfoRelationshipTypeCode),
-		toEnumKey: EnumUtils.toEnumKeyFunc<MyinfoRelationshipTypeCode>(MyinfoRelationshipTypeCode),
-		toEnumValue: EnumUtils.toEnumValueFunc<MyinfoRelationshipTypeCode>(MyinfoRelationshipTypeCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyinfoRelationshipTypeCode, MyinfoRelationshipTypeCodeDesc>(MyinfoRelationshipTypeCode, MyinfoRelationshipTypeCodeMapping),
+		keys: EnumUtils.keysFunc<MyInfoRelationshipTypeCode>(MyInfoRelationshipTypeCode),
+		values: EnumUtils.valuesFunc<MyInfoRelationshipTypeCode>(MyInfoRelationshipTypeCode),
+		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoRelationshipTypeCode>(MyInfoRelationshipTypeCode),
+		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoRelationshipTypeCode>(MyInfoRelationshipTypeCode),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoRelationshipTypeCode, MyInfoRelationshipTypeCodeDesc>(MyInfoRelationshipTypeCode, MyInfoRelationshipTypeCodeMapping),
 	};
 }

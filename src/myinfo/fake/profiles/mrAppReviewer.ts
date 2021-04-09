@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import { MyinfoCountryCode, MyinfoDialectCode, MyinfoEduLevelCode, MyinfoMaritialStatusCode, MyinfoMerdekaGenerationMessageCode, MyinfoNationalityCode, MyinfoRaceCode, MyinfoResidentialCode, MyinfoSexCode } from "../../domain";
+import { MyInfoCountryCode, MyInfoDialectCode, MyInfoEduLevelCode, MyInfoMaritialStatusCode, MyInfoMerdekaGenerationMessageCode, MyInfoNationalityCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 
 const id = "S1111111D";
@@ -32,40 +32,40 @@ export const mrAppReviewer: FakeProfile = {
 				"unavailable": false,
 			},
 			"sex": {
-				"code": MyinfoSexCode.MALE,
-				"desc": MyinfoSexCode.fn.toEnumDesc(MyinfoSexCode.MALE),
+				"code": MyInfoSexCode.MALE,
+				"desc": MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE),
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
 				"unavailable": false,
 			},
 			"race": {
-				"code": MyinfoRaceCode.CHINESE,
-				"desc": MyinfoRaceCode.fn.toEnumDesc(MyinfoRaceCode.CHINESE),
+				"code": MyInfoRaceCode.CHINESE,
+				"desc": MyInfoRaceCode.fn.toEnumDesc(MyInfoRaceCode.CHINESE),
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
 				"unavailable": false,
 			},
 			"secondaryrace": {
-				"code": MyinfoRaceCode.GERMAN,
-				"desc": MyinfoRaceCode.fn.toEnumDesc(MyinfoRaceCode.GERMAN),
+				"code": MyInfoRaceCode.GERMAN,
+				"desc": MyInfoRaceCode.fn.toEnumDesc(MyInfoRaceCode.GERMAN),
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
 				"unavailable": false,
 			},
 			"dialect": {
-				"code": MyinfoDialectCode.HOKKIEN,
-				"desc": MyinfoDialectCode.fn.toEnumValue(MyinfoDialectCode.HOKKIEN),
+				"code": MyInfoDialectCode.HOKKIEN,
+				"desc": MyInfoDialectCode.fn.toEnumValue(MyInfoDialectCode.HOKKIEN),
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
 				"unavailable": false,
 			},
 			"nationality": {
-				"code": MyinfoNationalityCode.SINGAPORE_CITIZEN,
-				"desc": MyinfoNationalityCode.fn.toEnumDesc(MyinfoNationalityCode.SINGAPORE_CITIZEN),
+				"code": MyInfoNationalityCode.SINGAPORE_CITIZEN,
+				"desc": MyInfoNationalityCode.fn.toEnumDesc(MyInfoNationalityCode.SINGAPORE_CITIZEN),
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
@@ -79,23 +79,23 @@ export const mrAppReviewer: FakeProfile = {
 				"unavailable": false,
 			},
 			"birthcountry": {
-				"code": MyinfoCountryCode.SINGAPORE,
-				"desc": MyinfoCountryCode.fn.toEnumDesc(MyinfoCountryCode.SINGAPORE),
+				"code": MyInfoCountryCode.SINGAPORE,
+				"desc": MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.SINGAPORE),
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
 				"unavailable": false,
 			},
 			"residentialstatus": {
-				"code": MyinfoResidentialCode.CITIZEN,
-				"desc": MyinfoResidentialCode.fn.toEnumDesc(MyinfoResidentialCode.CITIZEN),
+				"code": MyInfoResidentialCode.CITIZEN,
+				"desc": MyInfoResidentialCode.fn.toEnumDesc(MyInfoResidentialCode.CITIZEN),
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
 				"unavailable": false,
 			},
 			"regadd": {
-				"type": MyinfoCountryCode.SINGAPORE,
+				"type": MyInfoCountryCode.SINGAPORE,
 				"block": {
 					"value": "123",
 				},
@@ -112,8 +112,8 @@ export const mrAppReviewer: FakeProfile = {
 					"value": "TEST ACCT STREET",
 				},
 				"country": {
-					"code": MyinfoCountryCode.SINGAPORE,
-					"desc": MyinfoCountryCode.fn.toEnumDesc(MyinfoCountryCode.SINGAPORE),
+					"code": MyInfoCountryCode.SINGAPORE,
+					"desc": MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.SINGAPORE),
 				},
 				"postal": {
 					"value": "310123",
@@ -161,8 +161,8 @@ export const mrAppReviewer: FakeProfile = {
 				"unavailable": false,
 			},
 			"marital": {
-				"code": MyinfoMaritialStatusCode.MARRIED,
-				"desc": MyinfoMaritialStatusCode.fn.toEnumDesc(MyinfoMaritialStatusCode.MARRIED),
+				"code": MyInfoMaritialStatusCode.MARRIED,
+				"desc": MyInfoMaritialStatusCode.fn.toEnumDesc(MyInfoMaritialStatusCode.MARRIED),
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
@@ -176,8 +176,8 @@ export const mrAppReviewer: FakeProfile = {
 				"unavailable": false,
 			},
 			"countryofmarriage": {
-				"code": MyinfoCountryCode.SINGAPORE,
-				"desc": MyinfoCountryCode.fn.toEnumDesc(MyinfoCountryCode.SINGAPORE),
+				"code": MyInfoCountryCode.SINGAPORE,
+				"desc": MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.SINGAPORE),
 				"source": source,
 				"classification": classification,
 				"lastupdated": lastupdated,
@@ -192,8 +192,8 @@ export const mrAppReviewer: FakeProfile = {
 			},
 			"edulevel": {
 				"lastupdated": "2020-09-10",
-				"code": MyinfoEduLevelCode.PRIMARY,
-				"desc": MyinfoEduLevelCode.fn.toEnumDesc(MyinfoEduLevelCode.PRIMARY),
+				"code": MyInfoEduLevelCode.PRIMARY,
+				"desc": MyInfoEduLevelCode.fn.toEnumDesc(MyInfoEduLevelCode.PRIMARY),
 				"source": "2",
 				"classification": "C",
 				"unavailable": false,
@@ -214,8 +214,8 @@ export const mrAppReviewer: FakeProfile = {
 					"value": 100,
 				},
 				"message": {
-					"code": MyinfoMerdekaGenerationMessageCode.ALL_OK,
-					"desc": MyinfoMerdekaGenerationMessageCode.fn.toEnumDesc(MyinfoMerdekaGenerationMessageCode.ALL_OK),
+					"code": MyInfoMerdekaGenerationMessageCode.ALL_OK,
+					"desc": MyInfoMerdekaGenerationMessageCode.fn.toEnumDesc(MyInfoMerdekaGenerationMessageCode.ALL_OK),
 				},
 				"source": source,
 				"classification": classification,

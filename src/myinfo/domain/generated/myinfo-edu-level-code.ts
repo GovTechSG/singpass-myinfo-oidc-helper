@@ -6,7 +6,7 @@
 // =============================================================================
 import { EnumUtils } from "../../../util/EnumUtils";
 
-export enum MyinfoEduLevelCode {
+export enum MyInfoEduLevelCode {
 	"NO_FORMAL_QUALIFICATION_PRE_PRIMARY_LOWER_PRIMARY" = "0",
 	"PRIMARY" = "1",
 	"LOWER_SECONDARY" = "2",
@@ -20,7 +20,7 @@ export enum MyinfoEduLevelCode {
 	"MODULAR_CERTIFICATION_NON_AWARD_COURSES_NON_FULL_QUALIFICATIONS" = "N",
 }
 
-enum MyinfoEduLevelCodeMapping {
+enum MyInfoEduLevelCodeMapping {
 	"NO_FORMAL_QUALIFICATION_PRE_PRIMARY_LOWER_PRIMARY" = "NO FORMAL QUALIFICATION / PRE-PRIMARY / LOWER PRIMARY",
 	"PRIMARY" = "PRIMARY",
 	"LOWER_SECONDARY" = "LOWER SECONDARY",
@@ -34,14 +34,14 @@ enum MyinfoEduLevelCodeMapping {
 	"MODULAR_CERTIFICATION_NON_AWARD_COURSES_NON_FULL_QUALIFICATIONS" = "MODULAR CERTIFICATION (NON-AWARD COURSES / NON-FULL QUALIFICATIONS)",
 }
 
-type MyinfoEduLevelCodeDesc = `${ MyinfoEduLevelCodeMapping }`;
+type MyInfoEduLevelCodeDesc = `${ MyInfoEduLevelCodeMapping }`;
 
-export namespace MyinfoEduLevelCode {
+export namespace MyInfoEduLevelCode {
 	export const fn = {
-		keys: EnumUtils.keysFunc<MyinfoEduLevelCode>(MyinfoEduLevelCode),
-		values: EnumUtils.valuesFunc<MyinfoEduLevelCode>(MyinfoEduLevelCode),
-		toEnumKey: EnumUtils.toEnumKeyFunc<MyinfoEduLevelCode>(MyinfoEduLevelCode),
-		toEnumValue: EnumUtils.toEnumValueFunc<MyinfoEduLevelCode>(MyinfoEduLevelCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyinfoEduLevelCode, MyinfoEduLevelCodeDesc>(MyinfoEduLevelCode, MyinfoEduLevelCodeMapping),
+		keys: EnumUtils.keysFunc<MyInfoEduLevelCode>(MyInfoEduLevelCode),
+		values: EnumUtils.valuesFunc<MyInfoEduLevelCode>(MyInfoEduLevelCode),
+		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoEduLevelCode>(MyInfoEduLevelCode),
+		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoEduLevelCode>(MyInfoEduLevelCode),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoEduLevelCode, MyInfoEduLevelCodeDesc>(MyInfoEduLevelCode, MyInfoEduLevelCodeMapping),
 	};
 }

@@ -1,4 +1,4 @@
-import { MyinfoLifeStatusCode, MyinfoSexCode } from "../../domain";
+import { MyInfoLifeStatusCode, MyInfoSexCode } from "../../domain";
 import { ChildrenBirthRecord, ChildrenOverrideMode, FakeMyInfoHelper, transformChildBirthRecord } from "../fake-helper";
 import { ProfileArchetype } from "../profiles/fake-profile";
 import { mrSGDaddyPerfect } from "../profiles/mrSGDaddyPerfect";
@@ -78,16 +78,16 @@ describe("FakeMyInfoHelper", () => {
 					name: "",
 					dob: "",
 					tob: "",
-					sex: MyinfoSexCode.FEMALE,
-					lifestatus: MyinfoLifeStatusCode.ALIVE,
+					sex: MyInfoSexCode.FEMALE,
+					lifestatus: MyInfoLifeStatusCode.ALIVE,
 				},
 				{
 					birthcertno: "S9846203A",
 					name: "",
 					dob: "",
 					tob: "",
-					sex: MyinfoSexCode.FEMALE,
-					lifestatus: MyinfoLifeStatusCode.ALIVE,
+					sex: MyInfoSexCode.FEMALE,
+					lifestatus: MyInfoLifeStatusCode.ALIVE,
 				},
 			];
 

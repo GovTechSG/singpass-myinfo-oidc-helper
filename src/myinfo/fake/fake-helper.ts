@@ -1,6 +1,6 @@
 import { get, isEmpty, map, partition, set } from "lodash";
 // tslint:disable-next-line: max-line-length
-import { MyInfoComponents, MyinfoComStatusCode, MyinfoCountryCode, MyinfoDrivingLicenceValidityCode, MyinfoHDBTypeCode, MyinfoHousingTypeCode, MyinfoLifeStatusCode, MyinfoMaritialStatusCode, MyinfoMerdekaGenerationMessageCode, MyinfoOccupationCode, MyinfoResidentialCode, MyinfoSexCode, MyinfoVehicleStatus } from "../domain";
+import { MyInfoComponents, MyInfoComStatusCode, MyInfoCountryCode, MyInfoDrivingLicenceValidityCode, MyInfoHDBTypeCode, MyInfoHousingTypeCode, MyInfoLifeStatusCode, MyInfoMaritialStatusCode, MyInfoMerdekaGenerationMessageCode, MyInfoOccupationCode, MyInfoResidentialCode, MyInfoSexCode, MyInfoVehicleStatus } from "../domain";
 import { ProfileArchetype } from "./profiles/fake-profile";
 import { profiles } from "./profiles/fake-profiles";
 
@@ -19,33 +19,33 @@ export interface ChildrenBirthRecord {
 	name?: string;
 	dob?: string;
 	tob?: string;
-	sex?: MyinfoSexCode;
-	lifestatus?: MyinfoLifeStatusCode;
+	sex?: MyInfoSexCode;
+	lifestatus?: MyInfoLifeStatusCode;
 }
 
 export interface MockParams {
 	archetype: ProfileArchetype;
 	userdisplayname?: string;
-	marital?: MyinfoMaritialStatusCode;
+	marital?: MyInfoMaritialStatusCode;
 	marriagedate?: string;
 	divorcedate?: string;
 	marriagecertno?: string;
-	countryofmarriage?: MyinfoCountryCode;
+	countryofmarriage?: MyInfoCountryCode;
 	childrenbirthrecords?: ChildrenBirthRecord[];
 	childrenoverridemode?: ChildrenOverrideMode;
-	residentialstatus?: MyinfoResidentialCode;
-	occupation?: MyinfoOccupationCode;
+	residentialstatus?: MyInfoResidentialCode;
+	occupation?: MyInfoOccupationCode;
 	occupationfreeform?: string;
 	dob?: string;
 	gstvyear?: number;
 	gvs?: GVS;
 	merdekageneligible?: boolean;
 	merdekagenquantum?: number;
-	merdekagenmessagecode?: MyinfoMerdekaGenerationMessageCode;
-	hdbtype?: MyinfoHDBTypeCode;
-	housingtype?: MyinfoHousingTypeCode;
-	drivingqdlvalidity?: MyinfoDrivingLicenceValidityCode;
-	vehiclestatus?: MyinfoVehicleStatus;
+	merdekagenmessagecode?: MyInfoMerdekaGenerationMessageCode;
+	hdbtype?: MyInfoHDBTypeCode;
+	housingtype?: MyInfoHousingTypeCode;
+	drivingqdlvalidity?: MyInfoDrivingLicenceValidityCode;
+	vehiclestatus?: MyInfoVehicleStatus;
 }
 
 type PersonCommon = MyInfoComponents.Schemas.PersonCommon;
@@ -80,12 +80,12 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 
 		if (!isEmpty(mockParams.residentialstatus)) {
 			myinfoPerson.residentialstatus.code = mockParams.residentialstatus;
-			myinfoPerson.residentialstatus.desc = MyinfoResidentialCode.fn.toEnumDesc(mockParams.residentialstatus);
+			myinfoPerson.residentialstatus.desc = MyInfoResidentialCode.fn.toEnumDesc(mockParams.residentialstatus);
 		}
 
 		if (!isEmpty(mockParams.marital)) {
 			myinfoPerson.marital.code = mockParams.marital;
-			myinfoPerson.marital.desc = MyinfoMaritialStatusCode.fn.toEnumDesc(mockParams.marital);
+			myinfoPerson.marital.desc = MyInfoMaritialStatusCode.fn.toEnumDesc(mockParams.marital);
 		}
 
 		if (!isEmpty(mockParams.marriagedate)) {
@@ -102,7 +102,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 
 		if (!isEmpty(mockParams.countryofmarriage)) {
 			myinfoPerson.countryofmarriage.code = mockParams.countryofmarriage;
-			myinfoPerson.countryofmarriage.desc = MyinfoCountryCode.fn.toEnumDesc(mockParams.countryofmarriage);
+			myinfoPerson.countryofmarriage.desc = MyInfoCountryCode.fn.toEnumDesc(mockParams.countryofmarriage);
 		}
 
 		if (!isEmpty(mockParams.dob) || !isEmpty(myinfoPerson.dob?.value)) {
@@ -142,7 +142,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 
 		if (!isEmpty(mockParams.occupation)) {
 			myinfoPerson.occupation.code = mockParams.occupation;
-			myinfoPerson.occupation.desc = MyinfoOccupationCode.fn.toEnumDesc(mockParams.occupation);
+			myinfoPerson.occupation.desc = MyInfoOccupationCode.fn.toEnumDesc(mockParams.occupation);
 			myinfoPerson.occupation.value = null;
 		} else {
 			if (!isEmpty(mockParams.occupationfreeform)) {
@@ -170,7 +170,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 				source: "1",
 				classification: "C",
 				code: mockParams.hdbtype,
-				desc: MyinfoHDBTypeCode.fn.toEnumDesc(mockParams.hdbtype),
+				desc: MyInfoHDBTypeCode.fn.toEnumDesc(mockParams.hdbtype),
 				unavailable: false,
 			};
 			myinfoPerson.housingtype = {
@@ -187,7 +187,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 				source: "1",
 				classification: "C",
 				code: mockParams.housingtype,
-				desc: MyinfoHousingTypeCode.fn.toEnumDesc(mockParams.housingtype),
+				desc: MyInfoHousingTypeCode.fn.toEnumDesc(mockParams.housingtype),
 				unavailable: false,
 			};
 			myinfoPerson.hdbtype = {
@@ -227,7 +227,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 					},
 					validity: {
 						code: mockParams.drivingqdlvalidity,
-						desc: MyinfoDrivingLicenceValidityCode.fn.toEnumDesc(mockParams.drivingqdlvalidity),
+						desc: MyInfoDrivingLicenceValidityCode.fn.toEnumDesc(mockParams.drivingqdlvalidity),
 					},
 					classes: [
 						{
@@ -254,8 +254,8 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 				source: "1",
 				classification: "C",
 				comstatus: {
-					code: MyinfoComStatusCode.ELIGIBLE,
-					desc: MyinfoComStatusCode.fn.toEnumDesc(MyinfoComStatusCode.ELIGIBLE),
+					code: MyInfoComStatusCode.ELIGIBLE,
+					desc: MyInfoComStatusCode.fn.toEnumDesc(MyInfoComStatusCode.ELIGIBLE),
 				},
 				photocardserialno: {
 					value: null,
@@ -391,7 +391,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 				},
 				status: {
 					code: mockParams.vehiclestatus,
-					desc: MyinfoVehicleStatus.fn.toEnumDesc(mockParams.vehiclestatus),
+					desc: MyInfoVehicleStatus.fn.toEnumDesc(mockParams.vehiclestatus),
 				},
 				unavailable: false,
 			};
@@ -541,8 +541,8 @@ export function transformChildBirthRecord(childbirthrecord: ChildrenBirthRecord,
 		lastupdated: null,
 		birthcertno: { value: childbirthrecord.birthcertno },
 		name: { value: childbirthrecord.name || `nameless child ${index + 1}` },
-		sex: { code: childbirthrecord.sex, desc: MyinfoSexCode.fn.toEnumDesc(childbirthrecord.sex) },
-		lifestatus: { code: childbirthrecord.lifestatus, desc: MyinfoLifeStatusCode.fn.toEnumDesc(childbirthrecord.lifestatus) },
+		sex: { code: childbirthrecord.sex, desc: MyInfoSexCode.fn.toEnumDesc(childbirthrecord.sex) },
+		lifestatus: { code: childbirthrecord.lifestatus, desc: MyInfoLifeStatusCode.fn.toEnumDesc(childbirthrecord.lifestatus) },
 		dob: { value: isNaN(Date.parse(childbirthrecord.dob)) ? "2020-01-01" : childbirthrecord.dob },
 		tob: { value: childbirthrecord.tob || "0000" },
 		unavailable: false,

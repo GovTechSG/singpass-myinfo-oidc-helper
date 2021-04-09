@@ -6,7 +6,7 @@
 // =============================================================================
 import { EnumUtils } from "../../../util/EnumUtils";
 
-export enum MyinfoSchoolCode {
+export enum MyInfoSchoolCode {
 	"WESTWOOD_PRIMARY_SCHOOL" = "T12GS0001J",
 	"PUNGGOL_GREEN_PRIMARY_SCHOOL" = "T12GS0002E",
 	"PUNGGOL_VIEW_PRIMARY_SCHOOL" = "T12GS0003A",
@@ -392,7 +392,7 @@ export enum MyinfoSchoolCode {
 	"NORTHOAKS_PRIMARY_SCHOOL" = "T13GS0003F",
 }
 
-enum MyinfoSchoolCodeMapping {
+enum MyInfoSchoolCodeMapping {
 	"WESTWOOD_PRIMARY_SCHOOL" = "WESTWOOD PRIMARY SCHOOL",
 	"PUNGGOL_GREEN_PRIMARY_SCHOOL" = "PUNGGOL GREEN PRIMARY SCHOOL",
 	"PUNGGOL_VIEW_PRIMARY_SCHOOL" = "PUNGGOL VIEW PRIMARY SCHOOL",
@@ -778,14 +778,14 @@ enum MyinfoSchoolCodeMapping {
 	"NORTHOAKS_PRIMARY_SCHOOL" = "NORTHOAKS PRIMARY SCHOOL",
 }
 
-type MyinfoSchoolCodeDesc = `${ MyinfoSchoolCodeMapping }`;
+type MyInfoSchoolCodeDesc = `${ MyInfoSchoolCodeMapping }`;
 
-export namespace MyinfoSchoolCode {
+export namespace MyInfoSchoolCode {
 	export const fn = {
-		keys: EnumUtils.keysFunc<MyinfoSchoolCode>(MyinfoSchoolCode),
-		values: EnumUtils.valuesFunc<MyinfoSchoolCode>(MyinfoSchoolCode),
-		toEnumKey: EnumUtils.toEnumKeyFunc<MyinfoSchoolCode>(MyinfoSchoolCode),
-		toEnumValue: EnumUtils.toEnumValueFunc<MyinfoSchoolCode>(MyinfoSchoolCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyinfoSchoolCode, MyinfoSchoolCodeDesc>(MyinfoSchoolCode, MyinfoSchoolCodeMapping),
+		keys: EnumUtils.keysFunc<MyInfoSchoolCode>(MyInfoSchoolCode),
+		values: EnumUtils.valuesFunc<MyInfoSchoolCode>(MyInfoSchoolCode),
+		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoSchoolCode>(MyInfoSchoolCode),
+		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoSchoolCode>(MyInfoSchoolCode),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoSchoolCode, MyInfoSchoolCodeDesc>(MyInfoSchoolCode, MyInfoSchoolCodeMapping),
 	};
 }

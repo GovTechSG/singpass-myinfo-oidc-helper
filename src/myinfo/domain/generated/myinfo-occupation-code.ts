@@ -6,7 +6,7 @@
 // =============================================================================
 import { EnumUtils } from "../../../util/EnumUtils";
 
-export enum MyinfoOccupationCode {
+export enum MyInfoOccupationCode {
 	"LEGISLATOR" = "11110",
 	"SENIOR_GOVERNMENT_OFFICIAL" = "11121",
 	"SENIOR_STATUTORY_BOARD_OFFICIAL" = "11122",
@@ -1128,7 +1128,7 @@ export enum MyinfoOccupationCode {
 	"OTHER_ELEMENTARY_WORKERS_NEC" = "96299",
 }
 
-enum MyinfoOccupationCodeMapping {
+enum MyInfoOccupationCodeMapping {
 	"LEGISLATOR" = "LEGISLATOR",
 	"SENIOR_GOVERNMENT_OFFICIAL" = "SENIOR GOVERNMENT OFFICIAL",
 	"SENIOR_STATUTORY_BOARD_OFFICIAL" = "SENIOR STATUTORY BOARD OFFICIAL",
@@ -2250,14 +2250,14 @@ enum MyinfoOccupationCodeMapping {
 	"OTHER_ELEMENTARY_WORKERS_NEC" = "OTHER ELEMENTARY WORKERS NEC",
 }
 
-type MyinfoOccupationCodeDesc = `${ MyinfoOccupationCodeMapping }`;
+type MyInfoOccupationCodeDesc = `${ MyInfoOccupationCodeMapping }`;
 
-export namespace MyinfoOccupationCode {
+export namespace MyInfoOccupationCode {
 	export const fn = {
-		keys: EnumUtils.keysFunc<MyinfoOccupationCode>(MyinfoOccupationCode),
-		values: EnumUtils.valuesFunc<MyinfoOccupationCode>(MyinfoOccupationCode),
-		toEnumKey: EnumUtils.toEnumKeyFunc<MyinfoOccupationCode>(MyinfoOccupationCode),
-		toEnumValue: EnumUtils.toEnumValueFunc<MyinfoOccupationCode>(MyinfoOccupationCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyinfoOccupationCode, MyinfoOccupationCodeDesc>(MyinfoOccupationCode, MyinfoOccupationCodeMapping),
+		keys: EnumUtils.keysFunc<MyInfoOccupationCode>(MyInfoOccupationCode),
+		values: EnumUtils.valuesFunc<MyInfoOccupationCode>(MyInfoOccupationCode),
+		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoOccupationCode>(MyInfoOccupationCode),
+		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoOccupationCode>(MyInfoOccupationCode),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoOccupationCode, MyInfoOccupationCodeDesc>(MyInfoOccupationCode, MyInfoOccupationCodeMapping),
 	};
 }

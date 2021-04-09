@@ -10,7 +10,7 @@ import * as yargs from "yargs";
 
 console.log(`==============================================================================`);
 console.log(`Script: ${__filename}`);
-console.log(`This script generates the latest Myinfo typings`);
+console.log(`This script generates the latest MyInfo typings`);
 console.log(`Please ensure that the URL arguments are up to date before running`);
 console.log(`==============================================================================`);
 
@@ -33,13 +33,13 @@ const projectDir = process.cwd();
 const argv = yargs
 	.command({
 		command: `$0 <swagger-path>`,
-		describe: `This script parses a Myinfo API swagger file and generates the relevant typings`,
+		describe: `This script parses a MyInfo API swagger file and generates the relevant typings`,
 		builder: () => {
 			return yargs
 				.positional(`swagger-path`, {
 					type: `string`,
 					describe:
-						`The Myinfo API swagger file path
+						`The MyInfo API swagger file path
 						The latest version may be downloaded from https://api.singpass.gov.sg/developers`
 				})
 				.option(`output-dir`, {
@@ -84,12 +84,12 @@ async function executeScript() {
 	console.log("Deleting old generated files...");
 	clearGeneratedFiles();
 
-	console.log("Generating API typings from Myinfo API swaggger file...");
+	console.log("Generating API typings from MyInfo API swaggger file...");
 	const apiSwaggerTypingsFileName = await generateApiSwaggerTypings();
 
 
-	console.log("Generating enums typings from Myinfo codes table...");
-	const myinfoCodesEnumsFileNames = await generateMyinfoCodeEnums();
+	console.log("Generating enums typings from MyInfo codes table...");
+	const myinfoCodesEnumsFileNames = await generateMyInfoCodeEnums();
 
 	console.log("Generating index...");
 	await generateIndex([
@@ -116,7 +116,7 @@ function clearGeneratedFiles() {
 }
 
 // =============================================================================
-// Myinfo API Swagger
+// MyInfo API Swagger
 // =============================================================================
 
 async function generateApiSwaggerTypings(): Promise<string> {
@@ -228,8 +228,8 @@ interface EnumTyping {
 
 function writeEnumTypingsSource(enumTyping: EnumTyping): string {
 	// Ensure that there is a proper prefix
-	if (!enumTyping.enumName.startsWith("Myinfo")) {
-		enumTyping.enumName = `Myinfo${_.startCase(enumTyping.enumName).replace(/\s/g, "")}`;
+	if (!enumTyping.enumName.startsWith("MyInfo")) {
+		enumTyping.enumName = `MyInfo${_.startCase(enumTyping.enumName).replace(/\s/g, "")}`;
 	}
 
 	// Validate the enum
@@ -260,7 +260,7 @@ function writeEnumTypingsSource(enumTyping: EnumTyping): string {
 			// assign unique key by finding highest number to append
 			const append = Math.max(instanceCount, counter);
 			key = `${key}_${append + 1}`;
-			console.warn(`Myinfo sheet ${enumTyping.enumName} contains duplicated keys: ${entry.key}, renaming as ${key}`);
+			console.warn(`MyInfo sheet ${enumTyping.enumName} contains duplicated keys: ${entry.key}, renaming as ${key}`);
 		}
 		enumEntryKeyList.push(key);
 		return { ...entry, key };
@@ -280,16 +280,16 @@ function writeEnumTypingsSource(enumTyping: EnumTyping): string {
 	const enumsTemplate = handlebars.compile(enumsHbs, { noEscape: true });
 	const typingsSource = header + enumsTemplate(enumTyping);
 
-	const filename = `generated/${_.kebabCase(enumTyping.enumName)}.ts`;
+	const filename = `generated/${_.kebabCase(enumTyping.enumName).replace(/my\-info/, "myinfo")}.ts`;
 	fs.writeFileSync(`${outputDir}/${filename}`, typingsSource);
 	return filename;
 }
 
 // =============================================================================
-// Myinfo codes enums
+// MyInfo codes enums
 // =============================================================================
 
-async function generateMyinfoCodeEnums(): Promise<string[]> {
+async function generateMyInfoCodeEnums(): Promise<string[]> {
 	// Fetch xls
 	const { data } = await axios.get(myinfoCodeRefTableUrl, { responseType: "arraybuffer" });
 	const myInfoCodesXslx = xlsx.read(new Uint8Array(data), { type: "array" });
@@ -305,7 +305,7 @@ async function generateMyinfoCodeEnums(): Promise<string[]> {
 		// Rudimentary validation by cell value in case the sheet changed its format
 		// Expecting row 6 to be the header; values should contain code and description
 		if (!myInfoCodesSheet[5]?.code?.match(/code/gi) || myInfoCodesSheet[5]?.description?.toLowerCase() !== "description") {
-			throw new Error(`Unexpected cell values in Myinfo xlsx sheet ${sheetName} row 6, format has likely changed`);
+			throw new Error(`Unexpected cell values in MyInfo xlsx sheet ${sheetName} row 6, format has likely changed`);
 		}
 
 		const enumEntries = myInfoCodesSheet.map((row: Record<string, string>, i: number) => {

@@ -6,24 +6,24 @@
 // =============================================================================
 import { EnumUtils } from "../../../util/EnumUtils";
 
-export enum MyinfoVehicleStatus {
+export enum MyInfoVehicleStatus {
 	"LIVE" = "1",
 	"DEREGISTERED" = "2",
 }
 
-enum MyinfoVehicleStatusMapping {
+enum MyInfoVehicleStatusMapping {
 	"LIVE" = "LIVE",
 	"DEREGISTERED" = "DE-REGISTERED",
 }
 
-type MyinfoVehicleStatusDesc = `${ MyinfoVehicleStatusMapping }`;
+type MyInfoVehicleStatusDesc = `${ MyInfoVehicleStatusMapping }`;
 
-export namespace MyinfoVehicleStatus {
+export namespace MyInfoVehicleStatus {
 	export const fn = {
-		keys: EnumUtils.keysFunc<MyinfoVehicleStatus>(MyinfoVehicleStatus),
-		values: EnumUtils.valuesFunc<MyinfoVehicleStatus>(MyinfoVehicleStatus),
-		toEnumKey: EnumUtils.toEnumKeyFunc<MyinfoVehicleStatus>(MyinfoVehicleStatus),
-		toEnumValue: EnumUtils.toEnumValueFunc<MyinfoVehicleStatus>(MyinfoVehicleStatus),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyinfoVehicleStatus, MyinfoVehicleStatusDesc>(MyinfoVehicleStatus, MyinfoVehicleStatusMapping),
+		keys: EnumUtils.keysFunc<MyInfoVehicleStatus>(MyInfoVehicleStatus),
+		values: EnumUtils.valuesFunc<MyInfoVehicleStatus>(MyInfoVehicleStatus),
+		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoVehicleStatus>(MyInfoVehicleStatus),
+		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoVehicleStatus>(MyInfoVehicleStatus),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoVehicleStatus, MyInfoVehicleStatusDesc>(MyInfoVehicleStatus, MyInfoVehicleStatusMapping),
 	};
 }

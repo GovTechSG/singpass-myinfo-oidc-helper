@@ -2,7 +2,7 @@ import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 import { aliasName } from "../profiles/common";
-import { MyinfoSexCode } from "../../domain";
+import { MyInfoSexCode } from "../../domain";
 
 const id = "T0834325F";
 const name = ProfileArchetype.MS_SG_TEENAGER_17;
@@ -24,8 +24,8 @@ export const msSgTeenager17: FakeProfile = {
 			value: aliasName.LEE_XIU,
 			unavailable: false,
 		};
-		profile.sex.code = MyinfoSexCode.FEMALE;
-		profile.sex.desc = MyinfoSexCode.fn.toEnumDesc(MyinfoSexCode.FEMALE);
+		profile.sex.code = MyInfoSexCode.FEMALE;
+		profile.sex.desc = MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE);
 
 		profile.dob = {
 			lastupdated: "2020-01-01",

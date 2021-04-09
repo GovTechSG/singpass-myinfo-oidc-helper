@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import { MyinfoCountryCode, MyinfoNationalityCode, MyinfoOccupationCode } from "../../domain";
+import { MyInfoCountryCode, MyInfoNationalityCode, MyInfoOccupationCode } from "../../domain";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 
@@ -22,16 +22,16 @@ export const mrJapaneseAddressBlank: FakeProfile = {
 			"unavailable": false,
 		};
 		profile.nationality = {
-			"code": MyinfoNationalityCode.JAPANESE,
-			"desc": MyinfoNationalityCode.fn.toEnumDesc(MyinfoNationalityCode.JAPANESE),
+			"code": MyInfoNationalityCode.JAPANESE,
+			"desc": MyInfoNationalityCode.fn.toEnumDesc(MyInfoNationalityCode.JAPANESE),
 			"source": "1",
 			"classification": "C",
 			"lastupdated": "2019-09-18",
 			"unavailable": false,
 		};
 		profile.birthcountry = {
-			"code": MyinfoCountryCode.JAPAN,
-			"desc": MyinfoCountryCode.fn.toEnumDesc(MyinfoCountryCode.JAPAN),
+			"code": MyInfoCountryCode.JAPAN,
+			"desc": MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.JAPAN),
 			"source": "1",
 			"classification": "C",
 			"lastupdated": "2019-09-18",
@@ -81,10 +81,10 @@ export const mrJapaneseAddressBlank: FakeProfile = {
 
 		profile.occupation = {
 			"lastupdated": "2018-05-21",
-			"code": MyinfoOccupationCode.LEGISLATOR,
+			"code": MyInfoOccupationCode.LEGISLATOR,
 			"source": "2",
 			"classification": "C",
-			"desc": MyinfoOccupationCode.fn.toEnumDesc(MyinfoOccupationCode.LEGISLATOR),
+			"desc": MyInfoOccupationCode.fn.toEnumDesc(MyInfoOccupationCode.LEGISLATOR),
 			"unavailable": false,
 		};
 

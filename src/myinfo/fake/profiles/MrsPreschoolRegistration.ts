@@ -3,7 +3,7 @@ import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 import { preschoolEligibleChild_IC, preschoolEligibleChild_N2, preschoolIneligibleChild2 } from "./childbirthRecords";
 import { aliasName } from "../profiles/common";
-import { MyinfoSexCode } from "../../domain";
+import { MyInfoSexCode } from "../../domain";
 
 const id = "T2446959F";
 const name = ProfileArchetype.MRS_PRESCHOOL_REGISTRATION;
@@ -23,8 +23,8 @@ export const mrsPreschoolRegistration: FakeProfile = {
 			value: aliasName.LEE_XIU,
 			unavailable: false,
 		};
-		profile.sex.code = MyinfoSexCode.FEMALE;
-		profile.sex.desc = MyinfoSexCode.fn.toEnumDesc(MyinfoSexCode.FEMALE);
+		profile.sex.code = MyInfoSexCode.FEMALE;
+		profile.sex.desc = MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE);
 
 		profile.childrenbirthrecords = [
 			preschoolEligibleChild_IC,

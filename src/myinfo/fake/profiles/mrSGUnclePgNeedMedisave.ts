@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import { MyinfoPioneerGenerationMessageCode } from "../../domain";
+import { MyInfoPioneerGenerationMessageCode } from "../../domain";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGUnclePgAllOk } from "./mrSGUnclePgAllOk";
 
@@ -13,8 +13,8 @@ export const mrSGUnclePgNeedMedisave: FakeProfile = {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
 		const profile = mrSGUnclePgAllOk.generate(profileName);
-		profile.pioneergen.message.code = MyinfoPioneerGenerationMessageCode.NEED_MEDISAVE_TOPUP;
-		profile.pioneergen.message.desc = MyinfoPioneerGenerationMessageCode.fn.toEnumDesc(MyinfoPioneerGenerationMessageCode.NEED_MEDISAVE_TOPUP);
+		profile.pioneergen.message.code = MyInfoPioneerGenerationMessageCode.NEED_MEDISAVE_TOPUP;
+		profile.pioneergen.message.desc = MyInfoPioneerGenerationMessageCode.fn.toEnumDesc(MyInfoPioneerGenerationMessageCode.NEED_MEDISAVE_TOPUP);
 
 		return profile;
 	},

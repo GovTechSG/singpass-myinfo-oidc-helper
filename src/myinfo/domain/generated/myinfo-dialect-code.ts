@@ -6,7 +6,7 @@
 // =============================================================================
 import { EnumUtils } from "../../../util/EnumUtils";
 
-export enum MyinfoDialectCode {
+export enum MyInfoDialectCode {
 	"AMHARIC" = "AH",
 	"AKAN" = "AK",
 	"ALBANIAN" = "AL",
@@ -155,7 +155,7 @@ export enum MyinfoDialectCode {
 	"YIDDISH" = "YI",
 }
 
-enum MyinfoDialectCodeMapping {
+enum MyInfoDialectCodeMapping {
 	"AMHARIC" = "AMHARIC",
 	"AKAN" = "AKAN",
 	"ALBANIAN" = "ALBANIAN",
@@ -304,14 +304,14 @@ enum MyinfoDialectCodeMapping {
 	"YIDDISH" = "YIDDISH",
 }
 
-type MyinfoDialectCodeDesc = `${ MyinfoDialectCodeMapping }`;
+type MyInfoDialectCodeDesc = `${ MyInfoDialectCodeMapping }`;
 
-export namespace MyinfoDialectCode {
+export namespace MyInfoDialectCode {
 	export const fn = {
-		keys: EnumUtils.keysFunc<MyinfoDialectCode>(MyinfoDialectCode),
-		values: EnumUtils.valuesFunc<MyinfoDialectCode>(MyinfoDialectCode),
-		toEnumKey: EnumUtils.toEnumKeyFunc<MyinfoDialectCode>(MyinfoDialectCode),
-		toEnumValue: EnumUtils.toEnumValueFunc<MyinfoDialectCode>(MyinfoDialectCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyinfoDialectCode, MyinfoDialectCodeDesc>(MyinfoDialectCode, MyinfoDialectCodeMapping),
+		keys: EnumUtils.keysFunc<MyInfoDialectCode>(MyInfoDialectCode),
+		values: EnumUtils.valuesFunc<MyInfoDialectCode>(MyInfoDialectCode),
+		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoDialectCode>(MyInfoDialectCode),
+		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoDialectCode>(MyInfoDialectCode),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoDialectCode, MyInfoDialectCodeDesc>(MyInfoDialectCode, MyInfoDialectCodeMapping),
 	};
 }

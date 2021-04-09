@@ -6,7 +6,7 @@
 // =============================================================================
 import { EnumUtils } from "../../../util/EnumUtils";
 
-export enum MyinfoMerdekaGenerationMessageCode {
+export enum MyInfoMerdekaGenerationMessageCode {
 	"NON_MG" = "1",
 	"ALL_OK" = "2",
 	"NEED_ADDRESS_UPDATE" = "3",
@@ -16,7 +16,7 @@ export enum MyinfoMerdekaGenerationMessageCode {
 	"NIL_STATUS" = "7",
 }
 
-enum MyinfoMerdekaGenerationMessageCodeMapping {
+enum MyInfoMerdekaGenerationMessageCodeMapping {
 	"NON_MG" = "We regret that you are not eligible for the Merdeka Generation Package.  For further enquiries, please contact 1800-2222-888.",
 	"ALL_OK" = "You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888.",
 	"NEED_ADDRESS_UPDATE" = "You are eligible for the Merdeka Generation Package. Please call 6391 6100 to update your NRIC address with ICA and then contact 1800-2222-888 to receive your Merdeka Generation card.",
@@ -26,14 +26,14 @@ enum MyinfoMerdekaGenerationMessageCodeMapping {
 	"NIL_STATUS" = "Please contact 1800-2222-888 for further details on your eligibility.",
 }
 
-type MyinfoMerdekaGenerationMessageCodeDesc = `${ MyinfoMerdekaGenerationMessageCodeMapping }`;
+type MyInfoMerdekaGenerationMessageCodeDesc = `${ MyInfoMerdekaGenerationMessageCodeMapping }`;
 
-export namespace MyinfoMerdekaGenerationMessageCode {
+export namespace MyInfoMerdekaGenerationMessageCode {
 	export const fn = {
-		keys: EnumUtils.keysFunc<MyinfoMerdekaGenerationMessageCode>(MyinfoMerdekaGenerationMessageCode),
-		values: EnumUtils.valuesFunc<MyinfoMerdekaGenerationMessageCode>(MyinfoMerdekaGenerationMessageCode),
-		toEnumKey: EnumUtils.toEnumKeyFunc<MyinfoMerdekaGenerationMessageCode>(MyinfoMerdekaGenerationMessageCode),
-		toEnumValue: EnumUtils.toEnumValueFunc<MyinfoMerdekaGenerationMessageCode>(MyinfoMerdekaGenerationMessageCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyinfoMerdekaGenerationMessageCode, MyinfoMerdekaGenerationMessageCodeDesc>(MyinfoMerdekaGenerationMessageCode, MyinfoMerdekaGenerationMessageCodeMapping),
+		keys: EnumUtils.keysFunc<MyInfoMerdekaGenerationMessageCode>(MyInfoMerdekaGenerationMessageCode),
+		values: EnumUtils.valuesFunc<MyInfoMerdekaGenerationMessageCode>(MyInfoMerdekaGenerationMessageCode),
+		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoMerdekaGenerationMessageCode>(MyInfoMerdekaGenerationMessageCode),
+		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoMerdekaGenerationMessageCode>(MyInfoMerdekaGenerationMessageCode),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoMerdekaGenerationMessageCode, MyInfoMerdekaGenerationMessageCodeDesc>(MyInfoMerdekaGenerationMessageCode, MyInfoMerdekaGenerationMessageCodeMapping),
 	};
 }

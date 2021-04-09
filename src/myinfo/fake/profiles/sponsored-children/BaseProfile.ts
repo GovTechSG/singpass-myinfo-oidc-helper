@@ -1,6 +1,6 @@
 import * as _ from "lodash";
 import { FakeProfile } from "../fake-profile";
-import { MyInfoComponents, MyinfoCountryCode, MyinfoDialectCode, MyinfoMaritialStatusCode, MyinfoMerdekaGenerationMessageCode, MyinfoNationalityCode, MyinfoPioneerGenerationMessageCode, MyinfoRaceCode, MyinfoResidentialCode, MyinfoSexCode } from "../../../domain";
+import { MyInfoComponents, MyInfoCountryCode, MyInfoDialectCode, MyInfoMaritialStatusCode, MyInfoMerdekaGenerationMessageCode, MyInfoNationalityCode, MyInfoPioneerGenerationMessageCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode } from "../../../domain";
 import { aliasName } from "../common";
 
 const id = "S8399420G";
@@ -22,16 +22,16 @@ export const BaseProfile: FakeProfile = {
 			},
 			countryofmarriage: {
 				lastupdated: "2018-05-10",
-				code: MyinfoCountryCode.SINGAPORE,
-				desc: MyinfoCountryCode.fn.toEnumDesc(MyinfoCountryCode.SINGAPORE),
+				code: MyInfoCountryCode.SINGAPORE,
+				desc: MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.SINGAPORE),
 				source: "1",
 				classification: "C",
 				unavailable: false,
 			},
 			sex: {
 				lastupdated: "2018-06-01",
-				code: MyinfoSexCode.MALE,
-				desc: MyinfoSexCode.fn.toEnumDesc(MyinfoSexCode.MALE),
+				code: MyInfoSexCode.MALE,
+				desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE),
 				source: "1",
 				classification: "C",
 				unavailable: false,
@@ -40,8 +40,8 @@ export const BaseProfile: FakeProfile = {
 			mobileno: mobileno(),
 			dialect: {
 				lastupdated: "2018-06-01",
-				code: MyinfoDialectCode.HOKKIEN,
-				desc: MyinfoDialectCode.fn.toEnumDesc(MyinfoDialectCode.HOKKIEN),
+				code: MyInfoDialectCode.HOKKIEN,
+				desc: MyInfoDialectCode.fn.toEnumDesc(MyInfoDialectCode.HOKKIEN),
 				source: "1",
 				classification: "C",
 				unavailable: false,
@@ -56,8 +56,8 @@ export const BaseProfile: FakeProfile = {
 			},
 			nationality: {
 				lastupdated: "2018-06-01",
-				code: MyinfoNationalityCode.SINGAPORE_CITIZEN,
-				desc: MyinfoNationalityCode.fn.toEnumDesc(MyinfoNationalityCode.SINGAPORE_CITIZEN),
+				code: MyInfoNationalityCode.SINGAPORE_CITIZEN,
+				desc: MyInfoNationalityCode.fn.toEnumDesc(MyInfoNationalityCode.SINGAPORE_CITIZEN),
 				source: "1",
 				classification: "C",
 				unavailable: false,
@@ -124,8 +124,8 @@ export const BaseProfile: FakeProfile = {
 				source: "1",
 				classification: "C",
 				message: {
-					code: MyinfoMerdekaGenerationMessageCode.ALL_OK,
-					"desc": MyinfoMerdekaGenerationMessageCode.fn.toEnumDesc(MyinfoMerdekaGenerationMessageCode.ALL_OK),
+					code: MyInfoMerdekaGenerationMessageCode.ALL_OK,
+					"desc": MyInfoMerdekaGenerationMessageCode.fn.toEnumDesc(MyInfoMerdekaGenerationMessageCode.ALL_OK),
 				},
 				unavailable: false,
 			},
@@ -140,8 +140,8 @@ export const BaseProfile: FakeProfile = {
 				source: "1",
 				classification: "C",
 				message: {
-					code: MyinfoPioneerGenerationMessageCode.NON_PG,
-					desc: MyinfoPioneerGenerationMessageCode.fn.toEnumDesc(MyinfoPioneerGenerationMessageCode.NON_PG),
+					code: MyInfoPioneerGenerationMessageCode.NON_PG,
+					desc: MyInfoPioneerGenerationMessageCode.fn.toEnumDesc(MyInfoPioneerGenerationMessageCode.NON_PG),
 				},
 				unavailable: false,
 			},
@@ -178,16 +178,16 @@ export const BaseProfile: FakeProfile = {
 			},
 			birthcountry: {
 				lastupdated: "2018-06-01",
-				code: MyinfoCountryCode.SINGAPORE,
-				desc: MyinfoCountryCode.fn.toEnumDesc(MyinfoCountryCode.SINGAPORE),
+				code: MyInfoCountryCode.SINGAPORE,
+				desc: MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.SINGAPORE),
 				source: "1",
 				classification: "C",
 				unavailable: false,
 			},
 			race: {
 				lastupdated: "2018-06-01",
-				code: MyinfoRaceCode.CHINESE,
-				desc: MyinfoRaceCode.fn.toEnumDesc(MyinfoRaceCode.CHINESE),
+				code: MyInfoRaceCode.CHINESE,
+				desc: MyInfoRaceCode.fn.toEnumDesc(MyInfoRaceCode.CHINESE),
 				source: "1",
 				classification: "C",
 				unavailable: false,
@@ -216,16 +216,16 @@ export const BaseProfile: FakeProfile = {
 			},
 			residentialstatus: {
 				lastupdated: "2018-06-01",
-				code: MyinfoResidentialCode.CITIZEN,
-				desc: MyinfoResidentialCode.fn.toEnumDesc(MyinfoResidentialCode.CITIZEN),
+				code: MyInfoResidentialCode.CITIZEN,
+				desc: MyInfoResidentialCode.fn.toEnumDesc(MyInfoResidentialCode.CITIZEN),
 				source: "1",
 				classification: "C",
 				unavailable: false,
 			},
 			marital: {
 				lastupdated: "2018-05-10",
-				code: MyinfoMaritialStatusCode.MARRIED,
-				desc: MyinfoMaritialStatusCode.fn.toEnumDesc(MyinfoMaritialStatusCode.MARRIED),
+				code: MyInfoMaritialStatusCode.MARRIED,
+				desc: MyInfoMaritialStatusCode.fn.toEnumDesc(MyInfoMaritialStatusCode.MARRIED),
 				source: "1",
 				classification: "C",
 				unavailable: false,
@@ -322,8 +322,8 @@ export const BaseProfile: FakeProfile = {
 
 const address = (): MyInfoComponents.Schemas.DataitemAddressSg => ({
 	country: {
-		code: MyinfoCountryCode.SINGAPORE,
-		desc: MyinfoCountryCode.fn.toEnumDesc(MyinfoCountryCode.SINGAPORE),
+		code: MyInfoCountryCode.SINGAPORE,
+		desc: MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.SINGAPORE),
 	},
 	unit: {
 		value: "22",

@@ -6,24 +6,24 @@
 // =============================================================================
 import { EnumUtils } from "../../../util/EnumUtils";
 
-export enum MyinfoLifeStatusCode {
+export enum MyInfoLifeStatusCode {
 	"ALIVE" = "A",
 	"DECEASED" = "D",
 }
 
-enum MyinfoLifeStatusCodeMapping {
+enum MyInfoLifeStatusCodeMapping {
 	"ALIVE" = "ALIVE",
 	"DECEASED" = "DECEASED",
 }
 
-type MyinfoLifeStatusCodeDesc = `${ MyinfoLifeStatusCodeMapping }`;
+type MyInfoLifeStatusCodeDesc = `${ MyInfoLifeStatusCodeMapping }`;
 
-export namespace MyinfoLifeStatusCode {
+export namespace MyInfoLifeStatusCode {
 	export const fn = {
-		keys: EnumUtils.keysFunc<MyinfoLifeStatusCode>(MyinfoLifeStatusCode),
-		values: EnumUtils.valuesFunc<MyinfoLifeStatusCode>(MyinfoLifeStatusCode),
-		toEnumKey: EnumUtils.toEnumKeyFunc<MyinfoLifeStatusCode>(MyinfoLifeStatusCode),
-		toEnumValue: EnumUtils.toEnumValueFunc<MyinfoLifeStatusCode>(MyinfoLifeStatusCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyinfoLifeStatusCode, MyinfoLifeStatusCodeDesc>(MyinfoLifeStatusCode, MyinfoLifeStatusCodeMapping),
+		keys: EnumUtils.keysFunc<MyInfoLifeStatusCode>(MyInfoLifeStatusCode),
+		values: EnumUtils.valuesFunc<MyInfoLifeStatusCode>(MyInfoLifeStatusCode),
+		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoLifeStatusCode>(MyInfoLifeStatusCode),
+		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoLifeStatusCode>(MyInfoLifeStatusCode),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoLifeStatusCode, MyInfoLifeStatusCodeDesc>(MyInfoLifeStatusCode, MyInfoLifeStatusCodeMapping),
 	};
 }
