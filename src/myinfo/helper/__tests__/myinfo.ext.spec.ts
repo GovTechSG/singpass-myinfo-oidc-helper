@@ -47,7 +47,7 @@ describe("MyInfoClient", () => {
 			const myInfoHelper = new MyInfoHelper(props);
 			const testNric = "S1627395C";
 
-			const result = await myInfoHelper.getPersonBasic<V3Attributes>(testNric);
+			const result = await myInfoHelper.getPersonCommon<V3Attributes>(testNric);
 
 			expect(result.aliasname.value).toEqual(aliasName.JASCKSON_LIM_YONG_XIANG);
 		});

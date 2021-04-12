@@ -31,12 +31,12 @@ export interface MyInfoHelperConstructor {
 	certToVerifyJWS: string;
 	privateKeyToSignRequest: string;
 	privateKeyPassword?: string;
-	overridePersonCommonUrl?: string;
+	overridePersonBasicUrl?: string;
 	overrideProfileStatusUrl?: string;
 }
 
-const PERSON_COMMON_BASE_URL = "api.myinfo.gov.sg/gov/v3/person";
-const PROFILE_STATUS_BASE_URL = "api.myinfo.gov.sg/gov/v3/person/status";
+const PERSON_BASIC_BASE_URL = "api.myinfo.gov.sg/gov/v3/person-basic";
+const PROFILE_STATUS_BASE_URL = "api.myinfo.gov.sg/gov/v3/person-basic/status";
 
 export class MyInfoHelper implements IMyInfoHelper {
 
@@ -49,7 +49,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 	private readonly keyToDecryptJWE: string;
 	private readonly certToVerifyJWS: string;
 
-	private readonly personCommonUrl: string;
+	private readonly personBasicUrl: string;
 	private readonly profileStatusUrl: string;
 
 	public constructor(props: MyInfoHelperConstructor) {
@@ -61,7 +61,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 		this.singpassEserviceID = props.singpassEserviceID;
 		this.keyToDecryptJWE = props.keyToDecryptJWE;
 		this.certToVerifyJWS = props.certToVerifyJWS;
-		this.personCommonUrl = this.getUrl(props.overridePersonCommonUrl, PERSON_COMMON_BASE_URL, props.environment);
+		this.personBasicUrl = this.getUrl(props.overridePersonBasicUrl, PERSON_BASIC_BASE_URL, props.environment);
 		this.profileStatusUrl = this.getUrl(props.overrideProfileStatusUrl, PROFILE_STATUS_BASE_URL, props.environment);
 
 		const requestProps: MyInfoRequestConstructor = {
@@ -79,7 +79,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 	 * e.g. when K = "name" | "email", getPersonCommon returns an object looking like { name, email }
 	 */
 	public getPersonCommon = async<K extends keyof MyInfoComponents.Schemas.PersonCommon>(uinfin: string): Promise<Pick<MyInfoComponents.Schemas.PersonCommon, K>> => {
-		const url = `${this.personCommonUrl}/${uinfin}`;
+		const url = `${this.personBasicUrl}/${uinfin}`;
 		const params = {
 			client_id: this.clientID,
 			sp_esvcId: this.singpassEserviceID,
