@@ -1,8 +1,8 @@
 import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
-import { sex } from "../../domain/map";
 import { aliasName } from "../profiles/common";
+import { MyInfoCountryCode, MyInfoNationalityCode, MyInfoOccupationCode, MyInfoSexCode } from "../../domain";
 
 const id = "F5994458N";
 const name = ProfileArchetype.MRS_MY_MOMMY_PERFECT;
@@ -20,22 +20,24 @@ export const mrsMYMommyPerfect: FakeProfile = {
 			source: "1",
 			classification: "C",
 			value: aliasName.LEE_XIU,
+			unavailable: false,
 		};
-		profile.sex.code = "F";
-		profile.sex.desc = sex.map.codeToDesc[profile.sex.code];
+		profile.sex.code = MyInfoSexCode.FEMALE;
+		profile.sex.desc = MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE);
 
-		profile.nationality.code = "MY";
-		profile.birthcountry.code = "MY";
+		profile.nationality.code = MyInfoNationalityCode.MALAYSIAN;
+		profile.birthcountry.code = MyInfoCountryCode.MALAYSIA;
 
 		profile.residentialstatus.code = "";
 		profile.residentialstatus.desc = "";
 
 		profile.marital = {
 			"lastupdated": "2020-09-10",
-			"code": "",
+			"code": null,
+			"desc": null,
 			"source": "2",
 			"classification": "C",
-			"desc": "",
+			"unavailable": false,
 		};
 
 		profile.marriagedate = {
@@ -43,14 +45,16 @@ export const mrsMYMommyPerfect: FakeProfile = {
 			"source": "2",
 			"classification": "C",
 			"value": "",
+			"unavailable": false,
 		};
 
 		profile.occupation = {
 			"lastupdated": "2018-05-21",
-			"code": "11110",
+			"code": MyInfoOccupationCode.LEGISLATOR,
+			"desc": MyInfoOccupationCode.fn.toEnumDesc(MyInfoOccupationCode.LEGISLATOR),
 			"source": "2",
 			"classification": "C",
-			"desc": "LEGISLATOR",
+			"unavailable": false,
 		};
 
 		profile.dialect = {
@@ -59,6 +63,7 @@ export const mrsMYMommyPerfect: FakeProfile = {
 			"source": "2",
 			"classification": "C",
 			"desc": "",
+			"unavailable": false,
 		};
 
 		return profile;

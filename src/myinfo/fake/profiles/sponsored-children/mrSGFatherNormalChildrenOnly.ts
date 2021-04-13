@@ -9,7 +9,6 @@ const name = ProfileArchetype.MR_SG_FATHER_NORMAL_CHILDREN;
 export const mrSGFatherNormalChildrenOnly: FakeProfile = {
 	id,
 	name,
-	// tslint:disable-next-line: no-big-function
 	generate: (profileName) => {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 

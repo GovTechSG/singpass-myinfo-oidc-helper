@@ -1,6 +1,6 @@
 import * as _ from "lodash";
 import { FakeProfile } from "../fake-profile";
-import { myInfoDomain } from "../../../domain";
+import { MyInfoComponents, MyInfoCountryCode, MyInfoDialectCode, MyInfoMaritialStatusCode, MyInfoMerdekaGenerationMessageCode, MyInfoNationalityCode, MyInfoPioneerGenerationMessageCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode } from "../../../domain";
 import { aliasName } from "../common";
 
 const id = "S8399420G";
@@ -18,87 +18,100 @@ export const BaseProfile: FakeProfile = {
 				source: "1",
 				classification: "C",
 				value: profileName,
+				unavailable: false,
 			},
 			countryofmarriage: {
 				lastupdated: "2018-05-10",
-				code: "SG",
+				code: MyInfoCountryCode.SINGAPORE,
+				desc: MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.SINGAPORE),
 				source: "1",
 				classification: "C",
-				desc: "SINGAPORE",
+				unavailable: false,
 			},
 			sex: {
 				lastupdated: "2018-06-01",
-				code: "M",
+				code: MyInfoSexCode.MALE,
+				desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE),
 				source: "1",
 				classification: "C",
-				desc: "Male",
+				unavailable: false,
 			},
 			regadd: address(),
 			mobileno: mobileno(),
 			dialect: {
 				lastupdated: "2018-06-01",
-				code: "HK",
+				code: MyInfoDialectCode.HOKKIEN,
+				desc: MyInfoDialectCode.fn.toEnumDesc(MyInfoDialectCode.HOKKIEN),
 				source: "1",
 				classification: "C",
-				desc: "HOKKIEN",
+				unavailable: false,
 			},
 			occupation: {
 				lastupdated: "2020-09-10",
-				code: "",
+				code: null,
+				desc: null,
 				source: "2",
 				classification: "C",
-				desc: "",
+				unavailable: false,
 			},
 			nationality: {
 				lastupdated: "2018-06-01",
-				code: "SG",
+				code: MyInfoNationalityCode.SINGAPORE_CITIZEN,
+				desc: MyInfoNationalityCode.fn.toEnumDesc(MyInfoNationalityCode.SINGAPORE_CITIZEN),
 				source: "1",
 				classification: "C",
-				desc: "SINGAPORE CITIZEN",
+				unavailable: false,
 			},
 			dob: {
 				lastupdated: "2018-06-01",
 				source: "1",
 				classification: "C",
 				value: `${new Date().getFullYear() - 60 + 1}-01-01`,
+				unavailable: false,
 			},
 			secondaryrace: {
 				lastupdated: "2018-06-01",
-				code: "",
+				code: null,
 				source: "1",
 				classification: "C",
-				desc: "",
+				desc: null,
+				unavailable: false,
 			},
 			edulevel: {
 				lastupdated: "2020-09-10",
-				code: "",
+				code: null,
 				source: "2",
 				classification: "C",
-				desc: "",
+				desc: null,
+				unavailable: false,
 			},
 			passportnumber: {
 				lastupdated: "2021-01-01",
 				source: "1",
 				classification: "C",
 				value: "L3280033",
+				unavailable: false,
 			},
 			passportexpirydate: {
 				lastupdated: "2021-01-01",
 				source: "1",
 				classification: "C",
 				value: "2030-09-10",
+				unavailable: false,
 			},
 			divorcedate: {
-				lastupdated: "",
+				lastupdated: null,
 				source: "1",
 				classification: "C",
-				value: "",
+				value: null,
+				unavailable: false,
 			},
 			marriagecertno: {
 				lastupdated: "2018-05-10",
 				source: "1",
 				classification: "C",
 				value: "M525997",
+				unavailable: false,
 			},
 			merdekagen: {
 				eligibility: {
@@ -111,9 +124,10 @@ export const BaseProfile: FakeProfile = {
 				source: "1",
 				classification: "C",
 				message: {
-					code: "2",
-					desc: "You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888.",
+					code: MyInfoMerdekaGenerationMessageCode.ALL_OK,
+					"desc": MyInfoMerdekaGenerationMessageCode.fn.toEnumDesc(MyInfoMerdekaGenerationMessageCode.ALL_OK),
 				},
+				unavailable: false,
 			},
 			pioneergen: {
 				eligibility: {
@@ -126,9 +140,10 @@ export const BaseProfile: FakeProfile = {
 				source: "1",
 				classification: "C",
 				message: {
-					code: "1",
-					desc: "We regret that you are not eligible for the Pioneer Generation Package.  For further enquiries, please contact 1800-2222-888.",
+					code: MyInfoPioneerGenerationMessageCode.NON_PG,
+					desc: MyInfoPioneerGenerationMessageCode.fn.toEnumDesc(MyInfoPioneerGenerationMessageCode.NON_PG),
 				},
+				unavailable: false,
 			},
 			gstvoucher: {
 				gstregular: {
@@ -152,26 +167,30 @@ export const BaseProfile: FakeProfile = {
 				signup: {
 					value: false,
 				},
+				unavailable: false,
 			},
 			email: {
 				lastupdated: "2019-04-03",
 				source: "4",
 				classification: "C",
 				value: "gt.govandi@gmail.com",
+				unavailable: false,
 			},
 			birthcountry: {
 				lastupdated: "2018-06-01",
-				code: "SG",
+				code: MyInfoCountryCode.SINGAPORE,
+				desc: MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.SINGAPORE),
 				source: "1",
 				classification: "C",
-				desc: "SINGAPORE",
+				unavailable: false,
 			},
 			race: {
 				lastupdated: "2018-06-01",
-				code: "CN",
+				code: MyInfoRaceCode.CHINESE,
+				desc: MyInfoRaceCode.fn.toEnumDesc(MyInfoRaceCode.CHINESE),
 				source: "1",
 				classification: "C",
-				desc: "CHINESE",
+				unavailable: false,
 			},
 			silversupport: {
 				eligibility: {
@@ -186,56 +205,63 @@ export const BaseProfile: FakeProfile = {
 				year: {
 					value: 2019,
 				},
+				unavailable: false,
 			},
 			marriagedate: {
 				lastupdated: "1993-10-22",
 				source: "1",
 				classification: "C",
 				value: "1988-01-01",
+				unavailable: false,
 			},
 			residentialstatus: {
 				lastupdated: "2018-06-01",
-				code: "C",
+				code: MyInfoResidentialCode.CITIZEN,
+				desc: MyInfoResidentialCode.fn.toEnumDesc(MyInfoResidentialCode.CITIZEN),
 				source: "1",
 				classification: "C",
-				desc: "Citizen",
+				unavailable: false,
 			},
 			marital: {
 				lastupdated: "2018-05-10",
-				code: "2",
+				code: MyInfoMaritialStatusCode.MARRIED,
+				desc: MyInfoMaritialStatusCode.fn.toEnumDesc(MyInfoMaritialStatusCode.MARRIED),
 				source: "1",
 				classification: "C",
-				desc: "MARRIED",
+				unavailable: false,
 			},
 			aliasname: {
 				lastupdated: "2018-06-01",
 				source: "1",
 				classification: "C",
 				value: aliasName.LEE_XIU,
+				unavailable: false,
 			},
 			childrenbirthrecords: [],
 			sponsoredchildrenrecords: [],
 			hdbtype: {
 				lastupdated: "2020-08-26",
-				code: "",
+				code: null,
+				desc: null,
 				source: "1",
 				classification: "C",
-				desc: "",
+				unavailable: false,
 			},
 			housingtype: {
 				lastupdated: "2020-08-26",
-				code: "",
+				code: null,
+				desc: null,
 				source: "1",
 				classification: "C",
-				desc: "",
+				unavailable: false,
 			},
 			drivinglicence: {
 				revocation: {
 					startdate: {
-						value: "",
+						value: null,
 					},
 					enddate: {
-						value: "",
+						value: null,
 					},
 				},
 				totaldemeritpoints: {
@@ -243,60 +269,61 @@ export const BaseProfile: FakeProfile = {
 				},
 				disqualification: {
 					startdate: {
-						value: "",
+						value: null,
 					},
 					enddate: {
-						value: "",
+						value: null,
 					},
 				},
 				qdl: {
 					expirydate: {
-						value: "",
+						value: null,
 					},
 					validity: {
-						code: "",
-						desc: "",
+						code: null,
+						desc: null,
 					},
 					classes: [],
 				},
 				lastupdated: "2020-08-26",
 				pdl: {
 					expirydate: {
-						value: "",
+						value: null,
 					},
 					validity: {
-						code: "",
-						desc: "",
+						code: null,
+						desc: null,
 					},
 					classes: [],
 				},
 				source: "1",
 				classification: "C",
 				comstatus: {
-					code: "",
-					desc: "",
+					code: null,
+					desc: null,
 				},
 				photocardserialno: {
-					value: "",
+					value: null,
 				},
 				suspension: {
 					startdate: {
-						value: "",
+						value: null,
 					},
 					enddate: {
-						value: "",
+						value: null,
 					},
 				},
+				unavailable: false,
 			},
-			vehicles: [],
+			vehicles: null,
 		};
 	},
 };
 
-const address = (): myInfoDomain.Components.Schemas.DataitemAddressSg => ({
+const address = (): MyInfoComponents.Schemas.DataitemAddressSg => ({
 	country: {
-		code: "SG",
-		desc: "SINGAPORE",
+		code: MyInfoCountryCode.SINGAPORE,
+		desc: MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.SINGAPORE),
 	},
 	unit: {
 		value: "22",
@@ -318,8 +345,9 @@ const address = (): myInfoDomain.Components.Schemas.DataitemAddressSg => ({
 	},
 	type: "SG",
 	building: {
-		value: "",
+		value: null,
 	},
+	unavailable: false,
 });
 
 const mobileno = (): any => ({

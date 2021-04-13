@@ -1,5 +1,13 @@
 # Changelogs
 
+## 5.0.0
+
+- **[WARNING]** Updated Myinfo model typings and renamed the namespace from `Components` to `MyInfoComponents`
+- **[WARNING]** Myinfo enum descriptions are now capitalized as per latest Myinfo swagger
+- **[WARNING]** Updated npm dependencies
+- Added `generate-myinfo-typings` script to dynamically generate typings from Myinfo swagger to keep them in sync
+- Added Myinfo enum typings (e.g. `MyInfoEdulevel`)
+
 ## 4.2.30
 
 - Update dependencies

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 echo ==============================================================================
-echo Script: $(basename "$0")
-echo Runs the linters
+echo "Script: $(basename "$0")"
+echo "This script runs ts-lint"
 echo ==============================================================================
 
 # ==============================================================================
@@ -36,7 +36,7 @@ export TS_CONFIG_PATH=${TS_CONFIG_PATH:-"./tsconfig.json"}
 
 export TSLINT_CONFIG_PATH=${TSLINT_CONFIG_PATH:-"./tslint.json"}
 
-export FILES=${@:-"src/**/*.ts"}
+export FILES=${@:-""}
 
 # ==============================================================================
 # Script

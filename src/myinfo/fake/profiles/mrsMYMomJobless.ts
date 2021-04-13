@@ -9,7 +9,6 @@ const name = ProfileArchetype.MRS_MY_MOM_JOBLESS;
 export const mrsMYMomJobless: FakeProfile = {
 	id,
 	name,
-	// tslint:disable-next-line: no-big-function
 	generate: (profileName) => {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
@@ -20,6 +19,7 @@ export const mrsMYMomJobless: FakeProfile = {
 			"source": "2",
 			"classification": "C",
 			"desc": "",
+			"unavailable": false,
 		};
 		profile.childrenbirthrecords = _.values(ChildrenRecords);
 

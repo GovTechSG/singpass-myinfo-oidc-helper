@@ -1,4 +1,5 @@
 import * as _ from "lodash";
+import { MyInfoCountryCode, MyInfoNationalityCode, MyInfoOccupationCode } from "../../domain";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 
@@ -18,20 +19,23 @@ export const mrJapaneseNoAddressObject: FakeProfile = {
 			"source": "3",
 			"classification": "C",
 			"lastupdated": "",
+			"unavailable": false,
 		};
 		profile.nationality = {
-			"code": "JP",
-			"desc": "JAPANESE",
+			"code": MyInfoNationalityCode.JAPANESE,
+			"desc": MyInfoNationalityCode.fn.toEnumDesc(MyInfoNationalityCode.JAPANESE),
 			"source": "1",
 			"classification": "C",
 			"lastupdated": "2019-09-18",
+			"unavailable": false,
 		};
 		profile.birthcountry = {
-			"code": "JP",
-			"desc": "JAPAN",
+			"code": MyInfoCountryCode.JAPAN,
+			"desc": MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.JAPAN),
 			"source": "1",
 			"classification": "C",
 			"lastupdated": "2019-09-18",
+			"unavailable": false,
 
 		};
 		profile.dob = {
@@ -39,15 +43,17 @@ export const mrJapaneseNoAddressObject: FakeProfile = {
 			"source": "1",
 			"classification": "C",
 			"value": "1983-10-06",
+			"unavailable": false,
 		};
 		profile.regadd = undefined;
 
 		profile.marital = {
 			"lastupdated": "2020-09-10",
-			"code": "",
+			"code": null,
 			"source": "2",
 			"classification": "C",
-			"desc": "",
+			"desc": null,
+			"unavailable": false,
 		};
 
 		profile.marriagedate = {
@@ -55,14 +61,16 @@ export const mrJapaneseNoAddressObject: FakeProfile = {
 			"source": "2",
 			"classification": "C",
 			"value": "",
+			"unavailable": false,
 		};
 
 		profile.occupation = {
 			"lastupdated": "2018-05-21",
-			"code": "11110",
+			"code": MyInfoOccupationCode.LEGISLATOR,
 			"source": "2",
 			"classification": "C",
-			"desc": "LEGISLATOR",
+			"desc": MyInfoOccupationCode.fn.toEnumDesc(MyInfoOccupationCode.LEGISLATOR),
+			"unavailable": false,
 		};
 
 		profile.dialect = {
@@ -71,6 +79,7 @@ export const mrJapaneseNoAddressObject: FakeProfile = {
 			"source": "2",
 			"classification": "C",
 			"desc": "",
+			"unavailable": false,
 		};
 
 		return profile;

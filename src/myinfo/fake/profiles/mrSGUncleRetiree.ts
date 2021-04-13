@@ -2,6 +2,7 @@ import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 import { ChildrenRecords } from "./childbirthRecords";
+import { MyInfoComStatusCode, MyInfoDrivingLicenceValidityCode, MyInfoEduLevelCode, MyInfoHousingTypeCode, MyInfoMaritialStatusCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
 
 const id = "S8399420G";
 const name = ProfileArchetype.MR_SG_UNCLE_RETIREE;
@@ -21,7 +22,6 @@ const name = ProfileArchetype.MR_SG_UNCLE_RETIREE;
 export const mrSGUncleRetiree: FakeProfile = {
 	id,
 	name,
-	// tslint:disable-next-line: no-big-function
 	generate: (profileName) => {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
@@ -31,42 +31,48 @@ export const mrSGUncleRetiree: FakeProfile = {
 			source: "1",
 			classification: "C",
 			value: `${new Date().getFullYear() - 63}-05-16`,
+			unavailable: false,
 		};
 
 		profile.residentialstatus = {
 			lastupdated: "2020-01-01",
 			source: "1",
 			classification: "C",
-			code: "C",
+			code: MyInfoResidentialCode.CITIZEN,
+			unavailable: false,
 		};
 		profile.sex = {
 			lastupdated: "2020-01-01",
 			source: "1",
 			classification: "C",
-			code: "M",
-			desc: "Male",
+			code: MyInfoSexCode.MALE,
+			desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE),
+			unavailable: false,
 		};
 		profile.marital = {
 			lastupdated: "2020-01-01",
 			source: "1",
 			classification: "C",
-			code: "2",
-			desc: "MARRIED",
+			code: MyInfoMaritialStatusCode.MARRIED,
+			desc: MyInfoMaritialStatusCode.fn.toEnumDesc(MyInfoMaritialStatusCode.MARRIED),
+			unavailable: false,
 		};
 		profile.childrenbirthrecords = [ChildrenRecords.childMiddle1, ChildrenRecords.childMiddle2];
 		profile.housingtype = {
 			lastupdated: "2020-01-01",
 			source: "1",
 			classification: "C",
-			code: "121",
-			desc: "DETACHED HOUSE",
+			code: MyInfoHousingTypeCode.DETACHED_HOUSE,
+			desc: MyInfoHousingTypeCode.fn.toEnumDesc(MyInfoHousingTypeCode.DETACHED_HOUSE),
+			unavailable: false,
 		};
 		profile.hdbtype = {
 			lastupdated: "2020-01-01",
 			source: "1",
 			classification: "C",
-			code: "",
-			desc: "",
+			code: null,
+			desc: null,
+			unavailable: false,
 		};
 		profile.drivinglicence = {
 			revocation: {
@@ -93,8 +99,8 @@ export const mrSGUncleRetiree: FakeProfile = {
 					value: "",
 				},
 				validity: {
-					code: "V",
-					desc: "Valid",
+					code: MyInfoDrivingLicenceValidityCode.VALID,
+					desc: MyInfoDrivingLicenceValidityCode.fn.toEnumDesc(MyInfoDrivingLicenceValidityCode.VALID),
 				},
 				classes: [
 					{
@@ -113,16 +119,16 @@ export const mrSGUncleRetiree: FakeProfile = {
 					value: "",
 				},
 				validity: {
-					code: "",
-					desc: "",
+					code: null,
+					desc: null,
 				},
 				classes: [],
 			},
 			source: "1",
 			classification: "C",
 			comstatus: {
-				code: "Y",
-				desc: "Eligible",
+				code: MyInfoComStatusCode.ELIGIBLE,
+				desc: MyInfoComStatusCode.fn.toEnumDesc(MyInfoComStatusCode.ELIGIBLE),
 			},
 			photocardserialno: {
 				value: "",
@@ -135,13 +141,15 @@ export const mrSGUncleRetiree: FakeProfile = {
 					value: "",
 				},
 			},
+			unavailable: false,
 		};
 		profile.edulevel = {
 			lastupdated: "2020-01-01",
 			source: "1",
 			classification: "C",
-			code: "4",
-			desc: "POST-SECONDARY (NON-TERTIARY): GENERAL & VOCATION",
+			code: MyInfoEduLevelCode.POST_SECONDARY_NON_TERTIARY_GENERAL_VOCATION,
+			desc: MyInfoEduLevelCode.fn.toEnumDesc(MyInfoEduLevelCode.POST_SECONDARY_NON_TERTIARY_GENERAL_VOCATION),
+			unavailable: false,
 		};
 		return profile;
 	},

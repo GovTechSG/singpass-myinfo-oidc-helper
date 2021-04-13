@@ -2,6 +2,7 @@ import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 import { ChildrenRecords } from "./childbirthRecords";
+import { MyInfoMaritialStatusCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
 
 
 const id = "T2446959F";
@@ -30,32 +31,38 @@ export const mrSGFreshGradYoungParent: FakeProfile = {
 			source: "1",
 			classification: "C",
 			value: `${new Date().getFullYear() - 25}-02-10`,
+			unavailable: false,
 		};
 		profile.residentialstatus = {
 			lastupdated: "2020-01-01",
 			source: "1",
 			classification: "C",
-			code: "C",
+			code: MyInfoResidentialCode.CITIZEN,
+			desc: MyInfoResidentialCode.fn.toEnumDesc(MyInfoResidentialCode.CITIZEN),
+			unavailable: false,
 		};
 		profile.sex = {
 			lastupdated: "2020-01-01",
 			source: "1",
 			classification: "C",
-			code: "M",
-			desc: "Male",
+			code: MyInfoSexCode.MALE,
+			desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE),
+			unavailable: false,
 		};
 		profile.marital = {
 			lastupdated: "2020-01-01",
 			source: "1",
 			classification: "C",
-			code: "2",
-			desc: "MARRIED",
+			code: MyInfoMaritialStatusCode.MARRIED,
+			desc: MyInfoMaritialStatusCode.fn.toEnumDesc(MyInfoMaritialStatusCode.MARRIED),
+			unavailable: false,
 		};
 		profile.marriagedate = {
 			lastupdated: "2020-01-01",
 			source: "1",
 			classification: "C",
 			value: `${new Date().getFullYear() - 1}-02-10`,
+			unavailable: false,
 		};
 		profile.childrenbirthrecords = [ChildrenRecords.child1MonthOld];
 		return profile;

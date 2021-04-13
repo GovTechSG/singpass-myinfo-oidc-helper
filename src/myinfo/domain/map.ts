@@ -1,5 +1,9 @@
 import { invert } from "lodash";
 
+/**
+ * @deprecated since version 5.0.0
+ * pls use the generated enums in `src/myinfo/domain/generated` instead
+ */
 export namespace occupation {
 	interface Code2Desc {
 		"11110": "LEGISLATOR";

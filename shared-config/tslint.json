@@ -5,13 +5,24 @@
 	"extends": [
 		"tslint:recommended",
 		"tslint-sonarts",
-		"tslint-config-security"
+		"tslint-config-security",
+		"tslint-no-circular-imports"
 	],
+	"linterOptions": {
+		"exclude": [
+			"**/*dist{*,*/**/*}",
+			"**/*node_modules{*,*/**/*}"
+		]
+	},
 	"jsRules": {
 		"curly": false,
 		"indent": [
 			true,
 			"tabs"
+		],
+		"max-line-length": [
+			true,
+			300
 		],
 		"no-empty": false,
 		"no-string-literal": false,
@@ -36,6 +47,7 @@
 	"rules": {
 		"align": false,
 		"arrow-return-shorthand": false,
+		"ban-types": false,
 		"class-name": true,
 		"curly": false,
 		"forin": false,
@@ -50,7 +62,8 @@
 		"jsx-no-lambda": false,
 		"max-classes-per-file": false,
 		"max-line-length": [
-			false
+			true,
+			300
 		],
 		"member-access": [
 			true,
@@ -93,8 +106,6 @@
 		"whitespace": [
 			true,
 			"check-module"
-		],
-		"ban-types": false
-	},
-	"rulesDirectory": []
+		]
+	}
 }

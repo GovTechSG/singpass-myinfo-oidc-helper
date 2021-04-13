@@ -1,14 +1,26 @@
 import { AxiosResponse } from "axios";
 import * as _ from "lodash";
+import * as request from "request";
 import { Logger } from "../../util";
 import { SingpassMyInfoError } from "../../util/error/SingpassMyinfoError";
 import { decryptJWE, verifyJWS } from "../../util/JweUtil";
-import { myInfoDomain } from "../domain";
+import { MyInfoComponents } from "../domain";
 import { ProfileStatus } from "../domain/profilestatus-domain";
-import { IMyInfoHelper } from "./index";
 import { MyInfoRequest, MyInfoRequestConstructor } from "./myinfo-request";
 
 export type EnvType = "test" | "sandbox" | "prod";
+
+export interface IMyInfoHelper {
+	getPersonCommon: <K extends keyof MyInfoComponents.Schemas.PersonCommon>(uinfin: string) => Promise<Pick<MyInfoComponents.Schemas.PersonCommon, K>>;
+}
+
+export interface IMyInfoRequest {
+	get: (
+		uri: string,
+		params?: { [key: string]: any },
+		bearer?: string,
+	) => Promise<request.RequestResponse>;
+}
 
 export interface MyInfoHelperConstructor {
 	attributes: string[];
@@ -63,10 +75,10 @@ export class MyInfoHelper implements IMyInfoHelper {
 	/**
 	 * Obtain V3 person data using uinfin.
 	 * In the generic K, pass in the list of string literal of the attributes you expect to get back.
-	 * getPersonBasicV3 will return an object with only the properties matching the keys.
-	 * e.g. when K = "name" | "email", getPersonBasicV3 returns an object looking like { name, email }
+	 * getPersonCommon will return an object with only the properties matching the keys.
+	 * e.g. when K = "name" | "email", getPersonCommon returns an object looking like { name, email }
 	 */
-	public getPersonBasic = async<K extends keyof myInfoDomain.Components.Schemas.PersonBasic>(uinfin: string): Promise<Pick<myInfoDomain.Components.Schemas.PersonBasic, K>> => {
+	public getPersonCommon = async<K extends keyof MyInfoComponents.Schemas.PersonCommon>(uinfin: string): Promise<Pick<MyInfoComponents.Schemas.PersonCommon, K>> => {
 		const url = `${this.personBasicUrl}/${uinfin}`;
 		const params = {
 			client_id: this.clientID,
@@ -88,7 +100,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 			const jwe = await decryptJWE(encryptedPersonJWE, this.keyToDecryptJWE);
 			const jws = JSON.parse(jwe.payload.toString());
 			const verifiedJws = await verifyJWS(jws, this.certToVerifyJWS);
-			const personData = JSON.parse(verifiedJws.payload.toString()) as Pick<myInfoDomain.Components.Schemas.PersonBasic, K>;
+			const personData = JSON.parse(verifiedJws.payload.toString()) as Pick<MyInfoComponents.Schemas.PersonCommon, K>;
 
 			if (personData == null) {
 				throw new SingpassMyInfoError("Person data cannot be null");
