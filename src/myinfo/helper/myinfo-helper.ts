@@ -4,8 +4,7 @@ import * as request from "request";
 import { Logger } from "../../util";
 import { SingpassMyInfoError } from "../../util/error/SingpassMyinfoError";
 import { decryptJWE, verifyJWS } from "../../util/JweUtil";
-import { MyInfoComponents } from "../domain";
-import { ProfileStatus } from "../domain/profilestatus-domain";
+import { MyInfoComponents, MyInfoProfileStatus } from "../domain";
 import { MyInfoRequest, MyInfoRequestConstructor } from "./myinfo-request";
 
 export type EnvType = "test" | "sandbox" | "prod";
@@ -118,7 +117,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 	 * This is an endpoint that requires permission from the myinfo team.
 	 * Do approach the team if you need to access it.
 	 */
-	public getProfileStatus = async (uinfin: string): Promise<ProfileStatus> => {
+	public getProfileStatus = async (uinfin: string): Promise<MyInfoProfileStatus> => {
 		const url = `${this.profileStatusUrl}/${uinfin}`;
 		const response = await this.myInfoRequest.get(url);
 
