@@ -1,5 +1,8 @@
 # Changelogs
 
+## 5.0.1
+- Replace ProfileStatusEnum with  MyInfoProfileStatus typing
+
 ## 5.0.0
 
 - **[WARNING]** Updated Myinfo model typings and renamed the namespace from `Components` to `MyInfoComponents`
