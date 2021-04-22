@@ -1,7 +1,10 @@
 # Changelogs
 
+## 5.0.2
+- Revert replacing of MyInfoProfileStatus typing
+
 ## 5.0.1
-- Replace ProfileStatusEnum with  MyInfoProfileStatus typing
+- Replace ProfileStatusEnum with MyInfoProfileStatus typing
 
 ## 5.0.0
 
