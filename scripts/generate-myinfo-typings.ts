@@ -95,7 +95,7 @@ async function executeScript() {
 	await generateIndex([
 		apiSwaggerTypingsFileName,
 		...myinfoCodesEnumsFileNames,
-	]);
+		"profilestatus-domain.ts"]);
 }
 
 // =============================================================================
