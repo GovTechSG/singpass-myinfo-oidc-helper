@@ -111,124 +111,124 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 			unavailable: false,
 		};
 		profile.vehicles =
-		{
-			roadtaxexpirydate: {
-				value: "2020-06-06",
-			},
-			engineno: {
-				value: "4G13NU1453",
-			},
-			attachment3: {
-				value: "",
-			},
-			effectiveownership: {
-				value: "2010-06-06T12:09:05",
-			},
-			scheme: {
-				value: "OPC - OFF PEAK CAR",
-			},
-			powerrate: {
-				value: 1.7,
-			},
-			source: "1",
-			primarycolour: {
-				value: "MAROON",
-			},
-			type: {
-				value: "STATION WAGON/JEEP/LAND ROVER",
-			},
-			vehicleno: {
-				value: "SBP1818T",
-			},
-			coeexpirydate: {
-				value: "2020-06-06",
-			},
-			chassisno: {
-				value: "TUU28391334KL189",
-			},
-			noxemission: {
-				value: 0.013456,
-			},
-			model: {
-				value: "FORESTER",
-			},
-			openmarketvalue: {
-				value: 23485.3,
-			},
-			coemission: {
-				value: 0.153209,
-			},
-			attachment2: {
-				value: "",
-			},
-			attachment1: {
-				value: "CONTINENTAL TIRE",
-			},
-			make: {
-				value: "SUBARU",
-			},
-			pmemission: {
-				value: 0.199,
-			},
-			originalregistrationdate: {
-				value: "2009-12-06",
-			},
-			yearofmanufacture: {
-				value: "2010",
-			},
-			vpc: {
-				value: "",
-			},
-			enginecapacity: {
-				value: 1600,
-			},
-			classification: "C",
-			nooftransfers: {
-				value: 1,
-			},
-			propellant: {
-				value: "Petrol",
-			},
-			co2emission: {
-				value: 145,
-			},
-			motorno: {
-				value: "",
-			},
-			minimumparfbenefit: {
-				value: 2500,
-			},
-			thcemission: {
-				value: 0.187765,
-			},
-			firstregistrationdate: {
-				value: "2010-06-06",
-			},
-			lastupdated: "2020-08-26",
-			maximumunladenweight: {
-				value: 1500,
-			},
-			coecategory: {
-				value: "A - CAR UP TO 1600CC & 97KW (130BHP)",
-			},
-			maximumladenweight: {
-				value: 2000,
-			},
-			secondarycolour: {
-				value: "",
-			},
-			iulabelno: {
-				value: "",
-			},
-			quotapremium: {
-				value: 0,
-			},
-			status: {
-				code: "1",
-				desc: "LIVE",
-			},
-			unavailable: false,
-		};
+			[{
+				roadtaxexpirydate: {
+					value: "2020-06-06",
+				},
+				engineno: {
+					value: "4G13NU1453",
+				},
+				attachment3: {
+					value: "",
+				},
+				effectiveownership: {
+					value: "2010-06-06T12:09:05",
+				},
+				scheme: {
+					value: "OPC - OFF PEAK CAR",
+				},
+				powerrate: {
+					value: 1.7,
+				},
+				source: "1",
+				primarycolour: {
+					value: "MAROON",
+				},
+				type: {
+					value: "STATION WAGON/JEEP/LAND ROVER",
+				},
+				vehicleno: {
+					value: "SBP1818T",
+				},
+				coeexpirydate: {
+					value: "2020-06-06",
+				},
+				chassisno: {
+					value: "TUU28391334KL189",
+				},
+				noxemission: {
+					value: 0.013456,
+				},
+				model: {
+					value: "FORESTER",
+				},
+				openmarketvalue: {
+					value: 23485.3,
+				},
+				coemission: {
+					value: 0.153209,
+				},
+				attachment2: {
+					value: "",
+				},
+				attachment1: {
+					value: "CONTINENTAL TIRE",
+				},
+				make: {
+					value: "SUBARU",
+				},
+				pmemission: {
+					value: 0.199,
+				},
+				originalregistrationdate: {
+					value: "2009-12-06",
+				},
+				yearofmanufacture: {
+					value: "2010",
+				},
+				vpc: {
+					value: "",
+				},
+				enginecapacity: {
+					value: 1600,
+				},
+				classification: "C",
+				nooftransfers: {
+					value: 1,
+				},
+				propellant: {
+					value: "Petrol",
+				},
+				co2emission: {
+					value: 145,
+				},
+				motorno: {
+					value: "",
+				},
+				minimumparfbenefit: {
+					value: 2500,
+				},
+				thcemission: {
+					value: 0.187765,
+				},
+				firstregistrationdate: {
+					value: "2010-06-06",
+				},
+				lastupdated: "2020-08-26",
+				maximumunladenweight: {
+					value: 1500,
+				},
+				coecategory: {
+					value: "A - CAR UP TO 1600CC & 97KW (130BHP)",
+				},
+				maximumladenweight: {
+					value: 2000,
+				},
+				secondarycolour: {
+					value: "",
+				},
+				iulabelno: {
+					value: "",
+				},
+				quotapremium: {
+					value: 0,
+				},
+				status: {
+					code: "1",
+					desc: "LIVE",
+				},
+				unavailable: false,
+			}];
 		return profile;
 	},
 };

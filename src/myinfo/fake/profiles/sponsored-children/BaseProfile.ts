@@ -315,7 +315,7 @@ export const BaseProfile: FakeProfile = {
 				},
 				unavailable: false,
 			},
-			vehicles: null,
+			vehicles: [],
 		};
 	},
 };

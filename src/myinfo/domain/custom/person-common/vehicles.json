@@ -1,0 +1,450 @@
+{
+	"vehicles": {
+		"type": "array",
+		"description": "**NOTE** Vehicles property is custom set to be array instead of object.\n\nEven though the vehicles property is defined as object in the original swagger file, the actual data is returned as array. Moreover the array will allow a person to have multiple vehicles.",
+		"items": {
+			"properties": {
+				"vehicleno": {
+					"type": "object",
+					"description": "Vehicle Registration Number displayed on the vehicle number plates",
+					"properties": {
+						"value": {
+							"type": "string",
+							"maxLength": 20,
+							"example": "SDF1235A"
+						}
+					}
+				},
+				"type": {
+					"type": "object",
+					"description": "Type of Vehicles such as 'MOTOR CAR', 'STATION /WAGON/JEEP/LAND ROVER'",
+					"properties": {
+						"value": {
+							"type": "string",
+							"maxLength": 55,
+							"example": "PASSENGER MOTOR CAR"
+						}
+					}
+				},
+				"iulabelno": {
+					"type": "object",
+					"description": "In-Vehicle Unit (IU) number of the device fitted in Singapore-registered vehicles for Electronic Road Pricing (ERP) gantries and Electronic Parking System (EPS) car parks.",
+					"properties": {
+						"value": {
+							"type": "string",
+							"maxLength": 10,
+							"example": ""
+						}
+					}
+				},
+				"make": {
+					"type": "object",
+					"description": "Vehicle Make such as 'TOYOTA', 'HONDA', 'AUDI'",
+					"properties": {
+						"value": {
+							"type": "string",
+							"maxLength": 44,
+							"example": "TOYOTA"
+						}
+					}
+				},
+				"model": {
+					"type": "object",
+					"description": "Vehicle Model such as 'COROLLA ALTIS CLASSIC 1.6 CVT', 'HRV 1.5 DX CVT'",
+					"properties": {
+						"value": {
+							"type": "string",
+							"maxLength": 40,
+							"example": "COROLLA ALTIS"
+						}
+					}
+				},
+				"chassisno": {
+					"type": "object",
+					"description": "Vehicle Chassis Number",
+					"properties": {
+						"value": {
+							"type": "string",
+							"maxLength": 25,
+							"example": "ZC11S1735800"
+						}
+					}
+				},
+				"engineno": {
+					"type": "object",
+					"description": "Vehicle Engine Number",
+					"properties": {
+						"value": {
+							"type": "string",
+							"maxLength": 25,
+							"example": "M13A1837453"
+						}
+					}
+				},
+				"motorno": {
+					"type": "object",
+					"description": "Vehicle Motor Number",
+					"properties": {
+						"value": {
+							"type": "string",
+							"maxLength": 25,
+							"example": ""
+						}
+					}
+				},
+				"yearofmanufacture": {
+					"type": "object",
+					"description": "Manufacturing year",
+					"properties": {
+						"value": {
+							"type": "string",
+							"maxLength": 4,
+							"example": "2010"
+						}
+					}
+				},
+				"firstregistrationdate": {
+					"type": "object",
+					"description": "Date when vehicle is registered with LTA. See \"full-date\" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14'",
+					"properties": {
+						"value": {
+							"type": "string",
+							"format": "date",
+							"maxLength": 10,
+							"example": "2010-06-06"
+						}
+					}
+				},
+				"originalregistrationdate": {
+					"type": "object",
+					"description": "Date when vehicle is first registered in the country of origin. See \"full-date\" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14'",
+					"properties": {
+						"value": {
+							"type": "string",
+							"format": "date",
+							"maxLength": 10,
+							"example": "2010-06-06"
+						}
+					}
+				},
+				"coecategory": {
+					"type": "object",
+					"description": "Vehicle Certificate of Entitlement (COE) bid category",
+					"properties": {
+						"value": {
+							"type": "string",
+							"maxLength": 40,
+							"example": "A - CAR UP TO 1600CC & 97KW (130BHP)"
+						}
+					}
+				},
+				"coeexpirydate": {
+					"type": "object",
+					"description": "Vehicle Certificate of Entitlement (COE) expiry date. See \"full-date\" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14'",
+					"properties": {
+						"value": {
+							"type": "string",
+							"maxLength": 10,
+							"format": "date",
+							"example": "2020-06-05"
+						}
+					}
+				},
+				"roadtaxexpirydate": {
+					"type": "object",
+					"description": "See \"full-date\" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14'",
+					"properties": {
+						"value": {
+							"type": "string",
+							"format": "date",
+							"maxLength": 10,
+							"example": "2020-06-05"
+						}
+					}
+				},
+				"quotapremium": {
+					"type": "object",
+					"description": "Actual Quota Premium (QP) amount payable for the COE upon registration, conversion or COE revalidation in Singapore dollars (SGD). For renewal of COE, the value will contain actual PQP paid.",
+					"properties": {
+						"value": {
+							"type": "number",
+							"format": "double",
+							"multipleOf": 0.01,
+							"maxLength": 11,
+							"example": 14000.01
+						}
+					}
+				},
+				"openmarketvalue": {
+					"type": "object",
+					"description": "Open Market Value is the value of manufacturer invoice price, freight and insurance in Singapore dollars (SGD).",
+					"properties": {
+						"value": {
+							"type": "number",
+							"format": "double",
+							"maxLength": 11,
+							"example": 25000.01
+						}
+					}
+				},
+				"co2emission": {
+					"type": "object",
+					"description": "CO2 emission rate",
+					"properties": {
+						"value": {
+							"type": "number",
+							"format": "double",
+							"maxLength": 9,
+							"example": 146.01
+						}
+					}
+				},
+				"status": {
+					"type": "object",
+					"description": "Status of the Vehicle.\n\n* 1 - LIVE\n* 2 - DE-REGISTERED",
+					"properties": {
+						"code": {
+							"type": "string",
+							"maxLength": 1,
+							"enum": [
+								"1",
+								"2"
+							],
+							"example": "1"
+						},
+						"desc": {
+							"type": "string",
+							"maxLength": 300,
+							"enum": [
+								"LIVE",
+								"DE-REGISTERED"
+							],
+							"example": "LIVE"
+						}
+					}
+				},
+				"primarycolour": {
+					"type": "object",
+					"description": "Vehicle Primary Colour (e.g. BLACK)",
+					"properties": {
+						"value": {
+							"type": "string",
+							"maxLength": 30,
+							"example": "BLACK"
+						}
+					}
+				},
+				"secondarycolour": {
+					"type": "object",
+					"description": "Vehicle Primary Colour (e.g. WHITE)",
+					"properties": {
+						"value": {
+							"type": "string",
+							"maxLength": 30,
+							"example": "WHITE"
+						}
+					}
+				},
+				"attachment1": {
+					"type": "object",
+					"description": "Vehicle Attachment 1 (e.g. DISABLED)",
+					"properties": {
+						"value": {
+							"type": "string",
+							"maxLength": 50,
+							"example": "DISABLED"
+						}
+					}
+				},
+				"attachment2": {
+					"type": "object",
+					"description": "Vehicle Attachment 2 (e.g. WITH SUN ROOF)",
+					"properties": {
+						"value": {
+							"type": "string",
+							"maxLength": 50,
+							"example": "WITH SUN ROOF"
+						}
+					}
+				},
+				"attachment3": {
+					"type": "object",
+					"description": "Vehicle Attachment 3 (e.g. SIDE CURTAIN)",
+					"properties": {
+						"value": {
+							"type": "string",
+							"maxLength": 50,
+							"example": "SIDE CURTAIN"
+						}
+					}
+				},
+				"scheme": {
+					"type": "object",
+					"description": "Vehicle Scheme (e.g. REVISED OFF-PEAK CAR)",
+					"properties": {
+						"value": {
+							"type": "string",
+							"maxLength": 66,
+							"example": "REVISED OFF-PEAK CAR"
+						}
+					}
+				},
+				"thcemission": {
+					"type": "object",
+					"description": "Total Hydro Carbon (THC) emission rate",
+					"properties": {
+						"value": {
+							"type": "number",
+							"format": "double",
+							"maxLength": 9,
+							"example": 1.011001
+						}
+					}
+				},
+				"coemission": {
+					"type": "object",
+					"description": "Carbon Monoxide emission rate",
+					"properties": {
+						"value": {
+							"type": "number",
+							"format": "double",
+							"maxLength": 9,
+							"example": 1.100001
+						}
+					}
+				},
+				"noxemission": {
+					"type": "object",
+					"description": "Nitrogen Oxide (NOx) emission rate.",
+					"properties": {
+						"value": {
+							"type": "number",
+							"format": "double",
+							"maxLength": 9,
+							"example": 0.011001
+						}
+					}
+				},
+				"pmemission": {
+					"type": "object",
+					"description": "Particulates (PM - Atmospheric Particulate Matter) emission rate.",
+					"properties": {
+						"value": {
+							"type": "number",
+							"format": "double",
+							"maxLength": 9,
+							"example": 0.007
+						}
+					}
+				},
+				"enginecapacity": {
+					"type": "object",
+					"description": "Engine Capacity in cubic centimeter (cc)",
+					"properties": {
+						"value": {
+							"type": "integer",
+							"maxLength": 8,
+							"example": 1600
+						}
+					}
+				},
+				"powerrate": {
+					"type": "object",
+					"description": "Power Rate. Applicable to Electric and Hybrid vehicles powered by electric motors. Unit is Kilowatt.",
+					"properties": {
+						"value": {
+							"type": "number",
+							"format": "double",
+							"maxLength": 8,
+							"example": 1.41
+						}
+					}
+				},
+				"effectiveownership": {
+					"type": "object",
+					"description": "Effective Date/Time of Ownership. See \"date-time\" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14'",
+					"properties": {
+						"value": {
+							"type": "string",
+							"format": "date-time",
+							"maxLength": 25,
+							"example": "2010-08-31T20:12:12+08:00"
+						}
+					}
+				},
+				"propellant": {
+					"type": "object",
+					"description": "Propellant (e.g. Compressed Natural Gas, Diesel, Diesel-CNG, Diesel-Electric, Diesel-Electric (Plug-In), Electric, Gas, Liquefied Petroleum Gas (LPG), Petrol, Petrol-CNG, Petrol-Electric, Petrol-Electric (Plug-In), Petrol-LPG",
+					"properties": {
+						"value": {
+							"type": "string",
+							"maxLength": 40,
+							"example": "Compressed Natural Gas"
+						}
+					}
+				},
+				"maximumunladenweight": {
+					"type": "object",
+					"description": "Maximum Unladen Weight in kilograms (kg)",
+					"properties": {
+						"value": {
+							"type": "integer",
+							"maxLength": 9,
+							"example": 1500
+						}
+					}
+				},
+				"maximumladenweight": {
+					"type": "object",
+					"description": "Maximum Laden Weight in kilograms (kg)",
+					"properties": {
+						"value": {
+							"type": "integer",
+							"maxLength": 12,
+							"example": 1795
+						}
+					}
+				},
+				"minimumparfbenefit": {
+					"type": "object",
+					"description": "Minimum PARF Benefit in Singapore dollars (SGD).",
+					"properties": {
+						"value": {
+							"type": "number",
+							"format": "double",
+							"maxLength": 12,
+							"example": 8770.01
+						}
+					}
+				},
+				"nooftransfers": {
+					"type": "object",
+					"description": "Number of Transfer",
+					"properties": {
+						"value": {
+							"type": "integer",
+							"maxLength": 5,
+							"example": 2
+						}
+					}
+				},
+				"vpc": {
+					"type": "object",
+					"description": "Vehicle Parking Certificate. Applicable for Heavy Vehicles.",
+					"properties": {
+						"value": {
+							"type": "string",
+							"maxLength": 10,
+							"example": "1234567890"
+						}
+					}
+				}
+			},
+			"allOf": [
+				{
+					"$ref": "#/components/schemas/DataFieldProperties"
+				}
+			]
+		}
+	}
+}

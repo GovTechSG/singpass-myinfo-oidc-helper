@@ -1,5 +1,8 @@
 # Changelogs
 
+## 5.0.4
+- Change PersonCommon vehicles data property from object to array
+
 ## 5.0.2
 - Revert replacing of MyInfoProfileStatus typing
 

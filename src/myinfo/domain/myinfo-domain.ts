@@ -1,6 +1,6 @@
 // tslint:disable
 // =============================================================================
-// This file was generated with `npm run generate-myinfo-typings` on 2021-04-09
+// This file was generated with `npm run generate-myinfo-typings` on 2021-05-05
 // Any modifications to this file may be overwritten when the script runs again
 // Check README.md for more information
 // =============================================================================
@@ -6140,12 +6140,9 @@ export declare namespace MyInfoComponents {
                 unavailable: boolean;
             };
             /**
-             * example:
-             * {
-             *   "classification": "C",
-             *   "source": "1",
-             *   "lastupdated": "2019-03-26"
-             * }
+             * **NOTE** Vehicles property is custom set to be array instead of object.
+             *
+             * Even though the vehicles property is defined as object in the original swagger file, the actual data is returned as array. Moreover the array will allow a person to have multiple vehicles.
              */
             vehicles?: {
                 /**
@@ -6555,7 +6552,7 @@ export declare namespace MyInfoComponents {
                      */
                     value?: string;
                 };
-            };
+            }[];
             /**
              * Driving Licence details of Person.
              *
@@ -11353,12 +11350,9 @@ export declare namespace MyInfoComponents {
                 unavailable: boolean;
             };
             /**
-             * example:
-             * {
-             *   "classification": "C",
-             *   "source": "1",
-             *   "lastupdated": "2019-03-26"
-             * }
+             * **NOTE** Vehicles property is custom set to be array instead of object.
+             *
+             * Even though the vehicles property is defined as object in the original swagger file, the actual data is returned as array. Moreover the array will allow a person to have multiple vehicles.
              */
             vehicles?: {
                 /**
@@ -11768,7 +11762,7 @@ export declare namespace MyInfoComponents {
                      */
                     value?: string;
                 };
-            };
+            }[];
             /**
              * Driving Licence details of Person.
              *
@@ -14178,14 +14172,11 @@ export declare namespace MyInfoComponents {
             value?: string;
         }
         /**
-         * example:
-         * {
-         *   "classification": "C",
-         *   "source": "1",
-         *   "lastupdated": "2019-03-26"
-         * }
+         * **NOTE** Vehicles property is custom set to be array instead of object.
+         *
+         * Even though the vehicles property is defined as object in the original swagger file, the actual data is returned as array. Moreover the array will allow a person to have multiple vehicles.
          */
-        export interface Vehicles {
+        export type Vehicles = {
             /**
              * Data classification of data field. Default 'C' - Confidential.
              */
@@ -14593,6 +14584,6 @@ export declare namespace MyInfoComponents {
                  */
                 value?: string;
             };
-        }
+        }[];
     }
 }
