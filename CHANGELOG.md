@@ -1,21 +1,12 @@
 # Changelogs
 
 ## 5.0.4
-- Change PersonCommon vehicles data property from object to array
-
-## 5.0.2
-- Revert replacing of MyInfoProfileStatus typing
-
-## 5.0.1
-- Replace ProfileStatusEnum with MyInfoProfileStatus typing
-
-## 5.0.0
-
 - **[WARNING]** Updated Myinfo model typings and renamed the namespace from `Components` to `MyInfoComponents`
 - **[WARNING]** Myinfo enum descriptions are now capitalized as per latest Myinfo swagger
 - **[WARNING]** Updated npm dependencies
 - Added `generate-myinfo-typings` script to dynamically generate typings from Myinfo swagger to keep them in sync
 - Added Myinfo enum typings (e.g. `MyInfoEdulevel`)
+- Manually add / overwrite some `PersonCommon` data properties (e.g. add `gstvoucher`, change `vehicles` to array)
 
 ## 4.2.30
 
