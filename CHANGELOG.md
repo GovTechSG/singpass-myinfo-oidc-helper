@@ -1,4 +1,6 @@
 # Changelogs
+## 5.0.6
+- Update japanese profile to have employer and occupation
 
 ## 5.0.4
 - **[WARNING]** Updated Myinfo model typings and renamed the namespace from `Components` to `MyInfoComponents`

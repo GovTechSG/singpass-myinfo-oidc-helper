@@ -54,6 +54,13 @@ export const BaseProfile: FakeProfile = {
 				classification: "C",
 				unavailable: false,
 			},
+			employment: {
+				classification: "C",
+				source: "1",
+				lastupdated: "2019-03-26",
+				value: "Google Pte Ltd",
+				unavailable: false
+			},
 			nationality: {
 				lastupdated: "2018-06-01",
 				code: MyInfoNationalityCode.SINGAPORE_CITIZEN,
