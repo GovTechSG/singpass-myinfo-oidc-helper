@@ -1,8 +1,15 @@
 # Changelogs
+
+## 5.1.0
+
+- Add functionalities in myinfo-helper for retrieving full person data
+
 ## 5.0.6
+
 - Update japanese profile to have employer and occupation
 
 ## 5.0.4
+
 - **[WARNING]** Updated Myinfo model typings and renamed the namespace from `Components` to `MyInfoComponents`
 - **[WARNING]** Myinfo enum descriptions are now capitalized as per latest Myinfo swagger
 - **[WARNING]** Updated npm dependencies
