@@ -33,13 +33,15 @@ export class MyInfoRequest {
 	public async get(
 		uri: string,
 		queryParams?: { [key: string]: any },
+		accessToken?: string,
 	): Promise<AxiosResponse> {
+		const cacheControl = "no-cache";
+		const headers = querystringUtil.parse(`Cache-Control=${cacheControl}`);
 
-		let authHeader: string = "";
 		const nonce = nonceFactory()();
 		const timestamp = new Date().getTime();
 
-		authHeader = SigningUtil.generateMyInfoAuthorizationHeader(
+		const authHeader = SigningUtil.generateMyInfoAuthorizationHeader(
 			uri,
 			queryParams,
 			SigningUtil.HttpMethod.GET,
@@ -54,10 +56,45 @@ export class MyInfoRequest {
 			params: queryParams,
 			paramsSerializer: querystringUtil.stringify,
 			headers: {
-				Authorization: authHeader,
+				...headers,
+				Authorization: accessToken ? `${authHeader},Bearer ${accessToken}` : authHeader,
 			},
 		};
 		const response = await this.axiosClient.get(uri, requestConfig);
+		return response;
+	}
+
+	public async post(
+		uri: string,
+		queryParams: { [key: string]: any }
+	): Promise<AxiosResponse> {
+		const cacheControl = "no-cache";
+		const contentType = "application/x-www-form-urlencoded";
+		const headers = querystringUtil.parse(`Content-Type=${contentType}&Cache-Control=${cacheControl}`);
+
+		const nonce = nonceFactory()();
+		const timestamp = new Date().getTime();
+
+		const authHeader = SigningUtil.generateMyInfoAuthorizationHeader(
+			uri,
+			queryParams,
+			SigningUtil.HttpMethod.GET,
+			this.appId,
+			this.privateKeyContent,
+			nonce,
+			timestamp,
+			this.privateKeyPassword,
+		);
+
+		const requestConfig: AxiosRequestConfig = {
+			params: queryParams,
+			paramsSerializer: querystringUtil.stringify,
+			headers: {
+				...headers,
+				Authorization: authHeader,
+			},
+		};
+		const response = await this.axiosClient.post(uri, requestConfig);
 		return response;
 	}
 }
