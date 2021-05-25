@@ -46,6 +46,7 @@ export interface MockParams {
 	housingtype?: MyInfoHousingTypeCode;
 	drivingqdlvalidity?: MyInfoDrivingLicenceValidityCode;
 	vehiclestatus?: MyInfoVehicleStatus;
+	employment?: string;
 }
 
 type PersonCommon = MyInfoComponents.Schemas.PersonCommon;
@@ -398,6 +399,9 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		}
 		if (!isEmpty(mockParams.userdisplayname)) {
 			myinfoPerson.name.value = mockParams.userdisplayname;
+		}
+		if (!isEmpty(mockParams.employment)) {
+			myinfoPerson.employment.value = mockParams.employment;
 		}
 
 		if (!isEmpty(mockParams.childrenbirthrecords)) {
