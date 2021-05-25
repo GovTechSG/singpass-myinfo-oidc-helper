@@ -1,5 +1,9 @@
 # Changelogs
 
+## 5.1.1
+
+- Add missing parameter 'grant_type' in myinfo-helper's getToken function
+
 ## 5.1.0
 
 - Add functionalities in myinfo-helper for retrieving full person data
