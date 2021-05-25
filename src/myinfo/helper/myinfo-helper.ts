@@ -134,6 +134,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 	public getToken = async (authCode: string, state: string): Promise<TokenResponse> => {
 		const params = {
 			code: authCode,
+			grant_type: "authorization_code",
 			client_secret: this.clientSecret,
 			client_id: this.clientID,
 			redirect_uri: this.redirectUrl,
