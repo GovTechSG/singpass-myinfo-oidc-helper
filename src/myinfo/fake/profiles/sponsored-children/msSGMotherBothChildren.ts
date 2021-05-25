@@ -14,7 +14,7 @@ export const msSGMotherBothChildren: FakeProfile = {
 	generate: (profileName) => {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
-		let profile: MyInfoComponents.Schemas.Person = BaseProfile.generate(profileName);
+		const profile: MyInfoComponents.Schemas.Person = BaseProfile.generate(profileName);
 
 		profile.sex.code = MyInfoSexCode.FEMALE;
 		profile.sex.desc = MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE);
@@ -28,7 +28,7 @@ export const msSGMotherBothChildren: FakeProfile = {
 			classification: "C",
 			source: "1",
 			unavailable: true
-		}
+		};
 
 		return profile;
 	},

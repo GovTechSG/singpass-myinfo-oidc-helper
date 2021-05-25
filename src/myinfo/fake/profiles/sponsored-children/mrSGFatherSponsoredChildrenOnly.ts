@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import { MyInfoComponents } from "../../..";
+import { MyInfoComponents } from "../../../domain";
 import { FakeProfile, ProfileArchetype } from "../fake-profile";
 import { BaseProfile } from "./BaseProfile";
 import { SponsoredChildrenRecords } from "./sponsoredChildBirthRecords";
@@ -31,7 +31,7 @@ export const mrSGFatherSponsoredChildrenOnly: FakeProfile = {
 			classification: "C",
 			source: "1",
 			unavailable: false
-		}
+		};
 		return profile;
 	},
 };

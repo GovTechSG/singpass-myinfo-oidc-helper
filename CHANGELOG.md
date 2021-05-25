@@ -1,4 +1,6 @@
 # Changelogs
+## 5.1.3
+- fixing lint errors
 ## 5.1.2
 - Added employment in mock params for bypass login
 - Added cpf details and noa-basic for finances card
