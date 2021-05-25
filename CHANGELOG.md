@@ -1,5 +1,7 @@
 # Changelogs
-
+## 5.1.2
+- Added employment in mock params for bypass login
+- Added cpf details and noa-basic for finances card
 ## 5.1.1
 
 - Add missing parameter 'grant_type' in myinfo-helper's getToken function
