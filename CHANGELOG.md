@@ -1,14 +1,23 @@
 # Changelogs
 
+## 5.1.5
+
+- Fixed myinfo-helper's authorization url
+- Fixed myinfo-request post
+
 ## 5.1.4
+
 - Added getPerson in fake-helper
 
 ## 5.1.3
+
 - fixing lint errors
 
 ## 5.1.2
+
 - Added employment in mock params for bypass login
 - Added cpf details and noa-basic for finances card
+
 ## 5.1.1
 
 - Add missing parameter 'grant_type' in myinfo-helper's getToken function
