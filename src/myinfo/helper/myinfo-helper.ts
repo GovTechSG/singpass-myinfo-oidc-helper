@@ -115,16 +115,13 @@ export class MyInfoHelper implements IMyInfoHelper {
 	}
 
 	public constructAuthorizationUrl = (state: string, purpose: string): string => {
-		const queryParams = {
-			state,
-			purpose,
-			attributes: this.attributes.toString(),
-			redirect_uri: this.redirectUrl,
-			client_id: this.clientID,
-			sp_esvcId: this.singpassEserviceID,
-		};
+		const queryString = "state=" + state +
+			"&purpose=" + querystringUtil.escape(purpose) +
+			"&attributes=" + this.attributes.toString() +
+			"&redirect_uri=" + this.redirectUrl +
+			"&client_id=" + this.clientID +
+			"&sp_esvcId=" + this.singpassEserviceID;
 
-		const queryString = querystringUtil.stringify(queryParams, "&", "=", { encodeURIComponent: querystringUtil.unescape });
 		return `${this.authorizationUrl}?${queryString}`;
 	}
 
