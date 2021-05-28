@@ -1,5 +1,10 @@
 # Changelogs
 
+## 5.1.6
+
+- Fixed myinfo-helper's getPerson missing await and slash
+- Fixed myinfo-helper's contructAuthorizationUrl querystring encoding
+
 ## 5.1.5
 
 - Fixed myinfo-helper's authorization url
