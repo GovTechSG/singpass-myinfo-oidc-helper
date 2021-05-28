@@ -3,6 +3,7 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import { SigningUtil } from "../../util";
 import { createClient } from "../../client";
 import * as querystringUtil from "querystring";
+import { URLSearchParams } from "url";
 
 export interface MyInfoRequestConstructor {
 	appId: string;
@@ -66,7 +67,7 @@ export class MyInfoRequest {
 
 	public async post(
 		uri: string,
-		queryParams: { [key: string]: any }
+		params: { [key: string]: any }
 	): Promise<AxiosResponse> {
 		const cacheControl = "no-cache";
 		const contentType = "application/x-www-form-urlencoded";
@@ -77,8 +78,8 @@ export class MyInfoRequest {
 
 		const authHeader = SigningUtil.generateMyInfoAuthorizationHeader(
 			uri,
-			queryParams,
-			SigningUtil.HttpMethod.GET,
+			params,
+			SigningUtil.HttpMethod.POST,
 			this.appId,
 			this.privateKeyContent,
 			nonce,
@@ -87,14 +88,15 @@ export class MyInfoRequest {
 		);
 
 		const requestConfig: AxiosRequestConfig = {
-			params: queryParams,
-			paramsSerializer: querystringUtil.stringify,
 			headers: {
 				...headers,
 				Authorization: authHeader,
 			},
 		};
-		const response = await this.axiosClient.post(uri, requestConfig);
+
+		const urlSeachParams = new URLSearchParams(params);
+
+		const response = await this.axiosClient.post(uri, urlSeachParams.toString(), requestConfig);
 		return response;
 	}
 }
