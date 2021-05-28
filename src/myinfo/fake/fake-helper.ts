@@ -9,7 +9,7 @@ enum GVS {
 	false = "false",
 }
 
-export enum ChildrenOverrideMode {
+export enum OverrideMode {
 	partial = "partial",
 	full = "full",
 	appendToExisting = "append",
@@ -23,6 +23,25 @@ export interface ChildrenBirthRecord {
 	lifestatus?: MyInfoLifeStatusCode;
 }
 
+export interface CpfContributionHistory {
+	date: string;
+	amount: number;
+	month: string;
+	employer: string;
+}
+
+export interface CpfBalance {
+	ma: number;
+	oa: number;
+	sa: number;
+	ra: number;
+}
+
+export interface NoaBasic {
+	amount: number;
+	yearofassessment: number;
+}
+
 export interface MockParams {
 	archetype: ProfileArchetype;
 	userdisplayname?: string;
@@ -32,7 +51,7 @@ export interface MockParams {
 	marriagecertno?: string;
 	countryofmarriage?: MyInfoCountryCode;
 	childrenbirthrecords?: ChildrenBirthRecord[];
-	childrenoverridemode?: ChildrenOverrideMode;
+	childrenoverridemode?: OverrideMode;
 	residentialstatus?: MyInfoResidentialCode;
 	occupation?: MyInfoOccupationCode;
 	occupationfreeform?: string;
@@ -48,11 +67,24 @@ export interface MockParams {
 	vehiclestatus?: MyInfoVehicleStatus;
 	employment?: string;
 }
+export interface MockFinanceParams {
+	cpfcontributionhistoryoverridemode?: OverrideMode;
+	cpfcontributions?: CpfContributionHistory[];
+	cpfbalances?: CpfBalance;
+	noabasic?: NoaBasic;
+}
 
+export interface DefaultParams {lastupdated: string; classification: "C"; source: '1'; unavailable: boolean;}
+type MockParamsPerson = MockParams & MockFinanceParams;
+
+type NoaBasicExtension = MyInfoComponents.Schemas.NOABasic & DefaultParams;
+type CpfBalanceExtension = MyInfoComponents.Schemas.Cpfbalances & DefaultParams;
 type PersonCommon = MyInfoComponents.Schemas.PersonCommon;
+type Person = MyInfoComponents.Schemas.Person;
 
 export interface IFakeMyInfoHelper {
 	getPersonCommon: (mockParams: MockParams) => PersonCommon;
+	getPerson: (mockParams: MockParams) => Person;
 }
 
 export class FakeMyInfoHelper implements IFakeMyInfoHelper {
@@ -408,11 +440,11 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 			const childrenBirthRecords = mockParams.childrenbirthrecords.map(transformChildBirthRecord);
 
 			switch (mockParams.childrenoverridemode) {
-				case ChildrenOverrideMode.appendToExisting:
+				case OverrideMode.appendToExisting:
 					myinfoPerson.childrenbirthrecords = [...myinfoPerson.childrenbirthrecords, ...childrenBirthRecords];
 					break;
 
-				case ChildrenOverrideMode.partial:
+				case OverrideMode.partial:
 					if (childrenBirthRecords.length < myinfoPerson.childrenbirthrecords.length) {
 						childrenBirthRecords.forEach((childBirthRecord, index) => {
 							myinfoPerson.childrenbirthrecords[index] = childBirthRecord;
@@ -421,7 +453,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 						myinfoPerson.childrenbirthrecords = childrenBirthRecords;
 					}
 					break;
-				case ChildrenOverrideMode.full:
+				case OverrideMode.full:
 					myinfoPerson.childrenbirthrecords = childrenBirthRecords;
 					break;
 			}
@@ -432,6 +464,45 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		}
 
 		return filterThroughMyInfoAttributes(myinfoPerson, this.attributes);
+	}
+
+
+	public getPerson = (mockParams: MockParamsPerson): Person => {
+		const myinfoPerson: Person = this.getPersonCommon(mockParams);
+
+		if (!isEmpty(mockParams.cpfcontributions)) {
+			const cpfContributions = transformCpfContributions(mockParams.cpfcontributions);
+
+
+			switch (mockParams.cpfcontributionhistoryoverridemode) {
+				case OverrideMode.appendToExisting:
+					myinfoPerson.cpfcontributions.history = [...myinfoPerson.cpfcontributions.history, ...cpfContributions.history];
+					break;
+
+				case OverrideMode.partial:
+					if (cpfContributions.history.length < myinfoPerson.cpfcontributions.history.length) {
+						cpfContributions.history.forEach((cpfContributionHistory, index) => {
+							myinfoPerson.cpfcontributions.history[index] = cpfContributionHistory;
+						});
+					} else {
+						myinfoPerson.cpfcontributions.history = cpfContributions.history;
+					}
+					break;
+				case OverrideMode.full:
+					myinfoPerson.cpfcontributions.history = cpfContributions.history;
+					break;
+			}
+		}
+
+		if (!isEmpty(mockParams.cpfbalances)) {
+			myinfoPerson.cpfbalances = transformItemsWithAdditionalMock(mockParams.cpfbalances) as CpfBalanceExtension;
+		}
+
+		if (!isEmpty(mockParams.noabasic)) {
+			myinfoPerson["noa-basic"] = transformItemsWithAdditionalMock(mockParams.noabasic) as NoaBasicExtension;
+		}
+		return myinfoPerson;
+
 	}
 }
 
@@ -556,3 +627,34 @@ export function transformChildBirthRecord(childbirthrecord: ChildrenBirthRecord,
 
 	} as MyInfoComponents.Schemas.Childrenbirthrecords;
 }
+
+
+export function transformCpfContributions(cpfContributionHistory: CpfContributionHistory[]): MyInfoComponents.Schemas.Cpfcontributions {
+	return {
+		source: "1",
+		classification: "C",
+		lastupdated: null,
+		unavailable: false,
+		history: cpfContributionHistory.map(cpfContribution => transformItems(cpfContribution)),
+	} as MyInfoComponents.Schemas.Cpfcontributions;
+}
+
+function transformItems(item: any) {
+	return Object.keys(item).reduce((objectKey, key) => {
+		objectKey[key] = { value: item[key] };
+		return objectKey;
+	}, {});
+}
+
+
+function transformItemsWithAdditionalMock(item: any, defaultMockParams: boolean = true, ) {
+	const transformedItems = transformItems(item);
+	const defaultItems = {
+		source: "1",
+		classification: "C",
+		lastupdated: null,
+		unavailable: false,
+	};
+	return { ...transformedItems, ...defaultItems };
+}
+
