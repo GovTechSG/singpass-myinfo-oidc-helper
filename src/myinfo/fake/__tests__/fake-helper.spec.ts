@@ -1,5 +1,5 @@
 import { MyInfoLifeStatusCode, MyInfoSexCode } from "../../domain";
-import { ChildrenBirthRecord, ChildrenOverrideMode, FakeMyInfoHelper, transformChildBirthRecord } from "../fake-helper";
+import { ChildrenBirthRecord, FakeMyInfoHelper, OverrideMode, transformChildBirthRecord } from "../fake-helper";
 import { ProfileArchetype } from "../profiles/fake-profile";
 import { mrSGDaddyPerfect } from "../profiles/mrSGDaddyPerfect";
 
@@ -97,7 +97,7 @@ describe("FakeMyInfoHelper", () => {
 
 					const person = fakeHelper.getPersonCommon({
 						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
-						childrenoverridemode: ChildrenOverrideMode.full,
+						childrenoverridemode: OverrideMode.full,
 						childrenbirthrecords: mockChildrenbirthrecords,
 					});
 
@@ -111,7 +111,7 @@ describe("FakeMyInfoHelper", () => {
 
 					const person = fakeHelper.getPersonCommon({
 						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
-						childrenoverridemode: ChildrenOverrideMode.full,
+						childrenoverridemode: OverrideMode.full,
 						childrenbirthrecords,
 					});
 
@@ -125,7 +125,7 @@ describe("FakeMyInfoHelper", () => {
 
 					const person = fakeHelper.getPersonCommon({
 						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
-						childrenoverridemode: ChildrenOverrideMode.partial,
+						childrenoverridemode: OverrideMode.partial,
 						childrenbirthrecords: mockChildrenbirthrecords,
 					});
 
@@ -144,7 +144,7 @@ describe("FakeMyInfoHelper", () => {
 
 					const person = fakeHelper.getPersonCommon({
 						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
-						childrenoverridemode: ChildrenOverrideMode.partial,
+						childrenoverridemode: OverrideMode.partial,
 						childrenbirthrecords,
 					});
 
@@ -158,7 +158,7 @@ describe("FakeMyInfoHelper", () => {
 
 					const person = fakeHelper.getPersonCommon({
 						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
-						childrenoverridemode: ChildrenOverrideMode.appendToExisting,
+						childrenoverridemode: OverrideMode.appendToExisting,
 						childrenbirthrecords: mockChildrenbirthrecords,
 					});
 
@@ -177,7 +177,7 @@ describe("FakeMyInfoHelper", () => {
 
 					const person = fakeHelper.getPersonCommon({
 						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
-						childrenoverridemode: ChildrenOverrideMode.appendToExisting,
+						childrenoverridemode: OverrideMode.appendToExisting,
 						childrenbirthrecords,
 					});
 
