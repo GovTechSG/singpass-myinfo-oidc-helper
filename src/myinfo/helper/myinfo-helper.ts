@@ -118,13 +118,13 @@ export class MyInfoHelper implements IMyInfoHelper {
 		const queryParams = {
 			state,
 			purpose,
-			attributes: this.attributes,
+			attributes: this.attributes.toString(),
 			redirect_uri: this.redirectUrl,
 			client_id: this.clientID,
 			sp_esvcId: this.singpassEserviceID,
 		};
 
-		const queryString = querystringUtil.stringify(queryParams);
+		const queryString = querystringUtil.stringify(queryParams, "&", "=", { encodeURIComponent: querystringUtil.unescape });
 		return `${this.authorizationUrl}?${queryString}`;
 	}
 
