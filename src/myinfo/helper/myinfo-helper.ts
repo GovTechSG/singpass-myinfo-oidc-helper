@@ -198,13 +198,13 @@ export class MyInfoHelper implements IMyInfoHelper {
 	 */
 
 	public getPerson = async<K extends keyof MyInfoComponents.Schemas.Person>(accessToken: string): Promise<Pick<MyInfoComponents.Schemas.Person, K>> => {
-		const uinfin = this.extractUinfinFromAccessToken(accessToken);
+		const uinfin = await this.extractUinfinFromAccessToken(accessToken);
 
-		const url = `${this.personUrl}/${uinfin}`;
+		const url = `${this.personUrl}/${uinfin}/`;
 		const params = {
 			client_id: this.clientID,
 			sp_esvcId: this.singpassEserviceID,
-			attributes: this.attributes.join(","),
+			attributes: this.attributes.toString(),
 		};
 
 		let response: AxiosResponse;
