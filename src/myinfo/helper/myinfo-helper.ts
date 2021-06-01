@@ -11,7 +11,8 @@ import * as querystringUtil from "querystring";
 export type EnvType = "test" | "sandbox" | "prod";
 
 export interface IMyInfoHelper {
-	getPersonCommon: <K extends keyof MyInfoComponents.Schemas.PersonCommon>(uinfin: string) => Promise<Pick<MyInfoComponents.Schemas.PersonCommon, K>>;
+	getPersonCommon: <K extends keyof MyInfoComponents.Schemas.PersonCommon>(uinfin: string, attributes: string[]) => Promise<Pick<MyInfoComponents.Schemas.PersonCommon, K>>;
+	getPerson: <K extends keyof MyInfoComponents.Schemas.Person>(uinfin: string, attributes: string[]) => Promise<Pick<MyInfoComponents.Schemas.Person, K>>;
 }
 
 export interface IMyInfoRequest {
@@ -23,7 +24,6 @@ export interface IMyInfoRequest {
 }
 
 export interface MyInfoHelperConstructor {
-	attributes: string[];
 	clientID: string;
 	clientSecret: string;
 	environment: EnvType;
@@ -73,7 +73,6 @@ export class MyInfoHelper implements IMyInfoHelper {
 
 	private myInfoRequest: MyInfoRequest;
 
-	private readonly attributes: string[];
 	private readonly clientID: string;
 	private readonly clientSecret: string;
 	private readonly singpassEserviceID: string;
@@ -90,10 +89,6 @@ export class MyInfoHelper implements IMyInfoHelper {
 	private readonly redirectUrl: string;
 
 	public constructor(props: MyInfoHelperConstructor) {
-		if (_.isEmpty(props.attributes)) {
-			throw new SingpassMyInfoError("Attribute list must contain values");
-		}
-		this.attributes = props.attributes;
 		this.clientID = props.clientID;
 		this.clientSecret = props.clientSecret;
 		this.singpassEserviceID = props.singpassEserviceID;
@@ -114,10 +109,14 @@ export class MyInfoHelper implements IMyInfoHelper {
 		this.myInfoRequest = new MyInfoRequest(requestProps);
 	}
 
-	public constructAuthorizationUrl = (state: string, purpose: string): string => {
+	public constructAuthorizationUrl = (state: string, purpose: string, attributes: string[]): string => {
+		if (_.isEmpty(attributes)) {
+			throw new SingpassMyInfoError("Attribute list must contain values");
+		}
+
 		const queryString = "state=" + state +
 			"&purpose=" + querystringUtil.escape(purpose) +
-			"&attributes=" + this.attributes.toString() +
+			"&attributes=" + attributes.toString() +
 			"&redirect_uri=" + this.redirectUrl +
 			"&client_id=" + this.clientID +
 			"&sp_esvcId=" + this.singpassEserviceID;
@@ -155,12 +154,12 @@ export class MyInfoHelper implements IMyInfoHelper {
 	 * getPersonCommon will return an object with only the properties matching the keys.
 	 * e.g. when K = "name" | "email", getPersonCommon returns an object looking like { name, email }
 	 */
-	public getPersonCommon = async<K extends keyof MyInfoComponents.Schemas.PersonCommon>(uinfin: string): Promise<Pick<MyInfoComponents.Schemas.PersonCommon, K>> => {
+	public getPersonCommon = async<K extends keyof MyInfoComponents.Schemas.PersonCommon>(uinfin: string, attributes: string[]): Promise<Pick<MyInfoComponents.Schemas.PersonCommon, K>> => {
 		const url = `${this.personBasicUrl}/${uinfin}`;
 		const params = {
 			client_id: this.clientID,
 			sp_esvcId: this.singpassEserviceID,
-			attributes: this.attributes.join(","),
+			attributes: attributes.toString(),
 		};
 
 		let response: AxiosResponse;
@@ -197,14 +196,14 @@ export class MyInfoHelper implements IMyInfoHelper {
 	 * e.g. when K = "name" | "email", getPersonCommon returns an object looking like { name, email }
 	 */
 
-	public getPerson = async<K extends keyof MyInfoComponents.Schemas.Person>(accessToken: string): Promise<Pick<MyInfoComponents.Schemas.Person, K>> => {
+	public getPerson = async<K extends keyof MyInfoComponents.Schemas.Person>(accessToken: string, attributes: string[]): Promise<Pick<MyInfoComponents.Schemas.Person, K>> => {
 		const uinfin = await this.extractUinfinFromAccessToken(accessToken);
 
 		const url = `${this.personUrl}/${uinfin}/`;
 		const params = {
 			client_id: this.clientID,
 			sp_esvcId: this.singpassEserviceID,
-			attributes: this.attributes.toString(),
+			attributes: attributes.toString(),
 		};
 
 		let response: AxiosResponse;
