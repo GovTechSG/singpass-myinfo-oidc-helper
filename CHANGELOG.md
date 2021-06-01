@@ -1,5 +1,9 @@
 # Changelogs
 
+## 5.1.7
+
+- Remove attributes from myinfo helper's constructor, take in attributes in separate myinfo helper functions
+
 ## 5.1.6
 
 - Fixed myinfo-helper's getPerson missing await and slash
