@@ -114,13 +114,16 @@ export class MyInfoHelper implements IMyInfoHelper {
 			throw new SingpassMyInfoError("Attribute list must contain values");
 		}
 
-		const queryString = "state=" + state +
-			"&purpose=" + querystringUtil.escape(purpose) +
-			"&attributes=" + attributes.toString() +
-			"&redirect_uri=" + this.redirectUrl +
-			"&client_id=" + this.clientID +
-			"&sp_esvcId=" + this.singpassEserviceID;
+		const queryParams = {
+			state,
+			purpose,
+			attributes: attributes.toString(),
+			redirect_uri: this.redirectUrl,
+			client_id: this.clientID,
+			sp_esvcId: this.singpassEserviceID,
+		};
 
+		const queryString = querystringUtil.stringify(queryParams);
 		return `${this.authorizationUrl}?${queryString}`;
 	}
 
@@ -134,7 +137,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 			client_secret: this.clientSecret,
 			client_id: this.clientID,
 			redirect_uri: this.redirectUrl,
-			state
+			state: querystringUtil.unescape(state)
 		};
 
 		let response: AxiosResponse<TokenResponse>;
