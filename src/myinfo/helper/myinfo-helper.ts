@@ -1,6 +1,5 @@
-import { AxiosResponse } from "axios";
 import * as _ from "lodash";
-import * as request from "request";
+import { AxiosResponse } from "axios";
 import { JweUtil, Logger } from "../../util";
 import { SingpassMyInfoError } from "../../util/error/SingpassMyinfoError";
 import { MyInfoComponents } from "../domain";
@@ -19,8 +18,13 @@ export interface IMyInfoRequest {
 	get: (
 		uri: string,
 		params?: { [key: string]: any },
-		bearer?: string,
-	) => Promise<request.RequestResponse>;
+		accessToken?: string,
+	) => Promise<AxiosResponse>;
+
+	post: (
+		uri: string,
+		params: { [key: string]: any }
+	) => Promise<AxiosResponse>;
 }
 
 export interface MyInfoHelperConstructor {

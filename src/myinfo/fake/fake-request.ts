@@ -1,4 +1,4 @@
-import * as request from "request";
+import { AxiosResponse } from "axios";
 import { IMyInfoRequest } from "../helper";
 
 export class FakeMyInfoRequest implements IMyInfoRequest {
@@ -7,13 +7,13 @@ export class FakeMyInfoRequest implements IMyInfoRequest {
 
 	public async get(
 		expectedResponse: any,
-	): Promise<request.RequestResponse> {
+	): Promise<AxiosResponse> {
 		return expectedResponse;
 	}
 
-	public async postForm(
+	public async post(
 		expectedResponse: any,
-	): Promise<request.RequestResponse> {
+	): Promise<AxiosResponse> {
 		return expectedResponse;
 	}
 }
