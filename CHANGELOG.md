@@ -1,5 +1,9 @@
 # Changelogs
 
+## 5.1.8
+
+- Revert back to using querystring lib to generate url query in myinfo-helper's constructAuthorizationUrl
+
 ## 5.1.7
 
 - Remove attributes from myinfo helper's constructor, take in attributes in separate myinfo helper functions
