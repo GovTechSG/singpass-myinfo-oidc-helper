@@ -25,13 +25,13 @@ export interface IMyInfoRequest {
 
 export interface MyInfoHelperConstructor {
 	clientID: string;
-	clientSecret: string;
+	clientSecret?: string;
 	environment: EnvType;
 	singpassEserviceID: string;
 	keyToDecryptJWE: string;
 	certToVerifyJWS: string;
 	privateKeyToSignRequest: string;
-	redirectUri: string;
+	redirectUri?: string;
 	privateKeyPassword?: string;
 	overrideAuthorizationUrl?: string;
 	overrideTokenUrl?: string;
@@ -86,7 +86,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 	private readonly personBasicUrl: string;
 	private readonly profileStatusUrl: string;
 
-	private readonly redirectUrl: string;
+	private readonly redirectUri: string;
 
 	public constructor(props: MyInfoHelperConstructor) {
 		this.clientID = props.clientID;
@@ -94,7 +94,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 		this.singpassEserviceID = props.singpassEserviceID;
 		this.keyToDecryptJWE = props.keyToDecryptJWE;
 		this.certToVerifyJWS = props.certToVerifyJWS;
-		this.redirectUrl = props.redirectUri;
+		this.redirectUri = props.redirectUri;
 		this.authorizationUrl = this.getUrl(props.overridePersonUrl, AUTHORISE_BASE_URL, props.environment);
 		this.tokenUrl = this.getUrl(props.overridePersonUrl, TOKEN_BASE_URL, props.environment);
 		this.personUrl = this.getUrl(props.overridePersonUrl, PERSON_BASE_URL, props.environment);
@@ -114,11 +114,15 @@ export class MyInfoHelper implements IMyInfoHelper {
 			throw new SingpassMyInfoError("Attribute list must contain values");
 		}
 
+		if (_.isEmpty(this.redirectUri)) {
+			throw new SingpassMyInfoError("Redirect url must be provided in constructor");
+		}
+
 		const queryParams = {
 			state,
 			purpose,
 			attributes: attributes.toString(),
-			redirect_uri: this.redirectUrl,
+			redirect_uri: this.redirectUri,
 			client_id: this.clientID,
 			sp_esvcId: this.singpassEserviceID,
 		};
@@ -131,12 +135,16 @@ export class MyInfoHelper implements IMyInfoHelper {
 	 * Obtain token for person data
 	 */
 	public getToken = async (authCode: string, state: string): Promise<TokenResponse> => {
+		if (_.isEmpty(this.clientSecret)) {
+			throw new SingpassMyInfoError("Client secret must be provided in constructor");
+		}
+
 		const params = {
 			code: authCode,
 			grant_type: "authorization_code",
 			client_secret: this.clientSecret,
 			client_id: this.clientID,
-			redirect_uri: this.redirectUrl,
+			redirect_uri: this.redirectUri,
 			state: querystringUtil.unescape(state)
 		};
 
