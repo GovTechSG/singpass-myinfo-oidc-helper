@@ -1,5 +1,12 @@
 # Changelogs
 
+## 5.1.9
+
+- Removed request library dependency
+- Made state param optional in myinfo-helper's getToken
+- Made all props in myinfo-helper constructor that are only required for retrieval of full person data optional
+- Fixed fake-helper typing
+
 ## 5.1.8
 
 - Revert back to using querystring lib to generate url query in myinfo-helper's constructAuthorizationUrl
