@@ -84,7 +84,7 @@ type Person = MyInfoComponents.Schemas.Person;
 
 export interface IFakeMyInfoHelper {
 	getPersonCommon: (mockParams: MockParams) => PersonCommon;
-	getPerson: (mockParams: MockParams) => Person;
+	getPerson: (mockParams: MockParamsPerson) => Person;
 }
 
 export class FakeMyInfoHelper implements IFakeMyInfoHelper {
