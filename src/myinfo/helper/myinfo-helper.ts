@@ -138,7 +138,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 	/**
 	 * Obtain token for person data
 	 */
-	public getToken = async (authCode: string, state: string): Promise<TokenResponse> => {
+	public getToken = async (authCode: string, state?: string): Promise<TokenResponse> => {
 		if (_.isEmpty(this.clientSecret)) {
 			throw new SingpassMyInfoError("Client secret must be provided in constructor");
 		}
