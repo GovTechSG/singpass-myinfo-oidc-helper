@@ -192,18 +192,27 @@ function sanitizeSwagger(swagger: any): any {
 }
 
 async function writeSwaggerTypingsSource(swagger: any): Promise<string> {
-	const customDirectory = outputDir + "/custom/person-common";
 	const schema = parseSchema(swagger);
 	const { components } = (schema.content as any);
 
-	// add custom definitions
-	const filenames = fs.readdirSync(customDirectory);
-	filenames.forEach(file => {
-		if (file.match(/.json$/)) {
-			const customDomain = JSON.parse(fs.readFileSync(`${customDirectory}/${file}`, "utf8"));
-			components.schemas = { ...components.schemas, ...customDomain };
-			Object.keys(customDomain).forEach((key) => {
-				components.schemas.PersonCommon.properties[key] = { "allOf": [{ "$ref": "#/components/schemas/" + key }] };
+	// add custom data items to domains
+	const customDataItems = [
+		{folder: "person", domain: "Person"},
+		{folder: "person-common", domain: "PersonCommon"},
+	];
+	customDataItems.forEach(customDataItem => {
+		const inputDirectory = `${outputDir}/custom/${customDataItem.folder}`;
+		if (fs.existsSync(inputDirectory)) {
+			const filenames = fs.readdirSync(inputDirectory);
+			filenames.forEach(file => {
+				if (file.match(/.json$/)) {
+					const dataItem = JSON.parse(fs.readFileSync(`${inputDirectory}/${file}`, "utf8"));
+					components.schemas = { ...components.schemas, ...dataItem };
+					if (!components.schemas[customDataItem.domain].properties) components.schemas[customDataItem.domain].properties = {};
+					Object.keys(dataItem).forEach((key) => {
+						components.schemas[customDataItem.domain].properties[key] = { "allOf": [{ "$ref": "#/components/schemas/" + key }] };
+					});
+				}
 			});
 		}
 	});
