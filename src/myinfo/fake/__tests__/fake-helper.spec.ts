@@ -245,7 +245,7 @@ describe("FakeMyInfoHelper", () => {
 					},
 				];
 				describe("cpfcontributionhistoryoverridemode = full", () => {
-					fit("should override all exisiting cpfContributions of archetype if cpfcontributions is NOT empty", () => {
+					it("should override all exisiting cpfContributions of archetype if cpfcontributions is NOT empty", () => {
 						const fakeHelper = new FakeMyInfoHelper();
 
 						const person = fakeHelper.getPerson({
