@@ -74,11 +74,11 @@ export interface MockFinanceParams {
 	noabasic?: NoaBasic;
 }
 
-export interface DefaultParams {lastupdated: string; classification: "C"; source: '1'; unavailable: boolean;}
+export interface DefaultParams { lastupdated: string; classification: "C"; source: '1'; unavailable: boolean; }
 type MockParamsPerson = MockParams & MockFinanceParams;
 
-type NoaBasicExtension = MyInfoComponents.Schemas.NOABasic & DefaultParams;
-type CpfBalanceExtension = MyInfoComponents.Schemas.Cpfbalances & DefaultParams;
+type NoaBasicExtension = MyInfoComponents.Schemas.NOABasic & MyInfoComponents.Schemas.DataFieldProperties;
+type CpfBalanceExtension = MyInfoComponents.Schemas.Cpfbalances & MyInfoComponents.Schemas.DataFieldProperties;
 type PersonCommon = MyInfoComponents.Schemas.PersonCommon;
 type Person = MyInfoComponents.Schemas.Person;
 
@@ -472,8 +472,15 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 
 		if (!isEmpty(mockParams.cpfcontributions)) {
 			const cpfContributions = transformCpfContributions(mockParams.cpfcontributions);
-
-
+			if (!myinfoPerson.cpfcontributions) {
+				myinfoPerson.cpfcontributions = {
+					history: [],
+					classification: "C",
+					source: "1",
+					lastupdated: null,
+					unavailable: true
+				};
+			}
 			switch (mockParams.cpfcontributionhistoryoverridemode) {
 				case OverrideMode.appendToExisting:
 					myinfoPerson.cpfcontributions.history = [...myinfoPerson.cpfcontributions.history, ...cpfContributions.history];
@@ -647,7 +654,7 @@ function transformItems(item: any) {
 }
 
 
-function transformItemsWithAdditionalMock(item: any, defaultMockParams: boolean = true, ) {
+export function transformItemsWithAdditionalMock(item: any, defaultMockParams: boolean = true,) {
 	const transformedItems = transformItems(item);
 	const defaultItems = {
 		source: "1",

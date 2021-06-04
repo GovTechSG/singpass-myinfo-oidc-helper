@@ -1,5 +1,10 @@
 # Changelogs
 
+## 5.1.10
+
+- intialized cpfContributions
+- Added test cases for getPerson
+
 ## 5.1.9
 
 - Removed request library dependency
