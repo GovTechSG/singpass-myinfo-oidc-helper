@@ -1,7 +1,5 @@
-import { MyInfoComponents } from "../../../../dist/myinfo";
-import { CpfContributionHistory } from "../../../../dist/myinfo/fake/fake-helper";
-import { MyInfoLifeStatusCode, MyInfoSexCode } from "../../domain";
-import { ChildrenBirthRecord, FakeMyInfoHelper, OverrideMode, transformChildBirthRecord, transformCpfContributions, transformItemsWithAdditionalMock } from "../fake-helper";
+import { MyInfoComponents, MyInfoLifeStatusCode, MyInfoSexCode } from "../../domain";
+import { ChildrenBirthRecord, CpfContributionHistory, FakeMyInfoHelper, OverrideMode, transformChildBirthRecord, transformCpfContributions, transformItemsWithAdditionalMock } from "../fake-helper";
 import { ProfileArchetype } from "../profiles/fake-profile";
 import { mrSGFatherNormalChildrenOnly } from "../profiles/sponsored-children/mrSGFatherNormalChildrenOnly";
 import { mrSGDaddyPerfect } from "../profiles/mrSGDaddyPerfect";

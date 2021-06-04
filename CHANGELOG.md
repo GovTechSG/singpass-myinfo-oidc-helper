@@ -1,6 +1,5 @@
 # Changelogs
-
-## 5.1.10
+## 5.1.11
 
 - intialized cpfContributions
 - Added test cases for getPerson
