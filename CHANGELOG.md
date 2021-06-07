@@ -1,4 +1,8 @@
 # Changelogs
+## 5.1.12
+
+- Fix cpfcontribution history bug
+- Update test cases
 ## 5.1.11
 
 - intialized cpfContributions

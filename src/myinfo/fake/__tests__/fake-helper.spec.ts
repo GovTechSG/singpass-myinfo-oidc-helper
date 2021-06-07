@@ -1,5 +1,5 @@
 import { MyInfoComponents, MyInfoLifeStatusCode, MyInfoSexCode } from "../../domain";
-import { ChildrenBirthRecord, CpfContributionHistory, FakeMyInfoHelper, OverrideMode, transformChildBirthRecord, transformCpfContributions, transformItemsWithAdditionalMock } from "../fake-helper";
+import { ChildrenBirthRecord, CpfContributionHistory, FakeMyInfoHelper, OverrideMode, transformChildBirthRecord, transformItems, transformItemsWithAdditionalMock } from "../fake-helper";
 import { ProfileArchetype } from "../profiles/fake-profile";
 import { mrSGFatherNormalChildrenOnly } from "../profiles/sponsored-children/mrSGFatherNormalChildrenOnly";
 import { mrSGDaddyPerfect } from "../profiles/mrSGDaddyPerfect";
@@ -254,10 +254,22 @@ describe("FakeMyInfoHelper", () => {
 							cpfcontributions: mockCpfContributions,
 						});
 
-						expect(person.cpfcontributions.history).toStrictEqual(transformCpfContributions(mockCpfContributions).history);
+						expect(person.cpfcontributions.history).toStrictEqual(mockCpfContributions.map(cpfContribution => transformItems(cpfContribution)));
 					});
 
-					it("should NOT override all exisiting cpfcontributions of archetype if childrenbirthrecords is empty", () => {
+					it("should override all exisiting cpfContributions of archetype if cpfcontributions is NOT empty and and myinfoPerson.cpfContributions is undefined", () => {
+						const fakeHelper = new FakeMyInfoHelper();
+
+						const person = fakeHelper.getPerson({
+							archetype: ProfileArchetype.MRS_MY_MOMMY_PERFECT,
+							cpfcontributionhistoryoverridemode: OverrideMode.full,
+							cpfcontributions: mockCpfContributions,
+						});
+
+						expect(person.cpfcontributions.history).toStrictEqual(mockCpfContributions.map(cpfContribution => transformItems(cpfContribution)));
+					});
+
+					it("should NOT override all exisiting cpfcontributions of archetype if cpfcontributions is empty", () => {
 						const fakeHelper = new FakeMyInfoHelper();
 
 						const cpfcontributions = [];
@@ -285,23 +297,23 @@ describe("FakeMyInfoHelper", () => {
 						const mrSGFatherNormalChildren = (mrSGFatherNormalChildrenOnly.generate() as MyInfoComponents.Schemas.Person).cpfcontributions.history;
 
 						expect(person.cpfcontributions.history).toStrictEqual([
-							...transformCpfContributions(mockCpfContributions).history,
+							...mockCpfContributions.map(cpfContribution => transformItems(cpfContribution)),
 							...mrSGFatherNormalChildren.slice(mockCpfContributions.length, mrSGFatherNormalChildren.length),
 						]);
 					});
 
-					it("sould NOT override any of the exisiting cpfcontributions of archetype if cpfcontributions is empty", () => {
+					it("should NOT override any of the exisiting cpfcontributions of archetype if cpfcontributions is empty", () => {
 						const fakeHelper = new FakeMyInfoHelper();
 
 						const cpfcontributions = [];
 
-						const erson = fakeHelper.getPerson({
+						const person = fakeHelper.getPerson({
 							archetype: ProfileArchetype.MR_SG_FATHER_NORMAL_CHILDREN,
 							cpfcontributionhistoryoverridemode: OverrideMode.partial,
 							cpfcontributions,
 						});
 
-						expect(erson.cpfcontributions).toStrictEqual((mrSGFatherNormalChildrenOnly.generate() as MyInfoComponents.Schemas.Person).cpfcontributions);
+						expect(person.cpfcontributions).toStrictEqual((mrSGFatherNormalChildrenOnly.generate() as MyInfoComponents.Schemas.Person).cpfcontributions);
 					});
 				});
 
@@ -319,7 +331,7 @@ describe("FakeMyInfoHelper", () => {
 
 						expect(person.cpfcontributions.history).toStrictEqual([
 							...mrSGaddyPerfectChildren,
-							...transformCpfContributions(mockCpfContributions).history,
+							...mockCpfContributions.map(cpfContribution => transformItems(cpfContribution)),
 						]);
 					});
 
@@ -386,6 +398,21 @@ describe("FakeMyInfoHelper", () => {
 					});
 
 					expect(person["noa-basic"]).toStrictEqual(transformItemsWithAdditionalMock(mockNoaBasic));
+				});
+
+				it("shouldn't update noa-basic if the mockparams contain 0", () => {
+					const fakeHelper = new FakeMyInfoHelper();
+					const mockNoa = {
+						amount: 0,
+						yearofassessment: 0,
+					};
+
+					const person = fakeHelper.getPerson({
+						archetype: ProfileArchetype.MR_SG_FATHER_NORMAL_CHILDREN,
+						noabasic: mockNoa,
+					});
+
+					expect(person["noa-basic"]).toStrictEqual((mrSGFatherNormalChildrenOnly.generate() as MyInfoComponents.Schemas.Person)["noa-basic"]);
 				});
 			});
 		});

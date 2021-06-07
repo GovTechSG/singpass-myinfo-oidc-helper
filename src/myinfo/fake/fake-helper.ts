@@ -101,7 +101,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 	 * See FakeMyInfoPersonArchetypes for the actual person.
 	 */
 	// tslint:disable-next-line: no-big-function
-	public getPersonCommon = (mockParams: MockParams): PersonCommon => {
+	public getPersonInfo = (mockParams: MockParams): Person => {
 		const mockProfile = profiles.find((profile) => profile.name === mockParams.archetype);
 		if (!mockProfile) {
 			return null;
@@ -458,6 +458,11 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 					break;
 			}
 		}
+		return myinfoPerson;
+	}
+
+	public getPersonCommon = (mockParams: MockParams): PersonCommon => {
+		const myinfoPerson = this.getPersonInfo(mockParams);
 
 		if (!this.attributes) {
 			return myinfoPerson;
@@ -468,10 +473,10 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 
 
 	public getPerson = (mockParams: MockParamsPerson): Person => {
-		const myinfoPerson: Person = this.getPersonCommon(mockParams);
+		const myinfoPerson = this.getPersonInfo(mockParams);
 
 		if (!isEmpty(mockParams.cpfcontributions)) {
-			const cpfContributions = transformCpfContributions(mockParams.cpfcontributions);
+			const cpfContributionHistory = mockParams.cpfcontributions.map(cpfContribution => transformItems(cpfContribution));
 			if (!myinfoPerson.cpfcontributions) {
 				myinfoPerson.cpfcontributions = {
 					history: [],
@@ -483,29 +488,29 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 			}
 			switch (mockParams.cpfcontributionhistoryoverridemode) {
 				case OverrideMode.appendToExisting:
-					myinfoPerson.cpfcontributions.history = [...myinfoPerson.cpfcontributions.history, ...cpfContributions.history];
+					myinfoPerson.cpfcontributions.history = [...myinfoPerson.cpfcontributions.history, ...cpfContributionHistory];
 					break;
 
 				case OverrideMode.partial:
-					if (cpfContributions.history.length < myinfoPerson.cpfcontributions.history.length) {
-						cpfContributions.history.forEach((cpfContributionHistory, index) => {
-							myinfoPerson.cpfcontributions.history[index] = cpfContributionHistory;
+					if (cpfContributionHistory.length < myinfoPerson.cpfcontributions.history.length) {
+						cpfContributionHistory.forEach((cpfContributionHistoryItem, index) => {
+							myinfoPerson.cpfcontributions.history[index] = cpfContributionHistoryItem;
 						});
 					} else {
-						myinfoPerson.cpfcontributions.history = cpfContributions.history;
+						myinfoPerson.cpfcontributions.history = cpfContributionHistory;
 					}
 					break;
 				case OverrideMode.full:
-					myinfoPerson.cpfcontributions.history = cpfContributions.history;
+					myinfoPerson.cpfcontributions.history = cpfContributionHistory;
 					break;
 			}
 		}
 
-		if (!isEmpty(mockParams.cpfbalances)) {
+		if (mockParams.cpfbalances?.ma || mockParams.cpfbalances?.oa || mockParams.cpfbalances?.ra || mockParams.cpfbalances?.sa) {
 			myinfoPerson.cpfbalances = transformItemsWithAdditionalMock(mockParams.cpfbalances) as CpfBalanceExtension;
 		}
 
-		if (!isEmpty(mockParams.noabasic)) {
+		if (mockParams.noabasic?.amount || mockParams.noabasic?.yearofassessment) {
 			myinfoPerson["noa-basic"] = transformItemsWithAdditionalMock(mockParams.noabasic) as NoaBasicExtension;
 		}
 		return myinfoPerson;
@@ -636,17 +641,7 @@ export function transformChildBirthRecord(childbirthrecord: ChildrenBirthRecord,
 }
 
 
-export function transformCpfContributions(cpfContributionHistory: CpfContributionHistory[]): MyInfoComponents.Schemas.Cpfcontributions {
-	return {
-		source: "1",
-		classification: "C",
-		lastupdated: null,
-		unavailable: false,
-		history: cpfContributionHistory.map(cpfContribution => transformItems(cpfContribution)),
-	} as MyInfoComponents.Schemas.Cpfcontributions;
-}
-
-function transformItems(item: any) {
+export function transformItems(item: any) {
 	return Object.keys(item).reduce((objectKey, key) => {
 		objectKey[key] = { value: item[key] };
 		return objectKey;
