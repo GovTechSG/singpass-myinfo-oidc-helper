@@ -1,8 +1,14 @@
 # Changelogs
+
+## 5.1.13
+
+- Add fake profile of Singapore citizen without address
+
 ## 5.1.12
 
 - Fix cpfcontribution history bug
 - Update test cases
+
 ## 5.1.11
 
 - intialized cpfContributions
