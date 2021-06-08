@@ -37,6 +37,7 @@ import { mrsSGMommyPerfect } from "./mrsSGMommyPerfect";
 import { mrSGFatherNormalChildrenOnly } from "./sponsored-children/mrSGFatherNormalChildrenOnly";
 import { msSGMotherBothChildren } from "./sponsored-children/msSGMotherBothChildren";
 import { mrSGNoLocalAddress } from "./mrSGNoLocalAddress ";
+import { mrSGNoAddress } from "./mrSGNoAddress";
 import { mrPRNoLocalAddress } from "./mrPRNoLocalAddress";
 import { mrJapaneseAddressBlank } from "./mrJapaneseAddressBlank";
 import { mrJapaneseNoAddressObject } from "./mrJapaneseNoAddressObject";
@@ -58,6 +59,7 @@ import { mrSGUncleNonPg } from "./mrSGUncleNonPg";
 
 /**
  * Exhaustive list of our MyInfo archetype profiles
+ * (Alphabetical order as much as possible)
  */
 export const profiles = [
 	mrSGFatherNormalChildrenOnly,
@@ -66,6 +68,7 @@ export const profiles = [
 	mrSGDaddyPerfect,
 	mrsSGMommyPerfect,
 	mrSGNoLocalAddress,
+	mrSGNoAddress,
 	mrPRNoLocalAddress,
 	mrJapaneseNoAddressObject,
 	mrJapaneseAddressBlank,
