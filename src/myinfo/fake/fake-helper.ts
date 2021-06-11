@@ -39,7 +39,7 @@ export interface CpfBalance {
 
 export interface NoaBasic {
 	amount: number;
-	yearofassessment: number;
+	yearofassessment: string;
 }
 
 export interface MockParams {
@@ -510,7 +510,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 			myinfoPerson.cpfbalances = transformItemsWithAdditionalMock(mockParams.cpfbalances) as CpfBalanceExtension;
 		}
 
-		if (mockParams.noabasic?.amount || mockParams.noabasic?.yearofassessment) {
+		if (mockParams.noabasic?.amount || !isEmpty(mockParams.noabasic?.yearofassessment)) {
 			myinfoPerson["noa-basic"] = transformItemsWithAdditionalMock(mockParams.noabasic) as NoaBasicExtension;
 		}
 		return myinfoPerson;

@@ -608,7 +608,7 @@ export const mrSGFatherNormalChildrenOnly: FakeProfile = {
 			history: cpfContributions,
 			classification: "C",
 			source: "1",
-			lastupdated: "2019-03-26",
+			lastupdated: `${new Date().toISOString().split('T')[0]}`,
 			unavailable: false
 		};
 		profile.cpfbalances = {
@@ -616,7 +616,7 @@ export const mrSGFatherNormalChildrenOnly: FakeProfile = {
 			oa: { value: 11470.71 },
 			sa: { value: 11470.71 },
 			ra: { value: 11470.71 },
-			lastupdated: "2016-12-01",
+			lastupdated: `${new Date().toISOString().split('T')[0]}`,
 			classification: "C",
 			source: "1",
 			unavailable: false
@@ -628,7 +628,7 @@ export const mrSGFatherNormalChildrenOnly: FakeProfile = {
 			yearofassessment: {
 				value: "2019",
 			},
-			lastupdated: "2016-12-01",
+			lastupdated: `${new Date().toISOString().split('T')[0]}`,
 			classification: "C",
 			source: "1",
 			unavailable: false

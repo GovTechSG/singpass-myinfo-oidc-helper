@@ -335,7 +335,7 @@ describe("FakeMyInfoHelper", () => {
 						]);
 					});
 
-					it("should NO append to the exisiting cpfcontributions of archetype if cpfcontributions is empty", () => {
+					it("should NOT append to the exisiting cpfcontributions of archetype if cpfcontributions is empty", () => {
 						const fakeHelper = new FakeMyInfoHelper();
 
 						const cpfcontributions = [];
@@ -371,15 +371,22 @@ describe("FakeMyInfoHelper", () => {
 					expect(person.cpfbalances).toStrictEqual(transformItemsWithAdditionalMock(mockCpfBalances));
 				});
 
-				it("shouldnot update cpfBalances if cpfBalances is not passed through mock params", () => {
+				it("should not update cpfBalances if cpfBalances is not passed through mock params", () => {
 					const fakeHelper = new FakeMyInfoHelper();
+
+					const mockNoCpfBalances = {
+						ma:0,
+						oa:0,
+						sa:0,
+						ra:0
+					};
 
 					const person = fakeHelper.getPerson({
 						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
-						cpfbalances: mockCpfBalances,
+						cpfbalances: mockNoCpfBalances,
 					});
 
-					expect(person.cpfbalances).toStrictEqual(transformItemsWithAdditionalMock(mockCpfBalances));
+					expect(person.cpfbalances).toStrictEqual((mrSGDaddyPerfect.generate() as MyInfoComponents.Schemas.Person).cpfbalances);
 				});
 
 			});
@@ -387,7 +394,7 @@ describe("FakeMyInfoHelper", () => {
 			describe("noaBasic", () => {
 				const mockNoaBasic = {
 					amount: 123567.89,
-					yearofassessment: 2019,
+					yearofassessment: "2019",
 				};
 				it("should successfully update noa-basic based on mock params", () => {
 					const fakeHelper = new FakeMyInfoHelper();
@@ -400,11 +407,11 @@ describe("FakeMyInfoHelper", () => {
 					expect(person["noa-basic"]).toStrictEqual(transformItemsWithAdditionalMock(mockNoaBasic));
 				});
 
-				it("shouldn't update noa-basic if the mockparams contain 0", () => {
+				it("shouldn't update noa-basic if the mockparams values are empty or 0", () => {
 					const fakeHelper = new FakeMyInfoHelper();
 					const mockNoa = {
 						amount: 0,
-						yearofassessment: 0,
+						yearofassessment: "",
 					};
 
 					const person = fakeHelper.getPerson({
