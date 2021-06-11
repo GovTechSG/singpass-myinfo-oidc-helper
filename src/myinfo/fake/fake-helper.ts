@@ -654,7 +654,7 @@ export function transformItemsWithAdditionalMock(item: any, defaultMockParams: b
 	const defaultItems = {
 		source: "1",
 		classification: "C",
-		lastupdated: null,
+		lastupdated: `${new Date().getFullYear()}-01-01`,
 		unavailable: false,
 	};
 	return { ...transformedItems, ...defaultItems };
