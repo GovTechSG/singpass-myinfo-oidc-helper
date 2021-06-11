@@ -1,5 +1,9 @@
 # Changelogs
 
+## 5.1.14
+
+- Convert all the amounts to Number, while transforming CPF/Income data from mockParams
+
 ## 5.1.13
 
 - Add fake profile of Singapore citizen without address

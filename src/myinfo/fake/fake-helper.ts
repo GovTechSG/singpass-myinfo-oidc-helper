@@ -643,7 +643,7 @@ export function transformChildBirthRecord(childbirthrecord: ChildrenBirthRecord,
 
 export function transformItems(item: any) {
 	return Object.keys(item).reduce((objectKey, key) => {
-		objectKey[key] = { value: item[key] };
+		objectKey[key] = { value: key !== 'yearofassessment' && !isNaN(+item[key]) ? +item[key] : item[key]  };
 		return objectKey;
 	}, {});
 }
