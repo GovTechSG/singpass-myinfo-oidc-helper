@@ -80,59 +80,59 @@ Use `getPersonCommon` to get a fake MyInfo basic profile. Use `getPerson` if you
 
 ```ts
 getPersonCommon({
-	archetype: ProfileArchetype;
-	userdisplayname?: string;
-	marital?: MyinfoMaritialStatusCode;
-	marriagedate?: string;
-	divorcedate?: string;
-	marriagecertno?: string;
-	countryofmarriage?: MyinfoCountryCode;
-	childrenbirthrecords?: ChildrenBirthRecord[];
-	childrenoverridemode?: ChildrenOverrideMode;
-	residentialstatus?: MyinfoResidentialCode;
-	occupation?: MyinfoOccupationCode;
-	occupationfreeform?: string;
-	dob?: string;
-	gstvyear?: number;
-	gvs?: GVS;
-	merdekageneligible?: boolean;
-	merdekagenquantum?: number;
-	merdekagenmessagecode?: MyinfoMerdekaGenerationMessageCode;
-	hdbtype?: MyinfoHDBTypeCode;
-	housingtype?: MyinfoHousingTypeCode;
-	drivingqdlvalidity?: MyinfoDrivingLicenceValidityCode;
-	vehiclestatus?: MyinfoVehicleStatus;
-	employment?: string;
+  archetype: ProfileArchetype;
+  userdisplayname?: string;
+  marital?: MyinfoMaritialStatusCode;
+  marriagedate?: string;
+  divorcedate?: string;
+  marriagecertno?: string;
+  countryofmarriage?: MyinfoCountryCode;
+  childrenbirthrecords?: ChildrenBirthRecord[];
+  childrenoverridemode?: ChildrenOverrideMode;
+  residentialstatus?: MyinfoResidentialCode;
+  occupation?: MyinfoOccupationCode;
+  occupationfreeform?: string;
+  dob?: string;
+  gstvyear?: number;
+  gvs?: GVS;
+  merdekageneligible?: boolean;
+  merdekagenquantum?: number;
+  merdekagenmessagecode?: MyinfoMerdekaGenerationMessageCode;
+  hdbtype?: MyinfoHDBTypeCode;
+  housingtype?: MyinfoHousingTypeCode;
+  drivingqdlvalidity?: MyinfoDrivingLicenceValidityCode;
+  vehiclestatus?: MyinfoVehicleStatus;
+  employment?: string;
 }) => MyInfoComponents.Schemas.PersonCommon
 
 getPerson({
-	archetype: ProfileArchetype;
-	userdisplayname?: string;
-	marital?: MyinfoMaritialStatusCode;
-	marriagedate?: string;
-	divorcedate?: string;
-	marriagecertno?: string;
-	countryofmarriage?: MyinfoCountryCode;
-	childrenbirthrecords?: ChildrenBirthRecord[];
-	childrenoverridemode?: ChildrenOverrideMode;
-	residentialstatus?: MyinfoResidentialCode;
-	occupation?: MyinfoOccupationCode;
-	occupationfreeform?: string;
-	dob?: string;
-	gstvyear?: number;
-	gvs?: GVS;
-	merdekageneligible?: boolean;
-	merdekagenquantum?: number;
-	merdekagenmessagecode?: MyinfoMerdekaGenerationMessageCode;
-	hdbtype?: MyinfoHDBTypeCode;
-	housingtype?: MyinfoHousingTypeCode;
-	drivingqdlvalidity?: MyinfoDrivingLicenceValidityCode;
-	vehiclestatus?: MyinfoVehicleStatus;
-	employment?: string;
-	cpfcontributionhistoryoverridemode?: OverrideMode;
-	cpfcontributions?: CpfContributionHistory[];
-	cpfbalances?: CpfBalance;
-	noabasic?: NoaBasic;
+  archetype: ProfileArchetype;
+  userdisplayname?: string;
+  marital?: MyinfoMaritialStatusCode;
+  marriagedate?: string;
+  divorcedate?: string;
+  marriagecertno?: string;
+  countryofmarriage?: MyinfoCountryCode;
+  childrenbirthrecords?: ChildrenBirthRecord[];
+  childrenoverridemode?: ChildrenOverrideMode;
+  residentialstatus?: MyinfoResidentialCode;
+  occupation?: MyinfoOccupationCode;
+  occupationfreeform?: string;
+  dob?: string;
+  gstvyear?: number;
+  gvs?: GVS;
+  merdekageneligible?: boolean;
+  merdekagenquantum?: number;
+  merdekagenmessagecode?: MyinfoMerdekaGenerationMessageCode;
+  hdbtype?: MyinfoHDBTypeCode;
+  housingtype?: MyinfoHousingTypeCode;
+  drivingqdlvalidity?: MyinfoDrivingLicenceValidityCode;
+  vehiclestatus?: MyinfoVehicleStatus;
+  employment?: string;
+  cpfcontributionhistoryoverridemode?: OverrideMode;
+  cpfcontributions?: CpfContributionHistory[];
+  cpfbalances?: CpfBalance;
+  noabasic?: NoaBasic;
 }) => MyInfoComponents.Schemas.Person
 ```
 
@@ -185,8 +185,8 @@ Singpass.OidcHelper
 ## Updating Myinfo domains
 
 - Myinfo domains including `MyinfoComponents` and various enums are auto generated via `npm run generate-myinfo-typings '<swagger file>'`
-- Swagger file needs to be downloaded from https://api.singpass.gov.sg/developers
-- The script will also fetch and generate enums from https://api.singpass.gov.sg/assets/api-lib/myinfo/downloads/myinfo-api-code-tables.xlsx
+- Swagger file needs to be downloaded from <https://api.singpass.gov.sg/developers>
+- The script will also fetch and generate enums from <https://api.singpass.gov.sg/assets/api-lib/myinfo/downloads/myinfo-api-code-tables.xlsx>
 
 ### Folder / file structure of `src/myinfo/domain`
 
@@ -196,23 +196,23 @@ Singpass.OidcHelper
 | custom/person-common | Additional swagger definitions to go into the `PersonCommon` object                |
 | generated            | Auto generated enums from `generate-myinfo-typings` script, do not add files here! |
 
-### Help! The swagger file is missing `<insert data item name>`!
+### Help! The swagger file is missing `<insert data item name>`
 
 - Myinfo REST API does not publish every data item
 - You will need to manually add its OpenAPI specification it in `custom/person-common` then run `npm run generate-myinfo-typings '<swagger file>'`
 - An interface will be created and the corresponding data item will be added to the `PersonCommon` object
 
-### Help! `myinfo-api-code-tables.xlsx` is missing `<insert code name>`!
+### Help! `myinfo-api-code-tables.xlsx` is missing `<insert code name>`
 
 - `myinfo-api-code-tables.xlsx` lists general codes only
-- More detailed lists can be found at https://www.singstat.gov.sg/standards/standards-and-classifications
+- More detailed lists can be found at <https://www.singstat.gov.sg/standards/standards-and-classifications>
 - If the missing code list can be found in SingStat, update `generate-myinfo-typings` script to import accordingly
 - Otherwise
-  1.  Manually add the enum definition (json) to `custom/enums` folder
+  1. Manually add the enum definition (json) to `custom/enums` folder
       - _Hint: Refer to existing files for format_
-  2.  Run `npm run generate-myinfo-typings '<swagger file>'`
+  2. Run `npm run generate-myinfo-typings '<swagger file>'`
 
-### Help! `myinfo-api-code-tables.xlsx's <insert code name>` does not match the swagger definition!
+### Help! `myinfo-api-code-tables.xlsx's <insert code name>` does not match the swagger definition
 
 - Follow the solution above to add enum definition manually
 - That enum will overwrite the auto generated enum
