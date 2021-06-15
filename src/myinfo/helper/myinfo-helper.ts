@@ -99,8 +99,8 @@ export class MyInfoHelper implements IMyInfoHelper {
 		this.keyToDecryptJWE = props.keyToDecryptJWE;
 		this.certToVerifyJWS = props.certToVerifyJWS;
 		this.redirectUri = props.redirectUri;
-		this.authorizationUrl = this.getUrl(props.overridePersonUrl, AUTHORISE_BASE_URL, props.environment);
-		this.tokenUrl = this.getUrl(props.overridePersonUrl, TOKEN_BASE_URL, props.environment);
+		this.authorizationUrl = this.getUrl(props.overrideAuthorizationUrl, AUTHORISE_BASE_URL, props.environment);
+		this.tokenUrl = this.getUrl(props.overrideTokenUrl, TOKEN_BASE_URL, props.environment);
 		this.personUrl = this.getUrl(props.overridePersonUrl, PERSON_BASE_URL, props.environment);
 		this.personBasicUrl = this.getUrl(props.overridePersonBasicUrl, PERSON_BASIC_BASE_URL, props.environment);
 		this.profileStatusUrl = this.getUrl(props.overrideProfileStatusUrl, PROFILE_STATUS_BASE_URL, props.environment);
