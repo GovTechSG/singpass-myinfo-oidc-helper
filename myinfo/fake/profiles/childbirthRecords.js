@@ -1,0 +1,352 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ChildrenRecords = exports.preschoolIneligibleChild2 = exports.preschoolIneligibleChild1 = exports.preschoolEligibleChild2_K2 = exports.preschoolEligibleChild2_PG = exports.preschoolEligibleChild2_N2 = exports.preschoolEligibleChild2_K1 = exports.preschoolEligibleChild2_IC = exports.preschoolEligibleChild2_N1 = exports.preschoolEligibleChild_K2 = exports.preschoolEligibleChild_K1 = exports.preschoolEligibleChild_N1 = exports.preschoolEligibleChild_PG = exports.preschoolEligibleChild_N2 = exports.preschoolEligibleChild_IC = exports.formatDateToString = void 0;
+const moment = require("moment");
+const domain_1 = require("../../domain");
+const formatDateToString = (date) => {
+    if (date) {
+        return date.format("YYYY-MM-DD").toString();
+    }
+    return moment().format("YYYY-MM-DD").toString();
+};
+exports.formatDateToString = formatDateToString;
+exports.preschoolEligibleChild_IC = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T1289616B" },
+    name: { value: "Ezra Lee" },
+    dob: { value: exports.formatDateToString(moment().subtract(2, "months")) },
+    sex: { code: domain_1.MyInfoSexCode.FEMALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.FEMALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.ALIVE, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.ALIVE) },
+    unavailable: false,
+};
+exports.preschoolEligibleChild_N2 = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T6280507I" },
+    name: { value: "Elliot Lee" },
+    dob: { value: exports.formatDateToString(moment().subtract(4, "years")) },
+    sex: { code: domain_1.MyInfoSexCode.FEMALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.FEMALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.ALIVE, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.ALIVE) },
+    unavailable: false,
+};
+exports.preschoolEligibleChild_PG = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T0339876A" },
+    name: { value: "Ella Lee" },
+    dob: { value: exports.formatDateToString(moment().subtract(18, "months")) },
+    sex: { code: domain_1.MyInfoSexCode.FEMALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.FEMALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.ALIVE, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.ALIVE) },
+    unavailable: false,
+};
+exports.preschoolEligibleChild_N1 = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T8445267F" },
+    name: { value: "Ellie Lee" },
+    dob: { value: exports.formatDateToString(moment().subtract(3, "years")) },
+    sex: { code: domain_1.MyInfoSexCode.FEMALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.FEMALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.ALIVE, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.ALIVE) },
+    unavailable: false,
+};
+exports.preschoolEligibleChild_K1 = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T5007187H" },
+    name: { value: "Emma Lee" },
+    dob: { value: exports.formatDateToString(moment().subtract(5, "years")) },
+    sex: { code: domain_1.MyInfoSexCode.FEMALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.FEMALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.ALIVE, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.ALIVE) },
+    unavailable: false,
+};
+exports.preschoolEligibleChild_K2 = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T5728768Z" },
+    name: { value: "Kelly Lee" },
+    dob: { value: exports.formatDateToString(moment().subtract(6, "years")) },
+    sex: { code: domain_1.MyInfoSexCode.FEMALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.FEMALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.ALIVE, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.ALIVE) },
+    unavailable: false,
+};
+exports.preschoolEligibleChild2_N1 = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T1845922H" },
+    name: { value: "Kylie Lee" },
+    dob: { value: exports.formatDateToString(moment().subtract(3, "years")) },
+    sex: { code: domain_1.MyInfoSexCode.FEMALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.FEMALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.ALIVE, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.ALIVE) },
+    unavailable: false,
+};
+exports.preschoolEligibleChild2_IC = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T5876448A" },
+    name: { value: "Karol Lee" },
+    dob: { value: exports.formatDateToString(moment().subtract(6, "months")) },
+    sex: { code: domain_1.MyInfoSexCode.FEMALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.FEMALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.ALIVE, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.ALIVE) },
+    unavailable: false,
+};
+exports.preschoolEligibleChild2_K1 = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T6250249A" },
+    name: { value: "Kara Lee" },
+    dob: { value: exports.formatDateToString(moment().subtract(5, "years")) },
+    sex: { code: domain_1.MyInfoSexCode.FEMALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.FEMALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.ALIVE, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.ALIVE) },
+    unavailable: false,
+};
+exports.preschoolEligibleChild2_N2 = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T0900125A" },
+    name: { value: "Sara Lee" },
+    dob: { value: exports.formatDateToString(moment().subtract(4, "years")) },
+    sex: { code: domain_1.MyInfoSexCode.FEMALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.FEMALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.ALIVE, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.ALIVE) },
+    unavailable: false,
+};
+exports.preschoolEligibleChild2_PG = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T7439809F" },
+    name: { value: "Stella Lee" },
+    dob: { value: exports.formatDateToString(moment().subtract(22, "months")) },
+    sex: { code: domain_1.MyInfoSexCode.FEMALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.FEMALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.ALIVE, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.ALIVE) },
+    unavailable: false,
+};
+exports.preschoolEligibleChild2_K2 = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T0761852I" },
+    name: { value: "Sonia Lee" },
+    dob: { value: exports.formatDateToString(moment().subtract(9, "months")) },
+    sex: { code: domain_1.MyInfoSexCode.FEMALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.FEMALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.ALIVE, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.ALIVE) },
+    unavailable: false,
+};
+exports.preschoolIneligibleChild1 = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T1196564J" },
+    name: { value: "Emmy Lee" },
+    dob: { value: exports.formatDateToString(moment().subtract(8, "years")) },
+    sex: { code: domain_1.MyInfoSexCode.FEMALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.FEMALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.ALIVE, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.ALIVE) },
+    unavailable: false,
+};
+exports.preschoolIneligibleChild2 = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T6277712A" },
+    name: { value: "Emmanuel Lee" },
+    dob: { value: exports.formatDateToString(moment().subtract(7, "years")) },
+    sex: { code: domain_1.MyInfoSexCode.FEMALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.FEMALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.ALIVE, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.ALIVE) },
+    unavailable: false,
+};
+const childYoungest = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T5605719B" },
+    name: { value: "Youngest Tan Ke Xuan" },
+    dob: { value: exports.formatDateToString() },
+    sex: { code: domain_1.MyInfoSexCode.FEMALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.FEMALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.ALIVE, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.ALIVE) },
+    unavailable: false,
+};
+const child1MonthOld = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T5986916C" },
+    name: { value: "1 Month Tan Ke Yu" },
+    dob: { value: exports.formatDateToString(moment().subtract(1, "months")) },
+    sex: { code: domain_1.MyInfoSexCode.FEMALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.FEMALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.ALIVE, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.ALIVE) },
+    unavailable: false,
+};
+const child2MonthsOld = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T8546679D" },
+    name: { value: "2 Months Tan Keh Guan" },
+    dob: { value: exports.formatDateToString(moment().subtract(2, "months")) },
+    sex: { code: domain_1.MyInfoSexCode.MALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.MALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.ALIVE, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.ALIVE) },
+    unavailable: false,
+};
+const childMiddle1 = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T0593097E" },
+    name: { value: "Middle Tan Twin1" },
+    dob: { value: exports.formatDateToString(moment().subtract(2, "years")) },
+    sex: { code: domain_1.MyInfoSexCode.MALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.MALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.ALIVE, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.ALIVE) },
+    unavailable: false,
+};
+const childMiddle2 = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T3089523H" },
+    name: { value: "Middle Tan Twin2" },
+    dob: { value: exports.formatDateToString(moment().subtract(2, "years")) },
+    sex: { code: domain_1.MyInfoSexCode.MALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.MALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.ALIVE, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.ALIVE) },
+    unavailable: false,
+};
+const childMiddle3 = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T4957428I" },
+    name: { value: "Tan Boy" },
+    dob: { value: exports.formatDateToString(moment().subtract(3, "years")) },
+    sex: { code: domain_1.MyInfoSexCode.MALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.MALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.ALIVE, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.ALIVE) },
+    unavailable: false,
+};
+const childMiddle4 = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T9462242A" },
+    name: { value: "Tan Girl" },
+    dob: { value: exports.formatDateToString(moment().subtract(4, "years")) },
+    sex: { code: domain_1.MyInfoSexCode.FEMALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.FEMALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.ALIVE, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.ALIVE) },
+    unavailable: false,
+};
+const childMiddle5 = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T6236012C" },
+    name: { value: "Tan Girl Younger" },
+    dob: { value: exports.formatDateToString(moment().subtract(5, "years")) },
+    sex: { code: domain_1.MyInfoSexCode.FEMALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.FEMALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.ALIVE, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.ALIVE) },
+    unavailable: false,
+};
+const childSuperOld = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T3395465J" },
+    name: { value: "Super Old Tan Ke Wei" },
+    dob: { value: exports.formatDateToString(moment().subtract(8, "years")) },
+    sex: { code: domain_1.MyInfoSexCode.FEMALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.FEMALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.ALIVE, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.ALIVE) },
+    unavailable: false,
+};
+const child6YearsOld = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T0202564C" },
+    name: { value: "Turning 6 Tan Kid born Jan 1st" },
+    dob: { value: exports.formatDateToString(moment().subtract(6, "years").startOf("year")) },
+    sex: { code: domain_1.MyInfoSexCode.MALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.MALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.ALIVE, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.ALIVE) },
+    unavailable: false,
+};
+const child7YearsOld = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T2147034H" },
+    name: { value: "Turning 7 Tan Kid born Dec 31" },
+    dob: { value: exports.formatDateToString(moment().subtract(7, "years").endOf("year")) },
+    sex: { code: domain_1.MyInfoSexCode.MALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.MALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.ALIVE, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.ALIVE) },
+    unavailable: false,
+};
+const childDeceased1 = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T6247381E" },
+    name: { value: "Deceased child 1" },
+    dob: { value: exports.formatDateToString(moment().subtract(4, "years").endOf("year")) },
+    sex: { code: domain_1.MyInfoSexCode.MALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.MALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.DECEASED, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.DECEASED) },
+    unavailable: false,
+};
+const childDeceased2 = {
+    source: "1",
+    classification: "C",
+    lastupdated: exports.formatDateToString(),
+    birthcertno: { value: "T4650965F" },
+    name: { value: "Deceased child 2" },
+    dob: { value: exports.formatDateToString(moment().subtract(5, "years").endOf("year")) },
+    sex: { code: domain_1.MyInfoSexCode.FEMALE, desc: domain_1.MyInfoSexCode.fn.toEnumDesc(domain_1.MyInfoSexCode.FEMALE), },
+    tob: { value: "2200" },
+    lifestatus: { code: domain_1.MyInfoLifeStatusCode.DECEASED, desc: domain_1.MyInfoLifeStatusCode.fn.toEnumDesc(domain_1.MyInfoLifeStatusCode.DECEASED) },
+    unavailable: false,
+};
+exports.ChildrenRecords = {
+    childYoungest,
+    child1MonthOld,
+    child2MonthsOld,
+    childMiddle1,
+    childMiddle2,
+    childMiddle3,
+    childMiddle4,
+    childMiddle5,
+    childSuperOld,
+    child6YearsOld,
+    child7YearsOld,
+    childDeceased1,
+    childDeceased2,
+};
+//# sourceMappingURL=childbirthRecords.js.map
