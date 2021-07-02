@@ -84,20 +84,20 @@ describe("FakeMyInfoHelper", () => {
 			expect(person.occupation.desc).toEqual(null);
 		});
 
-		it("should save the occupation code if the user is FIN user", ()=>{
+		it("should save the occupation code if the user is non SC/PR(based on residential address) user", ()=>{
 			const fakeHelper = new FakeMyInfoHelper();
-			const person = fakeHelper.getPersonCommon({ archetype: ProfileArchetype.MR_MY_DADDY_PERFECT,residentialstatus: MyInfoResidentialCode.CITIZEN,occupation: MyInfoOccupationCode.LABORATORY_ATTENDANT });
+			const person = fakeHelper.getPersonCommon({ archetype: ProfileArchetype.MR_MY_DADDY_PERFECT,residentialstatus: MyInfoResidentialCode.ALIEN,occupation: MyInfoOccupationCode.LABORATORY_ATTENDANT });
 			expect(person).toHaveProperty("residentialstatus");
 			expect(person).toHaveProperty("occupation");
-			expect(person.occupation.code).toStrictEqual(MyInfoOccupationCode.LABORATORY_ATTENDANT);
-			expect(person.occupation.value).toEqual(null);
-			expect(person.occupation.desc).toStrictEqual(MyInfoOccupationCode.fn.toEnumDesc(MyInfoOccupationCode.LABORATORY_ATTENDANT));
+			expect(person.occupation.value).toStrictEqual(MyInfoOccupationCode.LABORATORY_ATTENDANT);
+			expect(person.occupation.code).toEqual(null);
+			expect(person.occupation.desc).toEqual(null);
 
 		});
 
-		it("should save the occupation code if the user is SC/PR user", ()=>{
+		it("should save the occupation code if the user is SC/PR(based on residential address) user", ()=>{
 			const fakeHelper = new FakeMyInfoHelper();
-			const person = fakeHelper.getPersonCommon({ archetype: ProfileArchetype.MR_MY_DADDY_PERFECT,residentialstatus: MyInfoResidentialCode.CITIZEN,occupation: MyInfoOccupationCode.LABORATORY_ATTENDANT });
+			const person = fakeHelper.getPersonCommon({ archetype: ProfileArchetype.MR_JAPANESE_ADDRESS_BLANK,residentialstatus: MyInfoResidentialCode.CITIZEN,occupation: MyInfoOccupationCode.LABORATORY_ATTENDANT });
 			expect(person).toHaveProperty("residentialstatus");
 			expect(person).toHaveProperty("occupation");
 			expect(person.occupation.code).toStrictEqual(MyInfoOccupationCode.LABORATORY_ATTENDANT);
