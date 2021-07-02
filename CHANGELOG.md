@@ -1,5 +1,9 @@
 # Changelogs
 
+## 5.1.21
+
+- Update occupation logic in fake helper
+
 ## 5.1.18
 
 - Don't add the field in transformed mockParams when value is not specified

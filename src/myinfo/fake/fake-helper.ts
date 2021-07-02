@@ -174,9 +174,17 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		}
 
 		if (!isEmpty(mockParams.occupation)) {
-			myinfoPerson.occupation.code = mockParams.occupation;
-			myinfoPerson.occupation.desc = MyInfoOccupationCode.fn.toEnumDesc(mockParams.occupation);
-			myinfoPerson.occupation.value = null;
+			// if fin user then just change the value and not the code and desc
+			if(!this.checkIsSingaporeanOrPr(myinfoPerson.residentialstatus.code)){
+				myinfoPerson.occupation.code = null;
+				myinfoPerson.occupation.desc = null;
+				myinfoPerson.occupation.value = mockParams.occupation;
+			}
+			else{
+				myinfoPerson.occupation.code = mockParams.occupation;
+				myinfoPerson.occupation.desc = MyInfoOccupationCode.fn.toEnumDesc(mockParams.occupation);
+				myinfoPerson.occupation.value = null;
+			}
 		} else {
 			if (!isEmpty(mockParams.occupationfreeform)) {
 				myinfoPerson.occupation.value = mockParams.occupationfreeform;
@@ -515,6 +523,12 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		}
 		return myinfoPerson;
 
+	}
+
+	private checkIsSingaporeanOrPr(residentialStatusValue: string): boolean {
+		return (
+			residentialStatusValue === MyInfoResidentialCode.CITIZEN || residentialStatusValue === MyInfoResidentialCode.PR
+		);
 	}
 }
 

@@ -1,4 +1,4 @@
-import { MyInfoComponents, MyInfoLifeStatusCode, MyInfoSexCode } from "../../domain";
+import { MyInfoComponents, MyInfoLifeStatusCode, MyInfoOccupationCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
 import { ChildrenBirthRecord, CpfContributionHistory, FakeMyInfoHelper, OverrideMode, transformChildBirthRecord, transformItems, transformItemsWithAdditionalMock } from "../fake-helper";
 import { ProfileArchetype } from "../profiles/fake-profile";
 import { mrSGFatherNormalChildrenOnly } from "../profiles/sponsored-children/mrSGFatherNormalChildrenOnly";
@@ -6,6 +6,7 @@ import { mrSGDaddyPerfect } from "../profiles/mrSGDaddyPerfect";
 
 // tslint:disable-next-line: no-big-function
 describe("FakeMyInfoHelper", () => {
+	// tslint:disable-next-line: no-big-function
 	describe("getPersonCommon", () => {
 		it("should successfully get based on archetype", () => {
 			const fakeHelper = new FakeMyInfoHelper();
@@ -71,6 +72,38 @@ describe("FakeMyInfoHelper", () => {
 			expect(person).toHaveProperty("vehicles");
 			expect(person).toHaveProperty("drivinglicence.pdl.validity");
 			expect(person).toHaveProperty("drivinglicence.lastupdated");
+		});
+
+		it("should save the occupation value if the user passes occupationFreeForm mock params", ()=>{
+			const fakeHelper = new FakeMyInfoHelper();
+			const person = fakeHelper.getPersonCommon({ archetype: ProfileArchetype.MR_JAPANESE_ADDRESS_BLANK,occupationfreeform: "Software Engineer"  });
+			expect(person).toHaveProperty("residentialstatus");
+			expect(person).toHaveProperty("occupation");
+			expect(person.occupation.value).toStrictEqual("Software Engineer");
+			expect(person.occupation.code).toEqual(null);
+			expect(person.occupation.desc).toEqual(null);
+		});
+
+		it("should save the occupation code if the user is FIN user", ()=>{
+			const fakeHelper = new FakeMyInfoHelper();
+			const person = fakeHelper.getPersonCommon({ archetype: ProfileArchetype.MR_MY_DADDY_PERFECT,residentialstatus: MyInfoResidentialCode.CITIZEN,occupation: MyInfoOccupationCode.LABORATORY_ATTENDANT });
+			expect(person).toHaveProperty("residentialstatus");
+			expect(person).toHaveProperty("occupation");
+			expect(person.occupation.code).toStrictEqual(MyInfoOccupationCode.LABORATORY_ATTENDANT);
+			expect(person.occupation.value).toEqual(null);
+			expect(person.occupation.desc).toStrictEqual(MyInfoOccupationCode.fn.toEnumDesc(MyInfoOccupationCode.LABORATORY_ATTENDANT));
+
+		});
+
+		it("should save the occupation code if the user is SC/PR user", ()=>{
+			const fakeHelper = new FakeMyInfoHelper();
+			const person = fakeHelper.getPersonCommon({ archetype: ProfileArchetype.MR_MY_DADDY_PERFECT,residentialstatus: MyInfoResidentialCode.CITIZEN,occupation: MyInfoOccupationCode.LABORATORY_ATTENDANT });
+			expect(person).toHaveProperty("residentialstatus");
+			expect(person).toHaveProperty("occupation");
+			expect(person.occupation.code).toStrictEqual(MyInfoOccupationCode.LABORATORY_ATTENDANT);
+			expect(person.occupation.value).toEqual(null);
+			expect(person.occupation.desc).toStrictEqual(MyInfoOccupationCode.fn.toEnumDesc(MyInfoOccupationCode.LABORATORY_ATTENDANT));
+
 		});
 
 		describe("childrenbirthrecords", () => {
