@@ -1,5 +1,9 @@
 # Changelogs
 
+## 5.2.0
+
+- Fixed logging to ensure that uinfin is never logged even for errors
+
 ## 5.1.21
 
 - Update occupation logic in fake helper

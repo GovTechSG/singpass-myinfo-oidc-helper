@@ -1,9 +1,9 @@
-import * as nonceFactory from "nonce";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
-import { SigningUtil } from "../../util";
-import { createClient } from "../../client";
+import * as nonceFactory from "nonce";
 import * as querystringUtil from "querystring";
 import { URLSearchParams } from "url";
+import { createClient } from "../../client/axios-client";
+import { SigningUtil } from "../../util";
 
 export interface MyInfoRequestConstructor {
 	appId: string;

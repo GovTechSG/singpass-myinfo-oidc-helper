@@ -1,34 +1,11 @@
-export const redactNricfinInString = (input: string): string => {
-	const indexOfNric = getIndexOfNricInString(input);
-	if (indexOfNric !== -1) {
-		const nric = input.substr(indexOfNric, 9);
-		const redactedNric = redactNricfin(nric);
+import * as _ from "lodash";
 
-		return input.replace(nric, redactedNric);
+export const redactUinfin = (input: string): string => {
+	if (_.isNil(input) || !_.isString(input)) {
+		return input;
 	}
 
-	return input;
+	return input.replace(/[STFG]\d{7}[A-Z]/gi, (value) => {
+		return `${value.substr(0, 1)}***${value.substr(4)}`;
+	});
 };
-
-export const redactNricfin = (nricfin: string): string => {
-	if (nricfin && isValidNricfin(nricfin)) {
-		const firstThreeDigits = nricfin.substring(1, 4);
-		return nricfin.replace(firstThreeDigits, "***");
-	}
-
-	return nricfin;
-};
-
-const isValidNricfin = (value) => {
-	const result = /[STFG]\d{7}[A-Z]/i.exec(value);
-	return result;
-};
-
-const getIndexOfNricInString = (value): number => {
-	const result = /[STFG]\d{7}[A-Z]/i.exec(value);
-	if (!!result) {
-		return result.index;
-	}
-	return -1;
-};
-

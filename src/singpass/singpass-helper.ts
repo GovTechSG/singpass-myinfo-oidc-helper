@@ -1,8 +1,8 @@
 import { AxiosInstance, AxiosRequestConfig } from "axios";
-import * as querystringUtil from "querystring";
-import { createClient } from "../client";
-import { JweUtil, Logger } from "../util";
 import { isNil } from "lodash";
+import * as querystringUtil from "querystring";
+import { createClient } from "../client/axios-client";
+import { JweUtil, Logger } from "../util";
 import { SingpassMyInfoError } from "../util/error/SingpassMyinfoError";
 
 export enum SessionRefreshResult {

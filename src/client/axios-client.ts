@@ -1,6 +1,7 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import * as _ from "lodash";
 import * as ProxyAgent from "proxy-agent";
-import { redactNricfinInString } from "../util/RedactorUtil";
+import { redactUinfin } from "../util/RedactorUtil";
 
 export const createClient = (requestConfig: AxiosRequestConfig = {}): AxiosInstance => {
 	// Note: Due to axios not being able to automatically pick up proxy env vars, we have to manually define a custom proxy agent
@@ -32,11 +33,17 @@ const getProxyConfig = (): string => {
 const addRequestLogs = (instance: AxiosInstance) => {
 	instance.interceptors.request.use((request) => {
 		if (!!request) {
-			log(`Requesting ${request.method} : ${redactNricfinInString(request.url)}`);
+			log("Requesting", {
+				method: request.method,
+				url: redactUinfin(request.url)
+			});
 		}
 		return request;
 	}, (error) => {
-		log(`Error occurred while making a request ${error.message}`, error);
+		log(`Error occurred while making a request`, {
+			name: error?.name,
+			message: redactUinfin(error?.message)
+		});
 		return Promise.reject(error);
 	});
 };
@@ -44,15 +51,26 @@ const addRequestLogs = (instance: AxiosInstance) => {
 const addResponseLogs = (instance: AxiosInstance) => {
 	instance.interceptors.response.use((response) => {
 		if (!!response) {
-			log(`Responded ${response.config.method}  : ${redactNricfinInString(response.config.url)}`);
+			log(`Responded`, {
+				method: response.config.method,
+				url: redactUinfin(response.config.url)
+			});
 		}
 		return response;
 	}, (error) => {
-		if (!!error.response) {
-			log(`Error occurred while responding to request ${error.response.config.method} :
-			${redactNricfinInString(error.response.config.url)}`, error);
+		const response: AxiosResponse = error?.response;
+		if (!!response) {
+			log(`Error occurred while responding to request`, {
+				method: response.config.method,
+				url: redactUinfin(response.config.url),
+				status: response.status,
+				message: redactUinfin(response.data),
+			});
 		} else {
-			log(`Error occurred while responding to request`, error);
+			log(`Error occurred while responding to request`, {
+				name: error?.name,
+				message: redactUinfin(error?.message)
+			});
 		}
 		return Promise.reject(error);
 	});
@@ -60,5 +78,5 @@ const addResponseLogs = (instance: AxiosInstance) => {
 
 const log = (message?: any, ...optionalParams: any[]) => {
 	// tslint:disable-next-line:no-console
-	console.log(message, optionalParams);
+	console.log(message, ...optionalParams);
 };
