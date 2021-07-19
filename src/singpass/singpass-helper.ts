@@ -2,8 +2,9 @@ import { AxiosInstance, AxiosRequestConfig } from "axios";
 import { isNil } from "lodash";
 import * as querystringUtil from "querystring";
 import { createClient } from "../client/axios-client";
-import { JweUtil, Logger } from "../util";
+import { JweUtil } from "../util";
 import { SingpassMyInfoError } from "../util/error/SingpassMyinfoError";
+import { logger } from "../util/Logger";
 
 export enum SessionRefreshResult {
 	SUCCESS = "SUCCESS",
@@ -114,7 +115,7 @@ export class OidcHelper {
 		};
 		const response = await this.axiosClient.post(this.tokenUrl, body, config);
 		if (!response.data.id_token) {
-			Logger.error("Failed to get ID token: invalid response data", response.data);
+			logger.error("Failed to get ID token: invalid response data", response.data);
 			throw new SingpassMyInfoError("Failed to get ID token");
 		}
 		return response.data;
@@ -140,7 +141,7 @@ export class OidcHelper {
 		};
 		const response = await this.axiosClient.post(this.tokenUrl, body, config);
 		if (!response.data.id_token) {
-			Logger.error("Failed to get ID token: invalid response data", response.data);
+			logger.error("Failed to get ID token: invalid response data", response.data);
 			throw new SingpassMyInfoError("Failed to get ID token");
 		}
 		return response.data;
@@ -159,7 +160,7 @@ export class OidcHelper {
 			const verifiedJws = await JweUtil.verifyJWS(jwsPayload, this.jwsVerifyKey);
 			return JSON.parse(verifiedJws.payload.toString()) as TokenPayload;
 		} catch (e) {
-			Logger.error("Failed to get token payload", e);
+			logger.error("Failed to get token payload", e);
 			throw e;
 		}
 	}
@@ -207,12 +208,12 @@ export class OidcHelper {
 		try {
 			const result = await this.axiosClient.get(authorizationUrl, requestConfig);
 			if (result.headers.location?.includes("saml.singpass.gov.sg")) {
-				Logger.warn(`Attempted to refresh session with invalid session ID`);
+				logger.warn(`Attempted to refresh session with invalid session ID`);
 				return SessionRefreshResult.INVALID_SESSION_ID;
 			}
 			return SessionRefreshResult.SUCCESS;
 		} catch (e) {
-			Logger.warn(`Singpass Error while attempting to refresh session for sessionId \nError:`, e);
+			logger.warn(`Singpass Error while attempting to refresh session for sessionId \nError:`, e);
 			return SessionRefreshResult.SINGPASS_ERROR;
 		}
 	}
@@ -234,7 +235,7 @@ export class OidcHelper {
 			await this.axiosClient.get(this.logoutUrl, requestConfig);
 			return SessionLogoutResult.SUCCESS;
 		} catch (e) {
-			Logger.warn("Singpass Error while attempting to logout of Singpass session", e);
+			logger.warn("Singpass Error while attempting to logout of Singpass session", e);
 			return SessionLogoutResult.SINGPASS_ERROR;
 		}
 	}

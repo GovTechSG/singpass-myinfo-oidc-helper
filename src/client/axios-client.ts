@@ -1,6 +1,6 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
-import * as _ from "lodash";
+import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 import * as ProxyAgent from "proxy-agent";
+import { logger } from "../util/Logger";
 import { redactUinfin } from "../util/RedactorUtil";
 
 export const createClient = (requestConfig: AxiosRequestConfig = {}): AxiosInstance => {
@@ -33,17 +33,14 @@ const getProxyConfig = (): string => {
 const addRequestLogs = (instance: AxiosInstance) => {
 	instance.interceptors.request.use((request) => {
 		if (!!request) {
-			log("Requesting", {
+			logger.log("Requesting", {
 				method: request.method,
 				url: redactUinfin(request.url)
 			});
 		}
 		return request;
 	}, (error) => {
-		log(`Error occurred while making a request`, {
-			name: error?.name,
-			message: redactUinfin(error?.message)
-		});
+		logger.log(`Error occurred while making a request`, error);
 		return Promise.reject(error);
 	});
 };
@@ -51,32 +48,14 @@ const addRequestLogs = (instance: AxiosInstance) => {
 const addResponseLogs = (instance: AxiosInstance) => {
 	instance.interceptors.response.use((response) => {
 		if (!!response) {
-			log(`Responded`, {
+			logger.log(`Responded`, {
 				method: response.config.method,
 				url: redactUinfin(response.config.url)
 			});
 		}
 		return response;
 	}, (error) => {
-		const response: AxiosResponse = error?.response;
-		if (!!response) {
-			log(`Error occurred while responding to request`, {
-				method: response.config.method,
-				url: redactUinfin(response.config.url),
-				status: response.status,
-				message: redactUinfin(response.data),
-			});
-		} else {
-			log(`Error occurred while responding to request`, {
-				name: error?.name,
-				message: redactUinfin(error?.message)
-			});
-		}
+		logger.log(`Error occurred while responding to request`, error);
 		return Promise.reject(error);
 	});
-};
-
-const log = (message?: any, ...optionalParams: any[]) => {
-	// tslint:disable-next-line:no-console
-	console.log(message, ...optionalParams);
 };

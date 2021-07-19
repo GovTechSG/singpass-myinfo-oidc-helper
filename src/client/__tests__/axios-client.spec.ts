@@ -5,6 +5,8 @@ import * as http from "http";
 // tslint:disable: no-console
 
 describe("Axios Client", () => {
+	let consoleLogSpy: jest.SpyInstance;
+
 	beforeAll(() => {
 		nock.disableNetConnect();
 	});
@@ -14,7 +16,7 @@ describe("Axios Client", () => {
 			nock.activate();
 		}
 
-		jest.spyOn(console, "log");
+		consoleLogSpy = jest.spyOn(console, "log");
 	});
 
 	afterEach(() => {
@@ -53,9 +55,9 @@ describe("Axios Client", () => {
 
 		expect(response.status).toEqual(200);
 		expect(response.data).toEqual(reponseData);
-		expect(console.log).toHaveBeenCalledTimes(2);
-		expect(console.log).toHaveBeenNthCalledWith(1, "Requesting", { method: "get", url: "S***1111D" });
-		expect(console.log).toHaveBeenNthCalledWith(2, "Responded", { method: "get", url: "S***1111D" });
+		expect(consoleLogSpy).toHaveBeenCalledTimes(2);
+		expect(consoleLogSpy).toHaveBeenNthCalledWith(1, "Requesting", { method: "get", url: "S***1111D" });
+		expect(consoleLogSpy).toHaveBeenNthCalledWith(2, "Responded", { method: "get", url: "S***1111D" });
 	});
 
 	it("should not log any uinfin when making a request with failure response", async () => {
@@ -78,13 +80,13 @@ describe("Axios Client", () => {
 		} catch (error) {
 			expect(error.response.status).toEqual(400);
 			expect(error.response.data).toEqual(reponseData);
-			expect(console.log).toHaveBeenCalledTimes(2);
-			expect(console.log).toHaveBeenNthCalledWith(1, "Requesting", { method: "get", url: "S***1111D" });
-			expect(console.log).toHaveBeenNthCalledWith(2, "Error occurred while responding to request", {
+			expect(consoleLogSpy).toHaveBeenCalledTimes(2);
+			expect(consoleLogSpy).toHaveBeenNthCalledWith(1, "Requesting", { method: "get", url: "S***1111D" });
+			expect(consoleLogSpy).toHaveBeenNthCalledWith(2, "Error occurred while responding to request", {
 				method: 'get',
 				url: 'S***1111D',
 				status: 400,
-				message: 'something S***1111D something'
+				data: 'something S***1111D something'
 			});
 		}
 	});
@@ -105,15 +107,19 @@ describe("Axios Client", () => {
 			});
 			fail("Should not reach here");
 		} catch (error) {
-			expect(console.log).toHaveBeenCalledTimes(2);
-			expect(console.log).toHaveBeenNthCalledWith(1, "Error occurred while making a request", {
+			expect(consoleLogSpy).toHaveBeenCalledTimes(2);
+			expect(consoleLogSpy).toHaveBeenNthCalledWith(1, "Error occurred while making a request", {
 				name: "Error",
 				message: `something S***1111D something`,
+				stack: expect.any(String),
 			});
-			expect(console.log).toHaveBeenNthCalledWith(2, "Error occurred while responding to request", {
+			expect(consoleLogSpy.mock.calls[0][1].stack).not.toContain(uinfin);
+			expect(consoleLogSpy).toHaveBeenNthCalledWith(2, "Error occurred while responding to request", {
 				name: "Error",
 				message: `something S***1111D something`,
+				stack: expect.any(String),
 			});
+			expect(consoleLogSpy.mock.calls[1][1].stack).not.toContain(uinfin);
 		}
 	});
 
@@ -133,12 +139,14 @@ describe("Axios Client", () => {
 			});
 			fail("Should not reach here");
 		} catch (error) {
-			expect(console.log).toHaveBeenCalledTimes(2);
-			expect(console.log).toHaveBeenNthCalledWith(1, "Requesting", { method: "get", url: "S***1111D" });
-			expect(console.log).toHaveBeenNthCalledWith(2, "Error occurred while responding to request", {
+			expect(consoleLogSpy).toHaveBeenCalledTimes(2);
+			expect(consoleLogSpy).toHaveBeenNthCalledWith(1, "Requesting", { method: "get", url: "S***1111D" });
+			expect(consoleLogSpy).toHaveBeenNthCalledWith(2, "Error occurred while responding to request", {
 				name: "Error",
 				message: `something S***1111D something`,
+				stack: expect.any(String),
 			});
+			expect(consoleLogSpy.mock.calls[1][1].stack).not.toContain(uinfin);
 		}
 	});
 });

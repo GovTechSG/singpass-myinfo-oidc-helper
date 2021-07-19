@@ -1,11 +1,12 @@
-import * as _ from "lodash";
 import { AxiosResponse } from "axios";
-import { JweUtil, Logger } from "../../util";
+import * as _ from "lodash";
+import * as querystringUtil from "querystring";
+import { JweUtil } from "../../util";
 import { SingpassMyInfoError } from "../../util/error/SingpassMyinfoError";
+import { logger } from "../../util/Logger";
 import { MyInfoComponents } from "../domain";
 import { ProfileStatus } from "../domain/profilestatus-domain";
 import { MyInfoRequest, MyInfoRequestConstructor } from "./myinfo-request";
-import * as querystringUtil from "querystring";
 
 export type EnvType = "test" | "sandbox" | "prod";
 
@@ -156,7 +157,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 		try {
 			response = await this.myInfoRequest.post(this.tokenUrl, params);
 		} catch (error) {
-			Logger.error("Failed to get token from Myinfo", error);
+			logger.error("Failed to get token from Myinfo", error);
 			throw error;
 		}
 
@@ -181,7 +182,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 		try {
 			response = await this.myInfoRequest.get(url, params);
 		} catch (error) {
-			Logger.error("Error requesting for person-common data (JWE) from Myinfo", error);
+			logger.error("Error requesting for person-common data (JWE) from Myinfo", error);
 			throw error;
 		}
 
@@ -199,7 +200,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 
 			return personData;
 		} catch (error) {
-			Logger.error("Error verifying person-common data from Myinfo", error);
+			logger.error("Error verifying person-common data from Myinfo", error);
 			throw error;
 		}
 	};
@@ -225,7 +226,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 		try {
 			response = await this.myInfoRequest.get(url, params, accessToken);
 		} catch (error) {
-			Logger.error("Error requesting for person data from Myinfo", error);
+			logger.error("Error requesting for person data from Myinfo", error);
 			throw error;
 		}
 
@@ -243,7 +244,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 
 			return personData;
 		} catch (error) {
-			Logger.error("Error verifying person data from Myinfo", error);
+			logger.error("Error verifying person data from Myinfo", error);
 			throw error;
 		}
 	};
@@ -282,7 +283,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 
 			return payload;
 		} catch (error) {
-			Logger.error("Error verifying token from Myinfo", error);
+			logger.error("Error verifying token from Myinfo", error);
 			throw error;
 		}
 	}
