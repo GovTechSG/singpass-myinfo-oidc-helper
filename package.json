@@ -22,7 +22,7 @@
 		]
 	},
 	"dependencies": {
-		"axios": "^0.21.1",
+		"axios": "^0.21.3",
 		"https-proxy-agent": "^5.0.0",
 		"is-base64": "^1.1.0",
 		"js-joda": "^1.11.0",
