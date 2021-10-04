@@ -1,5 +1,13 @@
 # Changelogs
 
+## 5.2.2
+
+- merge PRs for security fixes
+
+## 5.2.1
+
+- redacting sensitive values in error logs
+
 ## 5.2.0
 
 - Fixed logging to ensure that uinfin is never logged even for errors
