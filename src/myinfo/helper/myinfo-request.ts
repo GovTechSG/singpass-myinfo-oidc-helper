@@ -31,11 +31,11 @@ export class MyInfoRequest {
 		this.privateKeyPassword = props.privateKeyPassword;
 	}
 
-	public async get(
+	public async get<T>(
 		uri: string,
 		queryParams?: { [key: string]: any },
 		accessToken?: string,
-	): Promise<AxiosResponse> {
+	): Promise<AxiosResponse<T>> {
 		const cacheControl = "no-cache";
 		const headers = querystringUtil.parse(`Cache-Control=${cacheControl}`);
 
@@ -61,14 +61,14 @@ export class MyInfoRequest {
 				Authorization: accessToken ? `${authHeader},Bearer ${accessToken}` : authHeader,
 			},
 		};
-		const response = await this.axiosClient.get(uri, requestConfig);
+		const response = await this.axiosClient.get<T>(uri, requestConfig);
 		return response;
 	}
 
-	public async post(
+	public async post<T>(
 		uri: string,
 		params: { [key: string]: any }
-	): Promise<AxiosResponse> {
+	): Promise<AxiosResponse<T>> {
 		const cacheControl = "no-cache";
 		const contentType = "application/x-www-form-urlencoded";
 		const headers = querystringUtil.parse(`Content-Type=${contentType}&Cache-Control=${cacheControl}`);
@@ -96,7 +96,7 @@ export class MyInfoRequest {
 
 		const urlSeachParams = new URLSearchParams(params);
 
-		const response = await this.axiosClient.post(uri, urlSeachParams.toString(), requestConfig);
+		const response = await this.axiosClient.post<T>(uri, urlSeachParams.toString(), requestConfig);
 		return response;
 	}
 }

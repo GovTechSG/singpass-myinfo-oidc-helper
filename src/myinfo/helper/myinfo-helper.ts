@@ -178,7 +178,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 			attributes: attributes.toString(),
 		};
 
-		let response: AxiosResponse;
+		let response: AxiosResponse<string>;
 		try {
 			response = await this.myInfoRequest.get(url, params);
 		} catch (error) {
@@ -222,7 +222,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 			attributes: attributes.toString(),
 		};
 
-		let response: AxiosResponse;
+		let response: AxiosResponse<string>;
 		try {
 			response = await this.myInfoRequest.get(url, params, accessToken);
 		} catch (error) {
@@ -256,7 +256,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 	 */
 	public getProfileStatus = async (uinfin: string): Promise<ProfileStatus> => {
 		const url = `${this.profileStatusUrl}/${uinfin}`;
-		const response = await this.myInfoRequest.get(url);
+		const response = await this.myInfoRequest.get<{statusCode: number, msg: string}>(url);
 
 		if (!!response.data.msg && typeof response.data.msg === "string") {
 			return JSON.parse(response.data.msg);

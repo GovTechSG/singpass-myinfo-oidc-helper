@@ -19,7 +19,7 @@ export function redactError(param: any) {
 	// Axios error
 	const axiosError: AxiosError = param;
 	if (!!axiosError?.isAxiosError && !!axiosError?.response) {
-		const response: AxiosResponse = param?.response;
+		const response: AxiosResponse<string> = param?.response;
 		return {
 			method: response.config.method,
 			url: redactUinfin(response.config.url),

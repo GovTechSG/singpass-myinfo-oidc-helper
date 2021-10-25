@@ -113,7 +113,7 @@ export class OidcHelper {
 			headers: { "content-type": "application/x-www-form-urlencoded" },
 			...axiosRequestConfig,
 		};
-		const response = await this.axiosClient.post(this.tokenUrl, body, config);
+		const response = await this.axiosClient.post<TokenResponse>(this.tokenUrl, body, config);
 		if (!response.data.id_token) {
 			logger.error("Failed to get ID token: invalid response data", response.data);
 			throw new SingpassMyInfoError("Failed to get ID token");
@@ -139,7 +139,7 @@ export class OidcHelper {
 			headers: { "content-type": "application/x-www-form-urlencoded" },
 			...axiosRequestConfig,
 		};
-		const response = await this.axiosClient.post(this.tokenUrl, body, config);
+		const response = await this.axiosClient.post<TokenResponse>(this.tokenUrl, body, config);
 		if (!response.data.id_token) {
 			logger.error("Failed to get ID token: invalid response data", response.data);
 			throw new SingpassMyInfoError("Failed to get ID token");
