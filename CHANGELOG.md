@@ -1,5 +1,9 @@
 # Changelogs
 
+## 5.2.3
+
+- Update axios to 0.23.0
+
 ## 5.2.2
 
 - merge PRs for security fixes
