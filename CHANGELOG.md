@@ -1,5 +1,9 @@
 # Changelogs
 
+## 5.2.4
+
+- Update axios to 0.24.0
+
 ## 5.2.3
 
 - Update axios to 0.23.0
