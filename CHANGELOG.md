@@ -1,5 +1,9 @@
 # Changelogs
 
+## 5.2.5
+
+- Added 3 optional keys to MyInfoHelper: proxyTokenUrl, proxyPersonUrl, proxyPersonBasicUrl to support proxying MyInfo calls without affecting signature generation
+
 ## 5.2.4
 
 - Update axios to 0.24.0

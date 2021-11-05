@@ -35,6 +35,7 @@ export class MyInfoRequest {
 		uri: string,
 		queryParams?: { [key: string]: any },
 		accessToken?: string,
+		proxyUrl?: string
 	): Promise<AxiosResponse<T>> {
 		const cacheControl = "no-cache";
 		const headers = querystringUtil.parse(`Cache-Control=${cacheControl}`);
@@ -61,13 +62,15 @@ export class MyInfoRequest {
 				Authorization: accessToken ? `${authHeader},Bearer ${accessToken}` : authHeader,
 			},
 		};
-		const response = await this.axiosClient.get<T>(uri, requestConfig);
+		const url = proxyUrl || uri;
+		const response = await this.axiosClient.get<T>(url, requestConfig);
 		return response;
 	}
 
 	public async post<T>(
 		uri: string,
-		params: { [key: string]: any }
+		params: { [key: string]: any },
+		proxyUrl?: string
 	): Promise<AxiosResponse<T>> {
 		const cacheControl = "no-cache";
 		const contentType = "application/x-www-form-urlencoded";
@@ -95,8 +98,9 @@ export class MyInfoRequest {
 		};
 
 		const urlSeachParams = new URLSearchParams(params);
+		const url = proxyUrl || uri;
 
-		const response = await this.axiosClient.post<T>(uri, urlSeachParams.toString(), requestConfig);
+		const response = await this.axiosClient.post<T>(url, urlSeachParams.toString(), requestConfig);
 		return response;
 	}
 }

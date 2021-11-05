@@ -43,6 +43,9 @@ export interface MyInfoHelperConstructor {
 	overridePersonUrl?: string;
 	overridePersonBasicUrl?: string;
 	overrideProfileStatusUrl?: string;
+	proxyTokenUrl?: string;
+	proxyPersonUrl?: string;
+	proxyPersonBasicUrl?: string;
 }
 
 export interface TokenResponse {
@@ -90,6 +93,9 @@ export class MyInfoHelper implements IMyInfoHelper {
 	private readonly personUrl: string;
 	private readonly personBasicUrl: string;
 	private readonly profileStatusUrl: string;
+	private readonly proxyTokenUrl: string;
+	private readonly proxyPersonUrl: string;
+	private readonly proxyPersonBasicUrl: string;
 
 	private readonly redirectUri: string;
 
@@ -105,6 +111,9 @@ export class MyInfoHelper implements IMyInfoHelper {
 		this.personUrl = this.getUrl(props.overridePersonUrl, PERSON_BASE_URL, props.environment);
 		this.personBasicUrl = this.getUrl(props.overridePersonBasicUrl, PERSON_BASIC_BASE_URL, props.environment);
 		this.profileStatusUrl = this.getUrl(props.overrideProfileStatusUrl, PROFILE_STATUS_BASE_URL, props.environment);
+		this.proxyTokenUrl = props.proxyTokenUrl;
+		this.proxyPersonUrl = props.proxyPersonUrl;
+		this.proxyPersonBasicUrl = props.proxyPersonBasicUrl;
 
 		const requestProps: MyInfoRequestConstructor = {
 			appId: props.clientID,
@@ -155,7 +164,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 
 		let response: AxiosResponse<TokenResponse>;
 		try {
-			response = await this.myInfoRequest.post(this.tokenUrl, params);
+			response = await this.myInfoRequest.post(this.tokenUrl, params, this.proxyTokenUrl);
 		} catch (error) {
 			logger.error("Failed to get token from Myinfo", error);
 			throw error;
@@ -172,6 +181,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 	 */
 	public getPersonCommon = async<K extends keyof MyInfoComponents.Schemas.PersonCommon>(uinfin: string, attributes: string[]): Promise<Pick<MyInfoComponents.Schemas.PersonCommon, K>> => {
 		const url = `${this.personBasicUrl}/${uinfin}`;
+		const proxyUrl = `${this.proxyPersonBasicUrl}/${uinfin}`;
 		const params = {
 			client_id: this.clientID,
 			sp_esvcId: this.singpassEserviceID,
@@ -180,7 +190,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 
 		let response: AxiosResponse<string>;
 		try {
-			response = await this.myInfoRequest.get(url, params);
+			response = await this.myInfoRequest.get(url, params, null, proxyUrl);
 		} catch (error) {
 			logger.error("Error requesting for person-common data (JWE) from Myinfo", error);
 			throw error;
@@ -216,6 +226,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 		const uinfin = await this.extractUinfinFromAccessToken(accessToken);
 
 		const url = `${this.personUrl}/${uinfin}/`;
+		const proxyUrl = `${this.proxyPersonUrl}/${uinfin}/`;
 		const params = {
 			client_id: this.clientID,
 			sp_esvcId: this.singpassEserviceID,
@@ -224,7 +235,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 
 		let response: AxiosResponse<string>;
 		try {
-			response = await this.myInfoRequest.get(url, params, accessToken);
+			response = await this.myInfoRequest.get(url, params, accessToken, proxyUrl);
 		} catch (error) {
 			logger.error("Error requesting for person data from Myinfo", error);
 			throw error;
