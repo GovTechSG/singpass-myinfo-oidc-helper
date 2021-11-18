@@ -1,5 +1,9 @@
 # Changelogs
 
+## 5.2.6
+
+- Fixed proxyUrl to not be constructed if not provided
+
 ## 5.2.5
 
 - Added 3 optional keys to MyInfoHelper: proxyTokenUrl, proxyPersonUrl, proxyPersonBasicUrl to support proxying MyInfo calls without affecting signature generation
