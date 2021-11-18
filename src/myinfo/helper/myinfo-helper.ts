@@ -181,7 +181,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 	 */
 	public getPersonCommon = async<K extends keyof MyInfoComponents.Schemas.PersonCommon>(uinfin: string, attributes: string[]): Promise<Pick<MyInfoComponents.Schemas.PersonCommon, K>> => {
 		const url = `${this.personBasicUrl}/${uinfin}`;
-		const proxyUrl = `${this.proxyPersonBasicUrl}/${uinfin}`;
+		const proxyUrl = this.proxyPersonBasicUrl ? `${this.proxyPersonBasicUrl}/${uinfin}` : "";
 		const params = {
 			client_id: this.clientID,
 			sp_esvcId: this.singpassEserviceID,
@@ -226,7 +226,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 		const uinfin = await this.extractUinfinFromAccessToken(accessToken);
 
 		const url = `${this.personUrl}/${uinfin}/`;
-		const proxyUrl = `${this.proxyPersonUrl}/${uinfin}/`;
+		const proxyUrl = this.proxyPersonUrl ? `${this.proxyPersonUrl}/${uinfin}/` : "";
 		const params = {
 			client_id: this.clientID,
 			sp_esvcId: this.singpassEserviceID,
