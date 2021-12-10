@@ -1,5 +1,9 @@
 # Changelogs
 
+## 5.2.7
+
+- Reset child nric for testing
+
 ## 5.2.6
 
 - Fixed proxyUrl to not be constructed if not provided
