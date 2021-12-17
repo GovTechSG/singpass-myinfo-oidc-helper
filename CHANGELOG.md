@@ -1,5 +1,10 @@
 # Changelogs
 
+## 5.2.8
+
+- add proxyProfileStatusUrl optional param to myinfo helper
+- add additionalHeaders optional params to myinfo and singpass helper
+
 ## 5.2.7
 
 - Reset child nric for testing
