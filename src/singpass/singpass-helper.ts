@@ -48,6 +48,12 @@ export interface OidcHelperConstructor {
 	redirectUri: string;
 	jweDecryptKey: string;
 	jwsVerifyKey: string;
+
+	/**
+	 * Headers already added by the client:
+	 * Content-Type, Cookie (refreshSession, logoutOfSession)
+	 */
+	additionalHeaders?: Record<string, string>;
 }
 
 export class OidcHelper {
@@ -65,6 +71,7 @@ export class OidcHelper {
 	private redirectUri: string;
 	private jweDecryptKey: string;
 	private jwsVerifyKey: string;
+	private additionalHeaders?: Record<string, string>;
 
 
 	constructor(props: OidcHelperConstructor) {
@@ -76,6 +83,7 @@ export class OidcHelper {
 		this.redirectUri = props.redirectUri;
 		this.jweDecryptKey = props.jweDecryptKey;
 		this.jwsVerifyKey = props.jwsVerifyKey;
+		this.additionalHeaders = props.additionalHeaders || {};
 	}
 
 	public constructAuthorizationUrl = (
@@ -110,7 +118,10 @@ export class OidcHelper {
 		const body = querystringUtil.stringify(params);
 
 		const config = {
-			headers: { "content-type": "application/x-www-form-urlencoded" },
+			headers: {
+				...this.additionalHeaders,
+				"content-type": "application/x-www-form-urlencoded"
+			},
 			...axiosRequestConfig,
 		};
 		const response = await this.axiosClient.post<TokenResponse>(this.tokenUrl, body, config);
@@ -136,7 +147,10 @@ export class OidcHelper {
 		const body = querystringUtil.stringify(params);
 
 		const config = {
-			headers: { "content-type": "application/x-www-form-urlencoded" },
+			headers: {
+				...this.additionalHeaders,
+				"content-type": "application/x-www-form-urlencoded"
+			},
 			...axiosRequestConfig,
 		};
 		const response = await this.axiosClient.post<TokenResponse>(this.tokenUrl, body, config);
@@ -201,7 +215,10 @@ export class OidcHelper {
 
 		// Max redirects 0 to prevent calling callback endpoint with singpass session cookie
 		const requestConfig: AxiosRequestConfig = {
-			headers: { Cookie: `${this.SINGPASS_SESSION_COOKIE_NAME}=${sessionId}` },
+			headers: {
+				...this.additionalHeaders,
+				Cookie: `${this.SINGPASS_SESSION_COOKIE_NAME}=${sessionId}`
+			},
 			maxRedirects: 0,
 			validateStatus: this.validateStatus,
 		};
@@ -230,7 +247,12 @@ export class OidcHelper {
 			throw new SingpassMyInfoError("Trying to call singpass-helper logoutOfSession without setting the logout URL");
 		}
 
-		const requestConfig = { headers: { Cookie: `${this.SINGPASS_SESSION_COOKIE_NAME}=${sessionId}` } };
+		const requestConfig = {
+			headers: {
+				...this.additionalHeaders,
+				Cookie: `${this.SINGPASS_SESSION_COOKIE_NAME}=${sessionId}`
+			}
+		};
 		try {
 			await this.axiosClient.get(this.logoutUrl, requestConfig);
 			return SessionLogoutResult.SUCCESS;

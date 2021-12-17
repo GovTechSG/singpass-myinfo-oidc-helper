@@ -47,6 +47,12 @@ export interface MyInfoHelperConstructor {
 	proxyPersonUrl?: string;
 	proxyPersonBasicUrl?: string;
 	proxyProfileStatusUrl?: string;
+
+	/**
+	 * Headers already added by the client:
+	 * Authorization, Cache-Control, Content-Type (POST only)
+	 */
+	additionalHeaders?: Record<string, string>;
 }
 
 export interface TokenResponse {
@@ -98,6 +104,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 	private readonly proxyPersonUrl: string;
 	private readonly proxyPersonBasicUrl: string;
 	private readonly proxyProfileStatusUrl: string;
+	private readonly additionalHeaders?: Record<string, string>;
 
 	private readonly redirectUri: string;
 
@@ -117,6 +124,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 		this.proxyPersonUrl = props.proxyPersonUrl;
 		this.proxyPersonBasicUrl = props.proxyPersonBasicUrl;
 		this.proxyProfileStatusUrl = props.proxyProfileStatusUrl;
+		this.additionalHeaders = props.additionalHeaders;
 
 		const requestProps: MyInfoRequestConstructor = {
 			appId: props.clientID,
@@ -167,7 +175,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 
 		let response: AxiosResponse<TokenResponse>;
 		try {
-			response = await this.myInfoRequest.post(this.tokenUrl, params, this.proxyTokenUrl);
+			response = await this.myInfoRequest.post(this.tokenUrl, params, this.proxyTokenUrl, this.additionalHeaders);
 		} catch (error) {
 			logger.error("Failed to get token from Myinfo", error);
 			throw error;
@@ -193,7 +201,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 
 		let response: AxiosResponse<string>;
 		try {
-			response = await this.myInfoRequest.get(url, params, null, proxyUrl);
+			response = await this.myInfoRequest.get(url, params, null, proxyUrl, this.additionalHeaders);
 		} catch (error) {
 			logger.error("Error requesting for person-common data (JWE) from Myinfo", error);
 			throw error;
@@ -238,7 +246,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 
 		let response: AxiosResponse<string>;
 		try {
-			response = await this.myInfoRequest.get(url, params, accessToken, proxyUrl);
+			response = await this.myInfoRequest.get(url, params, accessToken, proxyUrl, this.additionalHeaders);
 		} catch (error) {
 			logger.error("Error requesting for person data from Myinfo", error);
 			throw error;
@@ -270,7 +278,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 	 */
 	public getProfileStatus = async (uinfin: string): Promise<ProfileStatus> => {
 		const url = `${this.profileStatusUrl}/${uinfin}`;
-		const response = await this.myInfoRequest.get<{ statusCode: number, msg: string }>(url, null, null, this.proxyProfileStatusUrl);
+		const response = await this.myInfoRequest.get<{ statusCode: number, msg: string }>(url, null, null, this.proxyProfileStatusUrl, this.additionalHeaders);
 
 		if (!!response.data.msg && typeof response.data.msg === "string") {
 			return JSON.parse(response.data.msg);

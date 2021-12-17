@@ -35,7 +35,13 @@ export class MyInfoRequest {
 		uri: string,
 		queryParams?: { [key: string]: any },
 		accessToken?: string,
-		proxyUrl?: string
+		proxyUrl?: string,
+
+		/**
+		 * Headers already added by this method:
+		 * Authorization, Cache-Control
+		 */
+		additionalHeaders: Record<string, string> = {},
 	): Promise<AxiosResponse<T>> {
 		const cacheControl = "no-cache";
 		const headers = querystringUtil.parse(`Cache-Control=${cacheControl}`);
@@ -58,6 +64,7 @@ export class MyInfoRequest {
 			params: queryParams,
 			paramsSerializer: querystringUtil.stringify,
 			headers: {
+				...additionalHeaders,
 				...headers,
 				Authorization: accessToken ? `${authHeader},Bearer ${accessToken}` : authHeader,
 			},
@@ -70,7 +77,13 @@ export class MyInfoRequest {
 	public async post<T>(
 		uri: string,
 		params: { [key: string]: any },
-		proxyUrl?: string
+		proxyUrl?: string,
+
+		/**
+		 * Headers already added by this method:
+		 * Authorization, Content-Type, Cache-Control
+		 */
+		additionalHeaders: Record<string, string> = {},
 	): Promise<AxiosResponse<T>> {
 		const cacheControl = "no-cache";
 		const contentType = "application/x-www-form-urlencoded";
@@ -92,6 +105,7 @@ export class MyInfoRequest {
 
 		const requestConfig: AxiosRequestConfig = {
 			headers: {
+				...additionalHeaders,
 				...headers,
 				Authorization: authHeader,
 			},
