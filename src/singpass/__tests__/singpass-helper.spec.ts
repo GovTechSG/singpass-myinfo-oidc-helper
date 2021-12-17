@@ -21,6 +21,7 @@ const createMockTokenPayload = (overrideProps?: Partial<TokenPayload>): TokenPay
 	...overrideProps,
 });
 
+// tslint:disable-next-line: no-big-function
 describe("Singpass Helper", () => {
 	const props: OidcHelperConstructor = {
 		authorizationUrl: mockAuthUrl,
@@ -79,6 +80,110 @@ describe("Singpass Helper", () => {
 			});
 
 			expect(() => helper.extractNricAndUuidFromPayload(mockPayload)).toThrowError("Token payload sub property is invalid, does not contain valid NRIC and uuid string");
+		});
+	});
+
+	describe("get tokens", () => {
+		describe("additionalHeaders", () => {
+			it("should append additional headers if provided", async () => {
+				const helperWithHeaders = new OidcHelper({
+					...props,
+					additionalHeaders: {
+						"some-header": "some-value",
+					}
+				});
+				helperWithHeaders._testExports.singpassClient.post = jest.fn()
+					.mockResolvedValue({
+						data: { id_token: "some-token" }
+					});
+
+				await helperWithHeaders.getTokens("some-code");
+				expect(helperWithHeaders._testExports.singpassClient.post).toHaveBeenCalledWith(
+					expect.anything(),
+					expect.anything(),
+					expect.objectContaining({
+						headers: expect.objectContaining({
+							"some-header": "some-value",
+						}),
+					})
+				);
+			});
+
+			it("should NOT override reserved headers", async () => {
+				const helperWithHeaders = new OidcHelper({
+					...props,
+					additionalHeaders: {
+						"content-type": "some-override-value",
+					}
+				});
+				helperWithHeaders._testExports.singpassClient.post = jest.fn()
+					.mockResolvedValue({
+						data: { id_token: "some-token" }
+					});
+
+				await helperWithHeaders.getTokens("some-code");
+				expect(helperWithHeaders._testExports.singpassClient.post).toHaveBeenCalledWith(
+					expect.anything(),
+					expect.anything(),
+					expect.objectContaining({
+						headers: {
+							"content-type": "application/x-www-form-urlencoded",
+						},
+					})
+				);
+			});
+		});
+	});
+
+	describe("refresh tokens", () => {
+		describe("additionalHeaders", () => {
+			it("should append additional headers if provided", async () => {
+				const helperWithHeaders = new OidcHelper({
+					...props,
+					additionalHeaders: {
+						"some-header": "some-value",
+					}
+				});
+				helperWithHeaders._testExports.singpassClient.post = jest.fn()
+					.mockResolvedValue({
+						data: { id_token: "some-token" }
+					});
+
+				await helperWithHeaders.refreshTokens("some-code");
+				expect(helperWithHeaders._testExports.singpassClient.post).toHaveBeenCalledWith(
+					expect.anything(),
+					expect.anything(),
+					expect.objectContaining({
+						headers: expect.objectContaining({
+							"some-header": "some-value",
+						}),
+					})
+				);
+			});
+
+			it("should NOT override reserved headers", async () => {
+				const helperWithHeaders = new OidcHelper({
+					...props,
+					additionalHeaders: {
+						"content-type": "some-override-value",
+					}
+				});
+				helperWithHeaders._testExports.singpassClient.post = jest.fn()
+					.mockResolvedValue({
+						data: { id_token: "some-token" }
+					});
+
+				await helperWithHeaders.refreshTokens("some-code");
+				expect(helperWithHeaders._testExports.singpassClient.post).toHaveBeenCalledWith(
+					expect.anything(),
+					expect.anything(),
+					expect.objectContaining({
+						headers: {
+							"content-type": "application/x-www-form-urlencoded",
+						},
+					})
+				);
+			});
 		});
 	});
 
@@ -153,6 +258,48 @@ describe("Singpass Helper", () => {
 				});
 			});
 		});
+
+		describe("additionalHeaders", () => {
+			it("should append additional headers if provided", async () => {
+				const helperWithHeaders = new OidcHelper({
+					...props,
+					additionalHeaders: {
+						"some-header": "some-value",
+					}
+				});
+				helperWithHeaders._testExports.singpassClient.get = jest.fn();
+
+				await helperWithHeaders.refreshSession("some-id");
+				expect(helperWithHeaders._testExports.singpassClient.get).toHaveBeenCalledWith(
+					expect.anything(),
+					expect.objectContaining({
+						headers: expect.objectContaining({
+							"some-header": "some-value",
+						}),
+					})
+				);
+			});
+
+			it("should NOT override reserved headers", async () => {
+				const helperWithHeaders = new OidcHelper({
+					...props,
+					additionalHeaders: {
+						Cookie: "some-override-value",
+					}
+				});
+				helperWithHeaders._testExports.singpassClient.get = jest.fn();
+
+				await helperWithHeaders.refreshSession("some-id");
+				expect(helperWithHeaders._testExports.singpassClient.get).toHaveBeenCalledWith(
+					expect.anything(),
+					expect.objectContaining({
+						headers: {
+							Cookie: "PD-S-SESSION-ID=some-id",
+						},
+					})
+				);
+			});
+		});
 	});
 
 	describe("logout user's session", () => {
@@ -197,6 +344,48 @@ describe("Singpass Helper", () => {
 						{ headers: { Cookie: `PD-S-SESSION-ID=${sessionId}` } },
 					);
 				});
+			});
+		});
+
+		describe("additionalHeaders", () => {
+			it("should append additional headers if provided", async () => {
+				const helperWithHeaders = new OidcHelper({
+					...props,
+					additionalHeaders: {
+						"some-header": "some-value",
+					}
+				});
+				helperWithHeaders._testExports.singpassClient.get = jest.fn();
+
+				await helperWithHeaders.logoutOfSession("some-id");
+				expect(helperWithHeaders._testExports.singpassClient.get).toHaveBeenCalledWith(
+					expect.anything(),
+					expect.objectContaining({
+						headers: expect.objectContaining({
+							"some-header": "some-value",
+						}),
+					})
+				);
+			});
+
+			it("should NOT override reserved headers", async () => {
+				const helperWithHeaders = new OidcHelper({
+					...props,
+					additionalHeaders: {
+						Cookie: "some-override-value",
+					}
+				});
+				helperWithHeaders._testExports.singpassClient.get = jest.fn();
+
+				await helperWithHeaders.logoutOfSession("some-id");
+				expect(helperWithHeaders._testExports.singpassClient.get).toHaveBeenCalledWith(
+					expect.anything(),
+					expect.objectContaining({
+						headers: {
+							Cookie: "PD-S-SESSION-ID=some-id",
+						},
+					})
+				);
 			});
 		});
 	});
