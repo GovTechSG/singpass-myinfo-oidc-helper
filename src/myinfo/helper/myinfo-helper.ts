@@ -46,6 +46,7 @@ export interface MyInfoHelperConstructor {
 	proxyTokenUrl?: string;
 	proxyPersonUrl?: string;
 	proxyPersonBasicUrl?: string;
+	proxyProfileStatusUrl?: string;
 }
 
 export interface TokenResponse {
@@ -96,6 +97,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 	private readonly proxyTokenUrl: string;
 	private readonly proxyPersonUrl: string;
 	private readonly proxyPersonBasicUrl: string;
+	private readonly proxyProfileStatusUrl: string;
 
 	private readonly redirectUri: string;
 
@@ -114,6 +116,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 		this.proxyTokenUrl = props.proxyTokenUrl;
 		this.proxyPersonUrl = props.proxyPersonUrl;
 		this.proxyPersonBasicUrl = props.proxyPersonBasicUrl;
+		this.proxyProfileStatusUrl = props.proxyProfileStatusUrl;
 
 		const requestProps: MyInfoRequestConstructor = {
 			appId: props.clientID,
@@ -267,7 +270,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 	 */
 	public getProfileStatus = async (uinfin: string): Promise<ProfileStatus> => {
 		const url = `${this.profileStatusUrl}/${uinfin}`;
-		const response = await this.myInfoRequest.get<{statusCode: number, msg: string}>(url);
+		const response = await this.myInfoRequest.get<{ statusCode: number, msg: string }>(url, null, null, this.proxyProfileStatusUrl);
 
 		if (!!response.data.msg && typeof response.data.msg === "string") {
 			return JSON.parse(response.data.msg);
