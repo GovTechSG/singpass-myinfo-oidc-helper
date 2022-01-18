@@ -1,5 +1,4 @@
 import * as _ from "lodash";
-import { EnumType } from "typescript";
 
 export namespace EnumUtils {
 

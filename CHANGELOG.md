@@ -1,5 +1,11 @@
 # Changelogs
 
+## 6.0.0
+
+- **[BREAKING]** Removed `moment`
+- **[WARNING]** Updated npm dependencies
+- **[WARNING]** Replaced `js-joda` with `@js-joda/core`
+
 ## 5.2.8
 
 - add proxyProfileStatusUrl optional param to myinfo helper

@@ -1,5 +1,6 @@
+import { ZonedDateTime } from "@js-joda/core";
 import * as _ from "lodash";
-import * as moment from "moment";
+import { DateUtils } from "../../../util/DateUtils";
 import { MyInfoComponents } from "../../domain";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
@@ -20,48 +21,46 @@ export const mrPreschoolRegister: FakeProfile = {
 	},
 };
 
-const formatDateToString = (date?: moment.Moment): string => {
-	if (date) {
-		return date.format("YYYY-MM-DD").toString();
-	}
-	return moment().format("YYYY-MM-DD").toString();
+const formatDateToString = (date?: ZonedDateTime): string => {
+	date ??= ZonedDateTime.now();
+	return DateUtils.toIsoDate(date);
 };
 
 // the children here have birthcertno related to the preschool interest registration mock
 const c1 = {
 	birthcertno: { value: "T1639540J" },
 	name: { value: "Child w level not offered" },
-	dob: { value: formatDateToString(moment().subtract(2, "years")) },
+	dob: { value: formatDateToString(ZonedDateTime.now().minusYears(2)) },
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 const c2 = {
 	birthcertno: { value: "T1717003H" },
 	name: { value: "Child w ineligible" },
-	dob: { value: formatDateToString(moment().subtract(2, "years")) },
+	dob: { value: formatDateToString(ZonedDateTime.now().minusYears(2)) },
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 const c3 = {
 	birthcertno: { value: "T1728256A" },
 	name: { value: "Child w registered" },
-	dob: { value: formatDateToString(moment().subtract(3, "years")) },
+	dob: { value: formatDateToString(ZonedDateTime.now().minusYears(3)) },
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 const c4 = {
 	birthcertno: { value: "T1766863Z" },
 	name: { value: "Child w nothing" },
-	dob: { value: formatDateToString(moment().subtract(4, "years")) },
+	dob: { value: formatDateToString(ZonedDateTime.now().minusYears(4)) },
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 const c5 = {
 	birthcertno: { value: "T1783246D" },
 	name: { value: "Child2 w level not offered " },
-	dob: { value: formatDateToString(moment().subtract(5, "years")) },
+	dob: { value: formatDateToString(ZonedDateTime.now().minusYears(5)) },
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 const c6 = {
 	birthcertno: { value: "T1790160A" },
 	name: { value: "Child2 w ineligible" },
-	dob: { value: formatDateToString(moment().subtract(6, "years")) },
+	dob: { value: formatDateToString(ZonedDateTime.now().minusYears(6)) },
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 export const ChildrenRecords = {

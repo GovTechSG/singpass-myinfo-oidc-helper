@@ -1,11 +1,10 @@
-import * as moment from "moment";
+import { ZonedDateTime } from "@js-joda/core";
+import { DateUtils } from "../../../../util/DateUtils";
 import { MyInfoComponents, MyInfoLifeStatusCode, MyInfoSexCode } from "../../../domain";
 
-const formatDateToString = (date?: moment.Moment): string => {
-	if (date) {
-		return date.format("YYYY-MM-DD").toString();
-	}
-	return moment().format("YYYY-MM-DD").toString();
+const formatDateToString = (date?: ZonedDateTime): string => {
+	date ??= ZonedDateTime.now();
+	return DateUtils.toIsoDate(date);
 };
 
 const childYoungest = {
@@ -27,7 +26,7 @@ const child1MonthOld = {
 	lastupdated: formatDateToString(),
 	birthcertno: { value: "T4657515B" },
 	name: { value: "Tan Ke Yu" },
-	dob: { value: formatDateToString(moment().subtract(1, "months")) },
+	dob: { value: formatDateToString(ZonedDateTime.now().minusMonths(1)) },
 	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE), },
 	tob: { value: "1200" },
 	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
@@ -40,7 +39,7 @@ const child2MonthsOld = {
 	lastupdated: formatDateToString(),
 	birthcertno: { value: "T7041892J" },
 	name: { value: "Tan Keh Guan" },
-	dob: { value: formatDateToString(moment().subtract(2, "months")) },
+	dob: { value: formatDateToString(ZonedDateTime.now().minusMonths(2)) },
 	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE), },
 	tob: { value: "0300" },
 	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
@@ -53,7 +52,7 @@ const childMiddle1 = {
 	lastupdated: formatDateToString(),
 	birthcertno: { value: "T2746216I" },
 	name: { value: "Tan Chiu" },
-	dob: { value: formatDateToString(moment().subtract(2, "years")) },
+	dob: { value: formatDateToString(ZonedDateTime.now().minusYears(2)) },
 	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE), },
 	tob: { value: "0848" },
 	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
@@ -66,7 +65,7 @@ const childMiddle2 = {
 	lastupdated: formatDateToString(),
 	birthcertno: { value: "T9702737J" },
 	name: { value: "Tan Chua" },
-	dob: { value: formatDateToString(moment().subtract(2, "years")) },
+	dob: { value: formatDateToString(ZonedDateTime.now().minusYears(2)) },
 	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE), },
 	tob: { value: "0330" },
 	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
@@ -79,7 +78,7 @@ const childMiddle3 = {
 	lastupdated: formatDateToString(),
 	birthcertno: { value: "T5688127H" },
 	name: { value: "Tan Su" },
-	dob: { value: formatDateToString(moment().subtract(3, "years")) },
+	dob: { value: formatDateToString(ZonedDateTime.now().minusYears(3)) },
 	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE), },
 	tob: { value: "2350" },
 	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
@@ -92,7 +91,7 @@ const childMiddle4 = {
 	lastupdated: formatDateToString(),
 	birthcertno: { value: "T2862346H" },
 	name: { value: "Tan Go" },
-	dob: { value: formatDateToString(moment().subtract(4, "years")) },
+	dob: { value: formatDateToString(ZonedDateTime.now().minusYears(4)) },
 	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE), },
 	tob: { value: "0059" },
 	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
@@ -105,7 +104,7 @@ const childMiddle5 = {
 	lastupdated: formatDateToString(),
 	birthcertno: { value: "T1235431I" },
 	name: { value: "Tan Sy" },
-	dob: { value: formatDateToString(moment().subtract(5, "years")) },
+	dob: { value: formatDateToString(ZonedDateTime.now().minusYears(5)) },
 	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE), },
 	tob: { value: "0000" },
 	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
@@ -118,7 +117,7 @@ const child6YearsOld = {
 	lastupdated: formatDateToString(),
 	birthcertno: { value: "T3485740C" },
 	name: { value: "Tan Kim" },
-	dob: { value: formatDateToString(moment().subtract(6, "years").startOf("year")) },
+	dob: { value: formatDateToString(DateUtils.startOfYear(ZonedDateTime.now().minusYears(6))) },
 	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE), },
 	tob: { value: "0901" },
 	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
@@ -131,7 +130,7 @@ const child7YearsOld = {
 	lastupdated: formatDateToString(),
 	birthcertno: { value: "T8555618A" },
 	name: { value: "Tan Liu" },
-	dob: { value: formatDateToString(moment().subtract(7, "years").endOf("year")) },
+	dob: { value: formatDateToString(DateUtils.endOfYear(ZonedDateTime.now().minusYears(7))) },
 	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE), },
 	tob: { value: "1215" },
 	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
@@ -144,7 +143,7 @@ const childSuperOld = {
 	lastupdated: formatDateToString(),
 	birthcertno: { value: "T7269740A" },
 	name: { value: "Tan Ke Wei" },
-	dob: { value: formatDateToString(moment().subtract(8, "years")) },
+	dob: { value: formatDateToString(ZonedDateTime.now().minusYears(8)) },
 	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE), },
 	tob: { value: "1500" },
 	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },

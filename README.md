@@ -60,7 +60,7 @@ Usually not needed, for making any other custom requests to MyInfo not covered i
 - `get(uri: string, queryParams?: { [key: string]: any }, accessToken?: string)` - make get request to the defined myinfo gov endpoint
 
   - `queryParams` refer to the query params for the get request
-  - `accessToken` included in the Authorization header prefixed with 'Bearer', meant for getPerson api which requires an access token obtained from the Token API
+  - `accessToken` will be prefixed with 'Bearer ' and included in the Authorization header, meant for getPerson api which requires an access token obtained from the Token API
 
 - `post(uri: string, params: { [key: string]: any })` - make post request to the defined myinfo gov endpoint
 
