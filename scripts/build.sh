@@ -51,13 +51,8 @@ rm -rf ./dist
 echo "Building"
 ./node_modules/.bin/tsc --module commonjs --project tsconfig.build.json
 
-cp ./package.json ./dist/
-cp ./package-lock.json ./dist/
-
 echo "Packaging"
-pushd dist
 npm pack
-popd
 
 # Return to invocation dir
 popd
