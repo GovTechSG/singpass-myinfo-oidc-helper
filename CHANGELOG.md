@@ -1,5 +1,9 @@
 # Changelogs
 
+## 6.1.0
+
+- Updated depedencies, no breaking changes expected
+
 ## 6.0.0
 
 - **[BREAKING]** Removed `moment`
@@ -369,11 +373,11 @@
 
 ## 2.3.3
 
-- Update axios client to use proxy-agent (https://github.com/axios/axios/issues/925#issuecomment-419352052)
+- Update axios client to use proxy-agent (<https://github.com/axios/axios/issues/925#issuecomment-419352052>)
 
 ## 2.3.2
 
-- Replaced with axios-https-proxy-fix with axios (https://github.com/axios/axios/issues/925)
+- Replaced with axios-https-proxy-fix with axios (<https://github.com/axios/axios/issues/925>)
 
 ## 2.3.0
 
