@@ -44,6 +44,16 @@ describe("Singpass Helper", () => {
 			const expected = "https://mocksingpass.sg/authorize?state=af0ifjsldkj&nonce=a2ghskf1234las&redirect_uri=http%3A%2F%2Fmockme.sg%2Fcallback&scope=openid&client_id=CLIENT-ID&response_type=code";
 			expect(authUrl).toEqual(expected);
 		});
+
+		it("should construct authorization endpoint with overwritten url", () => {
+			const authUrl = helper.constructAuthorizationUrl(
+				"af0ifjsldkj",
+				"a2ghskf1234las",
+				"https://mocksingpassoverride.sg/auth",
+			);
+			const expected = "https://mocksingpassoverride.sg/auth?state=af0ifjsldkj&nonce=a2ghskf1234las&redirect_uri=http%3A%2F%2Fmockme.sg%2Fcallback&scope=openid&client_id=CLIENT-ID&response_type=code";
+			expect(authUrl).toEqual(expected);
+		});
 	});
 
 	describe("extracting nric and uuid from payload", () => {

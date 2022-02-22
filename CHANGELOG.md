@@ -1,5 +1,9 @@
 # Changelogs
 
+## 6.1.2
+
+- add overrideAuthUrl to singpass helper's constructAuthorizationUrl method
+
 ## 6.1.0
 
 - Updated depedencies, no breaking changes expected
