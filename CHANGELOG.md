@@ -1,5 +1,9 @@
 # Changelogs
 
+## 6.1.3
+
+- add setLogger method to override logging behaviour
+
 ## 6.1.2
 
 - add overrideAuthUrl to singpass helper's constructAuthorizationUrl method
