@@ -56,6 +56,19 @@ import { mrSGUnclePgNeedMedisave } from "./mrSGUnclePgNeedMedisave";
 import { mrSGUnclePgNilStatus } from "./mrSGUnclePgNilStatus";
 import { mrSGUnclePgOptOut } from "./mrSGUnclePgOptOut";
 import { mrSGUncleNonPg } from "./mrSGUncleNonPg";
+import { mrICADaddyScenario1 } from "./mrICADaddyScenario1";
+import { mrICADaddyScenario2 } from "./mrICADaddyScenario2";
+import { mrICADaddyScenario3 } from "./mrICADaddyScenario3";
+import { mrICADaddyScenario4 } from "./mrICADaddyScenario4";
+import { mrICADaddyScenario5 } from "./mrICADaddyScenario5";
+import { mrICADaddyScenario7 } from "./mrICADaddyScenario7";
+import { mrsICAMommyScenario1 } from "./mrICAMommyScenario1";
+import { mrsICAMommyScenario2 } from "./mrICAMommyScenario2";
+import { mrsICAMommyScenario3 } from "./mrICAMommyScenario3";
+import { mrsICAMommyScenario4 } from "./mrICAMommyScenario4";
+import { mrsICAMommyScenario5 } from "./mrICAMommyScenario5";
+import { mrsICAMommyScenario6 } from "./mrICAMommyScenario6";
+import { mrsICAMommyScenario8 } from "./mrICAMommyScenario8";
 
 /**
  * Exhaustive list of our MyInfo archetype profiles
@@ -120,4 +133,17 @@ export const profiles = [
 	mrSGUncleRetiree,
 	mrSgTeenager17,
 	msSgTeenager17,
+	mrICADaddyScenario1,
+	mrICADaddyScenario2,
+	mrICADaddyScenario3,
+	mrICADaddyScenario4,
+	mrICADaddyScenario5,
+	mrICADaddyScenario7,
+	mrsICAMommyScenario1,
+	mrsICAMommyScenario2,
+	mrsICAMommyScenario3,
+	mrsICAMommyScenario4,
+	mrsICAMommyScenario5,
+	mrsICAMommyScenario6,
+	mrsICAMommyScenario8
 ];

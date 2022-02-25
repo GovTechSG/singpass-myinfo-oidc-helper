@@ -71,4 +71,18 @@ export enum ProfileArchetype {
 	MS_SG_TEENAGER_17 = "Ms SG Teenager 17",
 	// Dedicated for iOS app Reviewer
 	MR_APP_REVIEWER = "Mr App Reviewer",
+	// For BRV2 ICA UAT
+	MR_ICA_SG_DADDY_SPOUSE_SCENARIO_1 = "Mr SG Daddy Spouse Applicant Scenario 1 No Audit Required",
+	MRS_ICA_SG_MOMMY_MAIN_SCENARIO_1 = "Mrs SG Mommy Main Applicant Scenario 1 No Audit Required",
+	MR_ICA_PR_DADDY_SPOUSE_SCENARIO_2 = "Mr PR Daddy Spouse Applicant Scenario 2 Verify Marriage Required",
+	MRS_ICA_SG_MOMMY_MAIN_SCENARIO_2 = "Mrs SG Mommy Main Applicant Scenario 2 Verify Marriage Required",
+	MR_ICA_SG_DADDY_MAIN_SCENARIO_3 = "Mr SG Daddy Main Applicant Scenario 3 Marriage Info Mismatch Audit Required",
+	MRS_ICA_PR_MOMMY_SPOUSE_SCENARIO_3 = "Mrs PR Mommy Spouse Applicant Scenario 3 Marriage Info Mismatch Audit Required",
+	MR_ICA_FP_DADDY_MAIN_SCENARIO_4 = "Mr FP Daddy Main Applicant Scenario 4 Late Birth Audit Required",
+	MRS_ICA_PR_MOMMY_SPOUSE_SCENARIO_4 = "Mrs PR Mommy Spouse Applicant Scenario 4 Late Birth Audit Required",
+	MR_ICA_SC_DADDY_MAIN_SCENARIO_5 = "Mr SG Daddy Main Applicant Scenario 5 Marriage Info Mismatch, Late Birth Audit Required",
+	MRS_ICA_SC_MOMMY_SPOUSE_SCENARIO_5 = "Mrs SG Mommy Spouse Applicant Scenario 5 Marriage Info Mismatch, Late Birth Audit Required",
+	MRS_ICA_PR_MOMMY_MAIN_SCENARIO_6 = "Mrs PR Mommy Main Applicant Scenario 6 Verify ID Required",
+	MR_ICA_SC_DADDY_MAIN_SCENARIO_7 = "Mr SG Daddy Spouse Applicant Scenario 7 Verify ID,Marriage, Late Birth Audit Required",
+	MRS_ICA_SC_SINGLE_MOMMY_MAIN_SCENARIO_8 = "Mrs SG Single Mommy Main Applicant Scenario 8 Audit Required",
 }

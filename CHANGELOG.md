@@ -1,5 +1,9 @@
 # Changelogs
 
+## 6.1.5
+
+- add BRV2 ICA UAT archetypes
+
 ## 6.1.4
 
 - Export Util to root
