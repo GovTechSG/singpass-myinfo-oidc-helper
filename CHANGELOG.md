@@ -1,5 +1,9 @@
 # Changelogs
 
+## 6.1.4
+
+- Export Util to root
+
 ## 6.1.3
 
 - add setLogger method to override logging behaviour
