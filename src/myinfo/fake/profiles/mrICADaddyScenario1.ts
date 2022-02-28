@@ -67,7 +67,7 @@ export const mrICADaddyScenario1: FakeProfile = {
 			"lastupdated": "2020-09-10",
 			"source": "2",
 			"classification": "C",
-			"value": "",
+			"value": "2020-09-10",
 			"unavailable": false,
 		};
 		profile.countryofmarriage = {
