@@ -24,6 +24,14 @@ export const mrsICAMommyScenario8: FakeProfile = {
 			"classification": "C",
 			"unavailable": false,
 		},
+		profile.secondaryrace = {
+			"code": null,
+			"desc": null,
+			"source": "1",
+			"lastupdated": "2022-02-25",
+			"unavailable": false,
+			"classification": "C"
+		},
 		profile.dob = {
 			"lastupdated": "2022-02-25",
 			"source": "1",
@@ -40,6 +48,36 @@ export const mrsICAMommyScenario8: FakeProfile = {
 			"unavailable": false,
 		},
 		profile.nationality.code = MyInfoNationalityCode.SINGAPORE_CITIZEN;
+		profile.marriagecertno = {
+			"lastupdated": "2022-02-25",
+			"source": "1",
+			"classification": "C",
+			"value": "M12345",
+			"unavailable": false,
+		};
+		profile.marriagedate = {
+			"lastupdated": "2020-09-10",
+			"source": "2",
+			"classification": "C",
+			"value": "",
+			"unavailable": false,
+		};
+		profile.countryofmarriage = {
+			"lastupdated": "2022-02-25",
+			"code": MyInfoCountryCode.SINGAPORE,
+			"desc": MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.SINGAPORE),
+			"source": "1",
+			"classification": "C",
+			"unavailable": false,
+		};
+		profile.marital = {
+			"lastupdated": "2022-02-25",
+			"code": MyInfoMaritialStatusCode.MARRIED,
+			"desc": MyInfoMaritialStatusCode.fn.toEnumDesc(MyInfoMaritialStatusCode.MARRIED),
+			"source": "1",
+			"classification": "C",
+			"unavailable": false,
+		};
 
 		return profile;
 	}

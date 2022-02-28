@@ -24,6 +24,22 @@ export const mrICADaddyScenario1: FakeProfile = {
 			"classification": "C",
 			"unavailable": false,
 		},
+		profile.secondaryrace = {
+			"code": null,
+			"desc": null,
+			"source": "1",
+			"lastupdated": "2022-02-25",
+			"unavailable": false,
+			"classification": "C"
+		},
+		profile.secondaryrace = {
+			"code": null,
+			"desc": null,
+			"source": "1",
+			"lastupdated": "2022-02-25",
+			"unavailable": false,
+			"classification": "C"
+		},
 		profile.dob = {
 			"lastupdated": "2022-02-25",
 			"source": "1",
