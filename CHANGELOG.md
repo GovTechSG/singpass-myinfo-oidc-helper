@@ -1,5 +1,9 @@
 # Changelogs
 
+## 6.1.7
+
+- Fix proxy profile status url
+
 ## 6.1.6
 
 - update BRV2 ICA UAT archetypes

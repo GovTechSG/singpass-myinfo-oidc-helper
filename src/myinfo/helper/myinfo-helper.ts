@@ -278,7 +278,8 @@ export class MyInfoHelper implements IMyInfoHelper {
 	 */
 	public getProfileStatus = async (uinfin: string): Promise<ProfileStatus> => {
 		const url = `${this.profileStatusUrl}/${uinfin}`;
-		const response = await this.myInfoRequest.get<{ statusCode: number, msg: string }>(url, null, null, this.proxyProfileStatusUrl, this.additionalHeaders);
+		const proxyUrl = this.proxyProfileStatusUrl ? `${this.proxyProfileStatusUrl}/${uinfin}` : "";
+		const response = await this.myInfoRequest.get<{ statusCode: number, msg: string }>(url, null, null, proxyUrl, this.additionalHeaders);
 
 		if (!!response.data.msg && typeof response.data.msg === "string") {
 			return JSON.parse(response.data.msg);
