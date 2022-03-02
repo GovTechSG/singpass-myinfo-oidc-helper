@@ -2,7 +2,8 @@
 import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
-import { MyInfoCountryCode, MyInfoMaritialStatusCode, MyInfoNationalityCode, MyInfoOccupationCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
+import { MyInfoComponents, MyInfoCountryCode, MyInfoMaritialStatusCode, MyInfoNationalityCode, MyInfoOccupationCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
+import { BaseProfile } from "./sponsored-children/BaseProfile";
 
 const id = "S9005004D";
 const name = ProfileArchetype.MR_ICA_PR_DADDY_SPOUSE_SCENARIO_2;
@@ -13,7 +14,7 @@ export const mrICADaddyScenario2: FakeProfile = {
 	generate: (profileName) => {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
-		const profile = mrSGDaddyPerfect.generate(profileName);
+		const profile: MyInfoComponents.Schemas.Person = BaseProfile.generate(profileName);
 		profile.sex.code = MyInfoSexCode.MALE;
 		profile.sex.desc = MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE);
 		profile.race = {
@@ -24,14 +25,7 @@ export const mrICADaddyScenario2: FakeProfile = {
 			"classification": "C",
 			"unavailable": false,
 		},
-		profile.secondaryrace = {
-			"code": null,
-			"desc": null,
-			"source": "1",
-			"lastupdated": "2022-02-25",
-			"unavailable": false,
-			"classification": "C"
-		},
+
 		profile.dob = {
 			"lastupdated": "2022-02-25",
 			"source": "1",

@@ -1,5 +1,9 @@
 # Changelogs
 
+## 6.1.9
+
+- Use BaseProfile instead of MrSGDaddyPerfect to generate brv2 archetypes
+
 ## 6.1.8
 
 - Add missing marriage date to brv2 archetypes
