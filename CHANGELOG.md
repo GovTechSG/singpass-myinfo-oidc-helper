@@ -1,5 +1,9 @@
 # Changelogs
 
+## 6.1.10
+
+- Reduce brv2 archetypes name length
+
 ## 6.1.9
 
 - Use BaseProfile instead of MrSGDaddyPerfect to generate brv2 archetypes
