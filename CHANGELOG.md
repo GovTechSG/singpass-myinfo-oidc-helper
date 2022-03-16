@@ -1,5 +1,9 @@
 # Changelogs
 
+## 6.1.11
+
+- Updated UINFIN regex to support M series users
+
 ## 6.1.10
 
 - Reduce brv2 archetypes name length

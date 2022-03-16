@@ -187,7 +187,7 @@ export class OidcHelper {
 		const { sub } = payload;
 
 		if (sub) {
-			const extractionRegex = /s=([STFG]\d{7}[A-Z]).*,u=(.*)/i;
+			const extractionRegex = /s=([STFGM]\d{7}[A-Z]).*,u=(.*)/i;
 			const matchResult = sub.match(extractionRegex);
 
 			if (!matchResult) {
