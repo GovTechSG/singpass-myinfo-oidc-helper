@@ -1,9 +1,9 @@
 #!/bin/bash
 
-echo ==============================================================================
+echo "=============================================================================="
 echo "Script: $(basename "$0")"
 echo "This script runs jest tests"
-echo ==============================================================================
+echo "=============================================================================="
 
 # ==============================================================================
 # Setup
@@ -32,15 +32,10 @@ SCRIPT_DIR=$( dirname $( ${READLINK} -f $0 ) )
 
 export DEBUG_PORT=${DEBUG_PORT:-7000}
 
-export JEST_PATH=${JEST_PATH:-"./node_modules/.bin/jest"}
-
 # ==============================================================================
 # Script
 # ==============================================================================
 
-# Resolve jest path
-JEST_PATH=$( ${READLINK} -f ${JEST_PATH} )
-
 # Run test
 echo "Testing with jest"
-node --max_old_space_size=4096 --expose-gc --trace-warnings --inspect=0.0.0.0:${DEBUG_PORT} ${JEST_PATH} $@
+npx --node-options "--max_old_space_size=8192 --trace-warnings --inspect=0.0.0.0:${DEBUG_PORT}" jest $@

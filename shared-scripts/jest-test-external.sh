@@ -1,9 +1,9 @@
 #!/bin/bash
 
-echo ==============================================================================
+echo "=============================================================================="
 echo "Script: $(basename "$0")"
 echo "This script runs the jest external tests"
-echo ==============================================================================
+echo "=============================================================================="
 
 # ==============================================================================
 # Setup
@@ -35,8 +35,6 @@ echo "Checking variables"
 ASSERT_VAR_SCRIPT=$( ${READLINK} -f ${SCRIPT_DIR}/helpers/assert-variable.sh )
 
 export DEBUG_PORT=${DEBUG_PORT:-7000}
-
-export JEST_PATH=${JEST_PATH:-"./node_modules/.bin/jest"}
 
 export JEST_CONFIG_PATH=${JEST_CONFIG_PATH:-"./jest.ext.config.js"}
 

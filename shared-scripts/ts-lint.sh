@@ -1,9 +1,9 @@
 #!/bin/bash
 
-echo ==============================================================================
+echo "=============================================================================="
 echo "Script: $(basename "$0")"
 echo "This script runs ts-lint"
-echo ==============================================================================
+echo "=============================================================================="
 
 # ==============================================================================
 # Setup
@@ -30,8 +30,6 @@ SCRIPT_DIR=$( dirname $( ${READLINK} -f $0 ) )
 # Inputs
 # ==============================================================================
 
-export LINT_PATH=${JEST_PATH:-"./node_modules/.bin/tslint"}
-
 export TS_CONFIG_PATH=${TS_CONFIG_PATH:-"./tsconfig.json"}
 
 export TSLINT_CONFIG_PATH=${TSLINT_CONFIG_PATH:-"./tslint.json"}
@@ -44,4 +42,4 @@ export FILES=${@:-""}
 
 # Lint
 echo "Linting with tslint"
-${LINT_PATH} -p ${TS_CONFIG_PATH} -c ${TSLINT_CONFIG_PATH} --fix ${FILES}
+npx tslint -p ${TS_CONFIG_PATH} -c ${TSLINT_CONFIG_PATH} --fix ${FILES}
