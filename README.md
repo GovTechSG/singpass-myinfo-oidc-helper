@@ -217,7 +217,7 @@ Singpass.OidcHelper
 - Follow the solution above to add enum definition manually
 - That enum will overwrite the auto generated enum
 
-=======
+---
 
 ## Corppass
 
