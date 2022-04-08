@@ -1,4 +1,5 @@
-import { OidcHelper, OidcHelperConstructor, SessionLogoutResult, SessionRefreshResult, TokenPayload } from "../singpass-helper";
+import { OidcHelper, OidcHelperConstructor, SessionLogoutResult, SessionRefreshResult } from "../singpass-helper";
+import { TokenPayload } from '../shared-constants';
 
 const mockAuthUrl = "https://mocksingpass.sg/authorize";
 const mockLogoutUrl = "https://mocksingpass.sg/logout";
