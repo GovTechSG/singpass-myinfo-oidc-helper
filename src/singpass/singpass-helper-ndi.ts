@@ -8,18 +8,12 @@ import { TokenPayload, TokenResponse } from './shared-constants';
 import { Key } from'../util/KeyUtil';
 import { createClientAssertion } from'../util/SigningUtil';
 
-export interface OidcHelperConstructor {
+export interface NdiOidcHelperConstructor {
 	oidcConfigUrl: string;
 	clientID: string;
 	redirectUri: string;
 	jweDecryptKey: Key;
 	jwsSignKey: Key;
-
-	/**
-	 * Headers already added by the client:
-	 * Content-Type, Cookie (refreshSession, logoutOfSession)
-	 */
-	additionalHeaders?: Record<string, string>;
 }
 
 interface OidcConfig {
@@ -29,7 +23,7 @@ interface OidcConfig {
 	jwks_uri: string;
 }
 
-export class OidcHelper {
+export class NdiOidcHelper {
 
 	private axiosClient: AxiosInstance = createClient({
 		timeout: 10000,
@@ -42,13 +36,12 @@ export class OidcHelper {
 	private jwsSignKey: Key;
 	private additionalHeaders?: Record<string, string>;
 
-	constructor(props: OidcHelperConstructor) {
+	constructor(props: NdiOidcHelperConstructor) {
 		this.oidcConfigUrl = props.oidcConfigUrl;
 		this.clientID = props.clientID;
 		this.redirectUri = props.redirectUri;
 		this.jweDecryptKey = props.jweDecryptKey;
 		this.jwsSignKey = props.jwsSignKey;
-		this.additionalHeaders = props.additionalHeaders || {};
 	}
 
 	public constructAuthorizationUrl = async (
