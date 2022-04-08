@@ -1,7 +1,8 @@
 import { AxiosInstance, AxiosRequestConfig } from "axios";
 import * as querystringUtil from "querystring";
-import { createClient } from "../client";
-import { JweUtil, Logger } from "../util";
+import { createClient } from "../client/axios-client";
+import { JweUtil } from "../util";
+import { logger } from "../util/Logger";
 import { SingpassMyInfoError } from "../util/error/SingpassMyinfoError";
 
 export interface TokenResponse {
@@ -25,51 +26,51 @@ interface EntityInfo {
 interface AuthInfo {
 	Result_Set: {
 		ESrvc_Row_Count: number;
-		ESrvc_Result: Array<{
+		ESrvc_Result: {
 			CPESrvcID: string;
 			Auth_Result_Set: {
 				Row_Count: number;
-				Row: Array<{
+				Row: {
 					CPEntID_SUB: string;
 					CPRole: string;
 					StartDate: string;
 					EndDate: string;
-					Parameter?: Array<{
+					Parameter?: {
 						name: string;
 						value: string;
-					}>;
-				}>;
+					}[];
+				}[];
 			};
-		}>;
+		}[];
 	};
 }
 
 interface TPAccessInfo {
 	Result_Set: {
 		ESrvc_Row_Count: number,
-		ESrvc_Result: Array<{
+		ESrvc_Result: {
 			CPESrvcID: string,
 			Auth_Set: {
 				ENT_ROW_COUNT: number,
-				TP_Auth: Array<{
+				TP_Auth: {
 					CP_Clnt_ID: string,
 					CP_ClntEnt_TYPE: string,
 					Auth_Result_Set: {
 						Row_Count: number,
-						Row: Array<{
+						Row: {
 							CP_ClntEnt_SUB: string,
 							CPRole: string,
 							StartDate: string,
 							EndDate: string,
-							Parameter?: Array<{
+							Parameter?: {
 								name: string,
 								value: string;
-							}>,
-						}>,
+							}[],
+						}[],
 					},
-				}>,
+				}[],
 			},
-		}>,
+		}[],
 	};
 }
 
@@ -173,7 +174,7 @@ export class OidcHelper {
 		};
 		const response = await this.axiosClient.post(this.tokenUrl, body, config);
 		if (!response.data.id_token) {
-			Logger.error("Failed to get ID token: invalid response data", response.data);
+			logger.error("Failed to get ID token: invalid response data", response.data);
 			throw new SingpassMyInfoError("Failed to get ID token");
 		}
 		return response.data;
@@ -199,7 +200,7 @@ export class OidcHelper {
 		};
 		const response = await this.axiosClient.post(this.tokenUrl, body, config);
 		if (!response.data.id_token) {
-			Logger.error("Failed to get ID token: invalid response data", response.data);
+			logger.error("Failed to get ID token: invalid response data", response.data);
 			throw new SingpassMyInfoError("Failed to get ID token");
 		}
 		return response.data;
@@ -214,7 +215,7 @@ export class OidcHelper {
 			const verifiedJws = await JweUtil.verifyJWS(access_token, this.jwsVerifyKey);
 			return JSON.parse(verifiedJws.payload.toString()) as AccessTokenPayload;
 		} catch (e) {
-			Logger.error("Failed to get access token payload", e);
+			logger.error("Failed to get access token payload", e);
 			throw e;
 		}
 	}
@@ -231,7 +232,7 @@ export class OidcHelper {
 			const verifiedJws = await JweUtil.verifyJWS(jwsPayload, this.jwsVerifyKey);
 			return JSON.parse(verifiedJws.payload.toString()) as IdTokenPayload;
 		} catch (e) {
-			Logger.error("Failed to get ID token payload", e);
+			logger.error("Failed to get ID token payload", e);
 			throw e;
 		}
 	}
