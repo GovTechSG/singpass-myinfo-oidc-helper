@@ -1,0 +1,73 @@
+{
+	"silversupport": {
+		"type": "object",
+		"required": [
+			"eligibility",
+			"lastupdated",
+			"amount",
+			"source",
+			"classification",
+			"year"
+		],
+		"properties": {
+			"eligibility": {
+				"type": "object",
+				"required": [
+					"value"
+				],
+				"properties": {
+					"value": {
+						"type": "boolean"
+					}
+				}
+			},
+			"lastupdated": {
+				"type": "string",
+				"format": "date",
+				"description": "Last updated date of data field. See \"full-date\" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14"
+			},
+			"amount": {
+				"type": "object",
+				"required": [
+					"value"
+				],
+				"properties": {
+					"value": {
+						"type": "number"
+					}
+				}
+			},
+			"source": {
+				"type": "string",
+				"maxLength": 1,
+				"enum": [
+					"1",
+					"2",
+					"3",
+					"4"
+				],
+				"description": "Source of data.\n\n* '1' - Government-verified\n* '2' - User provided\n* '3' - Field is Not Applicable to Person\n* '4' - Verified by SingPass\n\n**Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions)."
+			},
+			"classification": {
+				"type": "string",
+				"maxLength": 1,
+				"enum": [
+					"C"
+				],
+				"default": "C",
+				"description": "Data classification of data field. Default 'C' - Confidential."
+			},
+			"year": {
+				"type": "object",
+				"required": [
+					"value"
+				],
+				"properties": {
+					"value": {
+						"type": "number"
+					}
+				}
+			}
+		}
+	}
+}
