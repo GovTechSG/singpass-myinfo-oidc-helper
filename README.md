@@ -317,7 +317,7 @@ Corppass.NdiOidcHelper
 
 ---
 
-### Key Object
+## Key Object
 
 - key: `string` containing contents of key
 
