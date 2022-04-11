@@ -319,8 +319,8 @@ Corppass.NdiOidcHelper
 
 ## Key Object
 
-- key: `string` containing contents of key
-
-- format: `string` specifying key format
-
-- alg: `string` specifying key algorithm
+| Param            | Type   | Description                                                                                                |
+| ---------------- | ------ | ---------------------------------------------------------------------------------------------------------- |
+key | string | contents of key |
+format | string | format of key provided |
+alg | string | key algorithm |
