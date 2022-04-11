@@ -1,13 +1,11 @@
-import { OidcHelper, OidcHelperConstructor } from "../corppass-helper";
+import { NdiOidcHelper, NdiOidcHelperConstructor } from "../corppass-helper-ndi";
 import { IdTokenPayload } from '../shared-constants';
 
-const mockAuthUrl = "https://mockcorppass.sg/authorize";
-const mockTokenUrl = "https://mockcorppass.sg/token";
+const mockOidcConfigUrl = "https://mockcorppass.sg/authorize";
 const mockClientId = "CLIENT-ID";
-const mockClientSecret = "sshh-secret";
 const mockRedirectUri = "http://mockme.sg/callback";
 const mockDecryptKey = "sshh-secret";
-const mockVerifyKey = "sshh-secret";
+const mockSignKey = "sshh-secret";
 
 const createMockIdTokenPayload = (overrideProps?: Partial<IdTokenPayload>): IdTokenPayload => ({
 	userInfo: {
@@ -26,21 +24,26 @@ const createMockIdTokenPayload = (overrideProps?: Partial<IdTokenPayload>): IdTo
 	...overrideProps,
 });
 
-describe("Corppass Helper", () => {
-	const props: OidcHelperConstructor = {
-		authorizationUrl: mockAuthUrl,
-		tokenUrl: mockTokenUrl,
+// tslint:disable-next-line: no-big-function
+describe("NDI Corppass Helper", () => {
+	const props: NdiOidcHelperConstructor = {
+		oidcConfigUrl: mockOidcConfigUrl,
 		clientID: mockClientId,
-		clientSecret: mockClientSecret,
 		redirectUri: mockRedirectUri,
-		jweDecryptKey: mockDecryptKey,
-		jwsVerifyKey: mockVerifyKey,
+		jweDecryptKey: {key: mockDecryptKey},
+		clientAssertionSignKey: {key:mockSignKey},
 	};
-	const helper = new OidcHelper(props);
+	const helper = new NdiOidcHelper(props);
 
 	describe("constructing authorization url", () => {
-		it("should construct the correct authorzation endpoint", () => {
-			const authUrl = helper.constructAuthorizationUrl(
+		it("should construct the correct authorzation endpoint", async () => {
+			helper._testExports.corppassClient.get = jest.fn((): any => Promise.resolve({
+				status: 200,
+				data: {
+					authorization_endpoint: "https://mockcorppass.sg/authorize",
+				},
+			}));
+			const authUrl = await helper.constructAuthorizationUrl(
 				"af0ifjsldkj",
 				"a2ghskf1234las",
 			);
