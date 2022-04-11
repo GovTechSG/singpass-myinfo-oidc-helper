@@ -2,7 +2,7 @@
 
 Use this module to build client applications that can:
 
-- Authenticate users via the Singpass OIDC provider
+- Authenticate users via the Singpass/Corppass OIDC provider
 - Retrieve user's MyInfo data via the MyInfo Person-Basic API and Person API
 
 ---
@@ -216,3 +216,38 @@ Singpass.OidcHelper
 
 - Follow the solution above to add enum definition manually
 - That enum will overwrite the auto generated enum
+
+---
+
+## Corppass
+
+Helper for integrating with Corppass OIDC
+
+`import { Corppass } from "singpass-myinfo-oidc-helper"`
+
+Corppass.OidcHelper
+
+- `constructor`
+
+| Param            | Type   | Description                                                                                                |
+| ---------------- | ------ | ---------------------------------------------------------------------------------------------------------- |
+| authorizationUrl | string | The URL for Corppass /authorize endpoint                                                                      |
+| tokenUrl         | string | The URL for Corppass /token endpoint                                                                       |
+| clientID         | string | Your app's ID when you onboarded Corppass.                                                                 |
+| clientSecret     | string | The client secret. To be sent together with client ID to token endpoint                                    |
+| redirectUri      | string | the redirect URL for Corppass to redirect to after user login. Must be whitelisted by SP during onboarding |
+| jweDecryptKey    | string | Private key for decrypting the JWT that wraps the token                                                    |
+| jwsVerifyKey     | string | Public key for verifying the JWT that wraps the token                                                      |
+
+### Login
+
+- `constructAuthorizationUrl = (state: string, nonce?: string) => string` - constructs the authorization url with the necessary params, including the:
+
+- state (later returned in redirectUri)
+- nonce (later returned inside the JWT from token endpoint)
+
+- `getTokens (authCode: string, axiosRequestConfig?: AxiosRequestConfig) => Promise<TokenResponse>` - get back the tokens from token endpoint. Outputs TokenResponse, which is the input for getIdTokenPayload
+- `refreshTokens (refreshToken: string, axiosRequestConfig?: AxiosRequestConfig) => Promise<TokenResponse>` - get fresh tokens from SP token endpoint. Outputs TokenResponse, which is the input for getIdTokenPayload
+- `getAccessTokenPayload(tokens: TokenResponse) => Promise<AccessTokenPayload>` - decode and verify the JWT. Outputs AccessTokenPayload, which contains the `EntityInfo`, `AuthInfo` and `TPAccessInfo` claims
+- `getIdTokenPayload(tokens: TokenResponse) => Promise<IdTokenPayload>` - decrypt and verify the JWT. Outputs IdTokenPayload, which is the input for extractInfoFromIdTokenSubject
+- `extractInfoFromIdTokenSubject(payload: TokenPayload) => { nric: string, uuid: string, countryCode: string }` - finally, get the nric, system defined UUID and country code of the user from the ID Token TokenPayload
