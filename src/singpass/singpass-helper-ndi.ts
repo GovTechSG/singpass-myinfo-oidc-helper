@@ -13,7 +13,7 @@ export interface NdiOidcHelperConstructor {
 	clientID: string;
 	redirectUri: string;
 	jweDecryptKey: Key;
-	jwsSignKey: Key;
+	clientAssertionSignKey: Key;
 }
 
 interface OidcConfig {
@@ -33,7 +33,7 @@ export class NdiOidcHelper {
 	private clientID: string;
 	private redirectUri: string;
 	private jweDecryptKey: Key;
-	private jwsSignKey: Key;
+	private clientAssertionSignKey: Key;
 	private additionalHeaders?: Record<string, string>;
 
 	constructor(props: NdiOidcHelperConstructor) {
@@ -41,7 +41,7 @@ export class NdiOidcHelper {
 		this.clientID = props.clientID;
 		this.redirectUri = props.redirectUri;
 		this.jweDecryptKey = props.jweDecryptKey;
-		this.jwsSignKey = props.jwsSignKey;
+		this.clientAssertionSignKey = props.clientAssertionSignKey;
 	}
 
 	public constructAuthorizationUrl = async (
@@ -80,7 +80,7 @@ export class NdiOidcHelper {
 				issuer: this.clientID,
 				subject: this.clientID,
 				audience: issuer,
-				key: this.jwsSignKey,
+				key: this.clientAssertionSignKey,
 			})
 		};
 		const body = querystringUtil.stringify(params);
