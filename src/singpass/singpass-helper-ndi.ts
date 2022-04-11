@@ -34,7 +34,6 @@ export class NdiOidcHelper {
 	private redirectUri: string;
 	private jweDecryptKey: Key;
 	private clientAssertionSignKey: Key;
-	private additionalHeaders?: Record<string, string>;
 
 	constructor(props: NdiOidcHelperConstructor) {
 		this.oidcConfigUrl = props.oidcConfigUrl;
@@ -87,7 +86,6 @@ export class NdiOidcHelper {
 
 		const config = {
 			headers: {
-				...this.additionalHeaders,
 				"content-type": "application/x-www-form-urlencoded"
 			},
 			...axiosRequestConfig,
