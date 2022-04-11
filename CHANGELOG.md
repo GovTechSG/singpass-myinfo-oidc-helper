@@ -1,5 +1,9 @@
 # Changelogs
 
+## 6.2.0
+
+- Added corppass helper
+
 ## 6.1.11
 
 - Updated UINFIN regex to support M series users
