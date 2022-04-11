@@ -143,45 +143,6 @@ getPerson({
 
 ---
 
-## Singpass
-
-Helper for integrating with Singpass OIDC
-
-`import { Singpass } from "singpass-myinfo-oidc-helper"`
-
-Singpass.OidcHelper
-
-- `constructor`
-
-| Param            | Type   | Description                                                                                                |
-| ---------------- | ------ | ---------------------------------------------------------------------------------------------------------- |
-| authorizationUrl | string | The URL for Singpass /authorize endpoint                                                                   |
-| logoutUrl        | string | The URL for Singpass /logout endpoint                                                                      |
-| tokenUrl         | string | The URL for Singpass /token endpoint                                                                       |
-| clientID         | string | Your app's ID when you onboarded Singpass.                                                                 |
-| clientSecret     | string | The client secret. To be sent together with client ID to token endpoint                                    |
-| redirectUri      | string | the redirect URL for Singpass to redirect to after user login. Must be whitelisted by SP during onboarding |
-| jweDecryptKey    | string | Private key for decrypting the JWT that wraps the token                                                    |
-| jwsVerifyKey     | string | Public key for verifying the JWT that wraps the token                                                      |
-
-### Login
-
-- `constructAuthorizationUrl = (state: string, nonce?: string) => string` - constructs the authorization url with the necessary params, including the:
-
-- state (later returned in redirectUri)
-- nonce (later returned inside the JWT from token endpoint)
-
-- `getTokens (authCode: string, axiosRequestConfig?: AxiosRequestConfig) => Promise<TokenResponse>` - get back the tokens from SP token endpoint. Outputs TokenResponse, which is the input for getIdTokenPayload
-- `refreshTokens (refreshToken: string, axiosRequestConfig?: AxiosRequestConfig) => Promise<TokenResponse>` - get fresh tokens from SP token endpoint. Outputs TokenResponse, which is the input for getIdTokenPayload
-- `getIdTokenPayload(tokens: TokenResponse) => Promise<TokenPayload>` - decrypt and verify the JWT. Outputs TokenPayload, which is the input for extractNricAndUuidFromPayload
-- `extractNricAndUuidFromPayload(payload: TokenPayload) => { nric: string, uuid: string }` - finally, get the nric and WOG (Whole-of-government) UUID of the user from the ID Token TokenPayload
-
-#### Logout Singpass SSO session
-
-- `logoutOfSession(sessionId: string) => Promise<SessionLogoutResult>`- Log user out of Singpass session, using a valid session id (that is retrieved from Singpass domain cookie)
-
----
-
 ## Updating Myinfo domains
 
 - Myinfo domains including `MyinfoComponents` and various enums are auto generated via `npm run generate-myinfo-typings '<swagger file>'`
@@ -219,9 +180,79 @@ Singpass.OidcHelper
 
 ---
 
-## Corppass
+## Singpass (Pre-NDI)
 
-Helper for integrating with Corppass OIDC
+Helper for integrating with Pre-NDI Singpass OIDC
+
+`import { Singpass } from "singpass-myinfo-oidc-helper"`
+
+Singpass.OidcHelper
+
+- `constructor`
+
+| Param            | Type   | Description                                                                                                |
+| ---------------- | ------ | ---------------------------------------------------------------------------------------------------------- |
+| authorizationUrl | string | The URL for Singpass /authorize endpoint                                                                   |
+| logoutUrl        | string | The URL for Singpass /logout endpoint                                                                      |
+| tokenUrl         | string | The URL for Singpass /token endpoint                                                                       |
+| clientID         | string | Your app's ID when you onboarded Singpass.                                                                 |
+| clientSecret     | string | The client secret. To be sent together with client ID to token endpoint                                    |
+| redirectUri      | string | the redirect URL for Singpass to redirect to after user login. Must be whitelisted by SP during onboarding |
+| jweDecryptKey    | string | Private key for decrypting the JWT that wraps the token                                                    |
+| jwsVerifyKey     | string | Public key for verifying the JWT that wraps the token                                                      |
+
+### Login
+
+- `constructAuthorizationUrl = (state: string, nonce?: string) => string` - constructs the authorization url with the necessary params, including the:
+
+- state (later returned in redirectUri)
+- nonce (later returned inside the JWT from token endpoint)
+
+- `getTokens (authCode: string, axiosRequestConfig?: AxiosRequestConfig) => Promise<TokenResponse>` - get back the tokens from SP token endpoint. Outputs TokenResponse, which is the input for getIdTokenPayload
+- `refreshTokens (refreshToken: string, axiosRequestConfig?: AxiosRequestConfig) => Promise<TokenResponse>` - get fresh tokens from SP token endpoint. Outputs TokenResponse, which is the input for getIdTokenPayload
+- `getIdTokenPayload(tokens: TokenResponse) => Promise<TokenPayload>` - decrypt and verify the JWT. Outputs TokenPayload, which is the input for extractNricAndUuidFromPayload
+- `extractNricAndUuidFromPayload(payload: TokenPayload) => { nric: string, uuid: string }` - finally, get the nric and WOG (Whole-of-government) UUID of the user from the ID Token TokenPayload
+
+#### Logout Singpass SSO session
+
+- `logoutOfSession(sessionId: string) => Promise<SessionLogoutResult>`- Log user out of Singpass session, using a valid session id (that is retrieved from Singpass domain cookie)
+
+---
+
+## Singpass (Post-NDI)
+
+Helper for integrating with Post-NDI Singpass OIDC
+
+`import { Singpass } from "singpass-myinfo-oidc-helper"`
+
+Singpass.NdiOidcHelper
+
+- `constructor`
+
+| Param            | Type   | Description                                                                                                |
+| ---------------- | ------ | ---------------------------------------------------------------------------------------------------------- |
+| oidcConfigUrl | string | The URL for Singpass OIDC configuration details endpoint|
+| clientID         | string | Your app's ID when you onboarded Singpass.|
+| redirectUri      | string | the redirect URL for Singpass to redirect to after user login. Must be whitelisted by SP during onboarding |
+| jweDecryptKey    | [key object](#key-object) | Object conatining private key for decrypting the JWT that wraps the token|
+| clientAssertionSignKey     | [key object](#key-object) | Object conatining private key for signing the client assertion provided in the token endpoint request|
+
+### Login
+
+- `constructAuthorizationUrl = (state: string, nonce?: string) => Promise<string>` - constructs the authorization url with the necessary params, including the:
+
+- state (later returned in redirectUri)
+- nonce (later returned inside the JWT from token endpoint)
+
+- `getTokens (authCode: string, axiosRequestConfig?: AxiosRequestConfig) => Promise<TokenResponse>` - get back the tokens from SP token endpoint. Outputs TokenResponse, which is the input for getIdTokenPayload
+- `getIdTokenPayload(tokens: TokenResponse) => Promise<TokenPayload>` - decrypt and verify the JWT. Outputs TokenPayload, which is the input for extractNricAndUuidFromPayload
+- `extractNricAndUuidFromPayload(payload: TokenPayload) => { nric: string, uuid: string }` - finally, get the nric and WOG (Whole-of-government) UUID of the user from the ID Token TokenPayload
+
+---
+
+## Corppass (Pre-NDI)
+
+Helper for integrating with Pre-NDI Corppass OIDC
 
 `import { Corppass } from "singpass-myinfo-oidc-helper"`
 
@@ -251,3 +282,45 @@ Corppass.OidcHelper
 - `getAccessTokenPayload(tokens: TokenResponse) => Promise<AccessTokenPayload>` - decode and verify the JWT. Outputs AccessTokenPayload, which contains the `EntityInfo`, `AuthInfo` and `TPAccessInfo` claims
 - `getIdTokenPayload(tokens: TokenResponse) => Promise<IdTokenPayload>` - decrypt and verify the JWT. Outputs IdTokenPayload, which is the input for extractInfoFromIdTokenSubject
 - `extractInfoFromIdTokenSubject(payload: TokenPayload) => { nric: string, uuid: string, countryCode: string }` - finally, get the nric, system defined UUID and country code of the user from the ID Token TokenPayload
+
+---
+
+## Corppass (Post-NDI)
+
+Helper for integrating with Post-NDI Corppass OIDC
+
+`import { Corppass } from "singpass-myinfo-oidc-helper"`
+
+Corppass.NdiOidcHelper
+
+- `constructor`
+
+| Param            | Type   | Description                                                                                                |
+| ---------------- | ------ | ---------------------------------------------------------------------------------------------------------- |
+| oidcConfigUrl | string | The URL for Corppass OIDC configuration details endpoint|
+| clientID         | string | Your app's ID when you onboarded Corppass.|
+| redirectUri      | string | the redirect URL for Corppass to redirect to after user login. Must be whitelisted by SP during onboarding |
+| jweDecryptKey    | [key object](#key-object) | Object conatining private key for decrypting the JWT that wraps the token|
+| clientAssertionSignKey     | [key object](#key-object) | Object conatining private key for signing the client assertion provided in the token endpoint request|                                                     |
+
+### Login
+
+- `constructAuthorizationUrl = (state: string, nonce?: string) => Promise<string>` - constructs the authorization url with the necessary params, including the:
+
+- state (later returned in redirectUri)
+- nonce (later returned inside the JWT from token endpoint)
+
+- `getTokens (authCode: string, axiosRequestConfig?: AxiosRequestConfig) => Promise<TokenResponse>` - get back the tokens from token endpoint. Outputs TokenResponse, which is the input for getIdTokenPayload
+- `getAccessTokenPayload(tokens: TokenResponse) => Promise<AccessTokenPayload>` - decode and verify the JWT. Outputs AccessTokenPayload, which contains the `EntityInfo`, `AuthInfo` and `TPAccessInfo` claims
+- `getIdTokenPayload(tokens: TokenResponse) => Promise<IdTokenPayload>` - decrypt and verify the JWT. Outputs IdTokenPayload, which is the input for extractInfoFromIdTokenSubject
+- `extractInfoFromIdTokenSubject(payload: TokenPayload) => { nric: string, uuid: string, countryCode: string }` - finally, get the nric, system defined UUID and country code of the user from the ID Token TokenPayload
+
+---
+
+### Key Object
+
+- key: `string` containing contents of key
+
+- format: `string` specifying key format
+
+- alg: `string` specifying key algorithm
