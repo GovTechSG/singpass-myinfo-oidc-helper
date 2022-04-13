@@ -46,8 +46,9 @@ export class NdiOidcHelper {
 	public constructAuthorizationUrl = async (
 		state: string,
 		nonce?: string,
+		axiosRequestConfig?: AxiosRequestConfig
 	): Promise<string> => {
-		const {data: {authorization_endpoint}} = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
+		const {data: {authorization_endpoint}} = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl, axiosRequestConfig);
 
 		const queryParams = {
 			state,
