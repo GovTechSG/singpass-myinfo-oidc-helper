@@ -1,4 +1,4 @@
-import { AxiosInstance, AxiosRequestConfig } from "axios";
+import { AxiosInstance, AxiosProxyConfig } from "axios";
 import * as querystringUtil from "querystring";
 import { createClient } from "../client/axios-client";
 import { JweUtil } from "../util";
@@ -14,6 +14,7 @@ export interface NdiOidcHelperConstructor {
 	redirectUri: string;
 	jweDecryptKey: Key;
 	clientAssertionSignKey: Key;
+	proxyConfig?: AxiosProxyConfig;
 }
 
 interface OidcConfig {
@@ -34,6 +35,7 @@ export class NdiOidcHelper {
 	private redirectUri: string;
 	private jweDecryptKey: Key;
 	private clientAssertionSignKey: Key;
+	private proxyConfig: AxiosProxyConfig;
 
 	constructor(props: NdiOidcHelperConstructor) {
 		this.oidcConfigUrl = props.oidcConfigUrl;
@@ -41,14 +43,14 @@ export class NdiOidcHelper {
 		this.redirectUri = props.redirectUri;
 		this.jweDecryptKey = props.jweDecryptKey;
 		this.clientAssertionSignKey = props.clientAssertionSignKey;
+		this.proxyConfig = props.proxyConfig;
 	}
 
 	public constructAuthorizationUrl = async (
 		state: string,
-		nonce?: string,
-		axiosRequestConfig?: AxiosRequestConfig
+		nonce?: string
 	): Promise<string> => {
-		const {data: {authorization_endpoint}} = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl, axiosRequestConfig);
+		const {data: {authorization_endpoint}} = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl, { proxy: this.proxyConfig });
 
 		const queryParams = {
 			state,
@@ -67,7 +69,7 @@ export class NdiOidcHelper {
 	 * Get tokens from Corppass endpoint. Note: This will fail if not on an IP whitelisted by SP.
 	 * Use getIdTokenPayload on returned Token Response to get the token payload
 	 */
-	public getTokens = async (authCode: string, axiosRequestConfig?: AxiosRequestConfig): Promise<TokenResponse> => {
+	public getTokens = async (authCode: string): Promise<TokenResponse> => {
 		const { data: { token_endpoint, issuer } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
 
 		const params = {
@@ -89,7 +91,7 @@ export class NdiOidcHelper {
 			headers: {
 				"content-type": "application/x-www-form-urlencoded"
 			},
-			...axiosRequestConfig,
+			proxy: this.proxyConfig
 		};
 		const response = await this.axiosClient.post<TokenResponse>(token_endpoint, body, config);
 		if (!response.data.id_token) {

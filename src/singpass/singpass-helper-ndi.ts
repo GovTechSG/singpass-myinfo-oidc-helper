@@ -1,4 +1,4 @@
-import { AxiosInstance, AxiosProxyConfig, AxiosRequestConfig } from "axios";
+import { AxiosInstance, AxiosProxyConfig } from "axios";
 import * as querystringUtil from "querystring";
 import { createClient } from "../client/axios-client";
 import { JweUtil } from "../util";
@@ -14,7 +14,7 @@ export interface NdiOidcHelperConstructor {
 	redirectUri: string;
 	jweDecryptKey: Key;
 	clientAssertionSignKey: Key;
-	proxyConfig: AxiosProxyConfig;
+	proxyConfig?: AxiosProxyConfig;
 }
 
 interface OidcConfig {
@@ -50,7 +50,7 @@ export class NdiOidcHelper {
 		state: string,
 		nonce?: string
 	): Promise<string> => {
-		const {data: {authorization_endpoint}} = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl, {proxy: this.proxyConfig});
+		const {data: {authorization_endpoint}} = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl, { proxy: this.proxyConfig });
 
 		const queryParams = {
 			state,
