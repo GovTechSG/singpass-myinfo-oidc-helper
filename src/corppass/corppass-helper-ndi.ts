@@ -25,10 +25,7 @@ interface OidcConfig {
 }
 
 export class NdiOidcHelper {
-	private axiosClient: AxiosInstance = createClient({
-		timeout: 10000,
-	});
-
+	private axiosClient: AxiosInstance;
 	private oidcConfigUrl: string;
 	private clientID: string;
 	private redirectUri: string;
@@ -44,7 +41,7 @@ export class NdiOidcHelper {
 
 		this.axiosClient = createClient({
 			timeout: 10000,
-			proxy: props.proxyConfig
+			proxy: props.proxyConfig,
 		});
 	}
 
@@ -170,7 +167,7 @@ export class NdiOidcHelper {
 	}
 
 	public _testExports = {
-		corppassClient: this.axiosClient,
+		corppassClient: createClient({ timeout: 10000}),
 		validateStatusFn: this.validateStatus,
 	};
 }
