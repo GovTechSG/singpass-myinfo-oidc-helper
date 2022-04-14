@@ -148,7 +148,7 @@ export class NdiOidcHelper {
 	}
 
 	public _testExports = {
-		singpassClient: createClient({ timeout: 10000}),
+		getSingpassClient: () => this.axiosClient,
 		validateStatusFn: this.validateStatus,
 	};
 }

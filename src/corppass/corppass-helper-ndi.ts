@@ -167,7 +167,7 @@ export class NdiOidcHelper {
 	}
 
 	public _testExports = {
-		corppassClient: createClient({ timeout: 10000}),
+		getCorppassClient: () => this.axiosClient,
 		validateStatusFn: this.validateStatus,
 	};
 }

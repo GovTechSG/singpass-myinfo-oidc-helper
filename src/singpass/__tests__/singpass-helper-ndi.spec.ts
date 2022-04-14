@@ -32,7 +32,7 @@ describe("NDI Singpass Helper", () => {
 
 	describe("constructing authorization url", () => {
 		it("should construct the correct authorzation endpoint", async () => {
-			helper._testExports.singpassClient.get = jest.fn((): any => Promise.resolve({
+			helper._testExports.getSingpassClient().get = jest.fn((): any => Promise.resolve({
 				status: 200,
 				data: {
 					authorization_endpoint: "https://mocksingpass.sg/authorize",

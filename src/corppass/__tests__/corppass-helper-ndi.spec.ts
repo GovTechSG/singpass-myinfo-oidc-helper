@@ -37,7 +37,7 @@ describe("NDI Corppass Helper", () => {
 
 	describe("constructing authorization url", () => {
 		it("should construct the correct authorzation endpoint", async () => {
-			helper._testExports.corppassClient.get = jest.fn((): any => Promise.resolve({
+			helper._testExports.getCorppassClient().get = jest.fn((): any => Promise.resolve({
 				status: 200,
 				data: {
 					authorization_endpoint: "https://mockcorppass.sg/authorize",
