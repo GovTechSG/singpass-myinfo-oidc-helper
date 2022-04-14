@@ -25,7 +25,6 @@ interface OidcConfig {
 }
 
 export class NdiOidcHelper {
-
 	private axiosClient: AxiosInstance = createClient({
 		timeout: 10000,
 	});
@@ -35,7 +34,6 @@ export class NdiOidcHelper {
 	private redirectUri: string;
 	private jweDecryptKey: Key;
 	private clientAssertionSignKey: Key;
-	private proxyConfig: AxiosProxyConfig;
 
 	constructor(props: NdiOidcHelperConstructor) {
 		this.oidcConfigUrl = props.oidcConfigUrl;
@@ -43,14 +41,18 @@ export class NdiOidcHelper {
 		this.redirectUri = props.redirectUri;
 		this.jweDecryptKey = props.jweDecryptKey;
 		this.clientAssertionSignKey = props.clientAssertionSignKey;
-		this.proxyConfig = props.proxyConfig;
+
+		this.axiosClient = createClient({
+			timeout: 10000,
+			proxy: props.proxyConfig
+		});
 	}
 
 	public constructAuthorizationUrl = async (
 		state: string,
 		nonce?: string
 	): Promise<string> => {
-		const {data: {authorization_endpoint}} = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl, { proxy: this.proxyConfig });
+		const {data: {authorization_endpoint}} = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
 
 		const queryParams = {
 			state,
@@ -70,7 +72,7 @@ export class NdiOidcHelper {
 	 * Use getIdTokenPayload on returned Token Response to get the token payload
 	 */
 	public getTokens = async (authCode: string): Promise<TokenResponse> => {
-		const { data: { token_endpoint, issuer } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl, { proxy: this.proxyConfig });
+		const { data: { token_endpoint, issuer } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
 
 		const params = {
 			grant_type: "authorization_code",
@@ -91,7 +93,6 @@ export class NdiOidcHelper {
 			headers: {
 				"content-type": "application/x-www-form-urlencoded"
 			},
-			proxy: this.proxyConfig
 		};
 		const response = await this.axiosClient.post<TokenResponse>(token_endpoint, body, config);
 		if (!response.data.id_token) {
@@ -106,7 +107,7 @@ export class NdiOidcHelper {
 	 */
 	public async getAccessTokenPayload(tokens: TokenResponse): Promise<AccessTokenPayload> {
 		try {
-			const { data: { jwks_uri } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl, { proxy: this.proxyConfig });
+			const { data: { jwks_uri } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
 			const { data: keys } = await this.axiosClient.get<{keys: Object[]}>(jwks_uri);
 			const jwsVerifyKey = keys[0];
 
@@ -125,7 +126,7 @@ export class NdiOidcHelper {
 	 */
 	public async getIdTokenPayload(tokens: TokenResponse): Promise<IdTokenPayload> {
 		try {
-			const { data: { jwks_uri } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl, { proxy: this.proxyConfig });
+			const { data: { jwks_uri } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
 			const { data: keys } = await this.axiosClient.get<{keys: Object[]}>(jwks_uri);
 			const jwsVerifyKey = keys[0];
 
