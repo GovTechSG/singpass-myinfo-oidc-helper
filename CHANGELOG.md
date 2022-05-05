@@ -1,12 +1,8 @@
 # Changelogs
 
-## 6.2.1
+## 6.1.13
 
-- update app reviewer mock profile
-
-## 6.2.0
-
-- Added corppass helper
+- (back-fixing) update app reviewer mock profile
 
 ## 6.1.11
 
