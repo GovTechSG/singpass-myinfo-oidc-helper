@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import { MyInfoCountryCode, MyInfoDialectCode, MyInfoEduLevelCode, MyInfoMaritialStatusCode, MyInfoMerdekaGenerationMessageCode, MyInfoNationalityCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
+import { MyInfoCountryCode, MyInfoDialectCode, MyInfoEduLevelCode, MyInfoMaritialStatusCode, MyInfoMerdekaGenerationMessageCode, MyInfoNationalityCode, MyInfoPioneerGenerationMessageCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 
 const id = "S1111111D";
@@ -253,6 +253,21 @@ export const mrAppReviewer: FakeProfile = {
 				},
 				"year": {
 					"value": 2019,
+				},
+				"source": source,
+				"classification": classification,
+				"lastupdated": lastupdated,
+			},
+			"pioneergen": {
+				"eligibility": {
+					"value": true,
+				},
+				"quantum": {
+					"value": "100.00",
+				},
+				"message": {
+					"code": MyInfoPioneerGenerationMessageCode.ALL_OK,
+					"desc": MyInfoPioneerGenerationMessageCode.fn.toEnumDesc(MyInfoPioneerGenerationMessageCode.ALL_OK),
 				},
 				"source": source,
 				"classification": classification,

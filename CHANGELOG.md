@@ -1,5 +1,9 @@
 # Changelogs
 
+## 6.1.13
+
+- (back-fixing) update app reviewer mock profile
+
 ## 6.1.11
 
 - Updated UINFIN regex to support M series users
