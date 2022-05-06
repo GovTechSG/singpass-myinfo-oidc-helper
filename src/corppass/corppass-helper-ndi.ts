@@ -105,11 +105,11 @@ export class NdiOidcHelper {
 	public async getAccessTokenPayload(tokens: TokenResponse): Promise<AccessTokenPayload> {
 		try {
 			const { data: { jwks_uri } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
-			const { data: keys } = await this.axiosClient.get<{keys: Object[]}>(jwks_uri);
+			const { data: { keys } } = await this.axiosClient.get<{keys: Object[]}>(jwks_uri);
 			const jwsVerifyKey = keys[0];
 
 			const { access_token } = tokens;
-			const verifiedJws = await JweUtil.verifyJWS(access_token, jwsVerifyKey, 'json');
+			const verifiedJws = await JweUtil.verifyJWS(access_token, JSON.stringify(jwsVerifyKey), 'json');
 			return JSON.parse(verifiedJws.payload.toString()) as AccessTokenPayload;
 		} catch (e) {
 			logger.error("Failed to get access token payload", e);
