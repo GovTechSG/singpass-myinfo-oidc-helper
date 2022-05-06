@@ -106,10 +106,10 @@ export class NdiOidcHelper {
 		try {
 			const { data: { jwks_uri } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
 			const { data: { keys } } = await this.axiosClient.get<{keys: Object[]}>(jwks_uri);
-			const jwsVerifyKey = keys[0];
+			const jwsVerifyKey = JSON.stringify(keys[0]);
 
 			const { access_token } = tokens;
-			const verifiedJws = await JweUtil.verifyJWS(access_token, JSON.stringify(jwsVerifyKey), 'json');
+			const verifiedJws = await JweUtil.verifyJWS(access_token, jwsVerifyKey, 'json');
 			return JSON.parse(verifiedJws.payload.toString()) as AccessTokenPayload;
 		} catch (e) {
 			logger.error("Failed to get access token payload", e);
@@ -124,8 +124,8 @@ export class NdiOidcHelper {
 	public async getIdTokenPayload(tokens: TokenResponse): Promise<IdTokenPayload> {
 		try {
 			const { data: { jwks_uri } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
-			const { data: keys } = await this.axiosClient.get<{keys: Object[]}>(jwks_uri);
-			const jwsVerifyKey = keys[0];
+			const { data: { keys } } = await this.axiosClient.get<{keys: Object[]}>(jwks_uri);
+			const jwsVerifyKey = JSON.stringify(keys[0]);
 
 			const { id_token } = tokens;
 			const decryptedJwe = await JweUtil.decryptJWE(id_token, this.jweDecryptKey.key, this.jweDecryptKey.format);
