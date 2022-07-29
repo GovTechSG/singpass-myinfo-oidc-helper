@@ -37,7 +37,21 @@ export const BaseProfile: FakeProfile = {
 				unavailable: false,
 			},
 			regadd: address(),
-			mobileno: mobileno(),
+			mobileno: {
+				areacode: {
+					value: "65",
+				},
+				prefix: {
+					value: "+",
+				},
+				nbr: {
+					value: "88158701",
+				},
+				lastupdated: "2022-07-14",
+				source: "4",
+				classification: "C",
+				unavailable: false
+			},
 			dialect: {
 				lastupdated: "2018-06-01",
 				code: MyInfoDialectCode.HOKKIEN,
@@ -357,14 +371,3 @@ const address = (): MyInfoComponents.Schemas.DataitemAddressSg => ({
 	unavailable: false,
 });
 
-const mobileno = (): any => ({
-	areacode: {
-		value: "65",
-	},
-	prefix: {
-		value: "+",
-	},
-	nbr: {
-		value: "88158701",
-	},
-});
