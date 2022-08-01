@@ -64,7 +64,7 @@ describe("Singpass Helper", () => {
 			const mockPayload = createMockTokenPayload({
 				sub: `s=${mockNric},u=${mockUuid}`,
 			});
-			const { nric, uuid } = helper.extractNricAndUuidFromPayload(mockPayload);
+			const {nric, uuid} = helper.extractNricAndUuidFromPayload(mockPayload);
 			expect(nric).toEqual(mockNric);
 			expect(uuid).toEqual(mockUuid);
 		});
@@ -104,7 +104,7 @@ describe("Singpass Helper", () => {
 				});
 				helperWithHeaders._testExports.singpassClient.post = jest.fn()
 					.mockResolvedValue({
-						data: { id_token: "some-token" }
+						data: {id_token: "some-token"}
 					});
 
 				await helperWithHeaders.getTokens("some-code");
@@ -128,7 +128,7 @@ describe("Singpass Helper", () => {
 				});
 				helperWithHeaders._testExports.singpassClient.post = jest.fn()
 					.mockResolvedValue({
-						data: { id_token: "some-token" }
+						data: {id_token: "some-token"}
 					});
 
 				await helperWithHeaders.getTokens("some-code");
@@ -156,7 +156,7 @@ describe("Singpass Helper", () => {
 				});
 				helperWithHeaders._testExports.singpassClient.post = jest.fn()
 					.mockResolvedValue({
-						data: { id_token: "some-token" }
+						data: {id_token: "some-token"}
 					});
 
 				await helperWithHeaders.refreshTokens("some-code");
@@ -180,7 +180,7 @@ describe("Singpass Helper", () => {
 				});
 				helperWithHeaders._testExports.singpassClient.post = jest.fn()
 					.mockResolvedValue({
-						data: { id_token: "some-token" }
+						data: {id_token: "some-token"}
 					});
 
 				await helperWithHeaders.refreshTokens("some-code");
@@ -215,7 +215,7 @@ describe("Singpass Helper", () => {
 				expect(helper._testExports.singpassClient.get).toHaveBeenCalledWith(
 					constructedMockAuthUrl,
 					{
-						headers: { Cookie: `PD-S-SESSION-ID=${sessionId}` },
+						headers: {Cookie: `PD-S-SESSION-ID=${sessionId}`},
 						maxRedirects: 0,
 						validateStatus: helper._testExports.validateStatusFn,
 					},
@@ -239,7 +239,7 @@ describe("Singpass Helper", () => {
 					expect(helper._testExports.singpassClient.get).toHaveBeenCalledWith(
 						constructedMockAuthUrl,
 						{
-							headers: { Cookie: `PD-S-SESSION-ID=${sessionId}` },
+							headers: {Cookie: `PD-S-SESSION-ID=${sessionId}`},
 							maxRedirects: 0,
 							validateStatus: helper._testExports.validateStatusFn,
 						},
@@ -260,7 +260,7 @@ describe("Singpass Helper", () => {
 					expect(helper._testExports.singpassClient.get).toHaveBeenCalledWith(
 						constructedMockAuthUrl,
 						{
-							headers: { Cookie: `PD-S-SESSION-ID=${sessionId}` },
+							headers: {Cookie: `PD-S-SESSION-ID=${sessionId}`},
 							maxRedirects: 0,
 							validateStatus: helper._testExports.validateStatusFn,
 						},
@@ -315,10 +315,10 @@ describe("Singpass Helper", () => {
 	describe("logout user's session", () => {
 		describe("When logout url has not been set", () => {
 			it("should throw an error", () => {
-				const helperWithoutLogout = new OidcHelper({ ...props, logoutUrl: undefined });
+				const helperWithoutLogout = new OidcHelper({...props, logoutUrl: undefined});
 
 				const sessionId = "1_0jP8lQbVdNJWu/WNMclh6jynB9d+Ui/e3BmbiLccaVRREZkMoEQ=_AAAAAwA=_ehj7WNPdSF5ZR+ERSflwNaDaBPo=";
-				expect(helperWithoutLogout.logoutOfSession(sessionId)).rejects.toEqual("");
+				expect(helperWithoutLogout.logoutOfSession(sessionId)).rejects.toThrowError();
 			});
 		});
 		describe("when logout is successful", () => {
@@ -332,7 +332,7 @@ describe("Singpass Helper", () => {
 				expect(result).toEqual(SessionLogoutResult.SUCCESS);
 				expect(helper._testExports.singpassClient.get).toHaveBeenCalledWith(
 					mockLogoutUrl,
-					{ headers: { Cookie: `PD-S-SESSION-ID=${sessionId}` } },
+					{headers: {Cookie: `PD-S-SESSION-ID=${sessionId}`}},
 				);
 			});
 		});
@@ -351,7 +351,7 @@ describe("Singpass Helper", () => {
 					expect(result).toEqual(SessionLogoutResult.SINGPASS_ERROR);
 					expect(helper._testExports.singpassClient.get).toHaveBeenCalledWith(
 						mockLogoutUrl,
-						{ headers: { Cookie: `PD-S-SESSION-ID=${sessionId}` } },
+						{headers: {Cookie: `PD-S-SESSION-ID=${sessionId}`}},
 					);
 				});
 			});
