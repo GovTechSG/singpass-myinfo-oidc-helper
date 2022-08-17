@@ -1,5 +1,9 @@
 # Changelogs
 
+## 6.3.0
+
+- Added NDI helper
+
 ## 6.2.1
 
 - update app reviewer mock profile
