@@ -1,6 +1,10 @@
 import * as _ from "lodash";
 import * as qs from "querystring";
 import * as crypto from "crypto";
+import * as jose from "node-jose";
+import * as jwt from 'jsonwebtoken';
+import { SingpassMyInfoError } from "./error/SingpassMyinfoError";
+import { Key } from './KeyUtil';
 
 export enum HttpMethod {
 	GET = "GET",
@@ -94,4 +98,16 @@ function generateSignature(
 		.sign(signWith, "base64");
 
 	return signature;
+}
+
+interface CreateClientAssertion {
+	issuer: string;audience:string; subject: string;
+	key: Key;
+}
+
+export async function createClientAssertion({issuer, audience, subject, key}: CreateClientAssertion): Promise<string> {
+	if (!key) throw new SingpassMyInfoError("Missing key to sign client assertion.");
+	if (!key.alg) throw new SingpassMyInfoError("Missing key algorithm to sign client assertion.");
+	const signingKey = await jose.JWK.asKey(key.key, key.format);
+	return jwt.sign({}, signingKey.toPEM(true), {algorithm: key.alg, keyid: signingKey.kid, issuer, audience, subject, expiresIn: 120});
 }

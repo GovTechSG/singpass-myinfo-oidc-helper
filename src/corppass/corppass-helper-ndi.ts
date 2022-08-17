@@ -1,49 +1,56 @@
-import { AxiosInstance, AxiosRequestConfig } from "axios";
+import { AxiosInstance, AxiosProxyConfig } from "axios";
 import * as querystringUtil from "querystring";
 import { createClient } from "../client/axios-client";
 import { JweUtil } from "../util";
-import { logger } from "../util/Logger";
 import { SingpassMyInfoError } from "../util/error/SingpassMyinfoError";
+import { logger } from "../util/Logger";
 import { AccessTokenPayload, IdTokenPayload, TokenResponse } from './shared-constants';
+import { Key } from'../util/KeyUtil';
+import { createClientAssertion } from'../util/SigningUtil';
 
-export interface OidcHelperConstructor {
-	authorizationUrl: string;
-	tokenUrl: string;
+export interface NdiOidcHelperConstructor {
+	oidcConfigUrl: string;
 	clientID: string;
-	clientSecret: string;
 	redirectUri: string;
-	jweDecryptKey: string;
-	jwsVerifyKey: string;
+	jweDecryptKey: Key;
+	clientAssertionSignKey: Key;
+	proxyConfig?: AxiosProxyConfig;
 }
 
-export class OidcHelper {
+interface OidcConfig {
+	issuer: string;
+	authorization_endpoint: string;
+	token_endpoint: string;
+	jwks_uri: string;
+}
 
-	private axiosClient: AxiosInstance = createClient({
-		timeout: 10000,
-	});
-
-	private authorizationUrl: string;
-	private tokenUrl: string;
+export class NdiOidcHelper {
+	private axiosClient: AxiosInstance;
+	private oidcConfigUrl: string;
 	private clientID: string;
-	private clientSecret: string;
 	private redirectUri: string;
-	private jweDecryptKey: string;
-	private jwsVerifyKey: string;
+	private jweDecryptKey: Key;
+	private clientAssertionSignKey: Key;
 
-	constructor(props: OidcHelperConstructor) {
-		this.authorizationUrl = props.authorizationUrl;
-		this.tokenUrl = props.tokenUrl;
+	constructor(props: NdiOidcHelperConstructor) {
+		this.oidcConfigUrl = props.oidcConfigUrl;
 		this.clientID = props.clientID;
-		this.clientSecret = props.clientSecret;
 		this.redirectUri = props.redirectUri;
 		this.jweDecryptKey = props.jweDecryptKey;
-		this.jwsVerifyKey = props.jwsVerifyKey;
+		this.clientAssertionSignKey = props.clientAssertionSignKey;
+
+		this.axiosClient = createClient({
+			timeout: 10000,
+			proxy: props.proxyConfig,
+		});
 	}
 
-	public constructAuthorizationUrl = (
+	public constructAuthorizationUrl = async (
 		state: string,
-		nonce?: string,
-	): string => {
+		nonce?: string
+	): Promise<string> => {
+		const {data: {authorization_endpoint}} = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
+
 		const queryParams = {
 			state,
 			...(nonce ? { nonce } : {}),
@@ -51,56 +58,40 @@ export class OidcHelper {
 			scope: "openid",
 			client_id: this.clientID,
 			response_type: "code",
+
 		};
 		const queryString = querystringUtil.stringify(queryParams);
-		return `${this.authorizationUrl}?${queryString}`;
+		return `${authorization_endpoint}?${queryString}`;
 	}
 
 	/**
 	 * Get tokens from Corppass endpoint. Note: This will fail if not on an IP whitelisted by SP.
-	 * Use getAccessTokenPayload and getIdTokenPayload on returned Token Response to get the token payload
+	 * Use getIdTokenPayload on returned Token Response to get the token payload
 	 */
-	public getTokens = async (authCode: string, axiosRequestConfig?: AxiosRequestConfig): Promise<TokenResponse> => {
+	public getTokens = async (authCode: string): Promise<TokenResponse> => {
+		const { data: { token_endpoint, issuer } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
+
 		const params = {
 			grant_type: "authorization_code",
 			code: authCode,
 			client_id: this.clientID,
-			client_secret: this.clientSecret,
 			redirect_uri: this.redirectUri,
+			client_assertion_type: 'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
+			client_assertion: await createClientAssertion({
+				issuer: this.clientID,
+				subject: this.clientID,
+				audience: issuer,
+				key: this.clientAssertionSignKey,
+			})
 		};
 		const body = querystringUtil.stringify(params);
 
 		const config = {
-			headers: { "content-type": "application/x-www-form-urlencoded" },
-			...axiosRequestConfig,
+			headers: {
+				"content-type": "application/x-www-form-urlencoded"
+			},
 		};
-		const response = await this.axiosClient.post(this.tokenUrl, body, config);
-		if (!response.data.id_token) {
-			logger.error("Failed to get ID token: invalid response data", response.data);
-			throw new SingpassMyInfoError("Failed to get ID token");
-		}
-		return response.data;
-	}
-
-	/**
-	 * Get fresh tokens from Corppass endpoint. Note: This will fail if not on an IP whitelisted by SP.
-	 * Use getIdTokenPayload on returned Token Response to get the token payload
-	 */
-	public refreshTokens = async (refreshToken: string, axiosRequestConfig?: AxiosRequestConfig): Promise<TokenResponse> => {
-		const params = {
-			scope: "openid",
-			grant_type: "refresh_token",
-			client_id: this.clientID,
-			client_secret: this.clientSecret,
-			refresh_token: refreshToken,
-		};
-		const body = querystringUtil.stringify(params);
-
-		const config = {
-			headers: { "content-type": "application/x-www-form-urlencoded" },
-			...axiosRequestConfig,
-		};
-		const response = await this.axiosClient.post(this.tokenUrl, body, config);
+		const response = await this.axiosClient.post<TokenResponse>(token_endpoint, body, config);
 		if (!response.data.id_token) {
 			logger.error("Failed to get ID token: invalid response data", response.data);
 			throw new SingpassMyInfoError("Failed to get ID token");
@@ -113,8 +104,12 @@ export class OidcHelper {
 	 */
 	public async getAccessTokenPayload(tokens: TokenResponse): Promise<AccessTokenPayload> {
 		try {
+			const { data: { jwks_uri } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
+			const { data: { keys } } = await this.axiosClient.get<{keys: Object[]}>(jwks_uri);
+			const jwsVerifyKey = JSON.stringify(keys[0]);
+
 			const { access_token } = tokens;
-			const verifiedJws = await JweUtil.verifyJWS(access_token, this.jwsVerifyKey);
+			const verifiedJws = await JweUtil.verifyJWS(access_token, jwsVerifyKey, 'json');
 			return JSON.parse(verifiedJws.payload.toString()) as AccessTokenPayload;
 		} catch (e) {
 			logger.error("Failed to get access token payload", e);
@@ -128,10 +123,14 @@ export class OidcHelper {
 	 */
 	public async getIdTokenPayload(tokens: TokenResponse): Promise<IdTokenPayload> {
 		try {
+			const { data: { jwks_uri } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
+			const { data: { keys } } = await this.axiosClient.get<{keys: Object[]}>(jwks_uri);
+			const jwsVerifyKey = JSON.stringify(keys[0]);
+
 			const { id_token } = tokens;
-			const decryptedJwe = await JweUtil.decryptJWE(id_token, this.jweDecryptKey);
+			const decryptedJwe = await JweUtil.decryptJWE(id_token, this.jweDecryptKey.key, this.jweDecryptKey.format);
 			const jwsPayload = decryptedJwe.payload.toString();
-			const verifiedJws = await JweUtil.verifyJWS(jwsPayload, this.jwsVerifyKey);
+			const verifiedJws = await JweUtil.verifyJWS(jwsPayload, jwsVerifyKey, 'json');
 			return JSON.parse(verifiedJws.payload.toString()) as IdTokenPayload;
 		} catch (e) {
 			logger.error("Failed to get ID token payload", e);
@@ -168,7 +167,7 @@ export class OidcHelper {
 	}
 
 	public _testExports = {
-		corppassClient: this.axiosClient,
+		getCorppassClient: () => this.axiosClient,
 		validateStatusFn: this.validateStatus,
 	};
 }
