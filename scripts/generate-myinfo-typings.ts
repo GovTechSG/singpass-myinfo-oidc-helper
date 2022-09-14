@@ -172,10 +172,6 @@ function sanitizeSwagger(swagger: any): any {
 	delete swagger.components.schemas["TokenError"];
 	delete swagger.components.schemas["Error"];
 
-	// Ad hoc fix for mixing old and new swagger specs https://github.com/swagger-api/swagger-editor/issues/1519
-	swagger.components.schemas["DataFieldProperties"].required.push("unavailable");
-	delete swagger.components.schemas["DataFieldProperties"].properties["unavailable"].required;
-
 	// Fix nulls
 	swagger = deepMapObject(swagger, (value) => value ?? "");
 
