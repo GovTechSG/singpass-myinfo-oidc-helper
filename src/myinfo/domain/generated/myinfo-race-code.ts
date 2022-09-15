@@ -1,6 +1,6 @@
 // tslint:disable
 // =============================================================================
-// This file was generated with `npm run generate-myinfo-typings` on 2021-04-09
+// This file was generated with `npm run generate-myinfo-typings` on 2022-09-15
 // Any modifications to this file may be overwritten when the script runs again
 // Check README.md for more information
 // =============================================================================
@@ -184,6 +184,7 @@ export enum MyInfoRaceCode {
 	"PORTUGUESE" = "PO",
 	"PERUVIAN" = "PR",
 	"PARSEE" = "PS",
+	"PUNAN" = "PU",
 	"POLYNESIAN" = "PY",
 	"RAJPUT" = "RJ",
 	"RAKHINE" = "RK",
@@ -413,6 +414,7 @@ enum MyInfoRaceCodeMapping {
 	"PORTUGUESE" = "PORTUGUESE",
 	"PERUVIAN" = "PERUVIAN",
 	"PARSEE" = "PARSEE",
+	"PUNAN" = "PUNAN",
 	"POLYNESIAN" = "POLYNESIAN",
 	"RAJPUT" = "RAJPUT",
 	"RAKHINE" = "RAKHINE",

@@ -1,6 +1,6 @@
 // tslint:disable
 // =============================================================================
-// This file was generated with `npm run generate-myinfo-typings` on 2021-04-09
+// This file was generated with `npm run generate-myinfo-typings` on 2022-09-15
 // Any modifications to this file may be overwritten when the script runs again
 // Check README.md for more information
 // =============================================================================
@@ -16,6 +16,7 @@ export enum MyInfoNationalityCode {
 	"ANGOLAN" = "AO",
 	"ARGENTINIAN" = "AR",
 	"AUSTRIAN" = "AT",
+	"AMERICAN_SAMOAN" = "AS",
 	"AUSTRALIAN" = "AU",
 	"AZERBAIJANI" = "AZ",
 	"BOSNIAN" = "BA",
@@ -102,7 +103,7 @@ export enum MyInfoNationalityCode {
 	"KENYAN" = "KE",
 	"KIRIBATI" = "KI",
 	"COMORAN" = "KM",
-	"KOREAN_NORTH" = "KP",
+	"D_P_R_KOREAN" = "KP",
 	"KOREAN_SOUTH" = "KR",
 	"KUWAITI" = "KW",
 	"KYRGYZSTAN" = "KY",
@@ -123,7 +124,7 @@ export enum MyInfoNationalityCode {
 	"MONACAN" = "MC",
 	"MOLDAVIAN" = "MD",
 	"MICRONESIAN" = "MF",
-	"MADAGASY" = "MG",
+	"MALAGASY" = "MG",
 	"MARSHALLESE" = "MH",
 	"MONTENEGRIN" = "MJ",
 	"MALIAN" = "ML",
@@ -179,6 +180,7 @@ export enum MyInfoNationalityCode {
 	"SAO_TOMEAN" = "ST",
 	"SALVADORAN" = "SV",
 	"KITTIAN_NEVISIAN" = "SW",
+	"SOUTH_SUDANESE" = "SX",
 	"SYRIAN" = "SY",
 	"SWAZI" = "SZ",
 	"CHADIAN" = "TD",
@@ -225,6 +227,7 @@ enum MyInfoNationalityCodeMapping {
 	"ANGOLAN" = "ANGOLAN",
 	"ARGENTINIAN" = "ARGENTINIAN",
 	"AUSTRIAN" = "AUSTRIAN",
+	"AMERICAN_SAMOAN" = "AMERICAN SAMOAN",
 	"AUSTRALIAN" = "AUSTRALIAN",
 	"AZERBAIJANI" = "AZERBAIJANI",
 	"BOSNIAN" = "BOSNIAN",
@@ -311,7 +314,7 @@ enum MyInfoNationalityCodeMapping {
 	"KENYAN" = "KENYAN",
 	"KIRIBATI" = "KIRIBATI",
 	"COMORAN" = "COMORAN",
-	"KOREAN_NORTH" = "KOREAN, NORTH",
+	"D_P_R_KOREAN" = "D.P.R. KOREAN",
 	"KOREAN_SOUTH" = "KOREAN, SOUTH",
 	"KUWAITI" = "KUWAITI",
 	"KYRGYZSTAN" = "KYRGYZSTAN",
@@ -332,7 +335,7 @@ enum MyInfoNationalityCodeMapping {
 	"MONACAN" = "MONACAN",
 	"MOLDAVIAN" = "MOLDAVIAN",
 	"MICRONESIAN" = "MICRONESIAN",
-	"MADAGASY" = "MADAGASY",
+	"MALAGASY" = "MALAGASY",
 	"MARSHALLESE" = "MARSHALLESE",
 	"MONTENEGRIN" = "MONTENEGRIN",
 	"MALIAN" = "MALIAN",
@@ -388,6 +391,7 @@ enum MyInfoNationalityCodeMapping {
 	"SAO_TOMEAN" = "SAO TOMEAN",
 	"SALVADORAN" = "SALVADORAN",
 	"KITTIAN_NEVISIAN" = "KITTIAN & NEVISIAN",
+	"SOUTH_SUDANESE" = "SOUTH SUDANESE",
 	"SYRIAN" = "SYRIAN",
 	"SWAZI" = "SWAZI",
 	"CHADIAN" = "CHADIAN",

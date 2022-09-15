@@ -1,21 +1,171 @@
 // tslint:disable
 // =============================================================================
-// This file was generated with `npm run generate-myinfo-typings` on 2021-05-05
+// This file was generated with `npm run generate-myinfo-typings` on 2022-09-15
 // Any modifications to this file may be overwritten when the script runs again
 // Check README.md for more information
 // =============================================================================
 export declare namespace MyInfoComponents {
     export namespace Schemas {
         /**
+         * Academic Qualifications
+         * Academic Qualifications achieved
+         */
+        export interface Academicqualifications {
+            /**
+             * Transcript of qualification
+             */
+            transcripts?: {
+                /**
+                 * Qualification's Name
+                 */
+                name?: {
+                    /**
+                     * example:
+                     * SINGAPORE-CAMBRIDGE GENERAL CERTIFICATE OF EDUCATION ORDINARY LEVEL
+                     */
+                    value?: string;
+                };
+                /**
+                 * Year this qualification was attained
+                 *
+                 * See "date-fullyear" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14'
+                 */
+                yearattained?: {
+                    /**
+                     * example:
+                     * 2018
+                     */
+                    value?: string; // date
+                };
+                results?: {
+                    /**
+                     * Subject taken
+                     */
+                    subject?: {
+                        /**
+                         * example:
+                         * English Language
+                         */
+                        value?: string;
+                    };
+                    /**
+                     * Level of subject taken
+                     */
+                    level?: {
+                        /**
+                         * example:
+                         * Ordinary
+                         */
+                        value?: string;
+                    };
+                    /**
+                     * Grade attained
+                     */
+                    grade?: {
+                        /**
+                         * example:
+                         * A
+                         */
+                        value?: string;
+                    };
+                    /**
+                     * Optional Sub Subject taken
+                     */
+                    subsubject?: {
+                        /**
+                         * example:
+                         * SPECIAL PAPER
+                         */
+                        value?: string;
+                    };
+                    /**
+                     * Optional grade attained for subSubject
+                     */
+                    subgrade?: {
+                        /**
+                         * example:
+                         * One
+                         */
+                        value?: string;
+                    };
+                }[];
+                /**
+                 * Explanatory Notes
+                 */
+                explanatorynotes?: {
+                    value?: string;
+                };
+            }[];
+            /**
+             * Electronic Certificates Uploaded
+             */
+            certificates?: {
+                /**
+                 * File name of the electronic certificate
+                 */
+                name?: {
+                    /**
+                     * example:
+                     * nus.opencert
+                     */
+                    value?: string;
+                };
+                /**
+                 * File content of the electronic certificate, Base64 encoded
+                 */
+                content?: {
+                    value?: string;
+                };
+                /**
+                 * Open Certificate Information
+                 *
+                 * Note: The test environment for OpenCert is at https://dev.opencerts.io/ while production is
+                 * at https://opencerts.io/
+                 */
+                opencertificate?: {
+                    /**
+                     * The OpenCert serial number.
+                     */
+                    id?: {
+                        /**
+                         * example:
+                         * 100000000343840
+                         */
+                        value?: string;
+                    };
+                    /**
+                     * Indicate whether this open certificate is primary certificate
+                     */
+                    primary?: {
+                        /**
+                         * example:
+                         * true
+                         */
+                        value?: boolean;
+                    };
+                };
+                /**
+                 * Indicate whether this file is open certificate
+                 */
+                opencertificateindicator?: {
+                    /**
+                     * example:
+                     * true
+                     */
+                    value?: boolean;
+                };
+            }[];
+        }
+        /**
          * Address details (Singapore Format)
          */
         export interface AddressSG {
             /**
-             * Type of Address (SG or Unformatted for non SG)
+             * Type of Address (SG or UNFORMATTED for non SG)
              */
-            type?: "SG" | "Unformatted";
+            type?: "SG" | "UNFORMATTED";
             /**
-             * Block of Address
+             * Block/House of Address
              */
             block?: {
                 /**
@@ -87,9 +237,9 @@ export declare namespace MyInfoComponents {
          */
         export interface AddressUnformatted {
             /**
-             * Type of Address (SG or Unformatted for non SG)
+             * Type of Address (SG or UNFORMATTED for non SG)
              */
-            type?: "SG" | "Unformatted";
+            type?: "SG" | "UNFORMATTED";
             /**
              * Unregistered Foreign address line 1
              */
@@ -130,7 +280,7 @@ export declare namespace MyInfoComponents {
          * Billing Address of Person
          *
          * **Note:**
-         * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'Unformatted')
+         * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
          * - check the `type` discriminator property to differentiate between the two address formats
          *
          */
@@ -139,7 +289,7 @@ export declare namespace MyInfoComponents {
          * Billing Address of Person
          *
          * **Note:**
-         * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'Unformatted')
+         * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
          * - check the `type` discriminator property to differentiate between the two address formats
          *
          */
@@ -166,7 +316,7 @@ export declare namespace MyInfoComponents {
          * BirthCountry
          * Country of Birth of Person.
          *
-         * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
+         * Refer to `country` in code table provided [HERE](https://public.cloud.myinfo.gov.sg/myinfobiz/myinfo-business-api-code-tables.xlsx) for description of each code.
          */
         export interface Birthcountry {
             /**
@@ -211,7 +361,7 @@ export declare namespace MyInfoComponents {
              */
             lastupdated: string; // date
             /**
-             * Optional flag to indicate if data is unavalable from data source.
+             * Optional flag to indicate if data is unavailable from data source.
              *
              * **NOTE:**
              *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -219,7 +369,7 @@ export declare namespace MyInfoComponents {
              *   - If data is available from the data source, this property will not be present.
              *
              */
-            unavailable: boolean;
+            unavailable?: boolean;
             /**
              * Birth certificate number of child.
              */
@@ -474,7 +624,7 @@ export declare namespace MyInfoComponents {
         /**
          * CPFContributions
          * Employer CPF Contributions of Person in SGD. Does not include any non-employer contributions.
-         * Maximum past 14 months' of contributions.
+         * Maximum past 15 months' of contributions.
          *
          */
         export interface Cpfcontributions {
@@ -1485,6 +1635,197 @@ export declare namespace MyInfoComponents {
             }[];
         }
         /**
+         * CPFHousingWithdrawal
+         * CPF Housing Withdrawal of Person. Amounts in SGD.
+         */
+        export interface Cpfhousingwithdrawal {
+            /**
+             * Withdrawal details for properties
+             */
+            withdrawaldetails?: {
+                /**
+                 * Registered Address of Property which withdrawal is made.
+                 *
+                 *   **Note:**
+                 *   - address can be either Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
+                 *   - check the `type` discriminator property to differentiate between the two address formats
+                 *
+                 */
+                address?: /**
+                 * Registered Address of Property which withdrawal is made.
+                 *
+                 *   **Note:**
+                 *   - address can be either Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
+                 *   - check the `type` discriminator property to differentiate between the two address formats
+                 *
+                 */
+                /* Address details (Singapore Format) */ AddressSG | /* Address details (Non-Singapore Format) */ AddressUnformatted;
+                /**
+                 *
+                 */
+                accruedinterestamt?: {
+                    /**
+                     * example:
+                     * 1581.48
+                     */
+                    value?: number; // double
+                };
+                /**
+                 *
+                 */
+                monthlyinstalmentamt?: {
+                    /**
+                     * example:
+                     * 1196.09
+                     */
+                    value?: number; // double
+                };
+                /**
+                 *
+                 */
+                principalwithdrawalamt?: {
+                    /**
+                     * example:
+                     * 2897.01
+                     */
+                    value?: number; // double
+                };
+                /**
+                 *
+                 */
+                totalamountofcpfallowedforproperty?: {
+                    /**
+                     * example:
+                     * 10000.01
+                     */
+                    value?: number; // double
+                };
+            }[];
+        }
+        /**
+         * CPFTransactions
+         * CPF Transaction History of Person in SGD.
+         * Maximum past 15 months' of transactions.
+         *
+         */
+        export interface Cpftransactions {
+            history?: {
+                /**
+                 * Type of transaction
+                 */
+                txntype?: {
+                    /**
+                     * example:
+                     * CON
+                     */
+                    code?: string;
+                    /**
+                     * example:
+                     * Contributions/Government Cash Grant/Government Top-up
+                     */
+                    desc?: string;
+                };
+                /**
+                 * Account Number. May be present if txntype code is 'TRF'.
+                 */
+                accountno?: {
+                    value?: string;
+                };
+                /**
+                 * Month of transaction. Format: YYYY-MM
+                 *
+                 * Present if txntype code is 'CON'/'RFD'/'ADJ'
+                 */
+                month?: {
+                    /**
+                     * example:
+                     * 2017-02
+                     */
+                    value?: string;
+                };
+                /**
+                 * Date of Transaction. See "full-date" in http://xml2rfc.ietf.org/public/rfc/htm
+                 */
+                date?: {
+                    /**
+                     * example:
+                     * 2017-03-01
+                     */
+                    value?: string; // date
+                };
+                /**
+                 * Footer reference
+                 */
+                referenceno?: {
+                    value?: string;
+                };
+                /**
+                 * Transaction Amount to Ordinary Account in SGD
+                 */
+                oatxnamt?: {
+                    /**
+                     * example:
+                     * 500
+                     */
+                    value?: number; // double
+                };
+                /**
+                 * Transaction Amount to Special Account in SGD
+                 */
+                satxnamt?: {
+                    /**
+                     * example:
+                     * 500
+                     */
+                    value?: number; // double
+                };
+                /**
+                 * Transaction Amount to Medisave Account in SGD
+                 */
+                matxnamt?: {
+                    /**
+                     * example:
+                     * 500
+                     */
+                    value?: number; // double
+                };
+                /**
+                 * Transaction Amount to Retirement Account in SGD. Only present if user has Retirement Account
+                 */
+                ratxnamt?: {
+                    /**
+                     * example:
+                     * 500
+                     */
+                    value?: number; // double
+                };
+            }[];
+            /**
+             * example:
+             * [
+             *   {
+             *     "message": {
+             *       "value": "REF A: EMPLOYER XXXX"
+             *     }
+             *   },
+             *   {
+             *     "message": {
+             *       "value": "B: EMPLOYER YYYY"
+             *     }
+             *   }
+             * ]
+             */
+            footers?: {
+                message?: {
+                    /**
+                     * example:
+                     * REF A: EMPLOYER XXXX
+                     */
+                    value?: string;
+                };
+            }[];
+        }
+        /**
          * example:
          * {
          *   "classification": "C",
@@ -1513,7 +1854,7 @@ export declare namespace MyInfoComponents {
              */
             lastupdated: string; // date
             /**
-             * Optional flag to indicate if data is unavalable from data source.
+             * Optional flag to indicate if data is unavailable from data source.
              *
              * **NOTE:**
              *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -1521,7 +1862,7 @@ export declare namespace MyInfoComponents {
              *   - If data is available from the data source, this property will not be present.
              *
              */
-            unavailable: boolean;
+            unavailable?: boolean;
         }
         /**
          * Address details (Singapore Format)
@@ -1534,11 +1875,11 @@ export declare namespace MyInfoComponents {
          */
         export interface DataitemAddressSg {
             /**
-             * Type of Address (SG or Unformatted for non SG)
+             * Type of Address (SG or UNFORMATTED for non SG)
              */
-            type?: "SG" | "Unformatted";
+            type?: "SG" | "UNFORMATTED";
             /**
-             * Block of Address
+             * Block/House of Address
              */
             block?: {
                 /**
@@ -1624,7 +1965,7 @@ export declare namespace MyInfoComponents {
              */
             lastupdated: string; // date
             /**
-             * Optional flag to indicate if data is unavalable from data source.
+             * Optional flag to indicate if data is unavailable from data source.
              *
              * **NOTE:**
              *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -1632,7 +1973,7 @@ export declare namespace MyInfoComponents {
              *   - If data is available from the data source, this property will not be present.
              *
              */
-            unavailable: boolean;
+            unavailable?: boolean;
         }
         /**
          * Address details (Non-Singapore Format)
@@ -1645,9 +1986,9 @@ export declare namespace MyInfoComponents {
          */
         export interface DataitemAddressUnformatted {
             /**
-             * Type of Address (SG or Unformatted for non SG)
+             * Type of Address (SG or UNFORMATTED for non SG)
              */
-            type?: "SG" | "Unformatted";
+            type?: "SG" | "UNFORMATTED";
             /**
              * Unregistered Foreign address line 1
              */
@@ -1688,7 +2029,7 @@ export declare namespace MyInfoComponents {
              */
             lastupdated: string; // date
             /**
-             * Optional flag to indicate if data is unavalable from data source.
+             * Optional flag to indicate if data is unavailable from data source.
              *
              * **NOTE:**
              *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -1696,7 +2037,7 @@ export declare namespace MyInfoComponents {
              *   - If data is available from the data source, this property will not be present.
              *
              */
-            unavailable: boolean;
+            unavailable?: boolean;
         }
         /**
          * Dialect
@@ -1742,7 +2083,11 @@ export declare namespace MyInfoComponents {
          */
         export interface Dob {
             /**
-             * Value of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+             * Value of data field.
+             * Format can be one of the below (with reference to http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14):
+             * - full-date
+             * - date-fullyear "-" date-month
+             * - date-fullyear
              * example:
              * 1958-05-17
              */
@@ -2049,18 +2394,25 @@ export declare namespace MyInfoComponents {
          *
          * **Note:** Only applies to a foreigner with a valid work pass.
          *
-         * * Construction
-         * * Manufacturing
-         * * Marine Shipyard
-         * * Process
-         * * Services
+         * Some examples of possible values are:
+         * * MANUFACTURING
+         * * CONSTRUCTION
+         * * RECLAMATION
+         * * SERVICE
+         * * GRI-TECHNOLOGY
+         * * LANDSCAPING
+         * * INCINERATOR PLANT
+         * * MARINE SHIPYARD
+         * * PROCESS
+         * * HARBOURCRAFT
+         * * DOMESTIC
          */
         export interface Employmentsector {
             /**
              * example:
-             * Manufacturing
+             * MANUFACTURING
              */
-            value?: "Construction" | "Manufacturing" | "Marine Shipyard" | "Process" | "Services";
+            value?: string;
         }
         /**
          * GradYear
@@ -2073,43 +2425,71 @@ export declare namespace MyInfoComponents {
              */
             value?: string; // [0-9]{4}
         }
+        /**
+         * GSTVoucher
+         * GST Voucher details
+         */
         export interface Gstvoucher {
-            gstregular: {
-                value: number;
-            };
-            year: {
-                value: number;
-            };
-            exclusion: {
-                value: boolean;
-            };
-            gstmedisave: {
-                value: number;
+            /**
+             * Indicator if user is excluded
+             */
+            exclusion?: {
+                /**
+                 * example:
+                 * false
+                 */
+                value?: boolean;
             };
             /**
-             * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+             * Indicator if user needs to signup
              */
-            lastupdated: string; // date
-            gstspecial: {
-                value: number;
+            signup?: {
+                /**
+                 * example:
+                 * true
+                 */
+                value?: boolean;
             };
             /**
-             * Source of data.
-             *
-             * * '1' - Government-verified
-             * * '2' - User provided
-             * * '3' - Field is Not Applicable to Person
-             * * '4' - Verified by SingPass
-             *
-             * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+             * Amount given for medisave account
              */
-            source: "1" | "2" | "3" | "4";
+            gstmedisave?: {
+                /**
+                 * example:
+                 * 100
+                 */
+                value?: number;
+            };
             /**
-             * Data classification of data field. Default 'C' - Confidential.
+             * Amount given for ordinary account
              */
-            classification: "C";
-            signup: {
-                value: boolean;
+            gstregular?: {
+                /**
+                 * example:
+                 * 100
+                 */
+                value?: number;
+            };
+            /**
+             * Amount given for special account
+             */
+            gstspecial?: {
+                /**
+                 * example:
+                 * 100
+                 */
+                value?: number;
+            };
+            /**
+             * Year given
+             */
+            year?: {
+                /**
+                 * Value of data field. See "date-fullyear" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * example:
+                 * 2019
+                 */
+                value?: string; // date
             };
         }
         /**
@@ -2135,11 +2515,11 @@ export declare namespace MyInfoComponents {
              */
             address?: {
                 /**
-                 * Type of Address (SG or Unformatted for non SG)
+                 * Type of Address (SG or UNFORMATTED for non SG)
                  */
-                type?: "SG" | "Unformatted";
+                type?: "SG" | "UNFORMATTED";
                 /**
-                 * Block of Address
+                 * Block/House of Address
                  */
                 block?: {
                     /**
@@ -2393,11 +2773,11 @@ export declare namespace MyInfoComponents {
              */
             address?: {
                 /**
-                 * Type of Address (SG or Unformatted for non SG)
+                 * Type of Address (SG or UNFORMATTED for non SG)
                  */
-                type?: "SG" | "Unformatted";
+                type?: "SG" | "UNFORMATTED";
                 /**
-                 * Block of Address
+                 * Block/House of Address
                  */
                 block?: {
                     /**
@@ -2650,7 +3030,7 @@ export declare namespace MyInfoComponents {
                 value?: string;
             };
             /**
-             * Area Code of Phone Number. Default to '065'. If phone number is blank, code will be returned as blank.
+             * Area Code of Phone Number. Default to '65'. If phone number is blank, code will be returned as blank.
              */
             areacode?: {
                 /**
@@ -2732,7 +3112,7 @@ export declare namespace MyInfoComponents {
          * Mailing Address of Person
          *
          * **Note:**
-         * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'Unformatted')
+         * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
          * - check the `type` discriminator property to differentiate between the two address formats
          *
          */
@@ -2741,7 +3121,7 @@ export declare namespace MyInfoComponents {
          * Mailing Address of Person
          *
          * **Note:**
-         * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'Unformatted')
+         * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
          * - check the `type` discriminator property to differentiate between the two address formats
          *
          */
@@ -2836,47 +3216,45 @@ export declare namespace MyInfoComponents {
              */
             value?: string;
         }
+        /**
+         * MerdekaGen
+         * Merdekagen details
+         */
         export interface Merdekagen {
-            eligibility: {
-                value: boolean;
+            /**
+             * Eligibility
+             */
+            eligibility?: {
+                /**
+                 * example:
+                 * true
+                 */
+                value?: boolean;
             };
             /**
-             * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+             * Amount eligible for
              */
-            lastupdated: string; // date
-            quantum: {
-                value: number;
+            quantum?: {
+                /**
+                 * example:
+                 * 100
+                 */
+                value?: number;
             };
             /**
-             * Source of data.
-             *
-             * * '1' - Government-verified
-             * * '2' - User provided
-             * * '3' - Field is Not Applicable to Person
-             * * '4' - Verified by SingPass
-             *
-             * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+             * Suggested user friendly display
              */
-            source: "1" | "2" | "3" | "4";
-            /**
-             * Data classification of data field. Default 'C' - Confidential.
-             */
-            classification: "C";
-            /**
-             * Message code
-             * * '1' - MGP Eligibility Tag: N
-             * * '2' - MGP Eligibility Tag: Y, Sign-up Tag: Y, Invalid Address Tag: N
-             * * '3' - MGP Eligibility Tag: Y, Sign-up Tag: Y, Invalid Address Tag: Y
-             * * '4' - MGP Eligibility Tag: Y, Sign-up Tag: N, Invalid Address Tag: N
-             * * '5' - MGP Eligibility Tag: Y, Sign-up Tag: N, Invalid Address Tag: Y
-             * * '6' - MGP Eligibility Tag: Y, Opt-Out Tag: Y
-             * * '7' - MGP Eligibility Tag: Y, Sign-up Tag: Y, NIL Status: Y
-             *
-             * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-             */
-            message: {
-                code: "1" | "2" | "3" | "4" | "5" | "6" | "7";
-                desc: "We regret that you are not eligible for the Merdeka Generation Package.  For further enquiries, please contact 1800-2222-888." | "You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888." | "You are eligible for the Merdeka Generation Package. Please call 6391 6100 to update your NRIC address with ICA and then contact 1800-2222-888 to receive your Merdeka Generation card." | "You are eligible for the Merdeka Generation Package. Please contact 1800-2222-888 to receive your Merdeka Generation MediSave top-up." | "You are eligible for the Merdeka Generation Package. Please call 6391 6100 to update your NRIC address with ICA, and then contact 1800-2222-888 to receive your Merdeka Generation card." | "We understand that you have opted out of receiving the benefits under the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888." | "Please contact 1800-2222-888 for further details on your eligibility.";
+            message?: {
+                /**
+                 * example:
+                 * 2
+                 */
+                code?: string;
+                /**
+                 * example:
+                 * You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888.
+                 */
+                desc?: string;
             };
         }
         /**
@@ -2895,7 +3273,7 @@ export declare namespace MyInfoComponents {
                 value?: string;
             };
             /**
-             * Area Code of Phone Number. Default to '065'. If phone number is blank, code will be returned as blank.
+             * Area Code of Phone Number. Default to '65'. If phone number is blank, code will be returned as blank.
              */
             areacode?: {
                 /**
@@ -3071,28 +3449,9 @@ export declare namespace MyInfoComponents {
          */
         export interface Occupation {
             /**
-             * Code of occupation based on SSOC 2015.
+             * Free text.
              *
-             * For full list, refer to SSOC 2015 at https://www.singstat.gov.sg/standards/standards-and-classifications/ssoc.
-             *
-             * For FIN holders, blank will be returned.
-             *
-             * **Note:** Code+Desc and Value are mutually exclusive.
-             * example:
-             * 53201
-             */
-            code?: string; // [0-9]{5}
-            /**
-             * Description of occupation corresponding to code.
-             *
-             * **Note:** Code+Desc and Value are mutually exclusive.
-             * example:
-             * HEALTHCARE ASSISTANT
-             */
-            desc?: string;
-            /**
-             * Free text cccupation entered by user
-             * **Note:** Code+Desc and Value are mutually exclusive.
+             * For SC/PR holders, blank will be returned.
              * example:
              *
              */
@@ -3209,9 +3568,56 @@ export declare namespace MyInfoComponents {
             desc?: "Work Permit" | "S Pass" | "Employment Pass" | "Employment Pass" | "Employment Pass" | "Personalised Employment Pass" | "Work Holiday Pass" | "Training Employment Pass" | "EntrePass" | "Dependent Pass" | "Long Term Visit Pass" | "Letter of Consent" | "Miscellaneous Work Pass";
         }
         /**
-         * Person instance's details
+         * Person instance's details (Basic Profile)
          */
         export interface Person {
+            /**
+             * Partial UINFIN
+             * Masked Singapore issued identification number of the Person. Only the last 3 digit and ending alphabet will be in clear.
+             * example:
+             * {
+             *   "classification": "C",
+             *   "source": "1",
+             *   "lastupdated": "2019-03-26"
+             * }
+             */
+            partialuinfin?: {
+                /**
+                 * Value of the field, should be displayed as it is.
+                 * example:
+                 * *****111D
+                 */
+                value?: string;
+                /**
+                 * Data classification of data field. Default 'C' - Confidential.
+                 */
+                classification: "C";
+                /**
+                 * Source of data.
+                 *
+                 * * '1' - Government-verified
+                 * * '2' - User provided
+                 * * '3' - Field is Not Applicable to Person
+                 * * '4' - Verified by SingPass
+                 *
+                 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+                 */
+                source: "1" | "2" | "3" | "4";
+                /**
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 */
+                lastupdated: string; // date
+                /**
+                 * Optional flag to indicate if data is unavailable from data source.
+                 *
+                 * **NOTE:**
+                 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                 *   - If data is available from the data source, this property will not be present.
+                 *
+                 */
+                unavailable?: boolean;
+            };
             /**
              * UINFIN
              * Singapore issued identification number of the Person.
@@ -3249,7 +3655,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -3257,7 +3663,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * Name
@@ -3296,7 +3702,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -3304,7 +3710,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * HanYuPinYin
@@ -3344,7 +3750,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -3352,7 +3758,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * Alias
@@ -3393,7 +3799,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -3401,7 +3807,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * HanYuPinYinAlias
@@ -3441,7 +3847,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -3449,7 +3855,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * MarriedName
@@ -3490,7 +3896,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -3498,7 +3904,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * Sex
@@ -3545,7 +3951,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -3553,7 +3959,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * Race
@@ -3598,7 +4004,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -3606,7 +4012,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * SecondaryRace
@@ -3653,7 +4059,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -3661,7 +4067,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * Dialect
@@ -3708,7 +4114,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -3716,7 +4122,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * Nationality
@@ -3763,7 +4169,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -3771,7 +4177,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * DOB
@@ -3785,7 +4191,11 @@ export declare namespace MyInfoComponents {
              */
             dob?: {
                 /**
-                 * Value of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Value of data field.
+                 * Format can be one of the below (with reference to http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14):
+                 * - full-date
+                 * - date-fullyear "-" date-month
+                 * - date-fullyear
                  * example:
                  * 1958-05-17
                  */
@@ -3810,7 +4220,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -3818,13 +4228,13 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * BirthCountry
              * Country of Birth of Person.
              *
-             * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
+             * Refer to `country` in code table provided [HERE](https://public.cloud.myinfo.gov.sg/myinfobiz/myinfo-business-api-code-tables.xlsx) for description of each code.
              * example:
              * {
              *   "classification": "C",
@@ -3865,7 +4275,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -3873,7 +4283,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * ResidentialStatus
@@ -3927,7 +4337,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -3935,7 +4345,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * PassportNumber
@@ -3974,7 +4384,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -3982,7 +4392,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * PassportExpiryDate
@@ -4021,7 +4431,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -4029,37 +4439,23 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * RegAdd
              * Registered Address of Person
              *
              * **Note:**
-             * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'Unformatted')
+             * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
              * - check the `type` discriminator property to differentiate between the two address formats
-             *
-             * example:
-             * {
-             *   "classification": "C",
-             *   "source": "1",
-             *   "lastupdated": "2019-03-26"
-             * }
              */
             regadd?: /**
              * RegAdd
              * Registered Address of Person
              *
              * **Note:**
-             * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'Unformatted')
+             * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
              * - check the `type` discriminator property to differentiate between the two address formats
-             *
-             * example:
-             * {
-             *   "classification": "C",
-             *   "source": "1",
-             *   "lastupdated": "2019-03-26"
-             * }
              */
             /**
              * Address details (Singapore Format)
@@ -4085,30 +4481,18 @@ export declare namespace MyInfoComponents {
              * Mailing Address of Person
              *
              * **Note:**
-             * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'Unformatted')
+             * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
              * - check the `type` discriminator property to differentiate between the two address formats
              *
-             * example:
-             * {
-             *   "classification": "C",
-             *   "source": "1",
-             *   "lastupdated": "2019-03-26"
-             * }
              */
             mailadd?: /**
              * MailAdd
              * Mailing Address of Person
              *
              * **Note:**
-             * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'Unformatted')
+             * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
              * - check the `type` discriminator property to differentiate between the two address formats
              *
-             * example:
-             * {
-             *   "classification": "C",
-             *   "source": "1",
-             *   "lastupdated": "2019-03-26"
-             * }
              */
             /**
              * Address details (Singapore Format)
@@ -4134,30 +4518,18 @@ export declare namespace MyInfoComponents {
              * Billing Address of Person
              *
              * **Note:**
-             * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'Unformatted')
+             * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
              * - check the `type` discriminator property to differentiate between the two address formats
              *
-             * example:
-             * {
-             *   "classification": "C",
-             *   "source": "1",
-             *   "lastupdated": "2019-03-26"
-             * }
              */
             billadd?: /**
              * BillAdd
              * Billing Address of Person
              *
              * **Note:**
-             * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'Unformatted')
+             * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
              * - check the `type` discriminator property to differentiate between the two address formats
              *
-             * example:
-             * {
-             *   "classification": "C",
-             *   "source": "1",
-             *   "lastupdated": "2019-03-26"
-             * }
              */
             /**
              * Address details (Singapore Format)
@@ -4234,7 +4606,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -4242,7 +4614,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * HDBType
@@ -4301,7 +4673,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -4309,7 +4681,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * HDBOwnership
@@ -4332,11 +4704,11 @@ export declare namespace MyInfoComponents {
                  */
                 address?: {
                     /**
-                     * Type of Address (SG or Unformatted for non SG)
+                     * Type of Address (SG or UNFORMATTED for non SG)
                      */
-                    type?: "SG" | "Unformatted";
+                    type?: "SG" | "UNFORMATTED";
                     /**
-                     * Block of Address
+                     * Block/House of Address
                      */
                     block?: {
                         /**
@@ -4560,7 +4932,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -4568,7 +4940,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             }[];
             /**
              * OwnerPrivate
@@ -4611,7 +4983,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -4619,7 +4991,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * Email
@@ -4658,7 +5030,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -4666,7 +5038,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * HomeNo
@@ -4690,7 +5062,7 @@ export declare namespace MyInfoComponents {
                     value?: string;
                 };
                 /**
-                 * Area Code of Phone Number. Default to '065'. If phone number is blank, code will be returned as blank.
+                 * Area Code of Phone Number. Default to '65'. If phone number is blank, code will be returned as blank.
                  */
                 areacode?: {
                     /**
@@ -4729,7 +5101,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -4737,7 +5109,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * MobileNo
@@ -4761,7 +5133,7 @@ export declare namespace MyInfoComponents {
                     value?: string;
                 };
                 /**
-                 * Area Code of Phone Number. Default to '065'. If phone number is blank, code will be returned as blank.
+                 * Area Code of Phone Number. Default to '65'. If phone number is blank, code will be returned as blank.
                  */
                 areacode?: {
                     /**
@@ -4800,7 +5172,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -4808,7 +5180,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * Marital
@@ -4860,7 +5232,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -4868,7 +5240,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * MarriageCertNo
@@ -4910,7 +5282,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -4918,7 +5290,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * CountryOfMarriage
@@ -4966,7 +5338,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -4974,7 +5346,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * MarriageDate
@@ -5019,7 +5391,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -5027,7 +5399,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * DivorceDate
@@ -5072,7 +5444,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -5080,7 +5452,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * ChildrenBirthRecords
@@ -5113,7 +5485,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -5121,7 +5493,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
                 /**
                  * Birth certificate number of child.
                  */
@@ -5333,7 +5705,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -5341,7 +5713,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
                 /**
                  * NRIC of child
                  */
@@ -5626,7 +5998,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -5634,7 +6006,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * GradYear
@@ -5672,7 +6044,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -5680,7 +6052,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * SchoolName
@@ -5737,7 +6109,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -5745,7 +6117,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * Occupation
@@ -5759,28 +6131,9 @@ export declare namespace MyInfoComponents {
              */
             occupation?: {
                 /**
-                 * Code of occupation based on SSOC 2015.
+                 * Free text.
                  *
-                 * For full list, refer to SSOC 2015 at https://www.singstat.gov.sg/standards/standards-and-classifications/ssoc.
-                 *
-                 * For FIN holders, blank will be returned.
-                 *
-                 * **Note:** Code+Desc and Value are mutually exclusive.
-                 * example:
-                 * 53201
-                 */
-                code?: string; // [0-9]{5}
-                /**
-                 * Description of occupation corresponding to code.
-                 *
-                 * **Note:** Code+Desc and Value are mutually exclusive.
-                 * example:
-                 * HEALTHCARE ASSISTANT
-                 */
-                desc?: string;
-                /**
-                 * Free text cccupation entered by user
-                 * **Note:** Code+Desc and Value are mutually exclusive.
+                 * For SC/PR holders, blank will be returned.
                  * example:
                  *
                  */
@@ -5805,7 +6158,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -5813,7 +6166,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * Employment
@@ -5851,7 +6204,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -5859,7 +6212,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * PassType
@@ -5917,7 +6270,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -5925,7 +6278,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * PassStatus
@@ -5967,7 +6320,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -5975,7 +6328,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * PassExpiryDate
@@ -6014,7 +6367,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -6022,7 +6375,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * EmploymentSector
@@ -6030,11 +6383,18 @@ export declare namespace MyInfoComponents {
              *
              * **Note:** Only applies to a foreigner with a valid work pass.
              *
-             * * Construction
-             * * Manufacturing
-             * * Marine Shipyard
-             * * Process
-             * * Services
+             * Some examples of possible values are:
+             * * MANUFACTURING
+             * * CONSTRUCTION
+             * * RECLAMATION
+             * * SERVICE
+             * * GRI-TECHNOLOGY
+             * * LANDSCAPING
+             * * INCINERATOR PLANT
+             * * MARINE SHIPYARD
+             * * PROCESS
+             * * HARBOURCRAFT
+             * * DOMESTIC
              * example:
              * {
              *   "classification": "C",
@@ -6045,9 +6405,9 @@ export declare namespace MyInfoComponents {
             employmentsector?: {
                 /**
                  * example:
-                 * Manufacturing
+                 * MANUFACTURING
                  */
-                value?: "Construction" | "Manufacturing" | "Marine Shipyard" | "Process" | "Services";
+                value?: string;
                 /**
                  * Data classification of data field. Default 'C' - Confidential.
                  */
@@ -6068,7 +6428,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -6076,7 +6436,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * HouseholdIncome
@@ -6129,7 +6489,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -6137,13 +6497,8 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
-            /**
-             * **NOTE** Vehicles property is custom set to be array instead of object.
-             *
-             * Even though the vehicles property is defined as object in the original swagger file, the actual data is returned as array. Moreover the array will allow a person to have multiple vehicles.
-             */
             vehicles?: {
                 /**
                  * Data classification of data field. Default 'C' - Confidential.
@@ -6165,7 +6520,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -6173,7 +6528,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
                 /**
                  * Vehicle Registration Number displayed on the vehicle number plates
                  */
@@ -6821,7 +7176,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -6829,28 +7184,167 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
-            gstvoucher?: {
-                gstregular: {
-                    value: number;
-                };
-                year: {
-                    value: number;
-                };
-                exclusion: {
-                    value: boolean;
-                };
-                gstmedisave: {
-                    value: number;
-                };
+            /**
+             * Academic Qualifications
+             * Academic Qualifications achieved
+             * example:
+             * {
+             *   "classification": "C",
+             *   "source": "1",
+             *   "lastupdated": "2019-03-26"
+             * }
+             */
+            academicqualifications?: {
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Transcript of qualification
                  */
-                lastupdated: string; // date
-                gstspecial: {
-                    value: number;
-                };
+                transcripts?: {
+                    /**
+                     * Qualification's Name
+                     */
+                    name?: {
+                        /**
+                         * example:
+                         * SINGAPORE-CAMBRIDGE GENERAL CERTIFICATE OF EDUCATION ORDINARY LEVEL
+                         */
+                        value?: string;
+                    };
+                    /**
+                     * Year this qualification was attained
+                     *
+                     * See "date-fullyear" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14'
+                     */
+                    yearattained?: {
+                        /**
+                         * example:
+                         * 2018
+                         */
+                        value?: string; // date
+                    };
+                    results?: {
+                        /**
+                         * Subject taken
+                         */
+                        subject?: {
+                            /**
+                             * example:
+                             * English Language
+                             */
+                            value?: string;
+                        };
+                        /**
+                         * Level of subject taken
+                         */
+                        level?: {
+                            /**
+                             * example:
+                             * Ordinary
+                             */
+                            value?: string;
+                        };
+                        /**
+                         * Grade attained
+                         */
+                        grade?: {
+                            /**
+                             * example:
+                             * A
+                             */
+                            value?: string;
+                        };
+                        /**
+                         * Optional Sub Subject taken
+                         */
+                        subsubject?: {
+                            /**
+                             * example:
+                             * SPECIAL PAPER
+                             */
+                            value?: string;
+                        };
+                        /**
+                         * Optional grade attained for subSubject
+                         */
+                        subgrade?: {
+                            /**
+                             * example:
+                             * One
+                             */
+                            value?: string;
+                        };
+                    }[];
+                    /**
+                     * Explanatory Notes
+                     */
+                    explanatorynotes?: {
+                        value?: string;
+                    };
+                }[];
+                /**
+                 * Electronic Certificates Uploaded
+                 */
+                certificates?: {
+                    /**
+                     * File name of the electronic certificate
+                     */
+                    name?: {
+                        /**
+                         * example:
+                         * nus.opencert
+                         */
+                        value?: string;
+                    };
+                    /**
+                     * File content of the electronic certificate, Base64 encoded
+                     */
+                    content?: {
+                        value?: string;
+                    };
+                    /**
+                     * Open Certificate Information
+                     *
+                     * Note: The test environment for OpenCert is at https://dev.opencerts.io/ while production is
+                     * at https://opencerts.io/
+                     */
+                    opencertificate?: {
+                        /**
+                         * The OpenCert serial number.
+                         */
+                        id?: {
+                            /**
+                             * example:
+                             * 100000000343840
+                             */
+                            value?: string;
+                        };
+                        /**
+                         * Indicate whether this open certificate is primary certificate
+                         */
+                        primary?: {
+                            /**
+                             * example:
+                             * true
+                             */
+                            value?: boolean;
+                        };
+                    };
+                    /**
+                     * Indicate whether this file is open certificate
+                     */
+                    opencertificateindicator?: {
+                        /**
+                         * example:
+                         * true
+                         */
+                        value?: boolean;
+                    };
+                }[];
+                /**
+                 * Data classification of data field. Default 'C' - Confidential.
+                 */
+                classification: "C";
                 /**
                  * Source of data.
                  *
@@ -6863,55 +7357,19 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Data classification of data field. Default 'C' - Confidential.
-                 */
-                classification: "C";
-                signup: {
-                    value: boolean;
-                };
-            };
-            merdekagen?: {
-                eligibility: {
-                    value: boolean;
-                };
-                /**
                  * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
                  */
                 lastupdated: string; // date
-                quantum: {
-                    value: number;
-                };
                 /**
-                 * Source of data.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
-                 * * '1' - Government-verified
-                 * * '2' - User provided
-                 * * '3' - Field is Not Applicable to Person
-                 * * '4' - Verified by SingPass
+                 * **NOTE:**
+                 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                 *   - If data is available from the data source, this property will not be present.
                  *
-                 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
                  */
-                source: "1" | "2" | "3" | "4";
-                /**
-                 * Data classification of data field. Default 'C' - Confidential.
-                 */
-                classification: "C";
-                /**
-                 * Message code
-                 * * '1' - MGP Eligibility Tag: N
-                 * * '2' - MGP Eligibility Tag: Y, Sign-up Tag: Y, Invalid Address Tag: N
-                 * * '3' - MGP Eligibility Tag: Y, Sign-up Tag: Y, Invalid Address Tag: Y
-                 * * '4' - MGP Eligibility Tag: Y, Sign-up Tag: N, Invalid Address Tag: N
-                 * * '5' - MGP Eligibility Tag: Y, Sign-up Tag: N, Invalid Address Tag: Y
-                 * * '6' - MGP Eligibility Tag: Y, Opt-Out Tag: Y
-                 * * '7' - MGP Eligibility Tag: Y, Sign-up Tag: Y, NIL Status: Y
-                 *
-                 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-                 */
-                message: {
-                    code: "1" | "2" | "3" | "4" | "5" | "6" | "7";
-                    desc: "We regret that you are not eligible for the Merdeka Generation Package.  For further enquiries, please contact 1800-2222-888." | "You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888." | "You are eligible for the Merdeka Generation Package. Please call 6391 6100 to update your NRIC address with ICA and then contact 1800-2222-888 to receive your Merdeka Generation card." | "You are eligible for the Merdeka Generation Package. Please contact 1800-2222-888 to receive your Merdeka Generation MediSave top-up." | "You are eligible for the Merdeka Generation Package. Please call 6391 6100 to update your NRIC address with ICA, and then contact 1800-2222-888 to receive your Merdeka Generation card." | "We understand that you have opted out of receiving the benefits under the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888." | "Please contact 1800-2222-888 for further details on your eligibility.";
-                };
+                unavailable?: boolean;
             };
             pioneergen?: {
                 eligibility: {
@@ -6957,17 +7415,56 @@ export declare namespace MyInfoComponents {
                     desc: "We regret that you are not eligible for the Pioneer Generation Package.  For further enquiries, please contact 1800-2222-888." | "You are eligible for the Pioneer Generation Package. For further enquiries, please contact 1800-2222-888." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to receive your Pioneer Generation card." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to start receiving your Pioneer Generation benefits, such as your MediSave top-up." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to start receiving your Pioneer Generation benefits." | "We understand that you have opted out of receiving the benefits under the Pioneer Generation Package. For further enquiries, please contact 1800-2222-888." | "Please call 1800-2222-888 to start receiving your PG benefits.";
                 };
             };
-            silversupport?: {
-                eligibility: {
-                    value: boolean;
+            /**
+             * MerdekaGen
+             * Merdekagen details
+             * example:
+             * {
+             *   "classification": "C",
+             *   "source": "1",
+             *   "lastupdated": "2019-03-26"
+             * }
+             */
+            merdekagen?: {
+                /**
+                 * Eligibility
+                 */
+                eligibility?: {
+                    /**
+                     * example:
+                     * true
+                     */
+                    value?: boolean;
                 };
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Amount eligible for
                  */
-                lastupdated: string; // date
-                amount: {
-                    value: number;
+                quantum?: {
+                    /**
+                     * example:
+                     * 100
+                     */
+                    value?: number;
                 };
+                /**
+                 * Suggested user friendly display
+                 */
+                message?: {
+                    /**
+                     * example:
+                     * 2
+                     */
+                    code?: string;
+                    /**
+                     * example:
+                     * You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888.
+                     */
+                    desc?: string;
+                };
+                /**
+                 * Data classification of data field. Default 'C' - Confidential.
+                 */
+                classification: "C";
                 /**
                  * Source of data.
                  *
@@ -6980,12 +7477,193 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 */
+                lastupdated: string; // date
+                /**
+                 * Optional flag to indicate if data is unavailable from data source.
+                 *
+                 * **NOTE:**
+                 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                 *   - If data is available from the data source, this property will not be present.
+                 *
+                 */
+                unavailable?: boolean;
+            };
+            /**
+             * SilverSupport
+             * Silver Support Scheme details
+             * example:
+             * {
+             *   "classification": "C",
+             *   "source": "1",
+             *   "lastupdated": "2019-03-26"
+             * }
+             */
+            silversupport?: {
+                /**
+                 * Eligibility
+                 */
+                eligibility?: {
+                    /**
+                     * example:
+                     * true
+                     */
+                    value?: boolean;
+                };
+                /**
+                 * Amount eligible for
+                 */
+                amount?: {
+                    /**
+                     * example:
+                     * 300
+                     */
+                    value?: number;
+                };
+                /**
+                 * Year given
+                 */
+                year?: {
+                    /**
+                     * Value of data field. See "date-fullyear" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                     * example:
+                     * 2019
+                     */
+                    value?: string; // date
+                };
+                /**
                  * Data classification of data field. Default 'C' - Confidential.
                  */
                 classification: "C";
-                year: {
-                    value: number;
+                /**
+                 * Source of data.
+                 *
+                 * * '1' - Government-verified
+                 * * '2' - User provided
+                 * * '3' - Field is Not Applicable to Person
+                 * * '4' - Verified by SingPass
+                 *
+                 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+                 */
+                source: "1" | "2" | "3" | "4";
+                /**
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 */
+                lastupdated: string; // date
+                /**
+                 * Optional flag to indicate if data is unavailable from data source.
+                 *
+                 * **NOTE:**
+                 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                 *   - If data is available from the data source, this property will not be present.
+                 *
+                 */
+                unavailable?: boolean;
+            };
+            /**
+             * GSTVoucher
+             * GST Voucher details
+             * example:
+             * {
+             *   "classification": "C",
+             *   "source": "1",
+             *   "lastupdated": "2019-03-26"
+             * }
+             */
+            gstvoucher?: {
+                /**
+                 * Indicator if user is excluded
+                 */
+                exclusion?: {
+                    /**
+                     * example:
+                     * false
+                     */
+                    value?: boolean;
                 };
+                /**
+                 * Indicator if user needs to signup
+                 */
+                signup?: {
+                    /**
+                     * example:
+                     * true
+                     */
+                    value?: boolean;
+                };
+                /**
+                 * Amount given for medisave account
+                 */
+                gstmedisave?: {
+                    /**
+                     * example:
+                     * 100
+                     */
+                    value?: number;
+                };
+                /**
+                 * Amount given for ordinary account
+                 */
+                gstregular?: {
+                    /**
+                     * example:
+                     * 100
+                     */
+                    value?: number;
+                };
+                /**
+                 * Amount given for special account
+                 */
+                gstspecial?: {
+                    /**
+                     * example:
+                     * 100
+                     */
+                    value?: number;
+                };
+                /**
+                 * Year given
+                 */
+                year?: {
+                    /**
+                     * Value of data field. See "date-fullyear" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                     * example:
+                     * 2019
+                     */
+                    value?: string; // date
+                };
+                /**
+                 * Data classification of data field. Default 'C' - Confidential.
+                 */
+                classification: "C";
+                /**
+                 * Source of data.
+                 *
+                 * * '1' - Government-verified
+                 * * '2' - User provided
+                 * * '3' - Field is Not Applicable to Person
+                 * * '4' - Verified by SingPass
+                 *
+                 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+                 */
+                source: "1" | "2" | "3" | "4";
+                /**
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 */
+                lastupdated: string; // date
+                /**
+                 * Optional flag to indicate if data is unavailable from data source.
+                 *
+                 * **NOTE:**
+                 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                 *   - If data is available from the data source, this property will not be present.
+                 *
+                 */
+                unavailable?: boolean;
             };
             /**
              * Summary of latest Notice of Assessment within the past three years.
@@ -7037,7 +7715,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -7045,7 +7723,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * Detailed breakdown of latest Notice of Assessment within the past three years.
@@ -7157,7 +7835,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -7165,7 +7843,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * History of Notice Of Assessment (Basic)
@@ -7199,7 +7877,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -7207,7 +7885,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * History of Notice Of Assessment
@@ -7241,7 +7919,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -7249,12 +7927,12 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * CPFContributions
              * Employer CPF Contributions of Person in SGD. Does not include any non-employer contributions.
-             * Maximum past 14 months' of contributions.
+             * Maximum past 15 months' of contributions.
              *
              * example:
              * {
@@ -7919,7 +8597,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -7927,7 +8605,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * CPFEmployers
@@ -8324,7 +9002,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -8332,7 +9010,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * CPFBalances
@@ -8407,7 +9085,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -8415,13 +9093,163 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
+            };
+            /**
+             * CPFHousingWithdrawal
+             * CPF Housing Withdrawal of Person. Amounts in SGD.
+             * example:
+             * {
+             *   "classification": "C",
+             *   "source": "1",
+             *   "lastupdated": "2019-03-26"
+             * }
+             */
+            cpfhousingwithdrawal?: {
+                /**
+                 * Withdrawal details for properties
+                 */
+                withdrawaldetails?: {
+                    /**
+                     * Registered Address of Property which withdrawal is made.
+                     *
+                     *   **Note:**
+                     *   - address can be either Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
+                     *   - check the `type` discriminator property to differentiate between the two address formats
+                     *
+                     */
+                    address?: /**
+                     * Registered Address of Property which withdrawal is made.
+                     *
+                     *   **Note:**
+                     *   - address can be either Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
+                     *   - check the `type` discriminator property to differentiate between the two address formats
+                     *
+                     */
+                    /* Address details (Singapore Format) */ AddressSG | /* Address details (Non-Singapore Format) */ AddressUnformatted;
+                    /**
+                     *
+                     */
+                    accruedinterestamt?: {
+                        /**
+                         * example:
+                         * 1581.48
+                         */
+                        value?: number; // double
+                    };
+                    /**
+                     *
+                     */
+                    monthlyinstalmentamt?: {
+                        /**
+                         * example:
+                         * 1196.09
+                         */
+                        value?: number; // double
+                    };
+                    /**
+                     *
+                     */
+                    principalwithdrawalamt?: {
+                        /**
+                         * example:
+                         * 2897.01
+                         */
+                        value?: number; // double
+                    };
+                    /**
+                     *
+                     */
+                    totalamountofcpfallowedforproperty?: {
+                        /**
+                         * example:
+                         * 10000.01
+                         */
+                        value?: number; // double
+                    };
+                }[];
+                /**
+                 * Data classification of data field. Default 'C' - Confidential.
+                 */
+                classification: "C";
+                /**
+                 * Source of data.
+                 *
+                 * * '1' - Government-verified
+                 * * '2' - User provided
+                 * * '3' - Field is Not Applicable to Person
+                 * * '4' - Verified by SingPass
+                 *
+                 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+                 */
+                source: "1" | "2" | "3" | "4";
+                /**
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 */
+                lastupdated: string; // date
+                /**
+                 * Optional flag to indicate if data is unavailable from data source.
+                 *
+                 * **NOTE:**
+                 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                 *   - If data is available from the data source, this property will not be present.
+                 *
+                 */
+                unavailable?: boolean;
             };
         }
         /**
          * Person instance's details
          */
         export interface PersonCommon {
+            /**
+             * Partial UINFIN
+             * Masked Singapore issued identification number of the Person. Only the last 3 digit and ending alphabet will be in clear.
+             * example:
+             * {
+             *   "classification": "C",
+             *   "source": "1",
+             *   "lastupdated": "2019-03-26"
+             * }
+             */
+            partialuinfin?: {
+                /**
+                 * Value of the field, should be displayed as it is.
+                 * example:
+                 * *****111D
+                 */
+                value?: string;
+                /**
+                 * Data classification of data field. Default 'C' - Confidential.
+                 */
+                classification: "C";
+                /**
+                 * Source of data.
+                 *
+                 * * '1' - Government-verified
+                 * * '2' - User provided
+                 * * '3' - Field is Not Applicable to Person
+                 * * '4' - Verified by SingPass
+                 *
+                 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+                 */
+                source: "1" | "2" | "3" | "4";
+                /**
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 */
+                lastupdated: string; // date
+                /**
+                 * Optional flag to indicate if data is unavailable from data source.
+                 *
+                 * **NOTE:**
+                 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                 *   - If data is available from the data source, this property will not be present.
+                 *
+                 */
+                unavailable?: boolean;
+            };
             /**
              * UINFIN
              * Singapore issued identification number of the Person.
@@ -8459,7 +9287,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -8467,7 +9295,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * Name
@@ -8506,7 +9334,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -8514,7 +9342,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * HanYuPinYin
@@ -8554,7 +9382,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -8562,7 +9390,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * Alias
@@ -8603,7 +9431,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -8611,7 +9439,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * HanYuPinYinAlias
@@ -8651,7 +9479,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -8659,7 +9487,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * MarriedName
@@ -8700,7 +9528,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -8708,7 +9536,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * Sex
@@ -8755,7 +9583,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -8763,7 +9591,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * Race
@@ -8808,7 +9636,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -8816,7 +9644,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * SecondaryRace
@@ -8863,7 +9691,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -8871,7 +9699,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * Dialect
@@ -8918,7 +9746,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -8926,7 +9754,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * Nationality
@@ -8973,7 +9801,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -8981,7 +9809,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * DOB
@@ -8995,7 +9823,11 @@ export declare namespace MyInfoComponents {
              */
             dob?: {
                 /**
-                 * Value of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Value of data field.
+                 * Format can be one of the below (with reference to http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14):
+                 * - full-date
+                 * - date-fullyear "-" date-month
+                 * - date-fullyear
                  * example:
                  * 1958-05-17
                  */
@@ -9020,7 +9852,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -9028,13 +9860,13 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * BirthCountry
              * Country of Birth of Person.
              *
-             * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
+             * Refer to `country` in code table provided [HERE](https://public.cloud.myinfo.gov.sg/myinfobiz/myinfo-business-api-code-tables.xlsx) for description of each code.
              * example:
              * {
              *   "classification": "C",
@@ -9075,7 +9907,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -9083,7 +9915,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * ResidentialStatus
@@ -9137,7 +9969,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -9145,7 +9977,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * PassportNumber
@@ -9184,7 +10016,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -9192,7 +10024,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * PassportExpiryDate
@@ -9231,7 +10063,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -9239,37 +10071,23 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * RegAdd
              * Registered Address of Person
              *
              * **Note:**
-             * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'Unformatted')
+             * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
              * - check the `type` discriminator property to differentiate between the two address formats
-             *
-             * example:
-             * {
-             *   "classification": "C",
-             *   "source": "1",
-             *   "lastupdated": "2019-03-26"
-             * }
              */
             regadd?: /**
              * RegAdd
              * Registered Address of Person
              *
              * **Note:**
-             * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'Unformatted')
+             * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
              * - check the `type` discriminator property to differentiate between the two address formats
-             *
-             * example:
-             * {
-             *   "classification": "C",
-             *   "source": "1",
-             *   "lastupdated": "2019-03-26"
-             * }
              */
             /**
              * Address details (Singapore Format)
@@ -9295,30 +10113,18 @@ export declare namespace MyInfoComponents {
              * Mailing Address of Person
              *
              * **Note:**
-             * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'Unformatted')
+             * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
              * - check the `type` discriminator property to differentiate between the two address formats
              *
-             * example:
-             * {
-             *   "classification": "C",
-             *   "source": "1",
-             *   "lastupdated": "2019-03-26"
-             * }
              */
             mailadd?: /**
              * MailAdd
              * Mailing Address of Person
              *
              * **Note:**
-             * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'Unformatted')
+             * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
              * - check the `type` discriminator property to differentiate between the two address formats
              *
-             * example:
-             * {
-             *   "classification": "C",
-             *   "source": "1",
-             *   "lastupdated": "2019-03-26"
-             * }
              */
             /**
              * Address details (Singapore Format)
@@ -9344,30 +10150,18 @@ export declare namespace MyInfoComponents {
              * Billing Address of Person
              *
              * **Note:**
-             * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'Unformatted')
+             * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
              * - check the `type` discriminator property to differentiate between the two address formats
              *
-             * example:
-             * {
-             *   "classification": "C",
-             *   "source": "1",
-             *   "lastupdated": "2019-03-26"
-             * }
              */
             billadd?: /**
              * BillAdd
              * Billing Address of Person
              *
              * **Note:**
-             * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'Unformatted')
+             * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
              * - check the `type` discriminator property to differentiate between the two address formats
              *
-             * example:
-             * {
-             *   "classification": "C",
-             *   "source": "1",
-             *   "lastupdated": "2019-03-26"
-             * }
              */
             /**
              * Address details (Singapore Format)
@@ -9444,7 +10238,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -9452,7 +10246,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * HDBType
@@ -9511,7 +10305,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -9519,7 +10313,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * HDBOwnership
@@ -9542,11 +10336,11 @@ export declare namespace MyInfoComponents {
                  */
                 address?: {
                     /**
-                     * Type of Address (SG or Unformatted for non SG)
+                     * Type of Address (SG or UNFORMATTED for non SG)
                      */
-                    type?: "SG" | "Unformatted";
+                    type?: "SG" | "UNFORMATTED";
                     /**
-                     * Block of Address
+                     * Block/House of Address
                      */
                     block?: {
                         /**
@@ -9770,7 +10564,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -9778,7 +10572,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             }[];
             /**
              * OwnerPrivate
@@ -9821,7 +10615,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -9829,7 +10623,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * Email
@@ -9868,7 +10662,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -9876,7 +10670,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * HomeNo
@@ -9900,7 +10694,7 @@ export declare namespace MyInfoComponents {
                     value?: string;
                 };
                 /**
-                 * Area Code of Phone Number. Default to '065'. If phone number is blank, code will be returned as blank.
+                 * Area Code of Phone Number. Default to '65'. If phone number is blank, code will be returned as blank.
                  */
                 areacode?: {
                     /**
@@ -9939,7 +10733,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -9947,7 +10741,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * MobileNo
@@ -9971,7 +10765,7 @@ export declare namespace MyInfoComponents {
                     value?: string;
                 };
                 /**
-                 * Area Code of Phone Number. Default to '065'. If phone number is blank, code will be returned as blank.
+                 * Area Code of Phone Number. Default to '65'. If phone number is blank, code will be returned as blank.
                  */
                 areacode?: {
                     /**
@@ -10010,7 +10804,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -10018,7 +10812,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * Marital
@@ -10070,7 +10864,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -10078,7 +10872,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * MarriageCertNo
@@ -10120,7 +10914,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -10128,7 +10922,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * CountryOfMarriage
@@ -10176,7 +10970,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -10184,7 +10978,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * MarriageDate
@@ -10229,7 +11023,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -10237,7 +11031,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * DivorceDate
@@ -10282,7 +11076,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -10290,7 +11084,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * ChildrenBirthRecords
@@ -10323,7 +11117,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -10331,7 +11125,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
                 /**
                  * Birth certificate number of child.
                  */
@@ -10543,7 +11337,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -10551,7 +11345,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
                 /**
                  * NRIC of child
                  */
@@ -10836,7 +11630,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -10844,7 +11638,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * GradYear
@@ -10882,7 +11676,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -10890,7 +11684,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * SchoolName
@@ -10947,7 +11741,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -10955,7 +11749,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * Occupation
@@ -10969,28 +11763,9 @@ export declare namespace MyInfoComponents {
              */
             occupation?: {
                 /**
-                 * Code of occupation based on SSOC 2015.
+                 * Free text.
                  *
-                 * For full list, refer to SSOC 2015 at https://www.singstat.gov.sg/standards/standards-and-classifications/ssoc.
-                 *
-                 * For FIN holders, blank will be returned.
-                 *
-                 * **Note:** Code+Desc and Value are mutually exclusive.
-                 * example:
-                 * 53201
-                 */
-                code?: string; // [0-9]{5}
-                /**
-                 * Description of occupation corresponding to code.
-                 *
-                 * **Note:** Code+Desc and Value are mutually exclusive.
-                 * example:
-                 * HEALTHCARE ASSISTANT
-                 */
-                desc?: string;
-                /**
-                 * Free text cccupation entered by user
-                 * **Note:** Code+Desc and Value are mutually exclusive.
+                 * For SC/PR holders, blank will be returned.
                  * example:
                  *
                  */
@@ -11015,7 +11790,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -11023,7 +11798,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * Employment
@@ -11061,7 +11836,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -11069,7 +11844,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * PassType
@@ -11127,7 +11902,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -11135,7 +11910,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * PassStatus
@@ -11177,7 +11952,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -11185,7 +11960,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * PassExpiryDate
@@ -11224,7 +11999,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -11232,7 +12007,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * EmploymentSector
@@ -11240,11 +12015,18 @@ export declare namespace MyInfoComponents {
              *
              * **Note:** Only applies to a foreigner with a valid work pass.
              *
-             * * Construction
-             * * Manufacturing
-             * * Marine Shipyard
-             * * Process
-             * * Services
+             * Some examples of possible values are:
+             * * MANUFACTURING
+             * * CONSTRUCTION
+             * * RECLAMATION
+             * * SERVICE
+             * * GRI-TECHNOLOGY
+             * * LANDSCAPING
+             * * INCINERATOR PLANT
+             * * MARINE SHIPYARD
+             * * PROCESS
+             * * HARBOURCRAFT
+             * * DOMESTIC
              * example:
              * {
              *   "classification": "C",
@@ -11255,9 +12037,9 @@ export declare namespace MyInfoComponents {
             employmentsector?: {
                 /**
                  * example:
-                 * Manufacturing
+                 * MANUFACTURING
                  */
-                value?: "Construction" | "Manufacturing" | "Marine Shipyard" | "Process" | "Services";
+                value?: string;
                 /**
                  * Data classification of data field. Default 'C' - Confidential.
                  */
@@ -11278,7 +12060,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -11286,7 +12068,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * HouseholdIncome
@@ -11339,7 +12121,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -11347,13 +12129,8 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
-            /**
-             * **NOTE** Vehicles property is custom set to be array instead of object.
-             *
-             * Even though the vehicles property is defined as object in the original swagger file, the actual data is returned as array. Moreover the array will allow a person to have multiple vehicles.
-             */
             vehicles?: {
                 /**
                  * Data classification of data field. Default 'C' - Confidential.
@@ -11375,7 +12152,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -11383,7 +12160,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
                 /**
                  * Vehicle Registration Number displayed on the vehicle number plates
                  */
@@ -12031,7 +12808,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -12039,28 +12816,167 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
-            gstvoucher?: {
-                gstregular: {
-                    value: number;
-                };
-                year: {
-                    value: number;
-                };
-                exclusion: {
-                    value: boolean;
-                };
-                gstmedisave: {
-                    value: number;
-                };
+            /**
+             * Academic Qualifications
+             * Academic Qualifications achieved
+             * example:
+             * {
+             *   "classification": "C",
+             *   "source": "1",
+             *   "lastupdated": "2019-03-26"
+             * }
+             */
+            academicqualifications?: {
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Transcript of qualification
                  */
-                lastupdated: string; // date
-                gstspecial: {
-                    value: number;
-                };
+                transcripts?: {
+                    /**
+                     * Qualification's Name
+                     */
+                    name?: {
+                        /**
+                         * example:
+                         * SINGAPORE-CAMBRIDGE GENERAL CERTIFICATE OF EDUCATION ORDINARY LEVEL
+                         */
+                        value?: string;
+                    };
+                    /**
+                     * Year this qualification was attained
+                     *
+                     * See "date-fullyear" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14'
+                     */
+                    yearattained?: {
+                        /**
+                         * example:
+                         * 2018
+                         */
+                        value?: string; // date
+                    };
+                    results?: {
+                        /**
+                         * Subject taken
+                         */
+                        subject?: {
+                            /**
+                             * example:
+                             * English Language
+                             */
+                            value?: string;
+                        };
+                        /**
+                         * Level of subject taken
+                         */
+                        level?: {
+                            /**
+                             * example:
+                             * Ordinary
+                             */
+                            value?: string;
+                        };
+                        /**
+                         * Grade attained
+                         */
+                        grade?: {
+                            /**
+                             * example:
+                             * A
+                             */
+                            value?: string;
+                        };
+                        /**
+                         * Optional Sub Subject taken
+                         */
+                        subsubject?: {
+                            /**
+                             * example:
+                             * SPECIAL PAPER
+                             */
+                            value?: string;
+                        };
+                        /**
+                         * Optional grade attained for subSubject
+                         */
+                        subgrade?: {
+                            /**
+                             * example:
+                             * One
+                             */
+                            value?: string;
+                        };
+                    }[];
+                    /**
+                     * Explanatory Notes
+                     */
+                    explanatorynotes?: {
+                        value?: string;
+                    };
+                }[];
+                /**
+                 * Electronic Certificates Uploaded
+                 */
+                certificates?: {
+                    /**
+                     * File name of the electronic certificate
+                     */
+                    name?: {
+                        /**
+                         * example:
+                         * nus.opencert
+                         */
+                        value?: string;
+                    };
+                    /**
+                     * File content of the electronic certificate, Base64 encoded
+                     */
+                    content?: {
+                        value?: string;
+                    };
+                    /**
+                     * Open Certificate Information
+                     *
+                     * Note: The test environment for OpenCert is at https://dev.opencerts.io/ while production is
+                     * at https://opencerts.io/
+                     */
+                    opencertificate?: {
+                        /**
+                         * The OpenCert serial number.
+                         */
+                        id?: {
+                            /**
+                             * example:
+                             * 100000000343840
+                             */
+                            value?: string;
+                        };
+                        /**
+                         * Indicate whether this open certificate is primary certificate
+                         */
+                        primary?: {
+                            /**
+                             * example:
+                             * true
+                             */
+                            value?: boolean;
+                        };
+                    };
+                    /**
+                     * Indicate whether this file is open certificate
+                     */
+                    opencertificateindicator?: {
+                        /**
+                         * example:
+                         * true
+                         */
+                        value?: boolean;
+                    };
+                }[];
+                /**
+                 * Data classification of data field. Default 'C' - Confidential.
+                 */
+                classification: "C";
                 /**
                  * Source of data.
                  *
@@ -12073,55 +12989,19 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Data classification of data field. Default 'C' - Confidential.
-                 */
-                classification: "C";
-                signup: {
-                    value: boolean;
-                };
-            };
-            merdekagen?: {
-                eligibility: {
-                    value: boolean;
-                };
-                /**
                  * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
                  */
                 lastupdated: string; // date
-                quantum: {
-                    value: number;
-                };
                 /**
-                 * Source of data.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
-                 * * '1' - Government-verified
-                 * * '2' - User provided
-                 * * '3' - Field is Not Applicable to Person
-                 * * '4' - Verified by SingPass
+                 * **NOTE:**
+                 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                 *   - If data is available from the data source, this property will not be present.
                  *
-                 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
                  */
-                source: "1" | "2" | "3" | "4";
-                /**
-                 * Data classification of data field. Default 'C' - Confidential.
-                 */
-                classification: "C";
-                /**
-                 * Message code
-                 * * '1' - MGP Eligibility Tag: N
-                 * * '2' - MGP Eligibility Tag: Y, Sign-up Tag: Y, Invalid Address Tag: N
-                 * * '3' - MGP Eligibility Tag: Y, Sign-up Tag: Y, Invalid Address Tag: Y
-                 * * '4' - MGP Eligibility Tag: Y, Sign-up Tag: N, Invalid Address Tag: N
-                 * * '5' - MGP Eligibility Tag: Y, Sign-up Tag: N, Invalid Address Tag: Y
-                 * * '6' - MGP Eligibility Tag: Y, Opt-Out Tag: Y
-                 * * '7' - MGP Eligibility Tag: Y, Sign-up Tag: Y, NIL Status: Y
-                 *
-                 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-                 */
-                message: {
-                    code: "1" | "2" | "3" | "4" | "5" | "6" | "7";
-                    desc: "We regret that you are not eligible for the Merdeka Generation Package.  For further enquiries, please contact 1800-2222-888." | "You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888." | "You are eligible for the Merdeka Generation Package. Please call 6391 6100 to update your NRIC address with ICA and then contact 1800-2222-888 to receive your Merdeka Generation card." | "You are eligible for the Merdeka Generation Package. Please contact 1800-2222-888 to receive your Merdeka Generation MediSave top-up." | "You are eligible for the Merdeka Generation Package. Please call 6391 6100 to update your NRIC address with ICA, and then contact 1800-2222-888 to receive your Merdeka Generation card." | "We understand that you have opted out of receiving the benefits under the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888." | "Please contact 1800-2222-888 for further details on your eligibility.";
-                };
+                unavailable?: boolean;
             };
             pioneergen?: {
                 eligibility: {
@@ -12167,17 +13047,61 @@ export declare namespace MyInfoComponents {
                     desc: "We regret that you are not eligible for the Pioneer Generation Package.  For further enquiries, please contact 1800-2222-888." | "You are eligible for the Pioneer Generation Package. For further enquiries, please contact 1800-2222-888." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to receive your Pioneer Generation card." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to start receiving your Pioneer Generation benefits, such as your MediSave top-up." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to start receiving your Pioneer Generation benefits." | "We understand that you have opted out of receiving the benefits under the Pioneer Generation Package. For further enquiries, please contact 1800-2222-888." | "Please call 1800-2222-888 to start receiving your PG benefits.";
                 };
             };
-            silversupport?: {
-                eligibility: {
-                    value: boolean;
+        }
+        /**
+         * Person instance's details
+         */
+        export interface PersonCommunity {
+            /**
+             * MerdekaGen
+             * Merdekagen details
+             * example:
+             * {
+             *   "classification": "C",
+             *   "source": "1",
+             *   "lastupdated": "2019-03-26"
+             * }
+             */
+            merdekagen?: {
+                /**
+                 * Eligibility
+                 */
+                eligibility?: {
+                    /**
+                     * example:
+                     * true
+                     */
+                    value?: boolean;
                 };
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Amount eligible for
                  */
-                lastupdated: string; // date
-                amount: {
-                    value: number;
+                quantum?: {
+                    /**
+                     * example:
+                     * 100
+                     */
+                    value?: number;
                 };
+                /**
+                 * Suggested user friendly display
+                 */
+                message?: {
+                    /**
+                     * example:
+                     * 2
+                     */
+                    code?: string;
+                    /**
+                     * example:
+                     * You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888.
+                     */
+                    desc?: string;
+                };
+                /**
+                 * Data classification of data field. Default 'C' - Confidential.
+                 */
+                classification: "C";
                 /**
                  * Source of data.
                  *
@@ -12190,12 +13114,193 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 */
+                lastupdated: string; // date
+                /**
+                 * Optional flag to indicate if data is unavailable from data source.
+                 *
+                 * **NOTE:**
+                 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                 *   - If data is available from the data source, this property will not be present.
+                 *
+                 */
+                unavailable?: boolean;
+            };
+            /**
+             * SilverSupport
+             * Silver Support Scheme details
+             * example:
+             * {
+             *   "classification": "C",
+             *   "source": "1",
+             *   "lastupdated": "2019-03-26"
+             * }
+             */
+            silversupport?: {
+                /**
+                 * Eligibility
+                 */
+                eligibility?: {
+                    /**
+                     * example:
+                     * true
+                     */
+                    value?: boolean;
+                };
+                /**
+                 * Amount eligible for
+                 */
+                amount?: {
+                    /**
+                     * example:
+                     * 300
+                     */
+                    value?: number;
+                };
+                /**
+                 * Year given
+                 */
+                year?: {
+                    /**
+                     * Value of data field. See "date-fullyear" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                     * example:
+                     * 2019
+                     */
+                    value?: string; // date
+                };
+                /**
                  * Data classification of data field. Default 'C' - Confidential.
                  */
                 classification: "C";
-                year: {
-                    value: number;
+                /**
+                 * Source of data.
+                 *
+                 * * '1' - Government-verified
+                 * * '2' - User provided
+                 * * '3' - Field is Not Applicable to Person
+                 * * '4' - Verified by SingPass
+                 *
+                 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+                 */
+                source: "1" | "2" | "3" | "4";
+                /**
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 */
+                lastupdated: string; // date
+                /**
+                 * Optional flag to indicate if data is unavailable from data source.
+                 *
+                 * **NOTE:**
+                 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                 *   - If data is available from the data source, this property will not be present.
+                 *
+                 */
+                unavailable?: boolean;
+            };
+            /**
+             * GSTVoucher
+             * GST Voucher details
+             * example:
+             * {
+             *   "classification": "C",
+             *   "source": "1",
+             *   "lastupdated": "2019-03-26"
+             * }
+             */
+            gstvoucher?: {
+                /**
+                 * Indicator if user is excluded
+                 */
+                exclusion?: {
+                    /**
+                     * example:
+                     * false
+                     */
+                    value?: boolean;
                 };
+                /**
+                 * Indicator if user needs to signup
+                 */
+                signup?: {
+                    /**
+                     * example:
+                     * true
+                     */
+                    value?: boolean;
+                };
+                /**
+                 * Amount given for medisave account
+                 */
+                gstmedisave?: {
+                    /**
+                     * example:
+                     * 100
+                     */
+                    value?: number;
+                };
+                /**
+                 * Amount given for ordinary account
+                 */
+                gstregular?: {
+                    /**
+                     * example:
+                     * 100
+                     */
+                    value?: number;
+                };
+                /**
+                 * Amount given for special account
+                 */
+                gstspecial?: {
+                    /**
+                     * example:
+                     * 100
+                     */
+                    value?: number;
+                };
+                /**
+                 * Year given
+                 */
+                year?: {
+                    /**
+                     * Value of data field. See "date-fullyear" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                     * example:
+                     * 2019
+                     */
+                    value?: string; // date
+                };
+                /**
+                 * Data classification of data field. Default 'C' - Confidential.
+                 */
+                classification: "C";
+                /**
+                 * Source of data.
+                 *
+                 * * '1' - Government-verified
+                 * * '2' - User provided
+                 * * '3' - Field is Not Applicable to Person
+                 * * '4' - Verified by SingPass
+                 *
+                 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+                 */
+                source: "1" | "2" | "3" | "4";
+                /**
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 */
+                lastupdated: string; // date
+                /**
+                 * Optional flag to indicate if data is unavailable from data source.
+                 *
+                 * **NOTE:**
+                 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                 *   - If data is available from the data source, this property will not be present.
+                 *
+                 */
+                unavailable?: boolean;
             };
         }
         /**
@@ -12252,7 +13357,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -12260,7 +13365,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * Detailed breakdown of latest Notice of Assessment within the past three years.
@@ -12372,7 +13477,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -12380,7 +13485,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * History of Notice Of Assessment (Basic)
@@ -12414,7 +13519,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -12422,7 +13527,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * History of Notice Of Assessment
@@ -12456,7 +13561,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -12464,12 +13569,12 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * CPFContributions
              * Employer CPF Contributions of Person in SGD. Does not include any non-employer contributions.
-             * Maximum past 14 months' of contributions.
+             * Maximum past 15 months' of contributions.
              *
              * example:
              * {
@@ -13134,7 +14239,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -13142,7 +14247,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * CPFEmployers
@@ -13539,7 +14644,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -13547,7 +14652,7 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
             };
             /**
              * CPFBalances
@@ -13622,7 +14727,7 @@ export declare namespace MyInfoComponents {
                  */
                 lastupdated: string; // date
                 /**
-                 * Optional flag to indicate if data is unavalable from data source.
+                 * Optional flag to indicate if data is unavailable from data source.
                  *
                  * **NOTE:**
                  *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -13630,7 +14735,110 @@ export declare namespace MyInfoComponents {
                  *   - If data is available from the data source, this property will not be present.
                  *
                  */
-                unavailable: boolean;
+                unavailable?: boolean;
+            };
+            /**
+             * CPFHousingWithdrawal
+             * CPF Housing Withdrawal of Person. Amounts in SGD.
+             * example:
+             * {
+             *   "classification": "C",
+             *   "source": "1",
+             *   "lastupdated": "2019-03-26"
+             * }
+             */
+            cpfhousingwithdrawal?: {
+                /**
+                 * Withdrawal details for properties
+                 */
+                withdrawaldetails?: {
+                    /**
+                     * Registered Address of Property which withdrawal is made.
+                     *
+                     *   **Note:**
+                     *   - address can be either Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
+                     *   - check the `type` discriminator property to differentiate between the two address formats
+                     *
+                     */
+                    address?: /**
+                     * Registered Address of Property which withdrawal is made.
+                     *
+                     *   **Note:**
+                     *   - address can be either Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
+                     *   - check the `type` discriminator property to differentiate between the two address formats
+                     *
+                     */
+                    /* Address details (Singapore Format) */ AddressSG | /* Address details (Non-Singapore Format) */ AddressUnformatted;
+                    /**
+                     *
+                     */
+                    accruedinterestamt?: {
+                        /**
+                         * example:
+                         * 1581.48
+                         */
+                        value?: number; // double
+                    };
+                    /**
+                     *
+                     */
+                    monthlyinstalmentamt?: {
+                        /**
+                         * example:
+                         * 1196.09
+                         */
+                        value?: number; // double
+                    };
+                    /**
+                     *
+                     */
+                    principalwithdrawalamt?: {
+                        /**
+                         * example:
+                         * 2897.01
+                         */
+                        value?: number; // double
+                    };
+                    /**
+                     *
+                     */
+                    totalamountofcpfallowedforproperty?: {
+                        /**
+                         * example:
+                         * 10000.01
+                         */
+                        value?: number; // double
+                    };
+                }[];
+                /**
+                 * Data classification of data field. Default 'C' - Confidential.
+                 */
+                classification: "C";
+                /**
+                 * Source of data.
+                 *
+                 * * '1' - Government-verified
+                 * * '2' - User provided
+                 * * '3' - Field is Not Applicable to Person
+                 * * '4' - Verified by SingPass
+                 *
+                 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+                 */
+                source: "1" | "2" | "3" | "4";
+                /**
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 */
+                lastupdated: string; // date
+                /**
+                 * Optional flag to indicate if data is unavailable from data source.
+                 *
+                 * **NOTE:**
+                 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                 *   - If data is available from the data source, this property will not be present.
+                 *
+                 */
+                unavailable?: boolean;
             };
         }
         export interface PhoneNumLocal {
@@ -13645,7 +14853,7 @@ export declare namespace MyInfoComponents {
                 value?: string;
             };
             /**
-             * Area Code of Phone Number. Default to '065'. If phone number is blank, code will be returned as blank.
+             * Area Code of Phone Number. Default to '65'. If phone number is blank, code will be returned as blank.
              */
             areacode?: {
                 /**
@@ -13732,18 +14940,16 @@ export declare namespace MyInfoComponents {
          * Registered Address of Person
          *
          * **Note:**
-         * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'Unformatted')
+         * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
          * - check the `type` discriminator property to differentiate between the two address formats
-         *
          */
         export type Regadd = /**
          * RegAdd
          * Registered Address of Person
          *
          * **Note:**
-         * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'Unformatted')
+         * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
          * - check the `type` discriminator property to differentiate between the two address formats
-         *
          */
         /**
          * Address details (Singapore Format)
@@ -13861,34 +15067,41 @@ export declare namespace MyInfoComponents {
              */
             desc?: "FEMALE" | "MALE" | "UNKNOWN";
         }
+        /**
+         * SilverSupport
+         * Silver Support Scheme details
+         */
         export interface Silversupport {
-            eligibility: {
-                value: boolean;
+            /**
+             * Eligibility
+             */
+            eligibility?: {
+                /**
+                 * example:
+                 * true
+                 */
+                value?: boolean;
             };
             /**
-             * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+             * Amount eligible for
              */
-            lastupdated: string; // date
-            amount: {
-                value: number;
+            amount?: {
+                /**
+                 * example:
+                 * 300
+                 */
+                value?: number;
             };
             /**
-             * Source of data.
-             *
-             * * '1' - Government-verified
-             * * '2' - User provided
-             * * '3' - Field is Not Applicable to Person
-             * * '4' - Verified by SingPass
-             *
-             * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+             * Year given
              */
-            source: "1" | "2" | "3" | "4";
-            /**
-             * Data classification of data field. Default 'C' - Confidential.
-             */
-            classification: "C";
-            year: {
-                value: number;
+            year?: {
+                /**
+                 * Value of data field. See "date-fullyear" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * example:
+                 * 2019
+                 */
+                value?: string; // date
             };
         }
         /**
@@ -13920,7 +15133,7 @@ export declare namespace MyInfoComponents {
              */
             lastupdated: string; // date
             /**
-             * Optional flag to indicate if data is unavalable from data source.
+             * Optional flag to indicate if data is unavailable from data source.
              *
              * **NOTE:**
              *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -13928,7 +15141,7 @@ export declare namespace MyInfoComponents {
              *   - If data is available from the data source, this property will not be present.
              *
              */
-            unavailable: boolean;
+            unavailable?: boolean;
             /**
              * NRIC of child
              */
@@ -14171,11 +15384,6 @@ export declare namespace MyInfoComponents {
              */
             value?: string;
         }
-        /**
-         * **NOTE** Vehicles property is custom set to be array instead of object.
-         *
-         * Even though the vehicles property is defined as object in the original swagger file, the actual data is returned as array. Moreover the array will allow a person to have multiple vehicles.
-         */
         export type Vehicles = {
             /**
              * Data classification of data field. Default 'C' - Confidential.
@@ -14197,7 +15405,7 @@ export declare namespace MyInfoComponents {
              */
             lastupdated: string; // date
             /**
-             * Optional flag to indicate if data is unavalable from data source.
+             * Optional flag to indicate if data is unavailable from data source.
              *
              * **NOTE:**
              *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
@@ -14205,7 +15413,7 @@ export declare namespace MyInfoComponents {
              *   - If data is available from the data source, this property will not be present.
              *
              */
-            unavailable: boolean;
+            unavailable?: boolean;
             /**
              * Vehicle Registration Number displayed on the vehicle number plates
              */

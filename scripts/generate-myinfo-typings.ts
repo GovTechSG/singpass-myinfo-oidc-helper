@@ -171,6 +171,7 @@ function sanitizeSwagger(swagger: any): any {
 	delete swagger.components.schemas["JWTAccessToken"];
 	delete swagger.components.schemas["TokenError"];
 	delete swagger.components.schemas["Error"];
+	delete swagger.components.schemas["PersonBasic"];
 
 	// Fix nulls
 	swagger = deepMapObject(swagger, (value) => value ?? "");
@@ -193,8 +194,8 @@ async function writeSwaggerTypingsSource(swagger: any): Promise<string> {
 
 	// add custom data items to domains
 	const customDataItems = [
-		{folder: "person", domain: "Person"},
-		{folder: "person-common", domain: "PersonCommon"},
+		{ folder: "person", domain: "Person" },
+		{ folder: "person-common", domain: "PersonCommon" },
 	];
 	customDataItems.forEach(customDataItem => {
 		const inputDirectory = `${outputDir}/custom/${customDataItem.folder}`;
@@ -294,6 +295,7 @@ function writeEnumTypingsSource(enumTyping: EnumTyping): string {
 // MyInfo codes enums
 // =============================================================================
 
+// tslint:disable-next-line: cognitive-complexity
 async function generateMyInfoCodeEnums(): Promise<string[]> {
 	// Fetch xls
 	const { data } = await axios.get(myinfoCodeRefTableUrl, { responseType: "arraybuffer" });
@@ -302,7 +304,8 @@ async function generateMyInfoCodeEnums(): Promise<string[]> {
 	// Parse xls
 	let enumTypingsArr: EnumTyping[] = myInfoCodesXslx.SheetNames.map((sheetName): EnumTyping => {
 		// Skip unnecessary sheets
-		if (sheetName === "Version") return null;
+		// TODO: handle multiple tables in InsurerCode
+		if (sheetName === "Version" || sheetName === "InsurerCode") return null;
 
 		// Convert to JSON and format accordingly
 		const myInfoCodesSheet: Record<string, string>[] = xlsx.utils.sheet_to_json(myInfoCodesXslx.Sheets[sheetName], { header: ["code", "description"], raw: false, defval: null, blankrows: true });
