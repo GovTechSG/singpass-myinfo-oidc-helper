@@ -13,7 +13,7 @@ export const mrSGNoLocalAddress: FakeProfile = {
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
 		profile.regadd = {
-			"type": "Unformatted",
+			"type": "UNFORMATTED",
 			"line1": { "value": "96 GUILD STREET" },
 			"line2": { "value": "LONDON SE16 1BE" },
 			"classification": "C",

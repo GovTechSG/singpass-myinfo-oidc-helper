@@ -1,8 +1,7 @@
 
 import * as _ from "lodash";
+import { MyInfoComponents, MyInfoCountryCode, MyInfoMaritialStatusCode, MyInfoNationalityCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
-import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
-import { MyInfoComponents, MyInfoCountryCode, MyInfoMaritialStatusCode, MyInfoNationalityCode, MyInfoOccupationCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
 import { BaseProfile } from "./sponsored-children/BaseProfile";
 
 const id = "S9005010I";
@@ -24,7 +23,7 @@ export const mrICADaddyScenario5: FakeProfile = {
 			"source": "1",
 			"classification": "C",
 			"unavailable": false,
-		},
+		};
 		profile.dob = {
 			"lastupdated": "2022-02-25",
 			"source": "1",
@@ -39,7 +38,7 @@ export const mrICADaddyScenario5: FakeProfile = {
 			"source": "1",
 			"classification": "C",
 			"unavailable": false,
-		},
+		};
 		profile.nationality.code = MyInfoNationalityCode.SINGAPORE_CITIZEN;
 		profile.marriagecertno = {
 			"lastupdated": "2022-02-25",

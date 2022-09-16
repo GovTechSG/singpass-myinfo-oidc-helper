@@ -56,7 +56,7 @@ export interface MockParams {
 	occupation?: MyInfoOccupationCode;
 	occupationfreeform?: string;
 	dob?: string;
-	gstvyear?: number;
+	gstvyear?: string;
 	gvs?: GVS;
 	merdekageneligible?: boolean;
 	merdekagenquantum?: number;
@@ -174,22 +174,16 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		}
 
 		if (!isEmpty(mockParams.occupation)) {
-			// if fin user then just change the value and not the code and desc
-			if(!this.checkIsSingaporeanOrPr(myinfoPerson.residentialstatus.code)){
-				myinfoPerson.occupation.code = null;
-				myinfoPerson.occupation.desc = null;
-				myinfoPerson.occupation.value = mockParams.occupation;
+			// only fin users have value
+			if (!this.checkIsSingaporeanOrPr(myinfoPerson.residentialstatus.code)) {
+				myinfoPerson.occupation.value = MyInfoOccupationCode.fn.toEnumDesc(mockParams.occupation);
 			}
-			else{
-				myinfoPerson.occupation.code = mockParams.occupation;
-				myinfoPerson.occupation.desc = MyInfoOccupationCode.fn.toEnumDesc(mockParams.occupation);
+			else {
 				myinfoPerson.occupation.value = null;
 			}
 		} else {
 			if (!isEmpty(mockParams.occupationfreeform)) {
 				myinfoPerson.occupation.value = mockParams.occupationfreeform;
-				myinfoPerson.occupation.code = null;
-				myinfoPerson.occupation.desc = null;
 			}
 		}
 
@@ -660,7 +654,7 @@ export function transformItems(item: any) {
 		if (item[key] === "") {
 			return objectKey;
 		}
-		objectKey[key] = { value: key !== 'yearofassessment' && !isNaN(+item[key]) ? +item[key] : item[key]  };
+		objectKey[key] = { value: key !== 'yearofassessment' && !isNaN(+item[key]) ? +item[key] : item[key] };
 		return objectKey;
 	}, {});
 }

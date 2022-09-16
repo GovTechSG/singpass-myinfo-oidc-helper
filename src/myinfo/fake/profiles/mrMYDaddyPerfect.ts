@@ -36,10 +36,9 @@ export const mrMYDaddyPerfect: FakeProfile = {
 		};
 		profile.occupation = {
 			"lastupdated": "2018-05-21",
-			"code": MyInfoOccupationCode.LEGISLATOR,
 			"source": "2",
 			"classification": "C",
-			"desc": MyInfoOccupationCode.fn.toEnumDesc(MyInfoOccupationCode.LEGISLATOR),
+			"value": MyInfoOccupationCode.fn.toEnumDesc(MyInfoOccupationCode.LEGISLATOR),
 			"unavailable": false,
 		};
 

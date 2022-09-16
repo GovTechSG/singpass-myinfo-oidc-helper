@@ -50,8 +50,7 @@ export const mrsMYMommyPerfect: FakeProfile = {
 
 		profile.occupation = {
 			"lastupdated": "2018-05-21",
-			"code": MyInfoOccupationCode.LEGISLATOR,
-			"desc": MyInfoOccupationCode.fn.toEnumDesc(MyInfoOccupationCode.LEGISLATOR),
+			"value": MyInfoOccupationCode.fn.toEnumDesc(MyInfoOccupationCode.LEGISLATOR),
 			"source": "2",
 			"classification": "C",
 			"unavailable": false,

@@ -3,7 +3,7 @@ import { MyInfoComponents } from "../../domain";
 export interface FakeProfile {
 	id: string;
 	name: ProfileArchetype;
-	generate: (profileName?: string) => MyInfoComponents.Schemas.Person | MyInfoComponents.Schemas.PersonCommon;
+	generate: (profileName?: string) => MyInfoComponents.Schemas.Person;
 }
 
 /**

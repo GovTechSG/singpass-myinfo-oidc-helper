@@ -33,8 +33,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 			},
 			"occupation": {
 				"lastupdated": "2020-09-10",
-				"code": null,
-				"desc": null,
+				"value": null,
 				"source": "2",
 				"classification": "C",
 				"unavailable": false,
@@ -139,7 +138,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 					"value": 300,
 				},
 				"year": {
-					"value": 2018,
+					"value": "2018",
 				},
 				"exclusion": {
 					"value": false,
@@ -192,7 +191,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"source": "1",
 				"classification": "C",
 				"year": {
-					"value": 2019,
+					"value": "2019",
 				},
 				"unavailable": false,
 			},
