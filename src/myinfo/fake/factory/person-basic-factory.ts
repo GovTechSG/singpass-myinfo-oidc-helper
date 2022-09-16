@@ -3,7 +3,7 @@ import { MyInfoComponents, MyInfoCountryCode, MyInfoDialectCode, MyInfoLifeStatu
 import { aliasName } from "../profiles/common";
 
 
-export const PersonCommonFactory = new Factory<MyInfoComponents.Schemas.PersonCommon>()
+export const PersonBasicFactory = new Factory<MyInfoComponents.Schemas.PersonBasic>()
 	.sequence("uinfin", (i) => ({
 		"lastupdated": "2018-06-01",
 		"value": "S123456" + i + "A",
@@ -29,10 +29,9 @@ export const PersonCommonFactory = new Factory<MyInfoComponents.Schemas.PersonCo
 		},
 		"occupation": {
 			"lastupdated": "2020-09-10",
-			"code": "",
 			"source": "2",
 			"classification": "C",
-			"desc": "",
+			"value": "",
 			"unavailable": false,
 		},
 		"regadd": {
@@ -120,7 +119,7 @@ export const PersonCommonFactory = new Factory<MyInfoComponents.Schemas.PersonCo
 				"value": 300,
 			},
 			"year": {
-				"value": 2019,
+				"value": "2019",
 			},
 			"exclusion": {
 				"value": false,
@@ -172,7 +171,7 @@ export const PersonCommonFactory = new Factory<MyInfoComponents.Schemas.PersonCo
 			"source": "1",
 			"classification": "C",
 			"year": {
-				"value": 2019,
+				"value": "2019",
 			},
 		},
 		"countryofmarriage": {

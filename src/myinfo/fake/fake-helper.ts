@@ -79,11 +79,11 @@ type MockParamsPerson = MockParams & MockFinanceParams;
 
 type NoaBasicExtension = MyInfoComponents.Schemas.NOABasic & MyInfoComponents.Schemas.DataFieldProperties;
 type CpfBalanceExtension = MyInfoComponents.Schemas.Cpfbalances & MyInfoComponents.Schemas.DataFieldProperties;
-type PersonCommon = MyInfoComponents.Schemas.PersonCommon;
+type PersonBasic = MyInfoComponents.Schemas.PersonBasic;
 type Person = MyInfoComponents.Schemas.Person;
 
 export interface IFakeMyInfoHelper {
-	getPersonCommon: (mockParams: MockParams) => PersonCommon;
+	getPersonBasic: (mockParams: MockParams) => PersonBasic;
 	getPerson: (mockParams: MockParamsPerson) => Person;
 }
 
@@ -463,7 +463,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		return myinfoPerson;
 	}
 
-	public getPersonCommon = (mockParams: MockParams): PersonCommon => {
+	public getPersonBasic = (mockParams: MockParams): PersonBasic => {
 		const myinfoPerson = this.getPersonInfo(mockParams);
 
 		if (!this.attributes) {
@@ -533,7 +533,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
  * @param person fake MyInfo person
  * @param attributes array of attributes to filter for
  */
-function filterThroughMyInfoAttributes(person: PersonCommon, attributes: ReadonlyArray<string>): PersonCommon {
+function filterThroughMyInfoAttributes(person: PersonBasic, attributes: ReadonlyArray<string>): PersonBasic {
 	const [childrenRawCbrAttributes, childrenNormalAttributes] = partition(attributes, (value) => value.startsWith("childrenbirthrecords."));
 	const [sponsoredRawCbrAttributes, sponsoredNormalAttributes] = partition(attributes, (value) => value.startsWith("sponsoredchildrenrecords."));
 	const [vehiclesRawCbrAttributes, vehiclesNormalAttributes] = partition(attributes, (value) => value.startsWith("vehicles."));

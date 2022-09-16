@@ -7,10 +7,10 @@ import { mrSGDaddyPerfect } from "../profiles/mrSGDaddyPerfect";
 // tslint:disable-next-line: no-big-function
 describe("FakeMyInfoHelper", () => {
 	// tslint:disable-next-line: no-big-function
-	describe("getPersonCommon", () => {
+	describe("getPersonBasic", () => {
 		it("should successfully get based on archetype", () => {
 			const fakeHelper = new FakeMyInfoHelper();
-			const person = fakeHelper.getPersonCommon({ archetype: ProfileArchetype.MR_SG_FATHER_ONLY_SPONSORED });
+			const person = fakeHelper.getPersonBasic({ archetype: ProfileArchetype.MR_SG_FATHER_ONLY_SPONSORED });
 
 			expect(person).toHaveProperty("dialect");
 			expect(person).toHaveProperty("occupation");
@@ -42,7 +42,7 @@ describe("FakeMyInfoHelper", () => {
 
 		it("should filter for parents with children", () => {
 			const fakeHelper = new FakeMyInfoHelper(testAttributes);
-			const person = fakeHelper.getPersonCommon({ archetype: ProfileArchetype.MR_SG_DADDY_MANY_CHILDREN });
+			const person = fakeHelper.getPersonBasic({ archetype: ProfileArchetype.MR_SG_DADDY_MANY_CHILDREN });
 			expect(person).toHaveProperty("sex");
 			expect(person).toHaveProperty("marriagedate");
 			expect(person).toHaveProperty("residentialstatus");
@@ -59,7 +59,7 @@ describe("FakeMyInfoHelper", () => {
 
 		it("should filter for parents with sponsor children", () => {
 			const fakeHelper = new FakeMyInfoHelper(testAttributes);
-			const person = fakeHelper.getPersonCommon({ archetype: ProfileArchetype.MR_SG_FATHER_ONLY_SPONSORED });
+			const person = fakeHelper.getPersonBasic({ archetype: ProfileArchetype.MR_SG_FATHER_ONLY_SPONSORED });
 			expect(person).toHaveProperty("sex");
 			expect(person).toHaveProperty("marriagedate");
 			expect(person).toHaveProperty("residentialstatus");
@@ -76,7 +76,7 @@ describe("FakeMyInfoHelper", () => {
 
 		it("should save the occupation value if the user passes occupationFreeForm mock params", () => {
 			const fakeHelper = new FakeMyInfoHelper();
-			const person = fakeHelper.getPersonCommon({ archetype: ProfileArchetype.MR_JAPANESE_ADDRESS_BLANK, occupationfreeform: "Software Engineer" });
+			const person = fakeHelper.getPersonBasic({ archetype: ProfileArchetype.MR_JAPANESE_ADDRESS_BLANK, occupationfreeform: "Software Engineer" });
 			expect(person).toHaveProperty("residentialstatus");
 			expect(person).toHaveProperty("occupation");
 			expect(person.occupation.value).toStrictEqual("Software Engineer");
@@ -84,7 +84,7 @@ describe("FakeMyInfoHelper", () => {
 
 		it("should save the occupation code as value if the user is non SC/PR(based on residential status) user", () => {
 			const fakeHelper = new FakeMyInfoHelper();
-			const person = fakeHelper.getPersonCommon({ archetype: ProfileArchetype.MR_MY_DADDY_PERFECT, residentialstatus: MyInfoResidentialCode.ALIEN, occupation: MyInfoOccupationCode.LABORATORY_ATTENDANT });
+			const person = fakeHelper.getPersonBasic({ archetype: ProfileArchetype.MR_MY_DADDY_PERFECT, residentialstatus: MyInfoResidentialCode.ALIEN, occupation: MyInfoOccupationCode.LABORATORY_ATTENDANT });
 			expect(person).toHaveProperty("residentialstatus");
 			expect(person).toHaveProperty("occupation");
 			expect(person.occupation.value).toStrictEqual(MyInfoOccupationCode.fn.toEnumDesc(MyInfoOccupationCode.LABORATORY_ATTENDANT));
@@ -92,7 +92,7 @@ describe("FakeMyInfoHelper", () => {
 
 		it("should not save the occupation code if the user is SC/PR(based on residential status) user", () => {
 			const fakeHelper = new FakeMyInfoHelper();
-			const person = fakeHelper.getPersonCommon({ archetype: ProfileArchetype.MR_JAPANESE_ADDRESS_BLANK, residentialstatus: MyInfoResidentialCode.CITIZEN, occupation: MyInfoOccupationCode.LABORATORY_ATTENDANT });
+			const person = fakeHelper.getPersonBasic({ archetype: ProfileArchetype.MR_JAPANESE_ADDRESS_BLANK, residentialstatus: MyInfoResidentialCode.CITIZEN, occupation: MyInfoOccupationCode.LABORATORY_ATTENDANT });
 			expect(person).toHaveProperty("residentialstatus");
 			expect(person).toHaveProperty("occupation");
 			expect(person.occupation.value).toEqual(null);
@@ -122,7 +122,7 @@ describe("FakeMyInfoHelper", () => {
 				it("should override all exisiting children of archetype if childrenbirthrecords is NOT empty", () => {
 					const fakeHelper = new FakeMyInfoHelper();
 
-					const person = fakeHelper.getPersonCommon({
+					const person = fakeHelper.getPersonBasic({
 						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
 						childrenoverridemode: OverrideMode.full,
 						childrenbirthrecords: mockChildrenbirthrecords,
@@ -136,7 +136,7 @@ describe("FakeMyInfoHelper", () => {
 
 					const childrenbirthrecords = [];
 
-					const person = fakeHelper.getPersonCommon({
+					const person = fakeHelper.getPersonBasic({
 						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
 						childrenoverridemode: OverrideMode.full,
 						childrenbirthrecords,
@@ -150,7 +150,7 @@ describe("FakeMyInfoHelper", () => {
 				it("should override only the first two children of archetype if there are two children childrenbirthrecords", () => {
 					const fakeHelper = new FakeMyInfoHelper();
 
-					const person = fakeHelper.getPersonCommon({
+					const person = fakeHelper.getPersonBasic({
 						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
 						childrenoverridemode: OverrideMode.partial,
 						childrenbirthrecords: mockChildrenbirthrecords,
@@ -169,7 +169,7 @@ describe("FakeMyInfoHelper", () => {
 
 					const childrenbirthrecords = [];
 
-					const person = fakeHelper.getPersonCommon({
+					const person = fakeHelper.getPersonBasic({
 						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
 						childrenoverridemode: OverrideMode.partial,
 						childrenbirthrecords,
@@ -183,7 +183,7 @@ describe("FakeMyInfoHelper", () => {
 				it("should append to the existing children of archetype", () => {
 					const fakeHelper = new FakeMyInfoHelper();
 
-					const person = fakeHelper.getPersonCommon({
+					const person = fakeHelper.getPersonBasic({
 						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
 						childrenoverridemode: OverrideMode.appendToExisting,
 						childrenbirthrecords: mockChildrenbirthrecords,
@@ -202,7 +202,7 @@ describe("FakeMyInfoHelper", () => {
 
 					const childrenbirthrecords = [];
 
-					const person = fakeHelper.getPersonCommon({
+					const person = fakeHelper.getPersonBasic({
 						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
 						childrenoverridemode: OverrideMode.appendToExisting,
 						childrenbirthrecords,
