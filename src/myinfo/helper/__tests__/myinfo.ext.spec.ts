@@ -9,7 +9,6 @@ describe("MyInfoClient", () => {
 	describe("STAGING Person basic API V3", () => {
 		it("should use the available env variables, call myinfo, and get back person", async () => {
 			const props: MyInfoHelperConstructor = {
-				attributes: configs.attributes,
 				clientID: configs.myinfoGovFlowClientID,
 				environment: configs.environment,
 				singpassEserviceID: configs.singpassClientId,
@@ -47,7 +46,7 @@ describe("MyInfoClient", () => {
 			const myInfoHelper = new MyInfoHelper(props);
 			const testNric = "S1627395C";
 
-			const result = await myInfoHelper.getPersonCommon<V3Attributes>(testNric);
+			const result = await myInfoHelper.getPersonCommon<V3Attributes>(testNric, configs.attributes);
 
 			expect(result.aliasname.value).toEqual(aliasName.JASCKSON_LIM_YONG_XIANG);
 		});
@@ -56,7 +55,6 @@ describe("MyInfoClient", () => {
 	describe("STAGING Profile status API V3", () => {
 		it("should pass", async () => {
 			const props: MyInfoHelperConstructor = {
-				attributes: configs.attributes,
 				clientID: configs.myinfoGovFlowClientID,
 				environment: configs.environment,
 				singpassEserviceID: configs.singpassClientId,

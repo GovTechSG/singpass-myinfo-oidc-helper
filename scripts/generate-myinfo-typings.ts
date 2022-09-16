@@ -171,7 +171,6 @@ function sanitizeSwagger(swagger: any): any {
 	delete swagger.components.schemas["JWTAccessToken"];
 	delete swagger.components.schemas["TokenError"];
 	delete swagger.components.schemas["Error"];
-	delete swagger.components.schemas["PersonBasic"];
 
 	// Fix nulls
 	swagger = deepMapObject(swagger, (value) => value ?? "");
