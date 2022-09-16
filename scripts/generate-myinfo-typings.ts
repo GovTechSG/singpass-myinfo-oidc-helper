@@ -295,6 +295,13 @@ function writeEnumTypingsSource(enumTyping: EnumTyping): string {
 // MyInfo codes enums
 // =============================================================================
 
+interface TableIndex {
+	start: number;
+	end: number;
+}
+
+type TableIndexes = TableIndex[];
+
 // tslint:disable-next-line: cognitive-complexity
 async function generateMyInfoCodeEnums(): Promise<string[]> {
 	// Fetch xls
@@ -305,28 +312,18 @@ async function generateMyInfoCodeEnums(): Promise<string[]> {
 	let enumTypingsArr: EnumTyping[] = myInfoCodesXslx.SheetNames.map((sheetName): EnumTyping => {
 		// Skip unnecessary sheets
 		// TODO: handle multiple tables in InsurerCode
-		if (sheetName === "Version" || sheetName === "InsurerCode") return null;
+		if (sheetName === "Version") return null;
 
 		// Convert to JSON and format accordingly
 		const myInfoCodesSheet: Record<string, string>[] = xlsx.utils.sheet_to_json(myInfoCodesXslx.Sheets[sheetName], { header: ["code", "description"], raw: false, defval: null, blankrows: true });
 
-		// Rudimentary validation by cell value in case the sheet changed its format
-		// Expecting row 6 to be the header; values should contain code and description
-		if (!myInfoCodesSheet[5]?.code?.match(/code/gi) || myInfoCodesSheet[5]?.description?.toLowerCase() !== "description") {
-			throw new Error(`Unexpected cell values in MyInfo xlsx sheet ${sheetName} row 6, format has likely changed`);
-		}
+		const tableIndexes = getTableIndexes(myInfoCodesSheet, sheetName);
 
-		const enumEntries = myInfoCodesSheet.map((row: Record<string, string>, i: number) => {
-			if (i >= 6) {
-				return {
-					key: _.snakeCase(row.description).toUpperCase(),
-					value: row.code,
-					desc: row.description.toUpperCase(),
-				};
-			}
-			return null;
-		}).filter((entry: Record<string, string>) => entry);
-		return { enumName: sheetName, enumEntries };
+		const enumEntriesArr = tableIndexes.map((tableIndex) =>
+			getEnumEntriesFromSheet(myInfoCodesSheet, tableIndex)
+		);
+
+		return { enumName: sheetName, enumEntries: enumEntriesArr[0] };
 	}).filter(entry => entry);
 
 	// add custom enums
@@ -355,6 +352,49 @@ async function generateMyInfoCodeEnums(): Promise<string[]> {
 
 	// Write to files
 	return _.map(enumTypingsArr, (enumTypings) => writeEnumTypingsSource(enumTypings));
+}
+
+function getTableIndexes(myInfoCodesSheet: Record<string, string>[], sheetName: string): TableIndexes {
+	const tableIndexes = [];
+
+	myInfoCodesSheet.forEach((row, index) => {
+		const isEmptyRow = row?.code === null && row?.description === null;
+		const latestTable = tableIndexes.at(-1);
+		const isLastRowNotSet = latestTable && latestTable.end === 0;
+
+		if (row?.code?.match(/code/gi) && row?.description?.toLowerCase() === "description") {
+			tableIndexes.push({ start: index, end: 0 });
+		}
+
+		if (isEmptyRow && isLastRowNotSet) {
+			latestTable.end = index - 1;
+		}
+		// Last row of sheet assumed to be last row of last table
+		if (index === myInfoCodesSheet.length - 1) {
+			latestTable.end = index;
+		}
+	});
+
+	if (_.isEmpty(tableIndexes)) {
+		throw new Error(`Sheet: ${sheetName} does not have any headers of the correct format (e.g. | ... code | Descripton |), format has likely changed.`);
+	}
+
+	return tableIndexes;
+}
+
+function getEnumEntriesFromSheet(myInfoCodesSheet: Record<string, string>[], tableIndex: TableIndex) {
+	const enumEntries = [];
+
+	for (let i = tableIndex.start + 1; i <= tableIndex.end; i++) {
+		const row = myInfoCodesSheet[i];
+		enumEntries.push({
+			key: _.snakeCase(row.description).toUpperCase(),
+			value: row.code,
+			desc: row.description.toUpperCase()
+		});
+	}
+
+	return enumEntries.filter((entry: Record<string, string>) => entry);
 }
 
 // =============================================================================
