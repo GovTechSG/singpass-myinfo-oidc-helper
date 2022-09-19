@@ -231,61 +231,57 @@ interface EnumTyping {
 	enumEntries: Record<string, string>[];
 }
 
-function writeEnumTypingsSource(enumTyping: EnumTyping): string {
+function writeEnumTypingsSource(worksheet: Worksheet): string {
 	// Ensure that there is a proper prefix
-	if (!enumTyping.enumName.startsWith("MyInfo")) {
-		enumTyping.enumName = `MyInfo${_.startCase(enumTyping.enumName).replace(/\s/g, "")}`;
+	if (!worksheet.sheetName.startsWith("MyInfo")) {
+		worksheet.sheetName = `MyInfo${_.startCase(worksheet.sheetName).replace(/\s/g, "")}`;
 	}
 
 	// Validate the enum
-	if (_.isNil(enumTyping.enumName) || _.isEmpty(enumTyping.enumEntries)) {
-		console.warn(`Malformed enum typing detected, skipping...`, enumTyping);
+	if (
+		_.isNil(worksheet.sheetName) ||
+		_.isEmpty(worksheet.tables) ||
+		worksheet.tables.some((table) => _.isEmpty(table))
+	) {
+		console.warn(`Malformed enum typing detected, skipping...`, worksheet);
 		return;
 	}
 
 	// Append number to duplicated keys
-	const enumEntryKeyList: string[] = [];
-	enumTyping.enumEntries = enumTyping.enumEntries.map(entry => {
-		let key = entry.key;
-		if (enumEntryKeyList.includes(key)) {
-			// tslint:disable: tsr-detect-non-literal-regexp
-			const countInstances = new RegExp(`^${key}`, "i");
-			const extractCounter = new RegExp(`^${key}_(.*)`, "i");
-			// tslint:enable: tsr-detect-non-literal-regexp
 
-			// count instances of key
-			const instanceCount = enumEntryKeyList.filter(k => k.match(countInstances)).length;
+	worksheet.tables = worksheet.tables.map((table) => {
+		const modifiedTable = handleDuplicatedEnum(worksheet.sheetName, table);
 
-			// extract max trailing counter (if any)
-			const counter = enumEntryKeyList.map(k => {
-				const matches = k.match(extractCounter);
-				return matches ? Number(matches[1]) : null;
-			}).filter(k => k).sort((a, b) => (b - a))[0] || 0;
+		// Remove empty keys or values
+		modifiedTable.enumEntries = removeEmptyEnumKeys(modifiedTable.enumEntries, worksheet.sheetName, modifiedTable.tableName);
 
-			// assign unique key by finding highest number to append
-			const append = Math.max(instanceCount, counter);
-			key = `${key}_${append + 1}`;
-			console.warn(`MyInfo sheet ${enumTyping.enumName} contains duplicated keys: ${entry.key}, renaming as ${key}`);
-		}
-		enumEntryKeyList.push(key);
-		return { ...entry, key };
+		return modifiedTable;
 	});
 
-	// Remove empty keys or values
-	enumTyping.enumEntries = _.omitBy<Record<string, string>[]>(enumTyping.enumEntries, (value, key) => {
-		if (_.isEmpty(key) || _.isEmpty(value)) {
-			console.warn(`${enumTyping.enumName} has an empty enum entry { key: "${key}" value: "${value}" }, skipping entry...`);
-			return true;
-		}
-		return false;
-	});
+	if (worksheet.tables.length === 1) {
+		return generateSingleEnumTable(worksheet);
+	} else {
+		return generateMultipleEnumTable(worksheet);
+	}
+}
 
-	// Write enum file
+function generateSingleEnumTable(worksheet: Worksheet) {
 	const enumsHbs = fs.readFileSync(`${outputDir}/enums.hbs`, "utf8");
 	const enumsTemplate = handlebars.compile(enumsHbs, { noEscape: true });
-	const typingsSource = header + enumsTemplate(enumTyping);
+	const typingsSource =
+		header + enumsTemplate({ enumName: worksheet.sheetName, enumEntries: worksheet.tables[0].enumEntries });
 
-	const filename = `generated/${_.kebabCase(enumTyping.enumName).replace(/my\-info/, "myinfo")}.ts`;
+	const filename = `generated/${_.kebabCase(worksheet.sheetName).replace(/my\-info/, "myinfo")}.ts`;
+	fs.writeFileSync(`${outputDir}/${filename}`, typingsSource);
+	return filename;
+}
+
+function generateMultipleEnumTable(worksheet: Worksheet) {
+	const enumsHbs = fs.readFileSync(`${outputDir}/enums-multi.hbs`, "utf8");
+	const enumsTemplate = handlebars.compile(enumsHbs, { noEscape: true });
+	const typingsSource = header + enumsTemplate(worksheet);
+
+	const filename = `generated/${_.kebabCase(worksheet.sheetName).replace(/my\-info/, "myinfo")}.ts`;
 	fs.writeFileSync(`${outputDir}/${filename}`, typingsSource);
 	return filename;
 }
@@ -293,6 +289,18 @@ function writeEnumTypingsSource(enumTyping: EnumTyping): string {
 // =============================================================================
 // MyInfo codes enums
 // =============================================================================
+
+interface Worksheet {
+	sheetName: string;
+	tables: Table[];
+}
+
+interface Table {
+	tableName: string;
+	enumEntries: EnumEntryList;
+}
+
+type EnumEntryList = Record<string, string>[];
 
 interface TableIndex {
 	start: number;
@@ -308,58 +316,51 @@ async function generateMyInfoCodeEnums(): Promise<string[]> {
 	const myInfoCodesXslx = xlsx.read(new Uint8Array(data), { type: "array" });
 
 	// Parse xls
-	let enumTypingsArr: EnumTyping[] = myInfoCodesXslx.SheetNames.map((sheetName): EnumTyping => {
+	const worksheets: Worksheet[] = myInfoCodesXslx.SheetNames.map((sheetName): Worksheet => {
 		// Skip unnecessary sheets
-		// TODO: handle multiple tables in InsurerCode
 		if (sheetName === "Version") return null;
 
 		// Convert to JSON and format accordingly
-		const myInfoCodesSheet: Record<string, string>[] = xlsx.utils.sheet_to_json(myInfoCodesXslx.Sheets[sheetName], { header: ["code", "description"], raw: false, defval: null, blankrows: true });
+		const myInfoCodesSheet: EnumEntryList = xlsx.utils.sheet_to_json(myInfoCodesXslx.Sheets[sheetName], {
+			header: ["code", "description"],
+			raw: false,
+			defval: null,
+			blankrows: true
+		});
 
-		const tableIndexes = getTableIndexes(myInfoCodesSheet, sheetName);
+		const [tableNames, tableIndexes] = getTableIndexes(myInfoCodesSheet, sheetName);
 
-		const enumEntriesArr = tableIndexes.map((tableIndex) =>
-			getEnumEntriesFromSheet(myInfoCodesSheet, tableIndex)
-		);
+		const enumEntriesArr: Table[] = tableIndexes.map((tableIndex, i) => {
+			const enumEntries = getEnumEntriesFromSheet(myInfoCodesSheet, tableIndex);
+			return { tableName: tableNames[i], enumEntries };
+		});
 
-		return { enumName: sheetName, enumEntries: enumEntriesArr[0] };
-	}).filter(entry => entry);
+		return { sheetName, tables: enumEntriesArr };
+	}).filter((entry) => entry);
 
 	// add custom enums
-	const customDirectory = outputDir + "/custom/enums";
-	const filenames = fs.readdirSync(customDirectory);
-	filenames.forEach(file => {
-		if (file.match(/.json$/)) {
-			const customEnum = JSON.parse(fs.readFileSync(`${customDirectory}/${file}`, "utf8"));
-			enumTypingsArr.push(customEnum);
-		}
-	});
+	const worksheetsWithCustomEnums = addCustomEnums(worksheets);
 
-	// remove duplicated sheets
+	// remove any duplicated enums due to custom enums and those from the sheet
 	// custom enums will overwrite enums from xlsx
-	const enumSheetNameList: string[] = [];
-	enumTypingsArr.reverse();
-	enumTypingsArr = enumTypingsArr.filter(enumTyping => {
-		const sheetNameWithoutPrependMatches = enumTyping.enumName.match(/^myinfo(.*)/i);
-		const sheetNameWithoutPrepend = sheetNameWithoutPrependMatches ? sheetNameWithoutPrependMatches[1].toLowerCase() : enumTyping.enumName.toLowerCase();
-		if (!!enumTyping && enumSheetNameList.indexOf(sheetNameWithoutPrepend) === -1 && enumSheetNameList.indexOf("myinfo" + sheetNameWithoutPrepend) === -1) {
-			enumSheetNameList.push(enumTyping.enumName.toLowerCase());
-			return enumTyping;
-		}
-		return null;
-	});
+	const worksheetsWithoutDuplicates = removeDuplicateWorksheets(worksheetsWithCustomEnums);
 
 	// Write to files
-	return _.map(enumTypingsArr, (enumTypings) => writeEnumTypingsSource(enumTypings));
+	return _.map(worksheetsWithoutDuplicates, (worksheet) => writeEnumTypingsSource(worksheet));
 }
 
-function getTableIndexes(myInfoCodesSheet: Record<string, string>[], sheetName: string): TableIndexes {
+function getTableIndexes(enumEntries: EnumEntryList, sheetName: string): [string[], TableIndexes] {
 	const tableIndexes = [];
-
-	myInfoCodesSheet.forEach((row, index) => {
+	const tableNames = [];
+	enumEntries.forEach((row, index) => {
 		const isEmptyRow = row?.code === null && row?.description === null;
 		const latestTable = tableIndexes.at(-1);
 		const isLastRowNotSet = latestTable && latestTable.end === 0;
+		const isAttributeName = row?.code?.match(/for\sattribute:/gi);
+
+		if (isAttributeName) {
+			tableNames.push(_.capitalize(row?.description));
+		}
 
 		if (row?.code?.match(/code/gi) && row?.description?.toLowerCase() === "description") {
 			tableIndexes.push({ start: index, end: 0 });
@@ -369,19 +370,24 @@ function getTableIndexes(myInfoCodesSheet: Record<string, string>[], sheetName: 
 			latestTable.end = index - 1;
 		}
 		// Last row of sheet assumed to be last row of last table
-		if (index === myInfoCodesSheet.length - 1) {
+		if (index === enumEntries.length - 1) {
 			latestTable.end = index;
 		}
 	});
 
 	if (_.isEmpty(tableIndexes)) {
-		throw new Error(`Sheet: ${sheetName} does not have any headers of the correct format (e.g. | ... code | Descripton |), format has likely changed.`);
+		throw new Error(
+			`Sheet: ${sheetName} does not have any headers of the correct format (e.g. | ... code | Descripton |), format has likely changed.`
+		);
 	}
 
-	return tableIndexes;
+	return [tableNames, tableIndexes];
 }
 
-function getEnumEntriesFromSheet(myInfoCodesSheet: Record<string, string>[], tableIndex: TableIndex) {
+function getEnumEntriesFromSheet(
+	myInfoCodesSheet: Record<string, string>[],
+	tableIndex: TableIndex
+): EnumEntryList {
 	const enumEntries = [];
 
 	for (let i = tableIndex.start + 1; i <= tableIndex.end; i++) {
@@ -394,6 +400,77 @@ function getEnumEntriesFromSheet(myInfoCodesSheet: Record<string, string>[], tab
 	}
 
 	return enumEntries.filter((entry: Record<string, string>) => entry);
+}
+
+function addCustomEnums(enumTypingsArr: Worksheet[]): Worksheet[] {
+	const enumTypingsWithCustomEnums = [...enumTypingsArr];
+	const customDirectory = outputDir + "/custom/enums";
+	const filenames = fs.readdirSync(customDirectory);
+
+	filenames.forEach((file) => {
+		if (file.match(/.json$/)) {
+			const customEnum: Worksheet = JSON.parse(fs.readFileSync(`${customDirectory}/${file}`, "utf8"));
+
+			enumTypingsWithCustomEnums.push(customEnum);
+		}
+	});
+
+	return enumTypingsWithCustomEnums;
+}
+
+function removeDuplicateWorksheets(worksheets: Worksheet[]) {
+	const worksheetsWithCustomEnumsAtFront = [...worksheets].reverse();
+
+	return _.uniqBy(worksheetsWithCustomEnumsAtFront, ({ sheetName }) => sheetName.toLowerCase());
+}
+
+function handleDuplicatedEnum(enumName: string, origTable: Table): Table {
+	const enumEntryKeyList: string[] = [];
+	const { tableName, enumEntries } = origTable;
+
+	const cleanEnumEntries = enumEntries.map((entry) => {
+		let key = entry.key;
+		if (enumEntryKeyList.includes(key)) {
+			// tslint:disable: tsr-detect-non-literal-regexp
+			const countInstances = new RegExp(`^${key}`, "i");
+			const extractCounter = new RegExp(`^${key}_(.*)`, "i");
+			// tslint:enable: tsr-detect-non-literal-regexp
+
+			// count instances of key
+			const instanceCount = enumEntryKeyList.filter((k) => k.match(countInstances)).length;
+
+			// extract max trailing counter (if any)
+			const counter =
+				enumEntryKeyList
+					.map((k) => {
+						const matches = k.match(extractCounter);
+						return matches ? Number(matches[1]) : null;
+					})
+					.filter((k) => k)
+					.sort((a, b) => b - a)[0] || 0;
+
+			// assign unique key by finding highest number to append
+			const append = Math.max(instanceCount, counter);
+			key = `${key}_${append + 1}`;
+			console.warn(`MyInfo sheet ${enumName} contains duplicated keys: ${entry.key}, renaming as ${key}`);
+		}
+		enumEntryKeyList.push(key);
+		return { ...entry, key };
+	});
+
+	return { tableName, enumEntries: cleanEnumEntries };
+}
+
+function removeEmptyEnumKeys(enumEntries: EnumEntryList, sheetName: string, tableName: string) {
+	return enumEntries.filter(({ value, key }) => {
+		if (_.isEmpty(key) || _.isEmpty(value)) {
+			console.warn(
+				`${sheetName} ${tableName} has an empty enum entry { key: "${key}" value: "${value}" }, skipping entry...`
+			);
+			return false;
+		}
+		return true;
+	});
 }
 
 // =============================================================================

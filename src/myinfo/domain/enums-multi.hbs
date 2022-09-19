@@ -1,0 +1,31 @@
+import { EnumUtils } from "../../../util/EnumUtils";
+
+export namespace {{sheetName}} {
+{{#each tables}}
+	export enum {{this.tableName}} {
+		{{#each this.enumEntries}}
+		"{{this.key}}" = "{{this.value}}",
+		{{/each}}
+	}
+
+	enum {{this.tableName}}Mapping {
+		{{#each this.enumEntries}}
+		"{{this.key}}" = "{{this.desc}}",
+		{{/each}}
+	}
+
+	type {{this.tableName}}Desc = `${ {{this.tableName}}Mapping }`;
+
+{{/each}}
+{{#each tables}}
+	export namespace {{this.tableName}} {
+		export const fn = {
+			keys: EnumUtils.keysFunc<{{this.tableName}}>({{this.tableName}}),
+			values: EnumUtils.valuesFunc<{{this.tableName}}>({{this.tableName}}),
+			toEnumKey: EnumUtils.toEnumKeyFunc<{{this.tableName}}>({{this.tableName}}),
+			toEnumValue: EnumUtils.toEnumValueFunc<{{this.tableName}}>({{this.tableName}}),
+			toEnumDesc: EnumUtils.toEnumDescFunc<{{this.tableName}}, {{this.tableName}}Desc>({{this.tableName}}, {{this.tableName}}Mapping),
+		};
+	}
+{{/each}}
+}
