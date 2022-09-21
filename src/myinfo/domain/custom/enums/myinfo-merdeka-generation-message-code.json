@@ -1,8 +1,8 @@
 {
-	"sheetName": "MerdekaGenerationMessageCode",
-	"tables": [
+	"enumNamespace": "MerdekaGenerationMessageCode",
+	"enumTypings": [
 		{
-			"tableName": "MerdekaGenerationMessageCode",
+			"enumName": "MerdekaGenerationMessageCode",
 			"enumEntries": [
 				{
 					"key": "NON_MG",

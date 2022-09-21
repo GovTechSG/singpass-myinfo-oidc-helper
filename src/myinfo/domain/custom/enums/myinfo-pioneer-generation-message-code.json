@@ -1,8 +1,8 @@
 {
-	"sheetName": "PioneerGenerationMessageCode",
-	"tables": [
+	"enumNamespace": "PioneerGenerationMessageCode",
+	"enumTypings": [
 		{
-			"tableName": "PioneerGenerationMessageCode",
+			"enumName": "PioneerGenerationMessageCode",
 			"enumEntries": [
 				{
 					"key": "NON_PG",

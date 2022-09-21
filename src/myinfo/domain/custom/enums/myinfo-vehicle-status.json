@@ -1,8 +1,8 @@
 {
-	"sheetName": "VehicleStatus",
-	"tables": [
+	"enumNamespace": "VehicleStatus",
+	"enumTypings": [
 		{
-			"tableName": "VehicleStatus",
+			"enumName": "VehicleStatus",
 			"enumEntries": [
 				{
 					"key": "LIVE",
