@@ -146,7 +146,8 @@ getPerson({
 ## Updating Myinfo domains
 
 - Myinfo domains including `MyinfoComponents` and various enums are auto generated via `npm run generate-myinfo-typings '<swagger file>'`
-- Swagger file needs to be downloaded from <https://api.singpass.gov.sg/developers>
+- Swagger file needs to be downloaded from <https://public.cloud.myinfo.gov.sg/myinfo/tuo/myinfo-tuo-specs.html>
+  - Note: there are different variants, this is for Government Digital Services which has the person-basic api
 - The script will also fetch and generate enums from <https://api.singpass.gov.sg/assets/api-lib/myinfo/downloads/myinfo-api-code-tables.xlsx>
 
 ### Folder / file structure of `src/myinfo/domain`
@@ -160,7 +161,7 @@ getPerson({
 ### Help! The swagger file is missing `<insert data item name>`
 
 - Myinfo REST API does not publish every data item
-- You will need to manually add its OpenAPI specification it in `custom/person-common` then run `npm run generate-myinfo-typings '<swagger file>'`
+- You will need to manually add its OpenAPI specification in `custom/person-common` then run `npm run generate-myinfo-typings '<swagger file>'`
 - An interface will be created and the corresponding data item will be added to the `PersonCommon` object
 
 ### Help! `myinfo-api-code-tables.xlsx` is missing `<insert code name>`
