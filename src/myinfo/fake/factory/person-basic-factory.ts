@@ -17,7 +17,6 @@ export const PersonBasicFactory = new Factory<MyInfoComponents.Schemas.PersonBas
 			"source": "2",
 			"classification": "C",
 			"desc": null,
-			"unavailable": false,
 		},
 		"dialect": {
 			"lastupdated": "2018-06-01",
@@ -25,14 +24,12 @@ export const PersonBasicFactory = new Factory<MyInfoComponents.Schemas.PersonBas
 			"source": "1",
 			"classification": "C",
 			"desc": MyInfoDialectCode.fn.toEnumDesc(MyInfoDialectCode.HOKKIEN),
-			"unavailable": false,
 		},
 		"occupation": {
 			"lastupdated": "2020-09-10",
 			"source": "2",
 			"classification": "C",
 			"value": "",
-			"unavailable": false,
 		},
 		"regadd": {
 			"country": {
@@ -61,7 +58,6 @@ export const PersonBasicFactory = new Factory<MyInfoComponents.Schemas.PersonBas
 			"building": {
 				"value": "",
 			},
-			"unavailable": false,
 		},
 		"mobileno": {
 			"lastupdated": "2019-04-03",
@@ -76,28 +72,24 @@ export const PersonBasicFactory = new Factory<MyInfoComponents.Schemas.PersonBas
 			"nbr": {
 				"value": "88158701",
 			},
-			"unavailable": false,
 		},
 		"passportexpirydate": {
 			"lastupdated": "",
 			"source": "1",
 			"classification": "C",
 			"value": "",
-			"unavailable": false,
 		},
 		"divorcedate": {
 			"lastupdated": "",
 			"source": "1",
 			"classification": "C",
 			"value": "",
-			"unavailable": false,
 		},
 		"marriagecertno": {
 			"lastupdated": "2018-05-10",
 			"source": "1",
 			"classification": "C",
 			"value": "M525997",
-			"unavailable": false,
 		},
 		"merdekagen": {
 			"eligibility": {
@@ -142,7 +134,6 @@ export const PersonBasicFactory = new Factory<MyInfoComponents.Schemas.PersonBas
 			"source": "4",
 			"classification": "C",
 			"value": "gt.govandi@gmail.com",
-			"unavailable": false,
 		},
 		"birthcountry": {
 			"lastupdated": "2018-06-01",
@@ -150,7 +141,6 @@ export const PersonBasicFactory = new Factory<MyInfoComponents.Schemas.PersonBas
 			"source": "1",
 			"classification": "C",
 			"desc": MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.SINGAPORE),
-			"unavailable": false,
 		},
 		"race": {
 			"lastupdated": "2018-06-01",
@@ -158,7 +148,6 @@ export const PersonBasicFactory = new Factory<MyInfoComponents.Schemas.PersonBas
 			"source": "1",
 			"classification": "C",
 			"desc": MyInfoRaceCode.fn.toEnumDesc(MyInfoRaceCode.CHINESE),
-			"unavailable": false,
 		},
 		"silversupport": {
 			"eligibility": {
@@ -180,7 +169,6 @@ export const PersonBasicFactory = new Factory<MyInfoComponents.Schemas.PersonBas
 			"source": "1",
 			"classification": "C",
 			"desc": MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.SINGAPORE),
-			"unavailable": false,
 		},
 		"sex": {
 			"lastupdated": "2018-06-01",
@@ -188,14 +176,12 @@ export const PersonBasicFactory = new Factory<MyInfoComponents.Schemas.PersonBas
 			"source": "1",
 			"classification": "C",
 			"desc": MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE),
-			"unavailable": false,
 		},
 		"marriagedate": {
 			"lastupdated": "1993-10-22",
 			"source": "1",
 			"classification": "C",
 			"value": "1993-10-22",
-			"unavailable": false,
 		},
 		"residentialstatus": {
 			"lastupdated": "2018-06-01",
@@ -203,14 +189,12 @@ export const PersonBasicFactory = new Factory<MyInfoComponents.Schemas.PersonBas
 			"source": "1",
 			"classification": "C",
 			"desc": MyInfoResidentialCode.fn.toEnumDesc(MyInfoResidentialCode.CITIZEN),
-			"unavailable": false,
 		},
 		"passportnumber": {
 			"lastupdated": "",
 			"source": "1",
 			"classification": "C",
 			"value": "",
-			"unavailable": false,
 		},
 		"marital": {
 			"lastupdated": "2018-05-10",
@@ -218,14 +202,12 @@ export const PersonBasicFactory = new Factory<MyInfoComponents.Schemas.PersonBas
 			"source": "1",
 			"classification": "C",
 			"desc": MyInfoMaritialStatusCode.fn.toEnumDesc(MyInfoMaritialStatusCode.MARRIED),
-			"unavailable": false,
 		},
 		"aliasname": {
 			"lastupdated": "2018-06-01",
 			"source": "1",
 			"classification": "C",
 			"value": aliasName.JASCKSON_LIM_YONG_XIANG,
-			"unavailable": false,
 		},
 		"nationality": {
 			"lastupdated": "2018-06-01",
@@ -233,21 +215,18 @@ export const PersonBasicFactory = new Factory<MyInfoComponents.Schemas.PersonBas
 			"source": "1",
 			"classification": "C",
 			"desc": MyInfoNationalityCode.fn.toEnumDesc(MyInfoNationalityCode.SINGAPORE_CITIZEN),
-			"unavailable": false,
 		},
 		"dob": {
 			"lastupdated": "2018-06-01",
 			"source": "1",
 			"classification": "C",
 			"value": "1953-10-06",
-			"unavailable": false,
 		},
 		"name": {
 			"lastupdated": "2018-06-01",
 			"source": "1",
 			"classification": "C",
 			"value": "User-Name",
-			"unavailable": false,
 		},
 		"secondaryrace": {
 			"lastupdated": "2018-06-01",
@@ -255,7 +234,6 @@ export const PersonBasicFactory = new Factory<MyInfoComponents.Schemas.PersonBas
 			"source": "1",
 			"classification": "C",
 			"desc": MyInfoRaceCode.fn.toEnumDesc(MyInfoRaceCode.GERMAN),
-			"unavailable": false,
 		},
 	})
 	.attr("sponsoredchildrenrecords", () => [sponsoredchildrecordFactory.build(), sponsoredchildrecordFactory.build()])

@@ -18,7 +18,6 @@ export const BaseProfile: FakeProfile = {
 				source: "1",
 				classification: "C",
 				value: profileName,
-				unavailable: false,
 			},
 			countryofmarriage: {
 				lastupdated: "2018-05-10",
@@ -26,7 +25,6 @@ export const BaseProfile: FakeProfile = {
 				desc: MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.SINGAPORE),
 				source: "1",
 				classification: "C",
-				unavailable: false,
 			},
 			sex: {
 				lastupdated: "2018-06-01",
@@ -34,7 +32,6 @@ export const BaseProfile: FakeProfile = {
 				desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE),
 				source: "1",
 				classification: "C",
-				unavailable: false,
 			},
 			regadd: address(),
 			mobileno: {
@@ -50,7 +47,6 @@ export const BaseProfile: FakeProfile = {
 				lastupdated: "2022-07-14",
 				source: "4",
 				classification: "C",
-				unavailable: false
 			},
 			dialect: {
 				lastupdated: "2018-06-01",
@@ -58,21 +54,19 @@ export const BaseProfile: FakeProfile = {
 				desc: MyInfoDialectCode.fn.toEnumDesc(MyInfoDialectCode.HOKKIEN),
 				source: "1",
 				classification: "C",
-				unavailable: false,
 			},
 			occupation: {
 				lastupdated: "2020-09-10",
-				value: null,
+				code: "",
+				desc: "",
 				source: "2",
 				classification: "C",
-				unavailable: false,
 			},
 			employment: {
 				classification: "C",
-				source: "1",
+				source: "2",
 				lastupdated: "2019-03-26",
 				value: "Google Pte Ltd",
-				unavailable: false
 			},
 			nationality: {
 				lastupdated: "2018-06-01",
@@ -80,22 +74,19 @@ export const BaseProfile: FakeProfile = {
 				desc: MyInfoNationalityCode.fn.toEnumDesc(MyInfoNationalityCode.SINGAPORE_CITIZEN),
 				source: "1",
 				classification: "C",
-				unavailable: false,
 			},
 			dob: {
 				lastupdated: "2018-06-01",
 				source: "1",
 				classification: "C",
 				value: `${new Date().getFullYear() - 60 + 1}-01-01`,
-				unavailable: false,
 			},
 			secondaryrace: {
 				lastupdated: "2018-06-01",
-				code: null,
+				code: "",
 				source: "1",
 				classification: "C",
-				desc: null,
-				unavailable: false,
+				desc: "",
 			},
 			edulevel: {
 				lastupdated: "2020-09-10",
@@ -103,35 +94,30 @@ export const BaseProfile: FakeProfile = {
 				source: "2",
 				classification: "C",
 				desc: null,
-				unavailable: false,
 			},
 			passportnumber: {
 				lastupdated: "2021-01-01",
 				source: "1",
 				classification: "C",
 				value: "L3280033",
-				unavailable: false,
 			},
 			passportexpirydate: {
 				lastupdated: "2021-01-01",
 				source: "1",
 				classification: "C",
 				value: "2030-09-10",
-				unavailable: false,
 			},
 			divorcedate: {
-				lastupdated: null,
+				lastupdated: "2022-09-21",
 				source: "1",
 				classification: "C",
-				value: null,
-				unavailable: false,
+				value: "",
 			},
 			marriagecertno: {
 				lastupdated: "2018-05-10",
 				source: "1",
 				classification: "C",
 				value: "M525997",
-				unavailable: false,
 			},
 			merdekagen: {
 				eligibility: {
@@ -139,15 +125,14 @@ export const BaseProfile: FakeProfile = {
 				},
 				lastupdated: "2019-04-01",
 				quantum: {
-					value: 200,
+					value: 0,
 				},
 				source: "1",
 				classification: "C",
 				message: {
-					code: MyInfoMerdekaGenerationMessageCode.ALL_OK,
-					"desc": MyInfoMerdekaGenerationMessageCode.fn.toEnumDesc(MyInfoMerdekaGenerationMessageCode.ALL_OK),
+					code: MyInfoMerdekaGenerationMessageCode.NON_MG,
+					desc: MyInfoMerdekaGenerationMessageCode.fn.toEnumDesc(MyInfoMerdekaGenerationMessageCode.NON_MG),
 				},
-				unavailable: false,
 			},
 			pioneergen: {
 				eligibility: {
@@ -155,7 +140,7 @@ export const BaseProfile: FakeProfile = {
 				},
 				lastupdated: "2021-01-15",
 				quantum: {
-					value: "200.00",
+					value: "",
 				},
 				source: "1",
 				classification: "C",
@@ -163,7 +148,6 @@ export const BaseProfile: FakeProfile = {
 					code: MyInfoPioneerGenerationMessageCode.NON_PG,
 					desc: MyInfoPioneerGenerationMessageCode.fn.toEnumDesc(MyInfoPioneerGenerationMessageCode.NON_PG),
 				},
-				unavailable: false,
 			},
 			gstvoucher: {
 				gstregular: {
@@ -187,14 +171,12 @@ export const BaseProfile: FakeProfile = {
 				signup: {
 					value: false,
 				},
-				unavailable: false,
 			},
 			email: {
 				lastupdated: "2019-04-03",
 				source: "4",
 				classification: "C",
 				value: "gt.govandi@gmail.com",
-				unavailable: false,
 			},
 			birthcountry: {
 				lastupdated: "2018-06-01",
@@ -202,7 +184,6 @@ export const BaseProfile: FakeProfile = {
 				desc: MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.SINGAPORE),
 				source: "1",
 				classification: "C",
-				unavailable: false,
 			},
 			race: {
 				lastupdated: "2018-06-01",
@@ -210,7 +191,6 @@ export const BaseProfile: FakeProfile = {
 				desc: MyInfoRaceCode.fn.toEnumDesc(MyInfoRaceCode.CHINESE),
 				source: "1",
 				classification: "C",
-				unavailable: false,
 			},
 			silversupport: {
 				eligibility: {
@@ -225,14 +205,12 @@ export const BaseProfile: FakeProfile = {
 				year: {
 					value: "2019",
 				},
-				unavailable: false,
 			},
 			marriagedate: {
 				lastupdated: "1993-10-22",
 				source: "1",
 				classification: "C",
 				value: "1988-01-01",
-				unavailable: false,
 			},
 			residentialstatus: {
 				lastupdated: "2018-06-01",
@@ -240,7 +218,6 @@ export const BaseProfile: FakeProfile = {
 				desc: MyInfoResidentialCode.fn.toEnumDesc(MyInfoResidentialCode.CITIZEN),
 				source: "1",
 				classification: "C",
-				unavailable: false,
 			},
 			marital: {
 				lastupdated: "2018-05-10",
@@ -248,14 +225,12 @@ export const BaseProfile: FakeProfile = {
 				desc: MyInfoMaritialStatusCode.fn.toEnumDesc(MyInfoMaritialStatusCode.MARRIED),
 				source: "1",
 				classification: "C",
-				unavailable: false,
 			},
 			aliasname: {
 				lastupdated: "2018-06-01",
 				source: "1",
 				classification: "C",
 				value: aliasName.LEE_XIU,
-				unavailable: false,
 			},
 			childrenbirthrecords: [],
 			sponsoredchildrenrecords: [],
@@ -265,7 +240,6 @@ export const BaseProfile: FakeProfile = {
 				desc: null,
 				source: "1",
 				classification: "C",
-				unavailable: false,
 			},
 			housingtype: {
 				lastupdated: "2020-08-26",
@@ -273,7 +247,6 @@ export const BaseProfile: FakeProfile = {
 				desc: null,
 				source: "1",
 				classification: "C",
-				unavailable: false,
 			},
 			drivinglicence: {
 				revocation: {
@@ -333,7 +306,6 @@ export const BaseProfile: FakeProfile = {
 						value: null,
 					},
 				},
-				unavailable: false,
 			},
 			vehicles: [],
 		};
@@ -367,6 +339,4 @@ const address = (): MyInfoComponents.Schemas.DataitemAddressSg => ({
 	building: {
 		value: null,
 	},
-	unavailable: false,
 });
-
