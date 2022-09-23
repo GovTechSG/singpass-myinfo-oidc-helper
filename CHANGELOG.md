@@ -1,5 +1,18 @@
 # Changelogs
 
+## 7.0.0
+
+- **[BREAKING]** Generate schema based on MyInfo API TUO 3.2.0
+  - Change `PersonCommon` to `PersonBasic` where basic profile return type is expected
+  - Update `MyInfoHelper.getPersonCommon()` to `MyInfoHelper.getPersonBasic()`
+  - Update mock profiles to match the latest specs
+- **[BREAKING]** Update MyInfo domain
+  - `merdekagen`, `gstvoucher`, and `silversupport` have been moved from `PersonCommon` to `PersonCommunity`
+  - `merdekagen.code` is now string instead of enum
+  - `silversupport.year` and gstvoucher.year are now string instead of number (note: still returned as number in prod)
+  - `occupation.code` and `occupation.desc` have been removed (note: still returned as empty strings in prod)
+  - `address.type` is now "UNFORMATTED" instead of "unformatted"
+
 ## 6.3.0
 
 - Added NDI helper
