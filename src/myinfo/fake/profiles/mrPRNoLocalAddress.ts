@@ -1,7 +1,7 @@
 import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
-import { MyInfoNationalityCode, MyInfoOccupationCode, MyInfoResidentialCode } from "../../domain";
+import { MyInfoNationalityCode, MyInfoResidentialCode } from "../../domain";
 
 const id = "S3814379D";
 const name = ProfileArchetype.MR_PR_NO_LOCAL_ADDRESS;
@@ -17,7 +17,7 @@ export const mrPRNoLocalAddress: FakeProfile = {
 		profile.residentialstatus.code = MyInfoResidentialCode.PR;
 		profile.residentialstatus.desc = MyInfoResidentialCode.fn.toEnumDesc(MyInfoResidentialCode.PR);
 		profile.regadd = {
-			"type": "Unformatted",
+			"type": "UNFORMATTED",
 			"line1": { "value": "96 GUILD STREET" },
 			"line2": { "value": "LONDON SE16 1BE" },
 			"classification": "C",

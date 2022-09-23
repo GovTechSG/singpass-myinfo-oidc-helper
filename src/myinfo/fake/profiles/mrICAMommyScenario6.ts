@@ -1,8 +1,7 @@
 
 import * as _ from "lodash";
+import { MyInfoComponents, MyInfoNationalityCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
-import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
-import { MyInfoComponents, MyInfoCountryCode, MyInfoMaritialStatusCode, MyInfoNationalityCode, MyInfoOccupationCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
 import { BaseProfile } from "./sponsored-children/BaseProfile";
 
 const id = "S9005011G";
@@ -24,7 +23,7 @@ export const mrsICAMommyScenario6: FakeProfile = {
 			"source": "1",
 			"classification": "C",
 			"unavailable": false,
-		},
+		};
 		profile.dob = {
 			"lastupdated": "2022-02-25",
 			"source": "1",
@@ -39,7 +38,7 @@ export const mrsICAMommyScenario6: FakeProfile = {
 			"source": "1",
 			"classification": "C",
 			"unavailable": false,
-		},
+		};
 		profile.nationality.code = MyInfoNationalityCode.MALAYSIAN;
 
 		return profile;

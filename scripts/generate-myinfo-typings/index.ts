@@ -1,12 +1,12 @@
 // tslint:disable: no-console tsr-detect-non-literal-fs-filename no-commented-code
-import axios from "axios";
 import dtsgenerator, { parseSchema } from "dtsgenerator";
 import * as fs from "fs";
 import * as handlebars from "handlebars";
 import * as _ from "lodash";
 import * as shell from "shelljs";
-import * as xlsx from "xlsx";
 import * as yargs from "yargs";
+import { generateMyInfoCodeEnums } from "./generate-enums";
+import { FILE_HEADER } from "./common";
 
 console.log(`==============================================================================`);
 console.log(`Script: ${__filename}`);
@@ -66,14 +66,6 @@ const swaggerPath = argv["swagger-path"];
 const outputDir = argv["output-dir"];
 const myinfoCodeRefTableUrl = argv["myinfo-code-ref-tables-url"];
 
-const header = `// tslint:disable
-// =============================================================================
-// This file was generated with \`npm run generate-myinfo-typings\` on ${new Date().toISOString().split('T')[0]}
-// Any modifications to this file may be overwritten when the script runs again
-// Check README.md for more information
-// =============================================================================
-`;
-
 // =============================================================================
 // Script
 // =============================================================================
@@ -89,7 +81,7 @@ async function executeScript() {
 
 
 	console.log("Generating enums typings from MyInfo codes table...");
-	const myinfoCodesEnumsFileNames = await generateMyInfoCodeEnums();
+	const myinfoCodesEnumsFileNames = await generateMyInfoCodeEnums({ myinfoCodeRefTableUrl, outputDir });
 
 	console.log("Generating index...");
 	await generateIndex([
@@ -172,10 +164,6 @@ function sanitizeSwagger(swagger: any): any {
 	delete swagger.components.schemas["TokenError"];
 	delete swagger.components.schemas["Error"];
 
-	// Ad hoc fix for mixing old and new swagger specs https://github.com/swagger-api/swagger-editor/issues/1519
-	swagger.components.schemas["DataFieldProperties"].required.push("unavailable");
-	delete swagger.components.schemas["DataFieldProperties"].properties["unavailable"].required;
-
 	// Fix nulls
 	swagger = deepMapObject(swagger, (value) => value ?? "");
 
@@ -197,8 +185,8 @@ async function writeSwaggerTypingsSource(swagger: any): Promise<string> {
 
 	// add custom data items to domains
 	const customDataItems = [
-		{folder: "person", domain: "Person"},
-		{folder: "person-common", domain: "PersonCommon"},
+		{ folder: "person", domain: "Person" },
+		{ folder: "person-common", domain: "PersonCommon" },
 	];
 	customDataItems.forEach(customDataItem => {
 		const inputDirectory = `${outputDir}/custom/${customDataItem.folder}`;
@@ -222,140 +210,8 @@ async function writeSwaggerTypingsSource(swagger: any): Promise<string> {
 	typingsSource = typingsSource.replace("namespace Schemas {", "export namespace Schemas {");
 
 	const filename = "myinfo-domain.ts";
-	fs.writeFileSync(`${outputDir}/${filename}`, header + typingsSource);
+	fs.writeFileSync(`${outputDir}/${filename}`, FILE_HEADER + typingsSource);
 	return filename;
-}
-
-// =============================================================================
-// Enum helpers
-// =============================================================================
-
-interface EnumTyping {
-	enumName: string;
-	enumEntries: Record<string, string>[];
-}
-
-function writeEnumTypingsSource(enumTyping: EnumTyping): string {
-	// Ensure that there is a proper prefix
-	if (!enumTyping.enumName.startsWith("MyInfo")) {
-		enumTyping.enumName = `MyInfo${_.startCase(enumTyping.enumName).replace(/\s/g, "")}`;
-	}
-
-	// Validate the enum
-	if (_.isNil(enumTyping.enumName) || _.isEmpty(enumTyping.enumEntries)) {
-		console.warn(`Malformed enum typing detected, skipping...`, enumTyping);
-		return;
-	}
-
-	// Append number to duplicated keys
-	const enumEntryKeyList: string[] = [];
-	enumTyping.enumEntries = enumTyping.enumEntries.map(entry => {
-		let key = entry.key;
-		if (enumEntryKeyList.includes(key)) {
-			// tslint:disable: tsr-detect-non-literal-regexp
-			const countInstances = new RegExp(`^${key}`, "i");
-			const extractCounter = new RegExp(`^${key}_(.*)`, "i");
-			// tslint:enable: tsr-detect-non-literal-regexp
-
-			// count instances of key
-			const instanceCount = enumEntryKeyList.filter(k => k.match(countInstances)).length;
-
-			// extract max trailing counter (if any)
-			const counter = enumEntryKeyList.map(k => {
-				const matches = k.match(extractCounter);
-				return matches ? Number(matches[1]) : null;
-			}).filter(k => k).sort((a, b) => (b - a))[0] || 0;
-
-			// assign unique key by finding highest number to append
-			const append = Math.max(instanceCount, counter);
-			key = `${key}_${append + 1}`;
-			console.warn(`MyInfo sheet ${enumTyping.enumName} contains duplicated keys: ${entry.key}, renaming as ${key}`);
-		}
-		enumEntryKeyList.push(key);
-		return { ...entry, key };
-	});
-
-	// Remove empty keys or values
-	enumTyping.enumEntries = _.omitBy<Record<string, string>[]>(enumTyping.enumEntries, (value, key) => {
-		if (_.isEmpty(key) || _.isEmpty(value)) {
-			console.warn(`${enumTyping.enumName} has an empty enum entry { key: "${key}" value: "${value}" }, skipping entry...`);
-			return true;
-		}
-		return false;
-	});
-
-	// Write enum file
-	const enumsHbs = fs.readFileSync(`${outputDir}/enums.hbs`, "utf8");
-	const enumsTemplate = handlebars.compile(enumsHbs, { noEscape: true });
-	const typingsSource = header + enumsTemplate(enumTyping);
-
-	const filename = `generated/${_.kebabCase(enumTyping.enumName).replace(/my\-info/, "myinfo")}.ts`;
-	fs.writeFileSync(`${outputDir}/${filename}`, typingsSource);
-	return filename;
-}
-
-// =============================================================================
-// MyInfo codes enums
-// =============================================================================
-
-async function generateMyInfoCodeEnums(): Promise<string[]> {
-	// Fetch xls
-	const { data } = await axios.get(myinfoCodeRefTableUrl, { responseType: "arraybuffer" });
-	const myInfoCodesXslx = xlsx.read(new Uint8Array(data), { type: "array" });
-
-	// Parse xls
-	let enumTypingsArr: EnumTyping[] = myInfoCodesXslx.SheetNames.map((sheetName): EnumTyping => {
-		// Skip unnecessary sheets
-		if (sheetName === "Version") return null;
-
-		// Convert to JSON and format accordingly
-		const myInfoCodesSheet: Record<string, string>[] = xlsx.utils.sheet_to_json(myInfoCodesXslx.Sheets[sheetName], { header: ["code", "description"], raw: false, defval: null, blankrows: true });
-
-		// Rudimentary validation by cell value in case the sheet changed its format
-		// Expecting row 6 to be the header; values should contain code and description
-		if (!myInfoCodesSheet[5]?.code?.match(/code/gi) || myInfoCodesSheet[5]?.description?.toLowerCase() !== "description") {
-			throw new Error(`Unexpected cell values in MyInfo xlsx sheet ${sheetName} row 6, format has likely changed`);
-		}
-
-		const enumEntries = myInfoCodesSheet.map((row: Record<string, string>, i: number) => {
-			if (i >= 6) {
-				return {
-					key: _.snakeCase(row.description).toUpperCase(),
-					value: row.code,
-					desc: row.description.toUpperCase(),
-				};
-			}
-			return null;
-		}).filter((entry: Record<string, string>) => entry);
-		return { enumName: sheetName, enumEntries };
-	}).filter(entry => entry);
-
-	// add custom enums
-	const customDirectory = outputDir + "/custom/enums";
-	const filenames = fs.readdirSync(customDirectory);
-	filenames.forEach(file => {
-		if (file.match(/.json$/)) {
-			const customEnum = JSON.parse(fs.readFileSync(`${customDirectory}/${file}`, "utf8"));
-			enumTypingsArr.push(customEnum);
-		}
-	});
-
-	// remove duplicated sheets
-	// custom enums will overwrite enums from xlsx
-	const enumSheetNameList: string[] = [];
-	enumTypingsArr.reverse();
-	enumTypingsArr = enumTypingsArr.filter(enumTyping => {
-		const sheetNameWithoutPrependMatches = enumTyping.enumName.match(/^myinfo(.*)/i);
-		const sheetNameWithoutPrepend = sheetNameWithoutPrependMatches ? sheetNameWithoutPrependMatches[1].toLowerCase() : enumTyping.enumName.toLowerCase();
-		if (!!enumTyping && enumSheetNameList.indexOf(sheetNameWithoutPrepend) === -1 && enumSheetNameList.indexOf("myinfo" + sheetNameWithoutPrepend) === -1) {
-			enumSheetNameList.push(enumTyping.enumName.toLowerCase());
-			return enumTyping;
-		}
-		return null;
-	});
-
-	// Write to files
-	return _.map(enumTypingsArr, (enumTypings) => writeEnumTypingsSource(enumTypings));
 }
 
 // =============================================================================
@@ -374,7 +230,7 @@ function generateIndex(fileNames: string[]): string {
 
 	const indexHbs = fs.readFileSync(`${outputDir}/index.hbs`, "utf8");
 	const indexTemplate = handlebars.compile(indexHbs, { noEscape: true });
-	const indexSource = header + indexTemplate({ moduleNames });
+	const indexSource = FILE_HEADER + indexTemplate({ moduleNames });
 
 	const filename = `index.ts`;
 	fs.writeFileSync(`${outputDir}/${filename}`, indexSource);

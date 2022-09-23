@@ -15,10 +15,9 @@ export const mrMYDadJobless: FakeProfile = {
 		const profile = mrMYDaddyPerfect.generate(profileName);
 		profile.occupation = {
 			"lastupdated": "2020-09-10",
-			"code": "",
 			"source": "2",
 			"classification": "C",
-			"desc": "",
+			"value": "",
 			"unavailable": false,
 		};
 

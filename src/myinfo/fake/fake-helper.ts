@@ -56,7 +56,7 @@ export interface MockParams {
 	occupation?: MyInfoOccupationCode;
 	occupationfreeform?: string;
 	dob?: string;
-	gstvyear?: number;
+	gstvyear?: string;
 	gvs?: GVS;
 	merdekageneligible?: boolean;
 	merdekagenquantum?: number;
@@ -79,11 +79,11 @@ type MockParamsPerson = MockParams & MockFinanceParams;
 
 type NoaBasicExtension = MyInfoComponents.Schemas.NOABasic & MyInfoComponents.Schemas.DataFieldProperties;
 type CpfBalanceExtension = MyInfoComponents.Schemas.Cpfbalances & MyInfoComponents.Schemas.DataFieldProperties;
-type PersonCommon = MyInfoComponents.Schemas.PersonCommon;
+type PersonBasic = MyInfoComponents.Schemas.PersonBasic;
 type Person = MyInfoComponents.Schemas.Person;
 
 export interface IFakeMyInfoHelper {
-	getPersonCommon: (mockParams: MockParams) => PersonCommon;
+	getPersonBasic: (mockParams: MockParams) => PersonBasic;
 	getPerson: (mockParams: MockParamsPerson) => Person;
 }
 
@@ -174,22 +174,16 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		}
 
 		if (!isEmpty(mockParams.occupation)) {
-			// if fin user then just change the value and not the code and desc
-			if(!this.checkIsSingaporeanOrPr(myinfoPerson.residentialstatus.code)){
-				myinfoPerson.occupation.code = null;
-				myinfoPerson.occupation.desc = null;
-				myinfoPerson.occupation.value = mockParams.occupation;
+			// only fin users have value
+			if (!this.checkIsSingaporeanOrPr(myinfoPerson.residentialstatus.code)) {
+				myinfoPerson.occupation.value = MyInfoOccupationCode.fn.toEnumDesc(mockParams.occupation);
 			}
-			else{
-				myinfoPerson.occupation.code = mockParams.occupation;
-				myinfoPerson.occupation.desc = MyInfoOccupationCode.fn.toEnumDesc(mockParams.occupation);
+			else {
 				myinfoPerson.occupation.value = null;
 			}
 		} else {
 			if (!isEmpty(mockParams.occupationfreeform)) {
 				myinfoPerson.occupation.value = mockParams.occupationfreeform;
-				myinfoPerson.occupation.code = null;
-				myinfoPerson.occupation.desc = null;
 			}
 		}
 
@@ -469,7 +463,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		return myinfoPerson;
 	}
 
-	public getPersonCommon = (mockParams: MockParams): PersonCommon => {
+	public getPersonBasic = (mockParams: MockParams): PersonBasic => {
 		const myinfoPerson = this.getPersonInfo(mockParams);
 
 		if (!this.attributes) {
@@ -539,7 +533,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
  * @param person fake MyInfo person
  * @param attributes array of attributes to filter for
  */
-function filterThroughMyInfoAttributes(person: PersonCommon, attributes: ReadonlyArray<string>): PersonCommon {
+function filterThroughMyInfoAttributes(person: PersonBasic, attributes: ReadonlyArray<string>): PersonBasic {
 	const [childrenRawCbrAttributes, childrenNormalAttributes] = partition(attributes, (value) => value.startsWith("childrenbirthrecords."));
 	const [sponsoredRawCbrAttributes, sponsoredNormalAttributes] = partition(attributes, (value) => value.startsWith("sponsoredchildrenrecords."));
 	const [vehiclesRawCbrAttributes, vehiclesNormalAttributes] = partition(attributes, (value) => value.startsWith("vehicles."));
@@ -660,7 +654,7 @@ export function transformItems(item: any) {
 		if (item[key] === "") {
 			return objectKey;
 		}
-		objectKey[key] = { value: key !== 'yearofassessment' && !isNaN(+item[key]) ? +item[key] : item[key]  };
+		objectKey[key] = { value: key !== 'yearofassessment' && !isNaN(+item[key]) ? +item[key] : item[key] };
 		return objectKey;
 	}, {});
 }

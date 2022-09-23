@@ -1,6 +1,6 @@
 // tslint:disable
 // =============================================================================
-// This file was generated with `npm run generate-myinfo-typings` on 2021-04-09
+// This file was generated with `npm run generate-myinfo-typings` on 2022-09-16
 // Any modifications to this file may be overwritten when the script runs again
 // Check README.md for more information
 // =============================================================================
@@ -20,8 +20,9 @@ export enum MyInfoPassTypeCode {
 	"LONG_TERM_VISIT_PASS" = "LTVP",
 	"LETTER_OF_CONSENT" = "LOC",
 	"MISCELLANEOUS_WORK_PASS" = "MWP",
-	"SHORT_TERM_PASS" = "STP",
+	"STUDENT_PASS" = "STP",
 	"LONG_TERM_VISIT_PASS_2" = "LTVP+",
+	"IMMIGRATION_EXEMPTION_ORDER" = "IEO",
 }
 
 enum MyInfoPassTypeCodeMapping {
@@ -38,8 +39,9 @@ enum MyInfoPassTypeCodeMapping {
 	"LONG_TERM_VISIT_PASS" = "LONG TERM VISIT PASS",
 	"LETTER_OF_CONSENT" = "LETTER OF CONSENT",
 	"MISCELLANEOUS_WORK_PASS" = "MISCELLANEOUS WORK PASS",
-	"SHORT_TERM_PASS" = "SHORT TERM PASS",
+	"STUDENT_PASS" = "STUDENT PASS",
 	"LONG_TERM_VISIT_PASS_2" = "LONG TERM VISIT PASS +",
+	"IMMIGRATION_EXEMPTION_ORDER" = "IMMIGRATION EXEMPTION ORDER",
 }
 
 type MyInfoPassTypeCodeDesc = `${ MyInfoPassTypeCodeMapping }`;

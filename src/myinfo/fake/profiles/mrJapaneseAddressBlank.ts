@@ -27,15 +27,15 @@ export const mrJapaneseAddressBlank: FakeProfile = {
 			lastupdated: "2019-03-26",
 			value: "Google Pte Ltd",
 			unavailable: false
-		},
-			profile.nationality = {
-				"code": MyInfoNationalityCode.JAPANESE,
-				"desc": MyInfoNationalityCode.fn.toEnumDesc(MyInfoNationalityCode.JAPANESE),
-				"source": "1",
-				"classification": "C",
-				"lastupdated": "2019-09-18",
-				"unavailable": false,
-			};
+		};
+		profile.nationality = {
+			"code": MyInfoNationalityCode.JAPANESE,
+			"desc": MyInfoNationalityCode.fn.toEnumDesc(MyInfoNationalityCode.JAPANESE),
+			"source": "1",
+			"classification": "C",
+			"lastupdated": "2019-09-18",
+			"unavailable": false,
+		};
 		profile.birthcountry = {
 			"code": MyInfoCountryCode.JAPAN,
 			"desc": MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.JAPAN),
@@ -88,10 +88,9 @@ export const mrJapaneseAddressBlank: FakeProfile = {
 
 		profile.occupation = {
 			"lastupdated": "2018-05-21",
-			"code": MyInfoOccupationCode.LEGISLATOR,
 			"source": "2",
 			"classification": "C",
-			"desc": MyInfoOccupationCode.fn.toEnumDesc(MyInfoOccupationCode.LEGISLATOR),
+			"value": MyInfoOccupationCode.fn.toEnumDesc(MyInfoOccupationCode.LEGISLATOR),
 			"unavailable": false,
 		};
 

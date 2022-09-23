@@ -40,7 +40,7 @@ export const mrSGUncleNonBenefits: FakeProfile = {
 			"source": "1",
 			"classification": "C",
 			"year": {
-				"value": 2019,
+				"value": "2019",
 			},
 		};
 		return profile;

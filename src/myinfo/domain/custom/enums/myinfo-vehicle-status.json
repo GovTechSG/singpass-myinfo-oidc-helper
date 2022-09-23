@@ -1,15 +1,20 @@
 {
-	"enumName": "MyInfoVehicleStatus",
-	"enumEntries": [
+	"enumNamespace": "VehicleStatus",
+	"enumTypings": [
 		{
-			"key": "LIVE",
-			"value": "1",
-			"desc": "LIVE"
-		},
-		{
-			"key": "DEREGISTERED",
-			"value": "2",
-			"desc": "DE-REGISTERED"
+			"enumName": "VehicleStatus",
+			"enumEntries": [
+				{
+					"key": "LIVE",
+					"value": "1",
+					"desc": "LIVE"
+				},
+				{
+					"key": "DEREGISTERED",
+					"value": "2",
+					"desc": "DE-REGISTERED"
+				}
+			]
 		}
 	]
 }

@@ -11,7 +11,7 @@ import { MyInfoRequest, MyInfoRequestConstructor } from "./myinfo-request";
 export type EnvType = "test" | "sandbox" | "prod";
 
 export interface IMyInfoHelper {
-	getPersonCommon: <K extends keyof MyInfoComponents.Schemas.PersonCommon>(uinfin: string, attributes: string[]) => Promise<Pick<MyInfoComponents.Schemas.PersonCommon, K>>;
+	getPersonBasic: <K extends keyof MyInfoComponents.Schemas.PersonBasic>(uinfin: string, attributes: string[]) => Promise<Pick<MyInfoComponents.Schemas.PersonBasic, K>>;
 	getPerson: <K extends keyof MyInfoComponents.Schemas.Person>(uinfin: string, attributes: string[]) => Promise<Pick<MyInfoComponents.Schemas.Person, K>>;
 }
 
@@ -187,10 +187,10 @@ export class MyInfoHelper implements IMyInfoHelper {
 	/**
 	 * Obtain V3 person basic data using uinfin.
 	 * In the generic K, pass in the list of string literal of the attributes you expect to get back.
-	 * getPersonCommon will return an object with only the properties matching the keys.
-	 * e.g. when K = "name" | "email", getPersonCommon returns an object looking like { name, email }
+	 * getPersonBasic will return an object with only the properties matching the keys.
+	 * e.g. when K = "name" | "email", getPersonBasic returns an object looking like { name, email }
 	 */
-	public getPersonCommon = async<K extends keyof MyInfoComponents.Schemas.PersonCommon>(uinfin: string, attributes: string[]): Promise<Pick<MyInfoComponents.Schemas.PersonCommon, K>> => {
+	public getPersonBasic = async<K extends keyof MyInfoComponents.Schemas.PersonBasic>(uinfin: string, attributes: string[]): Promise<Pick<MyInfoComponents.Schemas.PersonBasic, K>> => {
 		const url = `${this.personBasicUrl}/${uinfin}`;
 		const proxyUrl = this.proxyPersonBasicUrl ? `${this.proxyPersonBasicUrl}/${uinfin}` : "";
 		const params = {
@@ -213,7 +213,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 			const jwe = await JweUtil.decryptJWE(encryptedPersonJWE, this.keyToDecryptJWE);
 			const jws = JSON.parse(jwe.payload.toString());
 			const verifiedJws = await JweUtil.verifyJWS(jws, this.certToVerifyJWS);
-			const personData = JSON.parse(verifiedJws.payload.toString()) as Pick<MyInfoComponents.Schemas.PersonCommon, K>;
+			const personData = JSON.parse(verifiedJws.payload.toString()) as Pick<MyInfoComponents.Schemas.PersonBasic, K>;
 
 			if (personData == null) {
 				throw new SingpassMyInfoError("Person-common data cannot be null");
@@ -229,8 +229,8 @@ export class MyInfoHelper implements IMyInfoHelper {
 	/**
 	 * Obtain V3 person data using uinfin and access token.
 	 * In the generic K, pass in the list of string literal of the attributes you expect to get back.
-	 * getPersonCommon will return an object with only the properties matching the keys.
-	 * e.g. when K = "name" | "email", getPersonCommon returns an object looking like { name, email }
+	 * getPerson will return an object with only the properties matching the keys.
+	 * e.g. when K = "name" | "email", getPerson returns an object looking like { name, email }
 	 */
 
 	public getPerson = async<K extends keyof MyInfoComponents.Schemas.Person>(accessToken: string, attributes: string[]): Promise<Pick<MyInfoComponents.Schemas.Person, K>> => {

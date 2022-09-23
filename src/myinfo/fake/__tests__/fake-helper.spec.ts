@@ -7,10 +7,10 @@ import { mrSGDaddyPerfect } from "../profiles/mrSGDaddyPerfect";
 // tslint:disable-next-line: no-big-function
 describe("FakeMyInfoHelper", () => {
 	// tslint:disable-next-line: no-big-function
-	describe("getPersonCommon", () => {
+	describe("getPersonBasic", () => {
 		it("should successfully get based on archetype", () => {
 			const fakeHelper = new FakeMyInfoHelper();
-			const person = fakeHelper.getPersonCommon({ archetype: ProfileArchetype.MR_SG_FATHER_ONLY_SPONSORED });
+			const person = fakeHelper.getPersonBasic({ archetype: ProfileArchetype.MR_SG_FATHER_ONLY_SPONSORED });
 
 			expect(person).toHaveProperty("dialect");
 			expect(person).toHaveProperty("occupation");
@@ -42,7 +42,7 @@ describe("FakeMyInfoHelper", () => {
 
 		it("should filter for parents with children", () => {
 			const fakeHelper = new FakeMyInfoHelper(testAttributes);
-			const person = fakeHelper.getPersonCommon({ archetype: ProfileArchetype.MR_SG_DADDY_MANY_CHILDREN });
+			const person = fakeHelper.getPersonBasic({ archetype: ProfileArchetype.MR_SG_DADDY_MANY_CHILDREN });
 			expect(person).toHaveProperty("sex");
 			expect(person).toHaveProperty("marriagedate");
 			expect(person).toHaveProperty("residentialstatus");
@@ -59,7 +59,7 @@ describe("FakeMyInfoHelper", () => {
 
 		it("should filter for parents with sponsor children", () => {
 			const fakeHelper = new FakeMyInfoHelper(testAttributes);
-			const person = fakeHelper.getPersonCommon({ archetype: ProfileArchetype.MR_SG_FATHER_ONLY_SPONSORED });
+			const person = fakeHelper.getPersonBasic({ archetype: ProfileArchetype.MR_SG_FATHER_ONLY_SPONSORED });
 			expect(person).toHaveProperty("sex");
 			expect(person).toHaveProperty("marriagedate");
 			expect(person).toHaveProperty("residentialstatus");
@@ -74,36 +74,28 @@ describe("FakeMyInfoHelper", () => {
 			expect(person).toHaveProperty("drivinglicence.lastupdated");
 		});
 
-		it("should save the occupation value if the user passes occupationFreeForm mock params", ()=>{
+		it("should save the occupation value if the user passes occupationFreeForm mock params", () => {
 			const fakeHelper = new FakeMyInfoHelper();
-			const person = fakeHelper.getPersonCommon({ archetype: ProfileArchetype.MR_JAPANESE_ADDRESS_BLANK,occupationfreeform: "Software Engineer"  });
+			const person = fakeHelper.getPersonBasic({ archetype: ProfileArchetype.MR_JAPANESE_ADDRESS_BLANK, occupationfreeform: "Software Engineer" });
 			expect(person).toHaveProperty("residentialstatus");
 			expect(person).toHaveProperty("occupation");
 			expect(person.occupation.value).toStrictEqual("Software Engineer");
-			expect(person.occupation.code).toEqual(null);
-			expect(person.occupation.desc).toEqual(null);
 		});
 
-		it("should save the occupation code if the user is non SC/PR(based on residential address) user", ()=>{
+		it("should save the occupation code as value if the user is non SC/PR(based on residential status) user", () => {
 			const fakeHelper = new FakeMyInfoHelper();
-			const person = fakeHelper.getPersonCommon({ archetype: ProfileArchetype.MR_MY_DADDY_PERFECT,residentialstatus: MyInfoResidentialCode.ALIEN,occupation: MyInfoOccupationCode.LABORATORY_ATTENDANT });
+			const person = fakeHelper.getPersonBasic({ archetype: ProfileArchetype.MR_MY_DADDY_PERFECT, residentialstatus: MyInfoResidentialCode.ALIEN, occupation: MyInfoOccupationCode.LABORATORY_ATTENDANT });
 			expect(person).toHaveProperty("residentialstatus");
 			expect(person).toHaveProperty("occupation");
-			expect(person.occupation.value).toStrictEqual(MyInfoOccupationCode.LABORATORY_ATTENDANT);
-			expect(person.occupation.code).toEqual(null);
-			expect(person.occupation.desc).toEqual(null);
-
+			expect(person.occupation.value).toStrictEqual(MyInfoOccupationCode.fn.toEnumDesc(MyInfoOccupationCode.LABORATORY_ATTENDANT));
 		});
 
-		it("should save the occupation code if the user is SC/PR(based on residential address) user", ()=>{
+		it("should not save the occupation code if the user is SC/PR(based on residential status) user", () => {
 			const fakeHelper = new FakeMyInfoHelper();
-			const person = fakeHelper.getPersonCommon({ archetype: ProfileArchetype.MR_JAPANESE_ADDRESS_BLANK,residentialstatus: MyInfoResidentialCode.CITIZEN,occupation: MyInfoOccupationCode.LABORATORY_ATTENDANT });
+			const person = fakeHelper.getPersonBasic({ archetype: ProfileArchetype.MR_JAPANESE_ADDRESS_BLANK, residentialstatus: MyInfoResidentialCode.CITIZEN, occupation: MyInfoOccupationCode.LABORATORY_ATTENDANT });
 			expect(person).toHaveProperty("residentialstatus");
 			expect(person).toHaveProperty("occupation");
-			expect(person.occupation.code).toStrictEqual(MyInfoOccupationCode.LABORATORY_ATTENDANT);
 			expect(person.occupation.value).toEqual(null);
-			expect(person.occupation.desc).toStrictEqual(MyInfoOccupationCode.fn.toEnumDesc(MyInfoOccupationCode.LABORATORY_ATTENDANT));
-
 		});
 
 		describe("childrenbirthrecords", () => {
@@ -130,7 +122,7 @@ describe("FakeMyInfoHelper", () => {
 				it("should override all exisiting children of archetype if childrenbirthrecords is NOT empty", () => {
 					const fakeHelper = new FakeMyInfoHelper();
 
-					const person = fakeHelper.getPersonCommon({
+					const person = fakeHelper.getPersonBasic({
 						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
 						childrenoverridemode: OverrideMode.full,
 						childrenbirthrecords: mockChildrenbirthrecords,
@@ -144,7 +136,7 @@ describe("FakeMyInfoHelper", () => {
 
 					const childrenbirthrecords = [];
 
-					const person = fakeHelper.getPersonCommon({
+					const person = fakeHelper.getPersonBasic({
 						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
 						childrenoverridemode: OverrideMode.full,
 						childrenbirthrecords,
@@ -158,7 +150,7 @@ describe("FakeMyInfoHelper", () => {
 				it("should override only the first two children of archetype if there are two children childrenbirthrecords", () => {
 					const fakeHelper = new FakeMyInfoHelper();
 
-					const person = fakeHelper.getPersonCommon({
+					const person = fakeHelper.getPersonBasic({
 						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
 						childrenoverridemode: OverrideMode.partial,
 						childrenbirthrecords: mockChildrenbirthrecords,
@@ -177,7 +169,7 @@ describe("FakeMyInfoHelper", () => {
 
 					const childrenbirthrecords = [];
 
-					const person = fakeHelper.getPersonCommon({
+					const person = fakeHelper.getPersonBasic({
 						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
 						childrenoverridemode: OverrideMode.partial,
 						childrenbirthrecords,
@@ -191,7 +183,7 @@ describe("FakeMyInfoHelper", () => {
 				it("should append to the existing children of archetype", () => {
 					const fakeHelper = new FakeMyInfoHelper();
 
-					const person = fakeHelper.getPersonCommon({
+					const person = fakeHelper.getPersonBasic({
 						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
 						childrenoverridemode: OverrideMode.appendToExisting,
 						childrenbirthrecords: mockChildrenbirthrecords,
@@ -210,7 +202,7 @@ describe("FakeMyInfoHelper", () => {
 
 					const childrenbirthrecords = [];
 
-					const person = fakeHelper.getPersonCommon({
+					const person = fakeHelper.getPersonBasic({
 						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
 						childrenoverridemode: OverrideMode.appendToExisting,
 						childrenbirthrecords,
@@ -313,7 +305,7 @@ describe("FakeMyInfoHelper", () => {
 							cpfcontributions,
 						});
 
-						expect(person.cpfcontributions).toStrictEqual((mrSGFatherNormalChildrenOnly.generate() as MyInfoComponents.Schemas.Person).cpfcontributions);
+						expect(person.cpfcontributions).toStrictEqual((mrSGFatherNormalChildrenOnly.generate()).cpfcontributions);
 					});
 				});
 
@@ -327,7 +319,7 @@ describe("FakeMyInfoHelper", () => {
 							cpfcontributions: mockCpfContributions,
 						});
 
-						const mrSGFatherNormalChildren = (mrSGFatherNormalChildrenOnly.generate() as MyInfoComponents.Schemas.Person).cpfcontributions.history;
+						const mrSGFatherNormalChildren = (mrSGFatherNormalChildrenOnly.generate()).cpfcontributions.history;
 
 						expect(person.cpfcontributions.history).toStrictEqual([
 							...mockCpfContributions.map(cpfContribution => transformItems(cpfContribution)),
@@ -346,7 +338,7 @@ describe("FakeMyInfoHelper", () => {
 							cpfcontributions,
 						});
 
-						expect(person.cpfcontributions).toStrictEqual((mrSGFatherNormalChildrenOnly.generate() as MyInfoComponents.Schemas.Person).cpfcontributions);
+						expect(person.cpfcontributions).toStrictEqual((mrSGFatherNormalChildrenOnly.generate()).cpfcontributions);
 					});
 				});
 
@@ -360,7 +352,7 @@ describe("FakeMyInfoHelper", () => {
 							cpfcontributions: mockCpfContributions,
 						});
 
-						const mrSGaddyPerfectChildren = (mrSGFatherNormalChildrenOnly.generate() as MyInfoComponents.Schemas.Person).cpfcontributions.history;
+						const mrSGaddyPerfectChildren = (mrSGFatherNormalChildrenOnly.generate()).cpfcontributions.history;
 
 						expect(person.cpfcontributions.history).toStrictEqual([
 							...mrSGaddyPerfectChildren,
@@ -379,7 +371,7 @@ describe("FakeMyInfoHelper", () => {
 							cpfcontributions,
 						});
 
-						expect(person.cpfcontributions).toStrictEqual((mrSGFatherNormalChildrenOnly.generate() as MyInfoComponents.Schemas.Person).cpfcontributions);
+						expect(person.cpfcontributions).toStrictEqual((mrSGFatherNormalChildrenOnly.generate()).cpfcontributions);
 					});
 				});
 			});
@@ -408,10 +400,10 @@ describe("FakeMyInfoHelper", () => {
 					const fakeHelper = new FakeMyInfoHelper();
 
 					const mockNoCpfBalances = {
-						ma:0,
-						oa:0,
-						sa:0,
-						ra:0
+						ma: 0,
+						oa: 0,
+						sa: 0,
+						ra: 0
 					};
 
 					const person = fakeHelper.getPerson({
@@ -419,7 +411,7 @@ describe("FakeMyInfoHelper", () => {
 						cpfbalances: mockNoCpfBalances,
 					});
 
-					expect(person.cpfbalances).toStrictEqual((mrSGDaddyPerfect.generate() as MyInfoComponents.Schemas.Person).cpfbalances);
+					expect(person.cpfbalances).toStrictEqual((mrSGDaddyPerfect.generate()).cpfbalances);
 				});
 
 			});
@@ -452,7 +444,7 @@ describe("FakeMyInfoHelper", () => {
 						noabasic: mockNoa,
 					});
 
-					expect(person["noa-basic"]).toStrictEqual((mrSGFatherNormalChildrenOnly.generate() as MyInfoComponents.Schemas.Person)["noa-basic"]);
+					expect(person["noa-basic"]).toStrictEqual((mrSGFatherNormalChildrenOnly.generate())["noa-basic"]);
 				});
 			});
 		});

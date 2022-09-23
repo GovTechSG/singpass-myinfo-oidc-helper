@@ -14,7 +14,7 @@
 		"test:ext": "./shared-scripts/jest-test-external.sh",
 		"lint": "./shared-scripts/ts-lint.sh",
 		"build": "./scripts/build.sh",
-		"generate-myinfo-typings": "ts-node --project ./shared-config/script.tsconfig.json ./scripts/generate-myinfo-typings.ts"
+		"generate-myinfo-typings": "ts-node --project ./shared-config/script.tsconfig.json ./scripts/generate-myinfo-typings"
 	},
 	"lint-staged": {
 		"*.ts": [

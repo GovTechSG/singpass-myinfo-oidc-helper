@@ -38,7 +38,7 @@ MyInfo.Helper
 | privateKeyToSignRequest | string   | Used for signing the request to MyInfo server. Needs to be an encrypted PKCS8 private key                                                                                |
 | privateKeyPassword      | string   | the password that you used to encrypt privateKeyToSignRequest                                                                                                            |
 
-- `getPersonCommon(uinfin: string, attributes: string[]) => MyInfoComponents.Schemas.PersonCommon` - get basic profile data which excludes CPF and IRAS data in the shape of `MyInfoComponents.Schemas.PersonCommon`
+- `getPersonBasic(uinfin: string, attributes: string[]) => MyInfoComponents.Schemas.PersonBasic` - get basic profile data which excludes CPF and IRAS data in the shape of `MyInfoComponents.Schemas.PersonBasic`
 - `constructAuthorizationUrl(state: string, purpose: string, attributes: string[]) => string` - constructs the authorization url with the necessary params for authorising the user to retrieve full person data
 - `getToken(authCode: string, state?: string): => TokenResponse` - get access token when presented with a valid authcode obtained from the Authorise API
 - `getPerson(accessToken: string, attributes: string[]) => MyInfoComponents.Schemas.Person` - get full person data in the shape of `MyInfoComponents.Schemas.Person`, requires a valid access token obtained from getToken
@@ -70,7 +70,7 @@ Usually not needed, for making any other custom requests to MyInfo not covered i
 
 MyInfo.Fake.FakeMyInfoHelper
 
-Use `getPersonCommon` to get a fake MyInfo basic profile. Use `getPerson` if you want the full profile which includes the financial data from CPF and IRAS.
+Use `getPersonBasic` to get a fake MyInfo basic profile. Use `getPerson` if you want the full profile which includes the financial data from CPF and IRAS.
 
 - `constructor`
 
@@ -79,7 +79,7 @@ Use `getPersonCommon` to get a fake MyInfo basic profile. Use `getPerson` if you
 | attributes | string[]? | List of MyInfo attributes that this helper will return |
 
 ```ts
-getPersonCommon({
+getPersonBasic({
   archetype: ProfileArchetype;
   userdisplayname?: string;
   marital?: MyinfoMaritialStatusCode;
@@ -103,7 +103,7 @@ getPersonCommon({
   drivingqdlvalidity?: MyinfoDrivingLicenceValidityCode;
   vehiclestatus?: MyinfoVehicleStatus;
   employment?: string;
-}) => MyInfoComponents.Schemas.PersonCommon
+}) => MyInfoComponents.Schemas.PersonBasic
 
 getPerson({
   archetype: ProfileArchetype;
@@ -146,7 +146,8 @@ getPerson({
 ## Updating Myinfo domains
 
 - Myinfo domains including `MyinfoComponents` and various enums are auto generated via `npm run generate-myinfo-typings '<swagger file>'`
-- Swagger file needs to be downloaded from <https://api.singpass.gov.sg/developers>
+- Swagger file needs to be downloaded from <https://public.cloud.myinfo.gov.sg/myinfo/tuo/myinfo-tuo-specs.html>
+  - Note: there are different variants, this is for Government Digital Services which has the person-basic api
 - The script will also fetch and generate enums from <https://api.singpass.gov.sg/assets/api-lib/myinfo/downloads/myinfo-api-code-tables.xlsx>
 
 ### Folder / file structure of `src/myinfo/domain`
@@ -160,7 +161,7 @@ getPerson({
 ### Help! The swagger file is missing `<insert data item name>`
 
 - Myinfo REST API does not publish every data item
-- You will need to manually add its OpenAPI specification it in `custom/person-common` then run `npm run generate-myinfo-typings '<swagger file>'`
+- You will need to manually add its OpenAPI specification in `custom/person-common` then run `npm run generate-myinfo-typings '<swagger file>'`
 - An interface will be created and the corresponding data item will be added to the `PersonCommon` object
 
 ### Help! `myinfo-api-code-tables.xlsx` is missing `<insert code name>`
@@ -170,7 +171,7 @@ getPerson({
 - If the missing code list can be found in SingStat, update `generate-myinfo-typings` script to import accordingly
 - Otherwise
   1. Manually add the enum definition (json) to `custom/enums` folder
-      - _Hint: Refer to existing files for format_
+     - _Hint: Refer to existing files for format_
   2. Run `npm run generate-myinfo-typings '<swagger file>'`
 
 ### Help! `myinfo-api-code-tables.xlsx's <insert code name>` does not match the swagger definition
@@ -229,13 +230,13 @@ Singpass.NdiOidcHelper
 
 - `constructor`
 
-| Param            | Type   | Description                                                                                                |
-| ---------------- | ------ | ---------------------------------------------------------------------------------------------------------- |
-| oidcConfigUrl | string | The URL for Singpass OIDC configuration details endpoint|
-| clientID         | string | Your app's ID when you onboarded Singpass.|
-| redirectUri      | string | the redirect URL for Singpass to redirect to after user login. Must be whitelisted by SP during onboarding |
-| jweDecryptKey    | [key object](#key-object) | Object conatining private key for decrypting the JWT that wraps the token|
-| clientAssertionSignKey     | [key object](#key-object) | Object conatining private key for signing the client assertion provided in the token endpoint request|
+| Param                  | Type                      | Description                                                                                                |
+| ---------------------- | ------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| oidcConfigUrl          | string                    | The URL for Singpass OIDC configuration details endpoint                                                   |
+| clientID               | string                    | Your app's ID when you onboarded Singpass.                                                                 |
+| redirectUri            | string                    | the redirect URL for Singpass to redirect to after user login. Must be whitelisted by SP during onboarding |
+| jweDecryptKey          | [key object](#key-object) | Object conatining private key for decrypting the JWT that wraps the token                                  |
+| clientAssertionSignKey | [key object](#key-object) | Object conatining private key for signing the client assertion provided in the token endpoint request      |
 
 ### Login
 
@@ -262,7 +263,7 @@ Corppass.OidcHelper
 
 | Param            | Type   | Description                                                                                                |
 | ---------------- | ------ | ---------------------------------------------------------------------------------------------------------- |
-| authorizationUrl | string | The URL for Corppass /authorize endpoint                                                                      |
+| authorizationUrl | string | The URL for Corppass /authorize endpoint                                                                   |
 | tokenUrl         | string | The URL for Corppass /token endpoint                                                                       |
 | clientID         | string | Your app's ID when you onboarded Corppass.                                                                 |
 | clientSecret     | string | The client secret. To be sent together with client ID to token endpoint                                    |
@@ -295,13 +296,13 @@ Corppass.NdiOidcHelper
 
 - `constructor`
 
-| Param            | Type   | Description                                                                                                |
-| ---------------- | ------ | ---------------------------------------------------------------------------------------------------------- |
-| oidcConfigUrl | string | The URL for Corppass OIDC configuration details endpoint|
-| clientID         | string | Your app's ID when you onboarded Corppass.|
-| redirectUri      | string | the redirect URL for Corppass to redirect to after user login. Must be whitelisted by SP during onboarding |
-| jweDecryptKey    | [key object](#key-object) | Object conatining private key for decrypting the JWT that wraps the token|
-| clientAssertionSignKey     | [key object](#key-object) | Object conatining private key for signing the client assertion provided in the token endpoint request|                                                     |
+| Param                  | Type                      | Description                                                                                                |
+| ---------------------- | ------------------------- | ---------------------------------------------------------------------------------------------------------- | --- |
+| oidcConfigUrl          | string                    | The URL for Corppass OIDC configuration details endpoint                                                   |
+| clientID               | string                    | Your app's ID when you onboarded Corppass.                                                                 |
+| redirectUri            | string                    | the redirect URL for Corppass to redirect to after user login. Must be whitelisted by SP during onboarding |
+| jweDecryptKey          | [key object](#key-object) | Object conatining private key for decrypting the JWT that wraps the token                                  |
+| clientAssertionSignKey | [key object](#key-object) | Object conatining private key for signing the client assertion provided in the token endpoint request      |     |
 
 ### Login
 
@@ -319,8 +320,8 @@ Corppass.NdiOidcHelper
 
 ## Key Object
 
-| Param            | Type   | Description                                                                                                |
-| ---------------- | ------ | ---------------------------------------------------------------------------------------------------------- |
-key | string | contents of key |
-format | string | format of key provided |
-alg | string | key algorithm |
+| Param  | Type   | Description            |
+| ------ | ------ | ---------------------- |
+| key    | string | contents of key        |
+| format | string | format of key provided |
+| alg    | string | key algorithm          |
