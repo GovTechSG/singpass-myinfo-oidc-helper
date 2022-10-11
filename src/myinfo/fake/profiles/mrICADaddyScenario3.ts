@@ -22,14 +22,12 @@ export const mrICADaddyScenario3: FakeProfile = {
 			"desc": MyInfoRaceCode.fn.toEnumDesc(MyInfoRaceCode.INDIAN),
 			"source": "1",
 			"classification": "C",
-			"unavailable": false,
 		};
 		profile.dob = {
 			"lastupdated": "2022-02-25",
 			"source": "1",
 			"classification": "C",
 			"value": "1990-02-03",
-			"unavailable": false,
 		};
 		profile.residentialstatus = {
 			"lastupdated": "2018-06-01",
@@ -37,7 +35,6 @@ export const mrICADaddyScenario3: FakeProfile = {
 			"desc": MyInfoResidentialCode.fn.toEnumDesc(MyInfoResidentialCode.CITIZEN),
 			"source": "1",
 			"classification": "C",
-			"unavailable": false,
 		};
 		profile.nationality.code = MyInfoNationalityCode.SINGAPORE_CITIZEN;
 		profile.marriagecertno = {
@@ -45,14 +42,12 @@ export const mrICADaddyScenario3: FakeProfile = {
 			"source": "1",
 			"classification": "C",
 			"value": "M34567",
-			"unavailable": false,
 		};
 		profile.marriagedate = {
 			"lastupdated": "2020-09-10",
 			"source": "2",
 			"classification": "C",
 			"value": "2020-09-10",
-			"unavailable": false,
 		};
 		profile.countryofmarriage = {
 			"lastupdated": "2022-02-25",
@@ -60,7 +55,6 @@ export const mrICADaddyScenario3: FakeProfile = {
 			"desc": MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.SINGAPORE),
 			"source": "1",
 			"classification": "C",
-			"unavailable": false,
 		};
 		profile.marital = {
 			"lastupdated": "2022-02-25",
@@ -68,7 +62,6 @@ export const mrICADaddyScenario3: FakeProfile = {
 			"desc": MyInfoMaritialStatusCode.fn.toEnumDesc(MyInfoMaritialStatusCode.MARRIED),
 			"source": "1",
 			"classification": "C",
-			"unavailable": false,
 		};
 
 		return profile;

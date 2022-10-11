@@ -20,7 +20,6 @@ export const mrsMYMommyPerfect: FakeProfile = {
 			source: "1",
 			classification: "C",
 			value: aliasName.LEE_XIU,
-			unavailable: false,
 		};
 		profile.sex.code = MyInfoSexCode.FEMALE;
 		profile.sex.desc = MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE);
@@ -37,7 +36,6 @@ export const mrsMYMommyPerfect: FakeProfile = {
 			"desc": null,
 			"source": "2",
 			"classification": "C",
-			"unavailable": false,
 		};
 
 		profile.marriagedate = {
@@ -45,7 +43,6 @@ export const mrsMYMommyPerfect: FakeProfile = {
 			"source": "2",
 			"classification": "C",
 			"value": "",
-			"unavailable": false,
 		};
 
 		profile.occupation = {
@@ -53,7 +50,6 @@ export const mrsMYMommyPerfect: FakeProfile = {
 			"value": MyInfoOccupationCode.fn.toEnumDesc(MyInfoOccupationCode.LEGISLATOR),
 			"source": "2",
 			"classification": "C",
-			"unavailable": false,
 		};
 
 		profile.dialect = {
@@ -62,7 +58,6 @@ export const mrsMYMommyPerfect: FakeProfile = {
 			"source": "2",
 			"classification": "C",
 			"desc": "",
-			"unavailable": false,
 		};
 
 		return profile;

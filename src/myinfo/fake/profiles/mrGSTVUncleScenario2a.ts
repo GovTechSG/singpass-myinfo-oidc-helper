@@ -23,7 +23,6 @@ export const mrGstvUncle2a: FakeProfile = {
 			source: "1",
 			classification: "C",
 			value: `${new Date().getFullYear() - 61}-01-01`,
-			unavailable: false,
 		};
 
 		return profile;

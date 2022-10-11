@@ -25,21 +25,18 @@ export const mrMYDaddyPerfect: FakeProfile = {
 			"source": "2",
 			"classification": "C",
 			"desc": null,
-			"unavailable": false,
 		};
 		profile.marriagedate = {
 			"lastupdated": "2020-09-10",
 			"source": "2",
 			"classification": "C",
 			"value": "",
-			"unavailable": false,
 		};
 		profile.occupation = {
 			"lastupdated": "2018-05-21",
 			"source": "2",
 			"classification": "C",
 			"value": MyInfoOccupationCode.fn.toEnumDesc(MyInfoOccupationCode.LEGISLATOR),
-			"unavailable": false,
 		};
 
 		profile.dialect = {
@@ -48,7 +45,6 @@ export const mrMYDaddyPerfect: FakeProfile = {
 			"source": "2",
 			"classification": "C",
 			"desc": "",
-			"unavailable": false,
 		};
 
 		return profile;

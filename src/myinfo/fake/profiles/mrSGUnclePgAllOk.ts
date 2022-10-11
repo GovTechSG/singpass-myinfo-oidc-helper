@@ -20,7 +20,6 @@ export const mrSGUnclePgAllOk: FakeProfile = {
 			source: "1",
 			classification: "C",
 			value: "1948-01-01",
-			unavailable: false,
 		};
 
 		return profile;

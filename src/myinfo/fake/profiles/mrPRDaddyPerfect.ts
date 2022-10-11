@@ -23,7 +23,6 @@ export const mrPRDaddyPerfect: FakeProfile = {
 			source: "1",
 			classification: "C",
 			value: "1979-06-14",
-			unavailable: false,
 		};
 
 		profile.childrenbirthrecords = [

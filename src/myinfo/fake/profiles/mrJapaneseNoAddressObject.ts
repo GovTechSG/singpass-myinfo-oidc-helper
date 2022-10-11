@@ -19,7 +19,6 @@ export const mrJapaneseNoAddressObject: FakeProfile = {
 			"source": "3",
 			"classification": "C",
 			"lastupdated": "",
-			"unavailable": false,
 		};
 		profile.nationality = {
 			"code": MyInfoNationalityCode.JAPANESE,
@@ -27,7 +26,6 @@ export const mrJapaneseNoAddressObject: FakeProfile = {
 			"source": "1",
 			"classification": "C",
 			"lastupdated": "2019-09-18",
-			"unavailable": false,
 		};
 		profile.birthcountry = {
 			"code": MyInfoCountryCode.JAPAN,
@@ -35,7 +33,6 @@ export const mrJapaneseNoAddressObject: FakeProfile = {
 			"source": "1",
 			"classification": "C",
 			"lastupdated": "2019-09-18",
-			"unavailable": false,
 
 		};
 		profile.dob = {
@@ -43,7 +40,6 @@ export const mrJapaneseNoAddressObject: FakeProfile = {
 			"source": "1",
 			"classification": "C",
 			"value": "1983-10-06",
-			"unavailable": false,
 		};
 		profile.regadd = undefined;
 
@@ -53,7 +49,6 @@ export const mrJapaneseNoAddressObject: FakeProfile = {
 			"source": "2",
 			"classification": "C",
 			"desc": null,
-			"unavailable": false,
 		};
 
 		profile.marriagedate = {
@@ -61,7 +56,6 @@ export const mrJapaneseNoAddressObject: FakeProfile = {
 			"source": "2",
 			"classification": "C",
 			"value": "",
-			"unavailable": false,
 		};
 
 		profile.occupation = {
@@ -69,7 +63,6 @@ export const mrJapaneseNoAddressObject: FakeProfile = {
 			"source": "2",
 			"classification": "C",
 			"value": MyInfoOccupationCode.fn.toEnumDesc(MyInfoOccupationCode.OTHER_SPECIALIST_MEDICAL_PRACTITIONERS_MEDICAL_EG_ENDOCRINOLOGIST_GERIATRICIAN_HAEMATOLOGIST_INFECTIOUS_DISEASES_PHYSICIAN_NEUROLOGIST_NUCLEAR_MEDICINE_PHYSICIAN_REHABILITATION_PHYSICIAN_RENAL_PHYSICIAN_RHEUMATOLOGIST),
-			"unavailable": false,
 		};
 
 		profile.dialect = {
@@ -78,7 +71,6 @@ export const mrJapaneseNoAddressObject: FakeProfile = {
 			"source": "2",
 			"classification": "C",
 			"desc": "",
-			"unavailable": false,
 		};
 
 		return profile;

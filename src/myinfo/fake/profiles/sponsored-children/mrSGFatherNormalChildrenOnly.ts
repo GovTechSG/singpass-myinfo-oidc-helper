@@ -609,7 +609,6 @@ export const mrSGFatherNormalChildrenOnly: FakeProfile = {
 			classification: "C",
 			source: "1",
 			lastupdated: `${new Date().toISOString().split('T')[0]}`,
-			unavailable: false
 		};
 		profile.cpfbalances = {
 			ma: { value: 11470.71 },
@@ -619,7 +618,6 @@ export const mrSGFatherNormalChildrenOnly: FakeProfile = {
 			lastupdated: `${new Date().toISOString().split('T')[0]}`,
 			classification: "C",
 			source: "1",
-			unavailable: false
 		};
 		profile["noa-basic"] = {
 			amount: {
@@ -631,7 +629,6 @@ export const mrSGFatherNormalChildrenOnly: FakeProfile = {
 			lastupdated: `${new Date().toISOString().split('T')[0]}`,
 			classification: "C",
 			source: "1",
-			unavailable: false
 		};
 		return profile;
 	},

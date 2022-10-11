@@ -24,7 +24,6 @@ export const mrPreschoolRegistration: FakeProfile = {
 			source: "1",
 			classification: "C",
 			value: "1985-10-06",
-			unavailable: false,
 		};
 
 		return profile;

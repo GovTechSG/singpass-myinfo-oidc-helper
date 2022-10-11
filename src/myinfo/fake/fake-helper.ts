@@ -484,8 +484,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 					history: [],
 					classification: "C",
 					source: "1",
-					lastupdated: null,
-					unavailable: true
+					lastupdated: null
 				};
 			}
 			switch (mockParams.cpfcontributionhistoryoverridemode) {

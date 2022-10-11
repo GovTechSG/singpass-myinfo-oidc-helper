@@ -18,7 +18,6 @@ export const mrsMYMomJobless: FakeProfile = {
 			"source": "2",
 			"classification": "C",
 			"value": "",
-			"unavailable": false,
 		};
 		profile.childrenbirthrecords = _.values(ChildrenRecords);
 

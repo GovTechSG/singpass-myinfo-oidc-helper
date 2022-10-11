@@ -19,14 +19,12 @@ export const mrJapaneseAddressBlank: FakeProfile = {
 			"source": "3",
 			"classification": "C",
 			"lastupdated": "",
-			"unavailable": false,
 		};
 		profile.employment = {
 			classification: "C",
 			source: "1",
 			lastupdated: "2019-03-26",
 			value: "Google Pte Ltd",
-			unavailable: false
 		};
 		profile.nationality = {
 			"code": MyInfoNationalityCode.JAPANESE,
@@ -34,7 +32,6 @@ export const mrJapaneseAddressBlank: FakeProfile = {
 			"source": "1",
 			"classification": "C",
 			"lastupdated": "2019-09-18",
-			"unavailable": false,
 		};
 		profile.birthcountry = {
 			"code": MyInfoCountryCode.JAPAN,
@@ -42,7 +39,6 @@ export const mrJapaneseAddressBlank: FakeProfile = {
 			"source": "1",
 			"classification": "C",
 			"lastupdated": "2019-09-18",
-			"unavailable": false,
 
 		};
 		(profile as any).regadd = {
@@ -66,7 +62,6 @@ export const mrJapaneseAddressBlank: FakeProfile = {
 			"source": "1",
 			"classification": "C",
 			"value": "1983-10-06",
-			"unavailable": false,
 		};
 
 		profile.marital = {
@@ -75,7 +70,6 @@ export const mrJapaneseAddressBlank: FakeProfile = {
 			"source": "2",
 			"classification": "C",
 			"desc": null,
-			"unavailable": false,
 		};
 
 		profile.marriagedate = {
@@ -83,7 +77,6 @@ export const mrJapaneseAddressBlank: FakeProfile = {
 			"source": "2",
 			"classification": "C",
 			"value": "",
-			"unavailable": false,
 		};
 
 		profile.occupation = {
@@ -91,7 +84,6 @@ export const mrJapaneseAddressBlank: FakeProfile = {
 			"source": "2",
 			"classification": "C",
 			"value": MyInfoOccupationCode.fn.toEnumDesc(MyInfoOccupationCode.LEGISLATOR),
-			"unavailable": false,
 		};
 
 		profile.dialect = {
@@ -100,7 +92,6 @@ export const mrJapaneseAddressBlank: FakeProfile = {
 			"source": "2",
 			"classification": "C",
 			"desc": "",
-			"unavailable": false,
 		};
 
 		return profile;

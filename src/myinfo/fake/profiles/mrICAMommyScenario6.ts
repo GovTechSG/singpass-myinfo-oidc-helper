@@ -22,14 +22,12 @@ export const mrsICAMommyScenario6: FakeProfile = {
 			"desc": MyInfoRaceCode.fn.toEnumDesc(MyInfoRaceCode.INDIAN),
 			"source": "1",
 			"classification": "C",
-			"unavailable": false,
 		};
 		profile.dob = {
 			"lastupdated": "2022-02-25",
 			"source": "1",
 			"classification": "C",
 			"value": "1990-01-06",
-			"unavailable": false,
 		};
 		profile.residentialstatus = {
 			"lastupdated": "2018-06-01",
@@ -37,7 +35,6 @@ export const mrsICAMommyScenario6: FakeProfile = {
 			"desc": MyInfoResidentialCode.fn.toEnumDesc(MyInfoResidentialCode.PR),
 			"source": "1",
 			"classification": "C",
-			"unavailable": false,
 		};
 		profile.nationality.code = MyInfoNationalityCode.MALAYSIAN;
 

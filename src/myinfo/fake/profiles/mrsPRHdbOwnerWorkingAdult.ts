@@ -33,14 +33,12 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 			source: "1",
 			classification: "C",
 			value: aliasName.LEE_XIU,
-			unavailable: false,
 		};
 		profile.dob = {
 			lastupdated: "2020-01-01",
 			source: "1",
 			classification: "C",
 			value: `${new Date().getFullYear() - 41}-05-16`,
-			unavailable: false,
 		};
 		profile.residentialstatus = {
 			lastupdated: "2020-01-01",
@@ -48,14 +46,12 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 			classification: "C",
 			code: MyInfoResidentialCode.PR,
 			desc: MyInfoResidentialCode.fn.toEnumDesc(MyInfoResidentialCode.PR),
-			unavailable: false,
 		};
 		profile.nationality = {
 			lastupdated: "2020-01-01",
 			source: "1",
 			classification: "C",
 			code: MyInfoNationalityCode.MALAYSIAN,
-			unavailable: false,
 		};
 		profile.birthcountry = {
 			lastupdated: "2020-01-01",
@@ -63,7 +59,6 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 			classification: "C",
 			code: MyInfoCountryCode.MALAYSIA,
 			desc: MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.MALAYSIA),
-			unavailable: false,
 		};
 		profile.sex = {
 			lastupdated: "2020-01-01",
@@ -71,7 +66,6 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 			classification: "C",
 			code: MyInfoSexCode.FEMALE,
 			desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE),
-			unavailable: false,
 		};
 		profile.marital = {
 			lastupdated: "2020-01-01",
@@ -79,7 +73,6 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 			classification: "C",
 			code: MyInfoMaritialStatusCode.MARRIED,
 			desc: MyInfoMaritialStatusCode.fn.toEnumDesc(MyInfoMaritialStatusCode.MARRIED),
-			unavailable: false,
 		};
 		profile.childrenbirthrecords = [ChildrenRecords.child1MonthOld, ChildrenRecords.child6YearsOld, ChildrenRecords.childMiddle1];
 		profile.hdbtype = {
@@ -88,7 +81,6 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 			classification: "C",
 			code: MyInfoHDBTypeCode["2_ROOM_FLAT_HDB"],
 			desc: MyInfoHDBTypeCode.fn.toEnumDesc(MyInfoHDBTypeCode["2_ROOM_FLAT_HDB"]),
-			unavailable: false,
 		};
 		profile.housingtype = {
 			lastupdated: "2020-01-01",
@@ -96,7 +88,6 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 			classification: "C",
 			code: null,
 			desc: null,
-			unavailable: false,
 		};
 		profile.drivinglicence = {
 			lastupdated: "2020-01-01",
@@ -108,7 +99,6 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 					desc: MyInfoDrivingLicenceValidityCode.fn.toEnumDesc(MyInfoDrivingLicenceValidityCode.VALID),
 				},
 			},
-			unavailable: false,
 		};
 		profile.vehicles =
 			[{
@@ -227,7 +217,6 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 					code: "1",
 					desc: "LIVE",
 				},
-				unavailable: false,
 			}];
 		return profile;
 	},

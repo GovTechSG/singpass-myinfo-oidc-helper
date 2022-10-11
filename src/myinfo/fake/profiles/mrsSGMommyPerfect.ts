@@ -21,7 +21,6 @@ export const mrsSGMommyPerfect: FakeProfile = {
 			source: "1",
 			classification: "C",
 			value: aliasName.LEE_XIU,
-			unavailable: false,
 		};
 		profile.sex.code = MyInfoSexCode.FEMALE;
 		profile.sex.desc = MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE);
@@ -31,7 +30,6 @@ export const mrsSGMommyPerfect: FakeProfile = {
 			source: "1",
 			classification: "C",
 			value: "1988-10-16",
-			unavailable: false,
 		};
 
 		profile.childrenbirthrecords = [
