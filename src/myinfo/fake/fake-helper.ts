@@ -515,8 +515,12 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		if (mockParams.noabasic?.amount || !isEmpty(mockParams.noabasic?.yearofassessment)) {
 			myinfoPerson["noa-basic"] = transformItemsWithAdditionalMock(mockParams.noabasic) as NoaBasicExtension;
 		}
-		return myinfoPerson;
 
+		if (!this.attributes) {
+			return myinfoPerson;
+		}
+
+		return filterThroughMyInfoAttributes(myinfoPerson, this.attributes);
 	}
 
 	private checkIsSingaporeanOrPr(residentialStatusValue: string): boolean {
@@ -666,7 +670,6 @@ export function transformItemsWithAdditionalMock(item: any, defaultMockParams: b
 		source: "1",
 		classification: "C",
 		lastupdated: `${new Date().toISOString().split('T')[0]}`,
-		unavailable: false,
 	};
 	return { ...transformedItems, ...defaultItems };
 }
