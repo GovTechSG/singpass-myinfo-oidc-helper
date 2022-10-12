@@ -18,7 +18,6 @@ export const mrMYDadJobless: FakeProfile = {
 			"source": "2",
 			"classification": "C",
 			"value": "",
-			"unavailable": false,
 		};
 
 		return profile;

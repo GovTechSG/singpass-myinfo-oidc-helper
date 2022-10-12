@@ -19,14 +19,12 @@ export const mrSGNoLocalAddress: FakeProfile = {
 			"classification": "C",
 			"source": "1",
 			"lastupdated": "2018-05-10",
-			"unavailable": false,
 		};
 		profile.dob = {
 			"lastupdated": "2018-06-01",
 			"source": "1",
 			"classification": "C",
 			"value": "1983-10-06",
-			"unavailable": false,
 		};
 
 		return profile;

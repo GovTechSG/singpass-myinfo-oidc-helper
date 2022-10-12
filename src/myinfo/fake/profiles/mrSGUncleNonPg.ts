@@ -14,14 +14,13 @@ export const mrSGUncleNonPg: FakeProfile = {
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
 		profile.pioneergen.message.code = MyInfoPioneerGenerationMessageCode.NON_PG;
-		profile.pioneergen.message.desc = MyInfoPioneerGenerationMessageCode.fn.toEnumDesc(MyInfoPioneerGenerationMessageCode.NON_PG),
-			profile.pioneergen.quantum.value = "0.00";
+		profile.pioneergen.message.desc = MyInfoPioneerGenerationMessageCode.fn.toEnumDesc(MyInfoPioneerGenerationMessageCode.NON_PG);
+		profile.pioneergen.quantum.value = "0.00";
 		profile.dob = {
 			lastupdated: "2021-01-01",
 			source: "1",
 			classification: "C",
 			value: "1955-01-01",
-			unavailable: false,
 		};
 
 		return profile;

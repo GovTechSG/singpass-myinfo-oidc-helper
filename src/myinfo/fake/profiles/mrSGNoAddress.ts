@@ -18,7 +18,6 @@ export const mrSGNoAddress: FakeProfile = {
 			"source": "1",
 			"classification": "C",
 			"value": "1983-10-06",
-			"unavailable": false,
 		};
 
 		return profile;

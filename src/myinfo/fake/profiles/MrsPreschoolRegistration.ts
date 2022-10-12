@@ -21,7 +21,6 @@ export const mrsPreschoolRegistration: FakeProfile = {
 			source: "1",
 			classification: "C",
 			value: aliasName.LEE_XIU,
-			unavailable: false,
 		};
 		profile.sex.code = MyInfoSexCode.FEMALE;
 		profile.sex.desc = MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE);
@@ -36,7 +35,6 @@ export const mrsPreschoolRegistration: FakeProfile = {
 			source: "1",
 			classification: "C",
 			value: "1985-10-06",
-			unavailable: false,
 		};
 
 		return profile;

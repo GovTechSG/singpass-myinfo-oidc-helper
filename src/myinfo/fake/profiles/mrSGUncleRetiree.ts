@@ -31,7 +31,6 @@ export const mrSGUncleRetiree: FakeProfile = {
 			source: "1",
 			classification: "C",
 			value: `${new Date().getFullYear() - 63}-05-16`,
-			unavailable: false,
 		};
 
 		profile.residentialstatus = {
@@ -39,7 +38,6 @@ export const mrSGUncleRetiree: FakeProfile = {
 			source: "1",
 			classification: "C",
 			code: MyInfoResidentialCode.CITIZEN,
-			unavailable: false,
 		};
 		profile.sex = {
 			lastupdated: "2020-01-01",
@@ -47,7 +45,6 @@ export const mrSGUncleRetiree: FakeProfile = {
 			classification: "C",
 			code: MyInfoSexCode.MALE,
 			desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE),
-			unavailable: false,
 		};
 		profile.marital = {
 			lastupdated: "2020-01-01",
@@ -55,7 +52,6 @@ export const mrSGUncleRetiree: FakeProfile = {
 			classification: "C",
 			code: MyInfoMaritialStatusCode.MARRIED,
 			desc: MyInfoMaritialStatusCode.fn.toEnumDesc(MyInfoMaritialStatusCode.MARRIED),
-			unavailable: false,
 		};
 		profile.childrenbirthrecords = [ChildrenRecords.childMiddle1, ChildrenRecords.childMiddle2];
 		profile.housingtype = {
@@ -64,7 +60,6 @@ export const mrSGUncleRetiree: FakeProfile = {
 			classification: "C",
 			code: MyInfoHousingTypeCode.DETACHED_HOUSE,
 			desc: MyInfoHousingTypeCode.fn.toEnumDesc(MyInfoHousingTypeCode.DETACHED_HOUSE),
-			unavailable: false,
 		};
 		profile.hdbtype = {
 			lastupdated: "2020-01-01",
@@ -72,7 +67,6 @@ export const mrSGUncleRetiree: FakeProfile = {
 			classification: "C",
 			code: null,
 			desc: null,
-			unavailable: false,
 		};
 		profile.drivinglicence = {
 			revocation: {
@@ -141,7 +135,6 @@ export const mrSGUncleRetiree: FakeProfile = {
 					value: "",
 				},
 			},
-			unavailable: false,
 		};
 		profile.edulevel = {
 			lastupdated: "2020-01-01",
@@ -149,7 +142,6 @@ export const mrSGUncleRetiree: FakeProfile = {
 			classification: "C",
 			code: MyInfoEduLevelCode.POST_SECONDARY_NON_TERTIARY_GENERAL_VOCATION,
 			desc: MyInfoEduLevelCode.fn.toEnumDesc(MyInfoEduLevelCode.POST_SECONDARY_NON_TERTIARY_GENERAL_VOCATION),
-			unavailable: false,
 		};
 		return profile;
 	},

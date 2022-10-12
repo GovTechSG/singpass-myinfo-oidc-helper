@@ -297,12 +297,12 @@ Corppass.NdiOidcHelper
 - `constructor`
 
 | Param                  | Type                      | Description                                                                                                |
-| ---------------------- | ------------------------- | ---------------------------------------------------------------------------------------------------------- | --- |
+| ---------------------- | ------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | oidcConfigUrl          | string                    | The URL for Corppass OIDC configuration details endpoint                                                   |
 | clientID               | string                    | Your app's ID when you onboarded Corppass.                                                                 |
 | redirectUri            | string                    | the redirect URL for Corppass to redirect to after user login. Must be whitelisted by SP during onboarding |
 | jweDecryptKey          | [key object](#key-object) | Object conatining private key for decrypting the JWT that wraps the token                                  |
-| clientAssertionSignKey | [key object](#key-object) | Object conatining private key for signing the client assertion provided in the token endpoint request      |     |
+| clientAssertionSignKey | [key object](#key-object) | Object conatining private key for signing the client assertion provided in the token endpoint request      |
 
 ### Login
 

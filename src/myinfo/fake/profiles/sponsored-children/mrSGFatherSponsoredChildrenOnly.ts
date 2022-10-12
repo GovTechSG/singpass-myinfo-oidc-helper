@@ -21,7 +21,6 @@ export const mrSGFatherSponsoredChildrenOnly: FakeProfile = {
 			classification: "C",
 			source: "1",
 			lastupdated: "2019-03-26",
-			unavailable: true
 		};
 		profile.cpfbalances = {
 			ma: { value: 11470.71 },
@@ -30,7 +29,6 @@ export const mrSGFatherSponsoredChildrenOnly: FakeProfile = {
 			lastupdated: "2016-12-01",
 			classification: "C",
 			source: "1",
-			unavailable: false
 		};
 		return profile;
 	},

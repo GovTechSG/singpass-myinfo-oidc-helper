@@ -17,7 +17,6 @@ const childYoungest = {
 	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE), },
 	tob: { value: "1000" },
 	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
-	unavailable: false,
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 const child1MonthOld = {
@@ -30,7 +29,6 @@ const child1MonthOld = {
 	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE), },
 	tob: { value: "1200" },
 	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
-	unavailable: false,
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 const child2MonthsOld = {
@@ -43,7 +41,6 @@ const child2MonthsOld = {
 	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE), },
 	tob: { value: "0300" },
 	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
-	unavailable: false,
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 const childMiddle1 = {
@@ -56,7 +53,6 @@ const childMiddle1 = {
 	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE), },
 	tob: { value: "0848" },
 	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
-	unavailable: false,
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 const childMiddle2 = {
@@ -69,7 +65,6 @@ const childMiddle2 = {
 	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE), },
 	tob: { value: "0330" },
 	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
-	unavailable: false,
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 const childMiddle3 = {
@@ -82,7 +77,6 @@ const childMiddle3 = {
 	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE), },
 	tob: { value: "2350" },
 	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
-	unavailable: false,
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 const childMiddle4 = {
@@ -95,7 +89,6 @@ const childMiddle4 = {
 	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE), },
 	tob: { value: "0059" },
 	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
-	unavailable: false,
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 const childMiddle5 = {
@@ -108,7 +101,6 @@ const childMiddle5 = {
 	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE), },
 	tob: { value: "0000" },
 	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
-	unavailable: false,
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 const child6YearsOld = {
@@ -121,7 +113,6 @@ const child6YearsOld = {
 	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE), },
 	tob: { value: "0901" },
 	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
-	unavailable: false,
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 const child7YearsOld = {
@@ -134,7 +125,6 @@ const child7YearsOld = {
 	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE), },
 	tob: { value: "1215" },
 	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
-	unavailable: false,
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 const childSuperOld = {
@@ -147,7 +137,6 @@ const childSuperOld = {
 	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE), },
 	tob: { value: "1500" },
 	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
-	unavailable: false,
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 export const Childrenbirthrecords = {

@@ -22,7 +22,6 @@ export const msSgTeenager17: FakeProfile = {
 			source: "1",
 			classification: "C",
 			value: aliasName.LEE_XIU,
-			unavailable: false,
 		};
 		profile.sex.code = MyInfoSexCode.FEMALE;
 		profile.sex.desc = MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE);
@@ -32,7 +31,6 @@ export const msSgTeenager17: FakeProfile = {
 			source: "1",
 			classification: "C",
 			value: `${new Date().getFullYear() - 17}-01-01`,
-			unavailable: false,
 		};
 		profile.marital = {
 			lastupdated: "2021-03-19",
@@ -40,14 +38,12 @@ export const msSgTeenager17: FakeProfile = {
 			source: "2",
 			classification: "C",
 			desc: null,
-			unavailable: false,
 		};
 		profile.marriagedate = {
 			lastupdated: "2021-03-19",
 			source: "2",
 			classification: "C",
 			value: "",
-			unavailable: false,
 		};
 		profile.childrenbirthrecords = [];
 		profile.sponsoredchildrenrecords = [];

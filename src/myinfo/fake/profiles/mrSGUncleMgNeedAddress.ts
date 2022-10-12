@@ -21,7 +21,6 @@ export const mrSGUncleMgNeedAddress: FakeProfile = {
 			source: "1",
 			classification: "C",
 			value: `1959-01-01`,
-			unavailable: false,
 		};
 
 		return profile;

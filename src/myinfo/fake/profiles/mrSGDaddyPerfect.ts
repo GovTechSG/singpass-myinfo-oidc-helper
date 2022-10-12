@@ -21,7 +21,6 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"desc": null,
 				"source": "2",
 				"classification": "C",
-				"unavailable": false,
 			},
 			"dialect": {
 				"lastupdated": "2018-06-01",
@@ -29,14 +28,12 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"desc": MyInfoDialectCode.fn.toEnumDesc(MyInfoDialectCode.HOKKIEN),
 				"source": "1",
 				"classification": "C",
-				"unavailable": false,
 			},
 			"occupation": {
 				"lastupdated": "2020-09-10",
 				"value": null,
 				"source": "2",
 				"classification": "C",
-				"unavailable": false,
 			},
 			"regadd": {
 				"country": {
@@ -65,7 +62,6 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"building": {
 					"value": null,
 				},
-				"unavailable": false,
 			},
 			"mobileno": {
 				"lastupdated": "2019-04-03",
@@ -80,28 +76,24 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"nbr": {
 					"value": "88158701",
 				},
-				"unavailable": false,
 			},
 			"passportexpirydate": {
 				"lastupdated": "2021-01-01",
 				"source": "1",
 				"classification": "C",
 				"value": "2030-09-10",
-				"unavailable": false,
 			},
 			"divorcedate": {
 				"lastupdated": null,
 				"source": "1",
 				"classification": "C",
 				"value": null,
-				"unavailable": false,
 			},
 			"marriagecertno": {
 				"lastupdated": "2018-05-10",
 				"source": "1",
 				"classification": "C",
 				"value": "M525997",
-				"unavailable": false,
 			},
 			"merdekagen": {
 				"eligibility": {
@@ -155,14 +147,12 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"signup": {
 					"value": false,
 				},
-				"unavailable": false,
 			},
 			"email": {
 				"lastupdated": "2019-04-03",
 				"source": "4",
 				"classification": "C",
 				"value": "gt.govandi@gmail.com",
-				"unavailable": false,
 			},
 			"birthcountry": {
 				"lastupdated": "2018-06-01",
@@ -170,7 +160,6 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"desc": MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.SINGAPORE),
 				"source": "1",
 				"classification": "C",
-				"unavailable": false,
 			},
 			"race": {
 				"lastupdated": "2018-06-01",
@@ -178,7 +167,6 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"desc": MyInfoRaceCode.fn.toEnumDesc(MyInfoRaceCode.CHINESE),
 				"source": "1",
 				"classification": "C",
-				"unavailable": false,
 			},
 			"silversupport": {
 				"eligibility": {
@@ -193,7 +181,6 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"year": {
 					"value": "2019",
 				},
-				"unavailable": false,
 			},
 			"countryofmarriage": {
 				"lastupdated": "2018-05-10",
@@ -201,7 +188,6 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"desc": MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.SINGAPORE),
 				"source": "1",
 				"classification": "C",
-				"unavailable": false,
 			},
 			"sex": {
 				"lastupdated": "2018-06-01",
@@ -209,14 +195,12 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"desc": MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE),
 				"source": "1",
 				"classification": "C",
-				"unavailable": false,
 			},
 			"marriagedate": {
 				"lastupdated": "1993-10-22",
 				"source": "1",
 				"classification": "C",
 				"value": "1993-10-22",
-				"unavailable": false,
 			},
 			"residentialstatus": {
 				"lastupdated": "2018-06-01",
@@ -224,14 +208,12 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"desc": MyInfoResidentialCode.fn.toEnumDesc(MyInfoResidentialCode.CITIZEN),
 				"source": "1",
 				"classification": "C",
-				"unavailable": false,
 			},
 			"passportnumber": {
 				"lastupdated": "2021-01-01",
 				"source": "1",
 				"classification": "C",
 				"value": "L3280033",
-				"unavailable": false,
 			},
 			"marital": {
 				"lastupdated": "2018-05-10",
@@ -239,14 +221,12 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"desc": MyInfoMaritialStatusCode.fn.toEnumDesc(MyInfoMaritialStatusCode.MARRIED),
 				"source": "1",
 				"classification": "C",
-				"unavailable": false,
 			},
 			"aliasname": {
 				"lastupdated": "2018-06-01",
 				"source": "1",
 				"classification": "C",
 				"value": aliasName.JASCKSON_LIM_YONG_XIANG,
-				"unavailable": false,
 			},
 			"childrenbirthrecords": [
 				{
@@ -297,7 +277,6 @@ export const mrSGDaddyPerfect: FakeProfile = {
 						"code": null,
 						"desc": null,
 					},
-					"unavailable": false,
 				},
 				preschoolEligibleChild2_IC,
 				preschoolEligibleChild2_K1,
@@ -309,21 +288,18 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"desc": MyInfoNationalityCode.fn.toEnumDesc(MyInfoNationalityCode.SINGAPORE_CITIZEN),
 				"source": "1",
 				"classification": "C",
-				"unavailable": false,
 			},
 			"dob": {
 				"lastupdated": "2018-06-01",
 				"source": "1",
 				"classification": "C",
 				"value": "1975-10-06",
-				"unavailable": false,
 			},
 			"name": {
 				"lastupdated": "2018-06-01",
 				"source": "1",
 				"classification": "C",
 				"value": profileName,
-				"unavailable": false,
 			},
 			"secondaryrace": {
 				"lastupdated": "2018-06-01",
@@ -331,7 +307,6 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"desc": MyInfoRaceCode.fn.toEnumDesc(MyInfoRaceCode.GERMAN),
 				"source": "1",
 				"classification": "C",
-				"unavailable": false,
 			},
 			"hdbtype": {
 				"lastupdated": "2020-08-26",
@@ -339,7 +314,6 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"desc": null,
 				"source": "1",
 				"classification": "C",
-				"unavailable": false,
 			},
 			"housingtype": {
 				"lastupdated": "2020-08-26",
@@ -347,7 +321,6 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				"desc": null,
 				"source": "1",
 				"classification": "C",
-				"unavailable": false,
 			},
 			"drivinglicence": {
 				"revocation": {
@@ -407,7 +380,6 @@ export const mrSGDaddyPerfect: FakeProfile = {
 						"value": null,
 					},
 				},
-				"unavailable": false,
 			}
 		};
 	},

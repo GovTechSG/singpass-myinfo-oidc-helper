@@ -249,8 +249,21 @@ describe("FakeMyInfoHelper", () => {
 			expect(person).toHaveProperty("cpfbalances");
 			expect(person).toHaveProperty("noa-basic");
 			expect(person).toHaveProperty("cpfcontributions");
+		});
 
+		it("should return only requested attributes", () => {
+			const requestedAttributes = [
+				"drivinglicence.qdl.validity",
+				"cpfbalances"
+			];
+			const fakeHelper = new FakeMyInfoHelper(requestedAttributes);
+			const person = fakeHelper.getPerson({ archetype: ProfileArchetype.MR_SG_FATHER_ONLY_SPONSORED });
 
+			expect(person).toHaveProperty("drivinglicence.qdl.validity");
+			expect(person).toHaveProperty("drivinglicence.lastupdated");
+			expect(person).not.toHaveProperty("drivinglicence.pdl.validity");
+			expect(person).toHaveProperty("cpfbalances");
+			expect(person).not.toHaveProperty("cpfcontributions");
 		});
 
 		describe("FinancialData", () => {
@@ -448,8 +461,6 @@ describe("FakeMyInfoHelper", () => {
 				});
 			});
 		});
-
-
 
 	});
 });

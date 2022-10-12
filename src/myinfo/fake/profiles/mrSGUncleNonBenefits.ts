@@ -26,7 +26,6 @@ export const mrSGUncleNonBenefits: FakeProfile = {
 			source: "1",
 			classification: "C",
 			value: `1959-01-01`,
-			unavailable: false,
 		};
 
 		profile.silversupport = {
