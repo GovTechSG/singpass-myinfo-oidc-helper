@@ -15,7 +15,7 @@ interface AccessTokenPayload {
 	aud: string;
 }
 
-interface IdTokenPayload {
+export interface IdTokenPayload {
 	rt_hash: string;
 	nonce?: string;
 	iat: number;

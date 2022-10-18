@@ -1,5 +1,4 @@
-import { OidcHelper, OidcHelperConstructor } from "../corppass-helper";
-import { IdTokenPayload } from '../shared-constants';
+import { IdTokenPayload, OidcHelper, OidcHelperConstructor } from "../corppass-helper";
 
 const mockAuthUrl = "https://mockcorppass.sg/authorize";
 const mockTokenUrl = "https://mockcorppass.sg/token";
