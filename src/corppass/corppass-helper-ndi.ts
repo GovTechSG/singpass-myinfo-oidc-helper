@@ -4,9 +4,31 @@ import { createClient } from "../client/axios-client";
 import { JweUtil } from "../util";
 import { SingpassMyInfoError } from "../util/error/SingpassMyinfoError";
 import { logger } from "../util/Logger";
-import { AccessTokenPayload, IdTokenPayload, TokenResponse } from './shared-constants';
+import { EntityInfo, TokenResponse, UserInfo } from './shared-constants';
 import { Key } from'../util/KeyUtil';
 import { createClientAssertion } from'../util/SigningUtil';
+
+interface AccessTokenPayload {
+	exp: number;
+	iat: number;
+	iss: string;
+	aud: string;
+}
+
+interface IdTokenPayload {
+	rt_hash: string;
+	nonce?: string;
+	iat: number;
+	iss: string;
+	at_hash: string;
+	// sub contains user's NRIC, system defined ID and Country code: s=S1234567A,u=CP8202,c=SG
+	sub: string;
+	exp: number;
+	aud: string;
+	amr: string[];
+	entityInfo: EntityInfo;
+	userInfo: UserInfo;
+}
 
 export interface NdiOidcHelperConstructor {
 	oidcConfigUrl: string;
@@ -141,20 +163,21 @@ export class NdiOidcHelper {
 	/**
 	 * Returns the NRIC, system defined ID and country code from the ID token payload
 	 */
-	public extractInfoFromIdTokenSubject(payload: IdTokenPayload): { nric: string, uuid: string, countryCode: string } {
+	public extractInfoFromIdTokenSubject(payload: IdTokenPayload): { nric: string, uuid?: string, countryCode?: string } {
 		const { sub } = payload;
 
 		if (sub) {
-			const extractionRegex = /s=([STFG]\d{7}[A-Z]).*,u=(.*),c=(.*)/i;
-			const matchResult = sub.match(extractionRegex);
+			const trimmedSub = sub.replace(/ /g, '');
+			const nricRegex = /s=([STFG]\d{7}[A-Z])[^,]*/i;
+			const [,nric] = trimmedSub.match(nricRegex) || [];
+			const uuidRegex = /u=([^,]*)/i;
+			const [,uuid] = trimmedSub.match(uuidRegex) || [];
+			const countryCodeRegex = /c=([^,]*)/i;
+			const [,countryCode] = trimmedSub.match(countryCodeRegex) || [];
 
-			if (!matchResult) {
-				throw Error("Token payload sub property is invalid, does not contain valid NRIC, uuid and country code string");
+			if (!nric) {
+				throw Error("Token payload sub property is invalid, does not contain valid NRIC");
 			}
-
-			const nric = matchResult[1];
-			const uuid = matchResult[2];
-			const countryCode = matchResult[3];
 
 			return { nric, uuid, countryCode };
 		}
