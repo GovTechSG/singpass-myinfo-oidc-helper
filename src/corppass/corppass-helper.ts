@@ -4,7 +4,7 @@ import { createClient } from "../client/axios-client";
 import { JweUtil } from "../util";
 import { logger } from "../util/Logger";
 import { SingpassMyInfoError } from "../util/error/SingpassMyinfoError";
-import { EntityInfo, TokenResponse } from './shared-constants';
+import { EntityInfo, TokenResponse, UserInfo } from './shared-constants';
 
 interface AccessTokenPayload {
 	exp: number;
