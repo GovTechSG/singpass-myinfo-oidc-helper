@@ -1,4 +1,4 @@
-import { IdTokenPayload, NdiOidcHelper, NdiOidcHelperConstructor } from "../corppass-helper-ndi";
+import { NDIIdTokenPayload, NdiOidcHelper, NdiOidcHelperConstructor } from "../corppass-helper-ndi";
 
 const mockOidcConfigUrl = "https://mockcorppass.sg/authorize";
 const mockClientId = "CLIENT-ID";
@@ -6,7 +6,7 @@ const mockRedirectUri = "http://mockme.sg/callback";
 const mockDecryptKey = "sshh-secret";
 const mockSignKey = "sshh-secret";
 
-const createMockIdTokenPayload = (overrideProps?: Partial<IdTokenPayload>): IdTokenPayload => ({
+const createMockIdTokenPayload = (overrideProps?: Partial<NDIIdTokenPayload>): NDIIdTokenPayload => ({
 	userInfo: {
 		CPAccType: "Admin",
 		CPUID_FullName: "FRODO BAGGINS",

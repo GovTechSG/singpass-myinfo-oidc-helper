@@ -15,7 +15,7 @@ interface AccessTokenPayload {
 	aud: string;
 }
 
-export interface IdTokenPayload {
+export interface NDIIdTokenPayload {
 	rt_hash: string;
 	nonce?: string;
 	iat: number;
@@ -143,7 +143,7 @@ export class NdiOidcHelper {
 	 * Decrypts the ID Token JWT inside the TokenResponse to get the payload
 	 * Use extractInfoFromIdTokenSubject on the returned Token Payload to get the NRIC, system defined ID and country code
 	 */
-	public async getIdTokenPayload(tokens: TokenResponse): Promise<IdTokenPayload> {
+	public async getIdTokenPayload(tokens: TokenResponse): Promise<NDIIdTokenPayload> {
 		try {
 			const { data: { jwks_uri } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
 			const { data: { keys } } = await this.axiosClient.get<{keys: Object[]}>(jwks_uri);
@@ -153,7 +153,7 @@ export class NdiOidcHelper {
 			const decryptedJwe = await JweUtil.decryptJWE(id_token, this.jweDecryptKey.key, this.jweDecryptKey.format);
 			const jwsPayload = decryptedJwe.payload.toString();
 			const verifiedJws = await JweUtil.verifyJWS(jwsPayload, jwsVerifyKey, 'json');
-			return JSON.parse(verifiedJws.payload.toString()) as IdTokenPayload;
+			return JSON.parse(verifiedJws.payload.toString()) as NDIIdTokenPayload;
 		} catch (e) {
 			logger.error("Failed to get ID token payload", e);
 			throw e;
@@ -163,7 +163,7 @@ export class NdiOidcHelper {
 	/**
 	 * Returns the NRIC, system defined ID and country code from the ID token payload
 	 */
-	public extractInfoFromIdTokenSubject(payload: IdTokenPayload): { nric: string, uuid?: string, countryCode?: string } {
+	public extractInfoFromIdTokenSubject(payload: NDIIdTokenPayload): { nric: string, uuid?: string, countryCode?: string } {
 		const { sub } = payload;
 
 		if (sub) {
