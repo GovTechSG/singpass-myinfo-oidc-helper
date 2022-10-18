@@ -1,5 +1,4 @@
-import { NdiOidcHelper, NdiOidcHelperConstructor } from "../corppass-helper-ndi";
-import { IdTokenPayload } from '../shared-constants';
+import { IdTokenPayload, NdiOidcHelper, NdiOidcHelperConstructor } from "../corppass-helper-ndi";
 
 const mockOidcConfigUrl = "https://mockcorppass.sg/authorize";
 const mockClientId = "CLIENT-ID";
