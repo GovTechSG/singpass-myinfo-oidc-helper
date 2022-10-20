@@ -1,5 +1,4 @@
-import { OidcHelper, OidcHelperConstructor } from "../corppass-helper";
-import { IdTokenPayload } from '../shared-constants';
+import { IdTokenPayload, OidcHelper, OidcHelperConstructor } from "../corppass-helper";
 
 const mockAuthUrl = "https://mockcorppass.sg/authorize";
 const mockTokenUrl = "https://mockcorppass.sg/token";
@@ -76,15 +75,7 @@ describe("Corppass Helper", () => {
 				sub: `s=some-nonsense,u=f09fcf4c-f57b-40b5-a8e0-6fb6eef640e3`,
 			});
 
-			expect(() => helper.extractInfoFromIdTokenSubject(mockPayload)).toThrowError("Token payload sub property is invalid, does not contain valid NRIC, uuid and country code string");
-		});
-
-		it("should throw an error if sub property is not in the expected format", () => {
-			const mockPayload = createMockIdTokenPayload({
-				sub: `s=S6005040F,f=f09fcf4c-f57b-40b5-a8e0-6fb6eef640e3`,
-			});
-
-			expect(() => helper.extractInfoFromIdTokenSubject(mockPayload)).toThrowError("Token payload sub property is invalid, does not contain valid NRIC, uuid and country code string");
+			expect(() => helper.extractInfoFromIdTokenSubject(mockPayload)).toThrowError("Token payload sub property is invalid, does not contain valid NRIC");
 		});
 	});
 });

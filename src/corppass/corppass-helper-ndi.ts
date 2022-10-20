@@ -4,9 +4,31 @@ import { createClient } from "../client/axios-client";
 import { JweUtil } from "../util";
 import { SingpassMyInfoError } from "../util/error/SingpassMyinfoError";
 import { logger } from "../util/Logger";
-import { AccessTokenPayload, IdTokenPayload, TokenResponse } from './shared-constants';
+import { EntityInfo, TokenResponse, UserInfo } from './shared-constants';
 import { Key } from'../util/KeyUtil';
 import { createClientAssertion } from'../util/SigningUtil';
+
+interface AccessTokenPayload {
+	exp: number;
+	iat: number;
+	iss: string;
+	aud: string;
+}
+
+export interface NDIIdTokenPayload {
+	rt_hash: string;
+	nonce?: string;
+	iat: number;
+	iss: string;
+	at_hash: string;
+	// sub contains user's NRIC, system defined ID and Country code: s=S1234567A,u=CP8202,c=SG
+	sub: string;
+	exp: number;
+	aud: string;
+	amr: string[];
+	entityInfo: EntityInfo;
+	userInfo: UserInfo;
+}
 
 export interface NdiOidcHelperConstructor {
 	oidcConfigUrl: string;
@@ -121,7 +143,7 @@ export class NdiOidcHelper {
 	 * Decrypts the ID Token JWT inside the TokenResponse to get the payload
 	 * Use extractInfoFromIdTokenSubject on the returned Token Payload to get the NRIC, system defined ID and country code
 	 */
-	public async getIdTokenPayload(tokens: TokenResponse): Promise<IdTokenPayload> {
+	public async getIdTokenPayload(tokens: TokenResponse): Promise<NDIIdTokenPayload> {
 		try {
 			const { data: { jwks_uri } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
 			const { data: { keys } } = await this.axiosClient.get<{keys: Object[]}>(jwks_uri);
@@ -131,7 +153,7 @@ export class NdiOidcHelper {
 			const decryptedJwe = await JweUtil.decryptJWE(id_token, this.jweDecryptKey.key, this.jweDecryptKey.format);
 			const jwsPayload = decryptedJwe.payload.toString();
 			const verifiedJws = await JweUtil.verifyJWS(jwsPayload, jwsVerifyKey, 'json');
-			return JSON.parse(verifiedJws.payload.toString()) as IdTokenPayload;
+			return JSON.parse(verifiedJws.payload.toString()) as NDIIdTokenPayload;
 		} catch (e) {
 			logger.error("Failed to get ID token payload", e);
 			throw e;
@@ -141,20 +163,21 @@ export class NdiOidcHelper {
 	/**
 	 * Returns the NRIC, system defined ID and country code from the ID token payload
 	 */
-	public extractInfoFromIdTokenSubject(payload: IdTokenPayload): { nric: string, uuid: string, countryCode: string } {
+	public extractInfoFromIdTokenSubject(payload: NDIIdTokenPayload): { nric: string, uuid?: string, countryCode?: string } {
 		const { sub } = payload;
 
 		if (sub) {
-			const extractionRegex = /s=([STFG]\d{7}[A-Z]).*,u=(.*),c=(.*)/i;
-			const matchResult = sub.match(extractionRegex);
+			const trimmedSub = sub.replace(/ /g, '');
+			const nricRegex = /s=([STFG]\d{7}[A-Z])[^,]*/i;
+			const [,nric] = trimmedSub.match(nricRegex) || [];
+			const uuidRegex = /u=([^,]*)/i;
+			const [,uuid] = trimmedSub.match(uuidRegex) || [];
+			const countryCodeRegex = /c=([^,]*)/i;
+			const [,countryCode] = trimmedSub.match(countryCodeRegex) || [];
 
-			if (!matchResult) {
-				throw Error("Token payload sub property is invalid, does not contain valid NRIC, uuid and country code string");
+			if (!nric) {
+				throw Error("Token payload sub property is invalid, does not contain valid NRIC");
 			}
-
-			const nric = matchResult[1];
-			const uuid = matchResult[2];
-			const countryCode = matchResult[3];
 
 			return { nric, uuid, countryCode };
 		}

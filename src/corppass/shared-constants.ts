@@ -7,7 +7,7 @@ export interface TokenResponse {
 	scope: string;
 }
 
-interface EntityInfo {
+export interface EntityInfo {
 	CPEntID: string;
 	CPEnt_TYPE: string;
 	CPEnt_Status: string;
@@ -67,32 +67,8 @@ interface TPAccessInfo {
 	};
 }
 
-export interface AccessTokenPayload {
-	exp: number;
-	iat: number;
-	iss: string;
-	aud: string;
-	EntityInfo: EntityInfo;
-	AuthInfo: AuthInfo;
-	TPAccessInfo: TPAccessInfo;
-}
-
-interface UserInfo {
+export interface UserInfo {
 	CPAccType: string;
 	CPUID_FullName: string;
 	ISSPHOLDER: string;
-}
-
-export interface IdTokenPayload {
-	userInfo: UserInfo;
-	rt_hash: string;
-	nonce?: string;
-	iat: number;
-	iss: string;
-	at_hash: string;
-	// sub contains user's NRIC, system defined ID and Country code: s=S1234567A,u=CP8202,c=SG
-	sub: string;
-	exp: number;
-	aud: string;
-	amr: string[];
 }
