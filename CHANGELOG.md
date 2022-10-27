@@ -1,5 +1,9 @@
 # Changelogs
 
+## 7.0.1
+
+- Add support for new Singpass domain
+
 ## 7.0.0
 
 - **[BREAKING]** Generate schema based on MyInfo API TUO 3.2.0
