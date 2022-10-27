@@ -38,4 +38,5 @@ export DEBUG_PORT=${DEBUG_PORT:-7000}
 
 # Run test
 echo "Testing with jest"
+export JEST_REPORT_FILE="jest.json" # To match the output of https://github.com/adalbertoteixeira/jest-bamboo-formatter
 npx --node-options "--max_old_space_size=8192 --trace-warnings --inspect=0.0.0.0:${DEBUG_PORT}" jest $@

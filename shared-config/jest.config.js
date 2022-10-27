@@ -30,7 +30,7 @@ exports.createBaseConfig = (testType) => {
 			"jsx",
 			"tsx",
 		],
-		testResultsProcessor: "<rootDir>/node_modules/jest-bamboo-formatter",
+		testResultsProcessor: "jest-bamboo-reporter",
 		setupFiles: ["<rootDir>/shared-config/jest.setup.ts"],
 		verbose: true,
 		bail: true,

@@ -1,6 +1,10 @@
 # Changelogs
 
-## 7.0.1
+## 7.0.5
+
+- Update dev dependencies, no breaking changes expected
+
+## 7.0.4
 
 - Add support for new Singpass domain
 
