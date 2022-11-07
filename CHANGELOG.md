@@ -1,5 +1,9 @@
 # Changelogs
 
+## 7.1.0
+- add additionalHeaders optional params to corppass helper
+- add overrideAuthUrl to corppass helper's constructAuthorizationUrl method
+
 ## 7.0.5
 
 - Update dev dependencies, no breaking changes expected
