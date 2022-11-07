@@ -5,8 +5,8 @@ import { JweUtil } from "../util";
 import { SingpassMyInfoError } from "../util/error/SingpassMyinfoError";
 import { logger } from "../util/Logger";
 import { EntityInfo, TokenResponse, UserInfo } from './shared-constants';
-import { Key } from'../util/KeyUtil';
-import { createClientAssertion } from'../util/SigningUtil';
+import { Key } from '../util/KeyUtil';
+import { createClientAssertion } from '../util/SigningUtil';
 
 interface AccessTokenPayload {
 	exp: number;
@@ -37,6 +37,7 @@ export interface NdiOidcHelperConstructor {
 	jweDecryptKey: Key;
 	clientAssertionSignKey: Key;
 	proxyConfig?: AxiosProxyConfig;
+	additionalHeaders?: Record<string, string>;
 }
 
 interface OidcConfig {
@@ -53,6 +54,7 @@ export class NdiOidcHelper {
 	private redirectUri: string;
 	private jweDecryptKey: Key;
 	private clientAssertionSignKey: Key;
+	private additionalHeaders?: Record<string, string>;
 
 	constructor(props: NdiOidcHelperConstructor) {
 		this.oidcConfigUrl = props.oidcConfigUrl;
@@ -60,6 +62,7 @@ export class NdiOidcHelper {
 		this.redirectUri = props.redirectUri;
 		this.jweDecryptKey = props.jweDecryptKey;
 		this.clientAssertionSignKey = props.clientAssertionSignKey;
+		this.additionalHeaders = props.additionalHeaders || {};
 
 		this.axiosClient = createClient({
 			timeout: 10000,
@@ -71,7 +74,7 @@ export class NdiOidcHelper {
 		state: string,
 		nonce?: string
 	): Promise<string> => {
-		const {data: {authorization_endpoint}} = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
+		const { data: { authorization_endpoint } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl, { ...this.additionalHeaders });
 
 		const queryParams = {
 			state,
@@ -91,7 +94,7 @@ export class NdiOidcHelper {
 	 * Use getIdTokenPayload on returned Token Response to get the token payload
 	 */
 	public getTokens = async (authCode: string): Promise<TokenResponse> => {
-		const { data: { token_endpoint, issuer } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
+		const { data: { token_endpoint, issuer } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl, { ...this.additionalHeaders });
 
 		const params = {
 			grant_type: "authorization_code",
@@ -110,6 +113,7 @@ export class NdiOidcHelper {
 
 		const config = {
 			headers: {
+				...this.additionalHeaders,
 				"content-type": "application/x-www-form-urlencoded"
 			},
 		};
@@ -126,8 +130,8 @@ export class NdiOidcHelper {
 	 */
 	public async getAccessTokenPayload(tokens: TokenResponse): Promise<AccessTokenPayload> {
 		try {
-			const { data: { jwks_uri } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
-			const { data: { keys } } = await this.axiosClient.get<{keys: Object[]}>(jwks_uri);
+			const { data: { jwks_uri } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl, { ...this.additionalHeaders });
+			const { data: { keys } } = await this.axiosClient.get<{ keys: Object[] }>(jwks_uri, { ...this.additionalHeaders });
 			const jwsVerifyKey = JSON.stringify(keys[0]);
 
 			const { access_token } = tokens;
@@ -145,8 +149,8 @@ export class NdiOidcHelper {
 	 */
 	public async getIdTokenPayload(tokens: TokenResponse): Promise<NDIIdTokenPayload> {
 		try {
-			const { data: { jwks_uri } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
-			const { data: { keys } } = await this.axiosClient.get<{keys: Object[]}>(jwks_uri);
+			const { data: { jwks_uri } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl, { ...this.additionalHeaders });
+			const { data: { keys } } = await this.axiosClient.get<{ keys: Object[] }>(jwks_uri, { ...this.additionalHeaders });
 			const jwsVerifyKey = JSON.stringify(keys[0]);
 
 			const { id_token } = tokens;
@@ -169,11 +173,11 @@ export class NdiOidcHelper {
 		if (sub) {
 			const trimmedSub = sub.replace(/ /g, '');
 			const nricRegex = /s=([STFG]\d{7}[A-Z])[^,]*/i;
-			const [,nric] = trimmedSub.match(nricRegex) || [];
+			const [, nric] = trimmedSub.match(nricRegex) || [];
 			const uuidRegex = /u=([^,]*)/i;
-			const [,uuid] = trimmedSub.match(uuidRegex) || [];
+			const [, uuid] = trimmedSub.match(uuidRegex) || [];
 			const countryCodeRegex = /c=([^,]*)/i;
-			const [,countryCode] = trimmedSub.match(countryCodeRegex) || [];
+			const [, countryCode] = trimmedSub.match(countryCodeRegex) || [];
 
 			if (!nric) {
 				throw Error("Token payload sub property is invalid, does not contain valid NRIC");
