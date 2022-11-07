@@ -38,6 +38,7 @@ export interface OidcHelperConstructor {
 	redirectUri: string;
 	jweDecryptKey: string;
 	jwsVerifyKey: string;
+	additionalHeaders?: Record<string, string>;
 }
 
 export class OidcHelper {
@@ -53,6 +54,7 @@ export class OidcHelper {
 	private redirectUri: string;
 	private jweDecryptKey: string;
 	private jwsVerifyKey: string;
+	private additionalHeaders?: Record<string, string>;
 
 	constructor(props: OidcHelperConstructor) {
 		this.authorizationUrl = props.authorizationUrl;
@@ -62,6 +64,7 @@ export class OidcHelper {
 		this.redirectUri = props.redirectUri;
 		this.jweDecryptKey = props.jweDecryptKey;
 		this.jwsVerifyKey = props.jwsVerifyKey;
+		this.additionalHeaders = props.additionalHeaders || {};
 	}
 
 	public constructAuthorizationUrl = (
@@ -95,7 +98,10 @@ export class OidcHelper {
 		const body = querystringUtil.stringify(params);
 
 		const config = {
-			headers: { "content-type": "application/x-www-form-urlencoded" },
+			headers: {
+				...this.additionalHeaders,
+				"content-type": "application/x-www-form-urlencoded"
+			},
 			...axiosRequestConfig,
 		};
 		const response = await this.axiosClient.post(this.tokenUrl, body, config);
@@ -121,7 +127,10 @@ export class OidcHelper {
 		const body = querystringUtil.stringify(params);
 
 		const config = {
-			headers: { "content-type": "application/x-www-form-urlencoded" },
+			headers: {
+				...this.additionalHeaders,
+				"content-type": "application/x-www-form-urlencoded"
+			},
 			...axiosRequestConfig,
 		};
 		const response = await this.axiosClient.post(this.tokenUrl, body, config);
@@ -172,11 +181,11 @@ export class OidcHelper {
 		if (sub) {
 			const trimmedSub = sub.replace(/ /g, '');
 			const nricRegex = /s=([STFG]\d{7}[A-Z])[^,]*/i;
-			const [,nric] = trimmedSub.match(nricRegex) || [];
+			const [, nric] = trimmedSub.match(nricRegex) || [];
 			const uuidRegex = /u=([^,]*)/i;
-			const [,uuid] = trimmedSub.match(uuidRegex) || [];
+			const [, uuid] = trimmedSub.match(uuidRegex) || [];
 			const countryCodeRegex = /c=([^,]*)/i;
-			const [,countryCode] = trimmedSub.match(countryCodeRegex) || [];
+			const [, countryCode] = trimmedSub.match(countryCodeRegex) || [];
 
 			if (!nric) {
 				throw Error("Token payload sub property is invalid, does not contain valid NRIC");
