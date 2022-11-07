@@ -70,6 +70,7 @@ export class OidcHelper {
 	public constructAuthorizationUrl = (
 		state: string,
 		nonce?: string,
+		overrideAuthUrl?: string,
 	): string => {
 		const queryParams = {
 			state,
@@ -80,7 +81,7 @@ export class OidcHelper {
 			response_type: "code",
 		};
 		const queryString = querystringUtil.stringify(queryParams);
-		return `${this.authorizationUrl}?${queryString}`;
+		return `${overrideAuthUrl ?? this.authorizationUrl}?${queryString}`;
 	}
 
 	/**
