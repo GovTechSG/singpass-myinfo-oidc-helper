@@ -74,7 +74,7 @@ export class NdiOidcHelper {
 		state: string,
 		nonce?: string
 	): Promise<string> => {
-		const { data: { authorization_endpoint } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl, { ...this.additionalHeaders });
+		const { data: { authorization_endpoint } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl, { headers: this.additionalHeaders });
 
 		const queryParams = {
 			state,
@@ -94,7 +94,7 @@ export class NdiOidcHelper {
 	 * Use getIdTokenPayload on returned Token Response to get the token payload
 	 */
 	public getTokens = async (authCode: string): Promise<TokenResponse> => {
-		const { data: { token_endpoint, issuer } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl, { ...this.additionalHeaders });
+		const { data: { token_endpoint, issuer } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl, { headers: this.additionalHeaders });
 
 		const params = {
 			grant_type: "authorization_code",
@@ -130,8 +130,8 @@ export class NdiOidcHelper {
 	 */
 	public async getAccessTokenPayload(tokens: TokenResponse): Promise<AccessTokenPayload> {
 		try {
-			const { data: { jwks_uri } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl, { ...this.additionalHeaders });
-			const { data: { keys } } = await this.axiosClient.get<{ keys: Object[] }>(jwks_uri, { ...this.additionalHeaders });
+			const { data: { jwks_uri } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl, { headers: this.additionalHeaders });
+			const { data: { keys } } = await this.axiosClient.get<{ keys: Object[] }>(jwks_uri, { headers: this.additionalHeaders });
 			const jwsVerifyKey = JSON.stringify(keys[0]);
 
 			const { access_token } = tokens;
@@ -149,8 +149,8 @@ export class NdiOidcHelper {
 	 */
 	public async getIdTokenPayload(tokens: TokenResponse): Promise<NDIIdTokenPayload> {
 		try {
-			const { data: { jwks_uri } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl, { ...this.additionalHeaders });
-			const { data: { keys } } = await this.axiosClient.get<{ keys: Object[] }>(jwks_uri, { ...this.additionalHeaders });
+			const { data: { jwks_uri } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl, { headers: this.additionalHeaders });
+			const { data: { keys } } = await this.axiosClient.get<{ keys: Object[] }>(jwks_uri, { headers: this.additionalHeaders });
 			const jwsVerifyKey = JSON.stringify(keys[0]);
 
 			const { id_token } = tokens;
