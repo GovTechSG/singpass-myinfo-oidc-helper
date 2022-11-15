@@ -1,5 +1,8 @@
 # Changelogs
 
+## 7.1.2
+- take in new parameter for corppass ndi helper, to allow for proxy endpoints to be called instead of directly calling corppass endpoints
+
 ## 7.1.1
 - patch the additionalHeaders to be send along with the request
 

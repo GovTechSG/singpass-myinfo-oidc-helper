@@ -3,8 +3,10 @@ import { NDIIdTokenPayload, NdiOidcHelper, NdiOidcHelperConstructor } from "../c
 const mockOidcConfigUrl = "https://mockcorppass.sg/authorize";
 const mockClientId = "CLIENT-ID";
 const mockRedirectUri = "http://mockme.sg/callback";
-const mockDecryptKey = "sshh-secret";
-const mockSignKey = "sshh-secret";
+const mockDecryptKey =
+	'{"kty": "EC","d": "AA1YtF2O779tiuJ4Rs3UVItxgX3GFOgQ-aycS-n-lFU","use": "enc","crv": "P-256","kid": "odRFtcGZYAwsS4WtQWdbwdVXuAdHt4VoqFX6VwAXrmQ","x": "MFqQFZrB74cDhiBHhIBg9iCB-qj86vU45dj2iA-RAjs","y": "yUOsmZh4rd3qwqXRgRCIaAyRcOj4S0mD6tEsd-aTlL0","alg": "ECDH-ES+A256KW"}';
+const mockSignKey =
+	'{"kty": "EC","d": "QMS1DAh9RHzH7Oqj2FL5FW1j7FeQWqNjIfoaSfV14x8","use": "sig","crv": "P-256","kid": "jqjQh6u7LHFFxCPf12PqBzbDfpnqL9I0qR8Gqllq6vU","x": "17aNA7ePDntFNM0hKfTFcFoXhHK0nJ7n4zDwXfwi22s","y": "fGJn6q2zQitVVJY91Fr1oe4bErqy5SL3V4AC4e_4dmQ","alg": "ES256"}';
 
 const createMockIdTokenPayload = (overrideProps?: Partial<NDIIdTokenPayload>): NDIIdTokenPayload => ({
 	userInfo: {
@@ -13,12 +15,12 @@ const createMockIdTokenPayload = (overrideProps?: Partial<NDIIdTokenPayload>): N
 		ISSPHOLDER: "YES",
 	},
 	entityInfo: {
-		CPEntID: 'S12345K',
-		CPEnt_TYPE: 'UEN',
-		CPEnt_Status: '',
-		CPNonUEN_Country:  'SG',
-		CPNonUEN_RegNo:  '',
-		CPNonUEN_Name:  '',
+		CPEntID: "S12345K",
+		CPEnt_TYPE: "UEN",
+		CPEnt_Status: "",
+		CPNonUEN_Country: "SG",
+		CPNonUEN_RegNo: "",
+		CPNonUEN_Name: "",
 	},
 	rt_hash: "TJXzQKancNCg3f3YQcZhzg",
 	amr: ["pwd"],
@@ -37,24 +39,24 @@ describe("NDI Corppass Helper", () => {
 		oidcConfigUrl: mockOidcConfigUrl,
 		clientID: mockClientId,
 		redirectUri: mockRedirectUri,
-		jweDecryptKey: {key: mockDecryptKey},
-		clientAssertionSignKey: {key:mockSignKey},
+		jweDecryptKey: { key: mockDecryptKey, format: "json" },
+		clientAssertionSignKey: { key: mockSignKey, alg: "ES256" },
 	};
 	const helper = new NdiOidcHelper(props);
 
 	describe("constructing authorization url", () => {
 		it("should construct the correct authorzation endpoint", async () => {
-			helper._testExports.getCorppassClient().get = jest.fn((): any => Promise.resolve({
-				status: 200,
-				data: {
-					authorization_endpoint: "https://mockcorppass.sg/authorize",
-				},
-			}));
-			const authUrl = await helper.constructAuthorizationUrl(
-				"af0ifjsldkj",
-				"a2ghskf1234las",
+			helper._testExports.getCorppassClient().get = jest.fn((): any =>
+				Promise.resolve({
+					status: 200,
+					data: {
+						authorization_endpoint: "https://mockcorppass.sg/authorize",
+					},
+				}),
 			);
-			const expected = "https://mockcorppass.sg/authorize?state=af0ifjsldkj&nonce=a2ghskf1234las&redirect_uri=http%3A%2F%2Fmockme.sg%2Fcallback&scope=openid&client_id=CLIENT-ID&response_type=code";
+			const authUrl = await helper.constructAuthorizationUrl("af0ifjsldkj", "a2ghskf1234las");
+			const expected =
+				"https://mockcorppass.sg/authorize?state=af0ifjsldkj&nonce=a2ghskf1234las&redirect_uri=http%3A%2F%2Fmockme.sg%2Fcallback&scope=openid&client_id=CLIENT-ID&response_type=code";
 			expect(authUrl).toEqual(expected);
 		});
 	});
@@ -78,7 +80,9 @@ describe("NDI Corppass Helper", () => {
 			const mockPayload = createMockIdTokenPayload({
 				sub: undefined,
 			});
-			expect(() => helper.extractInfoFromIdTokenSubject(mockPayload)).toThrowError("Token payload sub property is not defined");
+			expect(() => helper.extractInfoFromIdTokenSubject(mockPayload)).toThrowError(
+				"Token payload sub property is not defined",
+			);
 		});
 
 		it("should throw an error if sub property does not contain a valid NRIC", () => {
@@ -86,7 +90,47 @@ describe("NDI Corppass Helper", () => {
 				sub: `s=some-nonsense,u=f09fcf4c-f57b-40b5-a8e0-6fb6eef640e3`,
 			});
 
-			expect(() => helper.extractInfoFromIdTokenSubject(mockPayload)).toThrowError("Token payload sub property is invalid, does not contain valid NRIC");
+			expect(() => helper.extractInfoFromIdTokenSubject(mockPayload)).toThrowError(
+				"Token payload sub property is invalid, does not contain valid NRIC",
+			);
+		});
+	});
+
+	describe("getTokens()", () => {
+		it("should use proxy url when specific", async () => {
+			const corppassHelper = new NdiOidcHelper({
+				...props,
+				proxyBaseUrl: "https://www.proxy.gov.sg",
+				additionalHeaders: { "x-api-token": "TOKEN" },
+			});
+			const axiosMock = jest.fn((): any =>
+				Promise.resolve({
+					status: 200,
+					data: {
+						token_endpoint: "https://mockcorppass.sg/mga/sps/oauth/oauth20/token",
+						issuer: "https://mockcorppass.sg",
+					},
+				}),
+			);
+			const axiosPostMock = jest.fn((): any =>
+				Promise.resolve({
+					status: 200,
+					data: {
+						id_token: "TEST",
+					},
+				}),
+			);
+			corppassHelper._testExports.getCorppassClient().get = axiosMock;
+			corppassHelper._testExports.getCorppassClient().post = axiosPostMock;
+
+			expect((await corppassHelper.getTokens("TEST")).id_token).toBe("TEST");
+			expect(axiosPostMock).toBeCalledTimes(1);
+			expect(axiosPostMock.mock.calls[0]).toEqual(
+				expect.arrayContaining([
+					"https://www.proxy.gov.sg/mga/sps/oauth/oauth20/token",
+					{ headers: { "content-type": "application/x-www-form-urlencoded", "x-api-token": "TOKEN" } },
+				]),
+			);
 		});
 	});
 });
