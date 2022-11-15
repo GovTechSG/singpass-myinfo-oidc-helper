@@ -1,5 +1,8 @@
 # Changelogs
 
+## 7.1.1
+- patch the additionalHeaders to be send along with the request
+
 ## 7.1.0
 - add additionalHeaders optional params to corppass helper
 - add overrideAuthUrl to corppass helper's constructAuthorizationUrl method
