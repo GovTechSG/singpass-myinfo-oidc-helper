@@ -27,7 +27,7 @@
 		"axios": "~0.26.1",
 		"https-proxy-agent": "^5.0.1",
 		"is-base64": "^1.1.0",
-		"jsonwebtoken": "^8.5.1",
+		"jsonwebtoken": "^9.0.0",
 		"lodash": "^4.17.21",
 		"node-jose": "^2.1.1",
 		"nonce": "^1.0.4",
