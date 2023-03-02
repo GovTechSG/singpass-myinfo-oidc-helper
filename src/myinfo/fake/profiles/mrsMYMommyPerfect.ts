@@ -2,7 +2,7 @@ import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 import { aliasName } from "../profiles/common";
-import { MyInfoCountryCode, MyInfoNationalityCode, MyInfoOccupationCode, MyInfoSexCode } from "../../domain";
+import { MyInfoCountryCode, MyInfoMaritialStatusCode, MyInfoNationalityCode, MyInfoOccupationCode, MyInfoSexCode } from "../../domain";
 
 const id = "F5994458N";
 const name = ProfileArchetype.MRS_MY_MOMMY_PERFECT;
@@ -38,18 +38,18 @@ export const mrsMYMommyPerfect: FakeProfile = {
 		},
 
 		profile.marital = {
-			"lastupdated": "2020-09-10",
-			"code": null,
-			"desc": null,
-			"source": "2",
+			"lastupdated": "2022-02-25",
+			"code": MyInfoMaritialStatusCode.MARRIED,
+			"desc": MyInfoMaritialStatusCode.fn.toEnumDesc(MyInfoMaritialStatusCode.MARRIED),
+			"source": "1",
 			"classification": "C",
 		};
 
 		profile.marriagedate = {
-			"lastupdated": "2020-09-10",
-			"source": "2",
+			"lastupdated": "1993-10-22",
+			"source": "1",
 			"classification": "C",
-			"value": "",
+			"value": "1993-10-22",
 		};
 
 		profile.occupation = {
