@@ -30,6 +30,13 @@ export const mrsMYMommyPerfect: FakeProfile = {
 		profile.residentialstatus.code = "";
 		profile.residentialstatus.desc = "";
 
+		profile.marriagecertno= {
+			"lastupdated": "2018-05-10",
+			"source": "1",
+			"classification": "C",
+			"value": "PZDarmzK2vPZROwDbTbT7mS3b59xRABwRN9uRM2Y3qBgdQxcNi",
+		},
+
 		profile.marital = {
 			"lastupdated": "2020-09-10",
 			"code": null,
