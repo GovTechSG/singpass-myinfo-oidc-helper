@@ -1,5 +1,7 @@
 # Changelogs
+## 7.1.5
 
+- Update fake profile of mrsMYMommyPerfect to cater for marital status and marriage cert of 50 chars
 ## 7.1.2
 
 - take in new parameter for corppass ndi helper, to allow for proxy endpoints to be called instead of directly calling corppass endpoints
