@@ -82,6 +82,7 @@ Use `getPersonBasic` to get a fake MyInfo basic profile. Use `getPerson` if you 
 getPersonBasic({
   archetype: ProfileArchetype;
   userdisplayname?: string;
+  race?: MyInfoRaceCode:
   marital?: MyinfoMaritialStatusCode;
   marriagedate?: string;
   divorcedate?: string;
@@ -108,6 +109,7 @@ getPersonBasic({
 getPerson({
   archetype: ProfileArchetype;
   userdisplayname?: string;
+  race?: MyInfoRaceCode:
   marital?: MyinfoMaritialStatusCode;
   marriagedate?: string;
   divorcedate?: string;

@@ -1,6 +1,6 @@
 import { get, isEmpty, map, partition, set } from "lodash";
 // tslint:disable-next-line: max-line-length
-import { MyInfoComponents, MyInfoComStatusCode, MyInfoCountryCode, MyInfoDrivingLicenceValidityCode, MyInfoHDBTypeCode, MyInfoHousingTypeCode, MyInfoLifeStatusCode, MyInfoMaritialStatusCode, MyInfoMerdekaGenerationMessageCode, MyInfoOccupationCode, MyInfoResidentialCode, MyInfoSexCode, MyInfoVehicleStatus } from "../domain";
+import { MyInfoComponents, MyInfoComStatusCode, MyInfoCountryCode, MyInfoDrivingLicenceValidityCode, MyInfoHDBTypeCode, MyInfoHousingTypeCode, MyInfoLifeStatusCode, MyInfoMaritialStatusCode, MyInfoMerdekaGenerationMessageCode, MyInfoOccupationCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode, MyInfoVehicleStatus } from "../domain";
 import { ProfileArchetype } from "./profiles/fake-profile";
 import { profiles } from "./profiles/fake-profiles";
 
@@ -45,6 +45,7 @@ export interface NoaBasic {
 export interface MockParams {
 	archetype: ProfileArchetype;
 	userdisplayname?: string;
+	race?: MyInfoRaceCode;
 	marital?: MyInfoMaritialStatusCode;
 	marriagedate?: string;
 	divorcedate?: string;
@@ -460,6 +461,12 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 					break;
 			}
 		}
+
+		if (!isEmpty(mockParams.race)) {
+			myinfoPerson.race.code =  mockParams.race;
+			myinfoPerson.race.desc = MyInfoRaceCode.fn.toEnumDesc(mockParams.race);
+		}
+
 		return myinfoPerson;
 	}
 
