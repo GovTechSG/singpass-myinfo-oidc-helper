@@ -1,7 +1,15 @@
 # Changelogs
+
+## 7.2.0
+
+- **[WARNING]** Updated deps
+  - Updated `axios` from `~0.27.2` to `~1.3.5`
+- **[WARNING]** Changed tsconfig target from `ES6` to `ES2019`
+
 ## 7.1.5
 
 - Update fake profile of mrsMYMommyPerfect to cater for marital status and marriage cert of 50 chars
+
 ## 7.1.2
 
 - take in new parameter for corppass ndi helper, to allow for proxy endpoints to be called instead of directly calling corppass endpoints

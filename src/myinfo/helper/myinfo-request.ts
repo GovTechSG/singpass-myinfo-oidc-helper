@@ -62,7 +62,6 @@ export class MyInfoRequest {
 
 		const requestConfig: AxiosRequestConfig = {
 			params: queryParams,
-			paramsSerializer: querystringUtil.stringify,
 			headers: {
 				...additionalHeaders,
 				...headers,
