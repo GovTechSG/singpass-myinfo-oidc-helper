@@ -1,6 +1,6 @@
 // tslint:disable
 // =============================================================================
-// This file was generated with `npm run generate-myinfo-typings` on 2022-09-16
+// This file was generated with `npm run generate-myinfo-typings` on 2023-05-10
 // Any modifications to this file may be overwritten when the script runs again
 // Check README.md for more information
 // =============================================================================
@@ -225,7 +225,7 @@ export declare namespace MyInfoComponents {
                 value?: string;
             };
             /**
-             * Country of Address. For AddressSG this will always be "SG".
+             * Country/Place of Address. For AddressSG this will always be "SG".
              */
             country?: {
                 code?: string;
@@ -314,9 +314,9 @@ export declare namespace MyInfoComponents {
         DataitemAddressUnformatted;
         /**
          * BirthCountry
-         * Country of Birth of Person.
+         * Country/Place of Birth of Person.
          *
-         * Refer to `country` in code table provided [HERE](https://public.cloud.myinfo.gov.sg/myinfobiz/myinfo-business-api-code-tables.xlsx) for description of each code.
+         * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
          */
         export interface Birthcountry {
             /**
@@ -357,7 +357,7 @@ export declare namespace MyInfoComponents {
              */
             source: "1" | "2" | "3" | "4";
             /**
-             * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+             * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
              */
             lastupdated: string; // date
             /**
@@ -551,10 +551,50 @@ export declare namespace MyInfoComponents {
                  */
                 value?: string;
             };
+            vaccinationrequirements?: {
+                /**
+                 * Vaccination Requirement.
+                 *
+                 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
+                 */
+                requirement?: {
+                    /**
+                     * example:
+                     * 1M3D
+                     */
+                    code?: string;
+                    /**
+                     * example:
+                     * MINIMUM VACCINATION REQUIREMENT FOR PRESCHOOL
+                     */
+                    desc?: string;
+                };
+                fulfilled?: {
+                    /**
+                     * example:
+                     * true
+                     */
+                    value?: boolean;
+                };
+            }[];
+            /**
+             * Indicates whether the child is a Singapore Citizen at the time of birth.
+             *
+             * * Y - Yes
+             * * N - No
+             * * < BLANK > - Not applicable
+             */
+            sgcitizenatbirthind?: {
+                /**
+                 * example:
+                 * Y
+                 */
+                value?: "Y" | "N" | "";
+            };
         }
         /**
          * CountryOfMarriage
-         * Country of the latest marriage.
+         * Country/Place of the latest marriage.
          *
          *
          * **Note:** This field must be made **editable** on your digital service form even though `source` is '1' (Government Verified).
@@ -1265,6 +1305,36 @@ export declare namespace MyInfoComponents {
             }[];
         }
         /**
+         * CPF Dependant Protection Scheme
+         * CPF Dependant Protection Scheme
+         */
+        export interface Cpfdependantprotectionscheme {
+            coverage?: {
+                /**
+                 * Indicator
+                 * example:
+                 * true
+                 */
+                value?: boolean;
+            };
+            insurercode?: {
+                /**
+                 * Insurer Code
+                 * example:
+                 * 9GEL
+                 */
+                value?: string;
+            };
+            sumassuredamount?: {
+                /**
+                 * Sum assured. OPTIONAL attribute, present only if 'coverage' is true
+                 * example:
+                 * 70000
+                 */
+                value?: number;
+            };
+        }
+        /**
          * CPFEmployers
          * Employers who paid CPF Contributions. Maximum up to past 14 months.
          *
@@ -1635,6 +1705,36 @@ export declare namespace MyInfoComponents {
             }[];
         }
         /**
+         * CPF Home Protection Scheme
+         * CPF Home Protection Scheme
+         */
+        export interface Cpfhomeprotectionscheme {
+            coverage?: {
+                /**
+                 * Indicator
+                 * example:
+                 * true
+                 */
+                value?: boolean;
+            };
+            premium?: {
+                /**
+                 * Coverage premium. OPTIONAL attribute, present only if 'coverage' is true
+                 * example:
+                 * 100.01
+                 */
+                value?: number;
+            };
+            shareofcover?: {
+                /**
+                 * Share of coverage (in percentage). OPTIONAL attribute, present only if 'coverage' is true
+                 * example:
+                 * 20
+                 */
+                value?: number;
+            };
+        }
+        /**
          * CPFHousingWithdrawal
          * CPF Housing Withdrawal of Person. Amounts in SGD.
          */
@@ -1701,6 +1801,646 @@ export declare namespace MyInfoComponents {
                     value?: number; // double
                 };
             }[];
+        }
+        /**
+         * CPFInvestmentScheme
+         * CPF Investment Scheme.
+         */
+        export interface Cpfinvestmentscheme {
+            /**
+             * Quantity of Special Discounted Shares shares held
+             * example:
+             * {
+             *   "classification": "C",
+             *   "source": "1",
+             *   "lastupdated": "2019-03-26"
+             * }
+             */
+            sdsnetshareholdingqty?: {
+                /**
+                 * Data classification of data field. Default 'C' - Confidential.
+                 */
+                classification: "C";
+                /**
+                 * Source of data.
+                 *
+                 * * '1' - Government-verified
+                 * * '2' - User provided
+                 * * '3' - Field is Not Applicable to Person
+                 * * '4' - Verified by SingPass
+                 *
+                 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+                 */
+                source: "1" | "2" | "3" | "4";
+                /**
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
+                 */
+                lastupdated: string; // date
+                /**
+                 * Optional flag to indicate if data is unavailable from data source.
+                 *
+                 * **NOTE:**
+                 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                 *   - If data is available from the data source, this property will not be present.
+                 *
+                 */
+                unavailable?: boolean;
+                /**
+                 * example:
+                 * 1360
+                 */
+                value?: number;
+            };
+            /**
+             * CPF Investment Account Details
+             * example:
+             * {
+             *   "classification": "C",
+             *   "source": "1",
+             *   "lastupdated": "2019-03-26"
+             * }
+             */
+            account?: {
+                /**
+                 * Data classification of data field. Default 'C' - Confidential.
+                 */
+                classification: "C";
+                /**
+                 * Source of data.
+                 *
+                 * * '1' - Government-verified
+                 * * '2' - User provided
+                 * * '3' - Field is Not Applicable to Person
+                 * * '4' - Verified by SingPass
+                 *
+                 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+                 */
+                source: "1" | "2" | "3" | "4";
+                /**
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
+                 */
+                lastupdated: string; // date
+                /**
+                 * Optional flag to indicate if data is unavailable from data source.
+                 *
+                 * **NOTE:**
+                 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                 *   - If data is available from the data source, this property will not be present.
+                 *
+                 */
+                unavailable?: boolean;
+                /**
+                 * Agent Bank Code
+                 */
+                agentbankcode?: {
+                    /**
+                     * example:
+                     * OCBC
+                     */
+                    value?: string;
+                };
+                /**
+                 * Account Number
+                 */
+                invbankacctno?: {
+                    /**
+                     * example:
+                     * 098-26644-4
+                     */
+                    value?: string;
+                };
+            };
+            /**
+             * Status of Self-Awareness Questionnaire Participation.
+             * example:
+             * {
+             *   "classification": "C",
+             *   "source": "1",
+             *   "lastupdated": "2019-03-26"
+             * }
+             */
+            saqparticipationstatus?: {
+                /**
+                 * Data classification of data field. Default 'C' - Confidential.
+                 */
+                classification: "C";
+                /**
+                 * Source of data.
+                 *
+                 * * '1' - Government-verified
+                 * * '2' - User provided
+                 * * '3' - Field is Not Applicable to Person
+                 * * '4' - Verified by SingPass
+                 *
+                 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+                 */
+                source: "1" | "2" | "3" | "4";
+                /**
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
+                 */
+                lastupdated: string; // date
+                /**
+                 * Optional flag to indicate if data is unavailable from data source.
+                 *
+                 * **NOTE:**
+                 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                 *   - If data is available from the data source, this property will not be present.
+                 *
+                 */
+                unavailable?: boolean;
+                /**
+                 * Possible values:
+                 *
+                 * * 'Y' – Participated
+                 * * 'X' – Existing CPFIS participant
+                 * * 'N' – Did not participate
+                 * example:
+                 * X
+                 */
+                code?: "Y" | "X" | "N";
+                /**
+                 * example:
+                 * Participated
+                 */
+                desc?: string;
+            };
+        }
+        /**
+         * CPFLife
+         * CPF Lifelong Income For the Elderly (CPF LIFE)
+         * example:
+         * {
+         *   "classification": "C",
+         *   "source": "1",
+         *   "lastupdated": "2019-03-26"
+         * }
+         */
+        export interface Cpflife {
+            /**
+             * Data classification of data field. Default 'C' - Confidential.
+             */
+            classification: "C";
+            /**
+             * Source of data.
+             *
+             * * '1' - Government-verified
+             * * '2' - User provided
+             * * '3' - Field is Not Applicable to Person
+             * * '4' - Verified by SingPass
+             *
+             * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+             */
+            source: "1" | "2" | "3" | "4";
+            /**
+             * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
+             */
+            lastupdated: string; // date
+            /**
+             * Optional flag to indicate if data is unavailable from data source.
+             *
+             * **NOTE:**
+             *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+             *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+             *   - If data is available from the data source, this property will not be present.
+             *
+             */
+            unavailable?: boolean;
+            /**
+             * Flag to indicate the CPF Life membership of the user
+             */
+            cpflifecoverage?: {
+                /**
+                 * example:
+                 * true
+                 */
+                value?: boolean;
+            };
+            /**
+             * CPF Life plan chosen
+             */
+            cpflifeplan?: {
+                /**
+                 * example:
+                 * Standard Plan
+                 */
+                value?: string;
+            };
+            /**
+             * Monthly payout from CPF Life in SGD
+             */
+            cpflifemonthlypayout?: {
+                /**
+                 * example:
+                 * 1000
+                 */
+                value?: number;
+            };
+            /**
+             * Flag to indicate if user is currently receiving monthly payouts from CPF LIFE
+             */
+            cpflifepaymentcommencement?: {
+                /**
+                 * example:
+                 * true
+                 */
+                value?: boolean;
+            };
+            /**
+             * Date of latest CPF Life payment. Can be blank.
+             *
+             * See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+             */
+            cpflifepaymentdate?: {
+                /**
+                 * example:
+                 * 2019-09-02
+                 */
+                value?: string; // date
+            };
+        }
+        /**
+         * CPFMedishieldLife
+         * CPF MediShield Life
+         * example:
+         * {
+         *   "classification": "C",
+         *   "source": "1",
+         *   "lastupdated": "2019-03-26"
+         * }
+         */
+        export interface Cpfmedishieldlife {
+            /**
+             * Data classification of data field. Default 'C' - Confidential.
+             */
+            classification: "C";
+            /**
+             * Source of data.
+             *
+             * * '1' - Government-verified
+             * * '2' - User provided
+             * * '3' - Field is Not Applicable to Person
+             * * '4' - Verified by SingPass
+             *
+             * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+             */
+            source: "1" | "2" | "3" | "4";
+            /**
+             * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
+             */
+            lastupdated: string; // date
+            /**
+             * Optional flag to indicate if data is unavailable from data source.
+             *
+             * **NOTE:**
+             *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+             *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+             *   - If data is available from the data source, this property will not be present.
+             *
+             */
+            unavailable?: boolean;
+            /**
+             * Present only if underlying 'hascovertag' is not empty (true or false) from CPF
+             */
+            medishieldlifecoverage?: {
+                /**
+                 * Status of cover of user.
+                 */
+                hascovertag?: {
+                    /**
+                     * example:
+                     * true
+                     */
+                    value?: boolean;
+                };
+                /**
+                 * Name of the current payer who pay for this policy for current policy renewal date.
+                 *
+                 * Present only if 'hascovertag' is true.
+                 */
+                payername?: {
+                    value?: string;
+                };
+                /**
+                 * Net Premium Payable in SGD after subsidies, Additional Premium Support and Government Benefit (if applicable) for current policy year.
+                 *
+                 * Present only if 'hascovertag' is true.
+                 *
+                 */
+                netpremiumpayable?: {
+                    /**
+                     * example:
+                     * 1000
+                     */
+                    value?: number;
+                };
+                /**
+                 * Renewal date for current policy year.
+                 *
+                 * See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 *
+                 * Present only if 'hascovertag' is true.
+                 *
+                 */
+                policyrenewaldate?: {
+                    /**
+                     * example:
+                     * 2019-07-02
+                     */
+                    value?: string; // date
+                };
+            };
+            /**
+             * Present only if underlying 'hascovertag' is not empty (true or false) from CPF
+             */
+            integratedshieldplancoverage?: {
+                /**
+                 * Status of cover of user.
+                 */
+                hascovertag?: {
+                    /**
+                     * example:
+                     * true
+                     */
+                    value?: boolean;
+                };
+                /**
+                 * Name of the current payer who pay for this policy for current policy renewal date.
+                 *
+                 * Present only if 'hascovertag' is true.
+                 */
+                payername?: {
+                    value?: string;
+                };
+                /**
+                 * Company code of private insurer. Refer to 'Code Listing (InsurerCode)' in https://public.cloud.myinfo.gov.sg/dpp/frontend/assets/api-lib/myinfo/downloads/myinfo-api-code-tables.xlsx for list of possible values
+                 *
+                 * Present only if 'hascovertag' is true.
+                 */
+                insurercode?: {
+                    value?: string;
+                };
+            };
+            /**
+             * Empty array will be returned if there is no data
+             */
+            medishieldlifedependants?: {
+                /**
+                 * Name of dependants whom the enquirer is paying for.
+                 */
+                dependantname?: {
+                    value?: string;
+                };
+                /**
+                 * Net Premium Payable in SGD after subsidies, Additional Premium Support and Government Benefit (if applicable) for current policy year
+                 */
+                netpremiumpayable?: {
+                    /**
+                     * example:
+                     * 1000
+                     */
+                    value?: number;
+                };
+                /**
+                 * Renewal date for current policy year.
+                 *
+                 * See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 *
+                 * Present only if 'hascovertag' is true.
+                 *
+                 */
+                policyrenewaldate?: {
+                    /**
+                     * example:
+                     * 2019-07-02
+                     */
+                    value?: string; // date
+                };
+            }[];
+            /**
+             * Empty array will be returned if there is no data
+             */
+            integratedshieldplandependants?: {
+                /**
+                 * Name of dependants whom the enquirer is paying for.
+                 */
+                dependantname?: {
+                    value?: string;
+                };
+                /**
+                 * Company code of private insurer. Refer to 'Code Listing (InsurerCode)' in https://public.cloud.myinfo.gov.sg/dpp/frontend/assets/api-lib/myinfo/downloads/myinfo-api-code-tables.xlsx for list of possible values
+                 *
+                 * Present only if 'hascovertag' is true.
+                 */
+                insurercode?: {
+                    value?: string;
+                };
+            }[];
+        }
+        /**
+         * CPFMonthlyPayouts
+         * CPF Monthly Payouts (Non-LIFE)
+         * example:
+         * {
+         *   "classification": "C",
+         *   "source": "1",
+         *   "lastupdated": "2019-03-26"
+         * }
+         */
+        export interface Cpfmonthlypayouts {
+            /**
+             * Data classification of data field. Default 'C' - Confidential.
+             */
+            classification: "C";
+            /**
+             * Source of data.
+             *
+             * * '1' - Government-verified
+             * * '2' - User provided
+             * * '3' - Field is Not Applicable to Person
+             * * '4' - Verified by SingPass
+             *
+             * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+             */
+            source: "1" | "2" | "3" | "4";
+            /**
+             * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
+             */
+            lastupdated: string; // date
+            /**
+             * Optional flag to indicate if data is unavailable from data source.
+             *
+             * **NOTE:**
+             *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+             *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+             *   - If data is available from the data source, this property will not be present.
+             *
+             */
+            unavailable?: boolean;
+            /**
+             * Monthly payout amount in SGD
+             */
+            monthlypayout?: {
+                /**
+                 * example:
+                 * 1000
+                 */
+                value?: number;
+            };
+            /**
+             * Flag to indicate if user is currently receiving monthly payouts
+             */
+            paymentcommencement?: {
+                /**
+                 * example:
+                 * true
+                 */
+                value?: boolean;
+            };
+        }
+        /**
+         * CPFRSTUCurrentYearTaxRelief
+         * CPF Retirement Savings Topping-up Scheme - Current Year Tax Relief
+         * example:
+         * {
+         *   "classification": "C",
+         *   "source": "1",
+         *   "lastupdated": "2019-03-26"
+         * }
+         */
+        export interface Cpfrstucurrentyeartaxrelief {
+            /**
+             * Data classification of data field. Default 'C' - Confidential.
+             */
+            classification: "C";
+            /**
+             * Source of data.
+             *
+             * * '1' - Government-verified
+             * * '2' - User provided
+             * * '3' - Field is Not Applicable to Person
+             * * '4' - Verified by SingPass
+             *
+             * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+             */
+            source: "1" | "2" | "3" | "4";
+            /**
+             * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
+             */
+            lastupdated: string; // date
+            /**
+             * Optional flag to indicate if data is unavailable from data source.
+             *
+             * **NOTE:**
+             *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+             *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+             *   - If data is available from the data source, this property will not be present.
+             *
+             */
+            unavailable?: boolean;
+            /**
+             * Total tax relief from self top-up in SGD
+             */
+            totaltaxreliefself?: {
+                /**
+                 * example:
+                 * 1000
+                 */
+                value?: number;
+            };
+            /**
+             * Remaining tax relief from self top-up in SGD
+             */
+            remainingtaxreliefself?: {
+                /**
+                 * example:
+                 * 1000
+                 */
+                value?: number;
+            };
+            /**
+             * Total tax relief from top-up by loved ones in SGD
+             */
+            totaltaxrelieflovedones?: {
+                /**
+                 * example:
+                 * 1000
+                 */
+                value?: number;
+            };
+            /**
+             * Remaining tax relief from top-up by loved ones in SGD
+             */
+            remainingtaxrelieflovedones?: {
+                /**
+                 * example:
+                 * 1000
+                 */
+                value?: number;
+            };
+        }
+        /**
+         * CPFRSTUSelfTopupAmount
+         * CPF Retirement Savings Topping-up Scheme - Maximum amount you can top-up using cash and CPF
+         * example:
+         * {
+         *   "classification": "C",
+         *   "source": "1",
+         *   "lastupdated": "2019-03-26"
+         * }
+         */
+        export interface Cpfrstuselftopupamount {
+            /**
+             * Data classification of data field. Default 'C' - Confidential.
+             */
+            classification: "C";
+            /**
+             * Source of data.
+             *
+             * * '1' - Government-verified
+             * * '2' - User provided
+             * * '3' - Field is Not Applicable to Person
+             * * '4' - Verified by SingPass
+             *
+             * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+             */
+            source: "1" | "2" | "3" | "4";
+            /**
+             * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
+             */
+            lastupdated: string; // date
+            /**
+             * Optional flag to indicate if data is unavailable from data source.
+             *
+             * **NOTE:**
+             *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+             *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+             *   - If data is available from the data source, this property will not be present.
+             *
+             */
+            unavailable?: boolean;
+            /**
+             * Maximum amount you can top up using cash
+             */
+            selftopupusingcash?: {
+                /**
+                 * example:
+                 * 1000
+                 */
+                value?: number;
+            };
+            /**
+             * Maximum amount you can transfer using CPF
+             */
+            selftopupusingcpf?: {
+                /**
+                 * example:
+                 * 1000
+                 */
+                value?: number;
+            };
         }
         /**
          * CPFTransactions
@@ -1850,7 +2590,7 @@ export declare namespace MyInfoComponents {
              */
             source: "1" | "2" | "3" | "4";
             /**
-             * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+             * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
              */
             lastupdated: string; // date
             /**
@@ -1939,7 +2679,7 @@ export declare namespace MyInfoComponents {
                 value?: string;
             };
             /**
-             * Country of Address. For AddressSG this will always be "SG".
+             * Country/Place of Address. For AddressSG this will always be "SG".
              */
             country?: {
                 code?: string;
@@ -1961,7 +2701,7 @@ export declare namespace MyInfoComponents {
              */
             source: "1" | "2" | "3" | "4";
             /**
-             * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+             * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
              */
             lastupdated: string; // date
             /**
@@ -2025,7 +2765,7 @@ export declare namespace MyInfoComponents {
              */
             source: "1" | "2" | "3" | "4";
             /**
-             * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+             * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
              */
             lastupdated: string; // date
             /**
@@ -2579,7 +3319,7 @@ export declare namespace MyInfoComponents {
                     value?: string;
                 };
                 /**
-                 * Country of Address. For AddressSG this will always be "SG".
+                 * Country/Place of Address. For AddressSG this will always be "SG".
                  */
                 country?: {
                     code?: string;
@@ -2723,6 +3463,26 @@ export declare namespace MyInfoComponents {
                  */
                 value?: number; // double
             };
+            /**
+             * The amount of outstanding instalment the owner(s) have to pay for his/her loan in SGD.
+             */
+            outstandinginstalment?: {
+                /**
+                 * example:
+                 * 1000.01
+                 */
+                value?: number; // double
+            };
+            /**
+             * The purchase price of the HDB flat in SGD.
+             */
+            purchaseprice?: {
+                /**
+                 * example:
+                 * 1000.01
+                 */
+                value?: number; // double
+            };
         }
         /**
          * HanYuPinYinAlias
@@ -2837,7 +3597,7 @@ export declare namespace MyInfoComponents {
                     value?: string;
                 };
                 /**
-                 * Country of Address. For AddressSG this will always be "SG".
+                 * Country/Place of Address. For AddressSG this will always be "SG".
                  */
                 country?: {
                     code?: string;
@@ -2975,6 +3735,26 @@ export declare namespace MyInfoComponents {
              * The amount of monthly instalment the owner(s) have to pay for his/her loan in SGD.
              */
             monthlyloaninstalment?: {
+                /**
+                 * example:
+                 * 1000.01
+                 */
+                value?: number; // double
+            };
+            /**
+             * The amount of outstanding instalment the owner(s) have to pay for his/her loan in SGD.
+             */
+            outstandinginstalment?: {
+                /**
+                 * example:
+                 * 1000.01
+                 */
+                value?: number; // double
+            };
+            /**
+             * The purchase price of the HDB flat in SGD.
+             */
+            purchaseprice?: {
                 /**
                  * example:
                  * 1000.01
@@ -3411,7 +4191,7 @@ export declare namespace MyInfoComponents {
         }
         /**
          * Nationality
-         * Nationality of Person.
+         * Nationality/Citizenship of Person.
          *
          * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
          */
@@ -3540,19 +4320,7 @@ export declare namespace MyInfoComponents {
          * PassType
          * Pass type of a FIN holder. <br/>**Note:** Only applies to a foreigner with a valid pass.
          *
-         * * 'RPass' - Work Permit
-         * * 'SPass' - S Pass
-         * * 'P1Pass' - Employment Pass
-         * * 'P2Pass' - Employment Pass
-         * * 'QPass' - Employment Pass
-         * * 'PEP' - Personalised Employment Pass
-         * * 'WHP' - Work Holiday Pass
-         * * 'TEP' - Training Employment Pass
-         * * 'Entre' - EntrePass
-         * * 'DP' - Dependent Pass
-         * * 'LTVP' - Long Term Visit Pass
-         * * 'LOC' - Letter of Consent
-         * * 'MWP' - Miscellaneous Work Pass
+         * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
          */
         export interface Passtype {
             /**
@@ -3560,12 +4328,12 @@ export declare namespace MyInfoComponents {
              * example:
              * RPass
              */
-            code?: "RPass" | "SPass" | "P1Pass" | "P2Pass" | "QPass" | "PEP" | "WHP" | "TEP" | "Entre" | "DP" | "LTVP" | "LOC" | "MWP";
+            code?: string;
             /**
              * example:
              * Work Permit
              */
-            desc?: "Work Permit" | "S Pass" | "Employment Pass" | "Employment Pass" | "Employment Pass" | "Personalised Employment Pass" | "Work Holiday Pass" | "Training Employment Pass" | "EntrePass" | "Dependent Pass" | "Long Term Visit Pass" | "Letter of Consent" | "Miscellaneous Work Pass";
+            desc?: string;
         }
         /**
          * Person instance's details (Basic Profile)
@@ -3604,7 +4372,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -3651,7 +4419,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -3698,7 +4466,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -3746,7 +4514,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -3795,7 +4563,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -3843,7 +4611,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -3892,7 +4660,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -3947,7 +4715,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -4000,7 +4768,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -4055,7 +4823,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -4110,7 +4878,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -4126,7 +4894,7 @@ export declare namespace MyInfoComponents {
             };
             /**
              * Nationality
-             * Nationality of Person.
+             * Nationality/Citizenship of Person.
              *
              * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
              * example:
@@ -4165,7 +4933,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -4216,7 +4984,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -4232,9 +5000,9 @@ export declare namespace MyInfoComponents {
             };
             /**
              * BirthCountry
-             * Country of Birth of Person.
+             * Country/Place of Birth of Person.
              *
-             * Refer to `country` in code table provided [HERE](https://public.cloud.myinfo.gov.sg/myinfobiz/myinfo-business-api-code-tables.xlsx) for description of each code.
+             * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
              * example:
              * {
              *   "classification": "C",
@@ -4271,7 +5039,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -4333,7 +5101,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -4380,7 +5148,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -4427,7 +5195,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -4443,19 +5211,21 @@ export declare namespace MyInfoComponents {
             };
             /**
              * RegAdd
-             * Registered Address of Person
+             * Registered Address of Person (including FIN holders)
              *
              * **Note:**
              * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
              * - check the `type` discriminator property to differentiate between the two address formats
+             * - may be unavailable for some FIN holders
              */
             regadd?: /**
              * RegAdd
-             * Registered Address of Person
+             * Registered Address of Person (including FIN holders)
              *
              * **Note:**
              * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
              * - check the `type` discriminator property to differentiate between the two address formats
+             * - may be unavailable for some FIN holders
              */
             /**
              * Address details (Singapore Format)
@@ -4602,7 +5372,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -4669,7 +5439,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -4768,7 +5538,7 @@ export declare namespace MyInfoComponents {
                         value?: string;
                     };
                     /**
-                     * Country of Address. For AddressSG this will always be "SG".
+                     * Country/Place of Address. For AddressSG this will always be "SG".
                      */
                     country?: {
                         code?: string;
@@ -4913,6 +5683,26 @@ export declare namespace MyInfoComponents {
                     value?: number; // double
                 };
                 /**
+                 * The amount of outstanding instalment the owner(s) have to pay for his/her loan in SGD.
+                 */
+                outstandinginstalment?: {
+                    /**
+                     * example:
+                     * 1000.01
+                     */
+                    value?: number; // double
+                };
+                /**
+                 * The purchase price of the HDB flat in SGD.
+                 */
+                purchaseprice?: {
+                    /**
+                     * example:
+                     * 1000.01
+                     */
+                    value?: number; // double
+                };
+                /**
                  * Data classification of data field. Default 'C' - Confidential.
                  */
                 classification: "C";
@@ -4928,7 +5718,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -4979,7 +5769,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -5026,7 +5816,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -5097,7 +5887,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -5168,7 +5958,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -5228,7 +6018,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -5278,7 +6068,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -5294,7 +6084,7 @@ export declare namespace MyInfoComponents {
             };
             /**
              * CountryOfMarriage
-             * Country of the latest marriage.
+             * Country/Place of the latest marriage.
              *
              *
              * **Note:** This field must be made **editable** on your digital service form even though `source` is '1' (Government Verified).
@@ -5334,7 +6124,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -5387,7 +6177,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -5440,7 +6230,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -5481,7 +6271,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -5675,14 +6465,54 @@ export declare namespace MyInfoComponents {
                      */
                     value?: string;
                 };
+                vaccinationrequirements?: {
+                    /**
+                     * Vaccination Requirement.
+                     *
+                     * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
+                     */
+                    requirement?: {
+                        /**
+                         * example:
+                         * 1M3D
+                         */
+                        code?: string;
+                        /**
+                         * example:
+                         * MINIMUM VACCINATION REQUIREMENT FOR PRESCHOOL
+                         */
+                        desc?: string;
+                    };
+                    fulfilled?: {
+                        /**
+                         * example:
+                         * true
+                         */
+                        value?: boolean;
+                    };
+                }[];
+                /**
+                 * Indicates whether the child is a Singapore Citizen at the time of birth.
+                 *
+                 * * Y - Yes
+                 * * N - No
+                 * * < BLANK > - Not applicable
+                 */
+                sgcitizenatbirthind?: {
+                    /**
+                     * example:
+                     * Y
+                     */
+                    value?: "Y" | "N" | "";
+                };
             }[];
             /**
              * SponsoredChildrenRecords
-             * Details of children sponsored to be SG/PR
+             * Details of children sponsored to be SC/PR/LTVP
              *
-             * For child below 21, the child’s Birth Cert No, Name, Sex, Race, Dialect, Date of Birth and Time of Birth will be shown.
+             * For child below 21, the child's NRIC/FIN, Name, Sex, Race, Secondary Race, Dialect, Date of Birth, Country/Place of Birth, Residential Status and SC/PR/LTVP grant date will be shown.
              *
-             * For child above 21, only the child’s last known NRIC will be shown.
+             * For child above 21, only the child's last known NRIC/FIN will be shown.
              */
             sponsoredchildrenrecords?: {
                 /**
@@ -5701,7 +6531,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -5715,7 +6545,7 @@ export declare namespace MyInfoComponents {
                  */
                 unavailable?: boolean;
                 /**
-                 * NRIC of child
+                 * NRIC/FIN of child
                  */
                 nric?: {
                     /**
@@ -5858,7 +6688,7 @@ export declare namespace MyInfoComponents {
                 };
                 /**
                  * BirthCountry
-                 * Country of Birth of child.
+                 * Country/Place of Birth of child.
                  *
                  * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
                  */
@@ -5915,7 +6745,7 @@ export declare namespace MyInfoComponents {
                     desc?: "ALIEN" | "CITIZEN" | "PR" | "UNKNOWN" | "NOT APPLICABLE";
                 };
                 /**
-                 * Nationality of child.
+                 * Nationality/Citizenship of child.
                  *
                  * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
                  */
@@ -5932,7 +6762,7 @@ export declare namespace MyInfoComponents {
                     desc?: string;
                 };
                 /**
-                 * Date granted Singapore Citizenship or Permanant Resident
+                 * Date granted Singapore Citizenship, Permanent Resident or Long-term Visit Pass
                  *
                  * See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
                  */
@@ -5943,6 +6773,32 @@ export declare namespace MyInfoComponents {
                      */
                     value?: string; // date
                 };
+                vaccinationrequirements?: {
+                    /**
+                     * Vaccination Requirement
+                     *
+                     * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
+                     */
+                    requirement?: {
+                        /**
+                         * example:
+                         * 1M3D
+                         */
+                        code?: string;
+                        /**
+                         * example:
+                         * MINIMUM VACCINATION REQUIREMENT FOR PRESCHOOL
+                         */
+                        desc?: string;
+                    };
+                    fulfilled?: {
+                        /**
+                         * example:
+                         * true
+                         */
+                        value?: boolean;
+                    };
+                }[];
             }[];
             /**
              * EduLevel
@@ -5994,7 +6850,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -6040,7 +6896,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -6105,7 +6961,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -6154,7 +7010,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -6200,7 +7056,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -6218,19 +7074,7 @@ export declare namespace MyInfoComponents {
              * PassType
              * Pass type of a FIN holder. <br/>**Note:** Only applies to a foreigner with a valid pass.
              *
-             * * 'RPass' - Work Permit
-             * * 'SPass' - S Pass
-             * * 'P1Pass' - Employment Pass
-             * * 'P2Pass' - Employment Pass
-             * * 'QPass' - Employment Pass
-             * * 'PEP' - Personalised Employment Pass
-             * * 'WHP' - Work Holiday Pass
-             * * 'TEP' - Training Employment Pass
-             * * 'Entre' - EntrePass
-             * * 'DP' - Dependent Pass
-             * * 'LTVP' - Long Term Visit Pass
-             * * 'LOC' - Letter of Consent
-             * * 'MWP' - Miscellaneous Work Pass
+             * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
              * example:
              * {
              *   "classification": "C",
@@ -6244,12 +7088,12 @@ export declare namespace MyInfoComponents {
                  * example:
                  * RPass
                  */
-                code?: "RPass" | "SPass" | "P1Pass" | "P2Pass" | "QPass" | "PEP" | "WHP" | "TEP" | "Entre" | "DP" | "LTVP" | "LOC" | "MWP";
+                code?: string;
                 /**
                  * example:
                  * Work Permit
                  */
-                desc?: "Work Permit" | "S Pass" | "Employment Pass" | "Employment Pass" | "Employment Pass" | "Personalised Employment Pass" | "Work Holiday Pass" | "Training Employment Pass" | "EntrePass" | "Dependent Pass" | "Long Term Visit Pass" | "Letter of Consent" | "Miscellaneous Work Pass";
+                desc?: string;
                 /**
                  * Data classification of data field. Default 'C' - Confidential.
                  */
@@ -6266,7 +7110,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -6316,7 +7160,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -6363,7 +7207,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -6424,7 +7268,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -6485,7 +7329,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -6516,7 +7360,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -7172,7 +8016,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -7357,7 +8201,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -7371,12 +8215,20 @@ export declare namespace MyInfoComponents {
                  */
                 unavailable?: boolean;
             };
+            /**
+             * example:
+             * {
+             *   "classification": "C",
+             *   "source": "1",
+             *   "lastupdated": "2019-03-26"
+             * }
+             */
             pioneergen?: {
                 eligibility: {
                     value: boolean;
                 };
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 quantum: {
@@ -7392,11 +8244,11 @@ export declare namespace MyInfoComponents {
                  *
                  * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
                  */
-                source: "1" | "2" | "3" | "4";
+                source: "1" | "2" | "3" | "4" | "1" | "2" | "3" | "4" | "1" | "2" | "3" | "4";
                 /**
                  * Data classification of data field. Default 'C' - Confidential.
                  */
-                classification: "C";
+                classification: "C" | "C" | "C";
                 /**
                  * Message code
                  *
@@ -7411,9 +8263,19 @@ export declare namespace MyInfoComponents {
                  * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
                  */
                 message: {
-                    code: "1" | "2" | "3" | "4" | "5" | "6" | "7";
-                    desc: "We regret that you are not eligible for the Pioneer Generation Package.  For further enquiries, please contact 1800-2222-888." | "You are eligible for the Pioneer Generation Package. For further enquiries, please contact 1800-2222-888." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to receive your Pioneer Generation card." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to start receiving your Pioneer Generation benefits, such as your MediSave top-up." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to start receiving your Pioneer Generation benefits." | "We understand that you have opted out of receiving the benefits under the Pioneer Generation Package. For further enquiries, please contact 1800-2222-888." | "Please call 1800-2222-888 to start receiving your PG benefits.";
+                    code: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "1" | "2" | "3" | "4" | "5" | "6" | "7";
+                    desc: "We regret that you are not eligible for the Pioneer Generation Package.  For further enquiries, please contact 1800-2222-888." | "You are eligible for the Pioneer Generation Package. For further enquiries, please contact 1800-2222-888." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to receive your Pioneer Generation card." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to start receiving your Pioneer Generation benefits, such as your MediSave top-up." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to start receiving your Pioneer Generation benefits." | "We understand that you have opted out of receiving the benefits under the Pioneer Generation Package. For further enquiries, please contact 1800-2222-888." | "Please call 1800-2222-888 to start receiving your PG benefits." | "We regret that you are not eligible for the Pioneer Generation Package.  For further enquiries, please contact 1800-2222-888." | "You are eligible for the Pioneer Generation Package. For further enquiries, please contact 1800-2222-888." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to receive your Pioneer Generation card." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to start receiving your Pioneer Generation benefits, such as your MediSave top-up." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to start receiving your Pioneer Generation benefits." | "We understand that you have opted out of receiving the benefits under the Pioneer Generation Package. For further enquiries, please contact 1800-2222-888." | "Please call 1800-2222-888 to start receiving your PG benefits.";
                 };
+                /**
+                 * Optional flag to indicate if data is unavailable from data source.
+                 *
+                 * **NOTE:**
+                 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                 *   - If data is available from the data source, this property will not be present.
+                 *
+                 */
+                unavailable?: boolean;
             };
             /**
              * MerdekaGen
@@ -7477,7 +8339,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -7549,7 +8411,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -7651,7 +8513,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -7711,7 +8573,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -7831,7 +8693,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -7873,7 +8735,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -7915,7 +8777,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -8593,7 +9455,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -8998,7 +9860,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -9081,7 +9943,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -9184,7 +10046,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -9197,6 +10059,302 @@ export declare namespace MyInfoComponents {
                  *
                  */
                 unavailable?: boolean;
+            };
+            /**
+             * CPF Home Protection Scheme
+             * CPF Home Protection Scheme
+             * example:
+             * {
+             *   "classification": "C",
+             *   "source": "1",
+             *   "lastupdated": "2019-03-26"
+             * }
+             */
+            cpfhomeprotectionscheme?: {
+                coverage?: {
+                    /**
+                     * Indicator
+                     * example:
+                     * true
+                     */
+                    value?: boolean;
+                };
+                premium?: {
+                    /**
+                     * Coverage premium. OPTIONAL attribute, present only if 'coverage' is true
+                     * example:
+                     * 100.01
+                     */
+                    value?: number;
+                };
+                shareofcover?: {
+                    /**
+                     * Share of coverage (in percentage). OPTIONAL attribute, present only if 'coverage' is true
+                     * example:
+                     * 20
+                     */
+                    value?: number;
+                };
+                /**
+                 * Data classification of data field. Default 'C' - Confidential.
+                 */
+                classification: "C";
+                /**
+                 * Source of data.
+                 *
+                 * * '1' - Government-verified
+                 * * '2' - User provided
+                 * * '3' - Field is Not Applicable to Person
+                 * * '4' - Verified by SingPass
+                 *
+                 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+                 */
+                source: "1" | "2" | "3" | "4";
+                /**
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
+                 */
+                lastupdated: string; // date
+                /**
+                 * Optional flag to indicate if data is unavailable from data source.
+                 *
+                 * **NOTE:**
+                 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                 *   - If data is available from the data source, this property will not be present.
+                 *
+                 */
+                unavailable?: boolean;
+            };
+            /**
+             * CPF Dependant Protection Scheme
+             * CPF Dependant Protection Scheme
+             * example:
+             * {
+             *   "classification": "C",
+             *   "source": "1",
+             *   "lastupdated": "2019-03-26"
+             * }
+             */
+            cpfdependantprotectionscheme?: {
+                coverage?: {
+                    /**
+                     * Indicator
+                     * example:
+                     * true
+                     */
+                    value?: boolean;
+                };
+                insurercode?: {
+                    /**
+                     * Insurer Code
+                     * example:
+                     * 9GEL
+                     */
+                    value?: string;
+                };
+                sumassuredamount?: {
+                    /**
+                     * Sum assured. OPTIONAL attribute, present only if 'coverage' is true
+                     * example:
+                     * 70000
+                     */
+                    value?: number;
+                };
+                /**
+                 * Data classification of data field. Default 'C' - Confidential.
+                 */
+                classification: "C";
+                /**
+                 * Source of data.
+                 *
+                 * * '1' - Government-verified
+                 * * '2' - User provided
+                 * * '3' - Field is Not Applicable to Person
+                 * * '4' - Verified by SingPass
+                 *
+                 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+                 */
+                source: "1" | "2" | "3" | "4";
+                /**
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
+                 */
+                lastupdated: string; // date
+                /**
+                 * Optional flag to indicate if data is unavailable from data source.
+                 *
+                 * **NOTE:**
+                 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                 *   - If data is available from the data source, this property will not be present.
+                 *
+                 */
+                unavailable?: boolean;
+            };
+            /**
+             * CPFInvestmentScheme
+             * CPF Investment Scheme.
+             */
+            cpfinvestmentscheme?: {
+                /**
+                 * Quantity of Special Discounted Shares shares held
+                 * example:
+                 * {
+                 *   "classification": "C",
+                 *   "source": "1",
+                 *   "lastupdated": "2019-03-26"
+                 * }
+                 */
+                sdsnetshareholdingqty?: {
+                    /**
+                     * Data classification of data field. Default 'C' - Confidential.
+                     */
+                    classification: "C";
+                    /**
+                     * Source of data.
+                     *
+                     * * '1' - Government-verified
+                     * * '2' - User provided
+                     * * '3' - Field is Not Applicable to Person
+                     * * '4' - Verified by SingPass
+                     *
+                     * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+                     */
+                    source: "1" | "2" | "3" | "4";
+                    /**
+                     * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
+                     */
+                    lastupdated: string; // date
+                    /**
+                     * Optional flag to indicate if data is unavailable from data source.
+                     *
+                     * **NOTE:**
+                     *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                     *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                     *   - If data is available from the data source, this property will not be present.
+                     *
+                     */
+                    unavailable?: boolean;
+                    /**
+                     * example:
+                     * 1360
+                     */
+                    value?: number;
+                };
+                /**
+                 * CPF Investment Account Details
+                 * example:
+                 * {
+                 *   "classification": "C",
+                 *   "source": "1",
+                 *   "lastupdated": "2019-03-26"
+                 * }
+                 */
+                account?: {
+                    /**
+                     * Data classification of data field. Default 'C' - Confidential.
+                     */
+                    classification: "C";
+                    /**
+                     * Source of data.
+                     *
+                     * * '1' - Government-verified
+                     * * '2' - User provided
+                     * * '3' - Field is Not Applicable to Person
+                     * * '4' - Verified by SingPass
+                     *
+                     * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+                     */
+                    source: "1" | "2" | "3" | "4";
+                    /**
+                     * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
+                     */
+                    lastupdated: string; // date
+                    /**
+                     * Optional flag to indicate if data is unavailable from data source.
+                     *
+                     * **NOTE:**
+                     *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                     *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                     *   - If data is available from the data source, this property will not be present.
+                     *
+                     */
+                    unavailable?: boolean;
+                    /**
+                     * Agent Bank Code
+                     */
+                    agentbankcode?: {
+                        /**
+                         * example:
+                         * OCBC
+                         */
+                        value?: string;
+                    };
+                    /**
+                     * Account Number
+                     */
+                    invbankacctno?: {
+                        /**
+                         * example:
+                         * 098-26644-4
+                         */
+                        value?: string;
+                    };
+                };
+                /**
+                 * Status of Self-Awareness Questionnaire Participation.
+                 * example:
+                 * {
+                 *   "classification": "C",
+                 *   "source": "1",
+                 *   "lastupdated": "2019-03-26"
+                 * }
+                 */
+                saqparticipationstatus?: {
+                    /**
+                     * Data classification of data field. Default 'C' - Confidential.
+                     */
+                    classification: "C";
+                    /**
+                     * Source of data.
+                     *
+                     * * '1' - Government-verified
+                     * * '2' - User provided
+                     * * '3' - Field is Not Applicable to Person
+                     * * '4' - Verified by SingPass
+                     *
+                     * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+                     */
+                    source: "1" | "2" | "3" | "4";
+                    /**
+                     * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
+                     */
+                    lastupdated: string; // date
+                    /**
+                     * Optional flag to indicate if data is unavailable from data source.
+                     *
+                     * **NOTE:**
+                     *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                     *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                     *   - If data is available from the data source, this property will not be present.
+                     *
+                     */
+                    unavailable?: boolean;
+                    /**
+                     * Possible values:
+                     *
+                     * * 'Y' – Participated
+                     * * 'X' – Existing CPFIS participant
+                     * * 'N' – Did not participate
+                     * example:
+                     * X
+                     */
+                    code?: "Y" | "X" | "N";
+                    /**
+                     * example:
+                     * Participated
+                     */
+                    desc?: string;
+                };
             };
         }
         /**
@@ -9236,7 +10394,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -9283,7 +10441,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -9330,7 +10488,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -9378,7 +10536,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -9427,7 +10585,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -9475,7 +10633,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -9524,7 +10682,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -9579,7 +10737,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -9632,7 +10790,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -9687,7 +10845,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -9742,7 +10900,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -9758,7 +10916,7 @@ export declare namespace MyInfoComponents {
             };
             /**
              * Nationality
-             * Nationality of Person.
+             * Nationality/Citizenship of Person.
              *
              * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
              * example:
@@ -9797,7 +10955,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -9848,7 +11006,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -9864,9 +11022,9 @@ export declare namespace MyInfoComponents {
             };
             /**
              * BirthCountry
-             * Country of Birth of Person.
+             * Country/Place of Birth of Person.
              *
-             * Refer to `country` in code table provided [HERE](https://public.cloud.myinfo.gov.sg/myinfobiz/myinfo-business-api-code-tables.xlsx) for description of each code.
+             * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
              * example:
              * {
              *   "classification": "C",
@@ -9903,7 +11061,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -9965,7 +11123,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -10012,7 +11170,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -10059,7 +11217,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -10075,19 +11233,21 @@ export declare namespace MyInfoComponents {
             };
             /**
              * RegAdd
-             * Registered Address of Person
+             * Registered Address of Person (including FIN holders)
              *
              * **Note:**
              * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
              * - check the `type` discriminator property to differentiate between the two address formats
+             * - may be unavailable for some FIN holders
              */
             regadd?: /**
              * RegAdd
-             * Registered Address of Person
+             * Registered Address of Person (including FIN holders)
              *
              * **Note:**
              * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
              * - check the `type` discriminator property to differentiate between the two address formats
+             * - may be unavailable for some FIN holders
              */
             /**
              * Address details (Singapore Format)
@@ -10234,7 +11394,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -10301,7 +11461,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -10400,7 +11560,7 @@ export declare namespace MyInfoComponents {
                         value?: string;
                     };
                     /**
-                     * Country of Address. For AddressSG this will always be "SG".
+                     * Country/Place of Address. For AddressSG this will always be "SG".
                      */
                     country?: {
                         code?: string;
@@ -10545,6 +11705,26 @@ export declare namespace MyInfoComponents {
                     value?: number; // double
                 };
                 /**
+                 * The amount of outstanding instalment the owner(s) have to pay for his/her loan in SGD.
+                 */
+                outstandinginstalment?: {
+                    /**
+                     * example:
+                     * 1000.01
+                     */
+                    value?: number; // double
+                };
+                /**
+                 * The purchase price of the HDB flat in SGD.
+                 */
+                purchaseprice?: {
+                    /**
+                     * example:
+                     * 1000.01
+                     */
+                    value?: number; // double
+                };
+                /**
                  * Data classification of data field. Default 'C' - Confidential.
                  */
                 classification: "C";
@@ -10560,7 +11740,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -10611,7 +11791,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -10658,7 +11838,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -10729,7 +11909,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -10800,7 +11980,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -10860,7 +12040,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -10910,7 +12090,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -10926,7 +12106,7 @@ export declare namespace MyInfoComponents {
             };
             /**
              * CountryOfMarriage
-             * Country of the latest marriage.
+             * Country/Place of the latest marriage.
              *
              *
              * **Note:** This field must be made **editable** on your digital service form even though `source` is '1' (Government Verified).
@@ -10966,7 +12146,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -11019,7 +12199,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -11072,7 +12252,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -11113,7 +12293,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -11307,14 +12487,54 @@ export declare namespace MyInfoComponents {
                      */
                     value?: string;
                 };
+                vaccinationrequirements?: {
+                    /**
+                     * Vaccination Requirement.
+                     *
+                     * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
+                     */
+                    requirement?: {
+                        /**
+                         * example:
+                         * 1M3D
+                         */
+                        code?: string;
+                        /**
+                         * example:
+                         * MINIMUM VACCINATION REQUIREMENT FOR PRESCHOOL
+                         */
+                        desc?: string;
+                    };
+                    fulfilled?: {
+                        /**
+                         * example:
+                         * true
+                         */
+                        value?: boolean;
+                    };
+                }[];
+                /**
+                 * Indicates whether the child is a Singapore Citizen at the time of birth.
+                 *
+                 * * Y - Yes
+                 * * N - No
+                 * * < BLANK > - Not applicable
+                 */
+                sgcitizenatbirthind?: {
+                    /**
+                     * example:
+                     * Y
+                     */
+                    value?: "Y" | "N" | "";
+                };
             }[];
             /**
              * SponsoredChildrenRecords
-             * Details of children sponsored to be SG/PR
+             * Details of children sponsored to be SC/PR/LTVP
              *
-             * For child below 21, the child’s Birth Cert No, Name, Sex, Race, Dialect, Date of Birth and Time of Birth will be shown.
+             * For child below 21, the child's NRIC/FIN, Name, Sex, Race, Secondary Race, Dialect, Date of Birth, Country/Place of Birth, Residential Status and SC/PR/LTVP grant date will be shown.
              *
-             * For child above 21, only the child’s last known NRIC will be shown.
+             * For child above 21, only the child's last known NRIC/FIN will be shown.
              */
             sponsoredchildrenrecords?: {
                 /**
@@ -11333,7 +12553,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -11347,7 +12567,7 @@ export declare namespace MyInfoComponents {
                  */
                 unavailable?: boolean;
                 /**
-                 * NRIC of child
+                 * NRIC/FIN of child
                  */
                 nric?: {
                     /**
@@ -11490,7 +12710,7 @@ export declare namespace MyInfoComponents {
                 };
                 /**
                  * BirthCountry
-                 * Country of Birth of child.
+                 * Country/Place of Birth of child.
                  *
                  * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
                  */
@@ -11547,7 +12767,7 @@ export declare namespace MyInfoComponents {
                     desc?: "ALIEN" | "CITIZEN" | "PR" | "UNKNOWN" | "NOT APPLICABLE";
                 };
                 /**
-                 * Nationality of child.
+                 * Nationality/Citizenship of child.
                  *
                  * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
                  */
@@ -11564,7 +12784,7 @@ export declare namespace MyInfoComponents {
                     desc?: string;
                 };
                 /**
-                 * Date granted Singapore Citizenship or Permanant Resident
+                 * Date granted Singapore Citizenship, Permanent Resident or Long-term Visit Pass
                  *
                  * See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
                  */
@@ -11575,6 +12795,32 @@ export declare namespace MyInfoComponents {
                      */
                     value?: string; // date
                 };
+                vaccinationrequirements?: {
+                    /**
+                     * Vaccination Requirement
+                     *
+                     * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
+                     */
+                    requirement?: {
+                        /**
+                         * example:
+                         * 1M3D
+                         */
+                        code?: string;
+                        /**
+                         * example:
+                         * MINIMUM VACCINATION REQUIREMENT FOR PRESCHOOL
+                         */
+                        desc?: string;
+                    };
+                    fulfilled?: {
+                        /**
+                         * example:
+                         * true
+                         */
+                        value?: boolean;
+                    };
+                }[];
             }[];
             /**
              * EduLevel
@@ -11626,7 +12872,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -11672,7 +12918,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -11737,7 +12983,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -11786,7 +13032,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -11832,7 +13078,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -11850,19 +13096,7 @@ export declare namespace MyInfoComponents {
              * PassType
              * Pass type of a FIN holder. <br/>**Note:** Only applies to a foreigner with a valid pass.
              *
-             * * 'RPass' - Work Permit
-             * * 'SPass' - S Pass
-             * * 'P1Pass' - Employment Pass
-             * * 'P2Pass' - Employment Pass
-             * * 'QPass' - Employment Pass
-             * * 'PEP' - Personalised Employment Pass
-             * * 'WHP' - Work Holiday Pass
-             * * 'TEP' - Training Employment Pass
-             * * 'Entre' - EntrePass
-             * * 'DP' - Dependent Pass
-             * * 'LTVP' - Long Term Visit Pass
-             * * 'LOC' - Letter of Consent
-             * * 'MWP' - Miscellaneous Work Pass
+             * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
              * example:
              * {
              *   "classification": "C",
@@ -11876,12 +13110,12 @@ export declare namespace MyInfoComponents {
                  * example:
                  * RPass
                  */
-                code?: "RPass" | "SPass" | "P1Pass" | "P2Pass" | "QPass" | "PEP" | "WHP" | "TEP" | "Entre" | "DP" | "LTVP" | "LOC" | "MWP";
+                code?: string;
                 /**
                  * example:
                  * Work Permit
                  */
-                desc?: "Work Permit" | "S Pass" | "Employment Pass" | "Employment Pass" | "Employment Pass" | "Personalised Employment Pass" | "Work Holiday Pass" | "Training Employment Pass" | "EntrePass" | "Dependent Pass" | "Long Term Visit Pass" | "Letter of Consent" | "Miscellaneous Work Pass";
+                desc?: string;
                 /**
                  * Data classification of data field. Default 'C' - Confidential.
                  */
@@ -11898,7 +13132,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -11948,7 +13182,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -11995,7 +13229,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -12056,7 +13290,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -12117,7 +13351,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -12148,7 +13382,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -12804,7 +14038,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -12989,7 +14223,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -13003,12 +14237,20 @@ export declare namespace MyInfoComponents {
                  */
                 unavailable?: boolean;
             };
+            /**
+             * example:
+             * {
+             *   "classification": "C",
+             *   "source": "1",
+             *   "lastupdated": "2019-03-26"
+             * }
+             */
             pioneergen?: {
                 eligibility: {
                     value: boolean;
                 };
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 quantum: {
@@ -13024,11 +14266,11 @@ export declare namespace MyInfoComponents {
                  *
                  * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
                  */
-                source: "1" | "2" | "3" | "4";
+                source: "1" | "2" | "3" | "4" | "1" | "2" | "3" | "4" | "1" | "2" | "3" | "4";
                 /**
                  * Data classification of data field. Default 'C' - Confidential.
                  */
-                classification: "C";
+                classification: "C" | "C" | "C";
                 /**
                  * Message code
                  *
@@ -13043,9 +14285,19 @@ export declare namespace MyInfoComponents {
                  * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
                  */
                 message: {
-                    code: "1" | "2" | "3" | "4" | "5" | "6" | "7";
-                    desc: "We regret that you are not eligible for the Pioneer Generation Package.  For further enquiries, please contact 1800-2222-888." | "You are eligible for the Pioneer Generation Package. For further enquiries, please contact 1800-2222-888." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to receive your Pioneer Generation card." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to start receiving your Pioneer Generation benefits, such as your MediSave top-up." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to start receiving your Pioneer Generation benefits." | "We understand that you have opted out of receiving the benefits under the Pioneer Generation Package. For further enquiries, please contact 1800-2222-888." | "Please call 1800-2222-888 to start receiving your PG benefits.";
+                    code: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "1" | "2" | "3" | "4" | "5" | "6" | "7";
+                    desc: "We regret that you are not eligible for the Pioneer Generation Package.  For further enquiries, please contact 1800-2222-888." | "You are eligible for the Pioneer Generation Package. For further enquiries, please contact 1800-2222-888." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to receive your Pioneer Generation card." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to start receiving your Pioneer Generation benefits, such as your MediSave top-up." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to start receiving your Pioneer Generation benefits." | "We understand that you have opted out of receiving the benefits under the Pioneer Generation Package. For further enquiries, please contact 1800-2222-888." | "Please call 1800-2222-888 to start receiving your PG benefits." | "We regret that you are not eligible for the Pioneer Generation Package.  For further enquiries, please contact 1800-2222-888." | "You are eligible for the Pioneer Generation Package. For further enquiries, please contact 1800-2222-888." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to receive your Pioneer Generation card." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to start receiving your Pioneer Generation benefits, such as your MediSave top-up." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to start receiving your Pioneer Generation benefits." | "We understand that you have opted out of receiving the benefits under the Pioneer Generation Package. For further enquiries, please contact 1800-2222-888." | "Please call 1800-2222-888 to start receiving your PG benefits.";
                 };
+                /**
+                 * Optional flag to indicate if data is unavailable from data source.
+                 *
+                 * **NOTE:**
+                 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                 *   - If data is available from the data source, this property will not be present.
+                 *
+                 */
+                unavailable?: boolean;
             };
             /**
              * MerdekaGen
@@ -13109,7 +14361,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -13181,7 +14433,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -13283,7 +14535,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -13335,7 +14587,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -13382,7 +14634,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -13429,7 +14681,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -13477,7 +14729,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -13526,7 +14778,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -13574,7 +14826,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -13623,7 +14875,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -13678,7 +14930,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -13731,7 +14983,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -13786,7 +15038,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -13841,7 +15093,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -13857,7 +15109,7 @@ export declare namespace MyInfoComponents {
             };
             /**
              * Nationality
-             * Nationality of Person.
+             * Nationality/Citizenship of Person.
              *
              * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
              * example:
@@ -13896,7 +15148,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -13947,7 +15199,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -13963,9 +15215,9 @@ export declare namespace MyInfoComponents {
             };
             /**
              * BirthCountry
-             * Country of Birth of Person.
+             * Country/Place of Birth of Person.
              *
-             * Refer to `country` in code table provided [HERE](https://public.cloud.myinfo.gov.sg/myinfobiz/myinfo-business-api-code-tables.xlsx) for description of each code.
+             * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
              * example:
              * {
              *   "classification": "C",
@@ -14002,7 +15254,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -14064,7 +15316,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -14111,7 +15363,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -14158,7 +15410,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -14174,19 +15426,21 @@ export declare namespace MyInfoComponents {
             };
             /**
              * RegAdd
-             * Registered Address of Person
+             * Registered Address of Person (including FIN holders)
              *
              * **Note:**
              * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
              * - check the `type` discriminator property to differentiate between the two address formats
+             * - may be unavailable for some FIN holders
              */
             regadd?: /**
              * RegAdd
-             * Registered Address of Person
+             * Registered Address of Person (including FIN holders)
              *
              * **Note:**
              * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
              * - check the `type` discriminator property to differentiate between the two address formats
+             * - may be unavailable for some FIN holders
              */
             /**
              * Address details (Singapore Format)
@@ -14333,7 +15587,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -14400,7 +15654,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -14499,7 +15753,7 @@ export declare namespace MyInfoComponents {
                         value?: string;
                     };
                     /**
-                     * Country of Address. For AddressSG this will always be "SG".
+                     * Country/Place of Address. For AddressSG this will always be "SG".
                      */
                     country?: {
                         code?: string;
@@ -14644,6 +15898,26 @@ export declare namespace MyInfoComponents {
                     value?: number; // double
                 };
                 /**
+                 * The amount of outstanding instalment the owner(s) have to pay for his/her loan in SGD.
+                 */
+                outstandinginstalment?: {
+                    /**
+                     * example:
+                     * 1000.01
+                     */
+                    value?: number; // double
+                };
+                /**
+                 * The purchase price of the HDB flat in SGD.
+                 */
+                purchaseprice?: {
+                    /**
+                     * example:
+                     * 1000.01
+                     */
+                    value?: number; // double
+                };
+                /**
                  * Data classification of data field. Default 'C' - Confidential.
                  */
                 classification: "C";
@@ -14659,7 +15933,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -14710,7 +15984,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -14757,7 +16031,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -14828,7 +16102,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -14899,7 +16173,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -14959,7 +16233,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -15009,7 +16283,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -15025,7 +16299,7 @@ export declare namespace MyInfoComponents {
             };
             /**
              * CountryOfMarriage
-             * Country of the latest marriage.
+             * Country/Place of the latest marriage.
              *
              *
              * **Note:** This field must be made **editable** on your digital service form even though `source` is '1' (Government Verified).
@@ -15065,7 +16339,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -15118,7 +16392,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -15171,7 +16445,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -15212,7 +16486,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -15406,14 +16680,54 @@ export declare namespace MyInfoComponents {
                      */
                     value?: string;
                 };
+                vaccinationrequirements?: {
+                    /**
+                     * Vaccination Requirement.
+                     *
+                     * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
+                     */
+                    requirement?: {
+                        /**
+                         * example:
+                         * 1M3D
+                         */
+                        code?: string;
+                        /**
+                         * example:
+                         * MINIMUM VACCINATION REQUIREMENT FOR PRESCHOOL
+                         */
+                        desc?: string;
+                    };
+                    fulfilled?: {
+                        /**
+                         * example:
+                         * true
+                         */
+                        value?: boolean;
+                    };
+                }[];
+                /**
+                 * Indicates whether the child is a Singapore Citizen at the time of birth.
+                 *
+                 * * Y - Yes
+                 * * N - No
+                 * * < BLANK > - Not applicable
+                 */
+                sgcitizenatbirthind?: {
+                    /**
+                     * example:
+                     * Y
+                     */
+                    value?: "Y" | "N" | "";
+                };
             }[];
             /**
              * SponsoredChildrenRecords
-             * Details of children sponsored to be SG/PR
+             * Details of children sponsored to be SC/PR/LTVP
              *
-             * For child below 21, the child’s Birth Cert No, Name, Sex, Race, Dialect, Date of Birth and Time of Birth will be shown.
+             * For child below 21, the child's NRIC/FIN, Name, Sex, Race, Secondary Race, Dialect, Date of Birth, Country/Place of Birth, Residential Status and SC/PR/LTVP grant date will be shown.
              *
-             * For child above 21, only the child’s last known NRIC will be shown.
+             * For child above 21, only the child's last known NRIC/FIN will be shown.
              */
             sponsoredchildrenrecords?: {
                 /**
@@ -15432,7 +16746,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -15446,7 +16760,7 @@ export declare namespace MyInfoComponents {
                  */
                 unavailable?: boolean;
                 /**
-                 * NRIC of child
+                 * NRIC/FIN of child
                  */
                 nric?: {
                     /**
@@ -15589,7 +16903,7 @@ export declare namespace MyInfoComponents {
                 };
                 /**
                  * BirthCountry
-                 * Country of Birth of child.
+                 * Country/Place of Birth of child.
                  *
                  * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
                  */
@@ -15646,7 +16960,7 @@ export declare namespace MyInfoComponents {
                     desc?: "ALIEN" | "CITIZEN" | "PR" | "UNKNOWN" | "NOT APPLICABLE";
                 };
                 /**
-                 * Nationality of child.
+                 * Nationality/Citizenship of child.
                  *
                  * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
                  */
@@ -15663,7 +16977,7 @@ export declare namespace MyInfoComponents {
                     desc?: string;
                 };
                 /**
-                 * Date granted Singapore Citizenship or Permanant Resident
+                 * Date granted Singapore Citizenship, Permanent Resident or Long-term Visit Pass
                  *
                  * See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
                  */
@@ -15674,6 +16988,32 @@ export declare namespace MyInfoComponents {
                      */
                     value?: string; // date
                 };
+                vaccinationrequirements?: {
+                    /**
+                     * Vaccination Requirement
+                     *
+                     * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
+                     */
+                    requirement?: {
+                        /**
+                         * example:
+                         * 1M3D
+                         */
+                        code?: string;
+                        /**
+                         * example:
+                         * MINIMUM VACCINATION REQUIREMENT FOR PRESCHOOL
+                         */
+                        desc?: string;
+                    };
+                    fulfilled?: {
+                        /**
+                         * example:
+                         * true
+                         */
+                        value?: boolean;
+                    };
+                }[];
             }[];
             /**
              * EduLevel
@@ -15725,7 +17065,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -15771,7 +17111,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -15836,7 +17176,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -15885,7 +17225,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -15931,7 +17271,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -15949,19 +17289,7 @@ export declare namespace MyInfoComponents {
              * PassType
              * Pass type of a FIN holder. <br/>**Note:** Only applies to a foreigner with a valid pass.
              *
-             * * 'RPass' - Work Permit
-             * * 'SPass' - S Pass
-             * * 'P1Pass' - Employment Pass
-             * * 'P2Pass' - Employment Pass
-             * * 'QPass' - Employment Pass
-             * * 'PEP' - Personalised Employment Pass
-             * * 'WHP' - Work Holiday Pass
-             * * 'TEP' - Training Employment Pass
-             * * 'Entre' - EntrePass
-             * * 'DP' - Dependent Pass
-             * * 'LTVP' - Long Term Visit Pass
-             * * 'LOC' - Letter of Consent
-             * * 'MWP' - Miscellaneous Work Pass
+             * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
              * example:
              * {
              *   "classification": "C",
@@ -15975,12 +17303,12 @@ export declare namespace MyInfoComponents {
                  * example:
                  * RPass
                  */
-                code?: "RPass" | "SPass" | "P1Pass" | "P2Pass" | "QPass" | "PEP" | "WHP" | "TEP" | "Entre" | "DP" | "LTVP" | "LOC" | "MWP";
+                code?: string;
                 /**
                  * example:
                  * Work Permit
                  */
-                desc?: "Work Permit" | "S Pass" | "Employment Pass" | "Employment Pass" | "Employment Pass" | "Personalised Employment Pass" | "Work Holiday Pass" | "Training Employment Pass" | "EntrePass" | "Dependent Pass" | "Long Term Visit Pass" | "Letter of Consent" | "Miscellaneous Work Pass";
+                desc?: string;
                 /**
                  * Data classification of data field. Default 'C' - Confidential.
                  */
@@ -15997,7 +17325,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -16047,7 +17375,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -16094,7 +17422,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -16155,7 +17483,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -16216,7 +17544,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -16247,7 +17575,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -16903,7 +18231,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -17088,7 +18416,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -17213,9 +18541,71 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
+                /**
+                 * Optional flag to indicate if data is unavailable from data source.
+                 *
+                 * **NOTE:**
+                 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                 *   - If data is available from the data source, this property will not be present.
+                 *
+                 */
+                unavailable?: boolean;
+            };
+            /**
+             * example:
+             * {
+             *   "classification": "C",
+             *   "source": "1",
+             *   "lastupdated": "2019-03-26"
+             * }
+             */
+            pioneergen?: {
+                eligibility: {
+                    value: boolean;
+                };
+                /**
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
+                 */
+                lastupdated: string; // date
+                quantum: {
+                    value: string;
+                };
+                /**
+                 * Source of data.
+                 *
+                 * * '1' - Government-verified
+                 * * '2' - User provided
+                 * * '3' - Field is Not Applicable to Person
+                 * * '4' - Verified by SingPass
+                 *
+                 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+                 */
+                source: "1" | "2" | "3" | "4" | "1" | "2" | "3" | "4";
+                /**
+                 * Data classification of data field. Default 'C' - Confidential.
+                 */
+                classification: "C" | "C";
+                /**
+                 * Message code
+                 *
+                 * * '1' - PG Eligibility Tag: N
+                 * * '2' - PG Eligibility Tag: Y, Sign-up Tag: Y, Invalid Address Tag: N
+                 * * '3' - PG Eligibility Tag: Y, Sign-up Tag: Y, Invalid Address Tag: Y
+                 * * '4' - PG Eligibility Tag: Y, Sign-up Tag: N, Invalid Address Tag: N
+                 * * '5' - PG Eligibility Tag: Y, Sign-up Tag: N, Invalid Address Tag: Y
+                 * * '6' - PG Eligibility Tag: Y, Opt-Out Tag: Y
+                 * * '7' - PG Eligibility Tag: Y, Sign-up Tag: Y, NIL Status: Y
+                 *
+                 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+                 */
+                message: {
+                    code: "1" | "2" | "3" | "4" | "5" | "6" | "7";
+                    desc: "We regret that you are not eligible for the Pioneer Generation Package.  For further enquiries, please contact 1800-2222-888." | "You are eligible for the Pioneer Generation Package. For further enquiries, please contact 1800-2222-888." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to receive your Pioneer Generation card." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to start receiving your Pioneer Generation benefits, such as your MediSave top-up." | "You are eligible for the Pioneer Generation Package. Please contact 1800-2222-888 to start receiving your Pioneer Generation benefits." | "We understand that you have opted out of receiving the benefits under the Pioneer Generation Package. For further enquiries, please contact 1800-2222-888." | "Please call 1800-2222-888 to start receiving your PG benefits.";
+                };
                 /**
                  * Optional flag to indicate if data is unavailable from data source.
                  *
@@ -17285,7 +18675,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -17387,7 +18777,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -17452,7 +18842,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -17572,7 +18962,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -17614,7 +19004,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -17656,7 +19046,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -18334,7 +19724,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -18739,7 +20129,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -18822,7 +20212,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -18925,7 +20315,7 @@ export declare namespace MyInfoComponents {
                  */
                 source: "1" | "2" | "3" | "4";
                 /**
-                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
                  */
                 lastupdated: string; // date
                 /**
@@ -18938,6 +20328,302 @@ export declare namespace MyInfoComponents {
                  *
                  */
                 unavailable?: boolean;
+            };
+            /**
+             * CPF Home Protection Scheme
+             * CPF Home Protection Scheme
+             * example:
+             * {
+             *   "classification": "C",
+             *   "source": "1",
+             *   "lastupdated": "2019-03-26"
+             * }
+             */
+            cpfhomeprotectionscheme?: {
+                coverage?: {
+                    /**
+                     * Indicator
+                     * example:
+                     * true
+                     */
+                    value?: boolean;
+                };
+                premium?: {
+                    /**
+                     * Coverage premium. OPTIONAL attribute, present only if 'coverage' is true
+                     * example:
+                     * 100.01
+                     */
+                    value?: number;
+                };
+                shareofcover?: {
+                    /**
+                     * Share of coverage (in percentage). OPTIONAL attribute, present only if 'coverage' is true
+                     * example:
+                     * 20
+                     */
+                    value?: number;
+                };
+                /**
+                 * Data classification of data field. Default 'C' - Confidential.
+                 */
+                classification: "C";
+                /**
+                 * Source of data.
+                 *
+                 * * '1' - Government-verified
+                 * * '2' - User provided
+                 * * '3' - Field is Not Applicable to Person
+                 * * '4' - Verified by SingPass
+                 *
+                 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+                 */
+                source: "1" | "2" | "3" | "4";
+                /**
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
+                 */
+                lastupdated: string; // date
+                /**
+                 * Optional flag to indicate if data is unavailable from data source.
+                 *
+                 * **NOTE:**
+                 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                 *   - If data is available from the data source, this property will not be present.
+                 *
+                 */
+                unavailable?: boolean;
+            };
+            /**
+             * CPF Dependant Protection Scheme
+             * CPF Dependant Protection Scheme
+             * example:
+             * {
+             *   "classification": "C",
+             *   "source": "1",
+             *   "lastupdated": "2019-03-26"
+             * }
+             */
+            cpfdependantprotectionscheme?: {
+                coverage?: {
+                    /**
+                     * Indicator
+                     * example:
+                     * true
+                     */
+                    value?: boolean;
+                };
+                insurercode?: {
+                    /**
+                     * Insurer Code
+                     * example:
+                     * 9GEL
+                     */
+                    value?: string;
+                };
+                sumassuredamount?: {
+                    /**
+                     * Sum assured. OPTIONAL attribute, present only if 'coverage' is true
+                     * example:
+                     * 70000
+                     */
+                    value?: number;
+                };
+                /**
+                 * Data classification of data field. Default 'C' - Confidential.
+                 */
+                classification: "C";
+                /**
+                 * Source of data.
+                 *
+                 * * '1' - Government-verified
+                 * * '2' - User provided
+                 * * '3' - Field is Not Applicable to Person
+                 * * '4' - Verified by SingPass
+                 *
+                 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+                 */
+                source: "1" | "2" | "3" | "4";
+                /**
+                 * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
+                 */
+                lastupdated: string; // date
+                /**
+                 * Optional flag to indicate if data is unavailable from data source.
+                 *
+                 * **NOTE:**
+                 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                 *   - If data is available from the data source, this property will not be present.
+                 *
+                 */
+                unavailable?: boolean;
+            };
+            /**
+             * CPFInvestmentScheme
+             * CPF Investment Scheme.
+             */
+            cpfinvestmentscheme?: {
+                /**
+                 * Quantity of Special Discounted Shares shares held
+                 * example:
+                 * {
+                 *   "classification": "C",
+                 *   "source": "1",
+                 *   "lastupdated": "2019-03-26"
+                 * }
+                 */
+                sdsnetshareholdingqty?: {
+                    /**
+                     * Data classification of data field. Default 'C' - Confidential.
+                     */
+                    classification: "C";
+                    /**
+                     * Source of data.
+                     *
+                     * * '1' - Government-verified
+                     * * '2' - User provided
+                     * * '3' - Field is Not Applicable to Person
+                     * * '4' - Verified by SingPass
+                     *
+                     * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+                     */
+                    source: "1" | "2" | "3" | "4";
+                    /**
+                     * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
+                     */
+                    lastupdated: string; // date
+                    /**
+                     * Optional flag to indicate if data is unavailable from data source.
+                     *
+                     * **NOTE:**
+                     *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                     *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                     *   - If data is available from the data source, this property will not be present.
+                     *
+                     */
+                    unavailable?: boolean;
+                    /**
+                     * example:
+                     * 1360
+                     */
+                    value?: number;
+                };
+                /**
+                 * CPF Investment Account Details
+                 * example:
+                 * {
+                 *   "classification": "C",
+                 *   "source": "1",
+                 *   "lastupdated": "2019-03-26"
+                 * }
+                 */
+                account?: {
+                    /**
+                     * Data classification of data field. Default 'C' - Confidential.
+                     */
+                    classification: "C";
+                    /**
+                     * Source of data.
+                     *
+                     * * '1' - Government-verified
+                     * * '2' - User provided
+                     * * '3' - Field is Not Applicable to Person
+                     * * '4' - Verified by SingPass
+                     *
+                     * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+                     */
+                    source: "1" | "2" | "3" | "4";
+                    /**
+                     * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
+                     */
+                    lastupdated: string; // date
+                    /**
+                     * Optional flag to indicate if data is unavailable from data source.
+                     *
+                     * **NOTE:**
+                     *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                     *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                     *   - If data is available from the data source, this property will not be present.
+                     *
+                     */
+                    unavailable?: boolean;
+                    /**
+                     * Agent Bank Code
+                     */
+                    agentbankcode?: {
+                        /**
+                         * example:
+                         * OCBC
+                         */
+                        value?: string;
+                    };
+                    /**
+                     * Account Number
+                     */
+                    invbankacctno?: {
+                        /**
+                         * example:
+                         * 098-26644-4
+                         */
+                        value?: string;
+                    };
+                };
+                /**
+                 * Status of Self-Awareness Questionnaire Participation.
+                 * example:
+                 * {
+                 *   "classification": "C",
+                 *   "source": "1",
+                 *   "lastupdated": "2019-03-26"
+                 * }
+                 */
+                saqparticipationstatus?: {
+                    /**
+                     * Data classification of data field. Default 'C' - Confidential.
+                     */
+                    classification: "C";
+                    /**
+                     * Source of data.
+                     *
+                     * * '1' - Government-verified
+                     * * '2' - User provided
+                     * * '3' - Field is Not Applicable to Person
+                     * * '4' - Verified by SingPass
+                     *
+                     * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+                     */
+                    source: "1" | "2" | "3" | "4";
+                    /**
+                     * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
+                     */
+                    lastupdated: string; // date
+                    /**
+                     * Optional flag to indicate if data is unavailable from data source.
+                     *
+                     * **NOTE:**
+                     *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+                     *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+                     *   - If data is available from the data source, this property will not be present.
+                     *
+                     */
+                    unavailable?: boolean;
+                    /**
+                     * Possible values:
+                     *
+                     * * 'Y' – Participated
+                     * * 'X' – Existing CPFIS participant
+                     * * 'N' – Did not participate
+                     * example:
+                     * X
+                     */
+                    code?: "Y" | "X" | "N";
+                    /**
+                     * example:
+                     * Participated
+                     */
+                    desc?: string;
+                };
             };
         }
         export interface PhoneNumLocal {
@@ -19036,19 +20722,21 @@ export declare namespace MyInfoComponents {
         }
         /**
          * RegAdd
-         * Registered Address of Person
+         * Registered Address of Person (including FIN holders)
          *
          * **Note:**
          * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
          * - check the `type` discriminator property to differentiate between the two address formats
+         * - may be unavailable for some FIN holders
          */
         export type Regadd = /**
          * RegAdd
-         * Registered Address of Person
+         * Registered Address of Person (including FIN holders)
          *
          * **Note:**
          * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
          * - check the `type` discriminator property to differentiate between the two address formats
+         * - may be unavailable for some FIN holders
          */
         /**
          * Address details (Singapore Format)
@@ -19228,7 +20916,7 @@ export declare namespace MyInfoComponents {
              */
             source: "1" | "2" | "3" | "4";
             /**
-             * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+             * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
              */
             lastupdated: string; // date
             /**
@@ -19242,7 +20930,7 @@ export declare namespace MyInfoComponents {
              */
             unavailable?: boolean;
             /**
-             * NRIC of child
+             * NRIC/FIN of child
              */
             nric?: {
                 /**
@@ -19385,7 +21073,7 @@ export declare namespace MyInfoComponents {
             };
             /**
              * BirthCountry
-             * Country of Birth of child.
+             * Country/Place of Birth of child.
              *
              * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
              */
@@ -19442,7 +21130,7 @@ export declare namespace MyInfoComponents {
                 desc?: "ALIEN" | "CITIZEN" | "PR" | "UNKNOWN" | "NOT APPLICABLE";
             };
             /**
-             * Nationality of child.
+             * Nationality/Citizenship of child.
              *
              * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
              */
@@ -19459,7 +21147,7 @@ export declare namespace MyInfoComponents {
                 desc?: string;
             };
             /**
-             * Date granted Singapore Citizenship or Permanant Resident
+             * Date granted Singapore Citizenship, Permanent Resident or Long-term Visit Pass
              *
              * See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
              */
@@ -19470,6 +21158,32 @@ export declare namespace MyInfoComponents {
                  */
                 value?: string; // date
             };
+            vaccinationrequirements?: {
+                /**
+                 * Vaccination Requirement
+                 *
+                 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
+                 */
+                requirement?: {
+                    /**
+                     * example:
+                     * 1M3D
+                     */
+                    code?: string;
+                    /**
+                     * example:
+                     * MINIMUM VACCINATION REQUIREMENT FOR PRESCHOOL
+                     */
+                    desc?: string;
+                };
+                fulfilled?: {
+                    /**
+                     * example:
+                     * true
+                     */
+                    value?: boolean;
+                };
+            }[];
         }
         /**
          * UINFIN
@@ -19500,7 +21214,7 @@ export declare namespace MyInfoComponents {
              */
             source: "1" | "2" | "3" | "4";
             /**
-             * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
+             * Last updated date of data field. See "full-date" in http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14. Can be blank if the source agency does not have record for the user.
              */
             lastupdated: string; // date
             /**

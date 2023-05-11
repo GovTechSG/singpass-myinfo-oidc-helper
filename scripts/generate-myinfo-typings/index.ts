@@ -54,7 +54,7 @@ const argv = yargs
 					requiresArg: true,
 					describe: "URL to the latest myinfo code reference tables",
 					// NOTE: To be updated where necessary
-					default: "https://api.singpass.gov.sg/assets/api-lib/myinfo/downloads/myinfo-api-code-tables.xlsx"
+					default: "https://public.cloud.myinfo.gov.sg/dpp/frontend/assets/api-lib/myinfo/downloads/myinfo-api-code-tables.xlsx"
 				});
 		},
 		handler: () => { },

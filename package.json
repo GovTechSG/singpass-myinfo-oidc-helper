@@ -1,6 +1,6 @@
 {
 	"name": "@govtechsg/singpass-myinfo-oidc-helper",
-	"version": "7.2.0",
+	"version": "7.3.0",
 	"description": "Helper for building a Relying Party to integrate with Singpass OIDC and MyInfo person basic API",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -57,6 +57,6 @@
 		"tslint-no-circular-imports": "~0.7.0",
 		"tslint-sonarts": "^1.9.0",
 		"typescript": "^5.0.4",
-		"xlsx": "~0.18.5"
+		"xlsx": "https://cdn.sheetjs.com/xlsx-0.19.3/xlsx-0.19.3.tgz"
 	}
 }

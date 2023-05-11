@@ -1,6 +1,6 @@
 // tslint:disable
 // =============================================================================
-// This file was generated with `npm run generate-myinfo-typings` on 2022-09-19
+// This file was generated with `npm run generate-myinfo-typings` on 2023-05-10
 // Any modifications to this file may be overwritten when the script runs again
 // Check README.md for more information
 // =============================================================================
@@ -9,33 +9,33 @@ import { EnumUtils } from "../../../util/EnumUtils";
 export namespace MyInfoInsurerCode {
 	export enum Cpfdependantprotectionscheme {
 		"GREAT_EASTERN_LIFE_INSURANCE" = "9GEL",
-		"NTUC_INCOME" = "9NTU",
+		"INCOME_INSURANCE" = "9NTU",
 	}
 
 	enum CpfdependantprotectionschemeMapping {
 		"GREAT_EASTERN_LIFE_INSURANCE" = "GREAT EASTERN LIFE INSURANCE",
-		"NTUC_INCOME" = "NTUC INCOME",
+		"INCOME_INSURANCE" = "INCOME INSURANCE",
 	}
 
 	type CpfdependantprotectionschemeDesc = `${ CpfdependantprotectionschemeMapping }`;
 
 	export enum Cpfmedishieldlife {
-		"NTUC_INCOME" = "NTU",
+		"INCOME_INSURANCE" = "NTU",
 		"AIA" = "AIA",
 		"GREAT_EASTERN" = "GEL",
 		"PRUDENTIAL" = "PRU",
 		"SINGLIFE" = "AVI",
-		"AXA" = "AXA",
+		"HSBC_LIFE" = "AXA",
 		"RAFFLES_HEALTH_INSURANCE" = "RHI",
 	}
 
 	enum CpfmedishieldlifeMapping {
-		"NTUC_INCOME" = "NTUC INCOME",
+		"INCOME_INSURANCE" = "INCOME INSURANCE",
 		"AIA" = "AIA",
 		"GREAT_EASTERN" = "GREAT EASTERN",
 		"PRUDENTIAL" = "PRUDENTIAL",
 		"SINGLIFE" = "SINGLIFE",
-		"AXA" = "AXA",
+		"HSBC_LIFE" = "HSBC LIFE",
 		"RAFFLES_HEALTH_INSURANCE" = "RAFFLES HEALTH INSURANCE",
 	}
 
@@ -50,7 +50,6 @@ export namespace MyInfoInsurerCode {
 			toEnumDesc: EnumUtils.toEnumDescFunc<Cpfdependantprotectionscheme, CpfdependantprotectionschemeDesc>(Cpfdependantprotectionscheme, CpfdependantprotectionschemeMapping),
 		};
 	}
-
 	export namespace Cpfmedishieldlife {
 		export const fn = {
 			keys: EnumUtils.keysFunc<Cpfmedishieldlife>(Cpfmedishieldlife),
@@ -60,5 +59,4 @@ export namespace MyInfoInsurerCode {
 			toEnumDesc: EnumUtils.toEnumDescFunc<Cpfmedishieldlife, CpfmedishieldlifeDesc>(Cpfmedishieldlife, CpfmedishieldlifeMapping),
 		};
 	}
-
 }
