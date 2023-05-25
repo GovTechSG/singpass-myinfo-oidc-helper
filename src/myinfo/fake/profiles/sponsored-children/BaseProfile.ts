@@ -1,6 +1,6 @@
 import * as _ from "lodash";
 import { FakeProfile } from "../fake-profile";
-import { MyInfoComponents, MyInfoCountryCode, MyInfoDialectCode, MyInfoMaritialStatusCode, MyInfoMerdekaGenerationMessageCode, MyInfoNationalityCode, MyInfoPioneerGenerationMessageCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode } from "../../../domain";
+import { MyInfoComponents, MyInfoCountryPlaceCode, MyInfoDialectCode, MyInfoMaritalStatusCode, MyInfoMerdekaGenerationMessageCode, MyInfoNationalityCitizenshipCode, MyInfoPioneerGenerationMessageCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode } from "../../../domain";
 import { aliasName } from "../common";
 
 const id = "S8399420G";
@@ -21,8 +21,8 @@ export const BaseProfile: FakeProfile = {
 			},
 			countryofmarriage: {
 				lastupdated: "2018-05-10",
-				code: MyInfoCountryCode.SINGAPORE,
-				desc: MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.SINGAPORE),
+				code: MyInfoCountryPlaceCode.SINGAPORE,
+				desc: MyInfoCountryPlaceCode.fn.toEnumDesc(MyInfoCountryPlaceCode.SINGAPORE),
 				source: "1",
 				classification: "C",
 			},
@@ -70,8 +70,8 @@ export const BaseProfile: FakeProfile = {
 			},
 			nationality: {
 				lastupdated: "2018-06-01",
-				code: MyInfoNationalityCode.SINGAPORE_CITIZEN,
-				desc: MyInfoNationalityCode.fn.toEnumDesc(MyInfoNationalityCode.SINGAPORE_CITIZEN),
+				code: MyInfoNationalityCitizenshipCode.SINGAPORE_CITIZEN,
+				desc: MyInfoNationalityCitizenshipCode.fn.toEnumDesc(MyInfoNationalityCitizenshipCode.SINGAPORE_CITIZEN),
 				source: "1",
 				classification: "C",
 			},
@@ -180,8 +180,8 @@ export const BaseProfile: FakeProfile = {
 			},
 			birthcountry: {
 				lastupdated: "2018-06-01",
-				code: MyInfoCountryCode.SINGAPORE,
-				desc: MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.SINGAPORE),
+				code: MyInfoCountryPlaceCode.SINGAPORE,
+				desc: MyInfoCountryPlaceCode.fn.toEnumDesc(MyInfoCountryPlaceCode.SINGAPORE),
 				source: "1",
 				classification: "C",
 			},
@@ -221,8 +221,8 @@ export const BaseProfile: FakeProfile = {
 			},
 			marital: {
 				lastupdated: "2018-05-10",
-				code: MyInfoMaritialStatusCode.MARRIED,
-				desc: MyInfoMaritialStatusCode.fn.toEnumDesc(MyInfoMaritialStatusCode.MARRIED),
+				code: MyInfoMaritalStatusCode.MARRIED,
+				desc: MyInfoMaritalStatusCode.fn.toEnumDesc(MyInfoMaritalStatusCode.MARRIED),
 				source: "1",
 				classification: "C",
 			},
@@ -314,8 +314,8 @@ export const BaseProfile: FakeProfile = {
 
 const address = (): MyInfoComponents.Schemas.DataitemAddressSg => ({
 	country: {
-		code: MyInfoCountryCode.SINGAPORE,
-		desc: MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.SINGAPORE),
+		code: MyInfoCountryPlaceCode.SINGAPORE,
+		desc: MyInfoCountryPlaceCode.fn.toEnumDesc(MyInfoCountryPlaceCode.SINGAPORE),
 	},
 	unit: {
 		value: "22",

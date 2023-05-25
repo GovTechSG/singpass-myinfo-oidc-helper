@@ -3,7 +3,7 @@ import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 import { ChildrenRecords } from "./childbirthRecords";
 import { aliasName } from "../profiles/common";
-import { MyInfoCountryCode, MyInfoDrivingLicenceValidityCode, MyInfoHDBTypeCode, MyInfoMaritialStatusCode, MyInfoNationalityCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
+import { MyInfoCountryPlaceCode, MyInfoDrivingLicenceValidityCode, MyInfoHDBTypeCode, MyInfoMaritalStatusCode, MyInfoNationalityCitizenshipCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
 
 const id = "T2446959F";
 const name = ProfileArchetype.MRS_PR_HDB_OWNER_WORKING_ADULT_MID_CAREER_PMETS;
@@ -51,14 +51,14 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 			lastupdated: "2020-01-01",
 			source: "1",
 			classification: "C",
-			code: MyInfoNationalityCode.MALAYSIAN,
+			code: MyInfoNationalityCitizenshipCode.MALAYSIAN,
 		};
 		profile.birthcountry = {
 			lastupdated: "2020-01-01",
 			source: "1",
 			classification: "C",
-			code: MyInfoCountryCode.MALAYSIA,
-			desc: MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.MALAYSIA),
+			code: MyInfoCountryPlaceCode.MALAYSIA,
+			desc: MyInfoCountryPlaceCode.fn.toEnumDesc(MyInfoCountryPlaceCode.MALAYSIA),
 		};
 		profile.sex = {
 			lastupdated: "2020-01-01",
@@ -71,8 +71,8 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 			lastupdated: "2020-01-01",
 			source: "1",
 			classification: "C",
-			code: MyInfoMaritialStatusCode.MARRIED,
-			desc: MyInfoMaritialStatusCode.fn.toEnumDesc(MyInfoMaritialStatusCode.MARRIED),
+			code: MyInfoMaritalStatusCode.MARRIED,
+			desc: MyInfoMaritalStatusCode.fn.toEnumDesc(MyInfoMaritalStatusCode.MARRIED),
 		};
 		profile.childrenbirthrecords = [ChildrenRecords.child1MonthOld, ChildrenRecords.child6YearsOld, ChildrenRecords.childMiddle1];
 		profile.hdbtype = {

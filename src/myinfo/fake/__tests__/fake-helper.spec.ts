@@ -1,4 +1,4 @@
-import { MyInfoComponents, MyInfoLifeStatusCode, MyInfoOccupationCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
+import { MyInfoComponents, MyInfoLifeStatusCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
 import { ChildrenBirthRecord, CpfContributionHistory, FakeMyInfoHelper, OverrideMode, transformChildBirthRecord, transformItems, transformItemsWithAdditionalMock } from "../fake-helper";
 import { ProfileArchetype } from "../profiles/fake-profile";
 import { mrSGFatherNormalChildrenOnly } from "../profiles/sponsored-children/mrSGFatherNormalChildrenOnly";
@@ -72,30 +72,6 @@ describe("FakeMyInfoHelper", () => {
 			expect(person).toHaveProperty("vehicles");
 			expect(person).toHaveProperty("drivinglicence.pdl.validity");
 			expect(person).toHaveProperty("drivinglicence.lastupdated");
-		});
-
-		it("should save the occupation value if the user passes occupationFreeForm mock params", () => {
-			const fakeHelper = new FakeMyInfoHelper();
-			const person = fakeHelper.getPersonBasic({ archetype: ProfileArchetype.MR_JAPANESE_ADDRESS_BLANK, occupationfreeform: "Software Engineer" });
-			expect(person).toHaveProperty("residentialstatus");
-			expect(person).toHaveProperty("occupation");
-			expect(person.occupation.value).toStrictEqual("Software Engineer");
-		});
-
-		it("should save the occupation code as value if the user is non SC/PR(based on residential status) user", () => {
-			const fakeHelper = new FakeMyInfoHelper();
-			const person = fakeHelper.getPersonBasic({ archetype: ProfileArchetype.MR_MY_DADDY_PERFECT, residentialstatus: MyInfoResidentialCode.ALIEN, occupation: MyInfoOccupationCode.LABORATORY_ATTENDANT });
-			expect(person).toHaveProperty("residentialstatus");
-			expect(person).toHaveProperty("occupation");
-			expect(person.occupation.value).toStrictEqual(MyInfoOccupationCode.fn.toEnumDesc(MyInfoOccupationCode.LABORATORY_ATTENDANT));
-		});
-
-		it("should not save the occupation code if the user is SC/PR(based on residential status) user", () => {
-			const fakeHelper = new FakeMyInfoHelper();
-			const person = fakeHelper.getPersonBasic({ archetype: ProfileArchetype.MR_JAPANESE_ADDRESS_BLANK, residentialstatus: MyInfoResidentialCode.CITIZEN, occupation: MyInfoOccupationCode.LABORATORY_ATTENDANT });
-			expect(person).toHaveProperty("residentialstatus");
-			expect(person).toHaveProperty("occupation");
-			expect(person.occupation.value).toEqual(null);
 		});
 
 		describe("childrenbirthrecords", () => {

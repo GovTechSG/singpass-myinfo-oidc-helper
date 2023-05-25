@@ -1,6 +1,6 @@
 import { get, isEmpty, map, partition, set } from "lodash";
 // tslint:disable-next-line: max-line-length
-import { MyInfoComponents, MyInfoComStatusCode, MyInfoCountryCode, MyInfoDrivingLicenceValidityCode, MyInfoHDBTypeCode, MyInfoHousingTypeCode, MyInfoLifeStatusCode, MyInfoMaritialStatusCode, MyInfoMerdekaGenerationMessageCode, MyInfoOccupationCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode, MyInfoVehicleStatus } from "../domain";
+import { MyInfoComponents, MyInfoComStatusCode, MyInfoCountryPlaceCode, MyInfoDrivingLicenceValidityCode, MyInfoHDBTypeCode, MyInfoHousingTypeCode, MyInfoLifeStatusCode, MyInfoMaritalStatusCode, MyInfoMerdekaGenerationMessageCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode, MyInfoVehicleStatus } from "../domain";
 import { ProfileArchetype } from "./profiles/fake-profile";
 import { profiles } from "./profiles/fake-profiles";
 
@@ -46,15 +46,14 @@ export interface MockParams {
 	archetype: ProfileArchetype;
 	userdisplayname?: string;
 	race?: MyInfoRaceCode;
-	marital?: MyInfoMaritialStatusCode;
+	marital?: MyInfoMaritalStatusCode;
 	marriagedate?: string;
 	divorcedate?: string;
 	marriagecertno?: string;
-	countryofmarriage?: MyInfoCountryCode;
+	countryofmarriage?: MyInfoCountryPlaceCode;
 	childrenbirthrecords?: ChildrenBirthRecord[];
 	childrenoverridemode?: OverrideMode;
 	residentialstatus?: MyInfoResidentialCode;
-	occupation?: MyInfoOccupationCode;
 	occupationfreeform?: string;
 	dob?: string;
 	gstvyear?: string;
@@ -119,7 +118,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 
 		if (!isEmpty(mockParams.marital)) {
 			myinfoPerson.marital.code = mockParams.marital;
-			myinfoPerson.marital.desc = MyInfoMaritialStatusCode.fn.toEnumDesc(mockParams.marital);
+			myinfoPerson.marital.desc = MyInfoMaritalStatusCode.fn.toEnumDesc(mockParams.marital);
 		}
 
 		if (!isEmpty(mockParams.marriagedate)) {
@@ -136,7 +135,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 
 		if (!isEmpty(mockParams.countryofmarriage)) {
 			myinfoPerson.countryofmarriage.code = mockParams.countryofmarriage;
-			myinfoPerson.countryofmarriage.desc = MyInfoCountryCode.fn.toEnumDesc(mockParams.countryofmarriage);
+			myinfoPerson.countryofmarriage.desc = MyInfoCountryPlaceCode.fn.toEnumDesc(mockParams.countryofmarriage);
 		}
 
 		if (!isEmpty(mockParams.dob) || !isEmpty(myinfoPerson.dob?.value)) {
@@ -172,20 +171,6 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 
 		if (!isEmpty(mockParams.gvs)) {
 			myinfoPerson.gstvoucher.signup.value = (mockParams.gvs || null).toLocaleLowerCase() === GVS.true;
-		}
-
-		if (!isEmpty(mockParams.occupation)) {
-			// only fin users have value
-			if (!this.checkIsSingaporeanOrPr(myinfoPerson.residentialstatus.code)) {
-				myinfoPerson.occupation.value = MyInfoOccupationCode.fn.toEnumDesc(mockParams.occupation);
-			}
-			else {
-				myinfoPerson.occupation.value = null;
-			}
-		} else {
-			if (!isEmpty(mockParams.occupationfreeform)) {
-				myinfoPerson.occupation.value = mockParams.occupationfreeform;
-			}
 		}
 
 		if (!isEmpty(mockParams.merdekageneligible)) {

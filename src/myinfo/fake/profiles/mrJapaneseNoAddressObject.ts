@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import { MyInfoCountryCode, MyInfoNationalityCode, MyInfoOccupationCode } from "../../domain";
+import { MyInfoCountryPlaceCode, MyInfoNationalityCitizenshipCode } from "../../domain";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 
@@ -21,15 +21,15 @@ export const mrJapaneseNoAddressObject: FakeProfile = {
 			"lastupdated": "",
 		};
 		profile.nationality = {
-			"code": MyInfoNationalityCode.JAPANESE,
-			"desc": MyInfoNationalityCode.fn.toEnumDesc(MyInfoNationalityCode.JAPANESE),
+			"code": MyInfoNationalityCitizenshipCode.JAPANESE,
+			"desc": MyInfoNationalityCitizenshipCode.fn.toEnumDesc(MyInfoNationalityCitizenshipCode.JAPANESE),
 			"source": "1",
 			"classification": "C",
 			"lastupdated": "2019-09-18",
 		};
 		profile.birthcountry = {
-			"code": MyInfoCountryCode.JAPAN,
-			"desc": MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.JAPAN),
+			"code": MyInfoCountryPlaceCode.JAPAN,
+			"desc": MyInfoCountryPlaceCode.fn.toEnumDesc(MyInfoCountryPlaceCode.JAPAN),
 			"source": "1",
 			"classification": "C",
 			"lastupdated": "2019-09-18",
@@ -56,13 +56,6 @@ export const mrJapaneseNoAddressObject: FakeProfile = {
 			"source": "2",
 			"classification": "C",
 			"value": "",
-		};
-
-		profile.occupation = {
-			"lastupdated": "2018-05-21",
-			"source": "2",
-			"classification": "C",
-			"value": MyInfoOccupationCode.fn.toEnumDesc(MyInfoOccupationCode.OTHER_SPECIALIST_MEDICAL_PRACTITIONERS_MEDICAL_EG_ENDOCRINOLOGIST_GERIATRICIAN_HAEMATOLOGIST_INFECTIOUS_DISEASES_PHYSICIAN_NEUROLOGIST_NUCLEAR_MEDICINE_PHYSICIAN_REHABILITATION_PHYSICIAN_RENAL_PHYSICIAN_RHEUMATOLOGIST),
 		};
 
 		profile.dialect = {

@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import { MyInfoCountryCode, MyInfoNationalityCode, MyInfoOccupationCode } from "../../domain";
+import { MyInfoCountryPlaceCode, MyInfoNationalityCitizenshipCode } from "../../domain";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 
@@ -27,15 +27,15 @@ export const mrJapaneseAddressBlank: FakeProfile = {
 			value: "Google Pte Ltd",
 		};
 		profile.nationality = {
-			"code": MyInfoNationalityCode.JAPANESE,
-			"desc": MyInfoNationalityCode.fn.toEnumDesc(MyInfoNationalityCode.JAPANESE),
+			"code": MyInfoNationalityCitizenshipCode.JAPANESE,
+			"desc": MyInfoNationalityCitizenshipCode.fn.toEnumDesc(MyInfoNationalityCitizenshipCode.JAPANESE),
 			"source": "1",
 			"classification": "C",
 			"lastupdated": "2019-09-18",
 		};
 		profile.birthcountry = {
-			"code": MyInfoCountryCode.JAPAN,
-			"desc": MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.JAPAN),
+			"code": MyInfoCountryPlaceCode.JAPAN,
+			"desc": MyInfoCountryPlaceCode.fn.toEnumDesc(MyInfoCountryPlaceCode.JAPAN),
 			"source": "1",
 			"classification": "C",
 			"lastupdated": "2019-09-18",
@@ -77,13 +77,6 @@ export const mrJapaneseAddressBlank: FakeProfile = {
 			"source": "2",
 			"classification": "C",
 			"value": "",
-		};
-
-		profile.occupation = {
-			"lastupdated": "2018-05-21",
-			"source": "2",
-			"classification": "C",
-			"value": MyInfoOccupationCode.fn.toEnumDesc(MyInfoOccupationCode.LEGISLATOR),
 		};
 
 		profile.dialect = {
