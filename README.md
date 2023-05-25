@@ -83,15 +83,14 @@ getPersonBasic({
   archetype: ProfileArchetype;
   userdisplayname?: string;
   race?: MyInfoRaceCode:
-  marital?: MyinfoMaritialStatusCode;
+  marital?: MyInfoMaritalStatusCode;
   marriagedate?: string;
   divorcedate?: string;
   marriagecertno?: string;
-  countryofmarriage?: MyinfoCountryCode;
+  countryofmarriage?: MyInfoCountryPlaceCode;
   childrenbirthrecords?: ChildrenBirthRecord[];
   childrenoverridemode?: ChildrenOverrideMode;
   residentialstatus?: MyinfoResidentialCode;
-  occupation?: MyinfoOccupationCode;
   occupationfreeform?: string;
   dob?: string;
   gstvyear?: number;
@@ -110,15 +109,14 @@ getPerson({
   archetype: ProfileArchetype;
   userdisplayname?: string;
   race?: MyInfoRaceCode:
-  marital?: MyinfoMaritialStatusCode;
+  marital?: MyInfoMaritalStatusCode;
   marriagedate?: string;
   divorcedate?: string;
   marriagecertno?: string;
-  countryofmarriage?: MyinfoCountryCode;
+  countryofmarriage?: MyInfoCountryPlaceCode;
   childrenbirthrecords?: ChildrenBirthRecord[];
   childrenoverridemode?: ChildrenOverrideMode;
   residentialstatus?: MyinfoResidentialCode;
-  occupation?: MyinfoOccupationCode;
   occupationfreeform?: string;
   dob?: string;
   gstvyear?: number;

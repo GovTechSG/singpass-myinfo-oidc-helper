@@ -1,6 +1,6 @@
 
 import * as _ from "lodash";
-import { MyInfoComponents, MyInfoCountryCode, MyInfoMaritialStatusCode, MyInfoNationalityCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
+import { MyInfoComponents, MyInfoCountryPlaceCode, MyInfoMaritalStatusCode, MyInfoNationalityCitizenshipCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { BaseProfile } from "./sponsored-children/BaseProfile";
 
@@ -36,7 +36,7 @@ export const mrsICAMommyScenario4: FakeProfile = {
 			"source": "1",
 			"classification": "C",
 		};
-		profile.nationality.code = MyInfoNationalityCode.MALAYSIAN;
+		profile.nationality.code = MyInfoNationalityCitizenshipCode.MALAYSIAN;
 		profile.marriagecertno = {
 			"lastupdated": "2022-02-25",
 			"source": "1",
@@ -51,15 +51,15 @@ export const mrsICAMommyScenario4: FakeProfile = {
 		};
 		profile.countryofmarriage = {
 			"lastupdated": "2022-02-25",
-			"code": MyInfoCountryCode.SINGAPORE,
-			"desc": MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.SINGAPORE),
+			"code": MyInfoCountryPlaceCode.SINGAPORE,
+			"desc": MyInfoCountryPlaceCode.fn.toEnumDesc(MyInfoCountryPlaceCode.SINGAPORE),
 			"source": "1",
 			"classification": "C",
 		};
 		profile.marital = {
 			"lastupdated": "2022-02-25",
-			"code": MyInfoMaritialStatusCode.MARRIED,
-			"desc": MyInfoMaritialStatusCode.fn.toEnumDesc(MyInfoMaritialStatusCode.MARRIED),
+			"code": MyInfoMaritalStatusCode.MARRIED,
+			"desc": MyInfoMaritalStatusCode.fn.toEnumDesc(MyInfoMaritalStatusCode.MARRIED),
 			"source": "1",
 			"classification": "C",
 		};

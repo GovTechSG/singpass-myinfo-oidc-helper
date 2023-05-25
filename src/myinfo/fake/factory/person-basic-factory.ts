@@ -1,5 +1,5 @@
 import { Factory } from "rosie";
-import { MyInfoComponents, MyInfoCountryCode, MyInfoDialectCode, MyInfoLifeStatusCode, MyInfoMaritialStatusCode, MyInfoMerdekaGenerationMessageCode, MyInfoNationalityCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
+import { MyInfoComponents, MyInfoCountryPlaceCode, MyInfoDialectCode, MyInfoLifeStatusCode, MyInfoMaritalStatusCode, MyInfoMerdekaGenerationMessageCode, MyInfoNationalityCitizenshipCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
 import { aliasName } from "../profiles/common";
 
 
@@ -33,8 +33,8 @@ export const PersonBasicFactory = new Factory<MyInfoComponents.Schemas.PersonBas
 		},
 		"regadd": {
 			"country": {
-				"code": MyInfoCountryCode.SINGAPORE,
-				"desc": MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.SINGAPORE),
+				"code": MyInfoCountryPlaceCode.SINGAPORE,
+				"desc": MyInfoCountryPlaceCode.fn.toEnumDesc(MyInfoCountryPlaceCode.SINGAPORE),
 			},
 			"unit": {
 				"value": "22",
@@ -137,10 +137,10 @@ export const PersonBasicFactory = new Factory<MyInfoComponents.Schemas.PersonBas
 		},
 		"birthcountry": {
 			"lastupdated": "2018-06-01",
-			"code": MyInfoCountryCode.SINGAPORE,
+			"code": MyInfoCountryPlaceCode.SINGAPORE,
 			"source": "1",
 			"classification": "C",
-			"desc": MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.SINGAPORE),
+			"desc": MyInfoCountryPlaceCode.fn.toEnumDesc(MyInfoCountryPlaceCode.SINGAPORE),
 		},
 		"race": {
 			"lastupdated": "2018-06-01",
@@ -165,10 +165,10 @@ export const PersonBasicFactory = new Factory<MyInfoComponents.Schemas.PersonBas
 		},
 		"countryofmarriage": {
 			"lastupdated": "2018-05-10",
-			"code": MyInfoCountryCode.SINGAPORE,
+			"code": MyInfoCountryPlaceCode.SINGAPORE,
 			"source": "1",
 			"classification": "C",
-			"desc": MyInfoCountryCode.fn.toEnumDesc(MyInfoCountryCode.SINGAPORE),
+			"desc": MyInfoCountryPlaceCode.fn.toEnumDesc(MyInfoCountryPlaceCode.SINGAPORE),
 		},
 		"sex": {
 			"lastupdated": "2018-06-01",
@@ -198,10 +198,10 @@ export const PersonBasicFactory = new Factory<MyInfoComponents.Schemas.PersonBas
 		},
 		"marital": {
 			"lastupdated": "2018-05-10",
-			"code": MyInfoMaritialStatusCode.MARRIED,
+			"code": MyInfoMaritalStatusCode.MARRIED,
 			"source": "1",
 			"classification": "C",
-			"desc": MyInfoMaritialStatusCode.fn.toEnumDesc(MyInfoMaritialStatusCode.MARRIED),
+			"desc": MyInfoMaritalStatusCode.fn.toEnumDesc(MyInfoMaritalStatusCode.MARRIED),
 		},
 		"aliasname": {
 			"lastupdated": "2018-06-01",
@@ -211,10 +211,10 @@ export const PersonBasicFactory = new Factory<MyInfoComponents.Schemas.PersonBas
 		},
 		"nationality": {
 			"lastupdated": "2018-06-01",
-			"code": MyInfoNationalityCode.SINGAPORE_CITIZEN,
+			"code": MyInfoNationalityCitizenshipCode.SINGAPORE_CITIZEN,
 			"source": "1",
 			"classification": "C",
-			"desc": MyInfoNationalityCode.fn.toEnumDesc(MyInfoNationalityCode.SINGAPORE_CITIZEN),
+			"desc": MyInfoNationalityCitizenshipCode.fn.toEnumDesc(MyInfoNationalityCitizenshipCode.SINGAPORE_CITIZEN),
 		},
 		"dob": {
 			"lastupdated": "2018-06-01",

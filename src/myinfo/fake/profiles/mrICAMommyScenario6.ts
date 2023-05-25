@@ -1,6 +1,6 @@
 
 import * as _ from "lodash";
-import { MyInfoComponents, MyInfoNationalityCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
+import { MyInfoComponents, MyInfoNationalityCitizenshipCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { BaseProfile } from "./sponsored-children/BaseProfile";
 
@@ -36,7 +36,7 @@ export const mrsICAMommyScenario6: FakeProfile = {
 			"source": "1",
 			"classification": "C",
 		};
-		profile.nationality.code = MyInfoNationalityCode.MALAYSIAN;
+		profile.nationality.code = MyInfoNationalityCitizenshipCode.MALAYSIAN;
 
 		return profile;
 	}
