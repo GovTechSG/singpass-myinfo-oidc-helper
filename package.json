@@ -31,7 +31,6 @@
 		"lodash": "^4.17.21",
 		"node-jose": "^2.2.0",
 		"nonce": "^1.0.4",
-		"proxy-agent": "^5.0.0",
 		"rosie": "^2.1.0"
 	},
 	"devDependencies": {
