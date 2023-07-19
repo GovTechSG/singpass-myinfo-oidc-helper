@@ -4,8 +4,6 @@
 {
 	"extends": [
 		"tslint:recommended",
-		"tslint-sonarts",
-		"tslint-config-security",
 		"tslint-no-circular-imports"
 	],
 	"linterOptions": {
