@@ -1,11 +1,11 @@
 {
-	"name": "@govtechsg/singpass-myinfo-oidc-helper",
+	"name": "@choonkeat/singpass-myinfo-oidc-helper",
 	"version": "7.3.0",
 	"description": "Helper for building a Relying Party to integrate with Singpass OIDC and MyInfo person basic API",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
-	"repository": "github:GovTechSG/singpass-myinfo-oidc-helper",
-	"bugs": "https://github.com/GovTechSG/singpass-myinfo-oidc-helper/issues",
+	"repository": "github:choonkeat-govtech/singpass-myinfo-oidc-helper",
+	"bugs": "https://github.com/choonkeat-govtech/singpass-myinfo-oidc-helper/issues",
 	"license": "MIT",
 	"scripts": {
 		"prepare": "(test -d ./.git && npx husky install) || true",
