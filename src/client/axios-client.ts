@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
-import * as ProxyAgent from "proxy-agent";
+import { ProxyAgent } from 'proxy-agent';
 import { logger } from "../util/Logger";
 import { redactUinfin } from "../util/RedactorUtil";
 
@@ -8,7 +8,7 @@ export const createClient = (requestConfig: AxiosRequestConfig = {}): AxiosInsta
 	// Axios 0.19.0 has not fixed this issue yet, so we are using this workaround: https://github.com/axios/axios/issues/925#issuecomment-419352052
 	const proxyConfig = getProxyConfig();
 	if (!!proxyConfig) {
-		const proxyAgent = new ProxyAgent(proxyConfig);
+		const proxyAgent = new ProxyAgent({host: proxyConfig});
 		requestConfig = {
 			httpAgent: proxyAgent,
 			httpsAgent: proxyAgent,
