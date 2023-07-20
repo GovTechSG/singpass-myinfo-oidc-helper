@@ -1,5 +1,9 @@
 # Changelogs
 
+## 7.4.0
+
+- Update `proxy-agent` from `5.0.0` to `6.3.0`
+
 ## 7.2.0
 
 - **[WARNING]** Updated deps
