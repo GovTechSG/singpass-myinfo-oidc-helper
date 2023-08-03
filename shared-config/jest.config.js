@@ -34,6 +34,15 @@ exports.createBaseConfig = (testType) => {
 		setupFiles: ["<rootDir>/shared-config/jest.setup.ts"],
 		verbose: true,
 		bail: true,
+		reporters: [
+			"default", 
+			[
+				"jest-junit", 
+				{ 
+					outputName: "junit.xml" 
+				}
+			]
+		],
 	};
 
 	return config;
