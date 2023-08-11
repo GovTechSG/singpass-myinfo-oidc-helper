@@ -1,84 +1,9 @@
 import { get, isEmpty, map, partition, set } from "lodash";
 // tslint:disable-next-line: max-line-length
-import { MyInfoComponents, MyInfoComStatusCode, MyInfoCountryPlaceCode, MyInfoDrivingLicenceValidityCode, MyInfoHDBTypeCode, MyInfoHousingTypeCode, MyInfoLifeStatusCode, MyInfoMaritalStatusCode, MyInfoMerdekaGenerationMessageCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode, MyInfoVehicleStatus } from "../domain";
-import { ProfileArchetype } from "./profiles/fake-profile";
+import { MyInfoComponents, MyInfoComStatusCode, MyInfoCountryPlaceCode, MyInfoDrivingLicenceValidityCode, MyInfoHDBTypeCode, MyInfoHousingTypeCode, MyInfoLifeStatusCode, MyInfoMaritalStatusCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode, MyInfoVehicleStatus } from "../domain";
 import { profiles } from "./profiles/fake-profiles";
+import { ChildrenBirthRecord, CpfBalanceExtension, GVS, MockParams, MockParamsPerson, NoaBasicExtension, OverrideMode } from "./types";
 
-enum GVS {
-	true = "true",
-	false = "false",
-}
-
-export enum OverrideMode {
-	partial = "partial",
-	full = "full",
-	appendToExisting = "append",
-}
-export interface ChildrenBirthRecord {
-	birthcertno: string;
-	name?: string;
-	dob?: string;
-	tob?: string;
-	sex?: MyInfoSexCode;
-	lifestatus?: MyInfoLifeStatusCode;
-}
-
-export interface CpfContributionHistory {
-	date: string;
-	amount: number;
-	month: string;
-	employer: string;
-}
-
-export interface CpfBalance {
-	ma: number;
-	oa: number;
-	sa: number;
-	ra: number;
-}
-
-export interface NoaBasic {
-	amount: number;
-	yearofassessment: string;
-}
-
-export interface MockParams {
-	archetype: ProfileArchetype;
-	userdisplayname?: string;
-	race?: MyInfoRaceCode;
-	marital?: MyInfoMaritalStatusCode;
-	marriagedate?: string;
-	divorcedate?: string;
-	marriagecertno?: string;
-	countryofmarriage?: MyInfoCountryPlaceCode;
-	childrenbirthrecords?: ChildrenBirthRecord[];
-	childrenoverridemode?: OverrideMode;
-	residentialstatus?: MyInfoResidentialCode;
-	occupationfreeform?: string;
-	dob?: string;
-	gstvyear?: string;
-	gvs?: GVS;
-	merdekageneligible?: boolean;
-	merdekagenquantum?: number;
-	merdekagenmessagecode?: MyInfoMerdekaGenerationMessageCode;
-	hdbtype?: MyInfoHDBTypeCode;
-	housingtype?: MyInfoHousingTypeCode;
-	drivingqdlvalidity?: MyInfoDrivingLicenceValidityCode;
-	vehiclestatus?: MyInfoVehicleStatus;
-	employment?: string;
-}
-export interface MockFinanceParams {
-	cpfcontributionhistoryoverridemode?: OverrideMode;
-	cpfcontributions?: CpfContributionHistory[];
-	cpfbalances?: CpfBalance;
-	noabasic?: NoaBasic;
-}
-
-export interface DefaultParams { lastupdated: string; classification: "C"; source: '1'; unavailable: boolean; }
-type MockParamsPerson = MockParams & MockFinanceParams;
-
-type NoaBasicExtension = MyInfoComponents.Schemas.NOABasic & MyInfoComponents.Schemas.DataFieldProperties;
-type CpfBalanceExtension = MyInfoComponents.Schemas.Cpfbalances & MyInfoComponents.Schemas.DataFieldProperties;
 type PersonBasic = MyInfoComponents.Schemas.PersonBasic;
 type Person = MyInfoComponents.Schemas.Person;
 
@@ -448,7 +373,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		}
 
 		if (!isEmpty(mockParams.race)) {
-			myinfoPerson.race.code =  mockParams.race;
+			myinfoPerson.race.code = mockParams.race;
 			myinfoPerson.race.desc = MyInfoRaceCode.fn.toEnumDesc(mockParams.race);
 		}
 

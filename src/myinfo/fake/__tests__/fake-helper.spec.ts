@@ -1,8 +1,9 @@
-import { MyInfoComponents, MyInfoLifeStatusCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
-import { ChildrenBirthRecord, CpfContributionHistory, FakeMyInfoHelper, OverrideMode, transformChildBirthRecord, transformItems, transformItemsWithAdditionalMock } from "../fake-helper";
+import { MyInfoLifeStatusCode, MyInfoSexCode } from "../../domain";
+import { FakeMyInfoHelper, transformChildBirthRecord, transformItems, transformItemsWithAdditionalMock } from "../fake-helper";
 import { ProfileArchetype } from "../profiles/fake-profile";
-import { mrSGFatherNormalChildrenOnly } from "../profiles/sponsored-children/mrSGFatherNormalChildrenOnly";
 import { mrSGDaddyPerfect } from "../profiles/mrSGDaddyPerfect";
+import { mrSGFatherNormalChildrenOnly } from "../profiles/sponsored-children/mrSGFatherNormalChildrenOnly";
+import { ChildrenBirthRecord, CpfContributionHistory, OverrideMode } from "../types";
 
 // tslint:disable-next-line: no-big-function
 describe("FakeMyInfoHelper", () => {
