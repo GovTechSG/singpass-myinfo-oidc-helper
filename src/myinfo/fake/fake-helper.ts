@@ -123,12 +123,12 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 						code: MyInfoCountryPlaceCode.SINGAPORE,
 						desc: MyInfoCountryPlaceCode.fn.toEnumDesc(MyInfoCountryPlaceCode.SINGAPORE),
 					},
-					block: { value: mockParams.regadd.block ?? regadd.block.value },
-					building: { value: mockParams.regadd.building ?? regadd.building.value },
-					floor: { value: mockParams.regadd.floor ?? regadd.floor.value },
-					postal: { value: mockParams.regadd.postal ?? regadd.postal.value },
-					street: { value: mockParams.regadd.street ?? regadd.street.value },
-					unit: { value: mockParams.regadd.unit ?? regadd.unit.value },
+					block: { value: !isEmpty(mockParams.regadd.block) ? mockParams.regadd.block : regadd.block.value },
+					building: { value: !isEmpty(mockParams.regadd.building) ? mockParams.regadd.building : regadd.building.value },
+					floor: { value: !isEmpty(mockParams.regadd.floor) ? mockParams.regadd.floor : regadd.floor.value },
+					postal: { value: !isEmpty(mockParams.regadd.postal) ? mockParams.regadd.postal : regadd.postal.value },
+					street: { value: !isEmpty(mockParams.regadd.street) ? mockParams.regadd.street : regadd.street.value },
+					unit: { value: !isEmpty(mockParams.regadd.unit) ? mockParams.regadd.unit : regadd.unit.value },
 				};
 
 				myinfoPerson.regadd = omit(myinfoPerson.regadd, unformattedProps) as PersonBasic["regadd"];
@@ -139,8 +139,8 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 				myinfoPerson.regadd = {
 					...myinfoPerson.regadd,
 					type: "UNFORMATTED",
-					line1: { value: mockParams.regadd.line1 ?? regadd.line1.value },
-					line2: { value: mockParams.regadd.line2 ?? regadd.line2.value },
+					line1: { value: !isEmpty(mockParams.regadd.line1) ? mockParams.regadd.line1 : regadd.line1.value },
+					line2: { value: !isEmpty(mockParams.regadd.line2) ? mockParams.regadd.line2 : regadd.line2.value },
 				};
 
 				myinfoPerson.regadd = omit(myinfoPerson.regadd, sgProps) as PersonBasic["regadd"];
