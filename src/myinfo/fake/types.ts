@@ -12,6 +12,25 @@ export enum OverrideMode {
 	appendToExisting = "append",
 }
 
+// -----------------------------------------------------------------------------
+// Address
+// -----------------------------------------------------------------------------
+
+type AddressSgKeys = keyof MyInfoComponents.Schemas.AddressSG;
+type TAddressSG = { type: "SG" } & {
+	// country is fixed for SG
+	[key in Exclude<AddressSgKeys, "country">]?: string;
+};
+
+type AddressUnformattedKeys = keyof MyInfoComponents.Schemas.AddressUnformatted;
+type TAddressUnformatted = { type: "UNFORMATTED" } & {
+	[key in AddressUnformattedKeys]?: string;
+};
+
+export type UniqueAddressSgKeys = Exclude<AddressSgKeys, AddressUnformattedKeys>;
+export type UniqueAddressUnformattedKeys = Exclude<AddressUnformattedKeys, AddressSgKeys>;
+export type RegAdd = TAddressSG | TAddressUnformatted;
+
 export interface ChildrenBirthRecord {
 	birthcertno: string;
 	name?: string;
@@ -59,6 +78,7 @@ export interface MockParams {
 	merdekageneligible?: boolean;
 	merdekagenquantum?: number;
 	merdekagenmessagecode?: MyInfoMerdekaGenerationMessageCode;
+	regadd?: RegAdd;
 	hdbtype?: MyInfoHDBTypeCode;
 	housingtype?: MyInfoHousingTypeCode;
 	drivingqdlvalidity?: MyInfoDrivingLicenceValidityCode;
