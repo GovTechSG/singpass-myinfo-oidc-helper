@@ -1,84 +1,9 @@
-import { get, isEmpty, map, partition, set } from "lodash";
+import { get, isEmpty, map, omit, partition, set } from "lodash";
 // tslint:disable-next-line: max-line-length
-import { MyInfoComponents, MyInfoComStatusCode, MyInfoCountryPlaceCode, MyInfoDrivingLicenceValidityCode, MyInfoHDBTypeCode, MyInfoHousingTypeCode, MyInfoLifeStatusCode, MyInfoMaritalStatusCode, MyInfoMerdekaGenerationMessageCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode, MyInfoVehicleStatus } from "../domain";
-import { ProfileArchetype } from "./profiles/fake-profile";
+import { MyInfoComponents, MyInfoComStatusCode, MyInfoCountryPlaceCode, MyInfoDrivingLicenceValidityCode, MyInfoHDBTypeCode, MyInfoHousingTypeCode, MyInfoLifeStatusCode, MyInfoMaritalStatusCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode, MyInfoVehicleStatus } from "../domain";
 import { profiles } from "./profiles/fake-profiles";
+import { ChildrenBirthRecord, CpfBalanceExtension, GVS, MockParams, MockParamsPerson, NoaBasicExtension, OverrideMode, UniqueAddressSgKeys, UniqueAddressUnformattedKeys } from "./types";
 
-enum GVS {
-	true = "true",
-	false = "false",
-}
-
-export enum OverrideMode {
-	partial = "partial",
-	full = "full",
-	appendToExisting = "append",
-}
-export interface ChildrenBirthRecord {
-	birthcertno: string;
-	name?: string;
-	dob?: string;
-	tob?: string;
-	sex?: MyInfoSexCode;
-	lifestatus?: MyInfoLifeStatusCode;
-}
-
-export interface CpfContributionHistory {
-	date: string;
-	amount: number;
-	month: string;
-	employer: string;
-}
-
-export interface CpfBalance {
-	ma: number;
-	oa: number;
-	sa: number;
-	ra: number;
-}
-
-export interface NoaBasic {
-	amount: number;
-	yearofassessment: string;
-}
-
-export interface MockParams {
-	archetype: ProfileArchetype;
-	userdisplayname?: string;
-	race?: MyInfoRaceCode;
-	marital?: MyInfoMaritalStatusCode;
-	marriagedate?: string;
-	divorcedate?: string;
-	marriagecertno?: string;
-	countryofmarriage?: MyInfoCountryPlaceCode;
-	childrenbirthrecords?: ChildrenBirthRecord[];
-	childrenoverridemode?: OverrideMode;
-	residentialstatus?: MyInfoResidentialCode;
-	occupationfreeform?: string;
-	dob?: string;
-	gstvyear?: string;
-	gvs?: GVS;
-	merdekageneligible?: boolean;
-	merdekagenquantum?: number;
-	merdekagenmessagecode?: MyInfoMerdekaGenerationMessageCode;
-	hdbtype?: MyInfoHDBTypeCode;
-	housingtype?: MyInfoHousingTypeCode;
-	drivingqdlvalidity?: MyInfoDrivingLicenceValidityCode;
-	vehiclestatus?: MyInfoVehicleStatus;
-	employment?: string;
-}
-export interface MockFinanceParams {
-	cpfcontributionhistoryoverridemode?: OverrideMode;
-	cpfcontributions?: CpfContributionHistory[];
-	cpfbalances?: CpfBalance;
-	noabasic?: NoaBasic;
-}
-
-export interface DefaultParams { lastupdated: string; classification: "C"; source: '1'; unavailable: boolean; }
-type MockParamsPerson = MockParams & MockFinanceParams;
-
-type NoaBasicExtension = MyInfoComponents.Schemas.NOABasic & MyInfoComponents.Schemas.DataFieldProperties;
-type CpfBalanceExtension = MyInfoComponents.Schemas.Cpfbalances & MyInfoComponents.Schemas.DataFieldProperties;
 type PersonBasic = MyInfoComponents.Schemas.PersonBasic;
 type Person = MyInfoComponents.Schemas.Person;
 
@@ -183,6 +108,43 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 
 		if (!isEmpty(mockParams.merdekagenquantum)) {
 			myinfoPerson.merdekagen.quantum = { value: mockParams.merdekagenquantum };
+		}
+
+		if (!isEmpty(mockParams.regadd)) {
+			const sgProps: UniqueAddressSgKeys[] = ["block", "building", "country", "floor", "postal", "street", "unit"];
+			const unformattedProps: UniqueAddressUnformattedKeys[] = ["line1", "line2"];
+
+			if (mockParams.regadd.type === "SG") {
+				const regadd = myinfoPerson.regadd as MyInfoComponents.Schemas.DataitemAddressSg;
+				myinfoPerson.regadd = {
+					...myinfoPerson.regadd,
+					type: "SG",
+					country: {
+						code: MyInfoCountryPlaceCode.SINGAPORE,
+						desc: MyInfoCountryPlaceCode.fn.toEnumDesc(MyInfoCountryPlaceCode.SINGAPORE),
+					},
+					block: { value: !isEmpty(mockParams.regadd.block) ? mockParams.regadd.block : regadd.block.value },
+					building: { value: !isEmpty(mockParams.regadd.building) ? mockParams.regadd.building : regadd.building.value },
+					floor: { value: !isEmpty(mockParams.regadd.floor) ? mockParams.regadd.floor : regadd.floor.value },
+					postal: { value: !isEmpty(mockParams.regadd.postal) ? mockParams.regadd.postal : regadd.postal.value },
+					street: { value: !isEmpty(mockParams.regadd.street) ? mockParams.regadd.street : regadd.street.value },
+					unit: { value: !isEmpty(mockParams.regadd.unit) ? mockParams.regadd.unit : regadd.unit.value },
+				};
+
+				myinfoPerson.regadd = omit(myinfoPerson.regadd, unformattedProps) as PersonBasic["regadd"];
+			}
+
+			if (mockParams.regadd.type === "UNFORMATTED") {
+				const regadd = myinfoPerson.regadd as MyInfoComponents.Schemas.DataitemAddressUnformatted;
+				myinfoPerson.regadd = {
+					...myinfoPerson.regadd,
+					type: "UNFORMATTED",
+					line1: { value: !isEmpty(mockParams.regadd.line1) ? mockParams.regadd.line1 : regadd.line1.value },
+					line2: { value: !isEmpty(mockParams.regadd.line2) ? mockParams.regadd.line2 : regadd.line2.value },
+				};
+
+				myinfoPerson.regadd = omit(myinfoPerson.regadd, sgProps) as PersonBasic["regadd"];
+			}
 		}
 
 		if (!isEmpty(mockParams.hdbtype)) {
@@ -448,7 +410,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		}
 
 		if (!isEmpty(mockParams.race)) {
-			myinfoPerson.race.code =  mockParams.race;
+			myinfoPerson.race.code = mockParams.race;
 			myinfoPerson.race.desc = MyInfoRaceCode.fn.toEnumDesc(mockParams.race);
 		}
 

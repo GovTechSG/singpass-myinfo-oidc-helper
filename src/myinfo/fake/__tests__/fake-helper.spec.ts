@@ -1,8 +1,10 @@
-import { MyInfoComponents, MyInfoLifeStatusCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
-import { ChildrenBirthRecord, CpfContributionHistory, FakeMyInfoHelper, OverrideMode, transformChildBirthRecord, transformItems, transformItemsWithAdditionalMock } from "../fake-helper";
+import { MyInfoLifeStatusCode, MyInfoSexCode } from "../../domain";
+import { FakeMyInfoHelper, transformChildBirthRecord, transformItems, transformItemsWithAdditionalMock } from "../fake-helper";
 import { ProfileArchetype } from "../profiles/fake-profile";
-import { mrSGFatherNormalChildrenOnly } from "../profiles/sponsored-children/mrSGFatherNormalChildrenOnly";
 import { mrSGDaddyPerfect } from "../profiles/mrSGDaddyPerfect";
+import { mrSGNoLocalAddress } from "../profiles/mrSGNoLocalAddress ";
+import { mrSGFatherNormalChildrenOnly } from "../profiles/sponsored-children/mrSGFatherNormalChildrenOnly";
+import { ChildrenBirthRecord, CpfContributionHistory, OverrideMode } from "../types";
 
 // tslint:disable-next-line: no-big-function
 describe("FakeMyInfoHelper", () => {
@@ -72,6 +74,114 @@ describe("FakeMyInfoHelper", () => {
 			expect(person).toHaveProperty("vehicles");
 			expect(person).toHaveProperty("drivinglicence.pdl.validity");
 			expect(person).toHaveProperty("drivinglicence.lastupdated");
+		});
+
+		describe("regadd", () => {
+			it("should return base profile regadd if no override provided", () => {
+				const fakeHelper = new FakeMyInfoHelper();
+
+				const person = fakeHelper.getPersonBasic({
+					archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
+				});
+
+				expect(person.regadd).toStrictEqual(mrSGDaddyPerfect.generate().regadd);
+			});
+
+			describe("SG Address", () => {
+				it("should merge archetype SG address with override", () => {
+					const fakeHelper = new FakeMyInfoHelper();
+					const person = fakeHelper.getPersonBasic({
+						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
+						regadd: {
+							type: "SG",
+							postal: "123456",
+							street: "Some street",
+							unit: "111"
+						}
+					});
+
+					expect(person.regadd).toStrictEqual({
+						...mrSGDaddyPerfect.generate().regadd,
+						postal: { value: "123456" },
+						street: { value: "Some street" },
+						unit: { value: "111" }
+					});
+				});
+
+				it("should override with SG address if archetype has unformatted", () => {
+					const fakeHelper = new FakeMyInfoHelper();
+					const person = fakeHelper.getPersonBasic({
+						archetype: ProfileArchetype.MR_SG_NO_LOCAL_ADDRESS,
+						regadd: {
+							type: "SG",
+							block: "123",
+							building: "Some building",
+							floor: "11",
+							postal: "123456",
+							street: "Some street",
+							unit: "111"
+						}
+					});
+
+					const baseRegAdd = mrSGNoLocalAddress.generate().regadd;
+					expect(person.regadd).toStrictEqual({
+						type: "SG",
+						country: {
+							code: "SG",
+							desc: "SINGAPORE"
+						},
+						block: { value: "123" },
+						building: { value: "Some building" },
+						floor: { value: "11" },
+						postal: { value: "123456" },
+						street: { value: "Some street" },
+						unit: { value: "111" },
+						classification: baseRegAdd.classification,
+						lastupdated: baseRegAdd.lastupdated,
+						source: baseRegAdd.source,
+					});
+				});
+			});
+
+			describe("Unformatted Address", () => {
+				it("should merge archetype unformatted address with override", () => {
+					const fakeHelper = new FakeMyInfoHelper();
+					const person = fakeHelper.getPersonBasic({
+						archetype: ProfileArchetype.MR_SG_NO_LOCAL_ADDRESS,
+						regadd: {
+							type: "UNFORMATTED",
+							line1: "Line 1 address",
+						}
+					});
+
+					expect(person.regadd).toStrictEqual({
+						...mrSGNoLocalAddress.generate().regadd,
+						line1: { value: "Line 1 address" },
+					});
+				});
+
+				it("should override with unformatted address if archetype has SG", () => {
+					const fakeHelper = new FakeMyInfoHelper();
+					const person = fakeHelper.getPersonBasic({
+						archetype: ProfileArchetype.MR_SG_DADDY_PERFECT,
+						regadd: {
+							type: "UNFORMATTED",
+							line1: "Line 1 address",
+							line2: "Line 2 address",
+						}
+					});
+
+					const baseRegAdd = mrSGDaddyPerfect.generate().regadd;
+					expect(person.regadd).toStrictEqual({
+						type: "UNFORMATTED",
+						line1: { value: "Line 1 address" },
+						line2: { value: "Line 2 address" },
+						classification: baseRegAdd.classification,
+						lastupdated: baseRegAdd.lastupdated,
+						source: baseRegAdd.source,
+					});
+				});
+			});
 		});
 
 		describe("childrenbirthrecords", () => {

@@ -1,5 +1,10 @@
 # Changelogs
 
+## 8.1.0
+
+- Add `regadd` as mock param options for fake profile
+- Add `mrSGFromBedok`
+
 ## 7.4.0
 
 - Update `proxy-agent` from `5.0.0` to `6.3.0`
