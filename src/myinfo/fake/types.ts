@@ -59,6 +59,12 @@ export interface NoaBasic {
 	yearofassessment: string;
 }
 
+export interface VehicleDetails {
+	vehicleno: string;
+	iulabelno: string;
+	status: MyInfoVehicleStatus;
+}
+
 export interface MockParams {
 	archetype: ProfileArchetype;
 	userdisplayname?: string;
@@ -82,7 +88,7 @@ export interface MockParams {
 	hdbtype?: MyInfoHDBTypeCode;
 	housingtype?: MyInfoHousingTypeCode;
 	drivingqdlvalidity?: MyInfoDrivingLicenceValidityCode;
-	vehiclestatus?: MyInfoVehicleStatus;
+	vehicles?: VehicleDetails[];
 	employment?: string;
 }
 export interface MockFinanceParams {

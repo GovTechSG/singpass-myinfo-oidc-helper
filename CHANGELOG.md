@@ -1,5 +1,11 @@
 # Changelogs
 
+## 8.2.0
+
+- **[WARNING]** Remove `vehiclestatus` as a mock param option for `getPersonInfo` in fake helper
+- Add `vehicles` as a mock param option for `getPersonInfo` in fake helper to mock multiple registered vehicles
+  - add `vehicleno`, `status` and `iulabelno` as mock param options for `vehicles`
+
 ## 8.1.0
 
 - Add `regadd` as mock param options for fake profile
