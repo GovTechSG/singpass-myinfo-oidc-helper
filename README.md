@@ -101,7 +101,7 @@ getPersonBasic({
   hdbtype?: MyinfoHDBTypeCode;
   housingtype?: MyinfoHousingTypeCode;
   drivingqdlvalidity?: MyinfoDrivingLicenceValidityCode;
-  vehiclestatus?: MyinfoVehicleStatus;
+  vehicles?: VehicleDetails[];
   employment?: string;
 }) => MyInfoComponents.Schemas.PersonBasic
 
@@ -127,7 +127,7 @@ getPerson({
   hdbtype?: MyinfoHDBTypeCode;
   housingtype?: MyinfoHousingTypeCode;
   drivingqdlvalidity?: MyinfoDrivingLicenceValidityCode;
-  vehiclestatus?: MyinfoVehicleStatus;
+  vehicles?: VehicleDetails[];
   employment?: string;
   cpfcontributionhistoryoverridemode?: OverrideMode;
   cpfcontributions?: CpfContributionHistory[];
