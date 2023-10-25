@@ -1,4 +1,5 @@
-import { MyInfoLifeStatusCode, MyInfoSexCode } from "../../domain";
+// tslint:disable: no-big-function
+import { MyInfoLifeStatusCode, MyInfoSexCode, MyInfoVehicleStatus } from "../../domain";
 import { FakeMyInfoHelper, transformChildBirthRecord, transformItems, transformItemsWithAdditionalMock } from "../fake-helper";
 import { ProfileArchetype } from "../profiles/fake-profile";
 import { mrSGDaddyPerfect } from "../profiles/mrSGDaddyPerfect";
@@ -6,9 +7,8 @@ import { mrSGNoLocalAddress } from "../profiles/mrSGNoLocalAddress ";
 import { mrSGFatherNormalChildrenOnly } from "../profiles/sponsored-children/mrSGFatherNormalChildrenOnly";
 import { ChildrenBirthRecord, CpfContributionHistory, OverrideMode } from "../types";
 
-// tslint:disable-next-line: no-big-function
 describe("FakeMyInfoHelper", () => {
-	// tslint:disable-next-line: no-big-function
+
 	describe("getPersonBasic", () => {
 		it("should successfully get based on archetype", () => {
 			const fakeHelper = new FakeMyInfoHelper();
@@ -545,6 +545,44 @@ describe("FakeMyInfoHelper", () => {
 
 					expect(person["noa-basic"]).toStrictEqual((mrSGFatherNormalChildrenOnly.generate())["noa-basic"]);
 				});
+			});
+		});
+
+		describe("Vehicles", () => {
+			const vehicles = [{
+				status: MyInfoVehicleStatus.LIVE,
+				vehicleno: "S1Y",
+				iulabelno: "1234567891"
+			}, {
+				status: MyInfoVehicleStatus.DEREGISTERED,
+				vehicleno: "MID1234D",
+				iulabelno: "1234567890"
+			}];
+
+			it("should successfully update vehicles based on mock params", () => {
+				const fakeHelper = new FakeMyInfoHelper();
+
+				const person = fakeHelper.getPerson({
+					archetype: ProfileArchetype.MR_SG_FATHER_NORMAL_CHILDREN,
+					vehicles,
+				});
+
+				expect(person.vehicles).toHaveLength(vehicles.length);
+				vehicles.forEach((vehicle, index) => {
+					expect(person.vehicles[index].status.code).toEqual(vehicle.status);
+					expect(person.vehicles[index].vehicleno.value).toEqual(vehicle.vehicleno);
+					expect(person.vehicles[index].iulabelno.value).toEqual(vehicle.iulabelno);
+				});
+			});
+
+			it("should not update vehicles if the mockparams values are empty", () => {
+				const fakeHelper = new FakeMyInfoHelper();
+
+				const person = fakeHelper.getPerson({
+					archetype: ProfileArchetype.MR_SG_FATHER_NORMAL_CHILDREN,
+				});
+
+				expect(person["vehicles"]).toStrictEqual([]);
 			});
 		});
 
