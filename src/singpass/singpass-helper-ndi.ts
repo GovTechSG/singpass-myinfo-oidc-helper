@@ -88,7 +88,7 @@ export class NdiOidcHelper {
 
 		const config = {
 			headers: {
-				"content-type": "application/x-www-form-urlencoded; charset=ISO-8859-1"
+				"content-type": "application/x-www-form-urlencoded"
 			},
 		};
 		const response = await this.axiosClient.post<TokenResponse>(token_endpoint, body, config);
