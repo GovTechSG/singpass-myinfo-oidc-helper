@@ -86,4 +86,10 @@ export enum ProfileArchetype {
 	MRS_ICA_PR_MOMMY_MAIN_SCENARIO_6 = "Mrs PR Mommy Main Applicant Scenario Six IDE",
 	MR_ICA_SC_DADDY_MAIN_SCENARIO_7 = "Mr SG Daddy Spouse Applicant Scenario Seven IML",
 	MRS_ICA_SC_SINGLE_MOMMY_MAIN_SCENARIO_8 = "Mrs SG Single Mommy Main Applicant Scenario Eight",
+	// For Book Fac UAT
+	MR_CCK_RESIDENT_1 = "Mr CCK Resident 1",
+	MS_HBP_RESIDENT_6 = "Ms HBP Resident 6",
+	MR_MP_RESIDENT_4 = "Mr MP Resident 4",
+	MR_NS_RESIDENT_5 = "Mr NS Resident 5",
+	MS_PRPG_RESIDENT_1 = "Ms PRPG Resident 1"
 }

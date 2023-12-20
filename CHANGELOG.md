@@ -1,5 +1,8 @@
 # Changelogs
 
+## 8.3.1
+- Add new profiles for book facilities UAT
+
 ## 8.2.0
 
 - **[WARNING]** Remove `vehiclestatus` as a mock param option for `getPersonInfo` in fake helper
