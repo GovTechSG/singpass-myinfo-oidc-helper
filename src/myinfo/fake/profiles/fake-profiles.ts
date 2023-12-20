@@ -70,6 +70,11 @@ import { mrsICAMommyScenario4 } from "./mrICAMommyScenario4";
 import { mrsICAMommyScenario5 } from "./mrICAMommyScenario5";
 import { mrsICAMommyScenario6 } from "./mrICAMommyScenario6";
 import { mrsICAMommyScenario8 } from "./mrICAMommyScenario8";
+import { mrCckResident1 } from "./mrCckResident1";
+import { msHbpResident6 } from "./msHbpResident6";
+import { mrMpResident4 } from "./mrMpResident4";
+import { mrNsResident5 } from "./mrNsResident5";
+import { msPrpgResident1 } from "./msPrpgResident1";
 
 /**
  * Exhaustive list of our MyInfo archetype profiles
@@ -147,5 +152,10 @@ export const profiles = [
 	mrsICAMommyScenario4,
 	mrsICAMommyScenario5,
 	mrsICAMommyScenario6,
-	mrsICAMommyScenario8
+	mrsICAMommyScenario8,
+	mrCckResident1,
+	msHbpResident6,
+	mrMpResident4,
+	mrNsResident5,
+	msPrpgResident1
 ];
