@@ -181,7 +181,7 @@ export class OidcHelper {
 
 		if (sub) {
 			const trimmedSub = sub.replace(/ /g, '');
-			const nricRegex = /s=([STFG]\d{7}[A-Z])[^,]*/i;
+			const nricRegex = /s=([STFGM]\d{7}[A-Z])[^,]*/i;
 			const [, nric] = trimmedSub.match(nricRegex) || [];
 			const uuidRegex = /u=([^,]*)/i;
 			const [, uuid] = trimmedSub.match(uuidRegex) || [];
