@@ -15,7 +15,7 @@
 		"typescriptreact"
 	],
 	"editor.codeActionsOnSave": {
-		"source.fixAll.tslint": true
+		"source.fixAll.tslint": "explicit"
 	},
 	"editor.detectIndentation": false,
 	"editor.formatOnSave": true,
