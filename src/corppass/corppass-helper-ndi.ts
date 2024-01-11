@@ -201,8 +201,8 @@ export class NdiOidcHelper {
 		const { sub } = payload;
 
 		if (sub) {
-			const trimmedSub = sub.replace(/ /g, "");
-			const nricRegex = /s=([STFG]\d{7}[A-Z])[^,]*/i;
+			const trimmedSub = sub.replace(/ /g, '');
+			const nricRegex = /s=([STFGM]\d{7}[A-Z])[^,]*/i;
 			const [, nric] = trimmedSub.match(nricRegex) || [];
 			const uuidRegex = /u=([^,]*)/i;
 			const [, uuid] = trimmedSub.match(uuidRegex) || [];
