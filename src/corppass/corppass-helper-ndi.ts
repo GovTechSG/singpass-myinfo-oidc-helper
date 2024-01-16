@@ -4,7 +4,7 @@ import { createClient } from "../client/axios-client";
 import { JweUtil } from "../util";
 import { SingpassMyInfoError } from "../util/error/SingpassMyinfoError";
 import { logger } from "../util/Logger";
-import { EntityInfo, TokenResponse, UserInfo } from "./shared-constants";
+import { AuthInfo, EntityInfo, TokenResponse, TPAccessInfo, UserInfo } from "./shared-constants";
 import { Key } from "../util/KeyUtil";
 import { createClientAssertion } from "../util/SigningUtil";
 
@@ -28,6 +28,15 @@ export interface NDIIdTokenPayload {
 	amr: string[];
 	entityInfo: EntityInfo;
 	userInfo: UserInfo;
+}
+
+export interface AuthInfoTokenPayload {
+	aud: string;
+	iat: number;
+	iss: string;
+	exp: number;
+	AuthInfo: AuthInfo | string;
+	TpAuthInfo: TPAccessInfo;
 }
 
 export interface NdiOidcHelperConstructor {
@@ -55,6 +64,7 @@ interface OidcConfig {
 	authorization_endpoint: string;
 	token_endpoint: string;
 	jwks_uri: string;
+	'authorization-info_endpoint': string;
 }
 
 export class NdiOidcHelper {
@@ -217,6 +227,37 @@ export class NdiOidcHelper {
 		}
 
 		throw Error("Token payload sub property is not defined");
+	}
+
+	/**
+	 * Get authorisation information from Corppass Endpoint
+	 */
+	public async getAuthorisationInfo(tokens: TokenResponse): Promise<AuthInfoTokenPayload> {
+		try {
+			const {
+				data: { 'authorization-info_endpoint': authorisationInfoEndpoint, jwks_uri, issuer },
+			} = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl, { headers: this.additionalHeaders });
+
+			const finalAuthorisationInfoUri = this.proxyBaseUrl ? authorisationInfoEndpoint.replace(issuer, this.proxyBaseUrl) : authorisationInfoEndpoint;
+			const { access_token: accessToken } = tokens;
+			const config = {
+				headers: {
+					...this.additionalHeaders,
+					Authorization: `Bearer ${accessToken}`,
+				},
+			};
+			const { data: authorisationInfoJws } = await this.axiosClient.post(finalAuthorisationInfoUri, null, config);
+
+			const finalJwksUri = this.proxyBaseUrl ? jwks_uri.replace(issuer, this.proxyBaseUrl) : jwks_uri;
+			const { data: { keys }, } = await this.axiosClient.get(finalJwksUri, { headers: this.additionalHeaders });
+
+			const verifiedJws = await JweUtil.verifyJwsUsingKeyStore(authorisationInfoJws, keys);
+
+			return JSON.parse(verifiedJws.payload.toString()) as AuthInfoTokenPayload;
+		} catch (e) {
+			logger.error("Failed to get authorisation info", e);
+			throw e;
+		}
 	}
 
 	private validateStatus(status: number) {

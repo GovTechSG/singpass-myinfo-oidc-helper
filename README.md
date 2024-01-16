@@ -316,6 +316,8 @@ Corppass.NdiOidcHelper
 - `getIdTokenPayload(tokens: TokenResponse) => Promise<IdTokenPayload>` - decrypt and verify the JWT. Outputs IdTokenPayload, which is the input for extractInfoFromIdTokenSubject
 - `extractInfoFromIdTokenSubject(payload: TokenPayload) => { nric: string, uuid: string, countryCode: string }` - finally, get the nric, system defined UUID and country code of the user from the ID Token TokenPayload
 
+- `getAuthorisationInfo(tokens: TokenResponse) => Promise<AuthInfoTokenPayload>` - get authorisation info JWT from authorisation info endpoint. Outputs AuthInfoTokenPayload, which contain roles and params information of user
+
 ---
 
 ## Key Object

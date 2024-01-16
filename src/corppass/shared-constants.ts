@@ -16,7 +16,7 @@ export interface EntityInfo {
 	CPNonUEN_Name: string;
 }
 
-interface AuthInfo {
+export interface AuthInfo {
 	Result_Set: {
 		ESrvc_Row_Count: number;
 		ESrvc_Result: {
@@ -38,7 +38,7 @@ interface AuthInfo {
 	};
 }
 
-interface TPAccessInfo {
+export interface TPAccessInfo {
 	Result_Set: {
 		ESrvc_Row_Count: number,
 		ESrvc_Result: {
