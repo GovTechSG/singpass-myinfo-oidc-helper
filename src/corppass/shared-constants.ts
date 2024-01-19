@@ -17,25 +17,29 @@ export interface EntityInfo {
 }
 
 export interface AuthInfo {
-	Result_Set: {
-		ESrvc_Row_Count: number;
-		ESrvc_Result: {
-			CPESrvcID: string;
-			Auth_Result_Set: {
-				Row_Count: number;
-				Row: {
-					CPEntID_SUB: string;
-					CPRole: string;
-					StartDate: string;
-					EndDate: string;
-					Parameter?: {
-						name: string;
-						value: string;
-					}[];
-				}[];
-			};
-		}[];
-	};
+	Result_Set: AuthInfoResultSet;
+}
+
+export interface EserviceAuthResultRow {
+	CPEntID_SUB: string;
+	CPRole: string;
+	StartDate: string;
+	EndDate: string;
+	Parameter?: {
+		name: string;
+		value: string;
+	}[];
+}
+
+export interface AuthInfoResultSet {
+	ESrvc_Row_Count: number;
+	ESrvc_Result: {
+		CPESrvcID: string;
+		Auth_Result_Set: {
+			Row_Count: number;
+			Row: EserviceAuthResultRow[];
+		};
+	}[];
 }
 
 export interface TPAccessInfo {

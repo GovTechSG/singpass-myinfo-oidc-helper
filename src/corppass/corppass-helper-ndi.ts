@@ -4,9 +4,10 @@ import { createClient } from "../client/axios-client";
 import { JweUtil } from "../util";
 import { SingpassMyInfoError } from "../util/error/SingpassMyinfoError";
 import { logger } from "../util/Logger";
-import { AuthInfo, EntityInfo, TokenResponse, TPAccessInfo, UserInfo } from "./shared-constants";
+import { AuthInfo, EntityInfo, EserviceAuthResultRow, TokenResponse, TPAccessInfo, UserInfo } from "./shared-constants";
 import { Key } from "../util/KeyUtil";
 import { createClientAssertion } from "../util/SigningUtil";
+import { DateUtils } from "../util/DateUtils";
 
 interface AccessTokenPayload {
 	exp: number;
@@ -35,8 +36,8 @@ export interface AuthInfoTokenPayload {
 	iat: number;
 	iss: string;
 	exp: number;
-	AuthInfo: AuthInfo | string;
-	TpAuthInfo: TPAccessInfo;
+	AuthInfo: AuthInfo;
+	TpAuthInfo?: TPAccessInfo;
 }
 
 export interface NdiOidcHelperConstructor {
@@ -232,7 +233,7 @@ export class NdiOidcHelper {
 	/**
 	 * Get authorisation information from Corppass Endpoint
 	 */
-	public async getAuthorisationInfo(tokens: TokenResponse): Promise<AuthInfoTokenPayload> {
+	public async getAuthorisationInfoTokenPayload(tokens: TokenResponse): Promise<AuthInfoTokenPayload> {
 		try {
 			const {
 				data: { 'authorization-info_endpoint': authorisationInfoEndpoint, jwks_uri, issuer },
@@ -253,11 +254,44 @@ export class NdiOidcHelper {
 
 			const verifiedJws = await JweUtil.verifyJwsUsingKeyStore(authorisationInfoJws, keys);
 
-			return JSON.parse(verifiedJws.payload.toString()) as AuthInfoTokenPayload;
+			const authorisationInfoTokenPayload = JSON.parse(verifiedJws.payload.toString());
+			if (typeof authorisationInfoTokenPayload.AuthInfo === 'string') {
+				authorisationInfoTokenPayload.AuthInfo = JSON.parse(authorisationInfoTokenPayload.AuthInfo);
+			}
+
+			if (typeof authorisationInfoTokenPayload.TP_Auth === 'string') {
+				authorisationInfoTokenPayload.TP_Auth = JSON.parse(authorisationInfoTokenPayload.TP_Auth);
+			}
+
+			return authorisationInfoTokenPayload;
 		} catch (e) {
 			logger.error("Failed to get authorisation info", e);
 			throw e;
 		}
+	}
+
+	public extractActiveAuthResultFromAuthInfoToken(authInfoTokenPayload: AuthInfoTokenPayload): Record<string, EserviceAuthResultRow[]> {
+		const { AuthInfo: { Result_Set: authInfoResultSet } } = authInfoTokenPayload;
+		const { ESrvc_Row_Count: resultCount, ESrvc_Result: results } = authInfoResultSet;
+
+		if (!resultCount) {
+			return {};
+		}
+		const filteredResult = {} as Record<string, EserviceAuthResultRow[]>;
+
+		results.forEach((result) => {
+			const {
+				Auth_Result_Set: { Row: resultRows },
+				CPESrvcID: serviceId,
+			} = result;
+			const filteredAuthResultSet = resultRows.filter((resultRow) => {
+				const { StartDate, EndDate } = resultRow;
+				return DateUtils.isWithinPeriod(StartDate, EndDate);
+			});
+			filteredResult[serviceId] = filteredAuthResultSet;
+		});
+
+		return filteredResult;
 	}
 
 	private validateStatus(status: number) {

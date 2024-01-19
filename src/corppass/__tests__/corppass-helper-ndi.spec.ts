@@ -1,4 +1,7 @@
 import { NDIIdTokenPayload, NdiOidcHelper, NdiOidcHelperConstructor } from "../corppass-helper-ndi";
+import { TokenResponse } from "../shared-constants";
+import * as JweUtils from "../../util/JweUtil";
+import { JWS } from "node-jose";
 
 const mockOidcConfigUrl = "https://mockcorppass.sg/authorize";
 const mockClientId = "CLIENT-ID";
@@ -131,6 +134,170 @@ describe("NDI Corppass Helper", () => {
 					{ headers: { "content-type": "application/x-www-form-urlencoded", "x-api-token": "TOKEN" } },
 				]),
 			);
+		});
+	});
+
+	describe("Authorisation info api", () => {
+		const MOCK_TOKEN: TokenResponse = {
+			access_token: 'MOCK_ACCESS_TOKEN',
+			refresh_token: "MOCK_REFRESH_TOKEN",
+			id_token: "MOCK_ID_TOKEN",
+			token_type: "bearer",
+			expires_in: 599,
+			scope: "openid"
+		};
+
+		const MOCK_AUTH_INFO = {
+			"Result_Set": {
+				"ESrvc_Row_Count": 1,
+				"ESrvc_Result": [{
+					"CPESrvcID": "EserviceId",
+					"Auth_Result_Set":
+					{
+						"Row_Count": 2,
+						"Row": [{
+							"CPEntID_SUB": "",
+							"CPRole": "CorppassRole",
+							"StartDate": "2024-01-16",
+							"EndDate": "9999-12-31",
+							"Parameter": [{
+								"name": "Agencies",
+								"value": "AGY"
+							}]
+						}, {
+							"CPEntID_SUB": "",
+							"CPRole": "CorppassRole",
+							"StartDate": "2000-01-16",
+							"EndDate": "2000-12-31",
+							"Parameter": [{
+								"name": "Agencies",
+								"value": "AGY"
+							}]
+						}]
+					}
+				}, {
+					"CPESrvcID": "EserviceId2",
+					"Auth_Result_Set":
+					{
+						"Row_Count": 1,
+						"Row": [{
+							"CPEntID_SUB": "",
+							"CPRole": "CorppassRole",
+							"StartDate": "2000-01-16",
+							"EndDate": "2000-12-31",
+							"Parameter": [{
+								"name": "Agencies",
+								"value": "AGY"
+							}]
+						}]
+					}
+				}]
+			}
+		};
+
+		const MOCK_RAW_AUTH_PAYLOAD = {
+			aud: "",
+			iat: 0,
+			iss: "",
+			exp: 0,
+			AuthInfo: JSON.stringify(MOCK_AUTH_INFO),
+		};
+		const MOCK_AUTH_PAYLOAD = { ...MOCK_RAW_AUTH_PAYLOAD, AuthInfo: MOCK_AUTH_INFO };
+
+		const MOCK_ADDITIONAL_HEADERS = { "x-api-token": "TOKEN" };
+		it("should use proxy url when specific", async () => {
+			const corppassHelper = new NdiOidcHelper({
+				...props,
+				proxyBaseUrl: "https://www.proxy.gov.sg",
+				additionalHeaders: MOCK_ADDITIONAL_HEADERS,
+			});
+
+			const mockVerifyJwsUsingKeyStore = jest.spyOn(JweUtils, "verifyJwsUsingKeyStore").mockResolvedValueOnce({ payload: JSON.stringify(MOCK_RAW_AUTH_PAYLOAD) } as unknown as JWS.VerificationResult);
+
+			const axiosMock = jest.fn();
+			// First get is to get OIDC Config
+			axiosMock.mockImplementationOnce(() => {
+				return {
+					status: 200,
+					data: {
+						token_endpoint: "https://mockcorppass.sg/mga/sps/oauth/oauth20/token",
+						issuer: "https://mockcorppass.sg",
+						'authorization-info_endpoint': "https://mockcorppass.sg/authorization-info",
+						jwks_uri: "https://mockcorppass.sg/.well-known/keys",
+
+					},
+				};
+			});
+
+			// Second get is to get JWKS
+			axiosMock.mockImplementationOnce(() => {
+				return {
+					status: 200,
+					data: {
+						keys: "MOCK_KEYS",
+
+					},
+				};
+			});
+
+			const axiosPostMock = jest.fn((): any =>
+				Promise.resolve({
+					status: 200,
+					data: "TEST_AUTH_INFO_TOKEN"
+					,
+				}),
+			);
+
+			corppassHelper._testExports.getCorppassClient().get = axiosMock;
+			corppassHelper._testExports.getCorppassClient().post = axiosPostMock;
+
+			expect(await corppassHelper.getAuthorisationInfoTokenPayload(MOCK_TOKEN)).toStrictEqual(MOCK_AUTH_PAYLOAD);
+
+			expect(axiosMock.mock.calls[0]).toEqual(
+				expect.arrayContaining([
+					mockOidcConfigUrl,
+					{ headers: MOCK_ADDITIONAL_HEADERS },
+				]),
+			);
+			expect(axiosMock.mock.calls[1]).toEqual(
+				expect.arrayContaining([
+					'https://www.proxy.gov.sg/.well-known/keys',
+					{ headers: MOCK_ADDITIONAL_HEADERS },
+				]),
+			);
+
+			expect(mockVerifyJwsUsingKeyStore).toHaveBeenCalledWith('TEST_AUTH_INFO_TOKEN', 'MOCK_KEYS');
+			expect(axiosMock).toHaveBeenCalledTimes(2);
+			expect(axiosPostMock).toHaveBeenCalledTimes(1);
+			expect(axiosPostMock.mock.calls[0]).toEqual(
+				expect.arrayContaining([
+					"https://www.proxy.gov.sg/authorization-info",
+					null,
+					{ headers: { "Authorization": `Bearer ${MOCK_TOKEN.access_token}`, ...MOCK_ADDITIONAL_HEADERS } },
+				]),
+			);
+		});
+
+		it("should extract active auth result", async () => {
+			const corppassHelper = new NdiOidcHelper({
+				...props,
+				proxyBaseUrl: "https://www.proxy.gov.sg",
+				additionalHeaders: MOCK_ADDITIONAL_HEADERS,
+			});
+			expect(corppassHelper.extractActiveAuthResultFromAuthInfoToken(MOCK_AUTH_PAYLOAD)).toStrictEqual({
+				EserviceId: [{
+					"CPEntID_SUB": "",
+					"CPRole": "CorppassRole",
+					"StartDate": "2024-01-16",
+					"EndDate": "9999-12-31",
+					"Parameter": [{
+						"name": "Agencies",
+						"value": "AGY"
+					}]
+				}],
+				EserviceId2: []
+			});
+
 		});
 	});
 });
