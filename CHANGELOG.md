@@ -1,5 +1,8 @@
 # Changelogs
 
+## 8.3.3
+- Add new profiles for book facilities UAT
+
 ## 8.3.1
 - Add new profiles for book facilities UAT
 

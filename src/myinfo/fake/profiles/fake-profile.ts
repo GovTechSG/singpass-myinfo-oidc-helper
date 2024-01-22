@@ -91,5 +91,9 @@ export enum ProfileArchetype {
 	MS_HBP_RESIDENT_6 = "Ms HBP Resident 6",
 	MR_MP_RESIDENT_4 = "Mr MP Resident 4",
 	MR_NS_RESIDENT_5 = "Mr NS Resident 5",
-	MS_PRPG_RESIDENT_1 = "Ms PRPG Resident 1"
+	MS_PRPG_RESIDENT_1 = "Ms PRPG Resident 1",
+	MR_MP_RESIDENT_6 = "Mr MP Resident 6",
+	MS_NS_RESIDENT_6 = "Ms NS Resident 6",
+	MR_MP_RESIDENT_1 = "Mr MP Resident 1",
+	MR_HBP_RESIDENT_5 = "Mr HBP Resident 5",
 }
