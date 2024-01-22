@@ -75,6 +75,10 @@ import { msHbpResident6 } from "./msHbpResident6";
 import { mrMpResident4 } from "./mrMpResident4";
 import { mrNsResident5 } from "./mrNsResident5";
 import { msPrpgResident1 } from "./msPrpgResident1";
+import { mrMpResident6 } from "./mrMpResident6";
+import { msNsResident6 } from "./msNsResident6";
+import { mrMpResident1 } from "./mrMpResident1";
+import { mrHbpResident5 } from "./mrHbpResident5";
 
 /**
  * Exhaustive list of our MyInfo archetype profiles
@@ -157,5 +161,9 @@ export const profiles = [
 	msHbpResident6,
 	mrMpResident4,
 	mrNsResident5,
-	msPrpgResident1
+	msPrpgResident1,
+	mrMpResident6,
+	msNsResident6,
+	mrMpResident1,
+	mrHbpResident5,
 ];
