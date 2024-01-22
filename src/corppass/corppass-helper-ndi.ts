@@ -37,7 +37,7 @@ export interface AuthInfoTokenPayload {
 	iss: string;
 	exp: number;
 	AuthInfo: AuthInfo;
-	TpAuthInfo?: TPAccessInfo;
+	TPAuthInfo?: TPAccessInfo;
 }
 
 export interface NdiOidcHelperConstructor {
@@ -254,13 +254,10 @@ export class NdiOidcHelper {
 
 			const verifiedJws = await JweUtil.verifyJwsUsingKeyStore(authorisationInfoJws, keys);
 
-			const authorisationInfoTokenPayload = JSON.parse(verifiedJws.payload.toString());
-			if (typeof authorisationInfoTokenPayload.AuthInfo === 'string') {
-				authorisationInfoTokenPayload.AuthInfo = JSON.parse(authorisationInfoTokenPayload.AuthInfo);
-			}
-
-			if (typeof authorisationInfoTokenPayload.TP_Auth === 'string') {
-				authorisationInfoTokenPayload.TP_Auth = JSON.parse(authorisationInfoTokenPayload.TP_Auth);
+			const authorisationInfoTokenPayload = JSON.parse(verifiedJws.payload.toString()) as AuthInfoTokenPayload;
+			authorisationInfoTokenPayload.AuthInfo = JSON.parse(authorisationInfoTokenPayload.AuthInfo as unknown as string);
+			if (authorisationInfoTokenPayload.TPAuthInfo) {
+				authorisationInfoTokenPayload.TPAuthInfo = JSON.parse(authorisationInfoTokenPayload.TPAuthInfo as unknown as string);
 			}
 
 			return authorisationInfoTokenPayload;
