@@ -21,3 +21,10 @@ export async function verifyJWS(jws: string, verifyCert: string, format: KeyForm
 
 	return jose.JWS.createVerify(jwsKey).verify(jws);
 }
+
+export async function verifyJwsUsingKeyStore(jws: string, keys: string | object) {
+	if (!jws) throw new SingpassMyInfoError("Missing JWT data.");
+	if (!keys) throw new SingpassMyInfoError("Missing key set");
+	const keyStore = await jose.JWK.asKeyStore(keys);
+	return jose.JWS.createVerify(keyStore).verify(jws);
+}

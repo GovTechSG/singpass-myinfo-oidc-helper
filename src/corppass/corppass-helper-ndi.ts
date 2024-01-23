@@ -4,9 +4,10 @@ import { createClient } from "../client/axios-client";
 import { JweUtil } from "../util";
 import { SingpassMyInfoError } from "../util/error/SingpassMyinfoError";
 import { logger } from "../util/Logger";
-import { EntityInfo, TokenResponse, UserInfo } from "./shared-constants";
+import { AuthInfo, EntityInfo, EserviceAuthResultRow, TokenResponse, TPAccessInfo, UserInfo } from "./shared-constants";
 import { Key } from "../util/KeyUtil";
 import { createClientAssertion } from "../util/SigningUtil";
+import { DateUtils } from "../util/DateUtils";
 
 interface AccessTokenPayload {
 	exp: number;
@@ -28,6 +29,15 @@ export interface NDIIdTokenPayload {
 	amr: string[];
 	entityInfo: EntityInfo;
 	userInfo: UserInfo;
+}
+
+export interface AuthInfoTokenPayload {
+	aud: string;
+	iat: number;
+	iss: string;
+	exp: number;
+	AuthInfo: AuthInfo;
+	TPAuthInfo?: TPAccessInfo;
 }
 
 export interface NdiOidcHelperConstructor {
@@ -55,6 +65,7 @@ interface OidcConfig {
 	authorization_endpoint: string;
 	token_endpoint: string;
 	jwks_uri: string;
+	'authorization-info_endpoint': string;
 }
 
 export class NdiOidcHelper {
@@ -217,6 +228,67 @@ export class NdiOidcHelper {
 		}
 
 		throw Error("Token payload sub property is not defined");
+	}
+
+	/**
+	 * Get authorisation information from Corppass Endpoint
+	 */
+	public async getAuthorisationInfoTokenPayload(tokens: TokenResponse): Promise<AuthInfoTokenPayload> {
+		try {
+			const {
+				data: { 'authorization-info_endpoint': authorisationInfoEndpoint, jwks_uri, issuer },
+			} = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl, { headers: this.additionalHeaders });
+
+			const finalAuthorisationInfoUri = this.proxyBaseUrl ? authorisationInfoEndpoint.replace(issuer, this.proxyBaseUrl) : authorisationInfoEndpoint;
+			const { access_token: accessToken } = tokens;
+			const config = {
+				headers: {
+					...this.additionalHeaders,
+					Authorization: `Bearer ${accessToken}`,
+				},
+			};
+			const { data: authorisationInfoJws } = await this.axiosClient.post(finalAuthorisationInfoUri, null, config);
+
+			const finalJwksUri = this.proxyBaseUrl ? jwks_uri.replace(issuer, this.proxyBaseUrl) : jwks_uri;
+			const { data: { keys }, } = await this.axiosClient.get(finalJwksUri, { headers: this.additionalHeaders });
+
+			const verifiedJws = await JweUtil.verifyJwsUsingKeyStore(authorisationInfoJws, keys);
+
+			const authorisationInfoTokenPayload = JSON.parse(verifiedJws.payload.toString()) as AuthInfoTokenPayload;
+			authorisationInfoTokenPayload.AuthInfo = JSON.parse(authorisationInfoTokenPayload.AuthInfo as unknown as string);
+			if (authorisationInfoTokenPayload.TPAuthInfo) {
+				authorisationInfoTokenPayload.TPAuthInfo = JSON.parse(authorisationInfoTokenPayload.TPAuthInfo as unknown as string);
+			}
+
+			return authorisationInfoTokenPayload;
+		} catch (e) {
+			logger.error("Failed to get authorisation info", e);
+			throw e;
+		}
+	}
+
+	public extractActiveAuthResultFromAuthInfoToken(authInfoTokenPayload: AuthInfoTokenPayload): Record<string, EserviceAuthResultRow[]> {
+		const { AuthInfo: { Result_Set: authInfoResultSet } } = authInfoTokenPayload;
+		const { ESrvc_Row_Count: resultCount, ESrvc_Result: results } = authInfoResultSet;
+
+		if (!resultCount) {
+			return {};
+		}
+		const filteredResult = {} as Record<string, EserviceAuthResultRow[]>;
+
+		results.forEach((result) => {
+			const {
+				Auth_Result_Set: { Row: resultRows },
+				CPESrvcID: serviceId,
+			} = result;
+			const filteredAuthResultSet = resultRows.filter((resultRow) => {
+				const { StartDate, EndDate } = resultRow;
+				return DateUtils.isWithinPeriod(StartDate, EndDate);
+			});
+			filteredResult[serviceId] = filteredAuthResultSet;
+		});
+
+		return filteredResult;
 	}
 
 	private validateStatus(status: number) {
