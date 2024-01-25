@@ -1,6 +1,7 @@
-import { convert, Instant, LocalDate, LocalDateTime, LocalTime, TemporalAdjusters, ZonedDateTime, ZoneId } from "@js-joda/core";
+import { convert, DateTimeFormatterBuilder, Instant, LocalDate, LocalDateTime, LocalTime, ResolverStyle, TemporalAdjusters, ZonedDateTime, ZoneId } from "@js-joda/core";
 import "@js-joda/timezone";
 import * as _ from "lodash";
+import { logger } from "../util/Logger";
 
 export namespace DateUtils {
 	export const SG_TZ = ZoneId.of("Asia/Singapore");
@@ -237,5 +238,17 @@ export namespace DateUtils {
 		if (!zdt) return null;
 
 		return zdt.with(TemporalAdjusters.lastDayOfYear()).withHour(23).withMinute(59).withSecond(59).withNano(999999999);
+	}
+
+	/**
+	 * Check if time is within period, if no input is given, current date (local time) will be used
+	 * NOTE: startOfPeriod and endOfPeriod is currently in the format 'uuuu-MM-dd', example: 2015-01-05
+	 */
+	export function isWithinPeriod(startOfPeriod: string, endOfPeriod: string, input = LocalDate.now()): boolean {
+		const CORPPASS_DATE_FORMAT = "uuuu-MM-dd";
+		const formatter = new DateTimeFormatterBuilder().appendPattern(CORPPASS_DATE_FORMAT).toFormatter(ResolverStyle.STRICT);
+		const start = LocalDate.parse(startOfPeriod, formatter);
+		const end = LocalDate.parse(endOfPeriod, formatter);
+		return !(input.compareTo(start) < 0 || input.compareTo(end) > 0);
 	}
 }
