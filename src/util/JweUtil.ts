@@ -28,3 +28,10 @@ export async function verifyJwsUsingKeyStore(jws: string, keys: string | object)
 	const keyStore = await jose.JWK.asKeyStore(keys);
 	return jose.JWS.createVerify(keyStore).verify(jws);
 }
+
+export function extractJwtHeader(jwt: string): object {
+	const jwtComponents = jwt.split(".");
+	const header = jose.util.base64url.decode(jwtComponents[0]);
+	return JSON.parse(header.toString());
+
+}
