@@ -71,14 +71,35 @@ import { mrsICAMommyScenario5 } from "./mrICAMommyScenario5";
 import { mrsICAMommyScenario6 } from "./mrICAMommyScenario6";
 import { mrsICAMommyScenario8 } from "./mrICAMommyScenario8";
 import { mrCckResident1 } from "./mrCckResident1";
-import { msHbpResident6 } from "./msHbpResident6";
-import { mrMpResident4 } from "./mrMpResident4";
-import { mrNsResident5 } from "./mrNsResident5";
-import { msPrpgResident1 } from "./msPrpgResident1";
-import { mrMpResident6 } from "./mrMpResident6";
-import { msNsResident6 } from "./msNsResident6";
-import { mrMpResident1 } from "./mrMpResident1";
+import { msCckResident2 } from "./msCckResident2";
+import { mrCckResident3 } from "./mrCckResident3";
+import { mrCckResident4 } from "./mrCckResident4";
+import { msCckResident5 } from "./msCckResident5";
+import { mrCckResident6 } from "./mrCckResident6";
+import { msHbpResident1 } from "./msHbpResident1";
+import { mrHbpResident2 } from "./mrHbpResident2";
+import { msHbpResident3 } from "./msHbpResident3";
+import { msHbpResident4 } from "./msHbpResident4";
 import { mrHbpResident5 } from "./mrHbpResident5";
+import { msHbpResident6 } from "./msHbpResident6";
+import { mrMpResident1 } from "./mrMpResident1";
+import { msMpResident2 } from "./msMpResident2";
+import { mrMpResident3 } from "./mrMpResident3";
+import { mrMpResident4 } from "./mrMpResident4";
+import { msMpResident5 } from "./msMpResident5";
+import { mrMpResident6 } from "./mrMpResident6";
+import { msNsResident1 } from "./msNsResident1";
+import { mrNsResident2 } from "./mrNsResident2";
+import { mrNsResident3 } from "./mrNsResident3";
+import { msNsResident4 } from "./msNsResident4";
+import { mrNsResident5 } from "./mrNsResident5";
+import { msNsResident6 } from "./msNsResident6";
+import { msPrpgResident1 } from "./msPrpgResident1";
+import { msPrpgResident2 } from "./msPrpgResident2";
+import { mrPrpgResident3 } from "./mrPrpgResident3";
+import { mrPrpgResident4 } from "./mrPrpgResident4";
+import { mrPrpgResident5 } from "./mrPrpgResident5";
+import { mrPrpgResident6 } from "./mrPrpgResident6";
 
 /**
  * Exhaustive list of our MyInfo archetype profiles
@@ -158,12 +179,33 @@ export const profiles = [
 	mrsICAMommyScenario6,
 	mrsICAMommyScenario8,
 	mrCckResident1,
-	msHbpResident6,
-	mrMpResident4,
-	mrNsResident5,
-	msPrpgResident1,
-	mrMpResident6,
-	msNsResident6,
-	mrMpResident1,
+	msCckResident2,
+	mrCckResident3,
+	mrCckResident4,
+	msCckResident5,
+	mrCckResident6,
+	msHbpResident1,
+	mrHbpResident2,
+	msHbpResident3,
+	msHbpResident4,
 	mrHbpResident5,
+	msHbpResident6,
+	mrMpResident1,
+	msMpResident2,
+	mrMpResident3,
+	mrMpResident4,
+	msMpResident5,
+	mrMpResident6,
+	msNsResident1,
+	mrNsResident2,
+	mrNsResident3,
+	msNsResident4,
+	mrNsResident5,
+	msNsResident6,
+	msPrpgResident1,
+	msPrpgResident2,
+	mrPrpgResident3,
+	mrPrpgResident4,
+	mrPrpgResident5,
+	mrPrpgResident6,
 ];
