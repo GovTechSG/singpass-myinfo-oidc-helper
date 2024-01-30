@@ -26,7 +26,7 @@ export async function verifyJWS(jws: string, verifyCert: string, format: KeyForm
 
 export async function verifyJwsUsingKeyStore(jws: string, keys: string | object) {
 	if (!jws) throw new SingpassMyInfoError("Missing JWT data.");
-	if (!keys) throw new SingpassMyInfoError("Missing key set");
+	if (!keys) throw new SingpassMyInfoError("Missing key set.");
 	const keyStore = await jose.JWK.asKeyStore(keys);
 	return jose.JWS.createVerify(keyStore).verify(jws);
 }
@@ -40,5 +40,6 @@ export function extractJwtHeader(jwt: string): Record<string, string> {
 export function extractKidFromIdToken(tokens: SingpassTokenResponse | CorppassTokenResponse): string {
 	const { id_token: idToken } = tokens;
 	const { kid } = extractJwtHeader(idToken);
+	if (!kid) throw new SingpassMyInfoError("Missing kid.");
 	return kid;
 }
