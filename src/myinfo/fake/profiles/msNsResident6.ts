@@ -23,11 +23,11 @@ export const msNsResident6: FakeProfile = {
 			value: "1988-08-08",
 		};
 
-		(profile.regadd as MyInfoComponents.Schemas.DataitemAddressSg).unit.value = "1914";
+		(profile.regadd as MyInfoComponents.Schemas.DataitemAddressSg).unit.value = "221";
 		(profile.regadd as MyInfoComponents.Schemas.DataitemAddressSg).floor.value = "05";
-		(profile.regadd as MyInfoComponents.Schemas.DataitemAddressSg).block.value = "342A";
-		(profile.regadd as MyInfoComponents.Schemas.DataitemAddressSg).street.value = "YISHUN RING ROAD";
-		(profile.regadd as MyInfoComponents.Schemas.DataitemAddressSg).postal.value = "761342";
+		(profile.regadd as MyInfoComponents.Schemas.DataitemAddressSg).block.value = "250";
+		(profile.regadd as MyInfoComponents.Schemas.DataitemAddressSg).street.value = "YISHUN AVENUE 9";
+		(profile.regadd as MyInfoComponents.Schemas.DataitemAddressSg).postal.value = "760250";
 
 		return profile;
 	},
