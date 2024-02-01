@@ -178,7 +178,7 @@ export class NdiOidcHelper {
 	 * Decrypts the ID Token JWT inside the TokenResponse to get the payload
 	 * Use extractInfoFromIdTokenSubject on the returned Token Payload to get the NRIC, system defined ID and country code
 	 */
-	public async getIdTokenPayload(tokens: TokenResponse): Promise<NDIIdTokenPayload> {
+	public async getIdTokenPayload(tokens: TokenResponse, overrideDecryptKey?: Key): Promise<NDIIdTokenPayload> {
 		try {
 			const {
 				data: { jwks_uri, issuer },
@@ -191,7 +191,9 @@ export class NdiOidcHelper {
 			const jwsVerifyKey = JSON.stringify(keys[0]);
 
 			const { id_token } = tokens;
-			const decryptedJwe = await JweUtil.decryptJWE(id_token, this.jweDecryptKey.key, this.jweDecryptKey.format);
+
+			const finalDecryptionKey = overrideDecryptKey ?? this.jweDecryptKey;
+			const decryptedJwe = await JweUtil.decryptJWE(id_token, finalDecryptionKey.key, finalDecryptionKey.format);
 			const jwsPayload = decryptedJwe.payload.toString();
 			const verifiedJws = await JweUtil.verifyJWS(jwsPayload, jwsVerifyKey, "json");
 			return JSON.parse(verifiedJws.payload.toString()) as NDIIdTokenPayload;

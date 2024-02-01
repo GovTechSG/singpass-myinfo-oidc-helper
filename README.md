@@ -246,7 +246,7 @@ Singpass.NdiOidcHelper
 - nonce (later returned inside the JWT from token endpoint)
 
 - `getTokens (authCode: string, axiosRequestConfig?: AxiosRequestConfig) => Promise<TokenResponse>` - get back the tokens from SP token endpoint. Outputs TokenResponse, which is the input for getIdTokenPayload
-- `getIdTokenPayload(tokens: TokenResponse) => Promise<TokenPayload>` - decrypt and verify the JWT. Outputs TokenPayload, which is the input for extractNricAndUuidFromPayload
+- `getIdTokenPayload(tokens: TokenResponse, overrideDecryptKey?: Key) => Promise<TokenPayload>` - decrypt and verify the JWT. Outputs TokenPayload, which is the input for extractNricAndUuidFromPayload
 - `extractNricAndUuidFromPayload(payload: TokenPayload) => { nric: string, uuid: string }` - finally, get the nric and WOG (Whole-of-government) UUID of the user from the ID Token TokenPayload
 
 ---
@@ -281,7 +281,7 @@ Corppass.OidcHelper
 - `getTokens (authCode: string, axiosRequestConfig?: AxiosRequestConfig) => Promise<TokenResponse>` - get back the tokens from token endpoint. Outputs TokenResponse, which is the input for getIdTokenPayload
 - `refreshTokens (refreshToken: string, axiosRequestConfig?: AxiosRequestConfig) => Promise<TokenResponse>` - get fresh tokens from SP token endpoint. Outputs TokenResponse, which is the input for getIdTokenPayload
 - `getAccessTokenPayload(tokens: TokenResponse) => Promise<AccessTokenPayload>` - decode and verify the JWT. Outputs AccessTokenPayload, which contains the `EntityInfo`, `AuthInfo` and `TPAccessInfo` claims
-- `getIdTokenPayload(tokens: TokenResponse) => Promise<IdTokenPayload>` - decrypt and verify the JWT. Outputs IdTokenPayload, which is the input for extractInfoFromIdTokenSubject
+- `getIdTokenPayload(tokens: TokenResponse, overrideDecryptKey?: Key) => Promise<IdTokenPayload>` - decrypt and verify the JWT. Outputs IdTokenPayload, which is the input for extractInfoFromIdTokenSubject
 - `extractInfoFromIdTokenSubject(payload: TokenPayload) => { nric: string, uuid: string, countryCode: string }` - finally, get the nric, system defined UUID and country code of the user from the ID Token TokenPayload
 
 ---
