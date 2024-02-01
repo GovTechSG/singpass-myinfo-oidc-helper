@@ -1,6 +1,8 @@
 import * as jose from "node-jose";
 import { SingpassMyInfoError } from "./error/SingpassMyinfoError";
 import { KeyFormat } from './KeyUtil';
+import { TokenResponse as SingpassTokenResponse } from "../singpass/shared-constants";
+import { TokenResponse as CorppassTokenResponse } from "../corppass/shared-constants";
 
 export async function decryptJWE(jwe: string, decryptKey: string, format: KeyFormat = 'pem'): Promise<jose.JWE.DecryptResult> {
 	if (!jwe) throw new SingpassMyInfoError("Missing JWE data.");
@@ -24,7 +26,20 @@ export async function verifyJWS(jws: string, verifyCert: string, format: KeyForm
 
 export async function verifyJwsUsingKeyStore(jws: string, keys: string | object) {
 	if (!jws) throw new SingpassMyInfoError("Missing JWT data.");
-	if (!keys) throw new SingpassMyInfoError("Missing key set");
+	if (!keys) throw new SingpassMyInfoError("Missing key set.");
 	const keyStore = await jose.JWK.asKeyStore(keys);
 	return jose.JWS.createVerify(keyStore).verify(jws);
+}
+
+export function extractJwtHeader(jwt: string): Record<string, string> {
+	const jwtComponents = jwt.split(".");
+	const header = jose.util.base64url.decode(jwtComponents[0]);
+	return JSON.parse(header.toString());
+}
+
+export function extractKidFromIdToken(tokens: SingpassTokenResponse | CorppassTokenResponse): string {
+	const { id_token: idToken } = tokens;
+	const { kid } = extractJwtHeader(idToken);
+	if (!kid) throw new SingpassMyInfoError("Missing kid.");
+	return kid;
 }

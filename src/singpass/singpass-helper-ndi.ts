@@ -5,8 +5,8 @@ import { JweUtil } from "../util";
 import { SingpassMyInfoError } from "../util/error/SingpassMyinfoError";
 import { logger } from "../util/Logger";
 import { TokenPayload, TokenResponse } from './shared-constants';
-import { Key } from'../util/KeyUtil';
-import { createClientAssertion } from'../util/SigningUtil';
+import { Key } from '../util/KeyUtil';
+import { createClientAssertion } from '../util/SigningUtil';
 
 export interface NdiOidcHelperConstructor {
 	oidcConfigUrl: string;
@@ -49,7 +49,7 @@ export class NdiOidcHelper {
 		state: string,
 		nonce?: string
 	): Promise<string> => {
-		const {data: {authorization_endpoint}} = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
+		const { data: { authorization_endpoint } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
 
 		const queryParams = {
 			state,
@@ -103,14 +103,16 @@ export class NdiOidcHelper {
 	 * Decrypts the ID Token JWT inside the TokenResponse to get the payload
 	 * Use extractNricAndUuidFromPayload on the returned Token Payload to get the NRIC and UUID
 	 */
-	public async getIdTokenPayload(tokens: TokenResponse): Promise<TokenPayload> {
+	public async getIdTokenPayload(tokens: TokenResponse, overrideDecryptKey?: Key): Promise<TokenPayload> {
 		try {
 			const { data: { jwks_uri } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
-			const { data: { keys } } = await this.axiosClient.get<{keys: Object[]}>(jwks_uri);
+			const { data: { keys } } = await this.axiosClient.get<{ keys: Object[] }>(jwks_uri);
 			const jwsVerifyKey = JSON.stringify(keys[0]);
 
 			const { id_token } = tokens;
-			const decryptedJwe = await JweUtil.decryptJWE(id_token, this.jweDecryptKey.key, this.jweDecryptKey.format);
+
+			const finalDecryptionKey = overrideDecryptKey ?? this.jweDecryptKey;
+			const decryptedJwe = await JweUtil.decryptJWE(id_token, finalDecryptionKey.key, finalDecryptionKey.format);
 			const jwsPayload = decryptedJwe.payload.toString();
 			const verifiedJws = await JweUtil.verifyJWS(jwsPayload, jwsVerifyKey, 'json');
 			return JSON.parse(verifiedJws.payload.toString()) as TokenPayload;

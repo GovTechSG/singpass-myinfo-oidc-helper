@@ -1,15 +1,24 @@
 import { NDIIdTokenPayload, NdiOidcHelper, NdiOidcHelperConstructor } from "../corppass-helper-ndi";
 import { TokenResponse } from "../shared-constants";
 import * as JweUtils from "../../util/JweUtil";
-import { JWS } from "node-jose";
+import { JWE, JWS } from "node-jose";
 
 const mockOidcConfigUrl = "https://mockcorppass.sg/authorize";
 const mockClientId = "CLIENT-ID";
 const mockRedirectUri = "http://mockme.sg/callback";
+const mockAdditionalHeaders = { "x-api-token": "TOKEN" };
 const mockDecryptKey =
 	'{"kty": "EC","d": "AA1YtF2O779tiuJ4Rs3UVItxgX3GFOgQ-aycS-n-lFU","use": "enc","crv": "P-256","kid": "odRFtcGZYAwsS4WtQWdbwdVXuAdHt4VoqFX6VwAXrmQ","x": "MFqQFZrB74cDhiBHhIBg9iCB-qj86vU45dj2iA-RAjs","y": "yUOsmZh4rd3qwqXRgRCIaAyRcOj4S0mD6tEsd-aTlL0","alg": "ECDH-ES+A256KW"}';
 const mockSignKey =
 	'{"kty": "EC","d": "QMS1DAh9RHzH7Oqj2FL5FW1j7FeQWqNjIfoaSfV14x8","use": "sig","crv": "P-256","kid": "jqjQh6u7LHFFxCPf12PqBzbDfpnqL9I0qR8Gqllq6vU","x": "17aNA7ePDntFNM0hKfTFcFoXhHK0nJ7n4zDwXfwi22s","y": "fGJn6q2zQitVVJY91Fr1oe4bErqy5SL3V4AC4e_4dmQ","alg": "ES256"}';
+const mockTokenResponse: TokenResponse = {
+	access_token: 'MOCK_ACCESS_TOKEN',
+	refresh_token: "MOCK_REFRESH_TOKEN",
+	id_token: "MOCK_ID_TOKEN",
+	token_type: "bearer",
+	expires_in: 599,
+	scope: "openid"
+};
 
 const createMockIdTokenPayload = (overrideProps?: Partial<NDIIdTokenPayload>): NDIIdTokenPayload => ({
 	userInfo: {
@@ -138,14 +147,6 @@ describe("NDI Corppass Helper", () => {
 	});
 
 	describe("Authorisation info api", () => {
-		const MOCK_TOKEN: TokenResponse = {
-			access_token: 'MOCK_ACCESS_TOKEN',
-			refresh_token: "MOCK_REFRESH_TOKEN",
-			id_token: "MOCK_ID_TOKEN",
-			token_type: "bearer",
-			expires_in: 599,
-			scope: "openid"
-		};
 
 		const MOCK_AUTH_INFO = {
 			"Result_Set": {
@@ -204,12 +205,11 @@ describe("NDI Corppass Helper", () => {
 		};
 		const MOCK_AUTH_PAYLOAD = { ...MOCK_RAW_AUTH_PAYLOAD, AuthInfo: MOCK_AUTH_INFO };
 
-		const MOCK_ADDITIONAL_HEADERS = { "x-api-token": "TOKEN" };
-		it("should use proxy url when specific", async () => {
+		it("should use proxy url when specified", async () => {
 			const corppassHelper = new NdiOidcHelper({
 				...props,
 				proxyBaseUrl: "https://www.proxy.gov.sg",
-				additionalHeaders: MOCK_ADDITIONAL_HEADERS,
+				additionalHeaders: mockAdditionalHeaders,
 			});
 
 			const mockVerifyJwsUsingKeyStore = jest.spyOn(JweUtils, "verifyJwsUsingKeyStore").mockResolvedValueOnce({ payload: JSON.stringify(MOCK_RAW_AUTH_PAYLOAD) } as unknown as JWS.VerificationResult);
@@ -251,18 +251,18 @@ describe("NDI Corppass Helper", () => {
 			corppassHelper._testExports.getCorppassClient().get = axiosMock;
 			corppassHelper._testExports.getCorppassClient().post = axiosPostMock;
 
-			expect(await corppassHelper.getAuthorisationInfoTokenPayload(MOCK_TOKEN)).toStrictEqual(MOCK_AUTH_PAYLOAD);
+			expect(await corppassHelper.getAuthorisationInfoTokenPayload(mockTokenResponse)).toStrictEqual(MOCK_AUTH_PAYLOAD);
 
 			expect(axiosMock.mock.calls[0]).toEqual(
 				expect.arrayContaining([
 					mockOidcConfigUrl,
-					{ headers: MOCK_ADDITIONAL_HEADERS },
+					{ headers: mockAdditionalHeaders },
 				]),
 			);
 			expect(axiosMock.mock.calls[1]).toEqual(
 				expect.arrayContaining([
 					'https://www.proxy.gov.sg/.well-known/keys',
-					{ headers: MOCK_ADDITIONAL_HEADERS },
+					{ headers: mockAdditionalHeaders },
 				]),
 			);
 
@@ -273,7 +273,7 @@ describe("NDI Corppass Helper", () => {
 				expect.arrayContaining([
 					"https://www.proxy.gov.sg/authorization-info",
 					null,
-					{ headers: { "Authorization": `Bearer ${MOCK_TOKEN.access_token}`, ...MOCK_ADDITIONAL_HEADERS } },
+					{ headers: { "Authorization": `Bearer ${mockTokenResponse.access_token}`, ...mockAdditionalHeaders } },
 				]),
 			);
 		});
@@ -282,7 +282,7 @@ describe("NDI Corppass Helper", () => {
 			const corppassHelper = new NdiOidcHelper({
 				...props,
 				proxyBaseUrl: "https://www.proxy.gov.sg",
-				additionalHeaders: MOCK_ADDITIONAL_HEADERS,
+				additionalHeaders: mockAdditionalHeaders,
 			});
 			expect(corppassHelper.extractActiveAuthResultFromAuthInfoToken(MOCK_AUTH_PAYLOAD)).toStrictEqual({
 				EserviceId: [{
@@ -297,6 +297,132 @@ describe("NDI Corppass Helper", () => {
 				}],
 				EserviceId2: []
 			});
+
+		});
+	});
+
+	describe("getIdTokenPayload()", () => {
+		const mockOverrideDecryptKey =
+			'{"kty": "EC","d": "AA1YtF2O779tiuJ4Rs3UVItxgX3GFOgQ-aycS-n-lFU","use": "enc","crv": "P-256","kid": "MOCK-OVERRIDE-DECRYPT-KEY-ID","x": "MFqQFZrB74cDhiBHhIBg9iCB-qj86vU45dj2iA-RAjs","y": "yUOsmZh4rd3qwqXRgRCIaAyRcOj4S0mD6tEsd-aTlL0","alg": "ECDH-ES+A256KW"}';
+
+		const mockVerifiedJws = { payload: JSON.stringify({ mockResults: 'VERIFIED_JWS' }) };
+		it("should use proxy url when specified", async () => {
+			const corppassHelper = new NdiOidcHelper({
+				...props,
+				proxyBaseUrl: "https://www.proxy.gov.sg",
+				additionalHeaders: mockAdditionalHeaders,
+			});
+
+			const mockDecryptJwe = jest.spyOn(JweUtils, "decryptJWE").mockResolvedValueOnce({ payload: 'DECRYPT_RESULTS' } as unknown as JWE.DecryptResult);
+			const mockVerifyJWS = jest.spyOn(JweUtils, "verifyJWS").mockResolvedValueOnce(mockVerifiedJws as unknown as JWS.VerificationResult);
+
+			const axiosMock = jest.fn();
+			// First get is to get OIDC Config
+			axiosMock.mockImplementationOnce(() => {
+				return {
+					status: 200,
+					data: {
+						token_endpoint: "https://mockcorppass.sg/mga/sps/oauth/oauth20/token",
+						issuer: "https://mockcorppass.sg",
+						'authorization-info_endpoint': "https://mockcorppass.sg/authorization-info",
+						jwks_uri: "https://mockcorppass.sg/.well-known/keys",
+
+					},
+				};
+			});
+
+			// Second get is to get JWKS
+			axiosMock.mockImplementationOnce(() => {
+				return {
+					status: 200,
+					data: {
+						keys: ["MOCK_KEY"],
+
+					},
+				};
+			});
+
+
+			corppassHelper._testExports.getCorppassClient().get = axiosMock;
+
+			await corppassHelper.getIdTokenPayload(mockTokenResponse);
+
+			expect(axiosMock.mock.calls[0]).toEqual(
+				expect.arrayContaining([
+					mockOidcConfigUrl,
+					{ headers: mockAdditionalHeaders },
+				]),
+			);
+			expect(axiosMock.mock.calls[1]).toEqual(
+				expect.arrayContaining([
+					'https://www.proxy.gov.sg/.well-known/keys',
+					{ headers: mockAdditionalHeaders },
+				]),
+			);
+
+			expect(mockDecryptJwe).toHaveBeenCalledWith(mockTokenResponse.id_token, mockDecryptKey, 'json',);
+			expect(mockVerifyJWS).toHaveBeenCalledWith('DECRYPT_RESULTS', JSON.stringify("MOCK_KEY"), 'json');
+			expect(axiosMock).toHaveBeenCalledTimes(2);
+
+		});
+
+		it("should use overrideDecryptKey when specified", async () => {
+			const corppassHelper = new NdiOidcHelper({
+				...props,
+				proxyBaseUrl: "https://www.proxy.gov.sg",
+				additionalHeaders: mockAdditionalHeaders,
+			});
+
+			const mockDecryptJwe = jest.spyOn(JweUtils, "decryptJWE").mockResolvedValueOnce({ payload: 'DECRYPT_RESULTS' } as unknown as JWE.DecryptResult);
+			const mockVerifyJWS = jest.spyOn(JweUtils, "verifyJWS").mockResolvedValueOnce(mockVerifiedJws as unknown as JWS.VerificationResult);
+
+			const axiosMock = jest.fn();
+			// First get is to get OIDC Config
+			axiosMock.mockImplementationOnce(() => {
+				return {
+					status: 200,
+					data: {
+						token_endpoint: "https://mockcorppass.sg/mga/sps/oauth/oauth20/token",
+						issuer: "https://mockcorppass.sg",
+						'authorization-info_endpoint': "https://mockcorppass.sg/authorization-info",
+						jwks_uri: "https://mockcorppass.sg/.well-known/keys",
+
+					},
+				};
+			});
+
+			// Second get is to get JWKS
+			axiosMock.mockImplementationOnce(() => {
+				return {
+					status: 200,
+					data: {
+						keys: ["MOCK_KEY"],
+
+					},
+				};
+			});
+
+
+			corppassHelper._testExports.getCorppassClient().get = axiosMock;
+
+			await corppassHelper.getIdTokenPayload(mockTokenResponse, { key: mockOverrideDecryptKey, format: "json" });
+
+			expect(axiosMock.mock.calls[0]).toEqual(
+				expect.arrayContaining([
+					mockOidcConfigUrl,
+					{ headers: mockAdditionalHeaders },
+				]),
+			);
+			expect(axiosMock.mock.calls[1]).toEqual(
+				expect.arrayContaining([
+					'https://www.proxy.gov.sg/.well-known/keys',
+					{ headers: mockAdditionalHeaders },
+				]),
+			);
+
+			expect(mockDecryptJwe).toHaveBeenCalledWith(mockTokenResponse.id_token, mockOverrideDecryptKey, 'json',);
+			expect(mockVerifyJWS).toHaveBeenCalledWith('DECRYPT_RESULTS', JSON.stringify("MOCK_KEY"), 'json');
+			expect(axiosMock).toHaveBeenCalledTimes(2);
 
 		});
 	});

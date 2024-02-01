@@ -1,11 +1,21 @@
 import { NdiOidcHelper, NdiOidcHelperConstructor } from "../singpass-helper-ndi";
-import { TokenPayload } from '../shared-constants';
+import { TokenPayload, TokenResponse } from '../shared-constants';
+import * as JweUtils from "../../util/JweUtil";
+import { JWE, JWS } from "node-jose";
 
 const mockOidcConfigUrl = "https://mocksingpass.sg/authorize";
 const mockClientId = "CLIENT-ID";
 const mockRedirectUri = "http://mockme.sg/callback";
 const mockDecryptKey = "sshh-secret";
 const mockSignKey = "sshh-secret";
+const mockTokenResponse: TokenResponse = {
+	access_token: 'MOCK_ACCESS_TOKEN',
+	refresh_token: "MOCK_REFRESH_TOKEN",
+	id_token: "MOCK_ID_TOKEN",
+	token_type: "bearer",
+	expires_in: 599,
+	scope: "openid"
+};
 
 const createMockTokenPayload = (overrideProps?: Partial<TokenPayload>): TokenPayload => ({
 	rt_hash: "TJXzQKancNCg3f3YQcZhzg",
@@ -25,8 +35,8 @@ describe("NDI Singpass Helper", () => {
 		oidcConfigUrl: mockOidcConfigUrl,
 		clientID: mockClientId,
 		redirectUri: mockRedirectUri,
-		jweDecryptKey: {key: mockDecryptKey},
-		clientAssertionSignKey: {key:mockSignKey},
+		jweDecryptKey: { key: mockDecryptKey },
+		clientAssertionSignKey: { key: mockSignKey },
 	};
 	const helper = new NdiOidcHelper(props);
 
@@ -81,6 +91,73 @@ describe("NDI Singpass Helper", () => {
 			});
 
 			expect(() => helper.extractNricAndUuidFromPayload(mockPayload)).toThrowError("Token payload sub property is invalid, does not contain valid NRIC and uuid string");
+		});
+	});
+
+	describe("getIdTokenPayload()", () => {
+		const mockOverrideDecryptKey =
+			'{"kty": "EC","d": "AA1YtF2O779tiuJ4Rs3UVItxgX3GFOgQ-aycS-n-lFU","use": "enc","crv": "P-256","kid": "MOCK-OVERRIDE-DECRYPT-KEY-ID","x": "MFqQFZrB74cDhiBHhIBg9iCB-qj86vU45dj2iA-RAjs","y": "yUOsmZh4rd3qwqXRgRCIaAyRcOj4S0mD6tEsd-aTlL0","alg": "ECDH-ES+A256KW"}';
+
+		const mockVerifiedJws = { payload: JSON.stringify({ mockResults: 'VERIFIED_JWS' }) };
+
+		it("should use overrideDecryptKey when specified", async () => {
+			const corppassHelper = new NdiOidcHelper({
+				...props,
+			});
+
+			const mockDecryptJwe = jest.spyOn(JweUtils, "decryptJWE").mockResolvedValueOnce({ payload: 'DECRYPT_RESULTS' } as unknown as JWE.DecryptResult);
+			const mockVerifyJWS = jest.spyOn(JweUtils, "verifyJWS").mockResolvedValueOnce(mockVerifiedJws as unknown as JWS.VerificationResult);
+
+			const mockJwksUrl = "https://www.mocksingpass.gov.sg/.well-known/keys";
+			const mockTokenEndpoint = "https://www.mocksingpass.gov.sg/mga/sps/oauth/oauth20/token";
+			const mockIssuer = "https://www.mocksingpass.gov.sg";
+			const mockAuthorizationInfoEndpoint = "https://www.mocksingpass.gov.sg/authorization-info";
+			const axiosMock = jest.fn();
+			// First get is to get OIDC Config
+			axiosMock.mockImplementationOnce(() => {
+				return {
+					status: 200,
+					data: {
+						token_endpoint: mockTokenEndpoint,
+						issuer: mockIssuer,
+						'authorization-info_endpoint': mockAuthorizationInfoEndpoint,
+						jwks_uri: mockJwksUrl,
+
+					},
+				};
+			});
+
+			// Second get is to get JWKS
+			axiosMock.mockImplementationOnce(() => {
+				return {
+					status: 200,
+					data: {
+						keys: ["MOCK_KEY"],
+
+					},
+				};
+			});
+
+
+			corppassHelper._testExports.getSingpassClient().get = axiosMock;
+
+			await corppassHelper.getIdTokenPayload(mockTokenResponse, { key: mockOverrideDecryptKey, format: "json" });
+
+			expect(axiosMock.mock.calls[0]).toEqual(
+				expect.arrayContaining([
+					mockOidcConfigUrl,
+				]),
+			);
+			expect(axiosMock.mock.calls[1]).toEqual(
+				expect.arrayContaining([
+					mockJwksUrl,
+				]),
+			);
+
+			expect(mockDecryptJwe).toHaveBeenCalledWith(mockTokenResponse.id_token, mockOverrideDecryptKey, 'json',);
+			expect(mockVerifyJWS).toHaveBeenCalledWith('DECRYPT_RESULTS', JSON.stringify("MOCK_KEY"), 'json');
+			expect(axiosMock).toHaveBeenCalledTimes(2);
+
 		});
 	});
 });
