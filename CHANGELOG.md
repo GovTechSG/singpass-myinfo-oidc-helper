@@ -1,6 +1,6 @@
 # Changelogs
 
-## Unreleased
+## 8.3.7
 
 - Add optional `overrideDecryptKey` to corppass and singpass helper's `getIdTokenPayload` method
 - Add `extractJwtHeader` and `extractKidFromIdToken` method
