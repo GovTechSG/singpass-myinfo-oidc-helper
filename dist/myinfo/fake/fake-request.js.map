@@ -1,0 +1,1 @@
+{"version":3,"file":"fake-request.js","sourceRoot":"","sources":["../../../src/myinfo/fake/fake-request.ts"],"names":[],"mappings":";;;AAGA,MAAa,iBAAiB;IAC7B,gBAAe,CAAC;IAET,KAAK,CAAC,GAAG,CAAC,gBAAqB;QACrC,OAAO,gBAAgB,CAAC;IACzB,CAAC;IAEM,KAAK,CAAC,IAAI,CAAC,gBAAqB;QACtC,OAAO,gBAAgB,CAAC;IACzB,CAAC;CACD;AAVD,8CAUC"}
