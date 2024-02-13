@@ -2,7 +2,15 @@ import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 import { ChildrenRecords } from "./childbirthRecords";
-import { MyInfoComStatusCode, MyInfoDrivingLicenceValidityCode, MyInfoEduLevelCode, MyInfoHousingTypeCode, MyInfoMaritalStatusCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
+import {
+	MyInfoComStatusCode,
+	MyInfoDrivingLicenceValidityCode,
+	MyInfoEduLevelCode,
+	MyInfoHousingTypeCode,
+	MyInfoMaritalStatusCode,
+	MyInfoResidentialCode,
+	MyInfoSexCode,
+} from "../../domain";
 
 const id = "S8399420G";
 const name = ProfileArchetype.MR_SG_UNCLE_RETIREE;

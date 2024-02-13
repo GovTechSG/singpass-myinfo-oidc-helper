@@ -1,0 +1,138 @@
+{
+	"env": {
+		"es6": true,
+		"node": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:import/recommended",
+		"plugin:sonarjs/recommended",
+		"plugin:import/typescript",
+		"prettier"
+	],
+	"overrides": [
+		{
+			"files": ["src/migrations/record/*.ts"],
+			"rules": {
+				"max-len": "off"
+			}
+		},
+		{
+			"files": ["**/*.spec.ts"],
+			"rules": {
+				"max-lines-per-function": "off",
+				"no-console": "off",
+				"sonarjs/cognitive-complexity": "off"
+			}
+		}
+	],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"project": "tsconfig.json",
+		"sourceType": "module"
+	},
+	"plugins": [
+		"eslint-plugin-jsdoc",
+		"eslint-plugin-prefer-arrow",
+		"sonarjs",
+		"eslint-plugin-import",
+		"@typescript-eslint"
+	],
+	"root": true,
+	"rules": {
+		"@typescript-eslint/ban-types": "warn",
+		"@typescript-eslint/no-explicit-any": "warn",
+		"@typescript-eslint/no-loss-of-precision": "warn",
+		"@typescript-eslint/no-namespace": "off",
+		"@typescript-eslint/no-shadow": ["error"],
+		"arrow-body-style": "off",
+		"default-case-last": "error",
+		"dot-notation": "error",
+		"eqeqeq": ["error", "smart"],
+		"id-denylist": [
+			"error",
+			"any",
+			"Number",
+			"number",
+			"String",
+			"string",
+			"Boolean",
+			"boolean",
+			"Undefined",
+			"undefined"
+		],
+		"import/no-cycle": "error",
+		"import/no-unresolved": "off",
+		"jsdoc/check-alignment": 1,
+		"jsdoc/multiline-blocks": 1,
+		"jsdoc/no-multi-asterisks": 1,
+		"jsdoc/tag-lines": [
+			"warn",
+			"any",
+			{
+				"startLines": 1
+			}
+		],
+		// "indent": ["warn", "tab", { "SwitchCase": 1, "offsetTernaryExpressions": true }],
+		// "no-mixed-spaces-and-tabs": ["error", "smart-tabs"],
+		"max-len": [
+			"warn",
+			{
+				"code": 200
+			}
+		],
+		"max-lines-per-function": [
+			"error",
+			{
+				"max": 200,
+				"skipBlankLines": true,
+				"skipComments": true
+			}
+		],
+		"max-params": [
+			"error",
+			{
+				"max": 7
+			}
+		],
+		"new-parens": "error",
+		"no-bitwise": "error",
+		"no-caller": "error",
+		"no-cond-assign": "error",
+		"no-console": "error",
+		"no-eval": "error",
+		"no-extra-parens": "off",
+		"no-invalid-this": "warn",
+		"no-multi-str": "warn",
+		"no-multiple-empty-lines": "error",
+		"no-new-wrappers": "error",
+		"no-shadow": "off",
+		"no-throw-literal": "error",
+		"no-trailing-spaces": "error",
+		"no-undef-init": "error",
+		"no-unsafe-finally": "error",
+		"no-var": "error",
+		"object-shorthand": "error",
+		"one-var": ["error", "never"],
+		"prefer-arrow/prefer-arrow-functions": [
+			"error",
+			{
+				"allowStandaloneDeclarations": true
+			}
+		],
+		"prefer-const": "error",
+		"radix": "error",
+		"semi": 2,
+		"sonarjs/no-duplicate-string": "warn",
+		"sonarjs/prefer-immediate-return": "off",
+		"spaced-comment": [
+			"error",
+			"always",
+			{
+				"markers": ["/"]
+			}
+		],
+		"valid-typeof": "off"
+	}
+}

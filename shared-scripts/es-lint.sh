@@ -2,7 +2,7 @@
 
 echo "=============================================================================="
 echo "Script: $(basename "$0")"
-echo "This script runs ts-lint"
+echo "This script runs es-lint"
 echo "=============================================================================="
 
 # ==============================================================================
@@ -30,16 +30,19 @@ SCRIPT_DIR=$( dirname $( ${READLINK} -f $0 ) )
 # Inputs
 # ==============================================================================
 
-export TS_CONFIG_PATH=${TS_CONFIG_PATH:-"./tsconfig.json"}
-
-export TSLINT_CONFIG_PATH=${TSLINT_CONFIG_PATH:-"./tslint.json"}
-
-export FILES=${@:-""}
+export ESLINT_CONFIG_PATH=${ESLINT_CONFIG_PATH:-".eslintrc"}
+export AUTO_FIX=${AUTO_FIX:-true}
 
 # ==============================================================================
 # Script
 # ==============================================================================
 
+if [ $AUTO_FIX != "true" ]; then unset AUTO_FIX; fi;
+
 # Lint
-echo "Linting with tslint"
-npx tslint -p ${TS_CONFIG_PATH} -c ${TSLINT_CONFIG_PATH} --fix ${FILES}
+echo "Linting with eslint"
+npx eslint -c ${ESLINT_CONFIG_PATH} ${AUTO_FIX:+--fix} "$@"
+
+# Prettier
+echo "Running prettier"
+npx prettier --check ${AUTO_FIX:+--write} "$@"

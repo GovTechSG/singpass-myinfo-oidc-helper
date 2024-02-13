@@ -1,7 +1,6 @@
 import { LocalDate } from "@js-joda/core";
 import { DateUtils } from "../DateUtils";
 
-
 describe("isWithinPeriod", () => {
 	it("should return false when checking if tmr is between 2 years ago and today", () => {
 		const current = LocalDate.now();
@@ -31,13 +30,13 @@ describe("isWithinPeriod", () => {
 	it("should return true when checking if today is between today and 9999-12-31", () => {
 		const current = LocalDate.now();
 		const start = current.toString();
-		const end = '9999-12-31';
+		const end = "9999-12-31";
 		expect(DateUtils.isWithinPeriod(start, end)).toBe(true);
 	});
 	it("should return false when checking if yesterday is between today and 9999-12-31", () => {
 		const current = LocalDate.now();
 		const start = current.toString();
-		const end = '9999-12-31';
+		const end = "9999-12-31";
 		expect(DateUtils.isWithinPeriod(start, end, current.minusDays(1))).toBe(false);
 	});
 });

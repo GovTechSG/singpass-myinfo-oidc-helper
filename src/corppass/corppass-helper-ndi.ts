@@ -65,7 +65,7 @@ interface OidcConfig {
 	authorization_endpoint: string;
 	token_endpoint: string;
 	jwks_uri: string;
-	'authorization-info_endpoint': string;
+	"authorization-info_endpoint": string;
 }
 
 export class NdiOidcHelper {
@@ -140,7 +140,9 @@ export class NdiOidcHelper {
 				"content-type": "application/x-www-form-urlencoded",
 			},
 		};
-		const finalTokenEndpoint = this.proxyBaseUrl ? token_endpoint.replace(issuer, this.proxyBaseUrl) : token_endpoint;
+		const finalTokenEndpoint = this.proxyBaseUrl
+			? token_endpoint.replace(issuer, this.proxyBaseUrl)
+			: token_endpoint;
 		const response = await this.axiosClient.post<TokenResponse>(finalTokenEndpoint, body, config);
 		if (!response.data.id_token) {
 			logger.error("Failed to get ID token: invalid response data", response.data);
@@ -214,7 +216,7 @@ export class NdiOidcHelper {
 		const { sub } = payload;
 
 		if (sub) {
-			const trimmedSub = sub.replace(/ /g, '');
+			const trimmedSub = sub.replace(/ /g, "");
 			const nricRegex = /s=([STFGM]\d{7}[A-Z])[^,]*/i;
 			const [, nric] = trimmedSub.match(nricRegex) || [];
 			const uuidRegex = /u=([^,]*)/i;
@@ -238,10 +240,12 @@ export class NdiOidcHelper {
 	public async getAuthorisationInfoTokenPayload(tokens: TokenResponse): Promise<AuthInfoTokenPayload> {
 		try {
 			const {
-				data: { 'authorization-info_endpoint': authorisationInfoEndpoint, jwks_uri, issuer },
+				data: { "authorization-info_endpoint": authorisationInfoEndpoint, jwks_uri, issuer },
 			} = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl, { headers: this.additionalHeaders });
 
-			const finalAuthorisationInfoUri = this.proxyBaseUrl ? authorisationInfoEndpoint.replace(issuer, this.proxyBaseUrl) : authorisationInfoEndpoint;
+			const finalAuthorisationInfoUri = this.proxyBaseUrl
+				? authorisationInfoEndpoint.replace(issuer, this.proxyBaseUrl)
+				: authorisationInfoEndpoint;
 			const { access_token: accessToken } = tokens;
 			const config = {
 				headers: {
@@ -252,14 +256,20 @@ export class NdiOidcHelper {
 			const { data: authorisationInfoJws } = await this.axiosClient.post(finalAuthorisationInfoUri, null, config);
 
 			const finalJwksUri = this.proxyBaseUrl ? jwks_uri.replace(issuer, this.proxyBaseUrl) : jwks_uri;
-			const { data: { keys }, } = await this.axiosClient.get(finalJwksUri, { headers: this.additionalHeaders });
+			const {
+				data: { keys },
+			} = await this.axiosClient.get(finalJwksUri, { headers: this.additionalHeaders });
 
 			const verifiedJws = await JweUtil.verifyJwsUsingKeyStore(authorisationInfoJws, keys);
 
 			const authorisationInfoTokenPayload = JSON.parse(verifiedJws.payload.toString()) as AuthInfoTokenPayload;
-			authorisationInfoTokenPayload.AuthInfo = JSON.parse(authorisationInfoTokenPayload.AuthInfo as unknown as string);
+			authorisationInfoTokenPayload.AuthInfo = JSON.parse(
+				authorisationInfoTokenPayload.AuthInfo as unknown as string,
+			);
 			if (authorisationInfoTokenPayload.TPAuthInfo) {
-				authorisationInfoTokenPayload.TPAuthInfo = JSON.parse(authorisationInfoTokenPayload.TPAuthInfo as unknown as string);
+				authorisationInfoTokenPayload.TPAuthInfo = JSON.parse(
+					authorisationInfoTokenPayload.TPAuthInfo as unknown as string,
+				);
 			}
 
 			return authorisationInfoTokenPayload;
@@ -269,8 +279,12 @@ export class NdiOidcHelper {
 		}
 	}
 
-	public extractActiveAuthResultFromAuthInfoToken(authInfoTokenPayload: AuthInfoTokenPayload): Record<string, EserviceAuthResultRow[]> {
-		const { AuthInfo: { Result_Set: authInfoResultSet } } = authInfoTokenPayload;
+	public extractActiveAuthResultFromAuthInfoToken(
+		authInfoTokenPayload: AuthInfoTokenPayload,
+	): Record<string, EserviceAuthResultRow[]> {
+		const {
+			AuthInfo: { Result_Set: authInfoResultSet },
+		} = authInfoTokenPayload;
 		const { ESrvc_Row_Count: resultCount, ESrvc_Result: results } = authInfoResultSet;
 
 		if (!resultCount) {

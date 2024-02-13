@@ -4,7 +4,6 @@ import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 import { ChildrenRecords } from "./childbirthRecords";
 import { MyInfoMaritalStatusCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
 
-
 const id = "T2446959F";
 const name = ProfileArchetype.MR_SG_FRESH_GRAD_YOUNG_PARENT;
 /**

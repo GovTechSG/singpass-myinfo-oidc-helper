@@ -3,7 +3,6 @@ import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 import { unavailableField } from "./common";
 
-
 const id = "S8779834H";
 const name = ProfileArchetype.MR_SG_DADDY_MISSING_FIELDS;
 
@@ -22,7 +21,7 @@ export const mrSGDaddyMissingFields: FakeProfile = {
 		profile.homeno = unavailableField;
 		profile.marriagecertno = unavailableField;
 		profile.countryofmarriage = unavailableField;
-		if (!!profile.childrenbirthrecords) {
+		if (profile.childrenbirthrecords) {
 			profile.childrenbirthrecords = profile.childrenbirthrecords.slice(0, 1);
 		}
 		profile.edulevel = unavailableField;

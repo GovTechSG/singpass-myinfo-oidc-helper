@@ -14,9 +14,12 @@ const childYoungest = {
 	birthcertno: { value: "T9722304H" },
 	name: { value: "Tan Ke Xuan" },
 	dob: { value: formatDateToString() },
-	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE), },
+	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE) },
 	tob: { value: "1000" },
-	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
+	lifestatus: {
+		code: MyInfoLifeStatusCode.ALIVE,
+		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
+	},
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 const child1MonthOld = {
@@ -26,9 +29,12 @@ const child1MonthOld = {
 	birthcertno: { value: "T4657515B" },
 	name: { value: "Tan Ke Yu" },
 	dob: { value: formatDateToString(ZonedDateTime.now().minusMonths(1)) },
-	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE), },
+	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE) },
 	tob: { value: "1200" },
-	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
+	lifestatus: {
+		code: MyInfoLifeStatusCode.ALIVE,
+		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
+	},
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 const child2MonthsOld = {
@@ -38,9 +44,12 @@ const child2MonthsOld = {
 	birthcertno: { value: "T7041892J" },
 	name: { value: "Tan Keh Guan" },
 	dob: { value: formatDateToString(ZonedDateTime.now().minusMonths(2)) },
-	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE), },
+	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE) },
 	tob: { value: "0300" },
-	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
+	lifestatus: {
+		code: MyInfoLifeStatusCode.ALIVE,
+		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
+	},
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 const childMiddle1 = {
@@ -50,9 +59,12 @@ const childMiddle1 = {
 	birthcertno: { value: "T2746216I" },
 	name: { value: "Tan Chiu" },
 	dob: { value: formatDateToString(ZonedDateTime.now().minusYears(2)) },
-	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE), },
+	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE) },
 	tob: { value: "0848" },
-	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
+	lifestatus: {
+		code: MyInfoLifeStatusCode.ALIVE,
+		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
+	},
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 const childMiddle2 = {
@@ -62,9 +74,12 @@ const childMiddle2 = {
 	birthcertno: { value: "T9702737J" },
 	name: { value: "Tan Chua" },
 	dob: { value: formatDateToString(ZonedDateTime.now().minusYears(2)) },
-	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE), },
+	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE) },
 	tob: { value: "0330" },
-	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
+	lifestatus: {
+		code: MyInfoLifeStatusCode.ALIVE,
+		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
+	},
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 const childMiddle3 = {
@@ -74,9 +89,12 @@ const childMiddle3 = {
 	birthcertno: { value: "T5688127H" },
 	name: { value: "Tan Su" },
 	dob: { value: formatDateToString(ZonedDateTime.now().minusYears(3)) },
-	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE), },
+	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE) },
 	tob: { value: "2350" },
-	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
+	lifestatus: {
+		code: MyInfoLifeStatusCode.ALIVE,
+		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
+	},
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 const childMiddle4 = {
@@ -86,9 +104,12 @@ const childMiddle4 = {
 	birthcertno: { value: "T2862346H" },
 	name: { value: "Tan Go" },
 	dob: { value: formatDateToString(ZonedDateTime.now().minusYears(4)) },
-	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE), },
+	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE) },
 	tob: { value: "0059" },
-	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
+	lifestatus: {
+		code: MyInfoLifeStatusCode.ALIVE,
+		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
+	},
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 const childMiddle5 = {
@@ -98,9 +119,12 @@ const childMiddle5 = {
 	birthcertno: { value: "T1235431I" },
 	name: { value: "Tan Sy" },
 	dob: { value: formatDateToString(ZonedDateTime.now().minusYears(5)) },
-	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE), },
+	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE) },
 	tob: { value: "0000" },
-	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
+	lifestatus: {
+		code: MyInfoLifeStatusCode.ALIVE,
+		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
+	},
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 const child6YearsOld = {
@@ -110,9 +134,12 @@ const child6YearsOld = {
 	birthcertno: { value: "T3485740C" },
 	name: { value: "Tan Kim" },
 	dob: { value: formatDateToString(DateUtils.startOfYear(ZonedDateTime.now().minusYears(6))) },
-	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE), },
+	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE) },
 	tob: { value: "0901" },
-	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
+	lifestatus: {
+		code: MyInfoLifeStatusCode.ALIVE,
+		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
+	},
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 const child7YearsOld = {
@@ -122,9 +149,12 @@ const child7YearsOld = {
 	birthcertno: { value: "T8555618A" },
 	name: { value: "Tan Liu" },
 	dob: { value: formatDateToString(DateUtils.endOfYear(ZonedDateTime.now().minusYears(7))) },
-	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE), },
+	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE) },
 	tob: { value: "1215" },
-	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
+	lifestatus: {
+		code: MyInfoLifeStatusCode.ALIVE,
+		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
+	},
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 const childSuperOld = {
@@ -134,9 +164,12 @@ const childSuperOld = {
 	birthcertno: { value: "T7269740A" },
 	name: { value: "Tan Ke Wei" },
 	dob: { value: formatDateToString(ZonedDateTime.now().minusYears(8)) },
-	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE), },
+	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE) },
 	tob: { value: "1500" },
-	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
+	lifestatus: {
+		code: MyInfoLifeStatusCode.ALIVE,
+		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
+	},
 } as MyInfoComponents.Schemas.Childrenbirthrecords;
 
 export const Childrenbirthrecords = {

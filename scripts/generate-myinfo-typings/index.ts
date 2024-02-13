@@ -1,4 +1,4 @@
-// tslint:disable: no-console tsr-detect-non-literal-fs-filename no-commented-code
+/* eslint-disable no-console */
 import dtsgenerator, { parseSchema } from "dtsgenerator";
 import * as fs from "fs";
 import * as handlebars from "handlebars";
@@ -38,9 +38,8 @@ const argv = yargs
 			return yargs
 				.positional(`swagger-path`, {
 					type: `string`,
-					describe:
-						`The MyInfo API swagger file path
-						The latest version may be downloaded from https://api.singpass.gov.sg/developers`
+					describe: `The MyInfo API swagger file path
+						The latest version may be downloaded from https://api.singpass.gov.sg/developers`,
 				})
 				.option(`output-dir`, {
 					alias: "o",
@@ -54,13 +53,13 @@ const argv = yargs
 					requiresArg: true,
 					describe: "URL to the latest myinfo code reference tables",
 					// NOTE: To be updated where necessary
-					default: "https://public.cloud.myinfo.gov.sg/dpp/frontend/assets/api-lib/myinfo/downloads/myinfo-api-code-tables.xlsx"
+					default:
+						"https://public.cloud.myinfo.gov.sg/dpp/frontend/assets/api-lib/myinfo/downloads/myinfo-api-code-tables.xlsx",
 				});
 		},
-		handler: () => { },
+		handler: () => {},
 	})
-	.help()
-	.argv;
+	.help().argv;
 
 const swaggerPath = argv["swagger-path"];
 const outputDir = argv["output-dir"];
@@ -79,15 +78,11 @@ async function executeScript() {
 	console.log("Generating API typings from MyInfo API swaggger file...");
 	const apiSwaggerTypingsFileName = await generateApiSwaggerTypings();
 
-
 	console.log("Generating enums typings from MyInfo codes table...");
 	const myinfoCodesEnumsFileNames = await generateMyInfoCodeEnums({ myinfoCodeRefTableUrl, outputDir });
 
 	console.log("Generating index...");
-	await generateIndex([
-		apiSwaggerTypingsFileName,
-		...myinfoCodesEnumsFileNames,
-		"profilestatus-domain.ts"]);
+	await generateIndex([apiSwaggerTypingsFileName, ...myinfoCodesEnumsFileNames, "profilestatus-domain.ts"]);
 }
 
 // =============================================================================
@@ -95,12 +90,12 @@ async function executeScript() {
 // =============================================================================
 
 function clearGeneratedFiles() {
-	const generatedDir = outputDir + '/generated';
+	const generatedDir = outputDir + "/generated";
 	fs.readdir(generatedDir, (err, files) => {
 		if (err) throw err;
 
 		for (const file of files) {
-			fs.unlink(`${generatedDir}/${file}`, e => {
+			fs.unlink(`${generatedDir}/${file}`, (e) => {
 				if (e) throw e;
 			});
 		}
@@ -159,10 +154,10 @@ function sanitizeSwagger(swagger: any): any {
 	// Remove components we don't need
 	delete swagger.components.requestBodies;
 	delete swagger.components.securitySchemes;
-	delete swagger.components.schemas["AuthTokenResponse"];
-	delete swagger.components.schemas["JWTAccessToken"];
-	delete swagger.components.schemas["TokenError"];
-	delete swagger.components.schemas["Error"];
+	delete swagger.components.schemas.AuthTokenResponse;
+	delete swagger.components.schemas.JWTAccessToken;
+	delete swagger.components.schemas.TokenError;
+	delete swagger.components.schemas.Error;
 
 	// Fix nulls
 	swagger = deepMapObject(swagger, (value) => value ?? "");
@@ -181,24 +176,27 @@ function sanitizeSwagger(swagger: any): any {
 
 async function writeSwaggerTypingsSource(swagger: any): Promise<string> {
 	const schema = parseSchema(swagger);
-	const { components } = (schema.content as any);
+	const { components } = schema.content as any;
 
 	// add custom data items to domains
 	const customDataItems = [
 		{ folder: "person", domain: "Person" },
 		{ folder: "person-common", domain: "PersonCommon" },
 	];
-	customDataItems.forEach(customDataItem => {
+	customDataItems.forEach((customDataItem) => {
 		const inputDirectory = `${outputDir}/custom/${customDataItem.folder}`;
 		if (fs.existsSync(inputDirectory)) {
 			const filenames = fs.readdirSync(inputDirectory);
-			filenames.forEach(file => {
+			filenames.forEach((file) => {
 				if (file.match(/.json$/)) {
 					const dataItem = JSON.parse(fs.readFileSync(`${inputDirectory}/${file}`, "utf8"));
 					components.schemas = { ...components.schemas, ...dataItem };
-					if (!components.schemas[customDataItem.domain].properties) components.schemas[customDataItem.domain].properties = {};
+					if (!components.schemas[customDataItem.domain].properties)
+						components.schemas[customDataItem.domain].properties = {};
 					Object.keys(dataItem).forEach((key) => {
-						components.schemas[customDataItem.domain].properties[key] = { "allOf": [{ "$ref": "#/components/schemas/" + key }] };
+						components.schemas[customDataItem.domain].properties[key] = {
+							allOf: [{ $ref: "#/components/schemas/" + key }],
+						};
 					});
 				}
 			});
@@ -206,7 +204,10 @@ async function writeSwaggerTypingsSource(swagger: any): Promise<string> {
 	});
 
 	let typingsSource = await dtsgenerator({ contents: [schema] });
-	typingsSource = typingsSource.replace("declare namespace Components {", "export declare namespace MyInfoComponents {");
+	typingsSource = typingsSource.replace(
+		"declare namespace Components {",
+		"export declare namespace MyInfoComponents {",
+	);
 	typingsSource = typingsSource.replace("namespace Schemas {", "export namespace Schemas {");
 
 	const filename = "myinfo-domain.ts";

@@ -1,4 +1,4 @@
-// tslint:disable
+/* eslint-disable */
 // =============================================================================
 // This file was generated with `npm run generate-myinfo-typings` on 2023-05-10
 // Any modifications to this file may be overwritten when the script runs again
@@ -26,7 +26,7 @@ enum MyInfoMerdekaGenerationMessageCodeMapping {
 	"NIL_STATUS" = "Please contact 1800-2222-888 for further details on your eligibility.",
 }
 
-type MyInfoMerdekaGenerationMessageCodeDesc = `${ MyInfoMerdekaGenerationMessageCodeMapping }`;
+type MyInfoMerdekaGenerationMessageCodeDesc = `${MyInfoMerdekaGenerationMessageCodeMapping}`;
 
 export namespace MyInfoMerdekaGenerationMessageCode {
 	export const fn = {
@@ -34,6 +34,9 @@ export namespace MyInfoMerdekaGenerationMessageCode {
 		values: EnumUtils.valuesFunc<MyInfoMerdekaGenerationMessageCode>(MyInfoMerdekaGenerationMessageCode),
 		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoMerdekaGenerationMessageCode>(MyInfoMerdekaGenerationMessageCode),
 		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoMerdekaGenerationMessageCode>(MyInfoMerdekaGenerationMessageCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoMerdekaGenerationMessageCode, MyInfoMerdekaGenerationMessageCodeDesc>(MyInfoMerdekaGenerationMessageCode, MyInfoMerdekaGenerationMessageCodeMapping),
+		toEnumDesc: EnumUtils.toEnumDescFunc<
+			MyInfoMerdekaGenerationMessageCode,
+			MyInfoMerdekaGenerationMessageCodeDesc
+		>(MyInfoMerdekaGenerationMessageCode, MyInfoMerdekaGenerationMessageCodeMapping),
 	};
 }

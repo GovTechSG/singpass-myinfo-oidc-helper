@@ -2,18 +2,13 @@ import { AxiosResponse } from "axios";
 import { IMyInfoRequest } from "../helper";
 
 export class FakeMyInfoRequest implements IMyInfoRequest {
-	constructor() {
-	}
+	constructor() {}
 
-	public async get(
-		expectedResponse: any,
-	): Promise<AxiosResponse> {
+	public async get(expectedResponse: any): Promise<AxiosResponse> {
 		return expectedResponse;
 	}
 
-	public async post(
-		expectedResponse: any,
-	): Promise<AxiosResponse> {
+	public async post(expectedResponse: any): Promise<AxiosResponse> {
 		return expectedResponse;
 	}
 }

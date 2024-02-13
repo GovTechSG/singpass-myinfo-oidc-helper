@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import axios from "axios";
 import * as path from "path";
 import * as shell from "shelljs";
@@ -68,7 +69,7 @@ describe("MyInfoDomain", () => {
 	const generatedFolder = path.join(__dirname, "fixtures/output/generated");
 
 	beforeAll(async () => {
-		shell.rm('-rf', generatedFolder);
+		shell.rm("-rf", generatedFolder);
 		shell.mkdir("-p", generatedFolder);
 
 		// mock
@@ -90,17 +91,19 @@ describe("MyInfoDomain", () => {
 
 	afterAll(() => {
 		// clean up generated files so they don't get tracked
-		shell.rm('-rf', generatedFolder);
+		shell.rm("-rf", generatedFolder);
 	});
 
 	describe("Single Table", () => {
 		it("should provide access to enums", () => {
-			const NewMyInfoSingleTable: typeof MyInfoSingleTable = require("./fixtures/output/generated/myinfo-single-table").MyInfoSingleTable;
+			const NewMyInfoSingleTable: typeof MyInfoSingleTable =
+				require("./fixtures/output/generated/myinfo-single-table").MyInfoSingleTable;
 			expect(NewMyInfoSingleTable).toHaveProperty("DEREGISTERED");
 			expect(NewMyInfoSingleTable.DEREGISTERED).toEqual("2");
 		});
 		it("should provide access to EnumUtil methods", () => {
-			const NewMyInfoSingleTable: typeof MyInfoSingleTable = require("./fixtures/output/generated/myinfo-single-table").MyInfoSingleTable;
+			const NewMyInfoSingleTable: typeof MyInfoSingleTable =
+				require("./fixtures/output/generated/myinfo-single-table").MyInfoSingleTable;
 			const enumKey = "DEREGISTERED";
 			const enumValue = NewMyInfoSingleTable.fn.toEnumValue("2");
 
@@ -137,7 +140,8 @@ describe("MyInfoDomain", () => {
 
 	describe("Custom Table", () => {
 		it("should override MyInfo enums with custom enums", () => {
-			const NewMyInfoCustomTable: typeof MyInfoCustomTable = require("./fixtures/output/generated/myinfo-custom-table").MyInfoCustomTable;
+			const NewMyInfoCustomTable: typeof MyInfoCustomTable =
+				require("./fixtures/output/generated/myinfo-custom-table").MyInfoCustomTable;
 			expect(NewMyInfoCustomTable).toHaveProperty("Apple");
 			expect(NewMyInfoCustomTable.Apple).toEqual("A");
 		});

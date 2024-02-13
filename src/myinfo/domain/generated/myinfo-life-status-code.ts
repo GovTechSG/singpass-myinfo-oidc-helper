@@ -1,4 +1,4 @@
-// tslint:disable
+/* eslint-disable */
 // =============================================================================
 // This file was generated with `npm run generate-myinfo-typings` on 2023-05-10
 // Any modifications to this file may be overwritten when the script runs again
@@ -16,7 +16,7 @@ enum MyInfoLifeStatusCodeMapping {
 	"DECEASED" = "DECEASED",
 }
 
-type MyInfoLifeStatusCodeDesc = `${ MyInfoLifeStatusCodeMapping }`;
+type MyInfoLifeStatusCodeDesc = `${MyInfoLifeStatusCodeMapping}`;
 
 export namespace MyInfoLifeStatusCode {
 	export const fn = {
@@ -24,6 +24,9 @@ export namespace MyInfoLifeStatusCode {
 		values: EnumUtils.valuesFunc<MyInfoLifeStatusCode>(MyInfoLifeStatusCode),
 		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoLifeStatusCode>(MyInfoLifeStatusCode),
 		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoLifeStatusCode>(MyInfoLifeStatusCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoLifeStatusCode, MyInfoLifeStatusCodeDesc>(MyInfoLifeStatusCode, MyInfoLifeStatusCodeMapping),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoLifeStatusCode, MyInfoLifeStatusCodeDesc>(
+			MyInfoLifeStatusCode,
+			MyInfoLifeStatusCodeMapping,
+		),
 	};
 }

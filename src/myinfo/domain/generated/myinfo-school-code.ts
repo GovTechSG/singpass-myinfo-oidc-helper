@@ -1,4 +1,4 @@
-// tslint:disable
+/* eslint-disable */
 // =============================================================================
 // This file was generated with `npm run generate-myinfo-typings` on 2023-05-10
 // Any modifications to this file may be overwritten when the script runs again
@@ -778,7 +778,7 @@ enum MyInfoSchoolCodeMapping {
 	"NORTHOAKS_PRIMARY_SCHOOL" = "NORTHOAKS PRIMARY SCHOOL",
 }
 
-type MyInfoSchoolCodeDesc = `${ MyInfoSchoolCodeMapping }`;
+type MyInfoSchoolCodeDesc = `${MyInfoSchoolCodeMapping}`;
 
 export namespace MyInfoSchoolCode {
 	export const fn = {
@@ -786,6 +786,9 @@ export namespace MyInfoSchoolCode {
 		values: EnumUtils.valuesFunc<MyInfoSchoolCode>(MyInfoSchoolCode),
 		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoSchoolCode>(MyInfoSchoolCode),
 		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoSchoolCode>(MyInfoSchoolCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoSchoolCode, MyInfoSchoolCodeDesc>(MyInfoSchoolCode, MyInfoSchoolCodeMapping),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoSchoolCode, MyInfoSchoolCodeDesc>(
+			MyInfoSchoolCode,
+			MyInfoSchoolCodeMapping,
+		),
 	};
 }

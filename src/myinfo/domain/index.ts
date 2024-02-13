@@ -1,4 +1,4 @@
-// tslint:disable
+/* eslint-disable */
 // =============================================================================
 // This file was generated with `npm run generate-myinfo-typings` on 2023-05-10
 // Any modifications to this file may be overwritten when the script runs again

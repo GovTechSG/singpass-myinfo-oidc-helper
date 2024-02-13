@@ -1,7 +1,17 @@
-import { convert, DateTimeFormatterBuilder, Instant, LocalDate, LocalDateTime, LocalTime, ResolverStyle, TemporalAdjusters, ZonedDateTime, ZoneId } from "@js-joda/core";
+import {
+	convert,
+	DateTimeFormatterBuilder,
+	Instant,
+	LocalDate,
+	LocalDateTime,
+	LocalTime,
+	ResolverStyle,
+	TemporalAdjusters,
+	ZonedDateTime,
+	ZoneId,
+} from "@js-joda/core";
 import "@js-joda/timezone";
 import * as _ from "lodash";
-import { logger } from "../util/Logger";
 
 export namespace DateUtils {
 	export const SG_TZ = ZoneId.of("Asia/Singapore");
@@ -10,7 +20,7 @@ export namespace DateUtils {
 	// Defaults
 	// =============================================================================
 
-	let defaultTz = SG_TZ;	// Defaults to Singapore zone
+	let defaultTz = SG_TZ; // Defaults to Singapore zone
 
 	/**
 	 * Gets the default timezone used by DateUtils
@@ -35,7 +45,7 @@ export namespace DateUtils {
 	 * Converts a number representing milliseconds from epoch to ZonedDateTime
 	 */
 	export function msToZonedDateTime(ms: number, zoneId: ZoneId = defaultTz): ZonedDateTime {
-		return !!ms ? ZonedDateTime.ofInstant(Instant.ofEpochMilli(ms), zoneId) : null;
+		return ms ? ZonedDateTime.ofInstant(Instant.ofEpochMilli(ms), zoneId) : null;
 	}
 
 	// =============================================================================
@@ -68,8 +78,8 @@ export namespace DateUtils {
 		try {
 			if (!iso) return null;
 
-			// tslint:disable-next-line: tsr-detect-unsafe-regexp
-			const filterRegex = /(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9])(:([0-5][0-9]))?/;
+			const filterRegex =
+				/(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9])(:([0-5][0-9]))?/;
 			const filteredIso = iso.match(filterRegex)?.[0];
 			return LocalDateTime.parse(filteredIso);
 		} catch (error) {
@@ -89,7 +99,6 @@ export namespace DateUtils {
 		try {
 			if (!iso) return null;
 
-			// tslint:disable-next-line: tsr-detect-unsafe-regexp
 			const filterRegex = /(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])/;
 			const filteredIso = iso.match(filterRegex)?.[0];
 			return LocalDate.parse(filteredIso);
@@ -105,7 +114,6 @@ export namespace DateUtils {
 		try {
 			if (!iso) return null;
 
-			// tslint:disable-next-line: tsr-detect-unsafe-regexp
 			const filterRegex = /(2[0-3]|[01][0-9]):([0-5][0-9])(:([0-5][0-9]))?/;
 			const filteredIso = iso.match(filterRegex)?.[0];
 			return LocalTime.parse(filteredIso);
@@ -113,7 +121,6 @@ export namespace DateUtils {
 			return undefined;
 		}
 	}
-
 
 	// =============================================================================
 	// Aggregate transformers
@@ -149,7 +156,7 @@ export namespace DateUtils {
 	 * Converts input to a ZonedDateTime and then converts it to an ISO-8601 string
 	 */
 	export function toIsoZonedDateTime(input: DateTimeType, zoneId: ZoneId = defaultTz): string {
-		return !!input ? toZonedDateTime(input, zoneId)?.toString() : null;
+		return input ? toZonedDateTime(input, zoneId)?.toString() : null;
 	}
 
 	/**
@@ -237,7 +244,12 @@ export namespace DateUtils {
 		const zdt = toZonedDateTime(input, zoneId);
 		if (!zdt) return null;
 
-		return zdt.with(TemporalAdjusters.lastDayOfYear()).withHour(23).withMinute(59).withSecond(59).withNano(999999999);
+		return zdt
+			.with(TemporalAdjusters.lastDayOfYear())
+			.withHour(23)
+			.withMinute(59)
+			.withSecond(59)
+			.withNano(999999999);
 	}
 
 	/**
@@ -246,7 +258,9 @@ export namespace DateUtils {
 	 */
 	export function isWithinPeriod(startOfPeriod: string, endOfPeriod: string, input = LocalDate.now()): boolean {
 		const CORPPASS_DATE_FORMAT = "uuuu-MM-dd";
-		const formatter = new DateTimeFormatterBuilder().appendPattern(CORPPASS_DATE_FORMAT).toFormatter(ResolverStyle.STRICT);
+		const formatter = new DateTimeFormatterBuilder()
+			.appendPattern(CORPPASS_DATE_FORMAT)
+			.toFormatter(ResolverStyle.STRICT);
 		const start = LocalDate.parse(startOfPeriod, formatter);
 		const end = LocalDate.parse(endOfPeriod, formatter);
 		return !(input.compareTo(start) < 0 || input.compareTo(end) > 0);

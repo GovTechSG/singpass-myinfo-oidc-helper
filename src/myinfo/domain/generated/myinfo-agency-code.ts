@@ -1,4 +1,4 @@
-// tslint:disable
+/* eslint-disable */
 // =============================================================================
 // This file was generated with `npm run generate-myinfo-typings` on 2023-05-10
 // Any modifications to this file may be overwritten when the script runs again
@@ -198,7 +198,7 @@ enum MyInfoAgencyCodeMapping {
 	"MARITIME_AND_PORT_AUTHORITY_OF_SINGAPORE" = "MARITIME AND PORT AUTHORITY OF SINGAPORE",
 }
 
-type MyInfoAgencyCodeDesc = `${ MyInfoAgencyCodeMapping }`;
+type MyInfoAgencyCodeDesc = `${MyInfoAgencyCodeMapping}`;
 
 export namespace MyInfoAgencyCode {
 	export const fn = {
@@ -206,6 +206,9 @@ export namespace MyInfoAgencyCode {
 		values: EnumUtils.valuesFunc<MyInfoAgencyCode>(MyInfoAgencyCode),
 		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoAgencyCode>(MyInfoAgencyCode),
 		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoAgencyCode>(MyInfoAgencyCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoAgencyCode, MyInfoAgencyCodeDesc>(MyInfoAgencyCode, MyInfoAgencyCodeMapping),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoAgencyCode, MyInfoAgencyCodeDesc>(
+			MyInfoAgencyCode,
+			MyInfoAgencyCodeMapping,
+		),
 	};
 }

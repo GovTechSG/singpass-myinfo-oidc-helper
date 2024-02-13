@@ -1,4 +1,4 @@
-// tslint:disable
+/* eslint-disable */
 // =============================================================================
 // This file was generated with `npm run generate-myinfo-typings` on 2023-05-10
 // Any modifications to this file may be overwritten when the script runs again
@@ -20,7 +20,7 @@ enum MyInfoMaritalStatusCodeMapping {
 	"DIVORCED" = "DIVORCED",
 }
 
-type MyInfoMaritalStatusCodeDesc = `${ MyInfoMaritalStatusCodeMapping }`;
+type MyInfoMaritalStatusCodeDesc = `${MyInfoMaritalStatusCodeMapping}`;
 
 export namespace MyInfoMaritalStatusCode {
 	export const fn = {
@@ -28,6 +28,9 @@ export namespace MyInfoMaritalStatusCode {
 		values: EnumUtils.valuesFunc<MyInfoMaritalStatusCode>(MyInfoMaritalStatusCode),
 		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoMaritalStatusCode>(MyInfoMaritalStatusCode),
 		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoMaritalStatusCode>(MyInfoMaritalStatusCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoMaritalStatusCode, MyInfoMaritalStatusCodeDesc>(MyInfoMaritalStatusCode, MyInfoMaritalStatusCodeMapping),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoMaritalStatusCode, MyInfoMaritalStatusCodeDesc>(
+			MyInfoMaritalStatusCode,
+			MyInfoMaritalStatusCodeMapping,
+		),
 	};
 }

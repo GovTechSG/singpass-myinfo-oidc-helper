@@ -61,7 +61,7 @@ export class EnumWorksheetParser {
 
 		if (_.isEmpty(tableIndexes)) {
 			throw new Error(
-				`Sheet: ${this.sheetName} does not have any headers of the correct format (e.g. | ... code | Descripton |), format has likely changed.`
+				`Sheet: ${this.sheetName} does not have any headers of the correct format (e.g. | ... code | Descripton |), format has likely changed.`,
 			);
 		}
 

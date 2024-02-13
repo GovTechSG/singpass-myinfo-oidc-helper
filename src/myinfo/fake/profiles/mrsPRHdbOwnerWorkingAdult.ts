@@ -1,9 +1,17 @@
 import * as _ from "lodash";
+import {
+	MyInfoCountryPlaceCode,
+	MyInfoDrivingLicenceValidityCode,
+	MyInfoHDBTypeCode,
+	MyInfoMaritalStatusCode,
+	MyInfoNationalityCitizenshipCode,
+	MyInfoResidentialCode,
+	MyInfoSexCode,
+} from "../../domain";
+import { aliasName } from "../profiles/common";
+import { ChildrenRecords } from "./childbirthRecords";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
-import { ChildrenRecords } from "./childbirthRecords";
-import { aliasName } from "../profiles/common";
-import { MyInfoCountryPlaceCode, MyInfoDrivingLicenceValidityCode, MyInfoHDBTypeCode, MyInfoMaritalStatusCode, MyInfoNationalityCitizenshipCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
 
 const id = "T2446959F";
 const name = ProfileArchetype.MRS_PR_HDB_OWNER_WORKING_ADULT_MID_CAREER_PMETS;
@@ -22,7 +30,6 @@ const name = ProfileArchetype.MRS_PR_HDB_OWNER_WORKING_ADULT_MID_CAREER_PMETS;
 export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 	id,
 	name,
-	// tslint:disable-next-line: no-big-function
 	generate: (profileName) => {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
@@ -74,7 +81,11 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 			code: MyInfoMaritalStatusCode.MARRIED,
 			desc: MyInfoMaritalStatusCode.fn.toEnumDesc(MyInfoMaritalStatusCode.MARRIED),
 		};
-		profile.childrenbirthrecords = [ChildrenRecords.child1MonthOld, ChildrenRecords.child6YearsOld, ChildrenRecords.childMiddle1];
+		profile.childrenbirthrecords = [
+			ChildrenRecords.child1MonthOld,
+			ChildrenRecords.child6YearsOld,
+			ChildrenRecords.childMiddle1,
+		];
 		profile.hdbtype = {
 			lastupdated: "2020-01-01",
 			source: "1",
@@ -100,8 +111,8 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 				},
 			},
 		};
-		profile.vehicles =
-			[{
+		profile.vehicles = [
+			{
 				roadtaxexpirydate: {
 					value: "2020-06-06",
 				},
@@ -217,7 +228,8 @@ export const mrsPRHdbOwnerWorkingAdult: FakeProfile = {
 					code: "1",
 					desc: "LIVE",
 				},
-			}];
+			},
+		];
 		return profile;
 	},
 };

@@ -9,13 +9,14 @@ const name = ProfileArchetype.MR_SG_UNCLE_PG_OPT_OUT;
 export const mrSGUnclePgOptOut: FakeProfile = {
 	id,
 	name,
-	// tslint:disable-next-line: no-big-function
 	generate: (profileName) => {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
 		const profile = mrSGUncleNonPg.generate(profileName);
 		profile.pioneergen.message.code = MyInfoPioneerGenerationMessageCode.OPT_OUT;
-		profile.pioneergen.message.desc = MyInfoPioneerGenerationMessageCode.fn.toEnumDesc(MyInfoPioneerGenerationMessageCode.OPT_OUT);
+		profile.pioneergen.message.desc = MyInfoPioneerGenerationMessageCode.fn.toEnumDesc(
+			MyInfoPioneerGenerationMessageCode.OPT_OUT,
+		);
 		profile.dob = {
 			lastupdated: "2021-01-01",
 			source: "1",

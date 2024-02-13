@@ -32,10 +32,7 @@ export const mrsSGMommyPerfect: FakeProfile = {
 			value: "1988-10-16",
 		};
 
-		profile.childrenbirthrecords = [
-			preschoolEligibleChild_K2,
-			preschoolEligibleChild2_N1,
-		];
+		profile.childrenbirthrecords = [preschoolEligibleChild_K2, preschoolEligibleChild2_N1];
 
 		return profile;
 	},

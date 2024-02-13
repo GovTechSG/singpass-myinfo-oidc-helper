@@ -1,4 +1,4 @@
-// tslint:disable
+/* eslint-disable */
 // =============================================================================
 // This file was generated with `npm run generate-myinfo-typings` on 2023-05-10
 // Any modifications to this file may be overwritten when the script runs again
@@ -502,7 +502,7 @@ enum MyInfoNationalityCitizenshipCodeMapping {
 	"ZIMBABWEAN" = "ZIMBABWEAN",
 }
 
-type MyInfoNationalityCitizenshipCodeDesc = `${ MyInfoNationalityCitizenshipCodeMapping }`;
+type MyInfoNationalityCitizenshipCodeDesc = `${MyInfoNationalityCitizenshipCodeMapping}`;
 
 export namespace MyInfoNationalityCitizenshipCode {
 	export const fn = {
@@ -510,6 +510,9 @@ export namespace MyInfoNationalityCitizenshipCode {
 		values: EnumUtils.valuesFunc<MyInfoNationalityCitizenshipCode>(MyInfoNationalityCitizenshipCode),
 		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoNationalityCitizenshipCode>(MyInfoNationalityCitizenshipCode),
 		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoNationalityCitizenshipCode>(MyInfoNationalityCitizenshipCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoNationalityCitizenshipCode, MyInfoNationalityCitizenshipCodeDesc>(MyInfoNationalityCitizenshipCode, MyInfoNationalityCitizenshipCodeMapping),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoNationalityCitizenshipCode, MyInfoNationalityCitizenshipCodeDesc>(
+			MyInfoNationalityCitizenshipCode,
+			MyInfoNationalityCitizenshipCodeMapping,
+		),
 	};
 }

@@ -1,4 +1,17 @@
-import { MyInfoComponents, MyInfoCountryPlaceCode, MyInfoDrivingLicenceValidityCode, MyInfoHDBTypeCode, MyInfoHousingTypeCode, MyInfoLifeStatusCode, MyInfoMaritalStatusCode, MyInfoMerdekaGenerationMessageCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode, MyInfoVehicleStatus } from "../domain";
+import {
+	MyInfoComponents,
+	MyInfoCountryPlaceCode,
+	MyInfoDrivingLicenceValidityCode,
+	MyInfoHDBTypeCode,
+	MyInfoHousingTypeCode,
+	MyInfoLifeStatusCode,
+	MyInfoMaritalStatusCode,
+	MyInfoMerdekaGenerationMessageCode,
+	MyInfoRaceCode,
+	MyInfoResidentialCode,
+	MyInfoSexCode,
+	MyInfoVehicleStatus,
+} from "../domain";
 import { ProfileArchetype } from "./profiles/fake-profile";
 
 export enum GVS {

@@ -1,10 +1,11 @@
-import * as _ from "lodash";
-import * as qs from "querystring";
+/* eslint-disable max-params */
 import * as crypto from "crypto";
+import * as jwt from "jsonwebtoken";
+import * as _ from "lodash";
 import * as jose from "node-jose";
-import * as jwt from 'jsonwebtoken';
+import * as qs from "querystring";
+import { Key } from "./KeyUtil";
 import { SingpassMyInfoError } from "./error/SingpassMyinfoError";
-import { Key } from './KeyUtil';
 
 export enum HttpMethod {
 	GET = "GET",
@@ -21,6 +22,7 @@ interface AuthHeader {
 
 /**
  * Generate the Authorization header for requests to V3 MyInfo
+ *
  * @param url
  * @param queryParams
  * @param method
@@ -28,7 +30,6 @@ interface AuthHeader {
  * @param signingKey
  * @param signingKeyPassphrase
  */
-// tslint:disable-next-line: parameters-max-number
 export function generateMyInfoAuthorizationHeader(
 	url: string,
 	queryParams: { [key: string]: any },
@@ -52,16 +53,23 @@ export function generateMyInfoAuthorizationHeader(
 }
 
 function generateAuthHeaderString(appId: string, nonceValue: any, signature: string, timestamp: number) {
-	return "PKI_SIGN app_id=\"" + appId + // Defaults to 1st part of incoming request hostname
-		"\",nonce=\"" + nonceValue +
-		"\",signature_method=\"RS256\"" +
-		",signature=\"" + signature +
-		"\",timestamp=\"" + timestamp +
-		"\"";
+	return (
+		'PKI_SIGN app_id="' +
+		appId + // Defaults to 1st part of incoming request hostname
+		'",nonce="' +
+		nonceValue +
+		'",signature_method="RS256"' +
+		',signature="' +
+		signature +
+		'",timestamp="' +
+		timestamp +
+		'"'
+	);
 }
 
 /**
  * Function to generate signature for authenticated requests to myinfo v3
+ *
  * @param authHeader
  * @param queryParams
  * @param method
@@ -71,7 +79,7 @@ function generateAuthHeaderString(appId: string, nonceValue: any, signature: str
  */
 function generateSignature(
 	authHeader: Partial<AuthHeader>,
-	queryParams: { [key: string]: any; },
+	queryParams: { [key: string]: any },
 	method: HttpMethod,
 	url: string,
 	key: string,
@@ -89,25 +97,37 @@ function generateSignature(
 	const baseString = method.toUpperCase() + "&" + url + "&" + baseParamsStr;
 
 	const signWith = { key };
-	if (!!keyPassphrase) {
+	if (keyPassphrase) {
 		_.set(signWith, "passphrase", keyPassphrase);
 	}
 
-	const signature = crypto.createSign("RSA-SHA256")
-		.update(baseString)
-		.sign(signWith, "base64");
+	const signature = crypto.createSign("RSA-SHA256").update(baseString).sign(signWith, "base64");
 
 	return signature;
 }
 
 interface CreateClientAssertion {
-	issuer: string;audience:string; subject: string;
+	issuer: string;
+	audience: string;
+	subject: string;
 	key: Key;
 }
 
-export async function createClientAssertion({issuer, audience, subject, key}: CreateClientAssertion): Promise<string> {
+export async function createClientAssertion({
+	issuer,
+	audience,
+	subject,
+	key,
+}: CreateClientAssertion): Promise<string> {
 	if (!key) throw new SingpassMyInfoError("Missing key to sign client assertion.");
 	if (!key.alg) throw new SingpassMyInfoError("Missing key algorithm to sign client assertion.");
 	const signingKey = await jose.JWK.asKey(key.key, key.format);
-	return jwt.sign({}, signingKey.toPEM(true), {algorithm: key.alg, keyid: signingKey.kid, issuer, audience, subject, expiresIn: 120});
+	return jwt.sign({}, signingKey.toPEM(true), {
+		algorithm: key.alg,
+		keyid: signingKey.kid,
+		issuer,
+		audience,
+		subject,
+		expiresIn: 120,
+	});
 }

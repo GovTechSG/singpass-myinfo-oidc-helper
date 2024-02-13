@@ -4,9 +4,9 @@ import { createClient } from "../client/axios-client";
 import { JweUtil } from "../util";
 import { SingpassMyInfoError } from "../util/error/SingpassMyinfoError";
 import { logger } from "../util/Logger";
-import { TokenPayload, TokenResponse } from './shared-constants';
-import { Key } from '../util/KeyUtil';
-import { createClientAssertion } from '../util/SigningUtil';
+import { TokenPayload, TokenResponse } from "./shared-constants";
+import { Key } from "../util/KeyUtil";
+import { createClientAssertion } from "../util/SigningUtil";
 
 export interface NdiOidcHelperConstructor {
 	oidcConfigUrl: string;
@@ -45,11 +45,10 @@ export class NdiOidcHelper {
 		});
 	}
 
-	public constructAuthorizationUrl = async (
-		state: string,
-		nonce?: string
-	): Promise<string> => {
-		const { data: { authorization_endpoint } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
+	public constructAuthorizationUrl = async (state: string, nonce?: string): Promise<string> => {
+		const {
+			data: { authorization_endpoint },
+		} = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
 
 		const queryParams = {
 			state,
@@ -58,37 +57,38 @@ export class NdiOidcHelper {
 			scope: "openid",
 			client_id: this.clientID,
 			response_type: "code",
-
 		};
 		const queryString = querystringUtil.stringify(queryParams);
 		return `${authorization_endpoint}?${queryString}`;
-	}
+	};
 
 	/**
 	 * Get tokens from Singpass endpoint. Note: This will fail if not on an IP whitelisted by SP.
 	 * Use getIdTokenPayload on returned Token Response to get the token payload
 	 */
 	public getTokens = async (authCode: string): Promise<TokenResponse> => {
-		const { data: { token_endpoint, issuer } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
+		const {
+			data: { token_endpoint, issuer },
+		} = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
 
 		const params = {
 			grant_type: "authorization_code",
 			code: authCode,
 			client_id: this.clientID,
 			redirect_uri: this.redirectUri,
-			client_assertion_type: 'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
+			client_assertion_type: "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
 			client_assertion: await createClientAssertion({
 				issuer: this.clientID,
 				subject: this.clientID,
 				audience: issuer,
 				key: this.clientAssertionSignKey,
-			})
+			}),
 		};
 		const body = querystringUtil.stringify(params);
 
 		const config = {
 			headers: {
-				"content-type": "application/x-www-form-urlencoded"
+				"content-type": "application/x-www-form-urlencoded",
 			},
 		};
 		const response = await this.axiosClient.post<TokenResponse>(token_endpoint, body, config);
@@ -97,7 +97,7 @@ export class NdiOidcHelper {
 			throw new SingpassMyInfoError("Failed to get ID token");
 		}
 		return response.data;
-	}
+	};
 
 	/**
 	 * Decrypts the ID Token JWT inside the TokenResponse to get the payload
@@ -105,8 +105,12 @@ export class NdiOidcHelper {
 	 */
 	public async getIdTokenPayload(tokens: TokenResponse, overrideDecryptKey?: Key): Promise<TokenPayload> {
 		try {
-			const { data: { jwks_uri } } = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
-			const { data: { keys } } = await this.axiosClient.get<{ keys: Object[] }>(jwks_uri);
+			const {
+				data: { jwks_uri },
+			} = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
+			const {
+				data: { keys },
+			} = await this.axiosClient.get<{ keys: Object[] }>(jwks_uri);
 			const jwsVerifyKey = JSON.stringify(keys[0]);
 
 			const { id_token } = tokens;
@@ -114,7 +118,7 @@ export class NdiOidcHelper {
 			const finalDecryptionKey = overrideDecryptKey ?? this.jweDecryptKey;
 			const decryptedJwe = await JweUtil.decryptJWE(id_token, finalDecryptionKey.key, finalDecryptionKey.format);
 			const jwsPayload = decryptedJwe.payload.toString();
-			const verifiedJws = await JweUtil.verifyJWS(jwsPayload, jwsVerifyKey, 'json');
+			const verifiedJws = await JweUtil.verifyJWS(jwsPayload, jwsVerifyKey, "json");
 			return JSON.parse(verifiedJws.payload.toString()) as TokenPayload;
 		} catch (e) {
 			logger.error("Failed to get token payload", e);
@@ -125,7 +129,7 @@ export class NdiOidcHelper {
 	/**
 	 * Returns the nric and uuid from the token payload
 	 */
-	public extractNricAndUuidFromPayload(payload: TokenPayload): { nric: string, uuid: string } {
+	public extractNricAndUuidFromPayload(payload: TokenPayload): { nric: string; uuid: string } {
 		const { sub } = payload;
 
 		if (sub) {

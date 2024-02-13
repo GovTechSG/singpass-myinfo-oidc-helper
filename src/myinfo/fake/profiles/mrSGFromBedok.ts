@@ -16,13 +16,13 @@ export const mrSGFromBedok: FakeProfile = {
 			...profile.regadd,
 			block: { value: "634" },
 			street: { value: "BEDOK STREET" },
-			postal: { value: "458634" }
+			postal: { value: "458634" },
 		};
 		profile.dob = {
-			"lastupdated": "2018-06-01",
-			"source": "1",
-			"classification": "C",
-			"value": "1983-10-06",
+			lastupdated: "2018-06-01",
+			source: "1",
+			classification: "C",
+			value: "1983-10-06",
 		};
 
 		return profile;

@@ -1,4 +1,4 @@
-// tslint:disable
+/* eslint-disable */
 // =============================================================================
 // This file was generated with `npm run generate-myinfo-typings` on 2023-05-10
 // Any modifications to this file may be overwritten when the script runs again
@@ -16,7 +16,7 @@ enum MyInfoVehicleStatusMapping {
 	"DEREGISTERED" = "DE-REGISTERED",
 }
 
-type MyInfoVehicleStatusDesc = `${ MyInfoVehicleStatusMapping }`;
+type MyInfoVehicleStatusDesc = `${MyInfoVehicleStatusMapping}`;
 
 export namespace MyInfoVehicleStatus {
 	export const fn = {
@@ -24,6 +24,9 @@ export namespace MyInfoVehicleStatus {
 		values: EnumUtils.valuesFunc<MyInfoVehicleStatus>(MyInfoVehicleStatus),
 		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoVehicleStatus>(MyInfoVehicleStatus),
 		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoVehicleStatus>(MyInfoVehicleStatus),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoVehicleStatus, MyInfoVehicleStatusDesc>(MyInfoVehicleStatus, MyInfoVehicleStatusMapping),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoVehicleStatus, MyInfoVehicleStatusDesc>(
+			MyInfoVehicleStatus,
+			MyInfoVehicleStatusMapping,
+		),
 	};
 }

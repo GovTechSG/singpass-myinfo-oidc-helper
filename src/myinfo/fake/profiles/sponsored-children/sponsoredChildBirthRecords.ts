@@ -14,8 +14,11 @@ const childYoungest = {
 	nric: { value: "T1828432J" },
 	name: { value: "Sponsored Child Tan Ke Xuan" },
 	dob: { value: formatDateToString() },
-	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE), },
-	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
+	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE) },
+	lifestatus: {
+		code: MyInfoLifeStatusCode.ALIVE,
+		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
+	},
 	unavailable: false,
 } as MyInfoComponents.Schemas.Sponsoredchildrenrecords;
 
@@ -26,8 +29,11 @@ const child1MonthOld = {
 	nric: { value: "T4383608G" },
 	name: { value: "Sponsored Child Tan Ke Yu" },
 	dob: { value: formatDateToString(ZonedDateTime.now().minusMonths(1)) },
-	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE), },
-	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
+	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE) },
+	lifestatus: {
+		code: MyInfoLifeStatusCode.ALIVE,
+		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
+	},
 	unavailable: false,
 } as MyInfoComponents.Schemas.Sponsoredchildrenrecords;
 
@@ -38,8 +44,11 @@ const child2MonthsOld = {
 	nric: { value: "T7153144E" },
 	name: { value: "Sponsored Child Tan Keh Guan" },
 	dob: { value: formatDateToString(ZonedDateTime.now().minusMonths(2)) },
-	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE), },
-	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
+	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE) },
+	lifestatus: {
+		code: MyInfoLifeStatusCode.ALIVE,
+		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
+	},
 	unavailable: false,
 } as MyInfoComponents.Schemas.Sponsoredchildrenrecords;
 
@@ -50,8 +59,11 @@ const childMiddle1 = {
 	nric: { value: "T1694727F" },
 	name: { value: "Sponsored Child Tan Chiu" },
 	dob: { value: formatDateToString(ZonedDateTime.now().minusYears(2)) },
-	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE), },
-	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
+	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE) },
+	lifestatus: {
+		code: MyInfoLifeStatusCode.ALIVE,
+		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
+	},
 	unavailable: false,
 } as MyInfoComponents.Schemas.Sponsoredchildrenrecords;
 
@@ -62,8 +74,11 @@ const childMiddle2 = {
 	nric: { value: "T1669632Z" },
 	name: { value: "Sponsored Child Tan Chua" },
 	dob: { value: formatDateToString(ZonedDateTime.now().minusYears(2)) },
-	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE), },
-	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
+	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE) },
+	lifestatus: {
+		code: MyInfoLifeStatusCode.ALIVE,
+		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
+	},
 	unavailable: false,
 } as MyInfoComponents.Schemas.Sponsoredchildrenrecords;
 
@@ -71,8 +86,11 @@ const childMiddle3 = {
 	nric: { value: "T1509027D" },
 	name: { value: "Sponsored Child Tan Su" },
 	dob: { value: formatDateToString(ZonedDateTime.now().minusYears(3)) },
-	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE), },
-	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
+	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE) },
+	lifestatus: {
+		code: MyInfoLifeStatusCode.ALIVE,
+		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
+	},
 	unavailable: false,
 } as MyInfoComponents.Schemas.Sponsoredchildrenrecords;
 
@@ -83,8 +101,11 @@ const childMiddle4 = {
 	nric: { value: "T1422931G" },
 	name: { value: "Sponsored Child Tan Go" },
 	dob: { value: formatDateToString(ZonedDateTime.now().minusYears(4)) },
-	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE), },
-	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
+	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE) },
+	lifestatus: {
+		code: MyInfoLifeStatusCode.ALIVE,
+		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
+	},
 	unavailable: false,
 } as MyInfoComponents.Schemas.Sponsoredchildrenrecords;
 
@@ -95,8 +116,11 @@ const childMiddle5 = {
 	nric: { value: "T1511326F" },
 	name: { value: "Sponsored Child Tan Sy" },
 	dob: { value: formatDateToString(ZonedDateTime.now().minusYears(5)) },
-	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE), },
-	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
+	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE) },
+	lifestatus: {
+		code: MyInfoLifeStatusCode.ALIVE,
+		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
+	},
 	unavailable: false,
 } as MyInfoComponents.Schemas.Sponsoredchildrenrecords;
 
@@ -107,8 +131,11 @@ const childSuperOld = {
 	nric: { value: "T0050832I" },
 	name: { value: "Sponsored Child Tan Ke Wei" },
 	dob: { value: formatDateToString(ZonedDateTime.now().minusYears(8)) },
-	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE), },
-	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
+	sex: { code: MyInfoSexCode.FEMALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE) },
+	lifestatus: {
+		code: MyInfoLifeStatusCode.ALIVE,
+		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
+	},
 	unavailable: false,
 } as MyInfoComponents.Schemas.Sponsoredchildrenrecords;
 
@@ -119,8 +146,11 @@ const child6YearsOld = {
 	nric: { value: "T1364674G" },
 	name: { value: "Sponsored Child Tan Kim" },
 	dob: { value: formatDateToString(DateUtils.startOfYear(ZonedDateTime.now().minusYears(6))) },
-	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE), },
-	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
+	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE) },
+	lifestatus: {
+		code: MyInfoLifeStatusCode.ALIVE,
+		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
+	},
 	unavailable: false,
 } as MyInfoComponents.Schemas.Sponsoredchildrenrecords;
 
@@ -131,8 +161,11 @@ const child7YearsOld = {
 	nric: { value: "T1210114C" },
 	name: { value: "Sponsored Child Tan Liu" },
 	dob: { value: formatDateToString(DateUtils.endOfYear(ZonedDateTime.now().minusYears(7))) },
-	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE), },
-	lifestatus: { code: MyInfoLifeStatusCode.ALIVE, desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE) },
+	sex: { code: MyInfoSexCode.MALE, desc: MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE) },
+	lifestatus: {
+		code: MyInfoLifeStatusCode.ALIVE,
+		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
+	},
 	unavailable: false,
 } as MyInfoComponents.Schemas.Sponsoredchildrenrecords;
 

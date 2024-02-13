@@ -14,7 +14,9 @@ export const mrSGUnclePgNeedAddress: FakeProfile = {
 
 		const profile = mrSGUnclePgAllOk.generate(profileName);
 		profile.pioneergen.message.code = MyInfoPioneerGenerationMessageCode.CALL_TO_RECEIVE;
-		profile.pioneergen.message.desc = MyInfoPioneerGenerationMessageCode.fn.toEnumDesc(MyInfoPioneerGenerationMessageCode.CALL_TO_RECEIVE);
+		profile.pioneergen.message.desc = MyInfoPioneerGenerationMessageCode.fn.toEnumDesc(
+			MyInfoPioneerGenerationMessageCode.CALL_TO_RECEIVE,
+		);
 
 		return profile;
 	},

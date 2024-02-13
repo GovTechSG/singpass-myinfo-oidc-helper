@@ -4,7 +4,7 @@ import { createClient } from "../client/axios-client";
 import { JweUtil } from "../util";
 import { logger } from "../util/Logger";
 import { SingpassMyInfoError } from "../util/error/SingpassMyinfoError";
-import { EntityInfo, TokenResponse, UserInfo } from './shared-constants';
+import { EntityInfo, TokenResponse, UserInfo } from "./shared-constants";
 
 interface AccessTokenPayload {
 	exp: number;
@@ -42,7 +42,6 @@ export interface OidcHelperConstructor {
 }
 
 export class OidcHelper {
-
 	private axiosClient: AxiosInstance = createClient({
 		timeout: 10000,
 	});
@@ -67,11 +66,7 @@ export class OidcHelper {
 		this.additionalHeaders = props.additionalHeaders || {};
 	}
 
-	public constructAuthorizationUrl = (
-		state: string,
-		nonce?: string,
-		overrideAuthUrl?: string,
-	): string => {
+	public constructAuthorizationUrl = (state: string, nonce?: string, overrideAuthUrl?: string): string => {
 		const queryParams = {
 			state,
 			...(nonce ? { nonce } : {}),
@@ -82,7 +77,7 @@ export class OidcHelper {
 		};
 		const queryString = querystringUtil.stringify(queryParams);
 		return `${overrideAuthUrl ?? this.authorizationUrl}?${queryString}`;
-	}
+	};
 
 	/**
 	 * Get tokens from Corppass endpoint. Note: This will fail if not on an IP whitelisted by SP.
@@ -101,7 +96,7 @@ export class OidcHelper {
 		const config = {
 			headers: {
 				...this.additionalHeaders,
-				"content-type": "application/x-www-form-urlencoded"
+				"content-type": "application/x-www-form-urlencoded",
 			},
 			...axiosRequestConfig,
 		};
@@ -111,13 +106,16 @@ export class OidcHelper {
 			throw new SingpassMyInfoError("Failed to get ID token");
 		}
 		return response.data;
-	}
+	};
 
 	/**
 	 * Get fresh tokens from Corppass endpoint. Note: This will fail if not on an IP whitelisted by SP.
 	 * Use getIdTokenPayload on returned Token Response to get the token payload
 	 */
-	public refreshTokens = async (refreshToken: string, axiosRequestConfig?: AxiosRequestConfig): Promise<TokenResponse> => {
+	public refreshTokens = async (
+		refreshToken: string,
+		axiosRequestConfig?: AxiosRequestConfig,
+	): Promise<TokenResponse> => {
 		const params = {
 			scope: "openid",
 			grant_type: "refresh_token",
@@ -130,7 +128,7 @@ export class OidcHelper {
 		const config = {
 			headers: {
 				...this.additionalHeaders,
-				"content-type": "application/x-www-form-urlencoded"
+				"content-type": "application/x-www-form-urlencoded",
 			},
 			...axiosRequestConfig,
 		};
@@ -140,7 +138,7 @@ export class OidcHelper {
 			throw new SingpassMyInfoError("Failed to get ID token");
 		}
 		return response.data;
-	}
+	};
 
 	/**
 	 * Decodes the access Token JWT inside the TokenResponse to get the payload
@@ -176,11 +174,15 @@ export class OidcHelper {
 	/**
 	 * Returns the NRIC, system defined ID and country code from the ID token payload
 	 */
-	public extractInfoFromIdTokenSubject(payload: IdTokenPayload): { nric: string, uuid?: string, countryCode?: string } {
+	public extractInfoFromIdTokenSubject(payload: IdTokenPayload): {
+		nric: string;
+		uuid?: string;
+		countryCode?: string;
+	} {
 		const { sub } = payload;
 
 		if (sub) {
-			const trimmedSub = sub.replace(/ /g, '');
+			const trimmedSub = sub.replace(/ /g, "");
 			const nricRegex = /s=([STFGM]\d{7}[A-Z])[^,]*/i;
 			const [, nric] = trimmedSub.match(nricRegex) || [];
 			const uuidRegex = /u=([^,]*)/i;

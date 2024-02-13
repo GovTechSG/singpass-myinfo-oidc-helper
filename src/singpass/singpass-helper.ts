@@ -5,7 +5,7 @@ import { createClient } from "../client/axios-client";
 import { JweUtil } from "../util";
 import { SingpassMyInfoError } from "../util/error/SingpassMyinfoError";
 import { logger } from "../util/Logger";
-import { TokenPayload, TokenResponse } from './shared-constants';
+import { TokenPayload, TokenResponse } from "./shared-constants";
 
 export enum SessionRefreshResult {
 	SUCCESS = "SUCCESS",
@@ -36,7 +36,6 @@ export interface OidcHelperConstructor {
 }
 
 export class OidcHelper {
-
 	private SINGPASS_SESSION_COOKIE_NAME = "PD-S-SESSION-ID";
 	private axiosClient: AxiosInstance = createClient({
 		timeout: 10000,
@@ -52,7 +51,6 @@ export class OidcHelper {
 	private jwsVerifyKey: string;
 	private additionalHeaders?: Record<string, string>;
 
-
 	constructor(props: OidcHelperConstructor) {
 		this.authorizationUrl = props.authorizationUrl;
 		this.logoutUrl = props.logoutUrl;
@@ -65,11 +63,7 @@ export class OidcHelper {
 		this.additionalHeaders = props.additionalHeaders || {};
 	}
 
-	public constructAuthorizationUrl = (
-		state: string,
-		nonce?: string,
-		overrideAuthUrl?: string,
-	): string => {
+	public constructAuthorizationUrl = (state: string, nonce?: string, overrideAuthUrl?: string): string => {
 		const queryParams = {
 			state,
 			...(nonce ? { nonce } : {}),
@@ -77,11 +71,10 @@ export class OidcHelper {
 			scope: "openid",
 			client_id: this.clientID,
 			response_type: "code",
-
 		};
 		const queryString = querystringUtil.stringify(queryParams);
 		return `${overrideAuthUrl ?? this.authorizationUrl}?${queryString}`;
-	}
+	};
 
 	/**
 	 * Get tokens from Singpass endpoint. Note: This will fail if not on an IP whitelisted by SP.
@@ -100,7 +93,7 @@ export class OidcHelper {
 		const config = {
 			headers: {
 				...this.additionalHeaders,
-				"content-type": "application/x-www-form-urlencoded"
+				"content-type": "application/x-www-form-urlencoded",
 			},
 			...axiosRequestConfig,
 		};
@@ -110,13 +103,16 @@ export class OidcHelper {
 			throw new SingpassMyInfoError("Failed to get ID token");
 		}
 		return response.data;
-	}
+	};
 
 	/**
 	 * Get fresh tokens from Singpass endpoint. Note: This will fail if not on an IP whitelisted by SP.
 	 * Use getIdTokenPayload on returned Token Response to get the token payload
 	 */
-	public refreshTokens = async (refreshToken: string, axiosRequestConfig?: AxiosRequestConfig): Promise<TokenResponse> => {
+	public refreshTokens = async (
+		refreshToken: string,
+		axiosRequestConfig?: AxiosRequestConfig,
+	): Promise<TokenResponse> => {
 		const params = {
 			scope: "openid",
 			grant_type: "refresh_token",
@@ -129,7 +125,7 @@ export class OidcHelper {
 		const config = {
 			headers: {
 				...this.additionalHeaders,
-				"content-type": "application/x-www-form-urlencoded"
+				"content-type": "application/x-www-form-urlencoded",
 			},
 			...axiosRequestConfig,
 		};
@@ -139,7 +135,7 @@ export class OidcHelper {
 			throw new SingpassMyInfoError("Failed to get ID token");
 		}
 		return response.data;
-	}
+	};
 
 	/**
 	 * Decrypts the ID Token JWT inside the TokenResponse to get the payload
@@ -147,7 +143,6 @@ export class OidcHelper {
 	 */
 	public async getIdTokenPayload(tokens: TokenResponse): Promise<TokenPayload> {
 		try {
-
 			const { id_token } = tokens;
 			const decryptedJwe = await JweUtil.decryptJWE(id_token, this.jweDecryptKey);
 			const jwsPayload = decryptedJwe.payload.toString();
@@ -162,7 +157,7 @@ export class OidcHelper {
 	/**
 	 * Returns the nric and uuid from the token payload
 	 */
-	public extractNricAndUuidFromPayload(payload: TokenPayload): { nric: string, uuid: string } {
+	public extractNricAndUuidFromPayload(payload: TokenPayload): { nric: string; uuid: string } {
 		const { sub } = payload;
 
 		if (sub) {
@@ -184,6 +179,7 @@ export class OidcHelper {
 
 	/**
 	 * Refresh the Singpass session, using a valid session id (that is retrieved from Singpass domain cookie)
+	 *
 	 * @param sessionId the session id extracted from PD-S-SESSION-ID in the user agent
 	 * @param state state that will be passed to the your redirect uri from this refresh call. defaults to "dummyState"
 	 * @returns INVALID_SESSION_ID - the sessionId param is no longer valid
@@ -197,14 +193,17 @@ export class OidcHelper {
 		const requestConfig: AxiosRequestConfig = {
 			headers: {
 				...this.additionalHeaders,
-				Cookie: `${this.SINGPASS_SESSION_COOKIE_NAME}=${sessionId}`
+				Cookie: `${this.SINGPASS_SESSION_COOKIE_NAME}=${sessionId}`,
 			},
 			maxRedirects: 0,
 			validateStatus: this.validateStatus,
 		};
 		try {
 			const result = await this.axiosClient.get(authorizationUrl, requestConfig);
-			if (result.headers.location?.includes("saml.singpass.gov.sg") || result.headers.location?.includes("login.singpass.gov.sg")) {
+			if (
+				result.headers.location?.includes("saml.singpass.gov.sg") ||
+				result.headers.location?.includes("login.singpass.gov.sg")
+			) {
 				logger.warn(`Attempted to refresh session with invalid session ID`);
 				return SessionRefreshResult.INVALID_SESSION_ID;
 			}
@@ -220,18 +219,21 @@ export class OidcHelper {
 	 * Keeping for other use cases.
 	 *
 	 * Log user out of Singpass, using a valid session id (that is retrieved from Singpass domain cookie)
+	 *
 	 * @param sessionId the session id extracted from PD-S-SESSION-ID in the user agent
 	 */
 	public async logoutOfSession(sessionId: string): Promise<SessionLogoutResult> {
 		if (isNil(this.logoutUrl)) {
-			throw new SingpassMyInfoError("Trying to call singpass-helper logoutOfSession without setting the logout URL");
+			throw new SingpassMyInfoError(
+				"Trying to call singpass-helper logoutOfSession without setting the logout URL",
+			);
 		}
 
 		const requestConfig = {
 			headers: {
 				...this.additionalHeaders,
-				Cookie: `${this.SINGPASS_SESSION_COOKIE_NAME}=${sessionId}`
-			}
+				Cookie: `${this.SINGPASS_SESSION_COOKIE_NAME}=${sessionId}`,
+			},
 		};
 		try {
 			await this.axiosClient.get(this.logoutUrl, requestConfig);

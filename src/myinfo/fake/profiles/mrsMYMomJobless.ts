@@ -14,10 +14,10 @@ export const mrsMYMomJobless: FakeProfile = {
 
 		const profile = mrsMYMommyPerfect.generate(profileName);
 		profile.occupation = {
-			"lastupdated": "2020-09-10",
-			"source": "2",
-			"classification": "C",
-			"value": "",
+			lastupdated: "2020-09-10",
+			source: "2",
+			classification: "C",
+			value: "",
 		};
 		profile.childrenbirthrecords = _.values(ChildrenRecords);
 

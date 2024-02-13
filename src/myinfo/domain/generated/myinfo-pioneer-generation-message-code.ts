@@ -1,4 +1,4 @@
-// tslint:disable
+/* eslint-disable */
 // =============================================================================
 // This file was generated with `npm run generate-myinfo-typings` on 2023-05-10
 // Any modifications to this file may be overwritten when the script runs again
@@ -26,7 +26,7 @@ enum MyInfoPioneerGenerationMessageCodeMapping {
 	"NIL_STATUS" = "Please call 1800-2222-888 to start receiving your PG benefits.",
 }
 
-type MyInfoPioneerGenerationMessageCodeDesc = `${ MyInfoPioneerGenerationMessageCodeMapping }`;
+type MyInfoPioneerGenerationMessageCodeDesc = `${MyInfoPioneerGenerationMessageCodeMapping}`;
 
 export namespace MyInfoPioneerGenerationMessageCode {
 	export const fn = {
@@ -34,6 +34,9 @@ export namespace MyInfoPioneerGenerationMessageCode {
 		values: EnumUtils.valuesFunc<MyInfoPioneerGenerationMessageCode>(MyInfoPioneerGenerationMessageCode),
 		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoPioneerGenerationMessageCode>(MyInfoPioneerGenerationMessageCode),
 		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoPioneerGenerationMessageCode>(MyInfoPioneerGenerationMessageCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoPioneerGenerationMessageCode, MyInfoPioneerGenerationMessageCodeDesc>(MyInfoPioneerGenerationMessageCode, MyInfoPioneerGenerationMessageCodeMapping),
+		toEnumDesc: EnumUtils.toEnumDescFunc<
+			MyInfoPioneerGenerationMessageCode,
+			MyInfoPioneerGenerationMessageCodeDesc
+		>(MyInfoPioneerGenerationMessageCode, MyInfoPioneerGenerationMessageCodeMapping),
 	};
 }

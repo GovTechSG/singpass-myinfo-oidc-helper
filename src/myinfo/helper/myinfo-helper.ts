@@ -11,21 +11,20 @@ import { MyInfoRequest, MyInfoRequestConstructor } from "./myinfo-request";
 export type EnvType = "test" | "sandbox" | "prod";
 
 export interface IMyInfoHelper {
-	getPersonBasic: <K extends keyof MyInfoComponents.Schemas.PersonBasic>(uinfin: string, attributes: string[]) => Promise<Pick<MyInfoComponents.Schemas.PersonBasic, K>>;
-	getPerson: <K extends keyof MyInfoComponents.Schemas.Person>(uinfin: string, attributes: string[]) => Promise<Pick<MyInfoComponents.Schemas.Person, K>>;
+	getPersonBasic: <K extends keyof MyInfoComponents.Schemas.PersonBasic>(
+		uinfin: string,
+		attributes: string[],
+	) => Promise<Pick<MyInfoComponents.Schemas.PersonBasic, K>>;
+	getPerson: <K extends keyof MyInfoComponents.Schemas.Person>(
+		uinfin: string,
+		attributes: string[],
+	) => Promise<Pick<MyInfoComponents.Schemas.Person, K>>;
 }
 
 export interface IMyInfoRequest {
-	get: (
-		uri: string,
-		params?: { [key: string]: any },
-		accessToken?: string,
-	) => Promise<AxiosResponse>;
+	get: (uri: string, params?: { [key: string]: any }, accessToken?: string) => Promise<AxiosResponse>;
 
-	post: (
-		uri: string,
-		params: { [key: string]: any }
-	) => Promise<AxiosResponse>;
+	post: (uri: string, params: { [key: string]: any }) => Promise<AxiosResponse>;
 }
 
 export interface MyInfoHelperConstructor {
@@ -85,7 +84,6 @@ const PERSON_BASIC_BASE_URL = "api.myinfo.gov.sg/gov/v3/person-basic";
 const PROFILE_STATUS_BASE_URL = "api.myinfo.gov.sg/gov/v3/person-basic/status";
 
 export class MyInfoHelper implements IMyInfoHelper {
-
 	private myInfoRequest: MyInfoRequest;
 
 	private readonly clientID: string;
@@ -154,7 +152,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 
 		const queryString = querystringUtil.stringify(queryParams);
 		return `${this.authorizationUrl}?${queryString}`;
-	}
+	};
 
 	/**
 	 * Obtain token for person data
@@ -170,7 +168,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 			client_secret: this.clientSecret,
 			client_id: this.clientID,
 			redirect_uri: this.redirectUri,
-			state: querystringUtil.unescape(state)
+			state: querystringUtil.unescape(state),
 		};
 
 		let response: AxiosResponse<TokenResponse>;
@@ -182,7 +180,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 		}
 
 		return response.data;
-	}
+	};
 
 	/**
 	 * Obtain V3 person basic data using uinfin.
@@ -190,7 +188,10 @@ export class MyInfoHelper implements IMyInfoHelper {
 	 * getPersonBasic will return an object with only the properties matching the keys.
 	 * e.g. when K = "name" | "email", getPersonBasic returns an object looking like { name, email }
 	 */
-	public getPersonBasic = async<K extends keyof MyInfoComponents.Schemas.PersonBasic>(uinfin: string, attributes: string[]): Promise<Pick<MyInfoComponents.Schemas.PersonBasic, K>> => {
+	public getPersonBasic = async <K extends keyof MyInfoComponents.Schemas.PersonBasic>(
+		uinfin: string,
+		attributes: string[],
+	): Promise<Pick<MyInfoComponents.Schemas.PersonBasic, K>> => {
 		const url = `${this.personBasicUrl}/${uinfin}`;
 		const proxyUrl = this.proxyPersonBasicUrl ? `${this.proxyPersonBasicUrl}/${uinfin}` : "";
 		const params = {
@@ -213,7 +214,10 @@ export class MyInfoHelper implements IMyInfoHelper {
 			const jwe = await JweUtil.decryptJWE(encryptedPersonJWE, this.keyToDecryptJWE);
 			const jws = JSON.parse(jwe.payload.toString());
 			const verifiedJws = await JweUtil.verifyJWS(jws, this.certToVerifyJWS);
-			const personData = JSON.parse(verifiedJws.payload.toString()) as Pick<MyInfoComponents.Schemas.PersonBasic, K>;
+			const personData = JSON.parse(verifiedJws.payload.toString()) as Pick<
+				MyInfoComponents.Schemas.PersonBasic,
+				K
+			>;
 
 			if (personData == null) {
 				throw new SingpassMyInfoError("Person-common data cannot be null");
@@ -233,7 +237,10 @@ export class MyInfoHelper implements IMyInfoHelper {
 	 * e.g. when K = "name" | "email", getPerson returns an object looking like { name, email }
 	 */
 
-	public getPerson = async<K extends keyof MyInfoComponents.Schemas.Person>(accessToken: string, attributes: string[]): Promise<Pick<MyInfoComponents.Schemas.Person, K>> => {
+	public getPerson = async <K extends keyof MyInfoComponents.Schemas.Person>(
+		accessToken: string,
+		attributes: string[],
+	): Promise<Pick<MyInfoComponents.Schemas.Person, K>> => {
 		const uinfin = await this.extractUinfinFromAccessToken(accessToken);
 
 		const url = `${this.personUrl}/${uinfin}/`;
@@ -279,12 +286,20 @@ export class MyInfoHelper implements IMyInfoHelper {
 	public getProfileStatus = async (uinfin: string): Promise<ProfileStatus> => {
 		const url = `${this.profileStatusUrl}/${uinfin}`;
 		const proxyUrl = this.proxyProfileStatusUrl ? `${this.proxyProfileStatusUrl}/${uinfin}` : "";
-		const response = await this.myInfoRequest.get<{ statusCode: number, msg: string }>(url, null, null, proxyUrl, this.additionalHeaders);
+		const response = await this.myInfoRequest.get<{ statusCode: number; msg: string }>(
+			url,
+			null,
+			null,
+			proxyUrl,
+			this.additionalHeaders,
+		);
 
 		if (!!response.data.msg && typeof response.data.msg === "string") {
 			return JSON.parse(response.data.msg);
 		}
-		throw new SingpassMyInfoError("getProfileStatus response does not include the `msg` field as singpass-myinfo lib expected");
+		throw new SingpassMyInfoError(
+			"getProfileStatus response does not include the `msg` field as singpass-myinfo lib expected",
+		);
 	};
 
 	/**
@@ -317,9 +332,7 @@ export class MyInfoHelper implements IMyInfoHelper {
 	}
 
 	private getUrl(overrideUrl: string, defaultUrl: string, env: EnvType) {
-		return (!_.isEmpty(overrideUrl))
-			? overrideUrl
-			: this.constructUrl(env, defaultUrl);
+		return !_.isEmpty(overrideUrl) ? overrideUrl : this.constructUrl(env, defaultUrl);
 	}
 
 	private constructUrl(environment: EnvType, baseUrl: string) {

@@ -1,6 +1,10 @@
-// tslint:disable: no-big-function
 import { MyInfoLifeStatusCode, MyInfoSexCode, MyInfoVehicleStatus } from "../../domain";
-import { FakeMyInfoHelper, transformChildBirthRecord, transformItems, transformItemsWithAdditionalMock } from "../fake-helper";
+import {
+	FakeMyInfoHelper,
+	transformChildBirthRecord,
+	transformItems,
+	transformItemsWithAdditionalMock,
+} from "../fake-helper";
 import { ProfileArchetype } from "../profiles/fake-profile";
 import { mrSGDaddyPerfect } from "../profiles/mrSGDaddyPerfect";
 import { mrSGNoLocalAddress } from "../profiles/mrSGNoLocalAddress ";
@@ -8,7 +12,6 @@ import { mrSGFatherNormalChildrenOnly } from "../profiles/sponsored-children/mrS
 import { ChildrenBirthRecord, CpfContributionHistory, OverrideMode } from "../types";
 
 describe("FakeMyInfoHelper", () => {
-
 	describe("getPersonBasic", () => {
 		it("should successfully get based on archetype", () => {
 			const fakeHelper = new FakeMyInfoHelper();
@@ -96,15 +99,15 @@ describe("FakeMyInfoHelper", () => {
 							type: "SG",
 							postal: "123456",
 							street: "Some street",
-							unit: "111"
-						}
+							unit: "111",
+						},
 					});
 
 					expect(person.regadd).toStrictEqual({
 						...mrSGDaddyPerfect.generate().regadd,
 						postal: { value: "123456" },
 						street: { value: "Some street" },
-						unit: { value: "111" }
+						unit: { value: "111" },
 					});
 				});
 
@@ -119,8 +122,8 @@ describe("FakeMyInfoHelper", () => {
 							floor: "11",
 							postal: "123456",
 							street: "Some street",
-							unit: "111"
-						}
+							unit: "111",
+						},
 					});
 
 					const baseRegAdd = mrSGNoLocalAddress.generate().regadd;
@@ -128,7 +131,7 @@ describe("FakeMyInfoHelper", () => {
 						type: "SG",
 						country: {
 							code: "SG",
-							desc: "SINGAPORE"
+							desc: "SINGAPORE",
 						},
 						block: { value: "123" },
 						building: { value: "Some building" },
@@ -151,7 +154,7 @@ describe("FakeMyInfoHelper", () => {
 						regadd: {
 							type: "UNFORMATTED",
 							line1: "Line 1 address",
-						}
+						},
 					});
 
 					expect(person.regadd).toStrictEqual({
@@ -168,7 +171,7 @@ describe("FakeMyInfoHelper", () => {
 							type: "UNFORMATTED",
 							line1: "Line 1 address",
 							line2: "Line 2 address",
-						}
+						},
 					});
 
 					const baseRegAdd = mrSGDaddyPerfect.generate().regadd;
@@ -214,7 +217,9 @@ describe("FakeMyInfoHelper", () => {
 						childrenbirthrecords: mockChildrenbirthrecords,
 					});
 
-					expect(person.childrenbirthrecords).toStrictEqual(mockChildrenbirthrecords.map(transformChildBirthRecord));
+					expect(person.childrenbirthrecords).toStrictEqual(
+						mockChildrenbirthrecords.map(transformChildBirthRecord),
+					);
 				});
 
 				it("should NOT override all exisiting children of archetype if childrenbirthrecords is empty", () => {
@@ -246,7 +251,10 @@ describe("FakeMyInfoHelper", () => {
 
 					expect(person.childrenbirthrecords).toStrictEqual([
 						...mockChildrenbirthrecords.map(transformChildBirthRecord),
-						...mrSGDaddyPerfectChildren.slice(mockChildrenbirthrecords.length, mrSGDaddyPerfectChildren.length),
+						...mrSGDaddyPerfectChildren.slice(
+							mockChildrenbirthrecords.length,
+							mrSGDaddyPerfectChildren.length,
+						),
 					]);
 				});
 
@@ -300,7 +308,6 @@ describe("FakeMyInfoHelper", () => {
 		});
 	});
 
-	// tslint:disable-next-line: no-big-function
 	describe("getPerson", () => {
 		it("should successfully get based on archetype", () => {
 			const fakeHelper = new FakeMyInfoHelper();
@@ -338,10 +345,7 @@ describe("FakeMyInfoHelper", () => {
 		});
 
 		it("should return only requested attributes", () => {
-			const requestedAttributes = [
-				"drivinglicence.qdl.validity",
-				"cpfbalances"
-			];
+			const requestedAttributes = ["drivinglicence.qdl.validity", "cpfbalances"];
 			const fakeHelper = new FakeMyInfoHelper(requestedAttributes);
 			const person = fakeHelper.getPerson({ archetype: ProfileArchetype.MR_SG_FATHER_ONLY_SPONSORED });
 
@@ -378,7 +382,9 @@ describe("FakeMyInfoHelper", () => {
 							cpfcontributions: mockCpfContributions,
 						});
 
-						expect(person.cpfcontributions.history).toStrictEqual(mockCpfContributions.map(cpfContribution => transformItems(cpfContribution)));
+						expect(person.cpfcontributions.history).toStrictEqual(
+							mockCpfContributions.map((cpfContribution) => transformItems(cpfContribution)),
+						);
 					});
 
 					it("should override all exisiting cpfContributions of archetype if cpfcontributions is NOT empty and and myinfoPerson.cpfContributions is undefined", () => {
@@ -390,7 +396,9 @@ describe("FakeMyInfoHelper", () => {
 							cpfcontributions: mockCpfContributions,
 						});
 
-						expect(person.cpfcontributions.history).toStrictEqual(mockCpfContributions.map(cpfContribution => transformItems(cpfContribution)));
+						expect(person.cpfcontributions.history).toStrictEqual(
+							mockCpfContributions.map((cpfContribution) => transformItems(cpfContribution)),
+						);
 					});
 
 					it("should NOT override all exisiting cpfcontributions of archetype if cpfcontributions is empty", () => {
@@ -404,7 +412,9 @@ describe("FakeMyInfoHelper", () => {
 							cpfcontributions,
 						});
 
-						expect(person.cpfcontributions).toStrictEqual((mrSGFatherNormalChildrenOnly.generate()).cpfcontributions);
+						expect(person.cpfcontributions).toStrictEqual(
+							mrSGFatherNormalChildrenOnly.generate().cpfcontributions,
+						);
 					});
 				});
 
@@ -418,11 +428,15 @@ describe("FakeMyInfoHelper", () => {
 							cpfcontributions: mockCpfContributions,
 						});
 
-						const mrSGFatherNormalChildren = (mrSGFatherNormalChildrenOnly.generate()).cpfcontributions.history;
+						const mrSGFatherNormalChildren =
+							mrSGFatherNormalChildrenOnly.generate().cpfcontributions.history;
 
 						expect(person.cpfcontributions.history).toStrictEqual([
-							...mockCpfContributions.map(cpfContribution => transformItems(cpfContribution)),
-							...mrSGFatherNormalChildren.slice(mockCpfContributions.length, mrSGFatherNormalChildren.length),
+							...mockCpfContributions.map((cpfContribution) => transformItems(cpfContribution)),
+							...mrSGFatherNormalChildren.slice(
+								mockCpfContributions.length,
+								mrSGFatherNormalChildren.length,
+							),
 						]);
 					});
 
@@ -437,7 +451,9 @@ describe("FakeMyInfoHelper", () => {
 							cpfcontributions,
 						});
 
-						expect(person.cpfcontributions).toStrictEqual((mrSGFatherNormalChildrenOnly.generate()).cpfcontributions);
+						expect(person.cpfcontributions).toStrictEqual(
+							mrSGFatherNormalChildrenOnly.generate().cpfcontributions,
+						);
 					});
 				});
 
@@ -451,11 +467,12 @@ describe("FakeMyInfoHelper", () => {
 							cpfcontributions: mockCpfContributions,
 						});
 
-						const mrSGaddyPerfectChildren = (mrSGFatherNormalChildrenOnly.generate()).cpfcontributions.history;
+						const mrSGaddyPerfectChildren =
+							mrSGFatherNormalChildrenOnly.generate().cpfcontributions.history;
 
 						expect(person.cpfcontributions.history).toStrictEqual([
 							...mrSGaddyPerfectChildren,
-							...mockCpfContributions.map(cpfContribution => transformItems(cpfContribution)),
+							...mockCpfContributions.map((cpfContribution) => transformItems(cpfContribution)),
 						]);
 					});
 
@@ -470,14 +487,14 @@ describe("FakeMyInfoHelper", () => {
 							cpfcontributions,
 						});
 
-						expect(person.cpfcontributions).toStrictEqual((mrSGFatherNormalChildrenOnly.generate()).cpfcontributions);
+						expect(person.cpfcontributions).toStrictEqual(
+							mrSGFatherNormalChildrenOnly.generate().cpfcontributions,
+						);
 					});
 				});
 			});
 
-
 			describe("cpfBalances", () => {
-
 				const mockCpfBalances = {
 					ma: 1234.89,
 					oa: 1234.89,
@@ -502,7 +519,7 @@ describe("FakeMyInfoHelper", () => {
 						ma: 0,
 						oa: 0,
 						sa: 0,
-						ra: 0
+						ra: 0,
 					};
 
 					const person = fakeHelper.getPerson({
@@ -510,9 +527,8 @@ describe("FakeMyInfoHelper", () => {
 						cpfbalances: mockNoCpfBalances,
 					});
 
-					expect(person.cpfbalances).toStrictEqual((mrSGDaddyPerfect.generate()).cpfbalances);
+					expect(person.cpfbalances).toStrictEqual(mrSGDaddyPerfect.generate().cpfbalances);
 				});
-
 			});
 
 			describe("noaBasic", () => {
@@ -543,21 +559,24 @@ describe("FakeMyInfoHelper", () => {
 						noabasic: mockNoa,
 					});
 
-					expect(person["noa-basic"]).toStrictEqual((mrSGFatherNormalChildrenOnly.generate())["noa-basic"]);
+					expect(person["noa-basic"]).toStrictEqual(mrSGFatherNormalChildrenOnly.generate()["noa-basic"]);
 				});
 			});
 		});
 
 		describe("Vehicles", () => {
-			const vehicles = [{
-				status: MyInfoVehicleStatus.LIVE,
-				vehicleno: "S1Y",
-				iulabelno: "1234567891"
-			}, {
-				status: MyInfoVehicleStatus.DEREGISTERED,
-				vehicleno: "MID1234D",
-				iulabelno: "1234567890"
-			}];
+			const vehicles = [
+				{
+					status: MyInfoVehicleStatus.LIVE,
+					vehicleno: "S1Y",
+					iulabelno: "1234567891",
+				},
+				{
+					status: MyInfoVehicleStatus.DEREGISTERED,
+					vehicleno: "MID1234D",
+					iulabelno: "1234567890",
+				},
+			];
 
 			it("should successfully update vehicles based on mock params", () => {
 				const fakeHelper = new FakeMyInfoHelper();
@@ -582,10 +601,9 @@ describe("FakeMyInfoHelper", () => {
 					archetype: ProfileArchetype.MR_SG_FATHER_NORMAL_CHILDREN,
 				});
 
-				expect(person["vehicles"]).toStrictEqual([]);
+				expect(person.vehicles).toStrictEqual([]);
 			});
 		});
-
 	});
 });
 

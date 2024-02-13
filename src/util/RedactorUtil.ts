@@ -6,7 +6,7 @@ export const redactUinfin = (input: string): string => {
 		return input;
 	}
 
-	return input.replace(/[stfgSTFGM]\d{7}[a-zA-Z]/mg, (value) => {
+	return input.replace(/[stfgSTFGM]\d{7}[a-zA-Z]/gm, (value) => {
 		return `${value.substr(0, 1)}***${value.substr(4)}`;
 	});
 };

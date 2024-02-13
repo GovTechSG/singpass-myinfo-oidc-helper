@@ -1,12 +1,12 @@
 import * as _ from "lodash";
 
 export namespace EnumUtils {
-
 	/**
 	 * Generates a function that lists all the enum keys
 	 */
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	export function keysFunc<T>(enumType: any): () => string[] {
-		const keys: string[] = _.keys(enumType);	// Memoized
+		const keys: string[] = _.keys(enumType); // Memoized
 		return () => keys;
 	}
 
@@ -16,7 +16,7 @@ export namespace EnumUtils {
 	export function valuesFunc<T>(enumType: any): () => T[] {
 		// Filtering for numbers only for as _.values also includes enum key strings when it's a numbers enum
 		const isNumber = _.some(_.values(enumType), _.isNumber);
-		const values: T[] = _.filter(_.values(enumType), (value) => _.isNumber(value) === isNumber);	// Memoized
+		const values: T[] = _.filter(_.values(enumType), (value) => _.isNumber(value) === isNumber); // Memoized
 		return () => values;
 	}
 
@@ -31,17 +31,16 @@ export namespace EnumUtils {
 		const valueMap = new Map(); // Memoized
 
 		// Filtering for numbers only for as _.values also includes enum key strings when it's a numbers enum
-		_.filter(_.values(enumType), (value) => _.isNumber(value) === isNumber)
-			.forEach((value) => {
-				if (isNumber) {
-					valueMap.set(value, value);
-				} else if (_.isString(value)) {
-					valueMap.set(value.toUpperCase(), value);
-				}
-			});
+		_.filter(_.values(enumType), (value) => _.isNumber(value) === isNumber).forEach((value) => {
+			if (isNumber) {
+				valueMap.set(value, value);
+			} else if (_.isString(value)) {
+				valueMap.set(value.toUpperCase(), value);
+			}
+		});
 
 		return (value: string | number) => {
-			const findValue = (isNumber ? _.toNumber(value) : _.toString(value).toUpperCase());	// Type coercion
+			const findValue = isNumber ? _.toNumber(value) : _.toString(value).toUpperCase(); // Type coercion
 			const foundValue = valueMap.get(findValue);
 			if (_.isNil(foundValue)) {
 				if (throwIfInvalid) {
@@ -61,11 +60,11 @@ export namespace EnumUtils {
 	 * Returns undefined if the value is no in the enum set
 	 */
 	export function toEnumKeyFunc<T>(enumType: any, shouldThrowIfInvalid: boolean = false): (value: T) => string {
-		const isNumber = _.some(_.values(enumType), _.isNumber);	// Memoized
-		const invertedMap: _.Dictionary<any> = _.invert(enumType);	// Memoized
+		const isNumber = _.some(_.values(enumType), _.isNumber); // Memoized
+		const invertedMap: _.Dictionary<any> = _.invert(enumType); // Memoized
 
 		return (value: T): string => {
-			const findValue = (isNumber ? _.toNumber(value) : _.toString(value)); // Type coercion
+			const findValue = isNumber ? _.toNumber(value) : _.toString(value); // Type coercion
 			const foundKey = invertedMap[findValue];
 			if (_.isNil(foundKey) && shouldThrowIfInvalid) {
 				throw new Error(`Invalid enum value: ${value}`);
@@ -80,8 +79,12 @@ export namespace EnumUtils {
 	 * Automatically does type coercion (i.e. conversion to string or number)
 	 * Returns undefined if the value is no in the enum set
 	 */
-	export function toEnumDescFunc<T, U>(enumType: any, enumDesc: any, shouldThrowIfInvalid: boolean = false): (value: T) => U {
-		const invertedMap: _.Dictionary<any> = _.invert(enumType);	// Memoized
+	export function toEnumDescFunc<T, U>(
+		enumType: any,
+		enumDesc: any,
+		shouldThrowIfInvalid: boolean = false,
+	): (value: T) => U {
+		const invertedMap: _.Dictionary<any> = _.invert(enumType); // Memoized
 
 		return (value: T): U => {
 			const findValue = _.toString(value); // Type coercion

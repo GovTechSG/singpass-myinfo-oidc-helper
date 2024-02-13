@@ -1,4 +1,4 @@
-// tslint:disable
+/* eslint-disable */
 // =============================================================================
 // This file was generated with `npm run generate-myinfo-typings` on 2023-05-10
 // Any modifications to this file may be overwritten when the script runs again
@@ -26,7 +26,7 @@ enum MyInfoHDBTypeCodeMapping {
 	"STUDIO_APARTMENT_HDB" = "STUDIO APARTMENT (HDB)",
 }
 
-type MyInfoHDBTypeCodeDesc = `${ MyInfoHDBTypeCodeMapping }`;
+type MyInfoHDBTypeCodeDesc = `${MyInfoHDBTypeCodeMapping}`;
 
 export namespace MyInfoHDBTypeCode {
 	export const fn = {
@@ -34,6 +34,9 @@ export namespace MyInfoHDBTypeCode {
 		values: EnumUtils.valuesFunc<MyInfoHDBTypeCode>(MyInfoHDBTypeCode),
 		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoHDBTypeCode>(MyInfoHDBTypeCode),
 		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoHDBTypeCode>(MyInfoHDBTypeCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoHDBTypeCode, MyInfoHDBTypeCodeDesc>(MyInfoHDBTypeCode, MyInfoHDBTypeCodeMapping),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoHDBTypeCode, MyInfoHDBTypeCodeDesc>(
+			MyInfoHDBTypeCode,
+			MyInfoHDBTypeCodeMapping,
+		),
 	};
 }

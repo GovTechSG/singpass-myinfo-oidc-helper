@@ -14,10 +14,10 @@ export const mrSGNoAddress: FakeProfile = {
 		const profile = mrSGDaddyPerfect.generate(profileName);
 		profile.regadd = undefined;
 		profile.dob = {
-			"lastupdated": "2018-06-01",
-			"source": "1",
-			"classification": "C",
-			"value": "1983-10-06",
+			lastupdated: "2018-06-01",
+			source: "1",
+			classification: "C",
+			value: "1983-10-06",
 		};
 
 		return profile;

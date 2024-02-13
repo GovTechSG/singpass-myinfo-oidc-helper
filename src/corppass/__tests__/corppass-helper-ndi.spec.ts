@@ -12,12 +12,12 @@ const mockDecryptKey =
 const mockSignKey =
 	'{"kty": "EC","d": "QMS1DAh9RHzH7Oqj2FL5FW1j7FeQWqNjIfoaSfV14x8","use": "sig","crv": "P-256","kid": "jqjQh6u7LHFFxCPf12PqBzbDfpnqL9I0qR8Gqllq6vU","x": "17aNA7ePDntFNM0hKfTFcFoXhHK0nJ7n4zDwXfwi22s","y": "fGJn6q2zQitVVJY91Fr1oe4bErqy5SL3V4AC4e_4dmQ","alg": "ES256"}';
 const mockTokenResponse: TokenResponse = {
-	access_token: 'MOCK_ACCESS_TOKEN',
+	access_token: "MOCK_ACCESS_TOKEN",
 	refresh_token: "MOCK_REFRESH_TOKEN",
 	id_token: "MOCK_ID_TOKEN",
 	token_type: "bearer",
 	expires_in: 599,
-	scope: "openid"
+	scope: "openid",
 };
 
 const createMockIdTokenPayload = (overrideProps?: Partial<NDIIdTokenPayload>): NDIIdTokenPayload => ({
@@ -45,7 +45,6 @@ const createMockIdTokenPayload = (overrideProps?: Partial<NDIIdTokenPayload>): N
 	...overrideProps,
 });
 
-// tslint:disable-next-line: no-big-function
 describe("NDI Corppass Helper", () => {
 	const props: NdiOidcHelperConstructor = {
 		oidcConfigUrl: mockOidcConfigUrl,
@@ -147,53 +146,64 @@ describe("NDI Corppass Helper", () => {
 	});
 
 	describe("Authorisation info api", () => {
-
 		const MOCK_AUTH_INFO = {
-			"Result_Set": {
-				"ESrvc_Row_Count": 1,
-				"ESrvc_Result": [{
-					"CPESrvcID": "EserviceId",
-					"Auth_Result_Set":
+			Result_Set: {
+				ESrvc_Row_Count: 1,
+				ESrvc_Result: [
 					{
-						"Row_Count": 2,
-						"Row": [{
-							"CPEntID_SUB": "",
-							"CPRole": "CorppassRole",
-							"StartDate": "2024-01-16",
-							"EndDate": "9999-12-31",
-							"Parameter": [{
-								"name": "Agencies",
-								"value": "AGY"
-							}]
-						}, {
-							"CPEntID_SUB": "",
-							"CPRole": "CorppassRole",
-							"StartDate": "2000-01-16",
-							"EndDate": "2000-12-31",
-							"Parameter": [{
-								"name": "Agencies",
-								"value": "AGY"
-							}]
-						}]
-					}
-				}, {
-					"CPESrvcID": "EserviceId2",
-					"Auth_Result_Set":
+						CPESrvcID: "EserviceId",
+						Auth_Result_Set: {
+							Row_Count: 2,
+							Row: [
+								{
+									CPEntID_SUB: "",
+									CPRole: "CorppassRole",
+									StartDate: "2024-01-16",
+									EndDate: "9999-12-31",
+									Parameter: [
+										{
+											name: "Agencies",
+											value: "AGY",
+										},
+									],
+								},
+								{
+									CPEntID_SUB: "",
+									CPRole: "CorppassRole",
+									StartDate: "2000-01-16",
+									EndDate: "2000-12-31",
+									Parameter: [
+										{
+											name: "Agencies",
+											value: "AGY",
+										},
+									],
+								},
+							],
+						},
+					},
 					{
-						"Row_Count": 1,
-						"Row": [{
-							"CPEntID_SUB": "",
-							"CPRole": "CorppassRole",
-							"StartDate": "2000-01-16",
-							"EndDate": "2000-12-31",
-							"Parameter": [{
-								"name": "Agencies",
-								"value": "AGY"
-							}]
-						}]
-					}
-				}]
-			}
+						CPESrvcID: "EserviceId2",
+						Auth_Result_Set: {
+							Row_Count: 1,
+							Row: [
+								{
+									CPEntID_SUB: "",
+									CPRole: "CorppassRole",
+									StartDate: "2000-01-16",
+									EndDate: "2000-12-31",
+									Parameter: [
+										{
+											name: "Agencies",
+											value: "AGY",
+										},
+									],
+								},
+							],
+						},
+					},
+				],
+			},
 		};
 
 		const MOCK_RAW_AUTH_PAYLOAD = {
@@ -212,7 +222,9 @@ describe("NDI Corppass Helper", () => {
 				additionalHeaders: mockAdditionalHeaders,
 			});
 
-			const mockVerifyJwsUsingKeyStore = jest.spyOn(JweUtils, "verifyJwsUsingKeyStore").mockResolvedValueOnce({ payload: JSON.stringify(MOCK_RAW_AUTH_PAYLOAD) } as unknown as JWS.VerificationResult);
+			const mockVerifyJwsUsingKeyStore = jest.spyOn(JweUtils, "verifyJwsUsingKeyStore").mockResolvedValueOnce({
+				payload: JSON.stringify(MOCK_RAW_AUTH_PAYLOAD),
+			} as unknown as JWS.VerificationResult);
 
 			const axiosMock = jest.fn();
 			// First get is to get OIDC Config
@@ -222,9 +234,8 @@ describe("NDI Corppass Helper", () => {
 					data: {
 						token_endpoint: "https://mockcorppass.sg/mga/sps/oauth/oauth20/token",
 						issuer: "https://mockcorppass.sg",
-						'authorization-info_endpoint': "https://mockcorppass.sg/authorization-info",
+						"authorization-info_endpoint": "https://mockcorppass.sg/authorization-info",
 						jwks_uri: "https://mockcorppass.sg/.well-known/keys",
-
 					},
 				};
 			});
@@ -235,7 +246,6 @@ describe("NDI Corppass Helper", () => {
 					status: 200,
 					data: {
 						keys: "MOCK_KEYS",
-
 					},
 				};
 			});
@@ -243,37 +253,40 @@ describe("NDI Corppass Helper", () => {
 			const axiosPostMock = jest.fn((): any =>
 				Promise.resolve({
 					status: 200,
-					data: "TEST_AUTH_INFO_TOKEN"
-					,
+					data: "TEST_AUTH_INFO_TOKEN",
 				}),
 			);
 
 			corppassHelper._testExports.getCorppassClient().get = axiosMock;
 			corppassHelper._testExports.getCorppassClient().post = axiosPostMock;
 
-			expect(await corppassHelper.getAuthorisationInfoTokenPayload(mockTokenResponse)).toStrictEqual(MOCK_AUTH_PAYLOAD);
+			expect(await corppassHelper.getAuthorisationInfoTokenPayload(mockTokenResponse)).toStrictEqual(
+				MOCK_AUTH_PAYLOAD,
+			);
 
 			expect(axiosMock.mock.calls[0]).toEqual(
-				expect.arrayContaining([
-					mockOidcConfigUrl,
-					{ headers: mockAdditionalHeaders },
-				]),
+				expect.arrayContaining([mockOidcConfigUrl, { headers: mockAdditionalHeaders }]),
 			);
 			expect(axiosMock.mock.calls[1]).toEqual(
 				expect.arrayContaining([
-					'https://www.proxy.gov.sg/.well-known/keys',
+					"https://www.proxy.gov.sg/.well-known/keys",
 					{ headers: mockAdditionalHeaders },
 				]),
 			);
 
-			expect(mockVerifyJwsUsingKeyStore).toHaveBeenCalledWith('TEST_AUTH_INFO_TOKEN', 'MOCK_KEYS');
+			expect(mockVerifyJwsUsingKeyStore).toHaveBeenCalledWith("TEST_AUTH_INFO_TOKEN", "MOCK_KEYS");
 			expect(axiosMock).toHaveBeenCalledTimes(2);
 			expect(axiosPostMock).toHaveBeenCalledTimes(1);
 			expect(axiosPostMock.mock.calls[0]).toEqual(
 				expect.arrayContaining([
 					"https://www.proxy.gov.sg/authorization-info",
 					null,
-					{ headers: { "Authorization": `Bearer ${mockTokenResponse.access_token}`, ...mockAdditionalHeaders } },
+					{
+						headers: {
+							Authorization: `Bearer ${mockTokenResponse.access_token}`,
+							...mockAdditionalHeaders,
+						},
+					},
 				]),
 			);
 		});
@@ -285,19 +298,22 @@ describe("NDI Corppass Helper", () => {
 				additionalHeaders: mockAdditionalHeaders,
 			});
 			expect(corppassHelper.extractActiveAuthResultFromAuthInfoToken(MOCK_AUTH_PAYLOAD)).toStrictEqual({
-				EserviceId: [{
-					"CPEntID_SUB": "",
-					"CPRole": "CorppassRole",
-					"StartDate": "2024-01-16",
-					"EndDate": "9999-12-31",
-					"Parameter": [{
-						"name": "Agencies",
-						"value": "AGY"
-					}]
-				}],
-				EserviceId2: []
+				EserviceId: [
+					{
+						CPEntID_SUB: "",
+						CPRole: "CorppassRole",
+						StartDate: "2024-01-16",
+						EndDate: "9999-12-31",
+						Parameter: [
+							{
+								name: "Agencies",
+								value: "AGY",
+							},
+						],
+					},
+				],
+				EserviceId2: [],
 			});
-
 		});
 	});
 
@@ -305,7 +321,7 @@ describe("NDI Corppass Helper", () => {
 		const mockOverrideDecryptKey =
 			'{"kty": "EC","d": "AA1YtF2O779tiuJ4Rs3UVItxgX3GFOgQ-aycS-n-lFU","use": "enc","crv": "P-256","kid": "MOCK-OVERRIDE-DECRYPT-KEY-ID","x": "MFqQFZrB74cDhiBHhIBg9iCB-qj86vU45dj2iA-RAjs","y": "yUOsmZh4rd3qwqXRgRCIaAyRcOj4S0mD6tEsd-aTlL0","alg": "ECDH-ES+A256KW"}';
 
-		const mockVerifiedJws = { payload: JSON.stringify({ mockResults: 'VERIFIED_JWS' }) };
+		const mockVerifiedJws = { payload: JSON.stringify({ mockResults: "VERIFIED_JWS" }) };
 		it("should use proxy url when specified", async () => {
 			const corppassHelper = new NdiOidcHelper({
 				...props,
@@ -313,8 +329,12 @@ describe("NDI Corppass Helper", () => {
 				additionalHeaders: mockAdditionalHeaders,
 			});
 
-			const mockDecryptJwe = jest.spyOn(JweUtils, "decryptJWE").mockResolvedValueOnce({ payload: 'DECRYPT_RESULTS' } as unknown as JWE.DecryptResult);
-			const mockVerifyJWS = jest.spyOn(JweUtils, "verifyJWS").mockResolvedValueOnce(mockVerifiedJws as unknown as JWS.VerificationResult);
+			const mockDecryptJwe = jest
+				.spyOn(JweUtils, "decryptJWE")
+				.mockResolvedValueOnce({ payload: "DECRYPT_RESULTS" } as unknown as JWE.DecryptResult);
+			const mockVerifyJWS = jest
+				.spyOn(JweUtils, "verifyJWS")
+				.mockResolvedValueOnce(mockVerifiedJws as unknown as JWS.VerificationResult);
 
 			const axiosMock = jest.fn();
 			// First get is to get OIDC Config
@@ -324,9 +344,8 @@ describe("NDI Corppass Helper", () => {
 					data: {
 						token_endpoint: "https://mockcorppass.sg/mga/sps/oauth/oauth20/token",
 						issuer: "https://mockcorppass.sg",
-						'authorization-info_endpoint': "https://mockcorppass.sg/authorization-info",
+						"authorization-info_endpoint": "https://mockcorppass.sg/authorization-info",
 						jwks_uri: "https://mockcorppass.sg/.well-known/keys",
-
 					},
 				};
 			});
@@ -337,33 +356,27 @@ describe("NDI Corppass Helper", () => {
 					status: 200,
 					data: {
 						keys: ["MOCK_KEY"],
-
 					},
 				};
 			});
-
 
 			corppassHelper._testExports.getCorppassClient().get = axiosMock;
 
 			await corppassHelper.getIdTokenPayload(mockTokenResponse);
 
 			expect(axiosMock.mock.calls[0]).toEqual(
-				expect.arrayContaining([
-					mockOidcConfigUrl,
-					{ headers: mockAdditionalHeaders },
-				]),
+				expect.arrayContaining([mockOidcConfigUrl, { headers: mockAdditionalHeaders }]),
 			);
 			expect(axiosMock.mock.calls[1]).toEqual(
 				expect.arrayContaining([
-					'https://www.proxy.gov.sg/.well-known/keys',
+					"https://www.proxy.gov.sg/.well-known/keys",
 					{ headers: mockAdditionalHeaders },
 				]),
 			);
 
-			expect(mockDecryptJwe).toHaveBeenCalledWith(mockTokenResponse.id_token, mockDecryptKey, 'json',);
-			expect(mockVerifyJWS).toHaveBeenCalledWith('DECRYPT_RESULTS', JSON.stringify("MOCK_KEY"), 'json');
+			expect(mockDecryptJwe).toHaveBeenCalledWith(mockTokenResponse.id_token, mockDecryptKey, "json");
+			expect(mockVerifyJWS).toHaveBeenCalledWith("DECRYPT_RESULTS", JSON.stringify("MOCK_KEY"), "json");
 			expect(axiosMock).toHaveBeenCalledTimes(2);
-
 		});
 
 		it("should use overrideDecryptKey when specified", async () => {
@@ -373,8 +386,12 @@ describe("NDI Corppass Helper", () => {
 				additionalHeaders: mockAdditionalHeaders,
 			});
 
-			const mockDecryptJwe = jest.spyOn(JweUtils, "decryptJWE").mockResolvedValueOnce({ payload: 'DECRYPT_RESULTS' } as unknown as JWE.DecryptResult);
-			const mockVerifyJWS = jest.spyOn(JweUtils, "verifyJWS").mockResolvedValueOnce(mockVerifiedJws as unknown as JWS.VerificationResult);
+			const mockDecryptJwe = jest
+				.spyOn(JweUtils, "decryptJWE")
+				.mockResolvedValueOnce({ payload: "DECRYPT_RESULTS" } as unknown as JWE.DecryptResult);
+			const mockVerifyJWS = jest
+				.spyOn(JweUtils, "verifyJWS")
+				.mockResolvedValueOnce(mockVerifiedJws as unknown as JWS.VerificationResult);
 
 			const axiosMock = jest.fn();
 			// First get is to get OIDC Config
@@ -384,9 +401,8 @@ describe("NDI Corppass Helper", () => {
 					data: {
 						token_endpoint: "https://mockcorppass.sg/mga/sps/oauth/oauth20/token",
 						issuer: "https://mockcorppass.sg",
-						'authorization-info_endpoint': "https://mockcorppass.sg/authorization-info",
+						"authorization-info_endpoint": "https://mockcorppass.sg/authorization-info",
 						jwks_uri: "https://mockcorppass.sg/.well-known/keys",
-
 					},
 				};
 			});
@@ -397,33 +413,27 @@ describe("NDI Corppass Helper", () => {
 					status: 200,
 					data: {
 						keys: ["MOCK_KEY"],
-
 					},
 				};
 			});
-
 
 			corppassHelper._testExports.getCorppassClient().get = axiosMock;
 
 			await corppassHelper.getIdTokenPayload(mockTokenResponse, { key: mockOverrideDecryptKey, format: "json" });
 
 			expect(axiosMock.mock.calls[0]).toEqual(
-				expect.arrayContaining([
-					mockOidcConfigUrl,
-					{ headers: mockAdditionalHeaders },
-				]),
+				expect.arrayContaining([mockOidcConfigUrl, { headers: mockAdditionalHeaders }]),
 			);
 			expect(axiosMock.mock.calls[1]).toEqual(
 				expect.arrayContaining([
-					'https://www.proxy.gov.sg/.well-known/keys',
+					"https://www.proxy.gov.sg/.well-known/keys",
 					{ headers: mockAdditionalHeaders },
 				]),
 			);
 
-			expect(mockDecryptJwe).toHaveBeenCalledWith(mockTokenResponse.id_token, mockOverrideDecryptKey, 'json',);
-			expect(mockVerifyJWS).toHaveBeenCalledWith('DECRYPT_RESULTS', JSON.stringify("MOCK_KEY"), 'json');
+			expect(mockDecryptJwe).toHaveBeenCalledWith(mockTokenResponse.id_token, mockOverrideDecryptKey, "json");
+			expect(mockVerifyJWS).toHaveBeenCalledWith("DECRYPT_RESULTS", JSON.stringify("MOCK_KEY"), "json");
 			expect(axiosMock).toHaveBeenCalledTimes(2);
-
 		});
 	});
 });

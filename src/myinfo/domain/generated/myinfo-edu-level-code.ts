@@ -1,4 +1,4 @@
-// tslint:disable
+/* eslint-disable */
 // =============================================================================
 // This file was generated with `npm run generate-myinfo-typings` on 2023-05-10
 // Any modifications to this file may be overwritten when the script runs again
@@ -34,7 +34,7 @@ enum MyInfoEduLevelCodeMapping {
 	"MODULAR_CERTIFICATION_NON_AWARD_COURSES_NON_FULL_QUALIFICATIONS" = "MODULAR CERTIFICATION (NON-AWARD COURSES / NON-FULL QUALIFICATIONS)",
 }
 
-type MyInfoEduLevelCodeDesc = `${ MyInfoEduLevelCodeMapping }`;
+type MyInfoEduLevelCodeDesc = `${MyInfoEduLevelCodeMapping}`;
 
 export namespace MyInfoEduLevelCode {
 	export const fn = {
@@ -42,6 +42,9 @@ export namespace MyInfoEduLevelCode {
 		values: EnumUtils.valuesFunc<MyInfoEduLevelCode>(MyInfoEduLevelCode),
 		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoEduLevelCode>(MyInfoEduLevelCode),
 		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoEduLevelCode>(MyInfoEduLevelCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoEduLevelCode, MyInfoEduLevelCodeDesc>(MyInfoEduLevelCode, MyInfoEduLevelCodeMapping),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoEduLevelCode, MyInfoEduLevelCodeDesc>(
+			MyInfoEduLevelCode,
+			MyInfoEduLevelCodeMapping,
+		),
 	};
 }

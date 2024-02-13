@@ -1,4 +1,4 @@
-// tslint:disable
+/* eslint-disable */
 // =============================================================================
 // This file was generated with `npm run generate-myinfo-typings` on 2023-05-10
 // Any modifications to this file may be overwritten when the script runs again
@@ -548,7 +548,7 @@ enum MyInfoCountryPlaceCodeMapping {
 	"ZIMBABWE" = "ZIMBABWE",
 }
 
-type MyInfoCountryPlaceCodeDesc = `${ MyInfoCountryPlaceCodeMapping }`;
+type MyInfoCountryPlaceCodeDesc = `${MyInfoCountryPlaceCodeMapping}`;
 
 export namespace MyInfoCountryPlaceCode {
 	export const fn = {
@@ -556,6 +556,9 @@ export namespace MyInfoCountryPlaceCode {
 		values: EnumUtils.valuesFunc<MyInfoCountryPlaceCode>(MyInfoCountryPlaceCode),
 		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoCountryPlaceCode>(MyInfoCountryPlaceCode),
 		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoCountryPlaceCode>(MyInfoCountryPlaceCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoCountryPlaceCode, MyInfoCountryPlaceCodeDesc>(MyInfoCountryPlaceCode, MyInfoCountryPlaceCodeMapping),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoCountryPlaceCode, MyInfoCountryPlaceCodeDesc>(
+			MyInfoCountryPlaceCode,
+			MyInfoCountryPlaceCodeMapping,
+		),
 	};
 }

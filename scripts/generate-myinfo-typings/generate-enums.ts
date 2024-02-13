@@ -1,4 +1,4 @@
-// tslint:disable: no-console tsr-detect-non-literal-fs-filename no-commented-code
+/* eslint-disable no-console */
 import axios from "axios";
 import * as fs from "fs";
 import handlebars from "handlebars";
@@ -68,7 +68,9 @@ function getCustomEnums(options: Options): EnumNamespace[] {
 
 	filenames.forEach((file) => {
 		if (file.match(/.json$/)) {
-			const customEnum: EnumNamespace = JSON.parse(fs.readFileSync(path.join(options.customEnumDir, file), "utf8"));
+			const customEnum: EnumNamespace = JSON.parse(
+				fs.readFileSync(path.join(options.customEnumDir, file), "utf8"),
+			);
 			customEnums.push(customEnum);
 		}
 	});
@@ -92,7 +94,11 @@ function prepareEnumNamespacesForWriting(namespaces: EnumNamespace[]): EnumNames
 		const { enumNamespace, enumTypings } = namespace;
 
 		// Validate the enum
-		if (_.isNil(enumNamespace) || _.isEmpty(enumTypings) || enumTypings.some((enumTyping) => _.isEmpty(enumTyping))) {
+		if (
+			_.isNil(enumNamespace) ||
+			_.isEmpty(enumTypings) ||
+			enumTypings.some((enumTyping) => _.isEmpty(enumTyping))
+		) {
 			console.warn(`Malformed enum typing detected, skipping...`, enumNamespace);
 			return;
 		}
@@ -117,7 +123,7 @@ function prepareEnumNamespacesForWriting(namespaces: EnumNamespace[]): EnumNames
 }
 
 function removeEmptyEnumKeysOrValues(
-	enums: EnumNamespace["enumTypings"][number]
+	enums: EnumNamespace["enumTypings"][number],
 ): EnumNamespace["enumTypings"][number] {
 	const { enumName, enumEntries } = enums;
 
@@ -139,10 +145,8 @@ function renameDuplicateEnums(enums: EnumNamespace["enumTypings"][number]): Enum
 	const cleanEnumEntries = enumEntries.map((entry) => {
 		let key = entry.key;
 		if (enumEntryKeyList.includes(key)) {
-			// tslint:disable: tsr-detect-non-literal-regexp
 			const countInstances = new RegExp(`^${key}`, "i");
 			const extractCounter = new RegExp(`^${key}_(.*)`, "i");
-			// tslint:enable: tsr-detect-non-literal-regexp
 
 			// count instances of key
 			const instanceCount = enumEntryKeyList.filter((k) => k.match(countInstances)).length;
@@ -171,7 +175,7 @@ function renameDuplicateEnums(enums: EnumNamespace["enumTypings"][number]): Enum
 
 function writeEnumsToFiles(options: Options, namespaces: EnumNamespace[]): string[] {
 	return namespaces.map((namespace) => {
-		const filename = `${_.kebabCase(namespace.enumNamespace).replace(/my\-info/, "myinfo")}.ts`;
+		const filename = `${_.kebabCase(namespace.enumNamespace).replace(/my-info/, "myinfo")}.ts`;
 
 		const generatedFileDir = path.join(options.outputDir, "generated");
 		const enumUtilsPath = path.join(__dirname, "../../src/util/EnumUtils");

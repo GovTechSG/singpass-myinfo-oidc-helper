@@ -14,7 +14,9 @@ export const mrSGUnclePgAllOk: FakeProfile = {
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
 		profile.pioneergen.message.code = MyInfoPioneerGenerationMessageCode.ALL_OK;
-		profile.pioneergen.message.desc = MyInfoPioneerGenerationMessageCode.fn.toEnumDesc(MyInfoPioneerGenerationMessageCode.ALL_OK);
+		profile.pioneergen.message.desc = MyInfoPioneerGenerationMessageCode.fn.toEnumDesc(
+			MyInfoPioneerGenerationMessageCode.ALL_OK,
+		);
 		profile.dob = {
 			lastupdated: "2021-01-01",
 			source: "1",

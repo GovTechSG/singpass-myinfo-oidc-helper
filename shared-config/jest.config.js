@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // =============================================================================
 // This creates a base jest config
 // =============================================================================
@@ -21,27 +22,20 @@ exports.createBaseConfig = (testType) => {
 		transform: {
 			".(js|ts|jsx|tsx)$": "ts-jest",
 		},
-		modulePaths: [
-			"src",
-		],
-		moduleFileExtensions: [
-			"js",
-			"ts",
-			"jsx",
-			"tsx",
-		],
+		modulePaths: ["src"],
+		moduleFileExtensions: ["js", "ts", "jsx", "tsx"],
 		testResultsProcessor: "jest-bamboo-reporter",
 		setupFiles: ["<rootDir>/shared-config/jest.setup.ts"],
 		verbose: true,
 		bail: true,
 		reporters: [
-			"default", 
+			"default",
 			[
-				"jest-junit", 
-				{ 
-					outputName: "junit.xml" 
-				}
-			]
+				"jest-junit",
+				{
+					outputName: "junit.xml",
+				},
+			],
 		],
 	};
 
@@ -69,7 +63,6 @@ function getTestMatch(testType) {
 
 		// FIXME: Backwards compatibility
 		default:
-			// tslint:disable-next-line: no-console
 			console.warn("Unknown Jest testType");
 			return [
 				`<rootDir>/src/**/__tests__/**/*.spec.[jt]s?(x)`,
@@ -79,6 +72,7 @@ function getTestMatch(testType) {
 }
 
 function getMaxConcurrency(testType) {
+	// eslint-disable-next-line sonarjs/no-small-switch
 	switch (testType) {
 		case exports.TestType.BENCHMARK:
 			return 1;

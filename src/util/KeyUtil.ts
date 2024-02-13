@@ -1,6 +1,6 @@
-import * as jwt from 'jsonwebtoken';
+import * as jwt from "jsonwebtoken";
 
-export type KeyFormat = 'json' | 'pkcs8' | 'spki' | 'pkix' | 'x509' | 'pem';
+export type KeyFormat = "json" | "pkcs8" | "spki" | "pkix" | "x509" | "pem";
 
 export interface Key {
 	key: string;

@@ -1,8 +1,6 @@
+import * as http from "http";
 import * as nock from "nock";
 import { createClient } from "../axios-client";
-import * as http from "http";
-
-// tslint:disable: no-console
 
 describe("Axios Client", () => {
 	let consoleLogSpy: jest.SpyInstance;
@@ -46,11 +44,11 @@ describe("Axios Client", () => {
 		const response = await client.get(uinfin, {
 			baseURL,
 			headers: {
-				uinfin
+				uinfin,
 			},
 			params: {
-				uinfin
-			}
+				uinfin,
+			},
 		});
 
 		expect(response.status).toEqual(200);
@@ -67,14 +65,14 @@ describe("Axios Client", () => {
 
 		try {
 			const client = createClient();
-			const response = await client.get(uinfin, {
+			await client.get(uinfin, {
 				baseURL,
 				headers: {
-					uinfin
+					uinfin,
 				},
 				params: {
-					uinfin
-				}
+					uinfin,
+				},
 			});
 			fail("Should not reach here");
 		} catch (error) {
@@ -83,10 +81,10 @@ describe("Axios Client", () => {
 			expect(consoleLogSpy).toHaveBeenCalledTimes(2);
 			expect(consoleLogSpy).toHaveBeenNthCalledWith(1, "Requesting", { method: "get", url: "S***1111D" });
 			expect(consoleLogSpy).toHaveBeenNthCalledWith(2, "Error occurred while responding to request", {
-				method: 'get',
-				url: 'S***1111D',
+				method: "get",
+				url: "S***1111D",
 				status: 400,
-				data: 'something S***1111D something'
+				data: "something S***1111D something",
 			});
 		}
 	});
@@ -94,16 +92,18 @@ describe("Axios Client", () => {
 	it("should not log any uinfin when failing to make a request", async () => {
 		try {
 			const client = createClient();
-			client.interceptors.request.use(() => { throw new Error(`something ${uinfin} something`); });
+			client.interceptors.request.use(() => {
+				throw new Error(`something ${uinfin} something`);
+			});
 
 			await client.get(uinfin, {
 				baseURL,
 				headers: {
-					uinfin
+					uinfin,
 				},
 				params: {
-					uinfin
-				}
+					uinfin,
+				},
 			});
 			fail("Should not reach here");
 		} catch (error) {
@@ -124,18 +124,20 @@ describe("Axios Client", () => {
 	});
 
 	it("should not log any uinfin when failing to receive a response", async () => {
-		jest.spyOn(http, "request").mockImplementation(() => { throw new Error(`something ${uinfin} something`); });
+		jest.spyOn(http, "request").mockImplementation(() => {
+			throw new Error(`something ${uinfin} something`);
+		});
 
 		try {
 			const client = createClient();
 			await client.get(uinfin, {
 				baseURL,
 				headers: {
-					uinfin
+					uinfin,
 				},
 				params: {
-					uinfin
-				}
+					uinfin,
+				},
 			});
 			fail("Should not reach here");
 		} catch (error) {

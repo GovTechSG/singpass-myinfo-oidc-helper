@@ -1,4 +1,4 @@
-// tslint:disable
+/* eslint-disable */
 // =============================================================================
 // This file was generated with `npm run generate-myinfo-typings` on 2023-05-10
 // Any modifications to this file may be overwritten when the script runs again
@@ -14,7 +14,7 @@ enum MyInfoChildVaccReqCodeMapping {
 	"MINIMUM_VACCINATION_REQUIREMENT_FOR_PRESCHOOL_ADMISSION_FULFILLED" = "MINIMUM VACCINATION REQUIREMENT FOR PRESCHOOL ADMISSION FULFILLED",
 }
 
-type MyInfoChildVaccReqCodeDesc = `${ MyInfoChildVaccReqCodeMapping }`;
+type MyInfoChildVaccReqCodeDesc = `${MyInfoChildVaccReqCodeMapping}`;
 
 export namespace MyInfoChildVaccReqCode {
 	export const fn = {
@@ -22,6 +22,9 @@ export namespace MyInfoChildVaccReqCode {
 		values: EnumUtils.valuesFunc<MyInfoChildVaccReqCode>(MyInfoChildVaccReqCode),
 		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoChildVaccReqCode>(MyInfoChildVaccReqCode),
 		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoChildVaccReqCode>(MyInfoChildVaccReqCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoChildVaccReqCode, MyInfoChildVaccReqCodeDesc>(MyInfoChildVaccReqCode, MyInfoChildVaccReqCodeMapping),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoChildVaccReqCode, MyInfoChildVaccReqCodeDesc>(
+			MyInfoChildVaccReqCode,
+			MyInfoChildVaccReqCodeMapping,
+		),
 	};
 }

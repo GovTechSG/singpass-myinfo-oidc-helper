@@ -1,11 +1,9 @@
-
 import { MyInfoHelper, MyInfoHelperConstructor } from "..";
 import { configs } from "./test.configs";
 import { set } from "lodash";
 import { aliasName } from "../../fake/profiles/common";
 
 describe("MyInfoClient", () => {
-
 	describe("STAGING Person basic API V3", () => {
 		it("should use the available env variables, call myinfo, and get back person", async () => {
 			const props: MyInfoHelperConstructor = {
@@ -17,31 +15,31 @@ describe("MyInfoClient", () => {
 				privateKeyToSignRequest: configs.myinfoAuthKey,
 				privateKeyPassword: configs.myinfoAuthKeyPassphrase,
 			};
-			if (!!configs.overridePersonBasicUrl) {
+			if (configs.overridePersonBasicUrl) {
 				set(props, "overridePersonBasicUrl", configs.overridePersonBasicUrl);
 			}
 
 			type V3Attributes =
-				"name" |
-				"aliasname" |
-				"sex" |
-				"race" |
-				"secondaryrace" |
-				"dialect" |
-				"nationality" |
-				"dob" |
-				"birthcountry" |
-				"residentialstatus" |
-				"email" |
-				"mobileno" |
-				"regadd" |
-				"marital" |
-				"marriagedate" |
-				"occupation" |
-				"edulevel" |
-				"countryofmarriage" |
-				"marriagecertno" |
-				"childrenbirthrecords";
+				| "name"
+				| "aliasname"
+				| "sex"
+				| "race"
+				| "secondaryrace"
+				| "dialect"
+				| "nationality"
+				| "dob"
+				| "birthcountry"
+				| "residentialstatus"
+				| "email"
+				| "mobileno"
+				| "regadd"
+				| "marital"
+				| "marriagedate"
+				| "occupation"
+				| "edulevel"
+				| "countryofmarriage"
+				| "marriagecertno"
+				| "childrenbirthrecords";
 
 			const myInfoHelper = new MyInfoHelper(props);
 			const testNric = "S1627395C";
@@ -63,7 +61,7 @@ describe("MyInfoClient", () => {
 				privateKeyToSignRequest: configs.myinfoAuthKey,
 				privateKeyPassword: configs.myinfoAuthKeyPassphrase,
 			};
-			if (!!configs.overrideProfileStatusUrl) {
+			if (configs.overrideProfileStatusUrl) {
 				set(props, "overridePersonBasicUrl", configs.overrideProfileStatusUrl);
 			}
 

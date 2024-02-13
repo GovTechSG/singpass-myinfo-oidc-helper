@@ -20,25 +20,25 @@ export const mrMYDaddyPerfect: FakeProfile = {
 		profile.residentialstatus.code = "";
 		profile.residentialstatus.desc = "";
 		profile.marital = {
-			"lastupdated": "2020-09-10",
-			"code": null,
-			"source": "2",
-			"classification": "C",
-			"desc": null,
+			lastupdated: "2020-09-10",
+			code: null,
+			source: "2",
+			classification: "C",
+			desc: null,
 		};
 		profile.marriagedate = {
-			"lastupdated": "2020-09-10",
-			"source": "2",
-			"classification": "C",
-			"value": "",
+			lastupdated: "2020-09-10",
+			source: "2",
+			classification: "C",
+			value: "",
 		};
 
 		profile.dialect = {
-			"lastupdated": "2020-09-10",
-			"code": "",
-			"source": "2",
-			"classification": "C",
-			"desc": "",
+			lastupdated: "2020-09-10",
+			code: "",
+			source: "2",
+			classification: "C",
+			desc: "",
 		};
 
 		return profile;

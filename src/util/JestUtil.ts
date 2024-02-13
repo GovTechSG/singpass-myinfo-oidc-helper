@@ -1,4 +1,4 @@
-declare var global: any;
+declare let global: any;
 
 /**
  * @returns Whether the code is currently running in Jest or not

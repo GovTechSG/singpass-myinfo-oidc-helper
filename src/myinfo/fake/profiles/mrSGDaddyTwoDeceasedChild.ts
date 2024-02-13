@@ -13,7 +13,11 @@ export const mrSGDaddyTwoDeceasedChild: FakeProfile = {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
-		profile.childrenbirthrecords = [ChildrenRecords.child2MonthsOld, ChildrenRecords.childDeceased1, ChildrenRecords.childDeceased2];
+		profile.childrenbirthrecords = [
+			ChildrenRecords.child2MonthsOld,
+			ChildrenRecords.childDeceased1,
+			ChildrenRecords.childDeceased2,
+		];
 
 		return profile;
 	},

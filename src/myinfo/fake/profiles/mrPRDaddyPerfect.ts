@@ -1,7 +1,12 @@
 import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
-import { preschoolEligibleChild2_K2, preschoolEligibleChild2_N2, preschoolEligibleChild2_PG, preschoolIneligibleChild2 } from "./childbirthRecords";
+import {
+	preschoolEligibleChild2_K2,
+	preschoolEligibleChild2_N2,
+	preschoolEligibleChild2_PG,
+	preschoolIneligibleChild2,
+} from "./childbirthRecords";
 import { MyInfoNationalityCitizenshipCode, MyInfoResidentialCode } from "../../domain";
 
 const id = "S2599302J";

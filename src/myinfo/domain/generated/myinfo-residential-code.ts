@@ -1,4 +1,4 @@
-// tslint:disable
+/* eslint-disable */
 // =============================================================================
 // This file was generated with `npm run generate-myinfo-typings` on 2023-05-10
 // Any modifications to this file may be overwritten when the script runs again
@@ -22,7 +22,7 @@ enum MyInfoResidentialCodeMapping {
 	"NOT_APPLICABLE" = "NOT APPLICABLE",
 }
 
-type MyInfoResidentialCodeDesc = `${ MyInfoResidentialCodeMapping }`;
+type MyInfoResidentialCodeDesc = `${MyInfoResidentialCodeMapping}`;
 
 export namespace MyInfoResidentialCode {
 	export const fn = {
@@ -30,6 +30,9 @@ export namespace MyInfoResidentialCode {
 		values: EnumUtils.valuesFunc<MyInfoResidentialCode>(MyInfoResidentialCode),
 		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoResidentialCode>(MyInfoResidentialCode),
 		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoResidentialCode>(MyInfoResidentialCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoResidentialCode, MyInfoResidentialCodeDesc>(MyInfoResidentialCode, MyInfoResidentialCodeMapping),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoResidentialCode, MyInfoResidentialCodeDesc>(
+			MyInfoResidentialCode,
+			MyInfoResidentialCodeMapping,
+		),
 	};
 }

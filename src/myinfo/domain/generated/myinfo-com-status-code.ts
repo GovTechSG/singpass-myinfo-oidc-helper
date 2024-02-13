@@ -1,4 +1,4 @@
-// tslint:disable
+/* eslint-disable */
 // =============================================================================
 // This file was generated with `npm run generate-myinfo-typings` on 2023-05-10
 // Any modifications to this file may be overwritten when the script runs again
@@ -16,7 +16,7 @@ enum MyInfoComStatusCodeMapping {
 	"NOT_ELIGIBLE" = "NOT ELIGIBLE",
 }
 
-type MyInfoComStatusCodeDesc = `${ MyInfoComStatusCodeMapping }`;
+type MyInfoComStatusCodeDesc = `${MyInfoComStatusCodeMapping}`;
 
 export namespace MyInfoComStatusCode {
 	export const fn = {
@@ -24,6 +24,9 @@ export namespace MyInfoComStatusCode {
 		values: EnumUtils.valuesFunc<MyInfoComStatusCode>(MyInfoComStatusCode),
 		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoComStatusCode>(MyInfoComStatusCode),
 		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoComStatusCode>(MyInfoComStatusCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoComStatusCode, MyInfoComStatusCodeDesc>(MyInfoComStatusCode, MyInfoComStatusCodeMapping),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoComStatusCode, MyInfoComStatusCodeDesc>(
+			MyInfoComStatusCode,
+			MyInfoComStatusCodeMapping,
+		),
 	};
 }

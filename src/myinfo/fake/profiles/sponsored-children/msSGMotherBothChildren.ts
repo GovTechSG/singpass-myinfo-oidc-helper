@@ -27,7 +27,7 @@ export const msSGMotherBothChildren: FakeProfile = {
 			lastupdated: "2016-12-01",
 			classification: "C",
 			source: "1",
-			unavailable: true
+			unavailable: true,
 		};
 
 		return profile;

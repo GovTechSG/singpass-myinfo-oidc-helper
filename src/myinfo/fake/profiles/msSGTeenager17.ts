@@ -1,8 +1,8 @@
 import * as _ from "lodash";
+import { MyInfoSexCode } from "../../domain";
+import { aliasName } from "../profiles/common";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
-import { aliasName } from "../profiles/common";
-import { MyInfoSexCode } from "../../domain";
 
 const id = "T0834325F";
 const name = ProfileArchetype.MS_SG_TEENAGER_17;
@@ -10,7 +10,6 @@ const name = ProfileArchetype.MS_SG_TEENAGER_17;
 export const msSgTeenager17: FakeProfile = {
 	id,
 	name,
-	// tslint:disable-next-line: no-big-function
 	generate: (profileName) => {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 

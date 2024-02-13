@@ -29,17 +29,17 @@ export const mrSGUncleNonBenefits: FakeProfile = {
 		};
 
 		profile.silversupport = {
-			"eligibility": {
-				"value": false,
+			eligibility: {
+				value: false,
 			},
-			"lastupdated": "2019-04-01",
-			"amount": {
-				"value": 0,
+			lastupdated: "2019-04-01",
+			amount: {
+				value: 0,
 			},
-			"source": "1",
-			"classification": "C",
-			"year": {
-				"value": "2019",
+			source: "1",
+			classification: "C",
+			year: {
+				value: "2019",
 			},
 		};
 		return profile;

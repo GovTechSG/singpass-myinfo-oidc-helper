@@ -1,4 +1,4 @@
-// tslint:disable
+/* eslint-disable */
 // =============================================================================
 // This file was generated with `npm run generate-myinfo-typings` on 2023-05-10
 // Any modifications to this file may be overwritten when the script runs again
@@ -46,7 +46,7 @@ enum MyInfoPassTypeCodeMapping {
 	"IMMIGRATION_EXEMPTION_ORDER" = "IMMIGRATION EXEMPTION ORDER",
 }
 
-type MyInfoPassTypeCodeDesc = `${ MyInfoPassTypeCodeMapping }`;
+type MyInfoPassTypeCodeDesc = `${MyInfoPassTypeCodeMapping}`;
 
 export namespace MyInfoPassTypeCode {
 	export const fn = {
@@ -54,6 +54,9 @@ export namespace MyInfoPassTypeCode {
 		values: EnumUtils.valuesFunc<MyInfoPassTypeCode>(MyInfoPassTypeCode),
 		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoPassTypeCode>(MyInfoPassTypeCode),
 		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoPassTypeCode>(MyInfoPassTypeCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoPassTypeCode, MyInfoPassTypeCodeDesc>(MyInfoPassTypeCode, MyInfoPassTypeCodeMapping),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoPassTypeCode, MyInfoPassTypeCodeDesc>(
+			MyInfoPassTypeCode,
+			MyInfoPassTypeCodeMapping,
+		),
 	};
 }

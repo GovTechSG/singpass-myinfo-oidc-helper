@@ -3,7 +3,6 @@ import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 import { unavailableField } from "./common";
 
-
 const id = "S8974352D";
 const name = ProfileArchetype.MR_SG_DADDY_MISSING_UNEDITABLE_FIELDS;
 

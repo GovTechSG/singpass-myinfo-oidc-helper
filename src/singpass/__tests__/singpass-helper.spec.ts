@@ -1,5 +1,5 @@
+import { TokenPayload } from "../shared-constants";
 import { OidcHelper, OidcHelperConstructor, SessionLogoutResult, SessionRefreshResult } from "../singpass-helper";
-import { TokenPayload } from '../shared-constants';
 
 const mockAuthUrl = "https://mocksingpass.sg/authorize";
 const mockLogoutUrl = "https://mocksingpass.sg/logout";
@@ -22,7 +22,6 @@ const createMockTokenPayload = (overrideProps?: Partial<TokenPayload>): TokenPay
 	...overrideProps,
 });
 
-// tslint:disable-next-line: no-big-function
 describe("Singpass Helper", () => {
 	const props: OidcHelperConstructor = {
 		authorizationUrl: mockAuthUrl,
@@ -38,11 +37,9 @@ describe("Singpass Helper", () => {
 
 	describe("constructing authorization url", () => {
 		it("should construct the correct authorzation endpoint", () => {
-			const authUrl = helper.constructAuthorizationUrl(
-				"af0ifjsldkj",
-				"a2ghskf1234las",
-			);
-			const expected = "https://mocksingpass.sg/authorize?state=af0ifjsldkj&nonce=a2ghskf1234las&redirect_uri=http%3A%2F%2Fmockme.sg%2Fcallback&scope=openid&client_id=CLIENT-ID&response_type=code";
+			const authUrl = helper.constructAuthorizationUrl("af0ifjsldkj", "a2ghskf1234las");
+			const expected =
+				"https://mocksingpass.sg/authorize?state=af0ifjsldkj&nonce=a2ghskf1234las&redirect_uri=http%3A%2F%2Fmockme.sg%2Fcallback&scope=openid&client_id=CLIENT-ID&response_type=code";
 			expect(authUrl).toEqual(expected);
 		});
 
@@ -52,7 +49,8 @@ describe("Singpass Helper", () => {
 				"a2ghskf1234las",
 				"https://mocksingpassoverride.sg/auth",
 			);
-			const expected = "https://mocksingpassoverride.sg/auth?state=af0ifjsldkj&nonce=a2ghskf1234las&redirect_uri=http%3A%2F%2Fmockme.sg%2Fcallback&scope=openid&client_id=CLIENT-ID&response_type=code";
+			const expected =
+				"https://mocksingpassoverride.sg/auth?state=af0ifjsldkj&nonce=a2ghskf1234las&redirect_uri=http%3A%2F%2Fmockme.sg%2Fcallback&scope=openid&client_id=CLIENT-ID&response_type=code";
 			expect(authUrl).toEqual(expected);
 		});
 	});
@@ -74,7 +72,9 @@ describe("Singpass Helper", () => {
 			const mockPayload = createMockTokenPayload({
 				sub: undefined,
 			});
-			expect(() => helper.extractNricAndUuidFromPayload(mockPayload)).toThrowError("Token payload sub property is not defined");
+			expect(() => helper.extractNricAndUuidFromPayload(mockPayload)).toThrowError(
+				"Token payload sub property is not defined",
+			);
 		});
 
 		it("should throw an error if sub property does not contain a valid NRIC", () => {
@@ -82,7 +82,9 @@ describe("Singpass Helper", () => {
 				sub: `s=some-nonsense,u=f09fcf4c-f57b-40b5-a8e0-6fb6eef640e3`,
 			});
 
-			expect(() => helper.extractNricAndUuidFromPayload(mockPayload)).toThrowError("Token payload sub property is invalid, does not contain valid NRIC and uuid string");
+			expect(() => helper.extractNricAndUuidFromPayload(mockPayload)).toThrowError(
+				"Token payload sub property is invalid, does not contain valid NRIC and uuid string",
+			);
 		});
 
 		it("should throw an error if sub property is not in the expected format", () => {
@@ -90,7 +92,9 @@ describe("Singpass Helper", () => {
 				sub: `s=S6005040F,f=f09fcf4c-f57b-40b5-a8e0-6fb6eef640e3`,
 			});
 
-			expect(() => helper.extractNricAndUuidFromPayload(mockPayload)).toThrowError("Token payload sub property is invalid, does not contain valid NRIC and uuid string");
+			expect(() => helper.extractNricAndUuidFromPayload(mockPayload)).toThrowError(
+				"Token payload sub property is invalid, does not contain valid NRIC and uuid string",
+			);
 		});
 	});
 
@@ -101,12 +105,11 @@ describe("Singpass Helper", () => {
 					...props,
 					additionalHeaders: {
 						"some-header": "some-value",
-					}
+					},
 				});
-				helperWithHeaders._testExports.singpassClient.post = jest.fn()
-					.mockResolvedValue({
-						data: { id_token: "some-token" }
-					});
+				helperWithHeaders._testExports.singpassClient.post = jest.fn().mockResolvedValue({
+					data: { id_token: "some-token" },
+				});
 
 				await helperWithHeaders.getTokens("some-code");
 				expect(helperWithHeaders._testExports.singpassClient.post).toHaveBeenCalledWith(
@@ -116,7 +119,7 @@ describe("Singpass Helper", () => {
 						headers: expect.objectContaining({
 							"some-header": "some-value",
 						}),
-					})
+					}),
 				);
 			});
 
@@ -125,12 +128,11 @@ describe("Singpass Helper", () => {
 					...props,
 					additionalHeaders: {
 						"content-type": "some-override-value",
-					}
+					},
 				});
-				helperWithHeaders._testExports.singpassClient.post = jest.fn()
-					.mockResolvedValue({
-						data: { id_token: "some-token" }
-					});
+				helperWithHeaders._testExports.singpassClient.post = jest.fn().mockResolvedValue({
+					data: { id_token: "some-token" },
+				});
 
 				await helperWithHeaders.getTokens("some-code");
 				expect(helperWithHeaders._testExports.singpassClient.post).toHaveBeenCalledWith(
@@ -140,7 +142,7 @@ describe("Singpass Helper", () => {
 						headers: {
 							"content-type": "application/x-www-form-urlencoded",
 						},
-					})
+					}),
 				);
 			});
 		});
@@ -153,12 +155,11 @@ describe("Singpass Helper", () => {
 					...props,
 					additionalHeaders: {
 						"some-header": "some-value",
-					}
+					},
 				});
-				helperWithHeaders._testExports.singpassClient.post = jest.fn()
-					.mockResolvedValue({
-						data: { id_token: "some-token" }
-					});
+				helperWithHeaders._testExports.singpassClient.post = jest.fn().mockResolvedValue({
+					data: { id_token: "some-token" },
+				});
 
 				await helperWithHeaders.refreshTokens("some-code");
 				expect(helperWithHeaders._testExports.singpassClient.post).toHaveBeenCalledWith(
@@ -168,7 +169,7 @@ describe("Singpass Helper", () => {
 						headers: expect.objectContaining({
 							"some-header": "some-value",
 						}),
-					})
+					}),
 				);
 			});
 
@@ -177,12 +178,11 @@ describe("Singpass Helper", () => {
 					...props,
 					additionalHeaders: {
 						"content-type": "some-override-value",
-					}
+					},
 				});
-				helperWithHeaders._testExports.singpassClient.post = jest.fn()
-					.mockResolvedValue({
-						data: { id_token: "some-token" }
-					});
+				helperWithHeaders._testExports.singpassClient.post = jest.fn().mockResolvedValue({
+					data: { id_token: "some-token" },
+				});
 
 				await helperWithHeaders.refreshTokens("some-code");
 				expect(helperWithHeaders._testExports.singpassClient.post).toHaveBeenCalledWith(
@@ -192,80 +192,81 @@ describe("Singpass Helper", () => {
 						headers: {
 							"content-type": "application/x-www-form-urlencoded",
 						},
-					})
+					}),
 				);
 			});
 		});
 	});
 
 	describe("refresh session", () => {
-		const constructedMockAuthUrl = "https://mocksingpass.sg/authorize?state=dummyState&redirect_uri=http%3A%2F%2Fmockme.sg%2Fcallback&scope=openid&client_id=CLIENT-ID&response_type=code";
+		const constructedMockAuthUrl =
+			"https://mocksingpass.sg/authorize?state=dummyState&redirect_uri=http%3A%2F%2Fmockme.sg%2Fcallback&scope=openid&client_id=CLIENT-ID&response_type=code";
 
 		describe("when refresh is successful", () => {
 			it("should set a cookie header with the session ID and call singpass authorize endpoint", async () => {
-				helper._testExports.singpassClient.get = jest.fn((): any => Promise.resolve({
-					status: 302,
-					headers: {
-						location: "https://localhost/singpass/callback?state=abc&code=xyz",
-					},
-				}));
-				const sessionId = "1_0jP8lQbVdNJWu/WNMclh6jynB9d+Ui/e3BmbiLccaVRREZkMoEQ=_AAAAAwA=_ehj7WNPdSF5ZR+ERSflwNaDaBPo=";
+				helper._testExports.singpassClient.get = jest.fn((): any =>
+					Promise.resolve({
+						status: 302,
+						headers: {
+							location: "https://localhost/singpass/callback?state=abc&code=xyz",
+						},
+					}),
+				);
+				const sessionId =
+					"1_0jP8lQbVdNJWu/WNMclh6jynB9d+Ui/e3BmbiLccaVRREZkMoEQ=_AAAAAwA=_ehj7WNPdSF5ZR+ERSflwNaDaBPo=";
 
 				const result = await helper.refreshSession(sessionId);
 				expect(result).toEqual(SessionRefreshResult.SUCCESS);
-				expect(helper._testExports.singpassClient.get).toHaveBeenCalledWith(
-					constructedMockAuthUrl,
-					{
-						headers: { Cookie: `PD-S-SESSION-ID=${sessionId}` },
-						maxRedirects: 0,
-						validateStatus: helper._testExports.validateStatusFn,
-					},
-				);
+				expect(helper._testExports.singpassClient.get).toHaveBeenCalledWith(constructedMockAuthUrl, {
+					headers: { Cookie: `PD-S-SESSION-ID=${sessionId}` },
+					maxRedirects: 0,
+					validateStatus: helper._testExports.validateStatusFn,
+				});
 			});
 		});
 
 		describe("when refresh is unsuccessful", () => {
 			describe("when session ID is invalid", () => {
 				it("should set a cookie header with the session ID and call singpass authorize endpoint", async () => {
-					helper._testExports.singpassClient.get = jest.fn((): any => Promise.resolve({
-						status: 302,
-						headers: {
-							location: "https://stg-login.singpass.gov.sg/spauth/TAMOperationHandler?TAM_OP=login&URL=%2Fmga%2Fsps%2Foauth%2Foauth20%2Fauthorize%3Fstate%3DCkxPR0lOAA%253D%253D%26nonce%3D%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3001%252Fsingpass%252Fcallback%26scope%3Dopenid%26client_id%3DBLAH-BLAH%26response_type%3Dcode%26esrvcID%3DBLAH-BLAH&AUTHNLEVEL=5",
-						},
-					}));
+					helper._testExports.singpassClient.get = jest.fn((): any =>
+						Promise.resolve({
+							status: 302,
+							headers: {
+								location:
+									"https://stg-login.singpass.gov.sg/spauth/TAMOperationHandler?TAM_OP=login&URL=%2Fmga%2Fsps%2Foauth%2Foauth20%2Fauthorize%3Fstate%3DCkxPR0lOAA%253D%253D%26nonce%3D%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3001%252Fsingpass%252Fcallback%26scope%3Dopenid%26client_id%3DBLAH-BLAH%26response_type%3Dcode%26esrvcID%3DBLAH-BLAH&AUTHNLEVEL=5",
+							},
+						}),
+					);
 					const sessionId = "0_rubbish";
 
 					const result = await helper.refreshSession(sessionId);
 					expect(result).toEqual(SessionRefreshResult.INVALID_SESSION_ID);
-					expect(helper._testExports.singpassClient.get).toHaveBeenCalledWith(
-						constructedMockAuthUrl,
-						{
-							headers: { Cookie: `PD-S-SESSION-ID=${sessionId}` },
-							maxRedirects: 0,
-							validateStatus: helper._testExports.validateStatusFn,
-						},
-					);
+					expect(helper._testExports.singpassClient.get).toHaveBeenCalledWith(constructedMockAuthUrl, {
+						headers: { Cookie: `PD-S-SESSION-ID=${sessionId}` },
+						maxRedirects: 0,
+						validateStatus: helper._testExports.validateStatusFn,
+					});
 				});
 			});
 			describe("when Singpass server returns an error", () => {
 				it("should set a cookie header with the session ID and call singpass authorize endpoint", async () => {
-					helper._testExports.singpassClient.get = jest.fn(() => Promise.reject({
-						response: {
-							status: 500,
-						},
-					}));
-					const sessionId = "1_0jP8lQbVdNJWu/WNMclh6jynB9d+Ui/e3BmbiLccaVRREZkMoEQ=_AAAAAwA=_ehj7WNPdSF5ZR+ERSflwNaDaBPo=";
+					helper._testExports.singpassClient.get = jest.fn(() =>
+						Promise.reject({
+							response: {
+								status: 500,
+							},
+						}),
+					);
+					const sessionId =
+						"1_0jP8lQbVdNJWu/WNMclh6jynB9d+Ui/e3BmbiLccaVRREZkMoEQ=_AAAAAwA=_ehj7WNPdSF5ZR+ERSflwNaDaBPo=";
 
 					const result = await helper.refreshSession(sessionId);
 					expect(result).toEqual(SessionRefreshResult.SINGPASS_ERROR);
-					expect(helper._testExports.singpassClient.get).toHaveBeenCalledWith(
-						constructedMockAuthUrl,
-						{
-							headers: { Cookie: `PD-S-SESSION-ID=${sessionId}` },
-							maxRedirects: 0,
-							validateStatus: helper._testExports.validateStatusFn,
-						},
-					);
+					expect(helper._testExports.singpassClient.get).toHaveBeenCalledWith(constructedMockAuthUrl, {
+						headers: { Cookie: `PD-S-SESSION-ID=${sessionId}` },
+						maxRedirects: 0,
+						validateStatus: helper._testExports.validateStatusFn,
+					});
 				});
 			});
 		});
@@ -276,7 +277,7 @@ describe("Singpass Helper", () => {
 					...props,
 					additionalHeaders: {
 						"some-header": "some-value",
-					}
+					},
 				});
 				helperWithHeaders._testExports.singpassClient.get = jest.fn();
 
@@ -287,7 +288,7 @@ describe("Singpass Helper", () => {
 						headers: expect.objectContaining({
 							"some-header": "some-value",
 						}),
-					})
+					}),
 				);
 			});
 
@@ -296,7 +297,7 @@ describe("Singpass Helper", () => {
 					...props,
 					additionalHeaders: {
 						Cookie: "some-override-value",
-					}
+					},
 				});
 				helperWithHeaders._testExports.singpassClient.get = jest.fn();
 
@@ -307,7 +308,7 @@ describe("Singpass Helper", () => {
 						headers: {
 							Cookie: "PD-S-SESSION-ID=some-id",
 						},
-					})
+					}),
 				);
 			});
 		});
@@ -318,42 +319,47 @@ describe("Singpass Helper", () => {
 			it("should throw an error", () => {
 				const helperWithoutLogout = new OidcHelper({ ...props, logoutUrl: undefined });
 
-				const sessionId = "1_0jP8lQbVdNJWu/WNMclh6jynB9d+Ui/e3BmbiLccaVRREZkMoEQ=_AAAAAwA=_ehj7WNPdSF5ZR+ERSflwNaDaBPo=";
+				const sessionId =
+					"1_0jP8lQbVdNJWu/WNMclh6jynB9d+Ui/e3BmbiLccaVRREZkMoEQ=_AAAAAwA=_ehj7WNPdSF5ZR+ERSflwNaDaBPo=";
 				expect(helperWithoutLogout.logoutOfSession(sessionId)).rejects.toThrowError();
 			});
 		});
 		describe("when logout is successful", () => {
 			it("should set a cookie header with the session ID and call singpass logout endpoint", async () => {
-				helper._testExports.singpassClient.get = jest.fn().mockReturnValue(Promise.resolve({
-					status: 200,
-				}));
-				const sessionId = "1_0jP8lQbVdNJWu/WNMclh6jynB9d+Ui/e3BmbiLccaVRREZkMoEQ=_AAAAAwA=_ehj7WNPdSF5ZR+ERSflwNaDaBPo=";
+				helper._testExports.singpassClient.get = jest.fn().mockReturnValue(
+					Promise.resolve({
+						status: 200,
+					}),
+				);
+				const sessionId =
+					"1_0jP8lQbVdNJWu/WNMclh6jynB9d+Ui/e3BmbiLccaVRREZkMoEQ=_AAAAAwA=_ehj7WNPdSF5ZR+ERSflwNaDaBPo=";
 
 				const result = await helper.logoutOfSession(sessionId);
 				expect(result).toEqual(SessionLogoutResult.SUCCESS);
-				expect(helper._testExports.singpassClient.get).toHaveBeenCalledWith(
-					mockLogoutUrl,
-					{ headers: { Cookie: `PD-S-SESSION-ID=${sessionId}` } },
-				);
+				expect(helper._testExports.singpassClient.get).toHaveBeenCalledWith(mockLogoutUrl, {
+					headers: { Cookie: `PD-S-SESSION-ID=${sessionId}` },
+				});
 			});
 		});
 
 		describe("when logout is unsuccessful", () => {
 			describe("when Singpass server returns an error", () => {
 				it("should set a cookie header with the session ID and call singpass logout endpoint", async () => {
-					helper._testExports.singpassClient.get = jest.fn(() => Promise.reject({
-						response: {
-							status: 500,
-						},
-					}));
-					const sessionId = "1_0jP8lQbVdNJWu/WNMclh6jynB9d+Ui/e3BmbiLccaVRREZkMoEQ=_AAAAAwA=_ehj7WNPdSF5ZR+ERSflwNaDaBPo=";
+					helper._testExports.singpassClient.get = jest.fn(() =>
+						Promise.reject({
+							response: {
+								status: 500,
+							},
+						}),
+					);
+					const sessionId =
+						"1_0jP8lQbVdNJWu/WNMclh6jynB9d+Ui/e3BmbiLccaVRREZkMoEQ=_AAAAAwA=_ehj7WNPdSF5ZR+ERSflwNaDaBPo=";
 
 					const result = await helper.logoutOfSession(sessionId);
 					expect(result).toEqual(SessionLogoutResult.SINGPASS_ERROR);
-					expect(helper._testExports.singpassClient.get).toHaveBeenCalledWith(
-						mockLogoutUrl,
-						{ headers: { Cookie: `PD-S-SESSION-ID=${sessionId}` } },
-					);
+					expect(helper._testExports.singpassClient.get).toHaveBeenCalledWith(mockLogoutUrl, {
+						headers: { Cookie: `PD-S-SESSION-ID=${sessionId}` },
+					});
 				});
 			});
 		});
@@ -364,7 +370,7 @@ describe("Singpass Helper", () => {
 					...props,
 					additionalHeaders: {
 						"some-header": "some-value",
-					}
+					},
 				});
 				helperWithHeaders._testExports.singpassClient.get = jest.fn();
 
@@ -375,7 +381,7 @@ describe("Singpass Helper", () => {
 						headers: expect.objectContaining({
 							"some-header": "some-value",
 						}),
-					})
+					}),
 				);
 			});
 
@@ -384,7 +390,7 @@ describe("Singpass Helper", () => {
 					...props,
 					additionalHeaders: {
 						Cookie: "some-override-value",
-					}
+					},
 				});
 				helperWithHeaders._testExports.singpassClient.get = jest.fn();
 
@@ -395,7 +401,7 @@ describe("Singpass Helper", () => {
 						headers: {
 							Cookie: "PD-S-SESSION-ID=some-id",
 						},
-					})
+					}),
 				);
 			});
 		});

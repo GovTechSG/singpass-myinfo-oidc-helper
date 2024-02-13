@@ -19,16 +19,16 @@ export const mrPRDaddyOneChildAndExpiredPassport: FakeProfile = {
 
 		profile.childrenbirthrecords = [ChildrenRecords.childYoungest];
 		profile.passportnumber = {
-			"lastupdated": "2018-05-10",
-			"source": "1",
-			"classification": "C",
-			"value": "L3280034",
+			lastupdated: "2018-05-10",
+			source: "1",
+			classification: "C",
+			value: "L3280034",
 		};
 		profile.passportexpirydate = {
-			"lastupdated": "2018-05-10",
-			"source": "1",
-			"classification": "C",
-			"value": "2011-09-10",
+			lastupdated: "2018-05-10",
+			source: "1",
+			classification: "C",
+			value: "2011-09-10",
 		};
 		return profile;
 	},

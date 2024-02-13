@@ -1,8 +1,32 @@
+/* eslint-disable sonarjs/cognitive-complexity */
+/* eslint-disable max-lines-per-function */
 import { get, isEmpty, map, omit, partition, set } from "lodash";
-// tslint:disable-next-line: max-line-length
-import { MyInfoComponents, MyInfoComStatusCode, MyInfoCountryPlaceCode, MyInfoDrivingLicenceValidityCode, MyInfoHDBTypeCode, MyInfoHousingTypeCode, MyInfoLifeStatusCode, MyInfoMaritalStatusCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode, MyInfoVehicleStatus } from "../domain";
+import {
+	MyInfoComStatusCode,
+	MyInfoComponents,
+	MyInfoCountryPlaceCode,
+	MyInfoDrivingLicenceValidityCode,
+	MyInfoHDBTypeCode,
+	MyInfoHousingTypeCode,
+	MyInfoLifeStatusCode,
+	MyInfoMaritalStatusCode,
+	MyInfoRaceCode,
+	MyInfoResidentialCode,
+	MyInfoSexCode,
+	MyInfoVehicleStatus,
+} from "../domain";
 import { profiles } from "./profiles/fake-profiles";
-import { ChildrenBirthRecord, CpfBalanceExtension, GVS, MockParams, MockParamsPerson, NoaBasicExtension, OverrideMode, UniqueAddressSgKeys, UniqueAddressUnformattedKeys } from "./types";
+import {
+	ChildrenBirthRecord,
+	CpfBalanceExtension,
+	GVS,
+	MockParams,
+	MockParamsPerson,
+	NoaBasicExtension,
+	OverrideMode,
+	UniqueAddressSgKeys,
+	UniqueAddressUnformattedKeys,
+} from "./types";
 
 type PersonBasic = MyInfoComponents.Schemas.PersonBasic;
 type Person = MyInfoComponents.Schemas.Person;
@@ -16,16 +40,14 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 	/**
 	 * @param attributes attributes to return in the MyInfoPerson in getPersonData
 	 */
-	public constructor(
-		private readonly attributes?: ReadonlyArray<string>,
-	) { }
+	public constructor(private readonly attributes?: ReadonlyArray<string>) {}
 
 	/**
 	 * fake getPersonData
+	 *
 	 * @param input the mock profile parameters.
 	 * See FakeMyInfoPersonArchetypes for the actual person.
 	 */
-	// tslint:disable-next-line: no-big-function
 	public getPersonInfo = (mockParams: MockParams): Person => {
 		const mockProfile = profiles.find((profile) => profile.name === mockParams.archetype);
 		if (!mockProfile) {
@@ -111,7 +133,15 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		}
 
 		if (!isEmpty(mockParams.regadd)) {
-			const sgProps: UniqueAddressSgKeys[] = ["block", "building", "country", "floor", "postal", "street", "unit"];
+			const sgProps: UniqueAddressSgKeys[] = [
+				"block",
+				"building",
+				"country",
+				"floor",
+				"postal",
+				"street",
+				"unit",
+			];
 			const unformattedProps: UniqueAddressUnformattedKeys[] = ["line1", "line2"];
 
 			if (mockParams.regadd.type === "SG") {
@@ -124,10 +154,18 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 						desc: MyInfoCountryPlaceCode.fn.toEnumDesc(MyInfoCountryPlaceCode.SINGAPORE),
 					},
 					block: { value: !isEmpty(mockParams.regadd.block) ? mockParams.regadd.block : regadd.block.value },
-					building: { value: !isEmpty(mockParams.regadd.building) ? mockParams.regadd.building : regadd.building.value },
+					building: {
+						value: !isEmpty(mockParams.regadd.building)
+							? mockParams.regadd.building
+							: regadd.building.value,
+					},
 					floor: { value: !isEmpty(mockParams.regadd.floor) ? mockParams.regadd.floor : regadd.floor.value },
-					postal: { value: !isEmpty(mockParams.regadd.postal) ? mockParams.regadd.postal : regadd.postal.value },
-					street: { value: !isEmpty(mockParams.regadd.street) ? mockParams.regadd.street : regadd.street.value },
+					postal: {
+						value: !isEmpty(mockParams.regadd.postal) ? mockParams.regadd.postal : regadd.postal.value,
+					},
+					street: {
+						value: !isEmpty(mockParams.regadd.street) ? mockParams.regadd.street : regadd.street.value,
+					},
 					unit: { value: !isEmpty(mockParams.regadd.unit) ? mockParams.regadd.unit : regadd.unit.value },
 				};
 
@@ -259,127 +297,126 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		}
 
 		if (!isEmpty(mockParams.vehicles)) {
-			myinfoPerson.vehicles =
-				mockParams.vehicles.map(vehicle => {
-					return {
-						roadtaxexpirydate: {
-							value: "2020-06-06",
-						},
-						engineno: {
-							value: "4G13NU1453",
-						},
-						attachment3: {
-							value: null,
-						},
-						effectiveownership: {
-							value: "2010-06-06T12:09:05",
-						},
-						scheme: {
-							value: "OPC - OFF PEAK CAR",
-						},
-						powerrate: {
-							value: 1.7,
-						},
-						source: "1",
-						primarycolour: {
-							value: "MAROON",
-						},
-						type: {
-							value: "STATION WAGON/JEEP/LAND ROVER",
-						},
-						vehicleno: {
-							value: vehicle.vehicleno,
-						},
-						coeexpirydate: {
-							value: "2020-06-06",
-						},
-						chassisno: {
-							value: "TUU28391334KL189",
-						},
-						noxemission: {
-							value: 0.013456,
-						},
-						model: {
-							value: "FORESTER",
-						},
-						openmarketvalue: {
-							value: 23485.3,
-						},
-						coemission: {
-							value: 0.153209,
-						},
-						attachment2: {
-							value: null,
-						},
-						attachment1: {
-							value: "CONTINENTAL TIRE",
-						},
-						make: {
-							value: "SUBARU",
-						},
-						pmemission: {
-							value: 0.199,
-						},
-						originalregistrationdate: {
-							value: "2009-12-06",
-						},
-						yearofmanufacture: {
-							value: "2010",
-						},
-						vpc: {
-							value: null,
-						},
-						enginecapacity: {
-							value: 1600,
-						},
-						classification: "C",
-						nooftransfers: {
-							value: 1,
-						},
-						propellant: {
-							value: "Petrol",
-						},
-						co2emission: {
-							value: 145,
-						},
-						motorno: {
-							value: null,
-						},
-						minimumparfbenefit: {
-							value: 2500,
-						},
-						thcemission: {
-							value: 0.187765,
-						},
-						firstregistrationdate: {
-							value: "2010-06-06",
-						},
-						lastupdated: "2020-08-26",
-						maximumunladenweight: {
-							value: 1500,
-						},
-						coecategory: {
-							value: "A - CAR UP TO 1600CC & 97KW (130BHP)",
-						},
-						maximumladenweight: {
-							value: 2000,
-						},
-						secondarycolour: {
-							value: null,
-						},
-						iulabelno: {
-							value: vehicle.iulabelno,
-						},
-						quotapremium: {
-							value: 0,
-						},
-						status: {
-							code: vehicle.status,
-							desc: MyInfoVehicleStatus.fn.toEnumDesc(vehicle.status),
-						},
-						unavailable: false,
-					};
-				});
+			myinfoPerson.vehicles = mockParams.vehicles.map((vehicle) => {
+				return {
+					roadtaxexpirydate: {
+						value: "2020-06-06",
+					},
+					engineno: {
+						value: "4G13NU1453",
+					},
+					attachment3: {
+						value: null,
+					},
+					effectiveownership: {
+						value: "2010-06-06T12:09:05",
+					},
+					scheme: {
+						value: "OPC - OFF PEAK CAR",
+					},
+					powerrate: {
+						value: 1.7,
+					},
+					source: "1",
+					primarycolour: {
+						value: "MAROON",
+					},
+					type: {
+						value: "STATION WAGON/JEEP/LAND ROVER",
+					},
+					vehicleno: {
+						value: vehicle.vehicleno,
+					},
+					coeexpirydate: {
+						value: "2020-06-06",
+					},
+					chassisno: {
+						value: "TUU28391334KL189",
+					},
+					noxemission: {
+						value: 0.013456,
+					},
+					model: {
+						value: "FORESTER",
+					},
+					openmarketvalue: {
+						value: 23485.3,
+					},
+					coemission: {
+						value: 0.153209,
+					},
+					attachment2: {
+						value: null,
+					},
+					attachment1: {
+						value: "CONTINENTAL TIRE",
+					},
+					make: {
+						value: "SUBARU",
+					},
+					pmemission: {
+						value: 0.199,
+					},
+					originalregistrationdate: {
+						value: "2009-12-06",
+					},
+					yearofmanufacture: {
+						value: "2010",
+					},
+					vpc: {
+						value: null,
+					},
+					enginecapacity: {
+						value: 1600,
+					},
+					classification: "C",
+					nooftransfers: {
+						value: 1,
+					},
+					propellant: {
+						value: "Petrol",
+					},
+					co2emission: {
+						value: 145,
+					},
+					motorno: {
+						value: null,
+					},
+					minimumparfbenefit: {
+						value: 2500,
+					},
+					thcemission: {
+						value: 0.187765,
+					},
+					firstregistrationdate: {
+						value: "2010-06-06",
+					},
+					lastupdated: "2020-08-26",
+					maximumunladenweight: {
+						value: 1500,
+					},
+					coecategory: {
+						value: "A - CAR UP TO 1600CC & 97KW (130BHP)",
+					},
+					maximumladenweight: {
+						value: 2000,
+					},
+					secondarycolour: {
+						value: null,
+					},
+					iulabelno: {
+						value: vehicle.iulabelno,
+					},
+					quotapremium: {
+						value: 0,
+					},
+					status: {
+						code: vehicle.status,
+						desc: MyInfoVehicleStatus.fn.toEnumDesc(vehicle.status),
+					},
+					unavailable: false,
+				};
+			});
 		}
 		if (!isEmpty(mockParams.userdisplayname)) {
 			myinfoPerson.name.value = mockParams.userdisplayname;
@@ -417,7 +454,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		}
 
 		return myinfoPerson;
-	}
+	};
 
 	public getPersonBasic = (mockParams: MockParams): PersonBasic => {
 		const myinfoPerson = this.getPersonInfo(mockParams);
@@ -427,25 +464,29 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		}
 
 		return filterThroughMyInfoAttributes(myinfoPerson, this.attributes);
-	}
-
+	};
 
 	public getPerson = (mockParams: MockParamsPerson): Person => {
 		const myinfoPerson = this.getPersonInfo(mockParams);
 
 		if (!isEmpty(mockParams.cpfcontributions)) {
-			const cpfContributionHistory = mockParams.cpfcontributions.map(cpfContribution => transformItems(cpfContribution));
+			const cpfContributionHistory = mockParams.cpfcontributions.map((cpfContribution) =>
+				transformItems(cpfContribution),
+			);
 			if (!myinfoPerson.cpfcontributions) {
 				myinfoPerson.cpfcontributions = {
 					history: [],
 					classification: "C",
 					source: "1",
-					lastupdated: null
+					lastupdated: null,
 				};
 			}
 			switch (mockParams.cpfcontributionhistoryoverridemode) {
 				case OverrideMode.appendToExisting:
-					myinfoPerson.cpfcontributions.history = [...myinfoPerson.cpfcontributions.history, ...cpfContributionHistory];
+					myinfoPerson.cpfcontributions.history = [
+						...myinfoPerson.cpfcontributions.history,
+						...cpfContributionHistory,
+					];
 					break;
 
 				case OverrideMode.partial:
@@ -463,7 +504,12 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 			}
 		}
 
-		if (mockParams.cpfbalances?.ma || mockParams.cpfbalances?.oa || mockParams.cpfbalances?.ra || mockParams.cpfbalances?.sa) {
+		if (
+			mockParams.cpfbalances?.ma ||
+			mockParams.cpfbalances?.oa ||
+			mockParams.cpfbalances?.ra ||
+			mockParams.cpfbalances?.sa
+		) {
 			myinfoPerson.cpfbalances = transformItemsWithAdditionalMock(mockParams.cpfbalances) as CpfBalanceExtension;
 		}
 
@@ -476,11 +522,12 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		}
 
 		return filterThroughMyInfoAttributes(myinfoPerson, this.attributes);
-	}
+	};
 
 	private checkIsSingaporeanOrPr(residentialStatusValue: string): boolean {
 		return (
-			residentialStatusValue === MyInfoResidentialCode.CITIZEN || residentialStatusValue === MyInfoResidentialCode.PR
+			residentialStatusValue === MyInfoResidentialCode.CITIZEN ||
+			residentialStatusValue === MyInfoResidentialCode.PR
 		);
 	}
 }
@@ -493,9 +540,15 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
  * @param attributes array of attributes to filter for
  */
 function filterThroughMyInfoAttributes(person: PersonBasic, attributes: ReadonlyArray<string>): PersonBasic {
-	const [childrenRawCbrAttributes, childrenNormalAttributes] = partition(attributes, (value) => value.startsWith("childrenbirthrecords."));
-	const [sponsoredRawCbrAttributes, sponsoredNormalAttributes] = partition(attributes, (value) => value.startsWith("sponsoredchildrenrecords."));
-	const [vehiclesRawCbrAttributes, vehiclesNormalAttributes] = partition(attributes, (value) => value.startsWith("vehicles."));
+	const [childrenRawCbrAttributes, childrenNormalAttributes] = partition(attributes, (value) =>
+		value.startsWith("childrenbirthrecords."),
+	);
+	const [sponsoredRawCbrAttributes, sponsoredNormalAttributes] = partition(attributes, (value) =>
+		value.startsWith("sponsoredchildrenrecords."),
+	);
+	const [vehiclesRawCbrAttributes, vehiclesNormalAttributes] = partition(attributes, (value) =>
+		value.startsWith("vehicles."),
+	);
 	const [drivinglicenceRawCbrAttributes] = partition(attributes, (value) => value.startsWith("drivinglicence."));
 
 	const childrenFilteredPerson = filterThroughAttributes(person, childrenNormalAttributes);
@@ -504,7 +557,10 @@ function filterThroughMyInfoAttributes(person: PersonBasic, attributes: Readonly
 	let drivinglicenceFilteredPerson = {};
 
 	if (childrenRawCbrAttributes.length > 0) {
-		const childrenbirthrecordsAttributes = map(childrenRawCbrAttributes, (cbrAttribute) => cbrAttribute.split(".")[1]);
+		const childrenbirthrecordsAttributes = map(
+			childrenRawCbrAttributes,
+			(cbrAttribute) => cbrAttribute.split(".")[1],
+		);
 		// get filtered childrenbirthrecords
 		const filteredChildrenbirthrecords = map(person.childrenbirthrecords, (cbr) => {
 			const result = filterThroughAttributes(cbr, childrenbirthrecordsAttributes);
@@ -513,7 +569,10 @@ function filterThroughMyInfoAttributes(person: PersonBasic, attributes: Readonly
 		set(childrenFilteredPerson, "childrenbirthrecords", filteredChildrenbirthrecords);
 	}
 	if (sponsoredRawCbrAttributes.length > 0) {
-		const sponsoredBirthrecordsAttributes = map(sponsoredRawCbrAttributes, (cbrAttribute) => cbrAttribute.split(".")[1]);
+		const sponsoredBirthrecordsAttributes = map(
+			sponsoredRawCbrAttributes,
+			(cbrAttribute) => cbrAttribute.split(".")[1],
+		);
 		// get filtered childrenbirthrecords
 		const filteredSponsoredChildrenbirthrecords = map(person.sponsoredchildrenrecords, (cbr) => {
 			const result = filterThroughAttributes(cbr, sponsoredBirthrecordsAttributes);
@@ -522,7 +581,10 @@ function filterThroughMyInfoAttributes(person: PersonBasic, attributes: Readonly
 		set(sponsoredFilteredPerson, "sponsoredchildrenrecords", filteredSponsoredChildrenbirthrecords);
 	}
 	if (vehiclesRawCbrAttributes.length > 0) {
-		const vehicleBirthrecordsAttributes = map(vehiclesRawCbrAttributes, (cbrAttribute) => cbrAttribute.split(".")[1]);
+		const vehicleBirthrecordsAttributes = map(
+			vehiclesRawCbrAttributes,
+			(cbrAttribute) => cbrAttribute.split(".")[1],
+		);
 		// get filtered vehicles
 		const filteredVehicleChildrenbirthrecords = map(person.vehicles, (cbr) => {
 			const result = filterThroughAttributes(cbr, vehicleBirthrecordsAttributes);
@@ -535,7 +597,7 @@ function filterThroughMyInfoAttributes(person: PersonBasic, attributes: Readonly
 		const drivingLicence = filterThroughDeepAttributes(person, drivinglicenceRawCbrAttributes);
 		drivinglicenceFilteredPerson = {
 			drivinglicence: {
-				...drivingLicence["drivinglicence"],
+				...(drivingLicence as any).drivinglicence,
 				...generateDefaultMockResponse(),
 			},
 		};
@@ -557,7 +619,7 @@ function filterThroughAttributes(object: object, attributes: ReadonlyArray<strin
 	return attributes.reduce((accumulator, attrPath) => {
 		const key = attrPath.split(".")[0];
 		const attrValue = get(object, attrPath, null);
-		if (!!attrValue) {
+		if (attrValue) {
 			return { ...accumulator, [key]: object[key] };
 		}
 		return accumulator;
@@ -578,7 +640,6 @@ function filterThroughDeepAttributes(object: object, attributes: ReadonlyArray<s
 	}, {});
 }
 
-
 /**
  * @description Return a set of require fields event if the consent attributes are not requesting such keys
  */
@@ -590,8 +651,10 @@ function generateDefaultMockResponse(): object {
 	};
 }
 
-
-export function transformChildBirthRecord(childbirthrecord: ChildrenBirthRecord, index: number): MyInfoComponents.Schemas.Childrenbirthrecords {
+export function transformChildBirthRecord(
+	childbirthrecord: ChildrenBirthRecord,
+	index: number,
+): MyInfoComponents.Schemas.Childrenbirthrecords {
 	return {
 		source: "1",
 		classification: "C",
@@ -599,33 +662,32 @@ export function transformChildBirthRecord(childbirthrecord: ChildrenBirthRecord,
 		birthcertno: { value: childbirthrecord.birthcertno },
 		name: { value: childbirthrecord.name || `nameless child ${index + 1}` },
 		sex: { code: childbirthrecord.sex, desc: MyInfoSexCode.fn.toEnumDesc(childbirthrecord.sex) },
-		lifestatus: { code: childbirthrecord.lifestatus, desc: MyInfoLifeStatusCode.fn.toEnumDesc(childbirthrecord.lifestatus) },
+		lifestatus: {
+			code: childbirthrecord.lifestatus,
+			desc: MyInfoLifeStatusCode.fn.toEnumDesc(childbirthrecord.lifestatus),
+		},
 		dob: { value: isNaN(Date.parse(childbirthrecord.dob)) ? "2020-01-01" : childbirthrecord.dob },
 		tob: { value: childbirthrecord.tob || "0000" },
 		unavailable: false,
-
 	} as MyInfoComponents.Schemas.Childrenbirthrecords;
 }
-
 
 export function transformItems(item: any) {
 	return Object.keys(item).reduce((objectKey, key) => {
 		if (item[key] === "") {
 			return objectKey;
 		}
-		objectKey[key] = { value: key !== 'yearofassessment' && !isNaN(+item[key]) ? +item[key] : item[key] };
+		objectKey[key] = { value: key !== "yearofassessment" && !isNaN(+item[key]) ? +item[key] : item[key] };
 		return objectKey;
 	}, {});
 }
 
-
-export function transformItemsWithAdditionalMock(item: any, defaultMockParams: boolean = true,) {
+export function transformItemsWithAdditionalMock(item: any) {
 	const transformedItems = transformItems(item);
 	const defaultItems = {
 		source: "1",
 		classification: "C",
-		lastupdated: `${new Date().toISOString().split('T')[0]}`,
+		lastupdated: `${new Date().toISOString().split("T")[0]}`,
 	};
 	return { ...transformedItems, ...defaultItems };
 }
-

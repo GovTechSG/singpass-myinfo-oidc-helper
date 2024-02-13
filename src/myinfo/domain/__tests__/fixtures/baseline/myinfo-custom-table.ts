@@ -1,4 +1,4 @@
-// tslint:disable
+/* eslint-disable */
 // =============================================================================
 // This file was generated with `npm run generate-myinfo-typings` on 2022-09-22
 // Any modifications to this file may be overwritten when the script runs again
@@ -24,6 +24,9 @@ export namespace MyInfoCustomTable {
 		values: EnumUtils.valuesFunc<MyInfoCustomTable>(MyInfoCustomTable),
 		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoCustomTable>(MyInfoCustomTable),
 		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoCustomTable>(MyInfoCustomTable),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoCustomTable, MyInfoCustomTableDesc>(MyInfoCustomTable, MyInfoCustomTableMapping),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoCustomTable, MyInfoCustomTableDesc>(
+			MyInfoCustomTable,
+			MyInfoCustomTableMapping,
+		),
 	};
 }

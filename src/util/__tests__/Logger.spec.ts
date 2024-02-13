@@ -8,40 +8,35 @@ describe("Logger", () => {
 			});
 		});
 
-		it.each([
-			"log",
-			"debug",
-			"info",
-			"trace",
-			"warn",
-			"error",
-		]
-		)("should overwrite %s method of logger", (overrideLogKey: string) => {
-			const mockLog = jest.fn();
-			const newLogger = {
-				[overrideLogKey]: (message: string, param?: any) => { mockLog(`[Override] ${message}`, `[Override] ${param}`); }
-			};
+		it.each(["log", "debug", "info", "trace", "warn", "error"])(
+			"should overwrite %s method of logger",
+			(overrideLogKey: string) => {
+				const mockLog = jest.fn();
+				const newLogger = {
+					[overrideLogKey]: (message: string, param?: any) => {
+						mockLog(`[Override] ${message}`, `[Override] ${param}`);
+					},
+				};
 
-			// test the original log function (something that is not overrideLogKey)
-			const logKey = overrideLogKey === "log" ? "debug" : "log";
+				// test the original log function (something that is not overrideLogKey)
+				const logKey = overrideLogKey === "log" ? "debug" : "log";
 
-			loggerModule.setLogger(newLogger);
+				loggerModule.setLogger(newLogger);
 
-			const logSpy = jest.spyOn(console, logKey);
+				const logSpy = jest.spyOn(console, logKey);
 
-			const originalMessage = "message";
-			const originalParam = "param";
+				const originalMessage = "message";
+				const originalParam = "param";
 
-			const overrideMessage = "[Override] message";
-			const overrideParam = "[Override] param";
+				const overrideMessage = "[Override] message";
+				const overrideParam = "[Override] param";
 
-			// tslint:disable-next-line: tsr-detect-unsafe-properties-access
-			loggerModule.logger[logKey](originalMessage, originalParam);
-			expect(logSpy).toHaveBeenCalledWith(originalMessage, originalParam);
+				loggerModule.logger[logKey](originalMessage, originalParam);
+				expect(logSpy).toHaveBeenCalledWith(originalMessage, originalParam);
 
-			// tslint:disable-next-line: tsr-detect-unsafe-properties-access
-			loggerModule.logger[overrideLogKey](originalMessage, originalParam);
-			expect(mockLog).toHaveBeenCalledWith(overrideMessage, overrideParam);
-		});
+				loggerModule.logger[overrideLogKey](originalMessage, originalParam);
+				expect(mockLog).toHaveBeenCalledWith(overrideMessage, overrideParam);
+			},
+		);
 	});
 });

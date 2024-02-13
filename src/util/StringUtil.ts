@@ -1,6 +1,5 @@
 import * as isBase64 from "is-base64";
 
-
 export function replaceLineBreaks(input: string): string {
 	if (!input) {
 		return input;

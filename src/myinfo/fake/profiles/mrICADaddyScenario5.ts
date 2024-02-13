@@ -1,6 +1,13 @@
-
 import * as _ from "lodash";
-import { MyInfoComponents, MyInfoCountryPlaceCode, MyInfoMaritalStatusCode, MyInfoNationalityCitizenshipCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
+import {
+	MyInfoComponents,
+	MyInfoCountryPlaceCode,
+	MyInfoMaritalStatusCode,
+	MyInfoNationalityCitizenshipCode,
+	MyInfoRaceCode,
+	MyInfoResidentialCode,
+	MyInfoSexCode,
+} from "../../domain";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { BaseProfile } from "./sponsored-children/BaseProfile";
 
@@ -17,53 +24,53 @@ export const mrICADaddyScenario5: FakeProfile = {
 		profile.sex.code = MyInfoSexCode.MALE;
 		profile.sex.desc = MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.MALE);
 		profile.race = {
-			"lastupdated": "2022-02-25",
-			"code": MyInfoRaceCode.INDIAN,
-			"desc": MyInfoRaceCode.fn.toEnumDesc(MyInfoRaceCode.INDIAN),
-			"source": "1",
-			"classification": "C",
+			lastupdated: "2022-02-25",
+			code: MyInfoRaceCode.INDIAN,
+			desc: MyInfoRaceCode.fn.toEnumDesc(MyInfoRaceCode.INDIAN),
+			source: "1",
+			classification: "C",
 		};
 		profile.dob = {
-			"lastupdated": "2022-02-25",
-			"source": "1",
-			"classification": "C",
-			"value": "1990-02-05",
+			lastupdated: "2022-02-25",
+			source: "1",
+			classification: "C",
+			value: "1990-02-05",
 		};
 		profile.residentialstatus = {
-			"lastupdated": "2018-06-01",
-			"code": MyInfoResidentialCode.CITIZEN,
-			"desc": MyInfoResidentialCode.fn.toEnumDesc(MyInfoResidentialCode.CITIZEN),
-			"source": "1",
-			"classification": "C",
+			lastupdated: "2018-06-01",
+			code: MyInfoResidentialCode.CITIZEN,
+			desc: MyInfoResidentialCode.fn.toEnumDesc(MyInfoResidentialCode.CITIZEN),
+			source: "1",
+			classification: "C",
 		};
 		profile.nationality.code = MyInfoNationalityCitizenshipCode.SINGAPORE_CITIZEN;
 		profile.marriagecertno = {
-			"lastupdated": "2022-02-25",
-			"source": "1",
-			"classification": "C",
-			"value": "M67890",
+			lastupdated: "2022-02-25",
+			source: "1",
+			classification: "C",
+			value: "M67890",
 		};
 		profile.marriagedate = {
-			"lastupdated": "2020-09-10",
-			"source": "2",
-			"classification": "C",
-			"value": "2020-09-10",
+			lastupdated: "2020-09-10",
+			source: "2",
+			classification: "C",
+			value: "2020-09-10",
 		};
 		profile.countryofmarriage = {
-			"lastupdated": "2022-02-25",
-			"code": MyInfoCountryPlaceCode.SINGAPORE,
-			"desc": MyInfoCountryPlaceCode.fn.toEnumDesc(MyInfoCountryPlaceCode.SINGAPORE),
-			"source": "1",
-			"classification": "C",
+			lastupdated: "2022-02-25",
+			code: MyInfoCountryPlaceCode.SINGAPORE,
+			desc: MyInfoCountryPlaceCode.fn.toEnumDesc(MyInfoCountryPlaceCode.SINGAPORE),
+			source: "1",
+			classification: "C",
 		};
 		profile.marital = {
-			"lastupdated": "2022-02-25",
-			"code": MyInfoMaritalStatusCode.MARRIED,
-			"desc": MyInfoMaritalStatusCode.fn.toEnumDesc(MyInfoMaritalStatusCode.MARRIED),
-			"source": "1",
-			"classification": "C",
+			lastupdated: "2022-02-25",
+			code: MyInfoMaritalStatusCode.MARRIED,
+			desc: MyInfoMaritalStatusCode.fn.toEnumDesc(MyInfoMaritalStatusCode.MARRIED),
+			source: "1",
+			classification: "C",
 		};
 
 		return profile;
-	}
+	},
 };

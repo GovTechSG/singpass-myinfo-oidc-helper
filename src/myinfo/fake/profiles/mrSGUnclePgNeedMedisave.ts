@@ -14,7 +14,9 @@ export const mrSGUnclePgNeedMedisave: FakeProfile = {
 
 		const profile = mrSGUnclePgAllOk.generate(profileName);
 		profile.pioneergen.message.code = MyInfoPioneerGenerationMessageCode.NEED_MEDISAVE_TOPUP;
-		profile.pioneergen.message.desc = MyInfoPioneerGenerationMessageCode.fn.toEnumDesc(MyInfoPioneerGenerationMessageCode.NEED_MEDISAVE_TOPUP);
+		profile.pioneergen.message.desc = MyInfoPioneerGenerationMessageCode.fn.toEnumDesc(
+			MyInfoPioneerGenerationMessageCode.NEED_MEDISAVE_TOPUP,
+		);
 
 		return profile;
 	},

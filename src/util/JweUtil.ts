@@ -1,10 +1,14 @@
 import * as jose from "node-jose";
 import { SingpassMyInfoError } from "./error/SingpassMyinfoError";
-import { KeyFormat } from './KeyUtil';
+import { KeyFormat } from "./KeyUtil";
 import { TokenResponse as SingpassTokenResponse } from "../singpass/shared-constants";
 import { TokenResponse as CorppassTokenResponse } from "../corppass/shared-constants";
 
-export async function decryptJWE(jwe: string, decryptKey: string, format: KeyFormat = 'pem'): Promise<jose.JWE.DecryptResult> {
+export async function decryptJWE(
+	jwe: string,
+	decryptKey: string,
+	format: KeyFormat = "pem",
+): Promise<jose.JWE.DecryptResult> {
 	if (!jwe) throw new SingpassMyInfoError("Missing JWE data.");
 	if (!decryptKey) throw new SingpassMyInfoError("Missing key to decrypt JWE payload.");
 	// TODO: can be further optimized by caching key in memory instead of regenerating each time
@@ -14,7 +18,11 @@ export async function decryptJWE(jwe: string, decryptKey: string, format: KeyFor
 	return jose.JWE.createDecrypt(key, { algorithms: ["*"] }).decrypt(jwe);
 }
 
-export async function verifyJWS(jws: string, verifyCert: string, format: KeyFormat = 'pem'): Promise<jose.JWS.VerificationResult> {
+export async function verifyJWS(
+	jws: string,
+	verifyCert: string,
+	format: KeyFormat = "pem",
+): Promise<jose.JWS.VerificationResult> {
 	if (!jws) throw new SingpassMyInfoError("Missing JWS data.");
 	if (!verifyCert) throw new SingpassMyInfoError("Missing cert to verify JWS payload.");
 

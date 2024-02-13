@@ -1,4 +1,3 @@
-
 export enum ProfileStatusEnum {
 	NO_PROFILE = "01",
 	INCOMPLETE_VERIFIED_FIELDS = "02",

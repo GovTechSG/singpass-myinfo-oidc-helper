@@ -1,4 +1,4 @@
-// tslint:disable
+/* eslint-disable */
 // =============================================================================
 // This file was generated with `npm run generate-myinfo-typings` on 2023-05-10
 // Any modifications to this file may be overwritten when the script runs again
@@ -17,7 +17,7 @@ export namespace MyInfoInsurerCode {
 		"INCOME_INSURANCE" = "INCOME INSURANCE",
 	}
 
-	type CpfdependantprotectionschemeDesc = `${ CpfdependantprotectionschemeMapping }`;
+	type CpfdependantprotectionschemeDesc = `${CpfdependantprotectionschemeMapping}`;
 
 	export enum Cpfmedishieldlife {
 		"INCOME_INSURANCE" = "NTU",
@@ -39,7 +39,7 @@ export namespace MyInfoInsurerCode {
 		"RAFFLES_HEALTH_INSURANCE" = "RAFFLES HEALTH INSURANCE",
 	}
 
-	type CpfmedishieldlifeDesc = `${ CpfmedishieldlifeMapping }`;
+	type CpfmedishieldlifeDesc = `${CpfmedishieldlifeMapping}`;
 
 	export namespace Cpfdependantprotectionscheme {
 		export const fn = {
@@ -47,7 +47,10 @@ export namespace MyInfoInsurerCode {
 			values: EnumUtils.valuesFunc<Cpfdependantprotectionscheme>(Cpfdependantprotectionscheme),
 			toEnumKey: EnumUtils.toEnumKeyFunc<Cpfdependantprotectionscheme>(Cpfdependantprotectionscheme),
 			toEnumValue: EnumUtils.toEnumValueFunc<Cpfdependantprotectionscheme>(Cpfdependantprotectionscheme),
-			toEnumDesc: EnumUtils.toEnumDescFunc<Cpfdependantprotectionscheme, CpfdependantprotectionschemeDesc>(Cpfdependantprotectionscheme, CpfdependantprotectionschemeMapping),
+			toEnumDesc: EnumUtils.toEnumDescFunc<Cpfdependantprotectionscheme, CpfdependantprotectionschemeDesc>(
+				Cpfdependantprotectionscheme,
+				CpfdependantprotectionschemeMapping,
+			),
 		};
 	}
 	export namespace Cpfmedishieldlife {
@@ -56,7 +59,10 @@ export namespace MyInfoInsurerCode {
 			values: EnumUtils.valuesFunc<Cpfmedishieldlife>(Cpfmedishieldlife),
 			toEnumKey: EnumUtils.toEnumKeyFunc<Cpfmedishieldlife>(Cpfmedishieldlife),
 			toEnumValue: EnumUtils.toEnumValueFunc<Cpfmedishieldlife>(Cpfmedishieldlife),
-			toEnumDesc: EnumUtils.toEnumDescFunc<Cpfmedishieldlife, CpfmedishieldlifeDesc>(Cpfmedishieldlife, CpfmedishieldlifeMapping),
+			toEnumDesc: EnumUtils.toEnumDescFunc<Cpfmedishieldlife, CpfmedishieldlifeDesc>(
+				Cpfmedishieldlife,
+				CpfmedishieldlifeMapping,
+			),
 		};
 	}
 }

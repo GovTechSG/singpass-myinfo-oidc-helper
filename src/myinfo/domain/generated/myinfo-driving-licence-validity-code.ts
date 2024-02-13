@@ -1,4 +1,4 @@
-// tslint:disable
+/* eslint-disable */
 // =============================================================================
 // This file was generated with `npm run generate-myinfo-typings` on 2023-05-10
 // Any modifications to this file may be overwritten when the script runs again
@@ -20,7 +20,7 @@ enum MyInfoDrivingLicenceValidityCodeMapping {
 	"NOT_HOLDING" = "NOT HOLDING",
 }
 
-type MyInfoDrivingLicenceValidityCodeDesc = `${ MyInfoDrivingLicenceValidityCodeMapping }`;
+type MyInfoDrivingLicenceValidityCodeDesc = `${MyInfoDrivingLicenceValidityCodeMapping}`;
 
 export namespace MyInfoDrivingLicenceValidityCode {
 	export const fn = {
@@ -28,6 +28,9 @@ export namespace MyInfoDrivingLicenceValidityCode {
 		values: EnumUtils.valuesFunc<MyInfoDrivingLicenceValidityCode>(MyInfoDrivingLicenceValidityCode),
 		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoDrivingLicenceValidityCode>(MyInfoDrivingLicenceValidityCode),
 		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoDrivingLicenceValidityCode>(MyInfoDrivingLicenceValidityCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoDrivingLicenceValidityCode, MyInfoDrivingLicenceValidityCodeDesc>(MyInfoDrivingLicenceValidityCode, MyInfoDrivingLicenceValidityCodeMapping),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoDrivingLicenceValidityCode, MyInfoDrivingLicenceValidityCodeDesc>(
+			MyInfoDrivingLicenceValidityCode,
+			MyInfoDrivingLicenceValidityCodeMapping,
+		),
 	};
 }

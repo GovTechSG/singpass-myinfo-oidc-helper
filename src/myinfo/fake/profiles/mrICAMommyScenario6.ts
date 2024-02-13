@@ -1,6 +1,11 @@
-
 import * as _ from "lodash";
-import { MyInfoComponents, MyInfoNationalityCitizenshipCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
+import {
+	MyInfoComponents,
+	MyInfoNationalityCitizenshipCode,
+	MyInfoRaceCode,
+	MyInfoResidentialCode,
+	MyInfoSexCode,
+} from "../../domain";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { BaseProfile } from "./sponsored-children/BaseProfile";
 
@@ -17,27 +22,27 @@ export const mrsICAMommyScenario6: FakeProfile = {
 		profile.sex.code = MyInfoSexCode.FEMALE;
 		profile.sex.desc = MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE);
 		profile.race = {
-			"lastupdated": "2022-02-25",
-			"code": MyInfoRaceCode.INDIAN,
-			"desc": MyInfoRaceCode.fn.toEnumDesc(MyInfoRaceCode.INDIAN),
-			"source": "1",
-			"classification": "C",
+			lastupdated: "2022-02-25",
+			code: MyInfoRaceCode.INDIAN,
+			desc: MyInfoRaceCode.fn.toEnumDesc(MyInfoRaceCode.INDIAN),
+			source: "1",
+			classification: "C",
 		};
 		profile.dob = {
-			"lastupdated": "2022-02-25",
-			"source": "1",
-			"classification": "C",
-			"value": "1990-01-06",
+			lastupdated: "2022-02-25",
+			source: "1",
+			classification: "C",
+			value: "1990-01-06",
 		};
 		profile.residentialstatus = {
-			"lastupdated": "2018-06-01",
-			"code": MyInfoResidentialCode.PR,
-			"desc": MyInfoResidentialCode.fn.toEnumDesc(MyInfoResidentialCode.PR),
-			"source": "1",
-			"classification": "C",
+			lastupdated: "2018-06-01",
+			code: MyInfoResidentialCode.PR,
+			desc: MyInfoResidentialCode.fn.toEnumDesc(MyInfoResidentialCode.PR),
+			source: "1",
+			classification: "C",
 		};
 		profile.nationality.code = MyInfoNationalityCitizenshipCode.MALAYSIAN;
 
 		return profile;
-	}
+	},
 };

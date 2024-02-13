@@ -3,7 +3,6 @@ import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 import { ChildrenRecords } from "./childbirthRecords";
 
-
 const id = "T2446959F";
 const name = ProfileArchetype.MR_SG_DADDY_MANY_CHILDREN;
 

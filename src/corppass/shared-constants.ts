@@ -44,30 +44,30 @@ export interface AuthInfoResultSet {
 
 export interface TPAccessInfo {
 	Result_Set: {
-		ESrvc_Row_Count: number,
+		ESrvc_Row_Count: number;
 		ESrvc_Result: {
-			CPESrvcID: string,
+			CPESrvcID: string;
 			Auth_Set: {
-				ENT_ROW_COUNT: number,
+				ENT_ROW_COUNT: number;
 				TP_Auth: {
-					CP_Clnt_ID: string,
-					CP_ClntEnt_TYPE: string,
+					CP_Clnt_ID: string;
+					CP_ClntEnt_TYPE: string;
 					Auth_Result_Set: {
-						Row_Count: number,
+						Row_Count: number;
 						Row: {
-							CP_ClntEnt_SUB: string,
-							CPRole: string,
-							StartDate: string,
-							EndDate: string,
+							CP_ClntEnt_SUB: string;
+							CPRole: string;
+							StartDate: string;
+							EndDate: string;
 							Parameter?: {
-								name: string,
+								name: string;
 								value: string;
-							}[],
-						}[],
-					},
-				}[],
-			},
-		}[],
+							}[];
+						}[];
+					};
+				}[];
+			};
+		}[];
 	};
 }
 

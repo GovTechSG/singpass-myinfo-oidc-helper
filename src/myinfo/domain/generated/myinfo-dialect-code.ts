@@ -1,4 +1,4 @@
-// tslint:disable
+/* eslint-disable */
 // =============================================================================
 // This file was generated with `npm run generate-myinfo-typings` on 2023-05-10
 // Any modifications to this file may be overwritten when the script runs again
@@ -304,7 +304,7 @@ enum MyInfoDialectCodeMapping {
 	"YIDDISH" = "YIDDISH",
 }
 
-type MyInfoDialectCodeDesc = `${ MyInfoDialectCodeMapping }`;
+type MyInfoDialectCodeDesc = `${MyInfoDialectCodeMapping}`;
 
 export namespace MyInfoDialectCode {
 	export const fn = {
@@ -312,6 +312,9 @@ export namespace MyInfoDialectCode {
 		values: EnumUtils.valuesFunc<MyInfoDialectCode>(MyInfoDialectCode),
 		toEnumKey: EnumUtils.toEnumKeyFunc<MyInfoDialectCode>(MyInfoDialectCode),
 		toEnumValue: EnumUtils.toEnumValueFunc<MyInfoDialectCode>(MyInfoDialectCode),
-		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoDialectCode, MyInfoDialectCodeDesc>(MyInfoDialectCode, MyInfoDialectCodeMapping),
+		toEnumDesc: EnumUtils.toEnumDescFunc<MyInfoDialectCode, MyInfoDialectCodeDesc>(
+			MyInfoDialectCode,
+			MyInfoDialectCodeMapping,
+		),
 	};
 }

@@ -1,14 +1,25 @@
+/* eslint-disable max-lines-per-function */
 import * as _ from "lodash";
-import { FakeProfile } from "../fake-profile";
-import { MyInfoComponents, MyInfoCountryPlaceCode, MyInfoDialectCode, MyInfoMaritalStatusCode, MyInfoMerdekaGenerationMessageCode, MyInfoNationalityCitizenshipCode, MyInfoPioneerGenerationMessageCode, MyInfoRaceCode, MyInfoResidentialCode, MyInfoSexCode } from "../../../domain";
+import {
+	MyInfoComponents,
+	MyInfoCountryPlaceCode,
+	MyInfoDialectCode,
+	MyInfoMaritalStatusCode,
+	MyInfoMerdekaGenerationMessageCode,
+	MyInfoNationalityCitizenshipCode,
+	MyInfoPioneerGenerationMessageCode,
+	MyInfoRaceCode,
+	MyInfoResidentialCode,
+	MyInfoSexCode,
+} from "../../../domain";
 import { aliasName } from "../common";
+import { FakeProfile } from "../fake-profile";
 
 const id = "S8399420G";
 
 export const BaseProfile: FakeProfile = {
 	id,
 	name: null,
-	// tslint:disable-next-line: no-big-function
 	generate: (profileName) => {
 		profileName = _.isEmpty(profileName) ? "" : profileName;
 
@@ -71,7 +82,9 @@ export const BaseProfile: FakeProfile = {
 			nationality: {
 				lastupdated: "2018-06-01",
 				code: MyInfoNationalityCitizenshipCode.SINGAPORE_CITIZEN,
-				desc: MyInfoNationalityCitizenshipCode.fn.toEnumDesc(MyInfoNationalityCitizenshipCode.SINGAPORE_CITIZEN),
+				desc: MyInfoNationalityCitizenshipCode.fn.toEnumDesc(
+					MyInfoNationalityCitizenshipCode.SINGAPORE_CITIZEN,
+				),
 				source: "1",
 				classification: "C",
 			},

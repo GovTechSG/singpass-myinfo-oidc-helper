@@ -7,7 +7,7 @@ export function disableMissingEnvWarnings() {
 }
 
 export function getValueFromEnv(key: string, defaultValue?: string): string {
-	const value = !!process.env[key] ? process.env[key].trim() : defaultValue;
+	const value = process.env[key] ? process.env[key].trim() : defaultValue;
 	if (!value && displayWarnings) {
 		logger.warn(`Configuration key not found or empty: ${key}`);
 	}
@@ -15,7 +15,7 @@ export function getValueFromEnv(key: string, defaultValue?: string): string {
 }
 
 export function getValueFromEnvWithoutWarn(key: string, defaultValue?: string): string {
-	const value = !!process.env[key] ? process.env[key].trim() : defaultValue;
+	const value = process.env[key] ? process.env[key].trim() : defaultValue;
 	return value;
 }
 
@@ -35,7 +35,6 @@ export function getIntValueFromEnv(key: string, defaultValue: number): number {
 
 	return intValue;
 }
-
 
 export function getBooleanValueFromEnv(key: string, defaultValue: boolean = false): boolean {
 	const stringValue = getValueFromEnv(key, null);

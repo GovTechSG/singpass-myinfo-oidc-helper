@@ -1,7 +1,6 @@
 import { redactUinfin } from "../RedactorUtil";
 
 describe("Redactor", () => {
-
 	describe("redactUinfin", () => {
 		it("should redact an nric", () => {
 			const input = "S1234567Z";

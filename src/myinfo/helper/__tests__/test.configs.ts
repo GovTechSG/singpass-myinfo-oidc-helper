@@ -1,5 +1,6 @@
 import { ConfigUtils, JestUtil, StringUtil } from "../../../util";
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 require("dotenv").config();
 
 const { disableMissingEnvWarnings, getValueFromEnv } = ConfigUtils;
@@ -44,5 +45,4 @@ export const configs = {
 		"marriagecertno",
 		"childrenbirthrecords.name",
 	],
-
 };

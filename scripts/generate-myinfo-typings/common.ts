@@ -8,9 +8,9 @@ export interface EnumTyping {
 	enumEntries: Record<string, string>[];
 }
 
-export const FILE_HEADER = `// tslint:disable
+export const FILE_HEADER = `/* eslint-disable */
 // =============================================================================
-// This file was generated with \`npm run generate-myinfo-typings\` on ${new Date().toISOString().split('T')[0]}
+// This file was generated with \`npm run generate-myinfo-typings\` on ${new Date().toISOString().split("T")[0]}
 // Any modifications to this file may be overwritten when the script runs again
 // Check README.md for more information
 // =============================================================================
