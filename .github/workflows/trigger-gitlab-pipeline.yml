@@ -85,7 +85,7 @@ jobs:
               | jq -r '[ .[] | select( .name | contains("'"$DOWNSTREAM_JOB_NAME"'")) ]' | jq -r '.[].status')
             echo "($DOWNSTREAM_JOB_NAME) Job status: $job_status"
 
-            sleep $(($CHECK_INTERVAL_MINUTES*60))
+            [[ $job_status == "running" ]] && sleep $(($CHECK_INTERVAL_MINUTES*60))
           done
 
           [[ $job_status == "canceled" ]] && echo "GitLab job was cancelled"
