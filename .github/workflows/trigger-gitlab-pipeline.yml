@@ -65,25 +65,41 @@ jobs:
           GITLAB_PROJECT_ID: ${{ vars.GITLAB_PROJECT_ID }}
           SLEEP_DURATION_MINUTES: 15
           CHECK_INTERVAL_MINUTES: 5
+          DOWNSTREAM_PIPELINE_NAME: library
+          DOWNSTREAM_JOB_NAME: build-dist-job
         run: |
           echo "Pipeline ID: $PIPELINE_ID"
           echo "[ Running pipline check after $SLEEP_DURATION_MINUTES minutes ]"
           sleep $(($SLEEP_DURATION_MINUTES*60))
 
-          pipeline_status=""
-          until [[ $pipeline_status == "success" || $pipeline_status == "failed" || $pipeline_status == "canceled" || $pipeline_status == "skipped" ]]
+          num_attempts=1
+          job_status=""
+          until [[ $num_attempts -gt 5 || $job_status == "success" || $job_status == "failed" || $job_status == "canceled" || $job_status == "skipped" ]]
           do
-            pipeline_status=$(curl -sS --request GET --header "PRIVATE-TOKEN: $GITLAB_PAT" --url "$GITLAB_ENDPOINT/$GITLAB_PROJECT_ID/pipelines/$PIPELINE_ID" | jq -r '.status')
-            
-            echo "Pipeline status: $pipeline_status"
+            echo "Attempt: $num_attempts"
 
-            sleep $(($CHECK_INTERVAL_MINUTES*60))
+            downstream_pipeline_id=$(curl -sS --request GET --header "PRIVATE-TOKEN: $GITLAB_PAT" \
+              --url "$GITLAB_ENDPOINT/$GITLAB_PROJECT_ID/pipelines/$PIPELINE_ID/bridges" \
+              | jq -r '[ .[] | select( .name | contains("'"$DOWNSTREAM_PIPELINE_NAME"'")) ]' | jq -r '.[].downstream_pipeline.id')
+            echo "($DOWNSTREAM_PIPELINE_NAME) Downstream pipeline id: $downstream_pipeline_id"
+
+            job_status=$(curl -sS --header "PRIVATE-TOKEN: $GITLAB_PAT" \
+              --url "$GITLAB_ENDPOINT/$GITLAB_PROJECT_ID/pipelines/$downstream_pipeline_id/jobs" \
+              | jq -r '[ .[] | select( .name | contains("'"$DOWNSTREAM_JOB_NAME"'")) ]' | jq -r '.[].status')
+            echo "($DOWNSTREAM_JOB_NAME) Job status: $job_status"
+
+            if [[ $job_status == "running" ]]; then
+              num_attempts=$((num_attempts+1))
+              sleep $(($CHECK_INTERVAL_MINUTES*60))
+            fi
           done
 
-          [[ $pipeline_status == "canceled" ]] && echo "GitLab Pipeline was cancelled"
+          [[ $num_attempts -gt 5 ]] && echo "Number of retries exceeded, please head to the GitLab job to check what happened" && exit 1
 
-          [[ $pipeline_status == "skipped" ]] && echo "GitLab pipeline has stopped, please head to the GitLab pipeline to trigger job manually"
+          [[ $job_status == "canceled" ]] && echo "GitLab job was cancelled"
 
-          [[ $pipeline_status == "failed" ]] && echo "GitLab pipeline has failed, please head to the GitLab pipeline to check on error" && exit 1
+          [[ $job_status == "skipped" ]] && echo "GitLab job has stopped, please head to the GitLab job to trigger job manually"
 
-          [[ $pipeline_status == "success" ]] && echo "GitLab pipeline is successfully completed, please head to the GitLab pipeline for further deployments"
+          [[ $job_status == "failed" ]] && echo "GitLab job has failed, please head to the GitLab job to check on error" && exit 1
+
+          [[ $job_status == "success" ]] && echo "GitLab job is successfully completed, please head to the GitLab job for further deployments"
