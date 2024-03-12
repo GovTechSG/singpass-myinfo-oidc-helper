@@ -72,11 +72,11 @@ jobs:
           echo "[ Running pipline check after $SLEEP_DURATION_MINUTES minutes ]"
           sleep $(($SLEEP_DURATION_MINUTES*60))
 
-          retry=1
+          num_attempts=1
           job_status=""
-          until [[ $retry -gt 5 || $job_status == "success" || $job_status == "failed" || $job_status == "canceled" || $job_status == "skipped" ]]
+          until [[ $num_attempts -gt 5 || $job_status == "success" || $job_status == "failed" || $job_status == "canceled" || $job_status == "skipped" ]]
           do
-            echo "Attempt: $retry"
+            echo "Attempt: $num_attempts"
 
             downstream_pipeline_id=$(curl -sS --request GET --header "PRIVATE-TOKEN: $GITLAB_PAT" \
               --url "$GITLAB_ENDPOINT/$GITLAB_PROJECT_ID/pipelines/$PIPELINE_ID/bridges" \
@@ -89,12 +89,12 @@ jobs:
             echo "($DOWNSTREAM_JOB_NAME) Job status: $job_status"
 
             if [[ $job_status == "running" ]]; then
-              retry=$((retry+1))
+              num_attempts=$((num_attempts+1))
               sleep $(($CHECK_INTERVAL_MINUTES*60))
             fi
           done
 
-          [[ $retry -gt 5 ]] && echo "Number of retries exceeded, please head to the GitLab job to check what happened" && exit 1
+          [[ $num_attempts -gt 5 ]] && echo "Number of retries exceeded, please head to the GitLab job to check what happened" && exit 1
 
           [[ $job_status == "canceled" ]] && echo "GitLab job was cancelled"
 
