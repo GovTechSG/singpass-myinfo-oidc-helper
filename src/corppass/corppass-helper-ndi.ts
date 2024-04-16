@@ -165,11 +165,21 @@ export class NdiOidcHelper {
 			const {
 				data: { keys },
 			} = await this.axiosClient.get<{ keys: Object[] }>(finalJwksUri, { headers: this.additionalHeaders });
-			const jwsVerifyKey = JSON.stringify(keys[0]);
+			let err: Error = null;
 
-			const { access_token } = tokens;
-			const verifiedJws = await JweUtil.verifyJWS(access_token, jwsVerifyKey, "json");
-			return JSON.parse(verifiedJws.payload.toString()) as AccessTokenPayload;
+			for (const key of keys) {
+				try {
+					const jwsVerifyKey = JSON.stringify(key);
+
+					const { access_token } = tokens;
+					const verifiedJws = await JweUtil.verifyJWS(access_token, jwsVerifyKey, "json");
+					return JSON.parse(verifiedJws.payload.toString()) as AccessTokenPayload;
+				} catch (e) {
+					err = e;
+				}
+			}
+
+			throw err;
 		} catch (e) {
 			logger.error("Failed to get access token payload", e);
 			throw e;
@@ -190,15 +200,29 @@ export class NdiOidcHelper {
 			const {
 				data: { keys },
 			} = await this.axiosClient.get<{ keys: Object[] }>(finalJwksUri, { headers: this.additionalHeaders });
-			const jwsVerifyKey = JSON.stringify(keys[0]);
+			let err: Error = null;
+			for (const key of keys) {
+				try {
+					const jwsVerifyKey = JSON.stringify(key);
 
-			const { id_token } = tokens;
+					const { id_token } = tokens;
 
-			const finalDecryptionKey = overrideDecryptKey ?? this.jweDecryptKey;
-			const decryptedJwe = await JweUtil.decryptJWE(id_token, finalDecryptionKey.key, finalDecryptionKey.format);
-			const jwsPayload = decryptedJwe.payload.toString();
-			const verifiedJws = await JweUtil.verifyJWS(jwsPayload, jwsVerifyKey, "json");
-			return JSON.parse(verifiedJws.payload.toString()) as NDIIdTokenPayload;
+					const finalDecryptionKey = overrideDecryptKey ?? this.jweDecryptKey;
+					const decryptedJwe = await JweUtil.decryptJWE(
+						id_token,
+						finalDecryptionKey.key,
+						finalDecryptionKey.format,
+					);
+					const jwsPayload = decryptedJwe.payload.toString();
+					const verifiedJws = await JweUtil.verifyJWS(jwsPayload, jwsVerifyKey, "json");
+
+					return JSON.parse(verifiedJws.payload.toString()) as NDIIdTokenPayload;
+				} catch (e) {
+					err = e;
+				}
+			}
+
+			throw err;
 		} catch (e) {
 			logger.error("Failed to get ID token payload", e);
 			throw e;
