@@ -111,15 +111,22 @@ export class NdiOidcHelper {
 			const {
 				data: { keys },
 			} = await this.axiosClient.get<{ keys: Object[] }>(jwks_uri);
-			const jwsVerifyKey = JSON.stringify(keys[0]);
 
 			const { id_token } = tokens;
 
 			const finalDecryptionKey = overrideDecryptKey ?? this.jweDecryptKey;
 			const decryptedJwe = await JweUtil.decryptJWE(id_token, finalDecryptionKey.key, finalDecryptionKey.format);
 			const jwsPayload = decryptedJwe.payload.toString();
-			const verifiedJws = await JweUtil.verifyJWS(jwsPayload, jwsVerifyKey, "json");
-			return JSON.parse(verifiedJws.payload.toString()) as TokenPayload;
+			let error = null;
+			for (const key of keys) {
+				try {
+					const verified = await JweUtil.verifyJWS(jwsPayload, JSON.stringify(key), "json");
+					return JSON.parse(verified.payload.toString()) as TokenPayload;
+				} catch (err) {
+					error = err;
+				}
+			}
+			throw error;
 		} catch (e) {
 			logger.error("Failed to get token payload", e);
 			throw e;
