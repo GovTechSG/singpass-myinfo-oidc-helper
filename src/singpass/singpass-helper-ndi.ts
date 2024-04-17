@@ -126,7 +126,11 @@ export class NdiOidcHelper {
 					error = err;
 				}
 			}
-			throw error;
+			if (error) {
+				throw error;
+			} else {
+				throw new SingpassMyInfoError('could not verify with any key');
+			}
 		} catch (e) {
 			logger.error("Failed to get token payload", e);
 			throw e;
