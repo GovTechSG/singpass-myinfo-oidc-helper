@@ -165,11 +165,22 @@ export class NdiOidcHelper {
 			const {
 				data: { keys },
 			} = await this.axiosClient.get<{ keys: Object[] }>(finalJwksUri, { headers: this.additionalHeaders });
-			const jwsVerifyKey = JSON.stringify(keys[0]);
 
 			const { access_token } = tokens;
-			const verifiedJws = await JweUtil.verifyJWS(access_token, jwsVerifyKey, "json");
-			return JSON.parse(verifiedJws.payload.toString()) as AccessTokenPayload;
+			let error = null;
+			for (const key of keys) {
+				try {
+					const verified = await JweUtil.verifyJWS(access_token, JSON.stringify(key), "json");
+					return JSON.parse(verified.payload.toString()) as AccessTokenPayload;
+				} catch (err) {
+					error = err;
+				}
+			}
+			if (error) {
+				throw error;
+			} else {
+				throw new SingpassMyInfoError('could not verify with any key');
+			}
 		} catch (e) {
 			logger.error("Failed to get access token payload", e);
 			throw e;
@@ -190,15 +201,26 @@ export class NdiOidcHelper {
 			const {
 				data: { keys },
 			} = await this.axiosClient.get<{ keys: Object[] }>(finalJwksUri, { headers: this.additionalHeaders });
-			const jwsVerifyKey = JSON.stringify(keys[0]);
 
 			const { id_token } = tokens;
 
 			const finalDecryptionKey = overrideDecryptKey ?? this.jweDecryptKey;
 			const decryptedJwe = await JweUtil.decryptJWE(id_token, finalDecryptionKey.key, finalDecryptionKey.format);
 			const jwsPayload = decryptedJwe.payload.toString();
-			const verifiedJws = await JweUtil.verifyJWS(jwsPayload, jwsVerifyKey, "json");
-			return JSON.parse(verifiedJws.payload.toString()) as NDIIdTokenPayload;
+			let error = null;
+			for (const key of keys) {
+				try {
+					const verified = await JweUtil.verifyJWS(jwsPayload, JSON.stringify(key), "json");
+					return JSON.parse(verified.payload.toString()) as NDIIdTokenPayload;
+				} catch (err) {
+					error = err;
+				}
+			}
+			if (error) {
+				throw error;
+			} else {
+				throw new SingpassMyInfoError('could not verify with any key');
+			}
 		} catch (e) {
 			logger.error("Failed to get ID token payload", e);
 			throw e;
