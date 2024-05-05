@@ -103,3 +103,4 @@ jobs:
           [[ $job_status == "failed" ]] && echo "GitLab job has failed, please head to the GitLab job to check on error" && exit 1
 
           [[ $job_status == "success" ]] && echo "GitLab job is successfully completed, please head to the GitLab job for further deployments"
+
