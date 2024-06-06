@@ -29,18 +29,18 @@ MyInfo.Helper
 
 | Param                   | Type     | Description                                                                                                                                                              |
 | ----------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| attributes              | string[] | Array of user attributes to retrieve from MyInfo. For full list of attributes, see [here](https://public.cloud.myinfo.gov.sg/myinfo/tuo/myinfo-tuo-specs.html)           |
+| attributes              | string[] | Array of user attributes to retrieve from MyInfo. For a full list of attributes, see [here](https://public.cloud.myinfo.gov.sg/myinfo/tuo/myinfo-tuo-specs.html)           |
 | clientID                | string   | Your app's client ID when you onboarded with MyInfo                                                                                                                      |
 | personBasicURL          | string   | The full URL to the MyInfo person basic endpoint. Exposed for lib user to choose between staging, prod, and any mock server                                              |
 | singpassEserviceID      | string   | Your app's ID when you onboarded Singpass. Used by MyInfo to check if the NRIC you are trying to retrieve MyInfo data for has recently logged into your app via Singpass |
 | keyToDecryptJWE         | string   | Your private key to decrypt MyInfo's JWE payload. The public key has been given to MyInfo during onboarding, for them to encrypt the JWE containing Person Data          |
 | certToVerifyJWS         | string   | The public cert from MyInfo as MyInfo payloads are both encrypted with JWE, and signed with JWS                                                                          |
-| privateKeyToSignRequest | string   | Used for signing the request to MyInfo server. Needs to be an encrypted PKCS8 private key                                                                                |
+| privateKeyToSignRequest | string   | Used for signing the request to MyInfo server. It needs to be an encrypted PKCS8 private key                                                                                |
 | privateKeyPassword      | string   | the password that you used to encrypt privateKeyToSignRequest                                                                                                            |
 
 - `getPersonBasic(uinfin: string, attributes: string[]) => MyInfoComponents.Schemas.PersonBasic` - get basic profile data which excludes CPF and IRAS data in the shape of `MyInfoComponents.Schemas.PersonBasic`
-- `constructAuthorizationUrl(state: string, purpose: string, attributes: string[]) => string` - constructs the authorization url with the necessary params for authorising the user to retrieve full person data
-- `getToken(authCode: string, state?: string): => TokenResponse` - get access token when presented with a valid authcode obtained from the Authorise API
+- `constructAuthorizationUrl(state: string, purpose: string, attributes: string[]) => string` - constructs the authorization URL with the necessary params for authorizing the user to retrieve full person data
+- `getToken(authCode: string, state?: string): => TokenResponse` - get access token when presented with a valid auth-code obtained from the Authorise API
 - `getPerson(accessToken: string, attributes: string[]) => MyInfoComponents.Schemas.Person` - get full person data in the shape of `MyInfoComponents.Schemas.Person`, requires a valid access token obtained from getToken
 
 ---
@@ -62,7 +62,7 @@ Usually not needed, for making any other custom requests to MyInfo not covered i
   - `queryParams` refer to the query params for the get request
   - `accessToken` will be prefixed with 'Bearer ' and included in the Authorization header, meant for getPerson api which requires an access token obtained from the Token API
 
-- `post(uri: string, params: { [key: string]: any })` - make post request to the defined myinfo gov endpoint
+- `post(uri: string, params: { [key: string]: any })` - make a post request to the defined myinfo gov endpoint
 
 ---
 
@@ -145,18 +145,18 @@ getPerson({
 
 ## Updating Myinfo domains
 
-- Myinfo domains including `MyinfoComponents` and various enums are auto generated via `npm run generate-myinfo-typings '<swagger file>'`
+- Myinfo domains including `MyinfoComponents` and various enums are auto-generated via `npm run generate-myinfo-typings '<swagger file>'`
 - Swagger file needs to be downloaded from <https://public.cloud.myinfo.gov.sg/myinfo/tuo/myinfo-tuo-specs.html>
-  - Note: there are different variants, this is for Government Digital Services which has the person-basic api
+  - Note: there are different variants, this is for Government Digital Services which has the person-basic API
 - The script will also fetch and generate enums from <https://api.singpass.gov.sg/assets/api-lib/myinfo/downloads/myinfo-api-code-tables.xlsx>
 
-### Folder / file structure of `src/myinfo/domain`
+### Folder/file structure of `src/myinfo/domain`
 
 | Path                 | What is does                                                                       |
 | -------------------- | ---------------------------------------------------------------------------------- |
 | custom/enums         | Custom defined enums in json                                                       |
 | custom/person-common | Additional swagger definitions to go into the `PersonCommon` object                |
-| generated            | Auto generated enums from `generate-myinfo-typings` script, do not add files here! |
+| generated            | Auto-generated enums from `generate-myinfo-typings` script, do not add files here! |
 
 ### Help! The swagger file is missing `<insert data item name>`
 
@@ -177,7 +177,7 @@ getPerson({
 ### Help! `myinfo-api-code-tables.xlsx's <insert code name>` does not match the swagger definition
 
 - Follow the solution above to add enum definition manually
-- That enum will overwrite the auto generated enum
+- That enum will overwrite the auto-generated enum
 
 ---
 
@@ -235,12 +235,12 @@ Singpass.NdiOidcHelper
 | oidcConfigUrl          | string                    | The URL for Singpass OIDC configuration details endpoint                                                   |
 | clientID               | string                    | Your app's ID when you onboarded Singpass.                                                                 |
 | redirectUri            | string                    | the redirect URL for Singpass to redirect to after user login. Must be whitelisted by SP during onboarding |
-| jweDecryptKey          | [key object](#key-object) | Object conatining private key for decrypting the JWT that wraps the token                                  |
-| clientAssertionSignKey | [key object](#key-object) | Object conatining private key for signing the client assertion provided in the token endpoint request      |
+| jweDecryptKey          | [key object](#key-object) | Object containing private key for decrypting the JWT that wraps the token                                  |
+| clientAssertionSignKey | [key object](#key-object) | Object containing private key for signing the client assertion provided in the token endpoint request      |
 
 ### Login
 
-- `constructAuthorizationUrl = (state: string, nonce?: string) => Promise<string>` - constructs the authorization url with the necessary params, including the:
+- `constructAuthorizationUrl = (state: string, nonce?: string) => Promise<string>` - constructs the authorization URL with the necessary params, including the:
 
 - state (later returned in redirectUri)
 - nonce (later returned inside the JWT from token endpoint)
@@ -301,12 +301,12 @@ Corppass.NdiOidcHelper
 | oidcConfigUrl          | string                    | The URL for Corppass OIDC configuration details endpoint                                                   |
 | clientID               | string                    | Your app's ID when you onboarded Corppass.                                                                 |
 | redirectUri            | string                    | the redirect URL for Corppass to redirect to after user login. Must be whitelisted by SP during onboarding |
-| jweDecryptKey          | [key object](#key-object) | Object conatining private key for decrypting the JWT that wraps the token                                  |
-| clientAssertionSignKey | [key object](#key-object) | Object conatining private key for signing the client assertion provided in the token endpoint request      |
+| jweDecryptKey          | [key object](#key-object) | Object containing private key for decrypting the JWT that wraps the token                                  |
+| clientAssertionSignKey | [key object](#key-object) | Object containing private key for signing the client assertion provided in the token endpoint request      |
 
 ### Login
 
-- `constructAuthorizationUrl = (state: string, nonce?: string) => Promise<string>` - constructs the authorization url with the necessary params, including the:
+- `constructAuthorizationUrl = (state: string, nonce?: string) => Promise<string>` - constructs the authorization URL with the necessary params, including the:
 
 - state (later returned in redirectUri)
 - nonce (later returned inside the JWT from token endpoint)
