@@ -11,11 +11,20 @@ export async function decryptJWE(
 ): Promise<jose.JWE.DecryptResult> {
 	if (!jwe) throw new SingpassMyInfoError("Missing JWE data.");
 	if (!decryptKey) throw new SingpassMyInfoError("Missing key to decrypt JWE payload.");
+
 	// TODO: can be further optimized by caching key in memory instead of regenerating each time
-	const key = await jose.JWK.asKey(decryptKey, format);
+	let keyOrKeyStore: jose.JWK.Key | jose.JWK.KeyStore;
+	// if format is `json` we should expect both JWK / JWKS
+	if (format === "json") {
+		const parsed = JSON.parse(decryptKey);
+		const keyset = parsed.keys ? parsed : { keys: [parsed] };
+		keyOrKeyStore = await jose.JWK.asKeyStore(keyset);
+	} else {
+		keyOrKeyStore = await jose.JWK.asKey(decryptKey, format);
+	}
 
 	// allow all supported algorithms
-	return jose.JWE.createDecrypt(key, { algorithms: ["*"] }).decrypt(jwe);
+	return jose.JWE.createDecrypt(keyOrKeyStore, { algorithms: ["*"] }).decrypt(jwe);
 }
 
 export async function verifyJWS(
