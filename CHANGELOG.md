@@ -8,7 +8,7 @@
 
 ## 8.3.9
 
--		Updated helper to try all possible keys in keyset from SP/CP keys endpoint instead of assuming key position
+-   Updated helper to try all possible keys in keyset from SP/CP keys endpoint instead of assuming key position
 
 ## 8.3.8
 
