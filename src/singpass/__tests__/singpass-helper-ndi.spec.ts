@@ -113,8 +113,8 @@ describe("NDI Singpass Helper", () => {
 			const mockDecryptJwe = jest
 				.spyOn(JweUtils, "decryptJWE")
 				.mockResolvedValueOnce({ payload: "DECRYPT_RESULTS" } as unknown as JWE.DecryptResult);
-			const mockVerifyJWS = jest
-				.spyOn(JweUtils, "verifyJWS")
+			const mockVerifyJWSUsingKeyStore = jest
+				.spyOn(JweUtils, "verifyJwsUsingKeyStore")
 				.mockResolvedValueOnce(mockVerifiedJws as unknown as JWS.VerificationResult);
 
 			const mockJwksUrl = "https://www.mocksingpass.gov.sg/.well-known/keys";
@@ -153,7 +153,7 @@ describe("NDI Singpass Helper", () => {
 			expect(axiosMock.mock.calls[1]).toEqual(expect.arrayContaining([mockJwksUrl]));
 
 			expect(mockDecryptJwe).toHaveBeenCalledWith(mockTokenResponse.id_token, mockOverrideDecryptKey, "json");
-			expect(mockVerifyJWS).toHaveBeenCalledWith("DECRYPT_RESULTS", JSON.stringify("MOCK_KEY"), "json");
+			expect(mockVerifyJWSUsingKeyStore).toHaveBeenCalledWith("DECRYPT_RESULTS", ["MOCK_KEY"]);
 			expect(axiosMock).toHaveBeenCalledTimes(2);
 		});
 	});

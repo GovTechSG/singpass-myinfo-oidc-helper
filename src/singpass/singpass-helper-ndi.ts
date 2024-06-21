@@ -117,19 +117,12 @@ export class NdiOidcHelper {
 			const finalDecryptionKey = overrideDecryptKey ?? this.jweDecryptKey;
 			const decryptedJwe = await JweUtil.decryptJWE(id_token, finalDecryptionKey.key, finalDecryptionKey.format);
 			const jwsPayload = decryptedJwe.payload.toString();
-			let error = null;
-			for (const key of keys) {
-				try {
-					const verified = await JweUtil.verifyJWS(jwsPayload, JSON.stringify(key), "json");
-					return JSON.parse(verified.payload.toString()) as TokenPayload;
-				} catch (err) {
-					error = err;
-				}
-			}
-			if (error) {
-				throw error;
-			} else {
-				throw new SingpassMyInfoError('could not verify with any key');
+			try {
+				const verified = await JweUtil.verifyJwsUsingKeyStore(jwsPayload, keys);
+				return JSON.parse(verified.payload.toString()) as TokenPayload;
+			} catch (e) {
+				logger.error("could not verify token payload", e);
+				throw e;
 			}
 		} catch (e) {
 			logger.error("Failed to get token payload", e);
