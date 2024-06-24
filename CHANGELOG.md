@@ -1,5 +1,15 @@
 # Changelogs
 
+## 8.4.0
+
+-   allow `decryptKey` for util function to accept JWKS strings when format is `json`
+-	  make use of util function for verifying payload against possible keys
+-	  add convenience test suite (skipped) for testing/verifying actual ndi oidc integration/configs
+
+## 8.3.9
+
+-   Updated helper to try all possible keys in keyset from SP/CP keys endpoint instead of assuming key position
+
 ## 8.3.8
 
 -   Updated dependencies to fix npm audit
