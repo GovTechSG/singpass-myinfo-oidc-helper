@@ -69,7 +69,7 @@ jobs:
           DOWNSTREAM_JOB_NAME: build-dist-job
         run: |
           echo "Pipeline ID: $PIPELINE_ID"
-          echo "[ Running pipline check after $SLEEP_DURATION_MINUTES minutes ]"
+          echo "[ Running pipeline check after $SLEEP_DURATION_MINUTES minutes ]"
           sleep $(($SLEEP_DURATION_MINUTES*60))
 
           num_attempts=1
