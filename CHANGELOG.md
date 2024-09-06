@@ -1,10 +1,14 @@
 # Changelogs
 
+## 8.4.1
+
+-   Update axios to v1.7.4
+
 ## 8.4.0
 
 -   allow `decryptKey` for util function to accept JWKS strings when format is `json`
--	  make use of util function for verifying payload against possible keys
--	  add convenience test suite (skipped) for testing/verifying actual ndi oidc integration/configs
+-   make use of util function for verifying payload against possible keys
+-   add convenience test suite (skipped) for testing/verifying actual ndi oidc integration/configs
 
 ## 8.3.9
 
