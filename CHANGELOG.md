@@ -1,5 +1,9 @@
 # Changelogs
 
+## 8.4.2
+
+-   Add passtype to japanese fake profiles.
+
 ## 8.4.1
 
 -   Update axios to v1.7.4
