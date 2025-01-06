@@ -57,6 +57,14 @@ export const mrJapaneseNoAddressObject: FakeProfile = {
 			value: "",
 		};
 
+		profile.passtype = {
+			code: "RPass",
+			desc: "Work Permit",
+			classification: "C",
+			source: "1",
+			lastupdated: "2025-01-01",
+		};
+
 		profile.dialect = {
 			lastupdated: "2020-09-10",
 			code: "",
