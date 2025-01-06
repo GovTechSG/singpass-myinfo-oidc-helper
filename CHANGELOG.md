@@ -1,5 +1,9 @@
 # Changelogs
 
+## 8.4.3
+
+-   Add passtype to getPersonInfo.
+
 ## 8.4.2
 
 -   Add passtype to japanese fake profiles.

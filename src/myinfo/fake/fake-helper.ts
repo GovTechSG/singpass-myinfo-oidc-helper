@@ -10,6 +10,7 @@ import {
 	MyInfoHousingTypeCode,
 	MyInfoLifeStatusCode,
 	MyInfoMaritalStatusCode,
+	MyInfoPassTypeCode,
 	MyInfoRaceCode,
 	MyInfoResidentialCode,
 	MyInfoSexCode,
@@ -66,6 +67,10 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		if (!isEmpty(mockParams.marital)) {
 			myinfoPerson.marital.code = mockParams.marital;
 			myinfoPerson.marital.desc = MyInfoMaritalStatusCode.fn.toEnumDesc(mockParams.marital);
+		}
+		if (!isEmpty(mockParams.passtype)) {
+			myinfoPerson.passtype.code = mockParams.passtype;
+			myinfoPerson.passtype.desc = MyInfoPassTypeCode.fn.toEnumDesc(mockParams.passtype);
 		}
 
 		if (!isEmpty(mockParams.marriagedate)) {
