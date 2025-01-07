@@ -1,5 +1,9 @@
 # Changelogs
 
+## 8.4.4
+
+-   Add passtype to basicPerson.
+
 ## 8.4.3
 
 -   Add passtype to getPersonInfo.
