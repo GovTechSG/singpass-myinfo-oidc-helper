@@ -7,6 +7,7 @@ import {
 	MyInfoLifeStatusCode,
 	MyInfoMaritalStatusCode,
 	MyInfoMerdekaGenerationMessageCode,
+	MyInfoPassTypeCode,
 	MyInfoRaceCode,
 	MyInfoResidentialCode,
 	MyInfoSexCode,
@@ -103,6 +104,7 @@ export interface MockParams {
 	drivingqdlvalidity?: MyInfoDrivingLicenceValidityCode;
 	vehicles?: VehicleDetails[];
 	employment?: string;
+	passtype?: MyInfoPassTypeCode;
 }
 export interface MockFinanceParams {
 	cpfcontributionhistoryoverridemode?: OverrideMode;
