@@ -239,6 +239,13 @@ export const BaseProfile: FakeProfile = {
 				source: "1",
 				classification: "C",
 			},
+			passtype: {
+				lastupdated: "2025-01-01",
+				code: "",
+				desc: "",
+				source: "2",
+				classification: "C",
+			},
 			aliasname: {
 				lastupdated: "2018-06-01",
 				source: "1",
