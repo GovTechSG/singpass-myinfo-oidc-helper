@@ -181,6 +181,13 @@ export const mrAppReviewer: FakeProfile = {
 				lastupdated,
 				unavailable: false,
 			},
+			passtype: {
+				lastupdated: "2025-01-01",
+				code: "",
+				desc: "",
+				source: "2",
+				classification: "C",
+			},
 			marriagecertno: {
 				value: "M525997",
 				source,
