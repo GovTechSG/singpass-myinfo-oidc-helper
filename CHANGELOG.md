@@ -1,5 +1,9 @@
 # Changelogs
 
+## 8.4.5
+
+-   Add passtype to other profiles.
+
 ## 8.4.4
 
 -   Add passtype to basicPerson.
