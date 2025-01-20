@@ -46,6 +46,13 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				source: "2",
 				classification: "C",
 			},
+			passtype: {
+				lastupdated: "2025-01-01",
+				code: "",
+				desc: "",
+				source: "2",
+				classification: "C",
+			},
 			regadd: {
 				country: {
 					code: MyInfoCountryPlaceCode.SINGAPORE,
