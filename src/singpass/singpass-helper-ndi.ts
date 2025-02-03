@@ -66,7 +66,7 @@ export class NdiOidcHelper {
 	 * Get tokens from Singpass endpoint. Note: This will fail if not on an IP whitelisted by SP.
 	 * Use getIdTokenPayload on returned Token Response to get the token payload
 	 */
-	public getTokens = async (authCode: string): Promise<TokenResponse> => {
+	public getTokens = async (authCode: string, codeVerifier?: string): Promise<TokenResponse> => {
 		const {
 			data: { token_endpoint, issuer },
 		} = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
@@ -83,6 +83,7 @@ export class NdiOidcHelper {
 				audience: issuer,
 				key: this.clientAssertionSignKey,
 			}),
+			...(codeVerifier ? { code_verifier: codeVerifier } : undefined),
 		};
 		const body = querystringUtil.stringify(params);
 
