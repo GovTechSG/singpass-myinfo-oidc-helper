@@ -1,5 +1,9 @@
 # Changelogs
 
+## 8.4.6
+
+-   Add `codeVerifier` for new singpass integration
+
 ## 8.4.5
 
 -   Add passtype to other profiles.
