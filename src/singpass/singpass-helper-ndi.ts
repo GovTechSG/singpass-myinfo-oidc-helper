@@ -7,6 +7,7 @@ import { logger } from "../util/Logger";
 import { TokenPayload, TokenResponse } from "./shared-constants";
 import { Key } from "../util/KeyUtil";
 import { createClientAssertion } from "../util/SigningUtil";
+import { generators } from "openid-client";
 
 export interface NdiOidcHelperConstructor {
 	oidcConfigUrl: string;
@@ -45,7 +46,11 @@ export class NdiOidcHelper {
 		});
 	}
 
-	public constructAuthorizationUrl = async (state: string, nonce?: string): Promise<string> => {
+	public constructAuthorizationUrl = async (
+		state: string,
+		nonce?: string,
+		codeVerifier?: string,
+	): Promise<string> => {
 		const {
 			data: { authorization_endpoint },
 		} = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
@@ -57,6 +62,9 @@ export class NdiOidcHelper {
 			scope: "openid",
 			client_id: this.clientID,
 			response_type: "code",
+			...(codeVerifier
+				? { code_challenge_method: "S256", code_challenge: generators.codeChallenge(codeVerifier) }
+				: {}),
 		};
 		const queryString = querystringUtil.stringify(queryParams);
 		return `${authorization_endpoint}?${queryString}`;
@@ -66,7 +74,7 @@ export class NdiOidcHelper {
 	 * Get tokens from Singpass endpoint. Note: This will fail if not on an IP whitelisted by SP.
 	 * Use getIdTokenPayload on returned Token Response to get the token payload
 	 */
-	public getTokens = async (authCode: string): Promise<TokenResponse> => {
+	public getTokens = async (authCode: string, codeVerifier?: string): Promise<TokenResponse> => {
 		const {
 			data: { token_endpoint, issuer },
 		} = await this.axiosClient.get<OidcConfig>(this.oidcConfigUrl);
@@ -83,6 +91,7 @@ export class NdiOidcHelper {
 				audience: issuer,
 				key: this.clientAssertionSignKey,
 			}),
+			...(codeVerifier ? { code_verifier: codeVerifier } : undefined),
 		};
 		const body = querystringUtil.stringify(params);
 
