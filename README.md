@@ -13,6 +13,13 @@ Use this module to build client applications that can:
 
 ---
 
+## Testing your SingPass / MyInfo client setup and secrets
+
+- These tests will allow you to check if your IDs / keys / certs / JWK endpoints/objects
+are correctly setup
+- Use `singpass-helper-ndi-ext.spec.ts` to test login and retrieval of tokens
+- After logging in use `myinfo.ext.spec.ts` to test retrieval of myinfo data
+
 ## MyInfo
 
 ---
