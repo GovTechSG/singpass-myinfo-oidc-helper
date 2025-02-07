@@ -1,5 +1,9 @@
 # Changelogs
 
+## x.x.x
+
+-   Update convenience test suite to include SingPass login with PKCE
+
 ## 8.4.6
 
 -   Add `codeVerifier` for new singpass integration

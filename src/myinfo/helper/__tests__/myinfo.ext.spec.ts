@@ -3,6 +3,12 @@ import { configs } from "./test.configs";
 import { set } from "lodash";
 import { aliasName } from "../../fake/profiles/common";
 
+/**
+ * Convenience tests for MyInfo config / integration
+ * 1. fill in the `testNric`
+ * 2. .env variables must be set, make a copy of `.env.sample`
+ * 3. `singpassEserviceID` is not the SingPass AppId. It looks like STG-T12345678-LOGIN-xxxxxxxx
+ */
 describe("MyInfoClient", () => {
 	describe("STAGING Person basic API V3", () => {
 		it("should use the available env variables, call myinfo, and get back person", async () => {
