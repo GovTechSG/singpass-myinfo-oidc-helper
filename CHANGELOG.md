@@ -1,8 +1,9 @@
 # Changelogs
 
-## x.x.x
+## 8.4.7
 
 -   Update convenience test suite to include SingPass login with PKCE
+-   Update axios to v1.8.3
 
 ## 8.4.6
 
