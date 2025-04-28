@@ -1,8 +1,8 @@
 /* eslint-disable max-len */
 import * as jose from "node-jose";
 import { TokenResponse } from "../../singpass/shared-constants";
-import { decryptJWE, extractJwtHeader, extractKidFromIdToken } from "../JweUtil";
 import { SingpassMyInfoError } from "../error/SingpassMyinfoError";
+import { decryptJWE, extractJwtHeader, extractKidFromIdToken } from "../JweUtil";
 
 describe("extractJwtHeader", () => {
 	it("should extract JWT header", () => {
@@ -54,7 +54,7 @@ fdescribe("decryptJWE", () => {
 			d: "4yo4UhZCl7wrfi1Wi5TzHUMfDNhN_aUn-kNM4zJvsaM",
 			use: "enc",
 			kid: "MatchingKey",
-			alg: "ECDH-ES+A128KW"
+			alg: "ECDH-ES+A128KW",
 		};
 		const jwks = JSON.stringify({
 			keys: [
@@ -64,9 +64,9 @@ fdescribe("decryptJWE", () => {
 				},
 				{
 					...jwkKey,
-					kid: "NonMatchingKey"
-				}
-			]
+					kid: "NonMatchingKey",
+				},
+			],
 		});
 		const jwk = JSON.stringify({ ...jwkKey, kid: "MatchingKey" });
 		const payload = JSON.stringify({ foo: "bar" });

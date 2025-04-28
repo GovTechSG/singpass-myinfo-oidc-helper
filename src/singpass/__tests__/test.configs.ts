@@ -15,11 +15,11 @@ export const configs = {
 		redirectUri: getValueFromEnv("SINGPASS_AUTH_REDIRECT_URL"),
 		jweDecryptKey: {
 			key: getValueFromEnv("SINGPASS_AUTH_JWE_DECRYPT_KEY"),
-			format: getValueFromEnv("SINGPASS_AUTH_JWE_DECRYPT_KEY_FORMAT")
+			format: getValueFromEnv("SINGPASS_AUTH_JWE_DECRYPT_KEY_FORMAT"),
 		},
 		clientAssertionSignKey: {
 			key: getValueFromEnv("SINGPASS_AUTH_CLIENT_ASSERTION_SIGN_KEY"),
 			alg: getValueFromEnv("SINGPASS_AUTH_CLIENT_ASSERTION_SIGN_KEY_ALG"),
-		}
-	}
+		},
+	},
 };
