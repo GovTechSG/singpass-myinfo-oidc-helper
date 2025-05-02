@@ -1,9 +1,10 @@
 import * as jwt from "jsonwebtoken";
+import { generators } from "openid-client";
 import { KeyFormat } from "../../util/KeyUtil";
 import { logger } from "../../util/Logger";
 import { NdiOidcHelper, NdiOidcHelperConstructor } from "../singpass-helper-ndi";
 import { configs } from "./test.configs";
-import { generators } from "openid-client";
+
 const expectedUinfin = ""; // FIXME: fill in with expected uinfin
 
 /**
@@ -32,7 +33,7 @@ describe.skip("Singpass NDI OIDC integration", () => {
 
 	describe("integration tester for Ndi OIDC", () => {
 		describe("construct authorization url", () => {
-		it("should successfully construct authorization url", async () => {
+			it("should successfully construct authorization url", async () => {
 				await constructAuthorizationUrlHelper();
 			});
 		});
@@ -54,7 +55,7 @@ describe.skip("Singpass NDI OIDC integration", () => {
 		});
 
 		describe("get user identity after successful redirect with auth code", () => {
-		it("should successfully extract nric and uuid", async () => {
+			it("should successfully extract nric and uuid", async () => {
 				const authCode = ""; // FIXME: fill in with authCode
 				const codeVerifier = ""; // FIXME: fill in with codeVerifier
 				const nric = await extractNricHelper(authCode, codeVerifier);
@@ -74,16 +75,16 @@ describe.skip("Singpass NDI OIDC integration", () => {
 	};
 
 	const extractNricHelper = async (authCode: string, codeVerifier?: string) => {
-			const spNdiHelper = new NdiOidcHelper(props);
+		const spNdiHelper = new NdiOidcHelper(props);
 
 		const tokens = await spNdiHelper.getTokens(authCode, codeVerifier);
-			logger.debug("tokens", tokens);
+		logger.debug("tokens", tokens);
 
-			const tokenPayload = await spNdiHelper.getIdTokenPayload(tokens);
-			logger.debug("tokenPayload", tokenPayload);
+		const tokenPayload = await spNdiHelper.getIdTokenPayload(tokens);
+		logger.debug("tokenPayload", tokenPayload);
 
-			const { nric } = await spNdiHelper.extractNricAndUuidFromPayload(tokenPayload);
-			logger.debug("nric", nric);
+		const { nric } = await spNdiHelper.extractNricAndUuidFromPayload(tokenPayload);
+		logger.debug("nric", nric);
 
 		return nric;
 	};

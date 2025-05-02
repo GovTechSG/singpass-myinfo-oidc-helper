@@ -2,12 +2,12 @@ import { AxiosInstance, AxiosProxyConfig } from "axios";
 import * as querystringUtil from "querystring";
 import { createClient } from "../client/axios-client";
 import { JweUtil } from "../util";
-import { SingpassMyInfoError } from "../util/error/SingpassMyinfoError";
-import { logger } from "../util/Logger";
-import { AuthInfo, EntityInfo, EserviceAuthResultRow, TokenResponse, TPAccessInfo, UserInfo } from "./shared-constants";
-import { Key } from "../util/KeyUtil";
-import { createClientAssertion } from "../util/SigningUtil";
 import { DateUtils } from "../util/DateUtils";
+import { SingpassMyInfoError } from "../util/error/SingpassMyinfoError";
+import { Key } from "../util/KeyUtil";
+import { logger } from "../util/Logger";
+import { createClientAssertion } from "../util/SigningUtil";
+import { AuthInfo, EntityInfo, EserviceAuthResultRow, TokenResponse, TPAccessInfo, UserInfo } from "./shared-constants";
 
 interface AccessTokenPayload {
 	exp: number;
@@ -179,7 +179,7 @@ export class NdiOidcHelper {
 			if (error) {
 				throw error;
 			} else {
-				throw new SingpassMyInfoError('could not verify with any key');
+				throw new SingpassMyInfoError("could not verify with any key");
 			}
 		} catch (e) {
 			logger.error("Failed to get access token payload", e);
@@ -219,7 +219,7 @@ export class NdiOidcHelper {
 			if (error) {
 				throw error;
 			} else {
-				throw new SingpassMyInfoError('could not verify with any key');
+				throw new SingpassMyInfoError("could not verify with any key");
 			}
 		} catch (e) {
 			logger.error("Failed to get ID token payload", e);
