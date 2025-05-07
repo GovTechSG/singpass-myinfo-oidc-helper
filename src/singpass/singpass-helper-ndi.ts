@@ -56,10 +56,34 @@ export class NdiOidcHelper {
 		return this.oidcConfig;
 	};
 
+	public constructAuthorizationUrlV2 = async (params: {
+		state: string;
+		/**
+		 * myinfo attributes to request from NDI
+		 *
+		 * pass in empty array if not requesting any user info
+		 *
+		 * myinfo data must be subsequently fetched using the `getUserInfo` method
+		 *
+		 * @example
+		 * ["name", "uinfin", "mobileno"]
+		 */
+		userInfoScope: string[];
+		nonce?: string;
+		codeVerifier?: string;
+	}) => {
+		const { state, nonce, userInfoScope, codeVerifier } = params;
+
+		userInfoScope.unshift("openid");
+
+		return this.constructAuthorizationUrl(state, nonce, codeVerifier, userInfoScope.join(" "));
+	};
+
 	public constructAuthorizationUrl = async (
 		state: string,
 		nonce?: string,
 		codeVerifier?: string,
+		scope: string = "openid",
 	): Promise<string> => {
 		const { authorization_endpoint } = await this.getOidcConfig();
 
@@ -67,7 +91,7 @@ export class NdiOidcHelper {
 			state,
 			...(nonce ? { nonce } : {}),
 			redirect_uri: this.redirectUri,
-			scope: "openid",
+			scope,
 			client_id: this.clientID,
 			response_type: "code",
 			...(codeVerifier
