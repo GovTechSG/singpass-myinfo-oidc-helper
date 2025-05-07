@@ -52,6 +52,8 @@ export interface ChildrenBirthRecord {
 	tob?: string;
 	sex?: MyInfoSexCode;
 	lifestatus?: MyInfoLifeStatusCode;
+	race?: MyInfoRaceCode;
+	secondaryrace?: MyInfoRaceCode;
 }
 
 export interface CpfContributionHistory {
