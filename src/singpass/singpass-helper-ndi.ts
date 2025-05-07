@@ -90,29 +90,6 @@ export class NdiOidcHelper {
 		return this.constructAuthorizationUrl(state, nonce, codeVerifier, userInfoScope.join(" "));
 	};
 
-	public constructAuthorizationUrl = async (
-		state: string,
-		nonce?: string,
-		codeVerifier?: string,
-		scope: string = "openid",
-	): Promise<string> => {
-		const { authorization_endpoint } = await this.getOidcConfig();
-
-		const queryParams = {
-			state,
-			...(nonce ? { nonce } : {}),
-			redirect_uri: this.redirectUri,
-			scope,
-			client_id: this.clientID,
-			response_type: "code",
-			...(codeVerifier
-				? { code_challenge_method: "S256", code_challenge: generators.codeChallenge(codeVerifier) }
-				: {}),
-		};
-		const queryString = querystringUtil.stringify(queryParams);
-		return `${authorization_endpoint}?${queryString}`;
-	};
-
 	/**
 	 * Get tokens from Singpass endpoint. Note: This will fail if not on an IP whitelisted by SP.
 	 * Use getIdTokenPayload on returned Token Response to get the token payload
@@ -189,7 +166,39 @@ export class NdiOidcHelper {
 		}
 	};
 
+	// =========================================================================
+	// Deprecated
+	// =========================================================================
+
 	/**
+	 * @deprecated should use constructAuthorizationUrlV2
+	 */
+	public constructAuthorizationUrl = async (
+		state: string,
+		nonce?: string,
+		codeVerifier?: string,
+		scope: string = "openid",
+	): Promise<string> => {
+		const { authorization_endpoint } = await this.getOidcConfig();
+
+		const queryParams = {
+			state,
+			...(nonce ? { nonce } : {}),
+			redirect_uri: this.redirectUri,
+			scope,
+			client_id: this.clientID,
+			response_type: "code",
+			...(codeVerifier
+				? { code_challenge_method: "S256", code_challenge: generators.codeChallenge(codeVerifier) }
+				: {}),
+		};
+		const queryString = querystringUtil.stringify(queryParams);
+		return `${authorization_endpoint}?${queryString}`;
+	};
+
+	/**
+	 * @deprecated should not be used with full NDI PKCE flow
+	 *
 	 * Decrypts the ID Token JWT inside the TokenResponse to get the payload
 	 * Use extractNricAndUuidFromPayload on the returned Token Payload to get the NRIC and UUID
 	 */
@@ -216,6 +225,8 @@ export class NdiOidcHelper {
 	}
 
 	/**
+	 * @deprecated should not be used with full NDI PKCE flow
+	 *
 	 * Returns the nric and uuid from the token payload
 	 */
 	public extractNricAndUuidFromPayload(payload: TokenPayload): { nric: string; uuid: string } {
