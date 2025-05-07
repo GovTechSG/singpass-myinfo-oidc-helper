@@ -1,13 +1,14 @@
 import { AxiosInstance, AxiosProxyConfig } from "axios";
+import { generators } from "openid-client";
 import * as querystringUtil from "querystring";
 import { createClient } from "../client/axios-client";
+import { MyInfoComponents } from "../myinfo";
 import { JweUtil } from "../util";
 import { SingpassMyInfoError } from "../util/error/SingpassMyinfoError";
-import { logger } from "../util/Logger";
-import { TokenPayload, TokenResponse } from "./shared-constants";
 import { Key } from "../util/KeyUtil";
+import { logger } from "../util/Logger";
 import { createClientAssertion } from "../util/SigningUtil";
-import { generators } from "openid-client";
+import { TokenPayload, TokenResponse } from "./shared-constants";
 
 export interface NdiOidcHelperConstructor {
 	oidcConfigUrl: string;
@@ -21,6 +22,7 @@ export interface NdiOidcHelperConstructor {
 interface OidcConfig {
 	issuer: string;
 	authorization_endpoint: string;
+	userinfo_endpoint: string;
 	token_endpoint: string;
 	jwks_uri: string;
 }
@@ -54,6 +56,15 @@ export class NdiOidcHelper {
 		}
 
 		return this.oidcConfig;
+	};
+
+	private getKeys = async () => {
+		const { jwks_uri } = await this.getOidcConfig();
+		const {
+			data: { keys },
+		} = await this.axiosClient.get<{ keys: object[] }>(jwks_uri);
+
+		return keys;
 	};
 
 	public constructAuthorizationUrlV2 = async (params: {
@@ -135,7 +146,47 @@ export class NdiOidcHelper {
 			logger.error("Failed to get ID token: invalid response data", response.data);
 			throw new SingpassMyInfoError("Failed to get ID token");
 		}
+		if (!response.data.access_token) {
+			logger.error("Failed to get access token: invalid response data", response.data);
+			throw new SingpassMyInfoError("Failed to get access token");
+		}
 		return response.data;
+	};
+
+	public getUserInfo = async (token: string) => {
+		const { userinfo_endpoint } = await this.getOidcConfig();
+
+		const { data } = await this.axiosClient.get<string>(userinfo_endpoint, {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		});
+
+		return data;
+	};
+
+	public verifyUserInfo = async (jweResponse: string, overrideDecryptKey?: Key) => {
+		try {
+			const keys = await this.getKeys();
+
+			const finalDecryptionKey = overrideDecryptKey ?? this.jweDecryptKey;
+			const decryptedJwe = await JweUtil.decryptJWE(
+				jweResponse,
+				finalDecryptionKey.key,
+				finalDecryptionKey.format,
+			);
+			const jwsPayload = decryptedJwe.payload.toString();
+			try {
+				const verified = await JweUtil.verifyJwsUsingKeyStore(jwsPayload, keys);
+				return JSON.parse(verified.payload.toString()) as MyInfoComponents.Schemas.Person & TokenPayload;
+			} catch (e) {
+				logger.error("could not verify user info payload", e);
+				throw e;
+			}
+		} catch (e) {
+			logger.error("Failed to get user info", e);
+			throw e;
+		}
 	};
 
 	/**
@@ -144,10 +195,7 @@ export class NdiOidcHelper {
 	 */
 	public async getIdTokenPayload(tokens: TokenResponse, overrideDecryptKey?: Key): Promise<TokenPayload> {
 		try {
-			const { jwks_uri } = await this.getOidcConfig();
-			const {
-				data: { keys },
-			} = await this.axiosClient.get<{ keys: object[] }>(jwks_uri);
+			const keys = await this.getKeys();
 
 			const { id_token } = tokens;
 
