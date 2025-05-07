@@ -23,22 +23,16 @@ describe("extractKidFromIdToken", () => {
 	it("should throw error when id_token header does not contain kid", () => {
 		const SAMPLE_TOKEN: TokenResponse = {
 			access_token: "",
-			refresh_token: "",
 			id_token: SAMPLE_JWT_WITHOUT_KID,
 			token_type: "",
-			expires_in: 0,
-			scope: "",
 		};
 		expect(() => extractKidFromIdToken(SAMPLE_TOKEN)).toThrow(SingpassMyInfoError);
 	});
 	it("should return kid in id_token", () => {
 		const SAMPLE_TOKEN: TokenResponse = {
 			access_token: "",
-			refresh_token: "",
 			id_token: SAMPLE_JWT_WITH_KID,
 			token_type: "",
-			expires_in: 0,
-			scope: "",
 		};
 		expect(extractKidFromIdToken(SAMPLE_TOKEN)).toEqual("test-kid");
 	});
