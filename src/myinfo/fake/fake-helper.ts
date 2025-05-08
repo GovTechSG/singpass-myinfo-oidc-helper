@@ -673,6 +673,17 @@ export function transformChildBirthRecord(
 		},
 		dob: { value: isNaN(Date.parse(childbirthrecord.dob)) ? "2020-01-01" : childbirthrecord.dob },
 		tob: { value: childbirthrecord.tob || "0000" },
+		...(childbirthrecord.race
+			? { race: { code: childbirthrecord.race, desc: MyInfoRaceCode.fn.toEnumDesc(childbirthrecord.race) } }
+			: undefined),
+		...(childbirthrecord.secondaryrace
+			? {
+					secondaryrace: {
+						code: childbirthrecord.secondaryrace,
+						desc: MyInfoRaceCode.fn.toEnumDesc(childbirthrecord.secondaryrace),
+					},
+				}
+			: undefined),
 		unavailable: false,
 	} as MyInfoComponents.Schemas.Childrenbirthrecords;
 }

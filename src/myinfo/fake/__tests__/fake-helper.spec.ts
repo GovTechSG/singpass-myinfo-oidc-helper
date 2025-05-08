@@ -1,4 +1,4 @@
-import { MyInfoLifeStatusCode, MyInfoSexCode, MyInfoVehicleStatus } from "../../domain";
+import { MyInfoLifeStatusCode, MyInfoRaceCode, MyInfoSexCode, MyInfoVehicleStatus } from "../../domain";
 import {
 	FakeMyInfoHelper,
 	transformChildBirthRecord,
@@ -196,6 +196,8 @@ describe("FakeMyInfoHelper", () => {
 					tob: "",
 					sex: MyInfoSexCode.FEMALE,
 					lifestatus: MyInfoLifeStatusCode.ALIVE,
+					race: MyInfoRaceCode.ACHEHNESE,
+					secondaryrace: MyInfoRaceCode.ZIMBABWEAN,
 				},
 				{
 					birthcertno: "S9846203A",
@@ -206,6 +208,21 @@ describe("FakeMyInfoHelper", () => {
 					lifestatus: MyInfoLifeStatusCode.ALIVE,
 				},
 			];
+
+			it("should set race code correctly", () => {
+				const fakeHelper = new FakeMyInfoHelper();
+
+				const person = fakeHelper.getPersonBasic({
+					archetype: ProfileArchetype.MR_SG_FATHER_NORMAL_CHILDREN,
+					childrenoverridemode: OverrideMode.full,
+					childrenbirthrecords: mockChildrenbirthrecords,
+				});
+
+				expect(person.childrenbirthrecords[0].race).toStrictEqual({ code: "AJ", desc: "ACHEHNESE" });
+				expect(person.childrenbirthrecords[0].secondaryrace).toStrictEqual({ code: "ZW", desc: "ZIMBABWEAN" });
+				expect(person.childrenbirthrecords[1].race).toStrictEqual(undefined);
+				expect(person.childrenbirthrecords[1].secondaryrace).toStrictEqual(undefined);
+			});
 
 			describe("childrenoverridemode = full", () => {
 				it("should override all exisiting children of archetype if childrenbirthrecords is NOT empty", () => {
