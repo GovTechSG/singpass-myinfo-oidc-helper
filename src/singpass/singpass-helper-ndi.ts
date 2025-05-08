@@ -84,10 +84,23 @@ export class NdiOidcHelper {
 		codeVerifier?: string;
 	}) => {
 		const { state, nonce, userInfoScope, codeVerifier } = params;
+		const { authorization_endpoint } = await this.getOidcConfig();
 
 		userInfoScope.unshift("openid");
 
-		return this.constructAuthorizationUrl(state, nonce, codeVerifier, userInfoScope.join(" "));
+		const queryParams = {
+			state,
+			...(nonce ? { nonce } : {}),
+			redirect_uri: this.redirectUri,
+			scope: userInfoScope.join(" "),
+			client_id: this.clientID,
+			response_type: "code",
+			...(codeVerifier
+				? { code_challenge_method: "S256", code_challenge: generators.codeChallenge(codeVerifier) }
+				: {}),
+		};
+		const queryString = querystringUtil.stringify(queryParams);
+		return `${authorization_endpoint}?${queryString}`;
 	};
 
 	/**
@@ -177,23 +190,8 @@ export class NdiOidcHelper {
 		state: string,
 		nonce?: string,
 		codeVerifier?: string,
-		scope: string = "openid",
 	): Promise<string> => {
-		const { authorization_endpoint } = await this.getOidcConfig();
-
-		const queryParams = {
-			state,
-			...(nonce ? { nonce } : {}),
-			redirect_uri: this.redirectUri,
-			scope,
-			client_id: this.clientID,
-			response_type: "code",
-			...(codeVerifier
-				? { code_challenge_method: "S256", code_challenge: generators.codeChallenge(codeVerifier) }
-				: {}),
-		};
-		const queryString = querystringUtil.stringify(queryParams);
-		return `${authorization_endpoint}?${queryString}`;
+		return this.constructAuthorizationUrlV2({ state, nonce, codeVerifier, userInfoScope: [] });
 	};
 
 	/**

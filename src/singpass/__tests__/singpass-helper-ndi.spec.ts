@@ -78,22 +78,6 @@ describe("NDI Singpass Helper", () => {
 			expect(authUrl).toEqual(expected);
 		});
 
-		it("should construct the endpoint with the scope that is passed in", async () => {
-			const mockScope = "mock scope";
-			const encodedMockScope = "mock%20scope";
-			const authUrl = await helper.constructAuthorizationUrl(
-				mockParams.state,
-				mockParams.nonce,
-				mockParams.codeVerifier,
-				mockScope,
-			);
-
-			// eslint-disable-next-line max-len
-			const expectedQuery = `?state=${mockParams.state}&nonce=${mockParams.nonce}&redirect_uri=http%3A%2F%2Fmockme.sg%2Fcallback&scope=${encodedMockScope}&client_id=CLIENT-ID&response_type=code&code_challenge_method=S256&code_challenge=ry3USnoiRbnteX-97HMq8iiTHOzPnoXSaytUNIuOXUg`;
-			const expected = mockAuthoriseEndpoint + expectedQuery;
-			expect(authUrl).toEqual(expected);
-		});
-
 		it("should construct the endpoint with the V2 method", async () => {
 			const authUrl = await helper.constructAuthorizationUrlV2({
 				state: mockParams.state,
