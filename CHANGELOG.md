@@ -1,5 +1,13 @@
 # Changelogs
 
+## x.x.x
+
+-	NdiOidcHelper
+    -	`scope` can now be passed in to`constructAuthorizationUrl`
+    -	Added `constructAuthorizationUrlV2`
+    -	Added `getUserInfo` and `ververifyUserInfo` to fetch myinfo data from NDI instead of MyInfo
+    -	Add deprecation warnings for `constructAuthorizationUrl`, `getIdTokenPayload` and `extractNricAndUuidFromPayload` to encourage using the full NDI PKCE flow
+
 ## 8.4.7
 
 -   Update convenience test suite to include SingPass login with PKCE
