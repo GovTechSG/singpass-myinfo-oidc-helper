@@ -1,6 +1,6 @@
 {
 	"name": "@govtechsg/singpass-myinfo-oidc-helper",
-	"version": "8.4.7",
+	"version": "8.5.0",
 	"description": "Helper for building a Relying Party to integrate with Singpass OIDC and MyInfo person basic API",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -49,7 +49,7 @@
 		"dtsgenerator": "^3.19.1",
 		"eslint": "^8.56.0",
 		"eslint-config-prettier": "^9.1.0",
-		"eslint-plugin-import": "^2.29.1",
+		"eslint-plugin-import": "^2.31.0",
 		"eslint-plugin-jsdoc": "^48.0.6",
 		"eslint-plugin-prefer-arrow": "^1.2.3",
 		"eslint-plugin-sonarjs": "^0.24.0",
