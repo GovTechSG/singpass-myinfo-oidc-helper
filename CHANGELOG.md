@@ -6,6 +6,8 @@
     -	Added `constructAuthorizationUrlV2`
     -	Added `getUserInfo` and `ververifyUserInfo` to fetch myinfo data from NDI instead of MyInfo
     -	Add deprecation warnings for `constructAuthorizationUrl`, `getIdTokenPayload` and `extractNricAndUuidFromPayload` to encourage using the full NDI PKCE flow
+-	MyInfo
+	-	added v4 specs
 
 ## 8.4.7
 

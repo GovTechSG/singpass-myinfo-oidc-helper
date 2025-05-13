@@ -1,6 +1,6 @@
 /* eslint-disable */
 // =============================================================================
-// This file was generated with `npm run generate-myinfo-typings` on 2023-05-10
+// This file was generated with `npm run generate-myinfo-typings` on 2025-05-13
 // Any modifications to this file may be overwritten when the script runs again
 // Check README.md for more information
 // =============================================================================

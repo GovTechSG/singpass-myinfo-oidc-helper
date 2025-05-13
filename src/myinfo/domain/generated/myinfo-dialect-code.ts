@@ -1,6 +1,6 @@
 /* eslint-disable */
 // =============================================================================
-// This file was generated with `npm run generate-myinfo-typings` on 2023-05-10
+// This file was generated with `npm run generate-myinfo-typings` on 2025-05-13
 // Any modifications to this file may be overwritten when the script runs again
 // Check README.md for more information
 // =============================================================================
@@ -126,6 +126,7 @@ export enum MyInfoDialectCode {
 	"SZECHUAN" = "SC",
 	"SINDHI" = "SD",
 	"SERBIAN" = "SE",
+	"SWAHILI" = "SF",
 	"SWISS_GERMAN" = "SG",
 	"SHANGHAINESE" = "SH",
 	"SINHALESE" = "SI",
@@ -143,6 +144,7 @@ export enum MyInfoDialectCode {
 	"TIBETAN" = "TI",
 	"TAMIL" = "TM",
 	"TONGAN" = "TO",
+	"TATAR" = "TR",
 	"TURKISH" = "TU",
 	"TAIWANESE" = "TW",
 	"UNKNOWN" = "UN",
@@ -151,6 +153,7 @@ export enum MyInfoDialectCode {
 	"VISAYAN" = "VS",
 	"WENCHOW" = "WC",
 	"WELSH" = "WE",
+	"WENZHOUNESE" = "WN",
 	"OTHERS" = "XX",
 	"YIDDISH" = "YI",
 }
@@ -275,6 +278,7 @@ enum MyInfoDialectCodeMapping {
 	"SZECHUAN" = "SZECHUAN",
 	"SINDHI" = "SINDHI",
 	"SERBIAN" = "SERBIAN",
+	"SWAHILI" = "SWAHILI",
 	"SWISS_GERMAN" = "SWISS GERMAN",
 	"SHANGHAINESE" = "SHANGHAINESE",
 	"SINHALESE" = "SINHALESE",
@@ -292,6 +296,7 @@ enum MyInfoDialectCodeMapping {
 	"TIBETAN" = "TIBETAN",
 	"TAMIL" = "TAMIL",
 	"TONGAN" = "TONGAN",
+	"TATAR" = "TATAR",
 	"TURKISH" = "TURKISH",
 	"TAIWANESE" = "TAIWANESE",
 	"UNKNOWN" = "UNKNOWN",
@@ -300,6 +305,7 @@ enum MyInfoDialectCodeMapping {
 	"VISAYAN" = "VISAYAN",
 	"WENCHOW" = "WENCHOW",
 	"WELSH" = "WELSH",
+	"WENZHOUNESE" = "WENZHOUNESE",
 	"OTHERS" = "OTHERS",
 	"YIDDISH" = "YIDDISH",
 }

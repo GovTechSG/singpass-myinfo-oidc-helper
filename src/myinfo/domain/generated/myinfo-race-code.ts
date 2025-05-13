@@ -1,6 +1,6 @@
 /* eslint-disable */
 // =============================================================================
-// This file was generated with `npm run generate-myinfo-typings` on 2023-05-10
+// This file was generated with `npm run generate-myinfo-typings` on 2025-05-13
 // Any modifications to this file may be overwritten when the script runs again
 // Check README.md for more information
 // =============================================================================
@@ -133,6 +133,7 @@ export enum MyInfoRaceCode {
 	"LEBANESE" = "LB",
 	"LITHUANIAN" = "LI",
 	"SRI_LANKAN" = "LK",
+	"LISU" = "LS",
 	"LATIN" = "LT",
 	"LATVIAN" = "LV",
 	"LUXEMBOURGER" = "LX",
@@ -363,6 +364,7 @@ enum MyInfoRaceCodeMapping {
 	"LEBANESE" = "LEBANESE",
 	"LITHUANIAN" = "LITHUANIAN",
 	"SRI_LANKAN" = "SRI LANKAN",
+	"LISU" = "LISU",
 	"LATIN" = "LATIN",
 	"LATVIAN" = "LATVIAN",
 	"LUXEMBOURGER" = "LUXEMBOURGER",
