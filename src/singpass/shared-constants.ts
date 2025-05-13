@@ -1,3 +1,5 @@
+import { MyInfoComponents } from "../myinfo/domain/v3/myinfo-domain";
+
 export interface TokenResponse {
 	access_token: string;
 	token_type: string;
@@ -15,4 +17,11 @@ export interface TokenPayload {
 	exp: number;
 	aud: string;
 	amr: string[];
+}
+
+export interface UserDataPayload extends MyInfoComponents.Schemas.Person {
+	iat: number;
+	iss: string;
+	sub: string;
+	aud: string;
 }
