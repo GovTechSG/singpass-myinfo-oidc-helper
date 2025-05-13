@@ -16,7 +16,7 @@ Use this module to build client applications that can:
 ## Testing your SingPass / MyInfo client setup and secrets
 
 - These tests will allow you to check if your IDs / keys / certs / JWK endpoints/objects
-are correctly setup
+  are correctly setup
 - Use `singpass-helper-ndi-ext.spec.ts` to test login and retrieval of tokens
 - After logging in use `myinfo.ext.spec.ts` to test retrieval of myinfo data
 
@@ -66,8 +66,8 @@ Usually not needed, for making any other custom requests to MyInfo not covered i
 
 - `get(uri: string, queryParams?: { [key: string]: any }, accessToken?: string)` - make get request to the defined myinfo gov endpoint
 
-  - `queryParams` refer to the query params for the get request
-  - `accessToken` will be prefixed with 'Bearer ' and included in the Authorization header, meant for getPerson api which requires an access token obtained from the Token API
+    - `queryParams` refer to the query params for the get request
+    - `accessToken` will be prefixed with 'Bearer ' and included in the Authorization header, meant for getPerson api which requires an access token obtained from the Token API
 
 - `post(uri: string, params: { [key: string]: any })` - make post request to the defined myinfo gov endpoint
 
@@ -153,8 +153,8 @@ getPerson({
 ## Updating Myinfo domains
 
 - Myinfo domains including `MyinfoComponents` and various enums are auto generated via `npm run generate-myinfo-typings '<swagger file>'`
-- Swagger file needs to be downloaded from <https://public.cloud.myinfo.gov.sg/myinfo/tuo/myinfo-tuo-specs.html>
-  - Note: there are different variants, this is for Government Digital Services which has the person-basic api
+- Swagger file needs to be downloaded from <https://public.cloud.myinfo.gov.sg/myinfo/api/myinfo-kyc-v4.0.html>
+    - Note: there are different variants, this is for Government Digital Services which has the person-basic api
 - The script will also fetch and generate enums from <https://api.singpass.gov.sg/assets/api-lib/myinfo/downloads/myinfo-api-code-tables.xlsx>
 
 ### Folder / file structure of `src/myinfo/domain`
@@ -177,9 +177,9 @@ getPerson({
 - More detailed lists can be found at <https://www.singstat.gov.sg/standards/standards-and-classifications>
 - If the missing code list can be found in SingStat, update `generate-myinfo-typings` script to import accordingly
 - Otherwise
-  1. Manually add the enum definition (json) to `custom/enums` folder
-     - _Hint: Refer to existing files for format_
-  2. Run `npm run generate-myinfo-typings '<swagger file>'`
+    1. Manually add the enum definition (json) to `custom/enums` folder
+        - _Hint: Refer to existing files for format_
+    2. Run `npm run generate-myinfo-typings '<swagger file>'`
 
 ### Help! `myinfo-api-code-tables.xlsx's <insert code name>` does not match the swagger definition
 
@@ -245,16 +245,30 @@ Singpass.NdiOidcHelper
 | jweDecryptKey          | [key object](#key-object) | Object conatining private key for decrypting the JWT that wraps the token                                  |
 | clientAssertionSignKey | [key object](#key-object) | Object conatining private key for signing the client assertion provided in the token endpoint request      |
 
-### Login
+### Login (V3) _deprecated_
 
-- `constructAuthorizationUrl = (state: string, nonce?: string) => Promise<string>` - constructs the authorization url with the necessary params, including the:
+- `constructAuthorizationUrl = (params: { state: string; userInfoScope: string[]; nonce?: string; codeVerifier?: string; }) => Promise<string>` - constructs the authorization url with the necessary params, including the:
 
-- state (later returned in redirectUri)
-- nonce (later returned inside the JWT from token endpoint)
+    - state (later returned in redirectUri)
+    - nonce (later returned inside the JWT from token endpoint)
 
 - `getTokens (authCode: string, axiosRequestConfig?: AxiosRequestConfig) => Promise<TokenResponse>` - get back the tokens from SP token endpoint. Outputs TokenResponse, which is the input for getIdTokenPayload
 - `getIdTokenPayload(tokens: TokenResponse, overrideDecryptKey?: Key) => Promise<TokenPayload>` - decrypt and verify the JWT. Outputs TokenPayload, which is the input for extractNricAndUuidFromPayload
 - `extractNricAndUuidFromPayload(payload: TokenPayload) => { nric: string, uuid: string }` - finally, get the nric and WOG (Whole-of-government) UUID of the user from the ID Token TokenPayload
+
+### Login (V4)
+
+- `constructAuthorizationUrlV2 = (params: { state: string; userInfoScope: string[]; nonce?: string; codeVerifier?: string; }) => Promise<string>` - constructs the authorization url with the necessary params, including the:
+
+    - state (later returned in redirectUri)
+    - nonce (later returned inside the JWT from token endpoint)
+    - scope (determines the attributes/user data to be fetched from MyInfo)
+
+- `getTokens (authCode: string, axiosRequestConfig?: AxiosRequestConfig) => Promise<TokenResponse>` - get back the tokens from SP token endpoint. Outputs TokenResponse, which is the input for getIdTokenPayload
+
+- `getUserInfo (token: string) => Promise<string>` - using the `access_token` from `getTokens`, retrieve user data, with the response being a JWE token
+
+- `verifyUserInfo (jwe: string) => Promise<object>` - decrypts the userInfo JWE to return user data
 
 ---
 
