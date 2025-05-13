@@ -2,13 +2,12 @@ import { AxiosInstance, AxiosProxyConfig } from "axios";
 import { generators } from "openid-client";
 import * as querystringUtil from "querystring";
 import { createClient } from "../client/axios-client";
-import { MyInfoComponents } from "../myinfo";
 import { JweUtil } from "../util";
 import { SingpassMyInfoError } from "../util/error/SingpassMyinfoError";
 import { Key } from "../util/KeyUtil";
 import { logger } from "../util/Logger";
 import { createClientAssertion } from "../util/SigningUtil";
-import { TokenPayload, TokenResponse } from "./shared-constants";
+import { TokenPayload, TokenResponse, UserDataPayload } from "./shared-constants";
 
 export interface NdiOidcHelperConstructor {
 	oidcConfigUrl: string;
@@ -168,7 +167,10 @@ export class NdiOidcHelper {
 			const jwsPayload = decryptedJwe.payload.toString();
 			try {
 				const verified = await JweUtil.verifyJwsUsingKeyStore(jwsPayload, keys);
-				return JSON.parse(verified.payload.toString()) as MyInfoComponents.Schemas.Person & TokenPayload;
+
+				// eslint-disable-next-line @typescript-eslint/no-unused-vars
+				const { iat, iss, sub, aud, ...payload } = JSON.parse(verified.payload.toString()) as UserDataPayload;
+				return payload;
 			} catch (e) {
 				logger.error("could not verify user info payload", e);
 				throw e;
