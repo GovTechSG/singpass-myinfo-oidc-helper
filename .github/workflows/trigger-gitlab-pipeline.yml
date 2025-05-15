@@ -42,7 +42,7 @@ jobs:
           response=$(curl -sS --request POST \
               --fail \
               --form token=$GITLAB_TOKEN \
-              --form "ref=main" \
+              --form "ref=feature/MOL-18599" \
               --form "variables[PIPELINE_PROJECT_NAME]=$GITLAB_REPO_NAME" \
               --form "variables[PIPELINE_PROJECT_URL]=$PIPELINE_PROJECT_URL" \
               --form "variables[PIPELINE_EVENT]=$GITHUB_EVENT_NAME" \
