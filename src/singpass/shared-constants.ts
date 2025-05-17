@@ -1,4 +1,4 @@
-import { MyInfoComponents } from "../myinfo/domain/v3/myinfo-domain";
+import { MyInfoComponentsV4 } from "../myinfo/domain/v4/myinfo-domain";
 
 export interface TokenResponse {
 	access_token: string;
@@ -19,7 +19,7 @@ export interface TokenPayload {
 	amr: string[];
 }
 
-export interface UserDataPayload extends MyInfoComponents.Schemas.Person {
+export interface UserDataPayload extends MyInfoComponentsV4.Schemas.Person {
 	iat: number;
 	iss: string;
 	sub: string;
