@@ -2,6 +2,7 @@ import { AxiosInstance, AxiosProxyConfig } from "axios";
 import { generators } from "openid-client";
 import * as querystringUtil from "querystring";
 import { createClient } from "../client/axios-client";
+import { MyInfoComponentsV4 } from "../myinfo";
 import { JweUtil } from "../util";
 import { SingpassMyInfoError } from "../util/error/SingpassMyinfoError";
 import { Key } from "../util/KeyUtil";
@@ -170,7 +171,7 @@ export class NdiOidcHelper {
 
 				// eslint-disable-next-line @typescript-eslint/no-unused-vars
 				const { iat, iss, sub, aud, ...payload } = JSON.parse(verified.payload.toString()) as UserDataPayload;
-				return payload;
+				return payload as MyInfoComponentsV4.Schemas.Person;
 			} catch (e) {
 				logger.error("could not verify user info payload", e);
 				throw e;
