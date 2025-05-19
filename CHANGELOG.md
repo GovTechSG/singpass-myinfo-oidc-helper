@@ -1,8 +1,9 @@
 # Changelogs
 
-## x.x.x
+## 8.5.1
 
 -   Support `race` and `secondaryrace` as mock param options for `childrenbirthrecords` in fake helper
+-   Update user payload typing to MyInfoV4
 
 ## 8.5.0
 
