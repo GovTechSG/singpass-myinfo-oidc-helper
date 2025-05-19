@@ -1,6 +1,6 @@
 {
 	"name": "@govtechsg/singpass-myinfo-oidc-helper",
-	"version": "8.5.0",
+	"version": "8.5.1",
 	"description": "Helper for building a Relying Party to integrate with Singpass OIDC and MyInfo person basic API",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
