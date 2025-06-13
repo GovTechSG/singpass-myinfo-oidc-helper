@@ -1,5 +1,9 @@
 # Changelogs
 
+## 8.5.2
+
+-   move `axios` to peer dependencies
+
 ## 8.5.1
 
 -   Support `race` and `secondaryrace` as mock param options for `childrenbirthrecords` in fake helper
