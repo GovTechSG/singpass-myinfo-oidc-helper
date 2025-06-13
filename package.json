@@ -24,7 +24,6 @@
 	"dependencies": {
 		"@js-joda/core": "^5.6.1",
 		"@js-joda/timezone": "^2.18.2",
-		"axios": "~1.8.3",
 		"https-proxy-agent": "^7.0.3",
 		"is-base64": "^1.1.0",
 		"jsonwebtoken": "^9.0.2",
@@ -45,6 +44,7 @@
 		"@typescript-eslint/eslint-plugin": "^7.0.1",
 		"@typescript-eslint/eslint-plugin-tslint": "^7.0.1",
 		"@typescript-eslint/parser": "^7.0.1",
+		"axios": "^1.8.3",
 		"dotenv": "^16.4.3",
 		"dtsgenerator": "^3.19.1",
 		"eslint": "^8.56.0",
@@ -66,5 +66,8 @@
 		"ts-node": "^10.9.2",
 		"typescript": "^5.3.3",
 		"xlsx": "https://cdn.sheetjs.com/xlsx-0.20.2/xlsx-0.20.2.tgz"
+	},
+	"peerDependencies": {
+		"axios": "^1.8.3"
 	}
 }
