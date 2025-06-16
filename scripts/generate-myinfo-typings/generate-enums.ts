@@ -178,7 +178,7 @@ function writeEnumsToFiles(options: Options, namespaces: EnumNamespace[]): strin
 		const filename = `${_.kebabCase(namespace.enumNamespace).replace(/my-info/, "myinfo")}.ts`;
 
 		const generatedFileDir = path.join(options.outputDir, "generated");
-		const enumUtilsPath = path.join(__dirname, "../../src/util/EnumUtils");
+		const enumUtilsPath = path.join(__dirname, "../../src/types/EnumUtils");
 		const enumUtilsImport = path.relative(generatedFileDir, enumUtilsPath);
 
 		if (namespace.enumTypings.length === 1) {
