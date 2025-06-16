@@ -1,5 +1,5 @@
 import { JWE, JWS } from "node-jose";
-import * as JweUtils from "../../util/JweUtil";
+import * as JweUtils from "src/util/JweUtil";
 import { TokenPayload, TokenResponse } from "../shared-constants";
 import { NdiOidcHelper, NdiOidcHelperConstructor } from "../singpass-helper-ndi";
 

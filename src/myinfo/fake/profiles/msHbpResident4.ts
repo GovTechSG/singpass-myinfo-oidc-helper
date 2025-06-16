@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import { MyInfoComponentsV4, MyInfoSexCode } from "../../../types";
+import { MyInfoComponentsV4, MyInfoSexCode } from "src/types";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { BaseProfile } from "./sponsored-children/BaseProfile";
 

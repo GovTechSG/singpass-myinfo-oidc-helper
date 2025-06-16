@@ -1,15 +1,12 @@
 {
 	"extends": "./shared-config/tsconfig.json",
 	"compilerOptions": {
-		"baseUrl": "./src",
+		"baseUrl": ".",
 		"outDir": "./dist",
 		"declaration": true,
 		"declarationMap": true,
-		"declarationDir": "./dist",
-		"paths": {
-			"src/*": ["./*"]
-		}
+		"declarationDir": "./dist"
 	},
-	"include": ["src/**/*"],
+	"include": ["./**/*.ts"],
 	"exclude": ["**/node_modules/*", "**/__tests__/*", "**/__mocks__/*"]
 }

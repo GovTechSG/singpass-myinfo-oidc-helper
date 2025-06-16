@@ -7,7 +7,7 @@ import {
 	MyInfoRaceCode,
 	MyInfoResidentialCode,
 	MyInfoSexCode,
-} from "../../../types";
+} from "src/types";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { BaseProfile } from "./sponsored-children/BaseProfile";
 

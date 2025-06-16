@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import { MyInfoNationalityCitizenshipCode, MyInfoResidentialCode } from "../../../types";
+import { MyInfoNationalityCitizenshipCode, MyInfoResidentialCode } from "src/types";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 

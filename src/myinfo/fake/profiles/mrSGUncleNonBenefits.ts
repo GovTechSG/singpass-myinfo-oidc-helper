@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import { MyInfoMerdekaGenerationMessageCode } from "../../../types";
+import { MyInfoMerdekaGenerationMessageCode } from "src/types";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 

@@ -1,7 +1,7 @@
 import { ZonedDateTime } from "@js-joda/core";
 import * as _ from "lodash";
-import { DateUtils } from "../../../util/DateUtils";
-import { MyInfoComponentsV4 } from "../../../types";
+import { MyInfoComponentsV4 } from "src/types";
+import { DateUtils } from "src/util";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 

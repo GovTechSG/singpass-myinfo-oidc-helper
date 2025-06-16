@@ -6,7 +6,7 @@ import {
 	MyInfoMaritalStatusCode,
 	MyInfoResidentialCode,
 	MyInfoSexCode,
-} from "../../../types";
+} from "src/types";
 import { ChildrenRecords } from "./childbirthRecords";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";

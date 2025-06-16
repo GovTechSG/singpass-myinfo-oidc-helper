@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import { MyInfoSexCode } from "../../../types";
+import { MyInfoSexCode } from "src/types";
 import { aliasName } from "../profiles/common";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";

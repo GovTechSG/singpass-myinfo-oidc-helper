@@ -12,7 +12,7 @@ import {
 	MyInfoResidentialCode,
 	MyInfoSexCode,
 	MyInfoVehicleStatus,
-} from "../../types";
+} from "src/types";
 import { ProfileArchetype } from "./profiles/fake-profile";
 
 export enum OverrideMode {

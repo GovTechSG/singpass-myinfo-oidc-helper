@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import * as jose from "node-jose";
-import { TokenResponse } from "../../singpass/shared-constants";
+import { TokenResponse } from "src/singpass/shared-constants";
 import { SingpassMyInfoError } from "../error/SingpassMyinfoError";
 import { decryptJWE, extractJwtHeader, extractKidFromIdToken } from "../JweUtil";
 

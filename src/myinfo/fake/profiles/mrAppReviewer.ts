@@ -11,7 +11,7 @@ import {
 	MyInfoRaceCode,
 	MyInfoResidentialCode,
 	MyInfoSexCode,
-} from "../../../types";
+} from "src/types";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 
 const id = "S1111111D";

@@ -1,4 +1,4 @@
-import { MyInfoComponentsV4 } from "../../../types";
+import { MyInfoComponentsV4 } from "src/types";
 
 export interface FakeProfile {
 	id: string;

@@ -1,7 +1,7 @@
+import { JWE, JWS } from "node-jose";
+import * as JweUtils from "src/util/JweUtil";
 import { NDIIdTokenPayload, NdiOidcHelper, NdiOidcHelperConstructor } from "../corppass-helper-ndi";
 import { TokenResponse } from "../shared-constants";
-import * as JweUtils from "../../util/JweUtil";
-import { JWE, JWS } from "node-jose";
 
 const mockOidcConfigUrl = "https://mockcorppass.sg/authorize";
 const mockClientId = "CLIENT-ID";

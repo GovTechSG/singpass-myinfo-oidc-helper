@@ -11,7 +11,7 @@ import {
 	MyInfoRaceCode,
 	MyInfoResidentialCode,
 	MyInfoSexCode,
-} from "../../../../types";
+} from "src/types";
 import { aliasName } from "../common";
 import { FakeProfile } from "../fake-profile";
 

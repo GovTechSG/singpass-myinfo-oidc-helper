@@ -1,12 +1,11 @@
 import { AxiosInstance, AxiosProxyConfig } from "axios";
 import * as querystringUtil from "querystring";
-import { createClient } from "../client/axios-client";
-import { JweUtil } from "../util";
-import { DateUtils } from "../util/DateUtils";
-import { SingpassMyInfoError } from "../util/error/SingpassMyinfoError";
-import { Key } from "../util/KeyUtil";
-import { logger } from "../util/Logger";
-import { createClientAssertion } from "../util/SigningUtil";
+import { createClient } from "src/client/axios-client";
+import { DateUtils, JweUtil } from "src/util";
+import { SingpassMyInfoError } from "src/util/error/SingpassMyinfoError";
+import { Key } from "src/util/KeyUtil";
+import { logger } from "src/util/Logger";
+import { createClientAssertion } from "src/util/SigningUtil";
 import { AuthInfo, EntityInfo, EserviceAuthResultRow, TokenResponse, TPAccessInfo, UserInfo } from "./shared-constants";
 
 interface AccessTokenPayload {

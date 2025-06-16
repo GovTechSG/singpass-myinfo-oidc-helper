@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import { MyInfoPioneerGenerationMessageCode } from "../../../types";
+import { MyInfoPioneerGenerationMessageCode } from "src/types";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGUnclePgAllOk } from "./mrSGUnclePgAllOk";
 

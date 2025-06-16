@@ -10,7 +10,7 @@ import {
 	MyInfoRaceCode,
 	MyInfoResidentialCode,
 	MyInfoSexCode,
-} from "../../../types";
+} from "src/types";
 import { aliasName } from "../profiles/common";
 
 export const PersonBasicFactory = new Factory<MyInfoComponents.Schemas.PersonBasic>()

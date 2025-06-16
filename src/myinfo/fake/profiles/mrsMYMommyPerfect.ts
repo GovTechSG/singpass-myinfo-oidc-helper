@@ -1,13 +1,13 @@
 import * as _ from "lodash";
-import { FakeProfile, ProfileArchetype } from "./fake-profile";
-import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
-import { aliasName } from "../profiles/common";
 import {
 	MyInfoCountryPlaceCode,
 	MyInfoMaritalStatusCode,
 	MyInfoNationalityCitizenshipCode,
 	MyInfoSexCode,
-} from "../../../types";
+} from "src/types";
+import { aliasName } from "../profiles/common";
+import { FakeProfile, ProfileArchetype } from "./fake-profile";
+import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 
 const id = "F5994458N";
 const name = ProfileArchetype.MRS_MY_MOMMY_PERFECT;

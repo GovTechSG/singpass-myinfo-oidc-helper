@@ -1,6 +1,6 @@
 import { ZonedDateTime } from "@js-joda/core";
-import { MyInfoComponentsV4, MyInfoLifeStatusCode, MyInfoSexCode } from "../../../../types";
-import { DateUtils } from "../../../../util/DateUtils";
+import { MyInfoComponentsV4, MyInfoLifeStatusCode, MyInfoSexCode } from "src/types";
+import { DateUtils } from "src/util";
 
 const formatDateToString = (date?: ZonedDateTime): string => {
 	date ??= ZonedDateTime.now();

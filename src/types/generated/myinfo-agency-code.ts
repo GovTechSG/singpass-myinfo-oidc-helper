@@ -4,7 +4,7 @@
 // Any modifications to this file may be overwritten when the script runs again
 // Check README.md for more information
 // =============================================================================
-import { EnumUtils } from "../../util/EnumUtils";
+import { EnumUtils } from "src/util";
 
 export enum MyInfoAgencyCode {
 	"SINGAPORE_TOURISM_BOARD" = "STB",

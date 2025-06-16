@@ -16,7 +16,7 @@ import {
 	MyInfoSexCode,
 	MyInfoVehicleStatus,
 	V4PersonBasic,
-} from "../../types";
+} from "src/types";
 import { profiles } from "./profiles/fake-profiles";
 import {
 	ChildrenBirthRecord,
