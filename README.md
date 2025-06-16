@@ -157,7 +157,7 @@ getPerson({
     - Note: there are different variants, this is for Government Digital Services which has the person-basic api
 - The script will also fetch and generate enums from <https://api.singpass.gov.sg/assets/api-lib/myinfo/downloads/myinfo-api-code-tables.xlsx>
 
-### Folder / file structure of `src/myinfo/domain`
+### Folder / file structure of `src/types`
 
 | Path                 | What is does                                                                       |
 | -------------------- | ---------------------------------------------------------------------------------- |

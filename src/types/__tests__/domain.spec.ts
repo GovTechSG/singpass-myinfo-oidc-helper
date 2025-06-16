@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 /* eslint-disable @typescript-eslint/no-var-requires */
 import axios from "axios";
 import * as path from "path";
@@ -81,7 +82,7 @@ describe("MyInfoDomain", () => {
 			myinfoCodeRefTableUrl: "https://example.com",
 			outputDir: path.join(__dirname, "fixtures/output"),
 			customEnumDir: path.join(__dirname, "fixtures/custom/enums"),
-			templateDir: path.join(__dirname, "../../domain"),
+			templateDir: path.join(__dirname, "../"),
 		});
 	});
 

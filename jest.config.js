@@ -4,5 +4,8 @@ const config = baseConfig.createBaseConfig(baseConfig.TestType.UNIT_AND_INTERGRA
 
 module.exports = {
 	...config,
+	moduleNameMapper: {
+		"^src/(.*)": "<rootDir>/src/$1",
+	},
 	setupFiles: [],
 };
