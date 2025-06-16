@@ -1,6 +1,7 @@
+import * as Corppass from "./corppass";
 import * as MyInfo from "./myinfo";
 import * as Singpass from "./singpass";
-import * as Corppass from "./corppass";
+import * as MyInfoTypes from "./types";
 import * as Util from "./util";
 
-export { MyInfo, Singpass, Corppass, Util };
+export { Corppass, MyInfo, MyInfoTypes, Singpass, Util };
