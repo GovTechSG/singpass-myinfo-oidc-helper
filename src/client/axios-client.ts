@@ -1,7 +1,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 import { ProxyAgent } from "proxy-agent";
-import { logger } from "../util/Logger";
-import { redactUinfin } from "../util/RedactorUtil";
+import { logger } from "src/util/Logger";
+import { redactUinfin } from "src/util/RedactorUtil";
 
 export const createClient = (requestConfig: AxiosRequestConfig = {}): AxiosInstance => {
 	// Note: Due to axios not being able to automatically pick up proxy env vars, we have to manually define a custom proxy agent

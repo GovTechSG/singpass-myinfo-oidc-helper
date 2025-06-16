@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import { MyInfoSexCode } from "../../domain";
+import { MyInfoSexCode } from "src/types";
 import { aliasName } from "../profiles/common";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
@@ -14,7 +14,6 @@ export const msSgTeenager17: FakeProfile = {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
-		profile.silversupport.eligibility.value = false;
 
 		profile.aliasname = {
 			lastupdated: "2021-03-19",

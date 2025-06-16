@@ -11,7 +11,7 @@ import {
 	MyInfoRaceCode,
 	MyInfoResidentialCode,
 	MyInfoSexCode,
-} from "../../domain";
+} from "src/types";
 import { aliasName } from "../profiles/common";
 import { preschoolEligibleChild2_IC, preschoolEligibleChild2_K1 } from "./childbirthRecords";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
@@ -134,7 +134,7 @@ export const mrSGDaddyPerfect: FakeProfile = {
 				},
 				lastupdated: "2021-01-15",
 				quantum: {
-					value: "0.00",
+					value: 0.0,
 				},
 				source: "1",
 				classification: "C",

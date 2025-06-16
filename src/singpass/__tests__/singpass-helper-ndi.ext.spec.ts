@@ -1,7 +1,7 @@
 import * as jwt from "jsonwebtoken";
 import { generators } from "openid-client";
-import { KeyFormat } from "../../util/KeyUtil";
-import { logger } from "../../util/Logger";
+import { KeyFormat } from "src/util/KeyUtil";
+import { logger } from "src/util/Logger";
 import { NdiOidcHelper, NdiOidcHelperConstructor } from "../singpass-helper-ndi";
 import { configs } from "./test.configs";
 

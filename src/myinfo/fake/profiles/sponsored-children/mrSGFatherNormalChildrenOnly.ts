@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import { MyInfoComponents } from "../../../domain";
+import { MyInfoComponentsV4 } from "src/types";
 import { FakeProfile, ProfileArchetype } from "../fake-profile";
 import { BaseProfile } from "./BaseProfile";
 import { Childrenbirthrecords } from "./normalChildren";
@@ -602,7 +602,7 @@ export const mrSGFatherNormalChildrenOnly: FakeProfile = {
 	generate: (profileName) => {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
-		const profile: MyInfoComponents.Schemas.Person = BaseProfile.generate(profileName);
+		const profile: MyInfoComponentsV4.Schemas.Person = BaseProfile.generate(profileName);
 		profile.childrenbirthrecords = _.values(Childrenbirthrecords);
 		profile.cpfcontributions = {
 			history: cpfContributions,
@@ -611,13 +611,30 @@ export const mrSGFatherNormalChildrenOnly: FakeProfile = {
 			lastupdated: `${new Date().toISOString().split("T")[0]}`,
 		};
 		profile.cpfbalances = {
-			ma: { value: 11470.71 },
-			oa: { value: 11470.71 },
-			sa: { value: 11470.71 },
-			ra: { value: 11470.71 },
-			lastupdated: `${new Date().toISOString().split("T")[0]}`,
-			classification: "C",
-			source: "1",
+			ma: {
+				value: 11470.71,
+				lastupdated: `${new Date().toISOString().split("T")[0]}`,
+				classification: "C",
+				source: "1",
+			},
+			oa: {
+				value: 11470.71,
+				lastupdated: `${new Date().toISOString().split("T")[0]}`,
+				classification: "C",
+				source: "1",
+			},
+			sa: {
+				value: 11470.71,
+				lastupdated: `${new Date().toISOString().split("T")[0]}`,
+				classification: "C",
+				source: "1",
+			},
+			ra: {
+				value: 11470.71,
+				lastupdated: `${new Date().toISOString().split("T")[0]}`,
+				classification: "C",
+				source: "1",
+			},
 		};
 		profile["noa-basic"] = {
 			amount: {

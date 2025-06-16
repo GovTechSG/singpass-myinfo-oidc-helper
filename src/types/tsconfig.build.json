@@ -1,0 +1,12 @@
+{
+	"extends": "./shared-config/tsconfig.json",
+	"compilerOptions": {
+		"baseUrl": ".",
+		"outDir": "./dist",
+		"declaration": true,
+		"declarationMap": true,
+		"declarationDir": "./dist"
+	},
+	"include": ["./**/*.ts"],
+	"exclude": ["**/node_modules/*", "**/__tests__/*", "**/__mocks__/*"]
+}

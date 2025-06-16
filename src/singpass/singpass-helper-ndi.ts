@@ -1,13 +1,13 @@
 import { AxiosInstance, AxiosProxyConfig } from "axios";
 import { generators } from "openid-client";
 import * as querystringUtil from "querystring";
-import { createClient } from "../client/axios-client";
-import { MyInfoComponentsV4 } from "../myinfo";
-import { JweUtil } from "../util";
-import { SingpassMyInfoError } from "../util/error/SingpassMyinfoError";
-import { Key } from "../util/KeyUtil";
-import { logger } from "../util/Logger";
-import { createClientAssertion } from "../util/SigningUtil";
+import { createClient } from "src/client/axios-client";
+import { JweUtil } from "src/util";
+import { SingpassMyInfoError } from "src/util/error/SingpassMyinfoError";
+import { Key } from "src/util/KeyUtil";
+import { logger } from "src/util/Logger";
+import { createClientAssertion } from "src/util/SigningUtil";
+import { MyInfoComponentsV4 } from "../types";
 import { TokenPayload, TokenResponse, UserDataPayload } from "./shared-constants";
 
 export interface NdiOidcHelperConstructor {

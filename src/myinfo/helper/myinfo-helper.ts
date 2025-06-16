@@ -1,11 +1,10 @@
 import { AxiosResponse } from "axios";
 import * as _ from "lodash";
 import * as querystringUtil from "querystring";
-import { JweUtil } from "../../util";
-import { SingpassMyInfoError } from "../../util/error/SingpassMyinfoError";
-import { logger } from "../../util/Logger";
-import { MyInfoComponents } from "../domain";
-import { ProfileStatus } from "../domain/profilestatus-domain";
+import { MyInfoComponents, ProfileStatus } from "src/types";
+import { JweUtil } from "src/util";
+import { SingpassMyInfoError } from "src/util/error/SingpassMyinfoError";
+import { logger } from "src/util/Logger";
 import { MyInfoRequest, MyInfoRequestConstructor } from "./myinfo-request";
 
 export type EnvType = "test" | "sandbox" | "prod";

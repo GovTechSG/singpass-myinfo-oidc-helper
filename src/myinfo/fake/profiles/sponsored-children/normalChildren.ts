@@ -1,6 +1,6 @@
 import { ZonedDateTime } from "@js-joda/core";
-import { DateUtils } from "../../../../util/DateUtils";
-import { MyInfoComponents, MyInfoLifeStatusCode, MyInfoSexCode } from "../../../domain";
+import { MyInfoComponentsV4, MyInfoLifeStatusCode, MyInfoSexCode } from "src/types";
+import { DateUtils } from "src/util";
 
 const formatDateToString = (date?: ZonedDateTime): string => {
 	date ??= ZonedDateTime.now();
@@ -20,7 +20,7 @@ const childYoungest = {
 		code: MyInfoLifeStatusCode.ALIVE,
 		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
 	},
-} as MyInfoComponents.Schemas.Childrenbirthrecords;
+} as MyInfoComponentsV4.Schemas.Childrenbirthrecords;
 
 const child1MonthOld = {
 	source: "1",
@@ -35,7 +35,7 @@ const child1MonthOld = {
 		code: MyInfoLifeStatusCode.ALIVE,
 		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
 	},
-} as MyInfoComponents.Schemas.Childrenbirthrecords;
+} as MyInfoComponentsV4.Schemas.Childrenbirthrecords;
 
 const child2MonthsOld = {
 	source: "1",
@@ -50,7 +50,7 @@ const child2MonthsOld = {
 		code: MyInfoLifeStatusCode.ALIVE,
 		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
 	},
-} as MyInfoComponents.Schemas.Childrenbirthrecords;
+} as MyInfoComponentsV4.Schemas.Childrenbirthrecords;
 
 const childMiddle1 = {
 	source: "1",
@@ -65,7 +65,7 @@ const childMiddle1 = {
 		code: MyInfoLifeStatusCode.ALIVE,
 		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
 	},
-} as MyInfoComponents.Schemas.Childrenbirthrecords;
+} as MyInfoComponentsV4.Schemas.Childrenbirthrecords;
 
 const childMiddle2 = {
 	source: "1",
@@ -80,7 +80,7 @@ const childMiddle2 = {
 		code: MyInfoLifeStatusCode.ALIVE,
 		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
 	},
-} as MyInfoComponents.Schemas.Childrenbirthrecords;
+} as MyInfoComponentsV4.Schemas.Childrenbirthrecords;
 
 const childMiddle3 = {
 	source: "1",
@@ -95,7 +95,7 @@ const childMiddle3 = {
 		code: MyInfoLifeStatusCode.ALIVE,
 		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
 	},
-} as MyInfoComponents.Schemas.Childrenbirthrecords;
+} as MyInfoComponentsV4.Schemas.Childrenbirthrecords;
 
 const childMiddle4 = {
 	source: "1",
@@ -110,7 +110,7 @@ const childMiddle4 = {
 		code: MyInfoLifeStatusCode.ALIVE,
 		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
 	},
-} as MyInfoComponents.Schemas.Childrenbirthrecords;
+} as MyInfoComponentsV4.Schemas.Childrenbirthrecords;
 
 const childMiddle5 = {
 	source: "1",
@@ -125,7 +125,7 @@ const childMiddle5 = {
 		code: MyInfoLifeStatusCode.ALIVE,
 		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
 	},
-} as MyInfoComponents.Schemas.Childrenbirthrecords;
+} as MyInfoComponentsV4.Schemas.Childrenbirthrecords;
 
 const child6YearsOld = {
 	source: "1",
@@ -140,7 +140,7 @@ const child6YearsOld = {
 		code: MyInfoLifeStatusCode.ALIVE,
 		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
 	},
-} as MyInfoComponents.Schemas.Childrenbirthrecords;
+} as MyInfoComponentsV4.Schemas.Childrenbirthrecords;
 
 const child7YearsOld = {
 	source: "1",
@@ -155,7 +155,7 @@ const child7YearsOld = {
 		code: MyInfoLifeStatusCode.ALIVE,
 		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
 	},
-} as MyInfoComponents.Schemas.Childrenbirthrecords;
+} as MyInfoComponentsV4.Schemas.Childrenbirthrecords;
 
 const childSuperOld = {
 	source: "1",
@@ -170,7 +170,7 @@ const childSuperOld = {
 		code: MyInfoLifeStatusCode.ALIVE,
 		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
 	},
-} as MyInfoComponents.Schemas.Childrenbirthrecords;
+} as MyInfoComponentsV4.Schemas.Childrenbirthrecords;
 
 export const Childrenbirthrecords = {
 	childYoungest,

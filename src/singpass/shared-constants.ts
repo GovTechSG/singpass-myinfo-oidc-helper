@@ -1,4 +1,4 @@
-import { MyInfoComponentsV4 } from "../myinfo/domain/v4/myinfo-domain";
+import { MyInfoComponentsV4 } from "../types/v4/myinfo-domain";
 
 export interface TokenResponse {
 	access_token: string;

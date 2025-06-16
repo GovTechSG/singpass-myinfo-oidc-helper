@@ -17,7 +17,7 @@ console.log(`===================================================================
 /**
  * TODO
  * - generate enums from myinfo code ref table (https://api.singpass.gov.sg/assets/api-lib/myinfo/downloads/myinfo-api-code-tables.xlsx)
- * - generate index file to export all the typings in src/myinfo/domain
+ * - generate index file to export all the typings in src/types
  * - might be missing some enums/fields (e.g. merdekagen, gstvoucher, silversupport)
  * - might be missing some enums from singstat (https://www.singstat.gov.sg/standards/standards-and-classifications)
  * - deprecate old typings
@@ -31,31 +31,35 @@ console.log(`===================================================================
 const projectDir = process.cwd();
 
 const argv = yargs
+	// eslint-disable-next-line import/namespace
 	.command({
 		command: `$0 <swagger-path>`,
 		describe: `This script parses a MyInfo API swagger file and generates the relevant typings`,
 		builder: () => {
-			return yargs
-				.positional(`swagger-path`, {
-					type: `string`,
-					describe: `The MyInfo API swagger file path
+			return (
+				yargs
+					// eslint-disable-next-line import/namespace
+					.positional(`swagger-path`, {
+						type: `string`,
+						describe: `The MyInfo API swagger file path
 						The latest version may be downloaded from https://api.singpass.gov.sg/developers`,
-				})
-				.option(`output-dir`, {
-					alias: "o",
-					type: "string",
-					requiresArg: true,
-					describe: "Set output dir",
-					default: `${projectDir}/src/myinfo/domain`,
-				})
-				.option(`myinfo-code-ref-tables-url`, {
-					type: "string",
-					requiresArg: true,
-					describe: "URL to the latest myinfo code reference tables",
-					// NOTE: To be updated where necessary
-					default:
-						"https://public.cloud.myinfo.gov.sg/dpp/frontend/assets/api-lib/myinfo/downloads/myinfo-api-code-tables.xlsx",
-				});
+					})
+					.option(`output-dir`, {
+						alias: "o",
+						type: "string",
+						requiresArg: true,
+						describe: "Set output dir",
+						default: `${projectDir}/src/types`,
+					})
+					.option(`myinfo-code-ref-tables-url`, {
+						type: "string",
+						requiresArg: true,
+						describe: "URL to the latest myinfo code reference tables",
+						// NOTE: To be updated where necessary
+						default:
+							"https://public.cloud.myinfo.gov.sg/dpp/frontend/assets/api-lib/myinfo/downloads/myinfo-api-code-tables.xlsx",
+					})
+			);
 		},
 		handler: () => {},
 	})
@@ -121,6 +125,7 @@ async function generateApiSwaggerTypings(): Promise<string> {
 /**
  * Recursively executes the map fn for nested array/objects
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function deepMapObject(input: any, mapFn: (value: any, key?: string, parent?: any) => any, key?: string): any {
 	if (_.isArray(input) && !_.isString(input)) {
 		return _.map(input, (value) => deepMapObject(value, mapFn, key));
@@ -143,6 +148,7 @@ function deepMapObject(input: any, mapFn: (value: any, key?: string, parent?: an
 /**
  * Use https://editor.swagger.io/ to try to debug syntax errors
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function sanitizeSwagger(swagger: any): any {
 	// Remove keys we don't need
 	delete swagger.servers;
@@ -174,8 +180,10 @@ function sanitizeSwagger(swagger: any): any {
 	return swagger;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function writeSwaggerTypingsSource(swagger: any): Promise<string> {
 	const schema = parseSchema(swagger);
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const { components } = schema.content as any;
 
 	// add custom data items to domains

@@ -1,4 +1,4 @@
-import { MyInfoLifeStatusCode, MyInfoRaceCode, MyInfoSexCode, MyInfoVehicleStatus } from "../../domain";
+import { MyInfoLifeStatusCode, MyInfoRaceCode, MyInfoSexCode, MyInfoVehicleStatus } from "src/types";
 import {
 	FakeMyInfoHelper,
 	transformChildBirthRecord,

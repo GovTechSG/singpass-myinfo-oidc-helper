@@ -1,8 +1,8 @@
 import * as _ from "lodash";
+import { MyInfoMaritalStatusCode, MyInfoResidentialCode, MyInfoSexCode } from "src/types";
+import { ChildrenRecords } from "./childbirthRecords";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
-import { ChildrenRecords } from "./childbirthRecords";
-import { MyInfoMaritalStatusCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
 
 const id = "T2446959F";
 const name = ProfileArchetype.MR_SG_FRESH_GRAD_YOUNG_PARENT;

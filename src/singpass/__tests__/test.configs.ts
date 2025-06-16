@@ -1,4 +1,4 @@
-import { ConfigUtils, JestUtil } from "../../util";
+import { ConfigUtils, JestUtil } from "src/util";
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require("dotenv").config();

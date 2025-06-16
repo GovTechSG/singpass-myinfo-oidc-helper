@@ -1,6 +1,6 @@
 import { ZonedDateTime } from "@js-joda/core";
-import { DateUtils } from "../../../../util/DateUtils";
-import { MyInfoComponents, MyInfoLifeStatusCode, MyInfoSexCode } from "../../../domain";
+import { MyInfoComponentsV4, MyInfoLifeStatusCode, MyInfoSexCode } from "src/types";
+import { DateUtils } from "src/util";
 
 const formatDateToString = (date?: ZonedDateTime): string => {
 	date ??= ZonedDateTime.now();
@@ -20,7 +20,7 @@ const childYoungest = {
 		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
 	},
 	unavailable: false,
-} as MyInfoComponents.Schemas.Sponsoredchildrenrecords;
+} as MyInfoComponentsV4.Schemas.Sponsoredchildrenrecords;
 
 const child1MonthOld = {
 	source: "1",
@@ -35,7 +35,7 @@ const child1MonthOld = {
 		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
 	},
 	unavailable: false,
-} as MyInfoComponents.Schemas.Sponsoredchildrenrecords;
+} as MyInfoComponentsV4.Schemas.Sponsoredchildrenrecords;
 
 const child2MonthsOld = {
 	source: "1",
@@ -50,7 +50,7 @@ const child2MonthsOld = {
 		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
 	},
 	unavailable: false,
-} as MyInfoComponents.Schemas.Sponsoredchildrenrecords;
+} as MyInfoComponentsV4.Schemas.Sponsoredchildrenrecords;
 
 const childMiddle1 = {
 	source: "1",
@@ -65,7 +65,7 @@ const childMiddle1 = {
 		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
 	},
 	unavailable: false,
-} as MyInfoComponents.Schemas.Sponsoredchildrenrecords;
+} as MyInfoComponentsV4.Schemas.Sponsoredchildrenrecords;
 
 const childMiddle2 = {
 	source: "1",
@@ -80,7 +80,7 @@ const childMiddle2 = {
 		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
 	},
 	unavailable: false,
-} as MyInfoComponents.Schemas.Sponsoredchildrenrecords;
+} as MyInfoComponentsV4.Schemas.Sponsoredchildrenrecords;
 
 const childMiddle3 = {
 	nric: { value: "T1509027D" },
@@ -92,7 +92,7 @@ const childMiddle3 = {
 		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
 	},
 	unavailable: false,
-} as MyInfoComponents.Schemas.Sponsoredchildrenrecords;
+} as MyInfoComponentsV4.Schemas.Sponsoredchildrenrecords;
 
 const childMiddle4 = {
 	source: "1",
@@ -107,7 +107,7 @@ const childMiddle4 = {
 		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
 	},
 	unavailable: false,
-} as MyInfoComponents.Schemas.Sponsoredchildrenrecords;
+} as MyInfoComponentsV4.Schemas.Sponsoredchildrenrecords;
 
 const childMiddle5 = {
 	source: "1",
@@ -122,7 +122,7 @@ const childMiddle5 = {
 		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
 	},
 	unavailable: false,
-} as MyInfoComponents.Schemas.Sponsoredchildrenrecords;
+} as MyInfoComponentsV4.Schemas.Sponsoredchildrenrecords;
 
 const childSuperOld = {
 	source: "1",
@@ -137,7 +137,7 @@ const childSuperOld = {
 		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
 	},
 	unavailable: false,
-} as MyInfoComponents.Schemas.Sponsoredchildrenrecords;
+} as MyInfoComponentsV4.Schemas.Sponsoredchildrenrecords;
 
 const child6YearsOld = {
 	source: "1",
@@ -152,7 +152,7 @@ const child6YearsOld = {
 		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
 	},
 	unavailable: false,
-} as MyInfoComponents.Schemas.Sponsoredchildrenrecords;
+} as MyInfoComponentsV4.Schemas.Sponsoredchildrenrecords;
 
 const child7YearsOld = {
 	source: "1",
@@ -167,7 +167,7 @@ const child7YearsOld = {
 		desc: MyInfoLifeStatusCode.fn.toEnumDesc(MyInfoLifeStatusCode.ALIVE),
 	},
 	unavailable: false,
-} as MyInfoComponents.Schemas.Sponsoredchildrenrecords;
+} as MyInfoComponentsV4.Schemas.Sponsoredchildrenrecords;
 
 export const SponsoredChildrenRecords = {
 	childYoungest,

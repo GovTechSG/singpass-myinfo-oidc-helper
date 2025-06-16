@@ -18,13 +18,11 @@ export const mrSGDaddyMissingFields: FakeProfile = {
 		profile.hanyupinyinaliasname = unavailableField;
 		profile.secondaryrace = unavailableField;
 		profile.residentialstatus = unavailableField;
-		profile.homeno = unavailableField;
 		profile.marriagecertno = unavailableField;
 		profile.countryofmarriage = unavailableField;
 		if (profile.childrenbirthrecords) {
 			profile.childrenbirthrecords = profile.childrenbirthrecords.slice(0, 1);
 		}
-		profile.edulevel = unavailableField;
 		profile.occupation = unavailableField;
 
 		return profile;

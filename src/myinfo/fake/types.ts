@@ -1,5 +1,5 @@
 import {
-	MyInfoComponents,
+	MyInfoComponentsV4,
 	MyInfoCountryPlaceCode,
 	MyInfoDrivingLicenceValidityCode,
 	MyInfoHDBTypeCode,
@@ -12,13 +12,8 @@ import {
 	MyInfoResidentialCode,
 	MyInfoSexCode,
 	MyInfoVehicleStatus,
-} from "../domain";
+} from "src/types";
 import { ProfileArchetype } from "./profiles/fake-profile";
-
-export enum GVS {
-	true = "true",
-	false = "false",
-}
 
 export enum OverrideMode {
 	partial = "partial",
@@ -30,13 +25,13 @@ export enum OverrideMode {
 // Address
 // -----------------------------------------------------------------------------
 
-type AddressSgKeys = keyof MyInfoComponents.Schemas.AddressSG;
+type AddressSgKeys = keyof MyInfoComponentsV4.Schemas.AddressSG;
 type TAddressSG = { type: "SG" } & {
 	// country is fixed for SG
 	[key in Exclude<AddressSgKeys, "country">]?: string;
 };
 
-type AddressUnformattedKeys = keyof MyInfoComponents.Schemas.AddressUnformatted;
+type AddressUnformattedKeys = keyof MyInfoComponentsV4.Schemas.AddressUnformatted;
 type TAddressUnformatted = { type: "UNFORMATTED" } & {
 	[key in AddressUnformattedKeys]?: string;
 };
@@ -96,7 +91,6 @@ export interface MockParams {
 	occupationfreeform?: string;
 	dob?: string;
 	gstvyear?: string;
-	gvs?: GVS;
 	merdekageneligible?: boolean;
 	merdekagenquantum?: number;
 	merdekagenmessagecode?: MyInfoMerdekaGenerationMessageCode;
@@ -117,5 +111,6 @@ export interface MockFinanceParams {
 
 export type MockParamsPerson = MockParams & MockFinanceParams;
 
-export type NoaBasicExtension = MyInfoComponents.Schemas.NOABasic & MyInfoComponents.Schemas.DataFieldProperties;
-export type CpfBalanceExtension = MyInfoComponents.Schemas.Cpfbalances & MyInfoComponents.Schemas.DataFieldProperties;
+export type NoaBasicExtension = MyInfoComponentsV4.Schemas.NOABasic & MyInfoComponentsV4.Schemas.DataFieldProperties;
+export type CpfBalanceExtension = MyInfoComponentsV4.Schemas.Cpfbalances &
+	MyInfoComponentsV4.Schemas.DataFieldProperties;

@@ -1,9 +1,9 @@
 import { AxiosInstance, AxiosRequestConfig } from "axios";
 import * as querystringUtil from "querystring";
-import { createClient } from "../client/axios-client";
-import { JweUtil } from "../util";
-import { logger } from "../util/Logger";
-import { SingpassMyInfoError } from "../util/error/SingpassMyinfoError";
+import { createClient } from "src/client/axios-client";
+import { JweUtil } from "src/util";
+import { logger } from "src/util/Logger";
+import { SingpassMyInfoError } from "src/util/error/SingpassMyinfoError";
 import { EntityInfo, TokenResponse, UserInfo } from "./shared-constants";
 
 interface AccessTokenPayload {
