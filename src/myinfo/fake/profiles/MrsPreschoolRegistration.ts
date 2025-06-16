@@ -3,7 +3,7 @@ import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 import { preschoolEligibleChild_IC, preschoolEligibleChild_N2, preschoolIneligibleChild2 } from "./childbirthRecords";
 import { aliasName } from "../profiles/common";
-import { MyInfoSexCode } from "../../domain";
+import { MyInfoSexCode } from "../../../types";
 
 const id = "T2446959F";
 const name = ProfileArchetype.MRS_PRESCHOOL_REGISTRATION;

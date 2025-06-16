@@ -2,7 +2,7 @@ import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 import { ChildrenRecords } from "./childbirthRecords";
-import { MyInfoMaritalStatusCode, MyInfoResidentialCode, MyInfoSexCode } from "../../domain";
+import { MyInfoMaritalStatusCode, MyInfoResidentialCode, MyInfoSexCode } from "../../../types";
 
 const id = "T2446959F";
 const name = ProfileArchetype.MR_SG_FRESH_GRAD_YOUNG_PARENT;

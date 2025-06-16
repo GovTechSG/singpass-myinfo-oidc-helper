@@ -7,7 +7,7 @@ import {
 	MyInfoNationalityCitizenshipCode,
 	MyInfoResidentialCode,
 	MyInfoSexCode,
-} from "../../domain";
+} from "../../../types";
 import { aliasName } from "../profiles/common";
 import { ChildrenRecords } from "./childbirthRecords";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";

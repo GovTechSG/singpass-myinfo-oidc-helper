@@ -1,7 +1,7 @@
 import * as _ from "lodash";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
-import { MyInfoCountryPlaceCode, MyInfoNationalityCitizenshipCode, MyInfoSexCode } from "../../domain";
+import { MyInfoCountryPlaceCode, MyInfoNationalityCitizenshipCode, MyInfoSexCode } from "../../../types";
 
 const id = "F5994458N";
 const name = ProfileArchetype.MR_MY_DADDY_PERFECT;

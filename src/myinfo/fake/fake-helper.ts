@@ -3,7 +3,7 @@
 import { get, isEmpty, map, omit, partition, set } from "lodash";
 import {
 	MyInfoComStatusCode,
-	MyInfoComponents,
+	MyInfoComponentsV4,
 	MyInfoCountryPlaceCode,
 	MyInfoDrivingLicenceValidityCode,
 	MyInfoHDBTypeCode,
@@ -15,12 +15,12 @@ import {
 	MyInfoResidentialCode,
 	MyInfoSexCode,
 	MyInfoVehicleStatus,
-} from "../domain";
+	V4PersonBasic,
+} from "../../types";
 import { profiles } from "./profiles/fake-profiles";
 import {
 	ChildrenBirthRecord,
 	CpfBalanceExtension,
-	GVS,
 	MockParams,
 	MockParamsPerson,
 	NoaBasicExtension,
@@ -29,8 +29,8 @@ import {
 	UniqueAddressUnformattedKeys,
 } from "./types";
 
-type PersonBasic = MyInfoComponents.Schemas.PersonBasic;
-type Person = MyInfoComponents.Schemas.Person;
+type PersonBasic = V4PersonBasic;
+type Person = MyInfoComponentsV4.Schemas.Person;
 
 export interface IFakeMyInfoHelper {
 	getPersonBasic: (mockParams: MockParams) => PersonBasic;
@@ -98,13 +98,13 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 				myinfoPerson.merdekagen.eligibility.value = false;
 				if (myinfoPerson.pioneergen.message.code !== "6") myinfoPerson.pioneergen.eligibility.value = true;
 				if (birthYear >= 1945) {
-					myinfoPerson.pioneergen.quantum.value = "200.00";
+					myinfoPerson.pioneergen.quantum.value = 200.0;
 				} else if (birthYear >= 1940) {
-					myinfoPerson.pioneergen.quantum.value = "400.00";
+					myinfoPerson.pioneergen.quantum.value = 400.0;
 				} else if (birthYear >= 1935) {
-					myinfoPerson.pioneergen.quantum.value = "600.00";
+					myinfoPerson.pioneergen.quantum.value = 600.0;
 				} else {
-					myinfoPerson.pioneergen.quantum.value = "800.00";
+					myinfoPerson.pioneergen.quantum.value = 800.0;
 				}
 			} else if (birthYear > 1949 && birthYear <= 1959) {
 				// merdekagen
@@ -115,14 +115,6 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 				myinfoPerson.pioneergen.eligibility.value = false;
 				myinfoPerson.merdekagen.quantum.value = 0;
 			}
-		}
-
-		if (!isEmpty(mockParams.gstvyear)) {
-			myinfoPerson.gstvoucher.year.value = mockParams.gstvyear;
-		}
-
-		if (!isEmpty(mockParams.gvs)) {
-			myinfoPerson.gstvoucher.signup.value = (mockParams.gvs || null).toLocaleLowerCase() === GVS.true;
 		}
 
 		if (!isEmpty(mockParams.merdekageneligible)) {
@@ -150,7 +142,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 			const unformattedProps: UniqueAddressUnformattedKeys[] = ["line1", "line2"];
 
 			if (mockParams.regadd.type === "SG") {
-				const regadd = myinfoPerson.regadd as MyInfoComponents.Schemas.DataitemAddressSg;
+				const regadd = myinfoPerson.regadd as MyInfoComponentsV4.Schemas.DataitemAddressSg;
 				myinfoPerson.regadd = {
 					...myinfoPerson.regadd,
 					type: "SG",
@@ -178,7 +170,7 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 			}
 
 			if (mockParams.regadd.type === "UNFORMATTED") {
-				const regadd = myinfoPerson.regadd as MyInfoComponents.Schemas.DataitemAddressUnformatted;
+				const regadd = myinfoPerson.regadd as MyInfoComponentsV4.Schemas.DataitemAddressUnformatted;
 				myinfoPerson.regadd = {
 					...myinfoPerson.regadd,
 					type: "UNFORMATTED",
@@ -659,7 +651,7 @@ function generateDefaultMockResponse(): object {
 export function transformChildBirthRecord(
 	childbirthrecord: ChildrenBirthRecord,
 	index: number,
-): MyInfoComponents.Schemas.Childrenbirthrecords {
+): MyInfoComponentsV4.Schemas.Childrenbirthrecords {
 	return {
 		source: "1",
 		classification: "C",
@@ -685,7 +677,7 @@ export function transformChildBirthRecord(
 				}
 			: undefined),
 		unavailable: false,
-	} as MyInfoComponents.Schemas.Childrenbirthrecords;
+	} as MyInfoComponentsV4.Schemas.Childrenbirthrecords;
 }
 
 export function transformItems(item: any) {

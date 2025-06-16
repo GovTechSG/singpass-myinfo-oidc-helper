@@ -7,7 +7,7 @@ import {
 	preschoolEligibleChild2_PG,
 	preschoolIneligibleChild2,
 } from "./childbirthRecords";
-import { MyInfoNationalityCitizenshipCode, MyInfoResidentialCode } from "../../domain";
+import { MyInfoNationalityCitizenshipCode, MyInfoResidentialCode } from "../../../types";
 
 const id = "S2599302J";
 const name = ProfileArchetype.MR_PR_DADDY_PERFECT;

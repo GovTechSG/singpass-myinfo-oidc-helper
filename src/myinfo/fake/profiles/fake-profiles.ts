@@ -1,13 +1,4 @@
 import { mrSGFatherSponsoredChildrenOnly } from "./sponsored-children/mrSGFatherSponsoredChildrenOnly";
-import { mrGstvUncle1a } from "./mrGSTVUncleScenario1a";
-import { mrGstvUncle1a2 } from "./mrGSTVUncleScenario1a2";
-import { mrGstvUncle1b } from "./mrGSTVUncleScenario1b";
-import { mrGstvUncle2a } from "./mrGSTVUncleScenario2a";
-import { mrGstvUncle2a2 } from "./mrGSTVUncleScenario2a2";
-import { mrGstvUncle2a3 } from "./mrGSTVUncleScenario2a3";
-import { mrGstvUncle2b } from "./mrGSTVUncleScenario2b";
-import { mrGstvUncle3 } from "./mrGSTVUncleScenario3";
-import { mrGstvUncle4 } from "./mrGSTVUncleScenario4";
 import { mrMYDaddyPerfect } from "./mrMYDaddyPerfect";
 import { mrMYDadJobless } from "./mrMYDadJobless";
 import { mrPRDaddyOneChildAndExpiredPassport } from "./mrPRDaddyOneChildAndExpiredPassport";
@@ -143,15 +134,6 @@ export const profiles = [
 	mrSGUnclePgOptOut,
 	mrSGUnclePgNilStatus,
 	mrSGUncleNonBenefits,
-	mrGstvUncle1a,
-	mrGstvUncle1a2,
-	mrGstvUncle1b,
-	mrGstvUncle2a,
-	mrGstvUncle2a2,
-	mrGstvUncle2a3,
-	mrGstvUncle2b,
-	mrGstvUncle3,
-	mrGstvUncle4,
 	mrMYDadJobless,
 	mrsMYMomJobless,
 	mrSGJobless,

@@ -1,16 +1,15 @@
 import * as _ from "lodash";
-import { FakeProfile, ProfileArchetype } from "./fake-profile";
-import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
-import { ChildrenRecords } from "./childbirthRecords";
 import {
 	MyInfoComStatusCode,
 	MyInfoDrivingLicenceValidityCode,
-	MyInfoEduLevelCode,
 	MyInfoHousingTypeCode,
 	MyInfoMaritalStatusCode,
 	MyInfoResidentialCode,
 	MyInfoSexCode,
-} from "../../domain";
+} from "../../../types";
+import { ChildrenRecords } from "./childbirthRecords";
+import { FakeProfile, ProfileArchetype } from "./fake-profile";
+import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 
 const id = "S8399420G";
 const name = ProfileArchetype.MR_SG_UNCLE_RETIREE;
@@ -144,13 +143,7 @@ export const mrSGUncleRetiree: FakeProfile = {
 				},
 			},
 		};
-		profile.edulevel = {
-			lastupdated: "2020-01-01",
-			source: "1",
-			classification: "C",
-			code: MyInfoEduLevelCode.POST_SECONDARY_NON_TERTIARY_GENERAL_VOCATION,
-			desc: MyInfoEduLevelCode.fn.toEnumDesc(MyInfoEduLevelCode.POST_SECONDARY_NON_TERTIARY_GENERAL_VOCATION),
-		};
+
 		return profile;
 	},
 };

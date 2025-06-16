@@ -7,7 +7,7 @@ import {
 	MyInfoMaritalStatusCode,
 	MyInfoNationalityCitizenshipCode,
 	MyInfoSexCode,
-} from "../../domain";
+} from "../../../types";
 
 const id = "F5994458N";
 const name = ProfileArchetype.MRS_MY_MOMMY_PERFECT;

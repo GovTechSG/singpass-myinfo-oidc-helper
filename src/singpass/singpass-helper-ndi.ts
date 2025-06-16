@@ -2,7 +2,7 @@ import { AxiosInstance, AxiosProxyConfig } from "axios";
 import { generators } from "openid-client";
 import * as querystringUtil from "querystring";
 import { createClient } from "../client/axios-client";
-import { MyInfoComponentsV4 } from "../myinfo";
+import { MyInfoComponentsV4 } from "../types";
 import { JweUtil } from "../util";
 import { SingpassMyInfoError } from "../util/error/SingpassMyinfoError";
 import { Key } from "../util/KeyUtil";

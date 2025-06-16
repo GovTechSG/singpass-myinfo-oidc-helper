@@ -12,7 +12,6 @@ export const mrSgTeenager17: FakeProfile = {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
 		const profile = mrSGDaddyPerfect.generate(profileName);
-		profile.silversupport.eligibility.value = false;
 		profile.dob = {
 			lastupdated: "2020-01-01",
 			source: "1",

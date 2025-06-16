@@ -4,8 +4,8 @@ import * as querystringUtil from "querystring";
 import { JweUtil } from "../../util";
 import { SingpassMyInfoError } from "../../util/error/SingpassMyinfoError";
 import { logger } from "../../util/Logger";
-import { MyInfoComponents } from "../domain";
-import { ProfileStatus } from "../domain/profilestatus-domain";
+import { MyInfoComponents } from "../../types";
+import { ProfileStatus } from "../../types/profilestatus-domain";
 import { MyInfoRequest, MyInfoRequestConstructor } from "./myinfo-request";
 
 export type EnvType = "test" | "sandbox" | "prod";

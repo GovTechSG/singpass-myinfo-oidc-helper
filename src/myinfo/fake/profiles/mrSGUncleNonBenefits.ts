@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import { MyInfoMerdekaGenerationMessageCode } from "../../domain";
+import { MyInfoMerdekaGenerationMessageCode } from "../../../types";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 
@@ -15,11 +15,6 @@ export const mrSGUncleNonBenefits: FakeProfile = {
 		const profile = mrSGDaddyPerfect.generate(profileName);
 		profile.merdekagen.message.code = MyInfoMerdekaGenerationMessageCode.NON_MG;
 		profile.merdekagen.eligibility.value = false;
-		profile.gstvoucher.exclusion.value = false;
-		profile.gstvoucher.signup.value = false;
-		profile.gstvoucher.gstregular.value = 0;
-		profile.gstvoucher.gstmedisave.value = 0;
-		profile.gstvoucher.gstspecial.value = 0;
 
 		profile.dob = {
 			lastupdated: "2020-01-01",
@@ -28,20 +23,6 @@ export const mrSGUncleNonBenefits: FakeProfile = {
 			value: `1959-01-01`,
 		};
 
-		profile.silversupport = {
-			eligibility: {
-				value: false,
-			},
-			lastupdated: "2019-04-01",
-			amount: {
-				value: 0,
-			},
-			source: "1",
-			classification: "C",
-			year: {
-				value: "2019",
-			},
-		};
 		return profile;
 	},
 };

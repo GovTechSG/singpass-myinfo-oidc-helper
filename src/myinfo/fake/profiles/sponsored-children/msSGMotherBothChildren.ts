@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import { MyInfoComponents, MyInfoSexCode } from "../../../domain";
+import { MyInfoComponentsV4, MyInfoSexCode } from "../../../../types";
 import { FakeProfile, ProfileArchetype } from "../fake-profile";
 import { BaseProfile } from "./BaseProfile";
 import { Childrenbirthrecords } from "./normalChildren";
@@ -14,7 +14,7 @@ export const msSGMotherBothChildren: FakeProfile = {
 	generate: (profileName) => {
 		profileName = _.isEmpty(profileName) ? name : profileName;
 
-		const profile: MyInfoComponents.Schemas.Person = BaseProfile.generate(profileName);
+		const profile: MyInfoComponentsV4.Schemas.Person = BaseProfile.generate(profileName);
 
 		profile.sex.code = MyInfoSexCode.FEMALE;
 		profile.sex.desc = MyInfoSexCode.fn.toEnumDesc(MyInfoSexCode.FEMALE);
@@ -24,10 +24,9 @@ export const msSGMotherBothChildren: FakeProfile = {
 		profile.sponsoredchildrenrecords = _.values(SponsoredChildrenRecords);
 
 		profile.cpfbalances = {
-			lastupdated: "2016-12-01",
-			classification: "C",
-			source: "1",
-			unavailable: true,
+			ma: { lastupdated: "2016-12-01", classification: "C", source: "1", unavailable: true },
+			sa: { lastupdated: "2016-12-01", classification: "C", source: "1", unavailable: true },
+			oa: { lastupdated: "2016-12-01", classification: "C", source: "1", unavailable: true },
 		};
 
 		return profile;

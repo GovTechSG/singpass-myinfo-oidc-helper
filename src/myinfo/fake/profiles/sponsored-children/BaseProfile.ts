@@ -1,7 +1,7 @@
 /* eslint-disable max-lines-per-function */
 import * as _ from "lodash";
 import {
-	MyInfoComponents,
+	MyInfoComponentsV4,
 	MyInfoCountryPlaceCode,
 	MyInfoDialectCode,
 	MyInfoMaritalStatusCode,
@@ -11,7 +11,7 @@ import {
 	MyInfoRaceCode,
 	MyInfoResidentialCode,
 	MyInfoSexCode,
-} from "../../../domain";
+} from "../../../../types";
 import { aliasName } from "../common";
 import { FakeProfile } from "../fake-profile";
 
@@ -153,7 +153,7 @@ export const BaseProfile: FakeProfile = {
 				},
 				lastupdated: "2021-01-15",
 				quantum: {
-					value: "",
+					value: 0,
 				},
 				source: "1",
 				classification: "C",
@@ -332,7 +332,7 @@ export const BaseProfile: FakeProfile = {
 	},
 };
 
-const address = (): MyInfoComponents.Schemas.DataitemAddressSg => ({
+const address = (): MyInfoComponentsV4.Schemas.DataitemAddressSg => ({
 	country: {
 		code: MyInfoCountryPlaceCode.SINGAPORE,
 		desc: MyInfoCountryPlaceCode.fn.toEnumDesc(MyInfoCountryPlaceCode.SINGAPORE),

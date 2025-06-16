@@ -8,5 +8,3 @@ export {
 
 import * as Fake from "./fake";
 export { Fake };
-
-export * from "./domain";

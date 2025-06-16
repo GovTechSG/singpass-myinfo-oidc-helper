@@ -11,7 +11,7 @@ import {
 	MyInfoRaceCode,
 	MyInfoResidentialCode,
 	MyInfoSexCode,
-} from "../../domain";
+} from "../../../types";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 
 const id = "S1111111D";
@@ -282,7 +282,7 @@ export const mrAppReviewer: FakeProfile = {
 					value: true,
 				},
 				quantum: {
-					value: "100.00",
+					value: 100.0,
 				},
 				message: {
 					code: MyInfoPioneerGenerationMessageCode.ALL_OK,

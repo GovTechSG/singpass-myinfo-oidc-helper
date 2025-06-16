@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import { MyInfoPioneerGenerationMessageCode } from "../../domain";
+import { MyInfoPioneerGenerationMessageCode } from "../../../types";
 import { FakeProfile, ProfileArchetype } from "./fake-profile";
 import { mrSGDaddyPerfect } from "./mrSGDaddyPerfect";
 
@@ -17,7 +17,7 @@ export const mrSGUncleNonPg: FakeProfile = {
 		profile.pioneergen.message.desc = MyInfoPioneerGenerationMessageCode.fn.toEnumDesc(
 			MyInfoPioneerGenerationMessageCode.NON_PG,
 		);
-		profile.pioneergen.quantum.value = "0.00";
+		profile.pioneergen.quantum.value = 0.0;
 		profile.dob = {
 			lastupdated: "2021-01-01",
 			source: "1",
