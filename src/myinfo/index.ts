@@ -8,3 +8,4 @@ export {
 
 import * as Fake from "./fake";
 export { Fake };
+export * from "src/types";
