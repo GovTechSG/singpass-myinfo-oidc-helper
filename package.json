@@ -13,7 +13,7 @@
 		"test": "./shared-scripts/jest-test-unit-integration.sh",
 		"test:ext": "./shared-scripts/jest-test-external.sh",
 		"lint": "./shared-scripts/es-lint.sh './**/*.ts'",
-		"build": "./scripts/build.sh",
+		"build": "./scripts/build.sh && ./scripts/build-types.sh",
 		"generate-myinfo-typings": "ts-node --project ./shared-config/script.tsconfig.json ./scripts/generate-myinfo-typings"
 	},
 	"lint-staged": {
