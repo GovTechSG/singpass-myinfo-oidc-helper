@@ -5,5 +5,8 @@
 	"types": "dist/index.d.ts",
 	"repository": "github:GovTechSG/singpass-myinfo-oidc-helper-types",
 	"bugs": "https://github.com/GovTechSG/singpass-myinfo-oidc-helper/issues",
-	"license": "MIT"
+	"license": "MIT",
+	"dependencies": {
+		"lodash": "^4.17.21"
+	}
 }
