@@ -2,6 +2,7 @@
 	"name": "@govtechsg/singpass-myinfo-oidc-helper-types",
 	"version": "8.5.1",
 	"description": "Types-only package for singpass-myinfo-oidc-helper",
+	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"repository": {
 		"type": "git",

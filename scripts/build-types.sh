@@ -53,8 +53,8 @@ echo "Building types"
 
 echo "Packaging"
 cd ./src/types
-npm pack
-mv govtechsg-singpass-myinfo-oidc-helper-types*.tgz ../..
+npm pack --pack-destination ../..
+
 
 # Return to invocation dir
 popd
