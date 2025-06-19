@@ -1,5 +1,12 @@
 # Changelogs
 
+## 9.0.0
+
+-   **[BREAKING]** Split MyInfo typings into a different export
+	-	use `import { MyInfoTypes } from "@govtechsg/singpass-myinfo-oidc-helper;`
+-   Published a types-only package `@govtechsg/singpass-myinfo-oidc-helper-types`. This package corresponds to `MyInfoTypes`
+-	Added `V4PersonBasic` type (corresponds to `PersonBasic` in MyInfoV3)
+
 ## 8.5.1
 
 -   Support `race` and `secondaryrace` as mock param options for `childrenbirthrecords` in fake helper

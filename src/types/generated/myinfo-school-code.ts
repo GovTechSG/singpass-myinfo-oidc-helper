@@ -4,7 +4,7 @@
 // Any modifications to this file may be overwritten when the script runs again
 // Check README.md for more information
 // =============================================================================
-import { EnumUtils } from "src/types/EnumUtils";
+import { EnumUtils } from "../EnumUtils";
 
 export enum MyInfoSchoolCode {
 	"WESTWOOD_PRIMARY_SCHOOL" = "T12GS0001J",

@@ -1,9 +1,17 @@
 {
 	"name": "@govtechsg/singpass-myinfo-oidc-helper-types",
-	"version": "8.5.1",
+	"version": "9.0.0",
 	"description": "Types-only package for singpass-myinfo-oidc-helper",
+	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
-	"repository": "github:GovTechSG/singpass-myinfo-oidc-helper-types",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/GovTechSG/singpass-myinfo-oidc-helper.git",
+		"directory": "src/types"
+	},
 	"bugs": "https://github.com/GovTechSG/singpass-myinfo-oidc-helper/issues",
-	"license": "MIT"
+	"license": "MIT",
+	"dependencies": {
+		"lodash": "^4.17.21"
+	}
 }
