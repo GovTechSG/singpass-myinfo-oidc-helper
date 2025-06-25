@@ -59,6 +59,7 @@ export enum ProfileArchetype {
 	MR_SG_JOBLESS = "Mr SG Jobless",
 	MR_SG_FROM_BEDOK = "Mr SG From Bedok",
 	MR_SG_NO_LOCAL_ADDRESS = "Mr SG No Local Address",
+	MR_SG_LANDED_ADDRESS = "Mr SG Landed Address",
 	MR_SG_NO_ADDRESS = "Mr SG No Address",
 	MR_PR_NO_LOCAL_ADDRESS = "Mr PR No Local Address",
 	MR_JAPANESE_NO_ADDRESS_OBJECT = "Mr Japanese No Address Object",
