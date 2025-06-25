@@ -6,6 +6,7 @@
 	-	use `import { MyInfoTypes } from "@govtechsg/singpass-myinfo-oidc-helper;`
 -   Published a types-only package `@govtechsg/singpass-myinfo-oidc-helper-types`. This package corresponds to `MyInfoTypes`
 -	Added `V4PersonBasic` type (corresponds to `PersonBasic` in MyInfoV3)
+-	Removed deprecated warnings for `getIdTokenPayload` and `extractNricAndUuidFromPayload`
 
 ## 8.5.1
 
