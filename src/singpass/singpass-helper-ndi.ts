@@ -182,27 +182,6 @@ export class NdiOidcHelper {
 		}
 	};
 
-	// =========================================================================
-	// Deprecated
-	// =========================================================================
-
-	/**
-	 * @deprecated should use constructAuthorizationUrlV2
-	 */
-	public constructAuthorizationUrl = async (
-		state: string,
-		nonce?: string,
-		codeVerifier?: string,
-	): Promise<string> => {
-		return this.constructAuthorizationUrlV2({ state, nonce, codeVerifier, userInfoScope: [] });
-	};
-
-	/**
-	 * @deprecated should not be used with full NDI PKCE flow
-	 *
-	 * Decrypts the ID Token JWT inside the TokenResponse to get the payload
-	 * Use extractNricAndUuidFromPayload on the returned Token Payload to get the NRIC and UUID
-	 */
 	public async getIdTokenPayload(tokens: TokenResponse, overrideDecryptKey?: Key): Promise<TokenPayload> {
 		try {
 			const keys = await this.getKeys();
@@ -225,11 +204,6 @@ export class NdiOidcHelper {
 		}
 	}
 
-	/**
-	 * @deprecated should not be used with full NDI PKCE flow
-	 *
-	 * Returns the nric and uuid from the token payload
-	 */
 	public extractNricAndUuidFromPayload(payload: TokenPayload): { nric: string; uuid: string } {
 		const { sub } = payload;
 
@@ -249,6 +223,25 @@ export class NdiOidcHelper {
 
 		throw Error("Token payload sub property is not defined");
 	}
+
+	// =========================================================================
+	// Deprecated
+	// =========================================================================
+
+	/**
+	 * @deprecated should use constructAuthorizationUrlV2
+	 */
+	public constructAuthorizationUrl = async (
+		state: string,
+		nonce?: string,
+		codeVerifier?: string,
+	): Promise<string> => {
+		return this.constructAuthorizationUrlV2({ state, nonce, codeVerifier, userInfoScope: [] });
+	};
+
+	// =========================================================================
+	// Helpers
+	// =========================================================================
 
 	private validateStatus(status: number) {
 		return status === 302 || (status >= 200 && status < 300);
