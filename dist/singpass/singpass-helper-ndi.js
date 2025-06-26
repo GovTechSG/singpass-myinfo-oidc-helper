@@ -1,0 +1,177 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.NdiOidcHelper = void 0;
+const openid_client_1 = require("openid-client");
+const querystringUtil = require("querystring");
+const axios_client_1 = require("../client/axios-client");
+const util_1 = require("../util");
+const SingpassMyinfoError_1 = require("../util/error/SingpassMyinfoError");
+const Logger_1 = require("../util/Logger");
+const SigningUtil_1 = require("../util/SigningUtil");
+class NdiOidcHelper {
+    constructor(props) {
+        this.getOidcConfig = async () => {
+            if (!this.oidcConfig) {
+                const response = await this.axiosClient.get(this.oidcConfigUrl);
+                this.oidcConfig = response.data;
+            }
+            return this.oidcConfig;
+        };
+        this.getKeys = async () => {
+            const { jwks_uri } = await this.getOidcConfig();
+            const { data: { keys }, } = await this.axiosClient.get(jwks_uri);
+            return keys;
+        };
+        this.constructAuthorizationUrlV2 = async (params) => {
+            const { state, nonce, userInfoScope, codeVerifier } = params;
+            const { authorization_endpoint } = await this.getOidcConfig();
+            userInfoScope.unshift("openid");
+            const queryParams = {
+                state,
+                ...(nonce ? { nonce } : {}),
+                redirect_uri: this.redirectUri,
+                scope: userInfoScope.join(" "),
+                client_id: this.clientID,
+                response_type: "code",
+                ...(codeVerifier
+                    ? { code_challenge_method: "S256", code_challenge: openid_client_1.generators.codeChallenge(codeVerifier) }
+                    : {}),
+            };
+            const queryString = querystringUtil.stringify(queryParams);
+            return `${authorization_endpoint}?${queryString}`;
+        };
+        /**
+         * Get tokens from Singpass endpoint. Note: This will fail if not on an IP whitelisted by SP.
+         * Use getIdTokenPayload on returned Token Response to get the token payload
+         */
+        this.getTokens = async (authCode, codeVerifier) => {
+            const { token_endpoint, issuer } = await this.getOidcConfig();
+            const params = {
+                grant_type: "authorization_code",
+                code: authCode,
+                client_id: this.clientID,
+                redirect_uri: this.redirectUri,
+                client_assertion_type: "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
+                client_assertion: await (0, SigningUtil_1.createClientAssertion)({
+                    issuer: this.clientID,
+                    subject: this.clientID,
+                    audience: issuer,
+                    key: this.clientAssertionSignKey,
+                }),
+                ...(codeVerifier ? { code_verifier: codeVerifier } : undefined),
+            };
+            const body = querystringUtil.stringify(params);
+            const config = {
+                headers: {
+                    "content-type": "application/x-www-form-urlencoded",
+                },
+            };
+            const response = await this.axiosClient.post(token_endpoint, body, config);
+            if (!response.data.id_token) {
+                Logger_1.logger.error("Failed to get ID token: invalid response data", response.data);
+                throw new SingpassMyinfoError_1.SingpassMyInfoError("Failed to get ID token");
+            }
+            if (!response.data.access_token) {
+                Logger_1.logger.error("Failed to get access token: invalid response data", response.data);
+                throw new SingpassMyinfoError_1.SingpassMyInfoError("Failed to get access token");
+            }
+            return response.data;
+        };
+        this.getUserInfo = async (token) => {
+            const { userinfo_endpoint } = await this.getOidcConfig();
+            const { data } = await this.axiosClient.get(userinfo_endpoint, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            return data;
+        };
+        this.verifyUserInfo = async (jweResponse, overrideDecryptKey) => {
+            try {
+                const keys = await this.getKeys();
+                const finalDecryptionKey = overrideDecryptKey !== null && overrideDecryptKey !== void 0 ? overrideDecryptKey : this.jweDecryptKey;
+                const decryptedJwe = await util_1.JweUtil.decryptJWE(jweResponse, finalDecryptionKey.key, finalDecryptionKey.format);
+                const jwsPayload = decryptedJwe.payload.toString();
+                try {
+                    const verified = await util_1.JweUtil.verifyJwsUsingKeyStore(jwsPayload, keys);
+                    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                    const { iat, iss, sub, aud, ...payload } = JSON.parse(verified.payload.toString());
+                    return payload;
+                }
+                catch (e) {
+                    Logger_1.logger.error("could not verify user info payload", e);
+                    throw e;
+                }
+            }
+            catch (e) {
+                Logger_1.logger.error("Failed to get user info", e);
+                throw e;
+            }
+        };
+        // =========================================================================
+        // Deprecated
+        // =========================================================================
+        /**
+         * @deprecated should use constructAuthorizationUrlV2
+         */
+        this.constructAuthorizationUrl = async (state, nonce, codeVerifier) => {
+            return this.constructAuthorizationUrlV2({ state, nonce, codeVerifier, userInfoScope: [] });
+        };
+        this._testExports = {
+            getSingpassClient: () => this.axiosClient,
+            validateStatusFn: this.validateStatus,
+        };
+        this.oidcConfigUrl = props.oidcConfigUrl;
+        this.clientID = props.clientID;
+        this.redirectUri = props.redirectUri;
+        this.jweDecryptKey = props.jweDecryptKey;
+        this.clientAssertionSignKey = props.clientAssertionSignKey;
+        this.axiosClient = (0, axios_client_1.createClient)({
+            timeout: 10000,
+            proxy: props.proxyConfig,
+        });
+    }
+    async getIdTokenPayload(tokens, overrideDecryptKey) {
+        try {
+            const keys = await this.getKeys();
+            const { id_token } = tokens;
+            const finalDecryptionKey = overrideDecryptKey !== null && overrideDecryptKey !== void 0 ? overrideDecryptKey : this.jweDecryptKey;
+            const decryptedJwe = await util_1.JweUtil.decryptJWE(id_token, finalDecryptionKey.key, finalDecryptionKey.format);
+            const jwsPayload = decryptedJwe.payload.toString();
+            try {
+                const verified = await util_1.JweUtil.verifyJwsUsingKeyStore(jwsPayload, keys);
+                return JSON.parse(verified.payload.toString());
+            }
+            catch (e) {
+                Logger_1.logger.error("could not verify token payload", e);
+                throw e;
+            }
+        }
+        catch (e) {
+            Logger_1.logger.error("Failed to get token payload", e);
+            throw e;
+        }
+    }
+    extractNricAndUuidFromPayload(payload) {
+        const { sub } = payload;
+        if (sub) {
+            const extractionRegex = /s=([STFGM]\d{7}[A-Z]).*,u=(.*)/i;
+            const matchResult = sub.match(extractionRegex);
+            if (!matchResult) {
+                throw Error("Token payload sub property is invalid, does not contain valid NRIC and uuid string");
+            }
+            const nric = matchResult[1];
+            const uuid = matchResult[2];
+            return { nric, uuid };
+        }
+        throw Error("Token payload sub property is not defined");
+    }
+    // =========================================================================
+    // Helpers
+    // =========================================================================
+    validateStatus(status) {
+        return status === 302 || (status >= 200 && status < 300);
+    }
+}
+exports.NdiOidcHelper = NdiOidcHelper;
+//# sourceMappingURL=singpass-helper-ndi.js.map
