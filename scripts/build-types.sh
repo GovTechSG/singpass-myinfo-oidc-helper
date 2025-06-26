@@ -49,7 +49,7 @@ pushd ${PROJECT_DIR}
 rm -rf ./src/types/dist
 
 echo "Building types"
-./node_modules/.bin/tsc --module commonjs --project tsconfig.build.types.json
+./node_modules/.bin/tsc --module commonjs --project tsconfig.build.types.json && ./node_modules/.bin/tsc-alias -p tsconfig.build.types.json
 
 echo "Packaging"
 cd ./src/types

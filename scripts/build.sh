@@ -49,7 +49,7 @@ pushd ${PROJECT_DIR}
 rm -rf ./dist
 
 echo "Building"
-./node_modules/.bin/tsc --module commonjs --project tsconfig.build.json
+./node_modules/.bin/tsc --module commonjs --project tsconfig.build.json && ./node_modules/.bin/tsc-alias -p tsconfig.build.json
 
 echo "Packaging"
 npm pack
