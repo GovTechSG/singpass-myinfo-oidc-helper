@@ -14,11 +14,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Set Environment Variables
+        env:
+          GITHUB_HEAD_REF: ${{ github.head_ref }}
+          GITHUB_REF_NAME: ${{ github.ref_name }}
+          GITHUB_PULL_REQUEST_TITLE: ${{ github.event.pull_request.title }}
+          GITHUB_HEAD_COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
+
       - name: Print Configs
         run: |
-          [[ $GITHUB_EVENT_NAME = "pull_request" ]] && BRANCH_NAME="${{ github.head_ref }}" || BRANCH_NAME="${{ github.ref_name }}"
+          [[ $GITHUB_EVENT_NAME = "pull_request" ]] && BRANCH_NAME="$GITHUB_HEAD_REF" || BRANCH_NAME="$GITHUB_REF_NAME"
 
-          [[ $GITHUB_EVENT_NAME = "pull_request" ]] && COMMIT_MSG="${{ github.event.pull_request.title }}" || COMMIT_MSG=$(echo -e "${{ github.event.head_commit.message }}" | head -n 1)
+          [[ $GITHUB_EVENT_NAME = "pull_request" ]] && COMMIT_MSG="$GITHUB_PULL_REQUEST_TITLE" || COMMIT_MSG=$(echo -e "$GITHUB_HEAD_COMMIT_MESSAGE" | head -n 1)
 
           PIPELINE_PROJECT_URL="github.com/$GITHUB_REPOSITORY.git"
 
