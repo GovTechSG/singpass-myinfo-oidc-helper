@@ -1,5 +1,9 @@
 # Changelogs
 
+## 9.0.1
+
+-   Add new myinfo fake profiles
+
 ## 9.0.0
 
 -   **[BREAKING]** Split MyInfo typings into a different export
