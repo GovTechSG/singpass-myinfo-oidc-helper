@@ -20,10 +20,13 @@ import { mrsICAMommyScenario6 } from "./mrICAMommyScenario6";
 import { mrsICAMommyScenario8 } from "./mrICAMommyScenario8";
 import { mrJapaneseAddressBlank } from "./mrJapaneseAddressBlank";
 import { mrJapaneseNoAddressObject } from "./mrJapaneseNoAddressObject";
+import { mrJeTcResident } from "./mrJeTcResident";
+import { mrJyTcResident } from "./mrJyTcResident";
 import { mrMpResident1 } from "./mrMpResident1";
 import { mrMpResident3 } from "./mrMpResident3";
 import { mrMpResident4 } from "./mrMpResident4";
 import { mrMpResident6 } from "./mrMpResident6";
+import { mrMpTcResident } from "./mrMpTcResident";
 import { mrMYDaddyPerfect } from "./mrMYDaddyPerfect";
 import { mrMYDadJobless } from "./mrMYDadJobless";
 import { mrNsResident2 } from "./mrNsResident2";
@@ -38,6 +41,7 @@ import { mrPrpgResident3 } from "./mrPrpgResident3";
 import { mrPrpgResident4 } from "./mrPrpgResident4";
 import { mrPrpgResident5 } from "./mrPrpgResident5";
 import { mrPrpgResident6 } from "./mrPrpgResident6";
+import { mrPuTcResident } from "./mrPuTcResident";
 import { mrSGDaddyChildIsOld } from "./mrSGDaddyChildIsOld";
 import { mrSGDaddyChildNone } from "./mrSGDaddyChildNone";
 import { mrSGDaddyLongNames } from "./mrSGDaddyLongNames";
@@ -75,6 +79,8 @@ import { mrsMYMommyPerfect } from "./mrsMYMommyPerfect";
 import { mrsPreschoolRegistration } from "./MrsPreschoolRegistration";
 import { mrsPRHdbOwnerWorkingAdult } from "./mrsPRHdbOwnerWorkingAdult";
 import { mrsSGMommyPerfect } from "./mrsSGMommyPerfect";
+import { mrTeTcResident } from "./mrTeTcResident";
+import { mrWaTcResident } from "./mrWaTCResident";
 import { msCckResident2 } from "./msCckResident2";
 import { msCckResident5 } from "./msCckResident5";
 import { msHbpResident1 } from "./msHbpResident1";
@@ -192,4 +198,10 @@ export const profiles = [
 	mrPrpgResident4,
 	mrPrpgResident5,
 	mrPrpgResident6,
+	mrPuTcResident,
+	mrJyTcResident,
+	mrTeTcResident,
+	mrWaTcResident,
+	mrJeTcResident,
+	mrMpTcResident,
 ];

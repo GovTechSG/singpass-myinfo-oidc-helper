@@ -118,4 +118,10 @@ export enum ProfileArchetype {
 	MR_PRPG_RESIDENT_4 = "Mr PRPG Resident 4",
 	MR_PRPG_RESIDENT_5 = "Mr PRPG Resident 5",
 	MR_PRPG_RESIDENT_6 = "Mr PRPG Resident 6",
+	MR_PUTC_RESIDENT = "Mr PUTC Resident",
+	MR_JYTC_RESIDENT = "Mr JYTC Resident",
+	MR_TETC_RESIDENT = "Mr TETC Resident",
+	MR_WATC_RESIDENT = "Mr WATC Resident",
+	MR_JETC_RESIDENT = "Mr JETC Resident",
+	MR_MPTC_RESIDENT = "Mr MPTC Resident",
 }
