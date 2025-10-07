@@ -86,13 +86,13 @@ export class NdiOidcHelper {
 		const { state, nonce, userInfoScope, codeVerifier } = params;
 		const { authorization_endpoint } = await this.getOidcConfig();
 
-		userInfoScope.unshift("openid");
+		const _userInfoScope = ["openid"].concat(userInfoScope).join(" ");
 
 		const queryParams = {
 			state,
 			...(nonce ? { nonce } : {}),
 			redirect_uri: this.redirectUri,
-			scope: userInfoScope.join(" "),
+			scope: _userInfoScope,
 			client_id: this.clientID,
 			response_type: "code",
 			...(codeVerifier
