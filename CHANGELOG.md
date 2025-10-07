@@ -1,5 +1,9 @@
 # Changelogs
 
+## 9.0.2
+
+-   Fix `constructAuthorizationUrlV2` editing the scopes array in place
+
 ## 9.0.1
 
 -   Add new myinfo fake profiles
