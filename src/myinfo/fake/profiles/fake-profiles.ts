@@ -1,3 +1,8 @@
+import { mrAmktcResident1 } from "./mrAmktcResident1";
+import { mrAmktcResident2 } from "./mrAmktcResident2";
+import { mrAmktcResident3 } from "./mrAmktcResident3";
+import { mrAmktcResident4 } from "./mrAmktcResident4";
+import { mrAmktcResident5 } from "./mrAmktcResident5";
 import { mrAppReviewer } from "./mrAppReviewer";
 import { mrCckResident1 } from "./mrCckResident1";
 import { mrCckResident3 } from "./mrCckResident3";
@@ -22,6 +27,12 @@ import { mrJapaneseAddressBlank } from "./mrJapaneseAddressBlank";
 import { mrJapaneseNoAddressObject } from "./mrJapaneseNoAddressObject";
 import { mrJeTcResident } from "./mrJeTcResident";
 import { mrJyTcResident } from "./mrJyTcResident";
+import { mrMpbhtcResident1 } from "./mrMpbhtcResident1";
+import { mrMpbhtcResident2 } from "./mrMpbhtcResident2";
+import { mrMpbhtcResident3 } from "./mrMpbhtcResident3";
+import { mrMpbhtcResident4 } from "./mrMpbhtcResident4";
+import { mrMpbhtcResident5 } from "./mrMpbhtcResident5";
+import { mrMpbhtcResident6 } from "./mrMpbhtcResident6";
 import { mrMpResident1 } from "./mrMpResident1";
 import { mrMpResident3 } from "./mrMpResident3";
 import { mrMpResident4 } from "./mrMpResident4";
@@ -42,6 +53,7 @@ import { mrPrpgResident4 } from "./mrPrpgResident4";
 import { mrPrpgResident5 } from "./mrPrpgResident5";
 import { mrPrpgResident6 } from "./mrPrpgResident6";
 import { mrPuTcResident } from "./mrPuTcResident";
+import { mrsAmktcResident6 } from "./mrsAmktcResident6";
 import { mrSGDaddyChildIsOld } from "./mrSGDaddyChildIsOld";
 import { mrSGDaddyChildNone } from "./mrSGDaddyChildNone";
 import { mrSGDaddyLongNames } from "./mrSGDaddyLongNames";
@@ -204,4 +216,16 @@ export const profiles = [
 	mrWaTcResident,
 	mrJeTcResident,
 	mrMpTcResident,
+	mrAmktcResident1,
+	mrAmktcResident2,
+	mrAmktcResident3,
+	mrAmktcResident4,
+	mrAmktcResident5,
+	mrsAmktcResident6,
+	mrMpbhtcResident1,
+	mrMpbhtcResident2,
+	mrMpbhtcResident3,
+	mrMpbhtcResident4,
+	mrMpbhtcResident5,
+	mrMpbhtcResident6,
 ];
