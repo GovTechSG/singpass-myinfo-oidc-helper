@@ -1,0 +1,31 @@
+import { MyInfoComponentsV4 } from "../../../types";
+export declare const preschoolEligibleChild_IC: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+export declare const preschoolEligibleChild_N2: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+export declare const preschoolEligibleChild_PG: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+export declare const preschoolEligibleChild_N1: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+export declare const preschoolEligibleChild_K1: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+export declare const preschoolEligibleChild_K2: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+export declare const preschoolEligibleChild2_N1: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+export declare const preschoolEligibleChild2_IC: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+export declare const preschoolEligibleChild2_K1: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+export declare const preschoolEligibleChild2_N2: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+export declare const preschoolEligibleChild2_PG: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+export declare const preschoolEligibleChild2_K2: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+export declare const preschoolIneligibleChild1: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+export declare const preschoolIneligibleChild2: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+export declare const ChildrenRecords: {
+    childYoungest: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+    child1MonthOld: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+    child2MonthsOld: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+    childMiddle1: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+    childMiddle2: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+    childMiddle3: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+    childMiddle4: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+    childMiddle5: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+    childSuperOld: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+    child6YearsOld: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+    child7YearsOld: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+    childDeceased1: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+    childDeceased2: MyInfoComponentsV4.Schemas.Childrenbirthrecords;
+};
+//# sourceMappingURL=childbirthRecords.d.ts.map
