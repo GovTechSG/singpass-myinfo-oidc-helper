@@ -101,6 +101,8 @@ export interface MockParams {
 	vehicles?: VehicleDetails[];
 	employment?: string;
 	passtype?: MyInfoPassTypeCode;
+	email?: string;
+	mobileno?: string;
 }
 export interface MockFinanceParams {
 	cpfcontributionhistoryoverridemode?: OverrideMode;

@@ -450,6 +450,14 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 			myinfoPerson.race.desc = MyInfoRaceCode.fn.toEnumDesc(mockParams.race);
 		}
 
+		if (!isEmpty(mockParams.email)) {
+			myinfoPerson.email.value = mockParams.email;
+		}
+
+		if (!isEmpty(mockParams.mobileno)) {
+			myinfoPerson.mobileno.nbr.value = mockParams.mobileno;
+		}
+
 		return myinfoPerson;
 	};
 
