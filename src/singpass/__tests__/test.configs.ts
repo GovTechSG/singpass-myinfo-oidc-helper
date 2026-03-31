@@ -1,6 +1,6 @@
 import { ConfigUtils, JestUtil } from "src/util";
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 require("dotenv").config();
 
 const { disableMissingEnvWarnings, getValueFromEnv } = ConfigUtils;

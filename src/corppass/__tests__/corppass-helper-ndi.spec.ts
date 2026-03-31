@@ -5,6 +5,7 @@ import { TokenResponse } from "../shared-constants";
 
 const mockOidcConfigUrl = "https://mockcorppass.sg/authorize";
 const mockClientId = "CLIENT-ID";
+// eslint-disable-next-line sonarjs/no-clear-text-protocols
 const mockRedirectUri = "http://mockme.sg/callback";
 const mockAdditionalHeaders = { "x-api-token": "TOKEN" };
 const mockDecryptKey =
@@ -57,6 +58,7 @@ describe("NDI Corppass Helper", () => {
 
 	describe("constructing authorization url", () => {
 		it("should construct the correct authorzation endpoint", async () => {
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			helper._testExports.getCorppassClient().get = jest.fn((): any =>
 				Promise.resolve({
 					status: 200,
@@ -91,7 +93,7 @@ describe("NDI Corppass Helper", () => {
 			const mockPayload = createMockIdTokenPayload({
 				sub: undefined,
 			});
-			expect(() => helper.extractInfoFromIdTokenSubject(mockPayload)).toThrowError(
+			expect(() => helper.extractInfoFromIdTokenSubject(mockPayload)).toThrow(
 				"Token payload sub property is not defined",
 			);
 		});
@@ -101,7 +103,7 @@ describe("NDI Corppass Helper", () => {
 				sub: `s=some-nonsense,u=f09fcf4c-f57b-40b5-a8e0-6fb6eef640e3`,
 			});
 
-			expect(() => helper.extractInfoFromIdTokenSubject(mockPayload)).toThrowError(
+			expect(() => helper.extractInfoFromIdTokenSubject(mockPayload)).toThrow(
 				"Token payload sub property is invalid, does not contain valid NRIC",
 			);
 		});
@@ -114,6 +116,7 @@ describe("NDI Corppass Helper", () => {
 				proxyBaseUrl: "https://www.proxy.gov.sg",
 				additionalHeaders: { "x-api-token": "TOKEN" },
 			});
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			const axiosMock = jest.fn((): any =>
 				Promise.resolve({
 					status: 200,
@@ -123,6 +126,7 @@ describe("NDI Corppass Helper", () => {
 					},
 				}),
 			);
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			const axiosPostMock = jest.fn((): any =>
 				Promise.resolve({
 					status: 200,
@@ -135,7 +139,7 @@ describe("NDI Corppass Helper", () => {
 			corppassHelper._testExports.getCorppassClient().post = axiosPostMock;
 
 			expect((await corppassHelper.getTokens("TEST")).id_token).toBe("TEST");
-			expect(axiosPostMock).toBeCalledTimes(1);
+			expect(axiosPostMock).toHaveBeenCalledTimes(1);
 			expect(axiosPostMock.mock.calls[0]).toEqual(
 				expect.arrayContaining([
 					"https://www.proxy.gov.sg/mga/sps/oauth/oauth20/token",
@@ -250,6 +254,7 @@ describe("NDI Corppass Helper", () => {
 				};
 			});
 
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			const axiosPostMock = jest.fn((): any =>
 				Promise.resolve({
 					status: 200,

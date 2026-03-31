@@ -23,6 +23,7 @@ describe("Axios Client", () => {
 		nock.cleanAll();
 	});
 
+	// eslint-disable-next-line sonarjs/no-clear-text-protocols
 	const baseURL = "http://base.com";
 	const uinfin = "S1111111D";
 
@@ -106,6 +107,7 @@ describe("Axios Client", () => {
 				},
 			});
 			fail("Should not reach here");
+			// eslint-disable-next-line sonarjs/no-ignored-exceptions, @typescript-eslint/no-unused-vars
 		} catch (error) {
 			expect(consoleLogSpy).toHaveBeenCalledTimes(2);
 			expect(consoleLogSpy).toHaveBeenNthCalledWith(1, "Error occurred while making a request", {
@@ -140,6 +142,7 @@ describe("Axios Client", () => {
 				},
 			});
 			fail("Should not reach here");
+			// eslint-disable-next-line sonarjs/no-ignored-exceptions, @typescript-eslint/no-unused-vars
 		} catch (error) {
 			expect(consoleLogSpy).toHaveBeenCalledTimes(2);
 			expect(consoleLogSpy).toHaveBeenNthCalledWith(1, "Requesting", { method: "get", url: "S***1111D" });

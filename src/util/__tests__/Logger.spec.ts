@@ -13,7 +13,7 @@ describe("Logger", () => {
 			(overrideLogKey: string) => {
 				const mockLog = jest.fn();
 				const newLogger = {
-					[overrideLogKey]: (message: string, param?: any) => {
+					[overrideLogKey]: (message: string, param?: unknown) => {
 						mockLog(`[Override] ${message}`, `[Override] ${param}`);
 					},
 				};

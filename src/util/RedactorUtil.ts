@@ -7,10 +7,11 @@ export const redactUinfin = (input: string): string => {
 	}
 
 	return input.replace(/[stfgSTFGM]\d{7}[a-zA-Z]/gm, (value) => {
-		return `${value.substr(0, 1)}***${value.substr(4)}`;
+		return `${value.slice(0, 1)}***${value.slice(4)}`;
 	});
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function redactError(param: any) {
 	if (_.isNil(param)) {
 		return param;

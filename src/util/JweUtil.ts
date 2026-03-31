@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/todo-tag */
 import * as jose from "node-jose";
 import { SingpassMyInfoError } from "./error/SingpassMyinfoError";
 import { KeyFormat } from "./KeyUtil";

@@ -6,6 +6,7 @@ const mockLogoutUrl = "https://mocksingpass.sg/logout";
 const mockTokenUrl = "https://mocksingpass.sg/token";
 const mockClientId = "CLIENT-ID";
 const mockClientSecret = "sshh-secret";
+// eslint-disable-next-line sonarjs/no-clear-text-protocols
 const mockRedirectUri = "http://mockme.sg/callback";
 const mockDecryptKey = "sshh-secret";
 const mockVerifyKey = "sshh-secret";
@@ -72,7 +73,7 @@ describe("Singpass Helper", () => {
 			const mockPayload = createMockTokenPayload({
 				sub: undefined,
 			});
-			expect(() => helper.extractNricAndUuidFromPayload(mockPayload)).toThrowError(
+			expect(() => helper.extractNricAndUuidFromPayload(mockPayload)).toThrow(
 				"Token payload sub property is not defined",
 			);
 		});
@@ -82,7 +83,7 @@ describe("Singpass Helper", () => {
 				sub: `s=some-nonsense,u=f09fcf4c-f57b-40b5-a8e0-6fb6eef640e3`,
 			});
 
-			expect(() => helper.extractNricAndUuidFromPayload(mockPayload)).toThrowError(
+			expect(() => helper.extractNricAndUuidFromPayload(mockPayload)).toThrow(
 				"Token payload sub property is invalid, does not contain valid NRIC and uuid string",
 			);
 		});
@@ -92,7 +93,7 @@ describe("Singpass Helper", () => {
 				sub: `s=S6005040F,f=f09fcf4c-f57b-40b5-a8e0-6fb6eef640e3`,
 			});
 
-			expect(() => helper.extractNricAndUuidFromPayload(mockPayload)).toThrowError(
+			expect(() => helper.extractNricAndUuidFromPayload(mockPayload)).toThrow(
 				"Token payload sub property is invalid, does not contain valid NRIC and uuid string",
 			);
 		});
@@ -204,6 +205,7 @@ describe("Singpass Helper", () => {
 
 		describe("when refresh is successful", () => {
 			it("should set a cookie header with the session ID and call singpass authorize endpoint", async () => {
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any
 				helper._testExports.singpassClient.get = jest.fn((): any =>
 					Promise.resolve({
 						status: 302,
@@ -228,6 +230,7 @@ describe("Singpass Helper", () => {
 		describe("when refresh is unsuccessful", () => {
 			describe("when session ID is invalid", () => {
 				it("should set a cookie header with the session ID and call singpass authorize endpoint", async () => {
+					// eslint-disable-next-line @typescript-eslint/no-explicit-any
 					helper._testExports.singpassClient.get = jest.fn((): any =>
 						Promise.resolve({
 							status: 302,
@@ -321,7 +324,7 @@ describe("Singpass Helper", () => {
 
 				const sessionId =
 					"1_0jP8lQbVdNJWu/WNMclh6jynB9d+Ui/e3BmbiLccaVRREZkMoEQ=_AAAAAwA=_ehj7WNPdSF5ZR+ERSflwNaDaBPo=";
-				expect(helperWithoutLogout.logoutOfSession(sessionId)).rejects.toThrowError();
+				expect(helperWithoutLogout.logoutOfSession(sessionId)).rejects.toThrow();
 			});
 		});
 		describe("when logout is successful", () => {

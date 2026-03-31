@@ -1,5 +1,3 @@
-/* eslint-disable sonarjs/no-duplicate-string */
-/* eslint-disable @typescript-eslint/no-var-requires */
 import axios from "axios";
 import * as path from "path";
 import * as shell from "shelljs";

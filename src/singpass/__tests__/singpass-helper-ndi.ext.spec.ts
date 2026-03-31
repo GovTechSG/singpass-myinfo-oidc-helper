@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/fixme-tag */
 import * as jwt from "jsonwebtoken";
 import { generators } from "openid-client";
 import { KeyFormat } from "src/util/KeyUtil";
@@ -69,9 +70,12 @@ describe.skip("Singpass NDI OIDC integration", () => {
 		const nonce = Date.now() + "";
 		const state = nonce + "-state";
 		const codeVerifier = pkceFlow ? generators.codeVerifier() : undefined;
+		// eslint-disable-next-line sonarjs/deprecation
 		const authorizationUrl = await spNdiHelper.constructAuthorizationUrl(state, nonce, codeVerifier);
 		logger.debug("authorizationUrl: ", authorizationUrl);
-		codeVerifier && logger.debug("codeVerifier: ", codeVerifier);
+		if (codeVerifier) {
+			logger.debug("codeVerifier: ", codeVerifier);
+		}
 	};
 
 	const extractNricHelper = async (authCode: string, codeVerifier?: string) => {

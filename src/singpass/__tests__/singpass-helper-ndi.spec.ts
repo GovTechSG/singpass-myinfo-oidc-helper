@@ -5,6 +5,7 @@ import { NdiOidcHelper, NdiOidcHelperConstructor } from "../singpass-helper-ndi"
 
 const mockOidcConfigUrl = "https://mocksingpass.sg/authorize";
 const mockClientId = "CLIENT-ID";
+// eslint-disable-next-line sonarjs/no-clear-text-protocols
 const mockRedirectUri = "http://mockme.sg/callback";
 const mockDecryptKey = "sshh-secret";
 const mockSignKey = "sshh-secret";
@@ -56,22 +57,22 @@ describe("NDI Singpass Helper", () => {
 		);
 
 		it("should construct the correct authorzation endpoint", async () => {
+			// eslint-disable-next-line sonarjs/deprecation
 			const authUrl = await helper.constructAuthorizationUrl(mockParams.state, mockParams.nonce);
 
-			// eslint-disable-next-line max-len
 			const expectedQuery = `?state=${mockParams.state}&nonce=${mockParams.nonce}&redirect_uri=http%3A%2F%2Fmockme.sg%2Fcallback&scope=${mockParams.defaultScope}&client_id=CLIENT-ID&response_type=code`;
 			const expected = mockAuthoriseEndpoint + expectedQuery;
 			expect(authUrl).toEqual(expected);
 		});
 
 		it("should construct the correct authorzation endpoint with code challenge if code_verifier is provided", async () => {
+			// eslint-disable-next-line sonarjs/deprecation
 			const authUrl = await helper.constructAuthorizationUrl(
 				mockParams.state,
 				mockParams.nonce,
 				mockParams.codeVerifier,
 			);
 
-			// eslint-disable-next-line max-len
 			const expectedQuery = `?state=${mockParams.state}&nonce=${mockParams.nonce}&redirect_uri=http%3A%2F%2Fmockme.sg%2Fcallback&scope=${mockParams.defaultScope}&client_id=CLIENT-ID&response_type=code&code_challenge_method=S256&code_challenge=ry3USnoiRbnteX-97HMq8iiTHOzPnoXSaytUNIuOXUg`;
 			const expected = mockAuthoriseEndpoint + expectedQuery;
 
@@ -87,7 +88,6 @@ describe("NDI Singpass Helper", () => {
 			});
 			const encodedMockScope = "openid%20scope1%20scope2";
 
-			// eslint-disable-next-line max-len
 			const expectedQuery = `?state=${mockParams.state}&nonce=${mockParams.nonce}&redirect_uri=http%3A%2F%2Fmockme.sg%2Fcallback&scope=${encodedMockScope}&client_id=CLIENT-ID&response_type=code&code_challenge_method=S256&code_challenge=ry3USnoiRbnteX-97HMq8iiTHOzPnoXSaytUNIuOXUg`;
 			const expected = mockAuthoriseEndpoint + expectedQuery;
 			expect(authUrl).toEqual(expected);
@@ -111,7 +111,7 @@ describe("NDI Singpass Helper", () => {
 			const mockPayload = createMockTokenPayload({
 				sub: undefined,
 			});
-			expect(() => helper.extractNricAndUuidFromPayload(mockPayload)).toThrowError(
+			expect(() => helper.extractNricAndUuidFromPayload(mockPayload)).toThrow(
 				"Token payload sub property is not defined",
 			);
 		});
@@ -121,7 +121,7 @@ describe("NDI Singpass Helper", () => {
 				sub: `s=some-nonsense,u=f09fcf4c-f57b-40b5-a8e0-6fb6eef640e3`,
 			});
 
-			expect(() => helper.extractNricAndUuidFromPayload(mockPayload)).toThrowError(
+			expect(() => helper.extractNricAndUuidFromPayload(mockPayload)).toThrow(
 				"Token payload sub property is invalid, does not contain valid NRIC and uuid string",
 			);
 		});
@@ -131,7 +131,7 @@ describe("NDI Singpass Helper", () => {
 				sub: `s=S6005040F,f=f09fcf4c-f57b-40b5-a8e0-6fb6eef640e3`,
 			});
 
-			expect(() => helper.extractNricAndUuidFromPayload(mockPayload)).toThrowError(
+			expect(() => helper.extractNricAndUuidFromPayload(mockPayload)).toThrow(
 				"Token payload sub property is invalid, does not contain valid NRIC and uuid string",
 			);
 		});
@@ -139,7 +139,6 @@ describe("NDI Singpass Helper", () => {
 
 	describe("getIdTokenPayload()", () => {
 		const mockOverrideDecryptKey =
-			// eslint-disable-next-line max-len
 			'{"kty": "EC","d": "AA1YtF2O779tiuJ4Rs3UVItxgX3GFOgQ-aycS-n-lFU","use": "enc","crv": "P-256","kid": "MOCK-OVERRIDE-DECRYPT-KEY-ID","x": "MFqQFZrB74cDhiBHhIBg9iCB-qj86vU45dj2iA-RAjs","y": "yUOsmZh4rd3qwqXRgRCIaAyRcOj4S0mD6tEsd-aTlL0","alg": "ECDH-ES+A256KW"}';
 
 		const mockVerifiedJws = { payload: JSON.stringify({ mockResults: "VERIFIED_JWS" }) };
@@ -199,7 +198,6 @@ describe("NDI Singpass Helper", () => {
 
 	describe("verifyUserInfo()", () => {
 		const mockOverrideDecryptKey =
-			// eslint-disable-next-line max-len
 			'{"kty": "EC","d": "AA1YtF2O779tiuJ4Rs3UVItxgX3GFOgQ-aycS-n-lFU","use": "enc","crv": "P-256","kid": "MOCK-OVERRIDE-DECRYPT-KEY-ID","x": "MFqQFZrB74cDhiBHhIBg9iCB-qj86vU45dj2iA-RAjs","y": "yUOsmZh4rd3qwqXRgRCIaAyRcOj4S0mD6tEsd-aTlL0","alg": "ECDH-ES+A256KW"}';
 
 		const mockVerifiedJws = { payload: JSON.stringify({ mockResults: "VERIFIED_JWS" }) };

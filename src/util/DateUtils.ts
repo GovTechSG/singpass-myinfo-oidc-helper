@@ -61,6 +61,7 @@ export namespace DateUtils {
 			if (!iso) return null;
 
 			return ZonedDateTime.parse(iso).withZoneSameInstant(zoneId);
+			// eslint-disable-next-line sonarjs/no-ignored-exceptions, @typescript-eslint/no-unused-vars
 		} catch (error) {
 			// Attempt alternative parser
 			const ldt = isoToLocalDateTime(iso);
@@ -79,9 +80,12 @@ export namespace DateUtils {
 			if (!iso) return null;
 
 			const filterRegex =
+				// eslint-disable-next-line sonarjs/slow-regex, sonarjs/regex-complexity, sonarjs/concise-regex
 				/(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9])(:([0-5][0-9]))?/;
-			const filteredIso = iso.match(filterRegex)?.[0];
+			// eslint-disable-next-line sonarjs/slow-regex, sonarjs/concise-regex
+			const filteredIso = RegExp(filterRegex).exec(iso)?.[0];
 			return LocalDateTime.parse(filteredIso);
+			// eslint-disable-next-line sonarjs/no-ignored-exceptions, @typescript-eslint/no-unused-vars
 		} catch (error) {
 			// Attempt alternative parser
 			const ld = isoToLocalDate(iso);
@@ -99,9 +103,12 @@ export namespace DateUtils {
 		try {
 			if (!iso) return null;
 
+			// eslint-disable-next-line sonarjs/slow-regex, sonarjs/concise-regex
 			const filterRegex = /(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])/;
-			const filteredIso = iso.match(filterRegex)?.[0];
+			// eslint-disable-next-line sonarjs/slow-regex, sonarjs/concise-regex
+			const filteredIso = RegExp(filterRegex).exec(iso)?.[0];
 			return LocalDate.parse(filteredIso);
+			// eslint-disable-next-line sonarjs/no-ignored-exceptions, @typescript-eslint/no-unused-vars
 		} catch (error) {
 			return undefined;
 		}
@@ -114,9 +121,12 @@ export namespace DateUtils {
 		try {
 			if (!iso) return null;
 
+			// eslint-disable-next-line sonarjs/concise-regex
 			const filterRegex = /(2[0-3]|[01][0-9]):([0-5][0-9])(:([0-5][0-9]))?/;
-			const filteredIso = iso.match(filterRegex)?.[0];
+			// eslint-disable-next-line sonarjs/concise-regex
+			const filteredIso = RegExp(filterRegex).exec(iso)?.[0];
 			return LocalTime.parse(filteredIso);
+			// eslint-disable-next-line sonarjs/no-ignored-exceptions, @typescript-eslint/no-unused-vars
 		} catch (error) {
 			return undefined;
 		}

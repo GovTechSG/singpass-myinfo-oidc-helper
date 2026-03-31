@@ -33,7 +33,7 @@ export class MyInfoRequest {
 
 	public async get<T>(
 		uri: string,
-		queryParams?: { [key: string]: any },
+		queryParams?: { [key: string]: unknown },
 		accessToken?: string,
 		proxyUrl?: string,
 
@@ -75,6 +75,7 @@ export class MyInfoRequest {
 
 	public async post<T>(
 		uri: string,
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		params: { [key: string]: any },
 		proxyUrl?: string,
 

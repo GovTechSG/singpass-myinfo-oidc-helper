@@ -67,7 +67,7 @@ function getCustomEnums(options: Options): EnumNamespace[] {
 	const customEnums: EnumNamespace[] = [];
 
 	filenames.forEach((file) => {
-		if (file.match(/.json$/)) {
+		if (RegExp(/.json$/).exec(file)) {
 			const customEnum: EnumNamespace = JSON.parse(
 				fs.readFileSync(path.join(options.customEnumDir, file), "utf8"),
 			);
@@ -149,13 +149,13 @@ function renameDuplicateEnums(enums: EnumNamespace["enumTypings"][number]): Enum
 			const extractCounter = new RegExp(`^${key}_(.*)`, "i");
 
 			// count instances of key
-			const instanceCount = enumEntryKeyList.filter((k) => k.match(countInstances)).length;
+			const instanceCount = enumEntryKeyList.filter((k) => RegExp(countInstances).exec(k)).length;
 
 			// extract max trailing counter (if any)
 			const counter =
 				enumEntryKeyList
 					.map((k) => {
-						const matches = k.match(extractCounter);
+						const matches = RegExp(extractCounter).exec(k);
 						return matches ? Number(matches[1]) : null;
 					})
 					.filter((k) => k)
@@ -195,6 +195,7 @@ function writeEnumsToFiles(options: Options, namespaces: EnumNamespace[]): strin
 
 function generateFileFromTemplate<T>(options: Options, filename: string, template: string, params: T) {
 	const enumsHbs = fs.readFileSync(path.join(options.templateDir, template), "utf8");
+	// eslint-disable-next-line sonarjs/disabled-auto-escaping
 	const enumsTemplate = handlebars.compile(enumsHbs, { noEscape: true });
 	const typingsSource = FILE_HEADER + enumsTemplate(params);
 

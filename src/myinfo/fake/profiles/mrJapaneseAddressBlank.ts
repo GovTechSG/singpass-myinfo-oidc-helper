@@ -40,6 +40,7 @@ export const mrJapaneseAddressBlank: FakeProfile = {
 			classification: "C",
 			lastupdated: "2019-09-18",
 		};
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		(profile as any).regadd = {
 			type: "",
 			unit: { value: "" },
