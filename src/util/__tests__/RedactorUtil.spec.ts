@@ -42,6 +42,7 @@ describe("Redactor", () => {
 		});
 
 		it("should return a non-string as is", () => {
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			const input: any = 123;
 			expect(redactUinfin(input)).toEqual(input);
 		});

@@ -184,11 +184,11 @@ export class OidcHelper {
 		if (sub) {
 			const trimmedSub = sub.replace(/ /g, "");
 			const nricRegex = /s=([STFGM]\d{7}[A-Z])[^,]*/i;
-			const [, nric] = trimmedSub.match(nricRegex) || [];
+			const [, nric] = RegExp(nricRegex).exec(trimmedSub) || [];
 			const uuidRegex = /u=([^,]*)/i;
-			const [, uuid] = trimmedSub.match(uuidRegex) || [];
+			const [, uuid] = RegExp(uuidRegex).exec(trimmedSub) || [];
 			const countryCodeRegex = /c=([^,]*)/i;
-			const [, countryCode] = trimmedSub.match(countryCodeRegex) || [];
+			const [, countryCode] = RegExp(countryCodeRegex).exec(trimmedSub) || [];
 
 			if (!nric) {
 				throw Error("Token payload sub property is invalid, does not contain valid NRIC");

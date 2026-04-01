@@ -4,6 +4,7 @@ const mockAuthUrl = "https://mockcorppass.sg/authorize";
 const mockTokenUrl = "https://mockcorppass.sg/token";
 const mockClientId = "CLIENT-ID";
 const mockClientSecret = "sshh-secret";
+// eslint-disable-next-line sonarjs/no-clear-text-protocols
 const mockRedirectUri = "http://mockme.sg/callback";
 const mockDecryptKey = "sshh-secret";
 const mockVerifyKey = "sshh-secret";
@@ -65,7 +66,7 @@ describe("Corppass Helper", () => {
 			const mockPayload = createMockIdTokenPayload({
 				sub: undefined,
 			});
-			expect(() => helper.extractInfoFromIdTokenSubject(mockPayload)).toThrowError(
+			expect(() => helper.extractInfoFromIdTokenSubject(mockPayload)).toThrow(
 				"Token payload sub property is not defined",
 			);
 		});
@@ -75,7 +76,7 @@ describe("Corppass Helper", () => {
 				sub: `s=some-nonsense,u=f09fcf4c-f57b-40b5-a8e0-6fb6eef640e3`,
 			});
 
-			expect(() => helper.extractInfoFromIdTokenSubject(mockPayload)).toThrowError(
+			expect(() => helper.extractInfoFromIdTokenSubject(mockPayload)).toThrow(
 				"Token payload sub property is invalid, does not contain valid NRIC",
 			);
 		});

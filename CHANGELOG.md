@@ -1,5 +1,9 @@
 # Changelogs
 
+## 9.0.4
+
+-   Allow overriding of `mobileno` and `email` in fake profiles
+
 ## 9.0.3
 
 -   Add new myinfo fake profiles

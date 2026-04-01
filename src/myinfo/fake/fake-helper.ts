@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 /* eslint-disable sonarjs/cognitive-complexity */
 /* eslint-disable max-lines-per-function */
 import { get, isEmpty, map, omit, partition, set } from "lodash";
@@ -450,6 +451,14 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 			myinfoPerson.race.desc = MyInfoRaceCode.fn.toEnumDesc(mockParams.race);
 		}
 
+		if (!isEmpty(mockParams.email)) {
+			myinfoPerson.email.value = mockParams.email;
+		}
+
+		if (!isEmpty(mockParams.mobileno)) {
+			myinfoPerson.mobileno.nbr.value = mockParams.mobileno;
+		}
+
 		return myinfoPerson;
 	};
 
@@ -594,6 +603,7 @@ function filterThroughMyInfoAttributes(person: PersonBasic, attributes: Readonly
 		const drivingLicence = filterThroughDeepAttributes(person, drivinglicenceRawCbrAttributes);
 		drivinglicenceFilteredPerson = {
 			drivinglicence: {
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any
 				...(drivingLicence as any).drivinglicence,
 				...generateDefaultMockResponse(),
 			},
@@ -680,6 +690,7 @@ export function transformChildBirthRecord(
 	} as MyInfoComponentsV4.Schemas.Childrenbirthrecords;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function transformItems(item: any) {
 	return Object.keys(item).reduce((objectKey, key) => {
 		if (item[key] === "") {
@@ -690,6 +701,7 @@ export function transformItems(item: any) {
 	}, {});
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function transformItemsWithAdditionalMock(item: any) {
 	const transformedItems = transformItems(item);
 	const defaultItems = {

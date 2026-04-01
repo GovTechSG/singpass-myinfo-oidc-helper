@@ -21,9 +21,9 @@ export interface IMyInfoHelper {
 }
 
 export interface IMyInfoRequest {
-	get: (uri: string, params?: { [key: string]: any }, accessToken?: string) => Promise<AxiosResponse>;
+	get: (uri: string, params?: { [key: string]: unknown }, accessToken?: string) => Promise<AxiosResponse>;
 
-	post: (uri: string, params: { [key: string]: any }) => Promise<AxiosResponse>;
+	post: (uri: string, params: { [key: string]: unknown }) => Promise<AxiosResponse>;
 }
 
 export interface MyInfoHelperConstructor {

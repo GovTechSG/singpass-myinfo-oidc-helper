@@ -162,7 +162,7 @@ export class OidcHelper {
 
 		if (sub) {
 			const extractionRegex = /s=([STFGM]\d{7}[A-Z]).*,u=(.*)/i;
-			const matchResult = sub.match(extractionRegex);
+			const matchResult = RegExp(extractionRegex).exec(sub);
 
 			if (!matchResult) {
 				throw Error("Token payload sub property is invalid, does not contain valid NRIC and uuid string");

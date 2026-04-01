@@ -163,7 +163,7 @@ export class NdiOidcHelper {
 
 			const {
 				data: { keys },
-			} = await this.axiosClient.get<{ keys: Object[] }>(finalJwksUri, { headers: this.additionalHeaders });
+			} = await this.axiosClient.get<{ keys: object[] }>(finalJwksUri, { headers: this.additionalHeaders });
 
 			const { access_token } = tokens;
 			let error = null;
@@ -199,7 +199,7 @@ export class NdiOidcHelper {
 
 			const {
 				data: { keys },
-			} = await this.axiosClient.get<{ keys: Object[] }>(finalJwksUri, { headers: this.additionalHeaders });
+			} = await this.axiosClient.get<{ keys: object[] }>(finalJwksUri, { headers: this.additionalHeaders });
 
 			const { id_token } = tokens;
 
@@ -239,11 +239,11 @@ export class NdiOidcHelper {
 		if (sub) {
 			const trimmedSub = sub.replace(/ /g, "");
 			const nricRegex = /s=([STFGM]\d{7}[A-Z])[^,]*/i;
-			const [, nric] = trimmedSub.match(nricRegex) || [];
+			const [, nric] = RegExp(nricRegex).exec(trimmedSub) || [];
 			const uuidRegex = /u=([^,]*)/i;
-			const [, uuid] = trimmedSub.match(uuidRegex) || [];
+			const [, uuid] = RegExp(uuidRegex).exec(trimmedSub) || [];
 			const countryCodeRegex = /c=([^,]*)/i;
-			const [, countryCode] = trimmedSub.match(countryCodeRegex) || [];
+			const [, countryCode] = RegExp(countryCodeRegex).exec(trimmedSub) || [];
 
 			if (!nric) {
 				throw Error("Token payload sub property is invalid, does not contain valid NRIC");

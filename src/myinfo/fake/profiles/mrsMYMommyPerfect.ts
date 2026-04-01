@@ -35,6 +35,7 @@ export const mrsMYMommyPerfect: FakeProfile = {
 		profile.residentialstatus.code = "";
 		profile.residentialstatus.desc = "";
 
+		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 		(profile.marriagecertno = {
 			lastupdated: "2018-05-10",
 			source: "1",

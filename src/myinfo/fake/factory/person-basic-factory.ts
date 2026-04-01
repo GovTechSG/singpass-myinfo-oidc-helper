@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import { Factory } from "rosie";
 import {
 	MyInfoComponents,

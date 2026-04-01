@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/todo-tag */
 /* eslint-disable no-console */
 import dtsgenerator, { parseSchema } from "dtsgenerator";
 import * as fs from "fs";
@@ -31,35 +32,31 @@ console.log(`===================================================================
 const projectDir = process.cwd();
 
 const argv = yargs
-	// eslint-disable-next-line import/namespace
 	.command({
 		command: `$0 <swagger-path>`,
 		describe: `This script parses a MyInfo API swagger file and generates the relevant typings`,
 		builder: () => {
-			return (
-				yargs
-					// eslint-disable-next-line import/namespace
-					.positional(`swagger-path`, {
-						type: `string`,
-						describe: `The MyInfo API swagger file path
+			return yargs
+				.positional(`swagger-path`, {
+					type: `string`,
+					describe: `The MyInfo API swagger file path
 						The latest version may be downloaded from https://api.singpass.gov.sg/developers`,
-					})
-					.option(`output-dir`, {
-						alias: "o",
-						type: "string",
-						requiresArg: true,
-						describe: "Set output dir",
-						default: `${projectDir}/src/types`,
-					})
-					.option(`myinfo-code-ref-tables-url`, {
-						type: "string",
-						requiresArg: true,
-						describe: "URL to the latest myinfo code reference tables",
-						// NOTE: To be updated where necessary
-						default:
-							"https://public.cloud.myinfo.gov.sg/dpp/frontend/assets/api-lib/myinfo/downloads/myinfo-api-code-tables.xlsx",
-					})
-			);
+				})
+				.option(`output-dir`, {
+					alias: "o",
+					type: "string",
+					requiresArg: true,
+					describe: "Set output dir",
+					default: `${projectDir}/src/types`,
+				})
+				.option(`myinfo-code-ref-tables-url`, {
+					type: "string",
+					requiresArg: true,
+					describe: "URL to the latest myinfo code reference tables",
+					// NOTE: To be updated where necessary
+					default:
+						"https://public.cloud.myinfo.gov.sg/dpp/frontend/assets/api-lib/myinfo/downloads/myinfo-api-code-tables.xlsx",
+				});
 		},
 		handler: () => {},
 	})
@@ -196,7 +193,7 @@ async function writeSwaggerTypingsSource(swagger: any): Promise<string> {
 		if (fs.existsSync(inputDirectory)) {
 			const filenames = fs.readdirSync(inputDirectory);
 			filenames.forEach((file) => {
-				if (file.match(/.json$/)) {
+				if (RegExp(/.json$/).exec(file)) {
 					const dataItem = JSON.parse(fs.readFileSync(`${inputDirectory}/${file}`, "utf8"));
 					components.schemas = { ...components.schemas, ...dataItem };
 					if (!components.schemas[customDataItem.domain].properties)
@@ -235,9 +232,11 @@ function generateIndex(fileNames: string[]): string {
 	const moduleNames = fileNames.map((fileName) => {
 		return fileName.endsWith(".ts") ? fileName.slice(0, -3) : fileName;
 	});
+	// eslint-disable-next-line sonarjs/no-alphabetical-sort
 	moduleNames.sort();
 
 	const indexHbs = fs.readFileSync(`${outputDir}/index.hbs`, "utf8");
+	// eslint-disable-next-line sonarjs/disabled-auto-escaping
 	const indexTemplate = handlebars.compile(indexHbs, { noEscape: true });
 	const indexSource = FILE_HEADER + indexTemplate({ moduleNames });
 

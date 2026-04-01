@@ -32,7 +32,7 @@ interface AuthHeader {
  */
 export function generateMyInfoAuthorizationHeader(
 	url: string,
-	queryParams: { [key: string]: any },
+	queryParams: { [key: string]: unknown },
 	method: HttpMethod,
 	appId: string,
 	signingKey: string,
@@ -52,7 +52,7 @@ export function generateMyInfoAuthorizationHeader(
 	return generateAuthHeaderString(appId, nonce, signature, timestamp);
 }
 
-function generateAuthHeaderString(appId: string, nonceValue: any, signature: string, timestamp: number) {
+function generateAuthHeaderString(appId: string, nonceValue: unknown, signature: string, timestamp: number) {
 	return (
 		'PKI_SIGN app_id="' +
 		appId + // Defaults to 1st part of incoming request hostname
@@ -79,7 +79,7 @@ function generateAuthHeaderString(appId: string, nonceValue: any, signature: str
  */
 function generateSignature(
 	authHeader: Partial<AuthHeader>,
-	queryParams: { [key: string]: any },
+	queryParams: { [key: string]: unknown },
 	method: HttpMethod,
 	url: string,
 	key: string,
@@ -87,6 +87,7 @@ function generateSignature(
 ): string {
 	const baseParams = _.merge(authHeader, queryParams);
 
+	// eslint-disable-next-line sonarjs/no-alphabetical-sort
 	const sortedKeys = Object.keys(baseParams).sort();
 	const initialAccObj = {};
 	const sortedParams = sortedKeys.reduce((accObj, paramKey) => {

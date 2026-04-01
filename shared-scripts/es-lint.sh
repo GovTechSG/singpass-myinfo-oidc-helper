@@ -30,7 +30,6 @@ SCRIPT_DIR=$( dirname $( ${READLINK} -f $0 ) )
 # Inputs
 # ==============================================================================
 
-export ESLINT_CONFIG_PATH=${ESLINT_CONFIG_PATH:-".eslintrc"}
 export AUTO_FIX=${AUTO_FIX:-true}
 
 # ==============================================================================
@@ -41,7 +40,7 @@ if [ $AUTO_FIX != "true" ]; then unset AUTO_FIX; fi;
 
 # Lint
 echo "Linting with eslint"
-npx eslint -c ${ESLINT_CONFIG_PATH} ${AUTO_FIX:+--fix} "$@"
+npx eslint ${AUTO_FIX:+--fix} "$@"
 
 # Prettier
 echo "Running prettier"
