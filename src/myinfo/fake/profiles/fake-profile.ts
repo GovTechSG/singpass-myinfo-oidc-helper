@@ -17,6 +17,7 @@ export enum ProfileArchetype {
 	MR_SG_FATHER_NORMAL_CHILDREN = "Mr SG Father with only normal children",
 	MS_SG_MOTHER_HAVING_BOTH_CHILDREN = "Ms SG Mother having normal and sponsored children",
 	// Regular Profiles
+	MR_SG_NO_EMAIL_NO_MOBILE_NO_REGADD = "Mr SG No Email No Mobile No RegAdd",
 	MR_PR_DADDY_ONE_CHILD = "Mr PR Daddy with One Child and Expired Passport",
 	MR_PR_DADDY_PERFECT = "Mr PR Daddy Perfect",
 	MR_SG_DADDY_CHILD_IS_OLD = "Mr SG with 1 old child",
