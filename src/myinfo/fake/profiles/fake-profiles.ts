@@ -67,6 +67,7 @@ import { mrSGFromBedok } from "./mrSGFromBedok";
 import { mrSGJobless } from "./mrSGJobless";
 import { mrSGLandedAddress } from "./mrSGLandedAddress";
 import { mrSGNoAddress } from "./mrSGNoAddress";
+import { mrSgNoEmailNoMobileNoRegadd } from "./mrSgNoEmailNoMobileNoRegadd";
 import { mrSGNoLocalAddress } from "./mrSGNoLocalAddress ";
 import { mrPreschoolRegister } from "./mrSGPreschoolRegister";
 import { mrSgTeenager17 } from "./mrSGTeenager17";
@@ -121,6 +122,7 @@ export const profiles = [
 	msSGMotherBothChildren,
 	mrSGDaddyPerfect,
 	mrsSGMommyPerfect,
+	mrSgNoEmailNoMobileNoRegadd,
 	mrSGFromBedok,
 	mrSGNoLocalAddress,
 	mrSGNoAddress,
