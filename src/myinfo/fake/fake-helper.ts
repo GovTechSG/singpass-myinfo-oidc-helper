@@ -452,11 +452,15 @@ export class FakeMyInfoHelper implements IFakeMyInfoHelper {
 		}
 
 		if (!isEmpty(mockParams.email)) {
+			myinfoPerson.email.unavailable = false;
 			myinfoPerson.email.value = mockParams.email;
 		}
 
 		if (!isEmpty(mockParams.mobileno)) {
-			myinfoPerson.mobileno.nbr.value = mockParams.mobileno;
+			myinfoPerson.mobileno.unavailable = false;
+			myinfoPerson.mobileno.prefix = { value: "+" };
+			myinfoPerson.mobileno.areacode = { value: "65" };
+			myinfoPerson.mobileno.nbr = { value: mockParams.mobileno };
 		}
 
 		return myinfoPerson;
