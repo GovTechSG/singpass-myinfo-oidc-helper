@@ -1,5 +1,13 @@
 # Changelogs
 
+## 9.0.6
+
+-   Bump dependencies to fix vulnerabilities
+
+## 9.0.5
+
+-   Fix bug in fake helper where `mobileno` and `email` fields were not properly set when overriding mock params.
+
 ## 9.0.4
 
 -   Allow overriding of `mobileno` and `email` in fake profiles
