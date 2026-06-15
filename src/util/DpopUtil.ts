@@ -3,7 +3,6 @@ import * as jose from "node-jose";
 import { Key } from "./KeyUtil";
 import { SingpassMyInfoError } from "./error/SingpassMyinfoError";
 
-// ref: https://docs.developer.singpass.gov.sg/docs/technical-specifications/technical-concepts/demonstrating-proof-of-possession-dpop#jwt-payload
 export interface DpopProofInput {
 	htm: string;
 	htu: string;

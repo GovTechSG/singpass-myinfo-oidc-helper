@@ -45,7 +45,7 @@ export interface PARInput {
 	redirectUriHttpsType?: "app_claimed_https" | "standard_https";
 	authenticationContextType?: string;
 	authenticationContextMessage?: string;
-	appLaunchUrl?: string; // note: only for iOS mobile app integration, not applicable for web integration
+	appLaunchUrl?: string;
 	acrValues?: string;
 }
 
@@ -60,15 +60,7 @@ export interface PARConfig {
 }
 
 /**
- * Send a Pushed Authorization Request
- * Flow:
- * 1. Build request body with all OIDC, PKCE, and Singpass-specific parameters
- * 2. Generate client assertion for private_key_jwt authentication
- * 3. Generate DPoP proof for the PAR endpoint
- * 4. POST to pushed_authorization_request_endpoint with DPoP header
- * 5. Return request_uri and expires_in from the response
- *
- * ref: https://docs.developer.singpass.gov.sg/docs/technical-specifications/integration-guide/1.-authorization-request
+ * Build the PAR request body from caller input and config.
  */
 export async function buildPARRequestParams(input: PARInput, config: PARConfig): Promise<PARRequestParams> {
 	const { clientID, redirectUri, issuer, clientAssertionSignKey } = config;
@@ -129,6 +121,7 @@ export async function buildPARRequestParams(input: PARInput, config: PARConfig):
  * 3. POST to pushed_authorization_request_endpoint with DPoP header
  * 4. Return request_uri and expires_in from the response
  *
+ * ref: https://docs.developer.singpass.gov.sg/docs/technical-specifications/integration-guide/1.-authorization-request
  */
 export async function sendPushedAuthorizationRequest(input: PARInput, config: PARConfig): Promise<PARResponse> {
 	const { parEndpoint, dpopSignKey, axiosClient } = config;

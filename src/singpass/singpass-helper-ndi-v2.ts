@@ -80,10 +80,7 @@ export interface SubAttributes {
 	mobileno?: string;
 }
 
-/**
- * Userinfo response payload from the FAPI 2.0 userinfo endpoint.
- * ref: https://docs.developer.singpass.gov.sg/docs/technical-specifications/integration-guide/5.-requesting-for-userinfo#successful-response
- */
+// ref: https://docs.developer.singpass.gov.sg/docs/technical-specifications/integration-guide/5.-requesting-for-userinfo#successful-response
 export interface UserInfoPayloadV2 {
 	person_info: MyInfoComponentsV4.Schemas.Person;
 	iss: string;
