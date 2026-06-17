@@ -7,6 +7,63 @@ import { createDpopProof } from "./DpopUtil";
 import { SingpassMyInfoError } from "./error/SingpassMyinfoError";
 import { logger } from "./Logger";
 
+// ref: https://docs.developer.singpass.gov.sg/docs/technical-specifications/integration-guide/1.-authorization-request#possible-authenticationcontexttype-values
+export enum AuthenticationContextType {
+	// CPF transactions
+	CpfChangePaymentMode = "CPF_CHANGE_PAYMENT_MODE",
+	CpfChangeDailyWithdrawalLimit = "CPF_CHANGE_DAILY_WITHDRAWAL_LIMIT",
+	CpfProfileUpdate = "CPF_PROFILE_UPDATE",
+	CpfLinkBankAccount = "CPF_LINK_BANK_ACCOUNT",
+	CpfFundsTransfer = "CPF_FUNDS_TRANSFER",
+
+	// Banking
+	BankCasaOpening = "BANK_CASA_OPENING",
+	BankCasaInitialUsage = "BANK_CASA_INITIAL_USAGE",
+	BankCardApplication = "BANK_CARD_APPLICATION",
+	BankCardInitialUsage = "BANK_CARD_INITIAL_USAGE",
+	BankLoanApplication = "BANK_LOAN_APPLICATION",
+	BankAddLocalRecipient = "BANK_ADD_LOCAL_RECEIPIENT",
+	BankAddOverseasRecipient = "BANK_ADD_OVERSEAS_RECIPIENT",
+	BankIncreaseTransferLimit = "BANK_INCREASE_TRANSFER_LIMIT",
+	BankReportFraudSuspiciousActivity = "BANK_REPORT_FRAUD_SUSPICIOUS_ACTIVITY",
+	BankFundsTransferLocal = "BANK_FUNDS_TRANSFER_LOCAL",
+	BankRemitMoneyOverseas = "BANK_REMIT_MONEY_OVERSEAS",
+	BankReportLostCard = "BANK_REPORT_LOST_CARD",
+	BankChangeNotificationMethod = "BANK_CHANGE_NOTIFICATION_METHOD",
+	BankIncreaseCreditCardLimit = "BANK_INCREASE_CREDIT_CARD_LIMIT",
+	BankRequestCashAdvance = "BANK_REQUEST_CASH_ADVANCE",
+	BankIncreaseInflowOutflow = "BANK_INCREASE_INFLOW_OUTFLOW",
+	BankActivateDormantAccount = "BANK_ACTIVATE_DORMANT_ACCOUNT",
+	BankLoginNewDevice = "BANK_LOGIN_NEW_DEVICE",
+	BankLoginUnfamiliarIp = "BANK_LOGIN_UNFAMILIAR_IP",
+	BankUpdateUserInformation = "BANK_UPDATE_USER_INFORMATION",
+	BankNewDeviceRegistration = "BANK_NEW_DEVICE_REGISTRATION",
+	BankUnlockMoneyLock = "BANK_UNLOCK_MONEY_LOCK",
+	BankGooglePayApplePayCardOnboarding = "BANK_GOOGLE_PAY_APPLE_PAY_CARD_ONBOARDING",
+
+	// Other Financial Institutions
+	FiAccountOpening = "FI_ACCOUNT_OPENING",
+	FiLinkBankAccount = "FI_LINK_BANK_ACCOUNT",
+	FiIncreaseTransferLimit = "FI_INCREASE_TRANSFER_LIMIT",
+	FiIncreaseWithdrawalLimit = "FI_INCREASE_WITHDRAWAL_LIMIT",
+	FiInitiateDeposit = "FI_INITIATE_DEPOSIT",
+
+	// Telcos
+	TelcoSimCardApplication = "TELCO_SIM_CARD_APPLICATION",
+	TelcoSimCardActivation = "TELCO_SIM_CARD_ACTIVATION",
+	TelcoChangeAccountDetails = "TELCO_CHANGE_ACCOUNT_DETAILS",
+	TelcoActivateRoaming = "TELCO_ACTIVATE_ROAMING",
+	TelcoChangeNotificationMethod = "TELCO_CHANGE_NOTIFICATION_METHOD",
+
+	// Others
+	AppAuthenticationDefault = "APP_AUTHENTICATION_DEFAULT",
+	AppPaymentDefault = "APP_PAYMENT_DEFAULT",
+	AppAccountPasswordChangeDefault = "APP_ACCOUNT_PASSWORD_CHANGE_DEFAULT",
+	AppAccountPasswordResetDefault = "APP_ACCOUNT_PASSWORD_RESET_DEFAULT",
+	AppAccountDetailsChangeDefault = "APP_ACCOUNT_DETAILS_CHANGE_DEFAULT",
+	AppOnboardingDefault = "APP_ONBOARDING_DEFAULT",
+}
+
 // ref: https://docs.developer.singpass.gov.sg/docs/technical-specifications/integration-guide/1.-authorization-request#successful-response
 export interface PARResponse {
 	request_uri: string;
@@ -31,7 +88,7 @@ export interface PARRequestParams {
 	code_challenge_method: "S256";
 
 	// --- Singpass-Specific Parameters ---
-	authentication_context_type?: string;
+	authentication_context_type?: AuthenticationContextType;
 	authentication_context_message?: string;
 	redirect_uri_https_type?: "app_claimed_https" | "standard_https";
 	app_launch_url?: string; // note: only for iOS mobile app integration, not applicable for web integration
@@ -43,7 +100,7 @@ export interface PARInput {
 	userInfoScope: string[];
 	codeVerifier: string;
 	redirectUriHttpsType?: "app_claimed_https" | "standard_https";
-	authenticationContextType?: string;
+	authenticationContextType?: AuthenticationContextType;
 	authenticationContextMessage?: string;
 	appLaunchUrl?: string;
 	acrValues?: string;
