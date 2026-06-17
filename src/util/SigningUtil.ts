@@ -129,6 +129,7 @@ export async function createClientAssertion({
 		issuer,
 		audience,
 		subject,
+		jwtid: crypto.randomUUID(),
 		expiresIn: 120,
 	});
 }
