@@ -10,13 +10,11 @@ import { AuthenticationContextType } from "src/util/ParUtil";
 import { NdiOidcHelperV2, NdiOidcHelperV2Constructor, TokenPayloadV2 } from "../singpass-helper-ndi-v2";
 import { configs } from "./test.configs";
 
-const expectedUinfin = ""; // FIXME: fill in with expected uinfin (e.g. "S9912374E")
-
 /**
  * Convenience tests for NDI OIDC V2 (FAPI 2.0) integration
  *
  * Setup:
- * 1. Fill in `expectedUinfin` above with the NRIC of the test account.
+ * 1. Fill in `expectedUinfin` with the NRIC of the test account.
  * 2. Copy .env.sample to .env and fill in the SINGPASS_AUTH_V2_* variables.
  *    To generate fresh keys and a JWKS to register in SDP, run `Key generation utility` (defined below).
  * 3. Run the Step 1 test to generate the PAR-based authorization URL, open it in a browser,
@@ -24,6 +22,8 @@ const expectedUinfin = ""; // FIXME: fill in with expected uinfin (e.g. "S991237
  * 4. Fill in the `authCode` and `codeVerifier` FIXMEs in Step 3 and run to verify the full flow.
  */
 describe("Singpass NDI OIDC V2 (FAPI 2.0) integration", () => {
+	const expectedUinfin = ""; // FIXME: fill in with expected uinfin (e.g. "S9912374E")
+
 	const props: NdiOidcHelperV2Constructor = {
 		clientID: configs.ndiOidcV2.clientId,
 		oidcConfigUrl: configs.ndiOidcV2.oidcConfigUrl,
@@ -126,6 +126,7 @@ describe("Singpass NDI OIDC V2 (FAPI 2.0) integration", () => {
 /*                     MyInfo FAPI 2.0 (userinfo endpoint)                   */
 /* -------------------------------------------------------------------------- */
 /**
+ * ref: https://docs.developer.singpass.gov.sg/docs/testing/myinfo-test-personas
  * Use this suite to test the MyInfo userinfo endpoint.
  * Requires a separate MyInfo app registered in SDP with data catalog scopes
  * (e.g. uinfin, name, nationality). No authenticationContextType needed.
@@ -168,7 +169,7 @@ describe("MyInfo FAPI 2.0 (userinfo endpoint)", () => {
 			const parInput = {
 				state,
 				nonce,
-				userInfoScope: ["uinfin", "name", "nationality"], // FIXME: replace with scopes approved for your MyInfo app
+				userInfoScope: ["aliasname", "birthcountry", "childrenbirthrecords.birthcertno"], // FIXME: replace with scopes approved for your MyInfo app
 				codeVerifier,
 				// No authenticationContextType — MyInfo apps do not use it
 			};
@@ -224,18 +225,20 @@ async function generateAndLogKeys(): Promise<void> {
 	const dpopKey = await jose.JWK.createKey("EC", "P-256", { alg: "ES256", use: "sig", kid: "dpop-2026-01" });
 
 	console.log("=== Paste into .env (adjust prefix for Login vs MyInfo app) ===");
-	console.log("SINGPASS_AUTH_V2_CLIENT_ASSERTION_SIGN_KEY=" + JSON.stringify(sigKey.toJSON(true)));
-	console.log("SINGPASS_AUTH_V2_CLIENT_ASSERTION_SIGN_KEY_ALG=ES256");
-	console.log("SINGPASS_AUTH_V2_JWE_DECRYPT_KEY=" + JSON.stringify(encKey.toJSON(true)));
-	console.log("SINGPASS_AUTH_V2_JWE_DECRYPT_KEY_FORMAT=json");
-	console.log("SINGPASS_AUTH_V2_DPOP_SIGN_KEY=" + JSON.stringify(dpopKey.toJSON(true)));
+	console.log(
+		`SINGPASS_AUTH_V2_CLIENT_ASSERTION_SIGN_KEY=${JSON.stringify(sigKey.toJSON(true))}\n` +
+			`SINGPASS_AUTH_V2_CLIENT_ASSERTION_SIGN_KEY_ALG=ES256\n` +
+			`SINGPASS_AUTH_V2_JWE_DECRYPT_KEY=${JSON.stringify(encKey.toJSON(true))}\n` +
+			`SINGPASS_AUTH_V2_JWE_DECRYPT_KEY_FORMAT=json\n` +
+			`SINGPASS_AUTH_V2_DPOP_SIGN_KEY=${JSON.stringify(dpopKey.toJSON(true))}`,
+	);
 	console.log("(For MyInfo app, use MYINFO_AUTH_V2_* prefix instead)");
 
 	console.log("\n=== Paste into Singpass Dev Portal as JWKS object ===");
 	console.log(JSON.stringify({ keys: [sigKey.toJSON(), encKey.toJSON(), dpopKey.toJSON()] }, null, 2));
 }
 // Run once to generate a fresh key set, then paste the output into .env and SDP.
-describe("Key generation utility", () => {
+describe.skip("Key generation utility", () => {
 	it("generateAndLogKeys", async () => {
 		await generateAndLogKeys();
 	});
