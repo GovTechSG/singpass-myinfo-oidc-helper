@@ -3,6 +3,7 @@ import * as DpopUtil from "src/util/DpopUtil";
 import * as JweUtils from "src/util/JweUtil";
 import * as SigningUtil from "src/util/SigningUtil";
 import { NdiOidcHelperV2, NdiOidcHelperV2Constructor, TokenPayloadV2 } from "../singpass-helper-ndi-v2";
+import { AuthenticationContextType } from "src/util/ParUtil";
 
 const mockOidcConfigUrl = "https://stg-id.singpass.gov.sg/.well-known/openid-configuration";
 const mockClientId = "dNGEOSUjyJjTqytbxsspyJAyQIj3tyha";
@@ -121,7 +122,7 @@ describe("NDI Singpass Helper V2 (FAPI 2.0)", () => {
 		});
 
 		it("should include optional Singpass-specific params when provided", async () => {
-			jest.spyOn(DpopUtil, "createDpopProof").mockResolvedValue({ proof: "proof", thumbprint: "tp" });
+			jest.spyOn(DpopUtil, "createDpopProof").mockResolvedValue({ proof: "proof" });
 			jest.spyOn(SigningUtil, "createClientAssertion").mockResolvedValue("assertion");
 
 			const postMock = jest.fn().mockResolvedValue({
@@ -136,7 +137,7 @@ describe("NDI Singpass Helper V2 (FAPI 2.0)", () => {
 				userInfoScope: [],
 				codeVerifier: "test-code-verifier-43chars-minimum-length12",
 				redirectUriHttpsType: "app_claimed_https",
-				authenticationContextType: "APP_AUTHENTICATION_DEFAULT",
+				authenticationContextType: AuthenticationContextType.AppAuthenticationDefault,
 				authenticationContextMessage: "Log in to your account",
 				appLaunchUrl: "https://myapp.com/callback",
 				acrValues: "urn:singpass:authentication:loa:2",
@@ -151,7 +152,7 @@ describe("NDI Singpass Helper V2 (FAPI 2.0)", () => {
 		});
 
 		it("should throw if PAR response is missing request_uri", async () => {
-			jest.spyOn(DpopUtil, "createDpopProof").mockResolvedValue({ proof: "proof", thumbprint: "tp" });
+			jest.spyOn(DpopUtil, "createDpopProof").mockResolvedValue({ proof: "proof" });
 			jest.spyOn(SigningUtil, "createClientAssertion").mockResolvedValue("assertion");
 
 			const postMock = jest.fn().mockResolvedValue({
@@ -171,9 +172,7 @@ describe("NDI Singpass Helper V2 (FAPI 2.0)", () => {
 		});
 
 		it("should call createDpopProof with htm=POST and htu=PAR endpoint", async () => {
-			const dpopSpy = jest
-				.spyOn(DpopUtil, "createDpopProof")
-				.mockResolvedValue({ proof: "proof", thumbprint: "tp" });
+			const dpopSpy = jest.spyOn(DpopUtil, "createDpopProof").mockResolvedValue({ proof: "proof" });
 			jest.spyOn(SigningUtil, "createClientAssertion").mockResolvedValue("assertion");
 
 			const postMock = jest.fn().mockResolvedValue({
@@ -218,7 +217,7 @@ describe("NDI Singpass Helper V2 (FAPI 2.0)", () => {
 
 	describe("getTokens", () => {
 		it("should POST to token endpoint with DPoP header and code_verifier", async () => {
-			jest.spyOn(DpopUtil, "createDpopProof").mockResolvedValue({ proof: "token-dpop", thumbprint: "tp" });
+			jest.spyOn(DpopUtil, "createDpopProof").mockResolvedValue({ proof: "token-dpop" });
 			jest.spyOn(SigningUtil, "createClientAssertion").mockResolvedValue("token-assertion");
 
 			const mockTokenResponse = {
@@ -250,7 +249,7 @@ describe("NDI Singpass Helper V2 (FAPI 2.0)", () => {
 		});
 
 		it("should throw if response is missing id_token", async () => {
-			jest.spyOn(DpopUtil, "createDpopProof").mockResolvedValue({ proof: "p", thumbprint: "t" });
+			jest.spyOn(DpopUtil, "createDpopProof").mockResolvedValue({ proof: "p" });
 			jest.spyOn(SigningUtil, "createClientAssertion").mockResolvedValue("a");
 
 			const postMock = jest.fn().mockResolvedValue({
@@ -263,7 +262,7 @@ describe("NDI Singpass Helper V2 (FAPI 2.0)", () => {
 		});
 
 		it("should throw if response is missing access_token", async () => {
-			jest.spyOn(DpopUtil, "createDpopProof").mockResolvedValue({ proof: "p", thumbprint: "t" });
+			jest.spyOn(DpopUtil, "createDpopProof").mockResolvedValue({ proof: "p" });
 			jest.spyOn(SigningUtil, "createClientAssertion").mockResolvedValue("a");
 
 			const postMock = jest.fn().mockResolvedValue({
@@ -276,7 +275,7 @@ describe("NDI Singpass Helper V2 (FAPI 2.0)", () => {
 		});
 
 		it("should call createDpopProof with htm=POST and htu=token endpoint", async () => {
-			const dpopSpy = jest.spyOn(DpopUtil, "createDpopProof").mockResolvedValue({ proof: "p", thumbprint: "t" });
+			const dpopSpy = jest.spyOn(DpopUtil, "createDpopProof").mockResolvedValue({ proof: "p" });
 			jest.spyOn(SigningUtil, "createClientAssertion").mockResolvedValue("a");
 
 			const postMock = jest.fn().mockResolvedValue({
@@ -301,7 +300,7 @@ describe("NDI Singpass Helper V2 (FAPI 2.0)", () => {
 
 	describe("getUserInfo", () => {
 		it("should GET userinfo endpoint with DPoP header and DPoP authorization prefix", async () => {
-			jest.spyOn(DpopUtil, "createDpopProof").mockResolvedValue({ proof: "userinfo-dpop", thumbprint: "tp" });
+			jest.spyOn(DpopUtil, "createDpopProof").mockResolvedValue({ proof: "userinfo-dpop" });
 
 			// Second GET is to userinfo endpoint
 			axiosMock.mockImplementationOnce(() => Promise.resolve({ status: 200, data: "encrypted-jwe-response" }));
@@ -322,7 +321,7 @@ describe("NDI Singpass Helper V2 (FAPI 2.0)", () => {
 		});
 
 		it("should call createDpopProof with htm=GET, htu=userinfo endpoint, and accessToken", async () => {
-			const dpopSpy = jest.spyOn(DpopUtil, "createDpopProof").mockResolvedValue({ proof: "p", thumbprint: "t" });
+			const dpopSpy = jest.spyOn(DpopUtil, "createDpopProof").mockResolvedValue({ proof: "p" });
 
 			axiosMock.mockImplementationOnce(() => Promise.resolve({ status: 200, data: "response" }));
 

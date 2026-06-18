@@ -15,9 +15,10 @@ import {
 } from "src/util/ParUtil";
 import { createClientAssertion } from "src/util/SigningUtil";
 import { MyInfoComponentsV4 } from "../types";
-import { TokenResponse } from "./shared-constants";
+import { TokenPayloadV2, TokenResponse, UserDataPayloadV2 } from "./shared-constants";
 
 export type { PARRequestParams, PARResponse };
+export type { SubAttributes, TokenPayloadV2, UserDataPayloadV2 } from "./shared-constants";
 
 // =============================================================================
 // Types
@@ -50,43 +51,6 @@ export interface TokenRequestBody {
 	client_assertion_type: "urn:ietf:params:oauth:client-assertion-type:jwt-bearer";
 	client_assertion: string;
 	code_verifier: string;
-}
-
-// ref: https://docs.developer.singpass.gov.sg/docs/technical-specifications/integration-guide/4.-parsing-the-id-token#jwt-claims
-export interface TokenPayloadV2 {
-	sub: string;
-	sub_type: string;
-	sub_attributes?: SubAttributes;
-	act?: {
-		sub: string;
-		sub_attributes?: SubAttributes;
-	};
-	aud: string;
-	iss: string;
-	iat: number;
-	exp: number;
-	amr: string[];
-	acr: string;
-	nonce: string;
-}
-
-// ref: https://docs.developer.singpass.gov.sg/docs/technical-specifications/integration-guide/4.-parsing-the-id-token#the-sub_attributes-claim
-export interface SubAttributes {
-	account_type?: "standard" | "foreign";
-	identity_number?: string;
-	identity_coi?: string;
-	name?: string;
-	email?: string;
-	mobileno?: string;
-}
-
-// ref: https://docs.developer.singpass.gov.sg/docs/technical-specifications/integration-guide/5.-requesting-for-userinfo#successful-response
-export interface UserInfoPayloadV2 {
-	person_info: MyInfoComponentsV4.Schemas.Person;
-	iss: string;
-	sub: string;
-	aud: string;
-	iat: number;
 }
 
 // =============================================================================
@@ -311,7 +275,7 @@ export class NdiOidcHelperV2 {
 
 			try {
 				const verified = await JweUtil.verifyJwsUsingKeyStore(jwsPayload, keys);
-				const payload = JSON.parse(verified.payload.toString()) as UserInfoPayloadV2;
+				const payload = JSON.parse(verified.payload.toString()) as UserDataPayloadV2;
 
 				return payload.person_info;
 			} catch (e) {
