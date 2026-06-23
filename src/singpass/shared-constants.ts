@@ -6,6 +6,9 @@ export interface TokenResponse {
 	id_token: string;
 }
 
+/**
+ * @deprecated Use {@link TokenPayloadV2} for Singpass v5 (FAPI 2.0) integrations.
+ */
 export interface TokenPayload {
 	rt_hash: string;
 	nonce?: string;
@@ -19,6 +22,9 @@ export interface TokenPayload {
 	amr: string[];
 }
 
+/**
+ * @deprecated Use {@link UserDataPayloadV2} for Singpass v5 (FAPI 2.0) integrations.
+ */
 export interface UserDataPayload extends MyInfoComponentsV4.Schemas.Person {
 	iat: number;
 	iss: string;
