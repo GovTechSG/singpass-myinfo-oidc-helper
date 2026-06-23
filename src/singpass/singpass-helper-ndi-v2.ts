@@ -14,8 +14,8 @@ import {
 	sendPushedAuthorizationRequest,
 } from "src/util/ParUtil";
 import { createClientAssertion } from "src/util/SigningUtil";
-import { MyInfoComponentsV4 } from "../types";
-import { TokenPayloadV2, TokenResponse, UserDataPayloadV2 } from "./shared-constants";
+import type { TokenPayloadV2, TokenResponse, UserDataPayloadV2 } from "./shared-constants";
+import { MyInfoComponentsV4 } from "src/types";
 
 export type { PARRequestParams, PARResponse };
 export type { SubAttributes, TokenPayloadV2, UserDataPayloadV2 } from "./shared-constants";
@@ -275,9 +275,8 @@ export class NdiOidcHelperV2 {
 
 			try {
 				const verified = await JweUtil.verifyJwsUsingKeyStore(jwsPayload, keys);
-				const payload = JSON.parse(verified.payload.toString()) as UserDataPayloadV2;
-
-				return payload.person_info;
+				const { person_info } = JSON.parse(verified.payload.toString()) as UserDataPayloadV2;
+				return person_info;
 			} catch (e) {
 				logger.error("could not verify user info payload", e);
 				throw e;

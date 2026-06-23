@@ -390,7 +390,7 @@ describe("NDI Singpass Helper V2 (FAPI 2.0)", () => {
 	// =========================================================================
 
 	describe("verifyUserInfo", () => {
-		it("should decrypt, verify, and return person_info from the response", async () => {
+		it("should decrypt, verify, and return the person_info from the userinfo response", async () => {
 			const mockPersonInfo = {
 				uinfin: { value: "S9000001B", source: "1", classification: "C", lastupdated: "2024-09-26" },
 				name: { value: "SOH HAO FENG", source: "1", classification: "C", lastupdated: "2024-09-26" },
@@ -415,7 +415,6 @@ describe("NDI Singpass Helper V2 (FAPI 2.0)", () => {
 
 			const result = await helper.verifyUserInfo("encrypted-jwe-userinfo");
 
-			// V2 returns only person_info, not the full payload
 			expect(result).toEqual(mockPersonInfo);
 		});
 	});
