@@ -122,7 +122,7 @@ export interface PARConfig {
 export async function buildPARRequestParams(input: PARInput, config: PARConfig): Promise<PARRequestParams> {
 	const { clientID, redirectUri, issuer, clientAssertionSignKey } = config;
 
-	const scope = ["openid"].concat(input.userInfoScope).join(" ");
+	const scope = [...new Set(["openid", ...input.userInfoScope])].join(" ");
 
 	// Generate PKCE code_challenge from code_verifier
 	const codeChallenge = generators.codeChallenge(input.codeVerifier);

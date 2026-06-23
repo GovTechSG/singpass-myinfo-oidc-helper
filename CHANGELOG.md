@@ -1,5 +1,14 @@
 # Changelogs
 
+## 9.1.0
+
+-   Add `NdiOidcHelperV2` implementing the Singpass v5 / FAPI 2.0 authorization flow (PAR + DPoP + PKCE)
+-   No breaking changes — existing `NdiOidcHelper` and all current exports remain unchanged
+-   Add `TokenPayloadV2`, `UserDataPayloadV2`, `SubAttributes` types for v5 token and userinfo payloads
+-   Add `DpopUtil` (`createDpopProof`) and `ParUtil` (`sendPushedAuthorizationRequest`, `AuthenticationContextType`)
+-   `UserDataPayloadV2` is defined in `shared-constants.ts`; v1 types `TokenPayload` and `UserDataPayload` are deprecated
+-   Bump `axios` to `~1.18.0` to fix vulnerabilities
+
 ## 9.0.6
 
 -   Bump dependencies to fix vulnerabilities

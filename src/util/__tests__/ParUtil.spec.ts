@@ -1,7 +1,13 @@
 import { AxiosInstance } from "axios";
 import * as DpopUtil from "../DpopUtil";
 import * as SigningUtil from "../SigningUtil";
-import { constructAuthorizationUrl, PARConfig, PARInput, sendPushedAuthorizationRequest } from "../ParUtil";
+import {
+	constructAuthorizationUrl,
+	PARConfig,
+	PARInput,
+	sendPushedAuthorizationRequest,
+	AuthenticationContextType,
+} from "../ParUtil";
 
 describe("ParUtil", () => {
 	const mockConfig: PARConfig = {
@@ -99,6 +105,21 @@ describe("ParUtil", () => {
 			expect(body).toContain("scope=openid%20nationality%20noa");
 		});
 
+		it("should deduplicate openid if already included in userInfoScope", async () => {
+			const postMock = jest.fn().mockResolvedValue({
+				status: 200,
+				data: { request_uri: "urn:test", expires_in: 60 },
+			});
+			const config = { ...mockConfig, axiosClient: { post: postMock } as unknown as AxiosInstance };
+
+			await sendPushedAuthorizationRequest({ ...baseInput, userInfoScope: ["openid", "name"] }, config);
+
+			const body = postMock.mock.calls[0][1] as string;
+			// "openid" must appear exactly once — not "openid openid name"
+			expect(body).toContain("scope=openid%20name");
+			expect(body).not.toContain("openid%20openid");
+		});
+
 		it("should include optional Singpass-specific parameters when provided", async () => {
 			const postMock = jest.fn().mockResolvedValue({
 				status: 200,
@@ -110,7 +131,7 @@ describe("ParUtil", () => {
 				{
 					...baseInput,
 					redirectUriHttpsType: "app_claimed_https",
-					authenticationContextType: "APP_AUTHENTICATION_DEFAULT",
+					authenticationContextType: AuthenticationContextType.AppAuthenticationDefault,
 					authenticationContextMessage: "Log in to your account",
 					appLaunchUrl: "https://myapp.com/callback",
 					acrValues: "urn:singpass:authentication:loa:2",

@@ -6,6 +6,9 @@ export interface TokenResponse {
 	id_token: string;
 }
 
+/**
+ * @deprecated Use {@link TokenPayloadV2} for Singpass v5 (FAPI 2.0) integrations.
+ */
 export interface TokenPayload {
 	rt_hash: string;
 	nonce?: string;
@@ -19,9 +22,53 @@ export interface TokenPayload {
 	amr: string[];
 }
 
+/**
+ * @deprecated Use {@link UserDataPayloadV2} for Singpass v5 (FAPI 2.0) integrations.
+ */
 export interface UserDataPayload extends MyInfoComponentsV4.Schemas.Person {
 	iat: number;
 	iss: string;
 	sub: string;
 	aud: string;
+}
+
+// =============================================================================
+// V2 (FAPI 2.0 / Singpass v5) types
+// =============================================================================
+
+// ref: https://docs.developer.singpass.gov.sg/docs/technical-specifications/integration-guide/4.-parsing-the-id-token#the-sub_attributes-claim
+export interface SubAttributes {
+	account_type?: "standard" | "foreign";
+	identity_number?: string;
+	identity_coi?: string;
+	name?: string;
+	email?: string;
+	mobileno?: string;
+}
+
+// ref: https://docs.developer.singpass.gov.sg/docs/technical-specifications/integration-guide/4.-parsing-the-id-token#jwt-claims
+export interface TokenPayloadV2 {
+	sub: string; // UUID only (no longer s=NRIC,u=UUID format)
+	sub_type: string;
+	sub_attributes?: SubAttributes;
+	act?: {
+		sub: string;
+		sub_attributes?: SubAttributes;
+	};
+	aud: string;
+	iss: string;
+	iat: number;
+	exp: number;
+	amr: string[];
+	acr: string;
+	nonce: string;
+}
+
+// ref: https://docs.developer.singpass.gov.sg/docs/technical-specifications/integration-guide/5.-requesting-for-userinfo#successful-response
+export interface UserDataPayloadV2 {
+	person_info: MyInfoComponentsV4.Schemas.Person; // person data nested under person_info wrapper (v5)
+	iss: string;
+	sub: string;
+	aud: string;
+	iat: number;
 }
