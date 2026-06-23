@@ -60,8 +60,8 @@ export interface TokenPayloadV2 {
 	iat: number;
 	exp: number;
 	amr: string[];
-	acr?: string;
-	nonce?: string;
+	acr: string;
+	nonce: string;
 }
 
 // ref: https://docs.developer.singpass.gov.sg/docs/technical-specifications/integration-guide/5.-requesting-for-userinfo#successful-response
