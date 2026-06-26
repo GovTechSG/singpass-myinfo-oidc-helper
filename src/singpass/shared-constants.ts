@@ -7,7 +7,8 @@ export interface TokenResponse {
 }
 
 /**
- * @deprecated Use {@link TokenPayloadV2} for Singpass v5 (FAPI 2.0) integrations.
+ * only for legacy Singpass
+ * use TokenPayloadV2 for Singpass v5
  */
 export interface TokenPayload {
 	rt_hash: string;
@@ -23,7 +24,8 @@ export interface TokenPayload {
 }
 
 /**
- * @deprecated Use {@link UserDataPayloadV2} for Singpass v5 (FAPI 2.0) integrations.
+ * only for legacy Singpass
+ * use UserDataPayloadV2 for Singpass v5
  */
 export interface UserDataPayload extends MyInfoComponentsV4.Schemas.Person {
 	iat: number;
