@@ -4704,6 +4704,52 @@ export declare namespace MyInfoComponentsV4 {
 			};
 		}
 		/**
+		 * SilverSupport
+		 * Silver Support scheme details.
+		 */
+		export interface Silversupport {
+			eligibility?: {
+				value?: boolean;
+			};
+			amount?: {
+				value?: number;
+			};
+			year?: {
+				value?: string;
+			};
+		}
+		/**
+		 * GSTVoucher
+		 * GST Voucher scheme details.
+		 */
+		export interface Gstvoucher {
+			exclusion?: {
+				value?: boolean;
+			};
+			signup?: {
+				value?: boolean;
+			};
+			gstmedisave?: {
+				value?: number;
+			};
+			gstregular?: {
+				value?: number;
+			};
+			gstspecial?: {
+				value?: number;
+			};
+			year?: {
+				value?: string;
+			};
+		}
+		/**
+		 * Uuid
+		 * Whole-of-Government UUID of Person.
+		 */
+		export interface Uuid {
+			value?: string;
+		}
+		/**
 		 * MobileNo
 		 * Mobile Number of Person.
 		 */
@@ -8999,6 +9045,8 @@ export declare namespace MyInfoComponentsV4 {
 			 *   "source": "1",
 			 *   "lastupdated": "2019-03-26"
 			 * }
+			 * Retained as a valid field defined in the MyInfo v4 schema (PersonCommon).
+			 * May be omitted from a response when the profile has no CHAS data.
 			 */
 			chas?: {
 				cardtype?: {
@@ -11645,6 +11693,61 @@ export declare namespace MyInfoComponentsV4 {
 					value?: boolean;
 				};
 			};
+			/**
+			 * EduLevel
+			 * Highest Education Level of Person.
+			 */
+			edulevel?: Edulevel;
+			/**
+			 * GradYear
+			 * Year of Graduation of Person. Format: YYYY
+			 */
+			gradyear?: Gradyear;
+			/**
+			 * SchoolName
+			 * Name of School of Person.
+			 */
+			schoolname?: Schoolname;
+			/**
+			 * HouseholdIncome
+			 * Household Income of Person in SGD.
+			 */
+			householdincome?: Householdincome;
+			/**
+			 * HomeNo
+			 * Home Contact Number of Person.
+			 */
+			homeno?: Homeno;
+			/**
+			 * VocationalLicences
+			 * Vocational Licences.
+			 */
+			vocationallicences?: Vocationallicences;
+			/**
+			 * BillAdd
+			 * Billing Address of Person
+			 */
+			billadd?: Billadd;
+			/**
+			 * MailAdd
+			 * Mailing Address of Person
+			 */
+			mailadd?: Mailadd;
+			/**
+			 * SilverSupport
+			 * Silver Support scheme details.
+			 */
+			silversupport?: Silversupport;
+			/**
+			 * GSTVoucher
+			 * GST Voucher scheme details.
+			 */
+			gstvoucher?: Gstvoucher;
+			/**
+			 * Uuid
+			 * Whole-of-Government UUID of Person.
+			 */
+			uuid?: Uuid;
 		}
 		/**
 		 * Person instance's details
@@ -15644,6 +15747,8 @@ export declare namespace MyInfoComponentsV4 {
 			 *   "source": "1",
 			 *   "lastupdated": "2019-03-26"
 			 * }
+			 * Retained as a valid field defined in the MyInfo v4 schema (PersonCommon).
+			 * May be omitted from a response when the profile has no CHAS data.
 			 */
 			chas?: {
 				cardtype?: {
