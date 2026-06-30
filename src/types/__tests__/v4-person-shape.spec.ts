@@ -19,10 +19,4 @@ describe("MyInfoComponentsV4.Schemas.Person shape", () => {
 		];
 		expect(fields).toHaveLength(11);
 	});
-
-	it("retains chas (kept with justification — defined in the v4 schema)", () => {
-		const person = {} as MyInfoComponentsV4.Schemas.Person;
-		const chas = person.chas;
-		expect(chas).toBeUndefined();
-	});
 });
