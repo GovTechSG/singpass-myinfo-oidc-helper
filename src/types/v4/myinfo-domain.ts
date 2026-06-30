@@ -4704,6 +4704,52 @@ export declare namespace MyInfoComponentsV4 {
 			};
 		}
 		/**
+		 * SilverSupport
+		 * Silver Support scheme details.
+		 */
+		export interface Silversupport {
+			eligibility?: {
+				value?: boolean;
+			};
+			amount?: {
+				value?: number;
+			};
+			year?: {
+				value?: string;
+			};
+		}
+		/**
+		 * GSTVoucher
+		 * GST Voucher scheme details.
+		 */
+		export interface Gstvoucher {
+			exclusion?: {
+				value?: boolean;
+			};
+			signup?: {
+				value?: boolean;
+			};
+			gstmedisave?: {
+				value?: number;
+			};
+			gstregular?: {
+				value?: number;
+			};
+			gstspecial?: {
+				value?: number;
+			};
+			year?: {
+				value?: string;
+			};
+		}
+		/**
+		 * Uuid
+		 * Whole-of-Government UUID of Person.
+		 */
+		export interface Uuid {
+			value?: string;
+		}
+		/**
 		 * MobileNo
 		 * Mobile Number of Person.
 		 */
@@ -8991,102 +9037,6 @@ export declare namespace MyInfoComponentsV4 {
 				};
 			};
 			/**
-			 * Community Health Assist Scheme
-			 * Community Health Assist Scheme (CHAS) card details - Card Type, Date of Issue, Date of Expiry
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			chas?: {
-				cardtype?: {
-					/**
-					 * example:
-					 * C
-					 */
-					code?: any;
-					/**
-					 * example:
-					 * Green
-					 */
-					desc?: any;
-				};
-				indicator?: {
-					/**
-					 * example:
-					 * C
-					 */
-					code?: any;
-					/**
-					 * example:
-					 * Green
-					 */
-					desc?: any;
-				};
-				/**
-				 * CHAS Expiry Date
-				 */
-				expirydate?: {
-					/**
-					 * example:
-					 * 2020-06-15
-					 */
-					value?: string; // date
-				};
-				/**
-				 * CHAS Issue Date
-				 */
-				issuedate?: {
-					/**
-					 * example:
-					 * 2020-06-15
-					 */
-					value?: string; // date
-				};
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Name
-				 * Full Name of the Person.
-				 */
-				name?: {
-					/**
-					 * example:
-					 * TAN XIAO HUI
-					 */
-					value?: string;
-				};
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
 			 * MerdekaGen
 			 * Merdekagen details
 			 * example:
@@ -11645,6 +11595,61 @@ export declare namespace MyInfoComponentsV4 {
 					value?: boolean;
 				};
 			};
+			/**
+			 * EduLevel
+			 * Highest Education Level of Person.
+			 */
+			edulevel?: Edulevel;
+			/**
+			 * GradYear
+			 * Year of Graduation of Person. Format: YYYY
+			 */
+			gradyear?: Gradyear;
+			/**
+			 * SchoolName
+			 * Name of School of Person.
+			 */
+			schoolname?: Schoolname;
+			/**
+			 * HouseholdIncome
+			 * Household Income of Person in SGD.
+			 */
+			householdincome?: Householdincome;
+			/**
+			 * HomeNo
+			 * Home Contact Number of Person.
+			 */
+			homeno?: Homeno;
+			/**
+			 * VocationalLicences
+			 * Vocational Licences.
+			 */
+			vocationallicences?: Vocationallicences;
+			/**
+			 * BillAdd
+			 * Billing Address of Person
+			 */
+			billadd?: Billadd;
+			/**
+			 * MailAdd
+			 * Mailing Address of Person
+			 */
+			mailadd?: Mailadd;
+			/**
+			 * SilverSupport
+			 * Silver Support scheme details.
+			 */
+			silversupport?: Silversupport;
+			/**
+			 * GSTVoucher
+			 * GST Voucher scheme details.
+			 */
+			gstvoucher?: Gstvoucher;
+			/**
+			 * Uuid
+			 * Whole-of-Government UUID of Person.
+			 */
+			uuid?: Uuid;
 		}
 		/**
 		 * Person instance's details
@@ -15634,102 +15639,6 @@ export declare namespace MyInfoComponentsV4 {
 						desc?: string;
 					};
 				};
-			};
-			/**
-			 * Community Health Assist Scheme
-			 * Community Health Assist Scheme (CHAS) card details - Card Type, Date of Issue, Date of Expiry
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			chas?: {
-				cardtype?: {
-					/**
-					 * example:
-					 * C
-					 */
-					code?: any;
-					/**
-					 * example:
-					 * Green
-					 */
-					desc?: any;
-				};
-				indicator?: {
-					/**
-					 * example:
-					 * C
-					 */
-					code?: any;
-					/**
-					 * example:
-					 * Green
-					 */
-					desc?: any;
-				};
-				/**
-				 * CHAS Expiry Date
-				 */
-				expirydate?: {
-					/**
-					 * example:
-					 * 2020-06-15
-					 */
-					value?: string; // date
-				};
-				/**
-				 * CHAS Issue Date
-				 */
-				issuedate?: {
-					/**
-					 * example:
-					 * 2020-06-15
-					 */
-					value?: string; // date
-				};
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Name
-				 * Full Name of the Person.
-				 */
-				name?: {
-					/**
-					 * example:
-					 * TAN XIAO HUI
-					 */
-					value?: string;
-				};
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
 			};
 		}
 		/**
