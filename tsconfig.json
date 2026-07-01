@@ -1,9 +1,0 @@
-{
-	"extends": "./shared-config/tsconfig.json",
-	"compilerOptions": {
-		"types": ["jest"],
-		"paths": {
-			"src/*": ["./src/*"]
-		}
-	}
-}
