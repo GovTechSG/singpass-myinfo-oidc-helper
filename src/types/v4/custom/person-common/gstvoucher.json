@@ -1,0 +1,57 @@
+{
+	"gstvoucher": {
+		"type": "object",
+		"title": "GSTVoucher",
+		"description": "GST Voucher scheme details.",
+		"properties": {
+			"exclusion": {
+				"type": "object",
+				"properties": {
+					"value": {
+						"type": "boolean"
+					}
+				}
+			},
+			"signup": {
+				"type": "object",
+				"properties": {
+					"value": {
+						"type": "boolean"
+					}
+				}
+			},
+			"gstmedisave": {
+				"type": "object",
+				"properties": {
+					"value": {
+						"type": "number"
+					}
+				}
+			},
+			"gstregular": {
+				"type": "object",
+				"properties": {
+					"value": {
+						"type": "number"
+					}
+				}
+			},
+			"gstspecial": {
+				"type": "object",
+				"properties": {
+					"value": {
+						"type": "number"
+					}
+				}
+			},
+			"year": {
+				"type": "object",
+				"properties": {
+					"value": {
+						"type": "string"
+					}
+				}
+			}
+		}
+	}
+}

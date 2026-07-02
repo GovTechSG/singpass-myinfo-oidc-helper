@@ -1,0 +1,12 @@
+{
+	"uuid": {
+		"type": "object",
+		"title": "Uuid",
+		"description": "Whole-of-Government UUID of Person.",
+		"properties": {
+			"value": {
+				"type": "string"
+			}
+		}
+	}
+}

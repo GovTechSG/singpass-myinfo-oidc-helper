@@ -1,10 +1,10 @@
 /* eslint-disable */
 // =============================================================================
-// This file was generated with `npm run generate-myinfo-typings` on 2025-05-13
+// This file was generated with `npm run generate-myinfo-typings` on 2026-07-02
 // Any modifications to this file may be overwritten when the script runs again
 // Check README.md for more information
 // =============================================================================
-export declare namespace MyInfoComponentsV4 {
+export declare namespace MyInfoComponents {
 	export namespace Schemas {
 		/**
 		 * Academic Qualifications
@@ -3440,6 +3440,30 @@ export declare namespace MyInfoComponentsV4 {
 			value?: string; // [0-9]{4}
 		}
 		/**
+		 * GSTVoucher
+		 * GST Voucher scheme details.
+		 */
+		export interface Gstvoucher {
+			exclusion?: {
+				value?: boolean;
+			};
+			signup?: {
+				value?: boolean;
+			};
+			gstmedisave?: {
+				value?: number;
+			};
+			gstregular?: {
+				value?: number;
+			};
+			gstspecial?: {
+				value?: number;
+			};
+			year?: {
+				value?: string;
+			};
+		}
+		/**
 		 * HDBOwnership
 		 * HDB Ownership details
 		 *
@@ -4702,52 +4726,6 @@ export declare namespace MyInfoComponentsV4 {
 				 */
 				desc?: string;
 			};
-		}
-		/**
-		 * SilverSupport
-		 * Silver Support scheme details.
-		 */
-		export interface Silversupport {
-			eligibility?: {
-				value?: boolean;
-			};
-			amount?: {
-				value?: number;
-			};
-			year?: {
-				value?: string;
-			};
-		}
-		/**
-		 * GSTVoucher
-		 * GST Voucher scheme details.
-		 */
-		export interface Gstvoucher {
-			exclusion?: {
-				value?: boolean;
-			};
-			signup?: {
-				value?: boolean;
-			};
-			gstmedisave?: {
-				value?: number;
-			};
-			gstregular?: {
-				value?: number;
-			};
-			gstspecial?: {
-				value?: number;
-			};
-			year?: {
-				value?: string;
-			};
-		}
-		/**
-		 * Uuid
-		 * Whole-of-Government UUID of Person.
-		 */
-		export interface Uuid {
-			value?: string;
 		}
 		/**
 		 * MobileNo
@@ -9037,6 +9015,411 @@ export declare namespace MyInfoComponentsV4 {
 				};
 			};
 			/**
+			 * Community Health Assist Scheme
+			 * Community Health Assist Scheme (CHAS) card details - Card Type, Date of Issue, Date of Expiry
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			chas?: {
+				cardtype?: {
+					/**
+					 * example:
+					 * C
+					 */
+					code?: any;
+					/**
+					 * example:
+					 * Green
+					 */
+					desc?: any;
+				};
+				indicator?: {
+					/**
+					 * example:
+					 * C
+					 */
+					code?: any;
+					/**
+					 * example:
+					 * Green
+					 */
+					desc?: any;
+				};
+				/**
+				 * CHAS Expiry Date
+				 */
+				expirydate?: {
+					/**
+					 * example:
+					 * 2020-06-15
+					 */
+					value?: string; // date
+				};
+				/**
+				 * CHAS Issue Date
+				 */
+				issuedate?: {
+					/**
+					 * example:
+					 * 2020-06-15
+					 */
+					value?: string; // date
+				};
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
+				 */
+				lastupdated: string; // date
+				/**
+				 * Name
+				 * Full Name of the Person.
+				 */
+				name?: {
+					/**
+					 * example:
+					 * TAN XIAO HUI
+					 */
+					value?: string;
+				};
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 */
+				classification: "C";
+				/**
+				 * Source of data.
+				 *
+				 * * '1' - Government-verified
+				 * * '2' - User provided
+				 * * '3' - Field is Not Applicable to Person
+				 * * '4' - Verified by SingPass
+				 *
+				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * **NOTE:**
+				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+				 *   - If data is available from the data source, this property will not be present.
+				 *
+				 */
+				unavailable?: boolean;
+			};
+			/**
+			 * EduLevel
+			 * Highest Education Level of Person.
+			 *
+			 * * '0' - NO FORMAL QUALIFICATION / PRE-PRIMARY / LOWER PRIMARY
+			 * * '1' - PRIMARY
+			 * * '2' - LOWER SECONDARY
+			 * * '3' - SECONDARY
+			 * * '4' - POST-SECONDARY (NON-TERTIARY): GENERAL & VOCATION
+			 * * '5' - POLYTECHNIC DIPLOMA
+			 * * '6' - PROFESSIONAL QUALIFICATION AND OTHER DIPLOMA
+			 * * '7' - BACHELOR'S OR EQUIVALENT
+			 * * '8' - POSTGRADUATE DIPLOMA / CERTIFICATE (EXCLUDING MASTER'S AND DOCTORATE)
+			 * * '9' - MASTER'S AND DOCTORATE OR EQUIVALENT
+			 * * 'N' - MODULAR CERTIFICATION (NON-AWARD COURSES / NON-FULL QUALIFICATIONS)
+			 */
+			edulevel?: {
+				/**
+				 *
+				 * example:
+				 * 7
+				 */
+				code?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "N";
+				/**
+				 * example:
+				 * BACHELOR'S OR EQUIVALENT
+				 */
+				desc?:
+					| "NO FORMAL QUALIFICATION / PRE-PRIMARY / LOWER PRIMARY"
+					| "PRIMARY"
+					| "LOWER SECONDARY"
+					| "SECONDARY"
+					| "POST-SECONDARY (NON-TERTIARY): GENERAL & VOCATION"
+					| "POLYTECHNIC DIPLOMA"
+					| "PROFESSIONAL QUALIFICATION AND OTHER DIPLOMA"
+					| "BACHELOR'S OR EQUIVALENT"
+					| "POSTGRADUATE DIPLOMA / CERTIFICATE (EXCLUDING MASTER'S AND DOCTORATE)"
+					| "MASTER'S AND DOCTORATE OR EQUIVALENT"
+					| "MODULAR CERTIFICATION (NON-AWARD COURSES / NON-FULL QUALIFICATIONS)";
+			};
+			/**
+			 * GradYear
+			 * Year of Graduation of Person. Format: YYYY
+			 */
+			gradyear?: {
+				/**
+				 * example:
+				 * 2006
+				 */
+				value?: string; // [0-9]{4}
+			};
+			/**
+			 * SchoolName
+			 * Name of School of Person.
+			 */
+			schoolname?: {
+				/**
+				 * Code value of school name.
+				 *
+				 * **Note:** Code+desc and value are mutually exclusive.
+				 * example:
+				 * T07GS3011J
+				 */
+				code?: string;
+				/**
+				 * Name of school represented by 'code'
+				 *
+				 * **Note:** Code+desc and value are mutually exclusive.
+				 * example:
+				 * SIGLAP SECONDARY SCHOOL
+				 */
+				desc?: string;
+				/**
+				 * Free text value of school name.
+				 *
+				 * **Note:** Code+desc and value are mutually exclusive.
+				 * example:
+				 *
+				 */
+				value?: string;
+			};
+			/**
+			 * HouseholdIncome
+			 * Household Income of Person in SGD.
+			 */
+			householdincome?: {
+				/**
+				 * upper bound of the range of household income bracket
+				 */
+				high?: {
+					/**
+					 * example:
+					 * 5999
+					 */
+					value?: number;
+				};
+				/**
+				 * lower bound of the range of household income bracket
+				 */
+				low?: {
+					/**
+					 * example:
+					 * 5000
+					 */
+					value?: number;
+				};
+			};
+			/**
+			 * HomeNo
+			 * Home Contact Number of Person.
+			 */
+			homeno?: {
+				/**
+				 * Prefix of Phone Number. Defaults to '+'. If phone number is blank, prefix will be returned as blank.
+				 */
+				prefix?: {
+					/**
+					 * example:
+					 * +
+					 */
+					value?: string;
+				};
+				/**
+				 * Area Code of Phone Number. Default to '65'. If phone number is blank, code will be returned as blank.
+				 */
+				areacode?: {
+					/**
+					 * example:
+					 * 65
+					 */
+					value?: string;
+				};
+				/**
+				 * Phone Number.
+				 */
+				nbr?: {
+					/**
+					 * example:
+					 * 66132665
+					 */
+					value?: string;
+				};
+			};
+			/**
+			 * VocationalLicences
+			 * Vocational Licences.
+			 */
+			vocationallicences?: {
+				licences?: {
+					/**
+					 * Unique licence number assigned by issuing agency
+					 */
+					number?: {
+						value?: number;
+					};
+					/**
+					 * Licence name
+					 */
+					name?: {
+						value?: string;
+					};
+					/**
+					 * Status of licence
+					 */
+					status?: {
+						code?: "ACT" | "IPA";
+						desc?: "Active" | "In-Principal Approval";
+					};
+					/**
+					 * Agency that issued the licence
+					 */
+					issuanceagency?: {
+						code?: string;
+						desc?: string;
+					};
+					/**
+					 * Licence issue date. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+					 */
+					issuedate?: {
+						value?: string;
+					};
+					/**
+					 * Licence expiry date. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+					 */
+					expirydate?: {
+						value?: string;
+					};
+				}[];
+			};
+			/**
+			 * BillAdd
+			 * Billing Address of Person
+			 *
+			 * **Note:**
+			 * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
+			 * - check the `type` discriminator property to differentiate between the two address formats
+			 *
+			 */
+			billadd?: /**
+			 * BillAdd
+			 * Billing Address of Person
+			 *
+			 * **Note:**
+			 * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
+			 * - check the `type` discriminator property to differentiate between the two address formats
+			 *
+			 */
+			/**
+			 * Address details (Singapore Format)
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			| DataitemAddressSg /**
+				 * Address details (Non-Singapore Format)
+				 * example:
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 */
+				| DataitemAddressUnformatted;
+			/**
+			 * MailAdd
+			 * Mailing Address of Person
+			 *
+			 * **Note:**
+			 * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
+			 * - check the `type` discriminator property to differentiate between the two address formats
+			 *
+			 */
+			mailadd?: /**
+			 * MailAdd
+			 * Mailing Address of Person
+			 *
+			 * **Note:**
+			 * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
+			 * - check the `type` discriminator property to differentiate between the two address formats
+			 *
+			 */
+			/**
+			 * Address details (Singapore Format)
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			| DataitemAddressSg /**
+				 * Address details (Non-Singapore Format)
+				 * example:
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 */
+				| DataitemAddressUnformatted;
+			/**
+			 * GSTVoucher
+			 * GST Voucher scheme details.
+			 */
+			gstvoucher?: {
+				exclusion?: {
+					value?: boolean;
+				};
+				signup?: {
+					value?: boolean;
+				};
+				gstmedisave?: {
+					value?: number;
+				};
+				gstregular?: {
+					value?: number;
+				};
+				gstspecial?: {
+					value?: number;
+				};
+				year?: {
+					value?: string;
+				};
+			};
+			/**
+			 * SilverSupport
+			 * Silver Support scheme details.
+			 */
+			silversupport?: {
+				eligibility?: {
+					value?: boolean;
+				};
+				amount?: {
+					value?: number;
+				};
+				year?: {
+					value?: string;
+				};
+			};
+			/**
+			 * Uuid
+			 * Whole-of-Government UUID of Person.
+			 */
+			uuid?: {
+				value?: string;
+			};
+			/**
 			 * MerdekaGen
 			 * Merdekagen details
 			 * example:
@@ -11595,61 +11978,6 @@ export declare namespace MyInfoComponentsV4 {
 					value?: boolean;
 				};
 			};
-			/**
-			 * EduLevel
-			 * Highest Education Level of Person.
-			 */
-			edulevel?: Edulevel;
-			/**
-			 * GradYear
-			 * Year of Graduation of Person. Format: YYYY
-			 */
-			gradyear?: Gradyear;
-			/**
-			 * SchoolName
-			 * Name of School of Person.
-			 */
-			schoolname?: Schoolname;
-			/**
-			 * HouseholdIncome
-			 * Household Income of Person in SGD.
-			 */
-			householdincome?: Householdincome;
-			/**
-			 * HomeNo
-			 * Home Contact Number of Person.
-			 */
-			homeno?: Homeno;
-			/**
-			 * VocationalLicences
-			 * Vocational Licences.
-			 */
-			vocationallicences?: Vocationallicences;
-			/**
-			 * BillAdd
-			 * Billing Address of Person
-			 */
-			billadd?: Billadd;
-			/**
-			 * MailAdd
-			 * Mailing Address of Person
-			 */
-			mailadd?: Mailadd;
-			/**
-			 * SilverSupport
-			 * Silver Support scheme details.
-			 */
-			silversupport?: Silversupport;
-			/**
-			 * GSTVoucher
-			 * GST Voucher scheme details.
-			 */
-			gstvoucher?: Gstvoucher;
-			/**
-			 * Uuid
-			 * Whole-of-Government UUID of Person.
-			 */
-			uuid?: Uuid;
 		}
 		/**
 		 * Person instance's details
@@ -15640,6 +15968,411 @@ export declare namespace MyInfoComponentsV4 {
 					};
 				};
 			};
+			/**
+			 * Community Health Assist Scheme
+			 * Community Health Assist Scheme (CHAS) card details - Card Type, Date of Issue, Date of Expiry
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			chas?: {
+				cardtype?: {
+					/**
+					 * example:
+					 * C
+					 */
+					code?: any;
+					/**
+					 * example:
+					 * Green
+					 */
+					desc?: any;
+				};
+				indicator?: {
+					/**
+					 * example:
+					 * C
+					 */
+					code?: any;
+					/**
+					 * example:
+					 * Green
+					 */
+					desc?: any;
+				};
+				/**
+				 * CHAS Expiry Date
+				 */
+				expirydate?: {
+					/**
+					 * example:
+					 * 2020-06-15
+					 */
+					value?: string; // date
+				};
+				/**
+				 * CHAS Issue Date
+				 */
+				issuedate?: {
+					/**
+					 * example:
+					 * 2020-06-15
+					 */
+					value?: string; // date
+				};
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
+				 */
+				lastupdated: string; // date
+				/**
+				 * Name
+				 * Full Name of the Person.
+				 */
+				name?: {
+					/**
+					 * example:
+					 * TAN XIAO HUI
+					 */
+					value?: string;
+				};
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 */
+				classification: "C";
+				/**
+				 * Source of data.
+				 *
+				 * * '1' - Government-verified
+				 * * '2' - User provided
+				 * * '3' - Field is Not Applicable to Person
+				 * * '4' - Verified by SingPass
+				 *
+				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * **NOTE:**
+				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
+				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
+				 *   - If data is available from the data source, this property will not be present.
+				 *
+				 */
+				unavailable?: boolean;
+			};
+			/**
+			 * EduLevel
+			 * Highest Education Level of Person.
+			 *
+			 * * '0' - NO FORMAL QUALIFICATION / PRE-PRIMARY / LOWER PRIMARY
+			 * * '1' - PRIMARY
+			 * * '2' - LOWER SECONDARY
+			 * * '3' - SECONDARY
+			 * * '4' - POST-SECONDARY (NON-TERTIARY): GENERAL & VOCATION
+			 * * '5' - POLYTECHNIC DIPLOMA
+			 * * '6' - PROFESSIONAL QUALIFICATION AND OTHER DIPLOMA
+			 * * '7' - BACHELOR'S OR EQUIVALENT
+			 * * '8' - POSTGRADUATE DIPLOMA / CERTIFICATE (EXCLUDING MASTER'S AND DOCTORATE)
+			 * * '9' - MASTER'S AND DOCTORATE OR EQUIVALENT
+			 * * 'N' - MODULAR CERTIFICATION (NON-AWARD COURSES / NON-FULL QUALIFICATIONS)
+			 */
+			edulevel?: {
+				/**
+				 *
+				 * example:
+				 * 7
+				 */
+				code?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "N";
+				/**
+				 * example:
+				 * BACHELOR'S OR EQUIVALENT
+				 */
+				desc?:
+					| "NO FORMAL QUALIFICATION / PRE-PRIMARY / LOWER PRIMARY"
+					| "PRIMARY"
+					| "LOWER SECONDARY"
+					| "SECONDARY"
+					| "POST-SECONDARY (NON-TERTIARY): GENERAL & VOCATION"
+					| "POLYTECHNIC DIPLOMA"
+					| "PROFESSIONAL QUALIFICATION AND OTHER DIPLOMA"
+					| "BACHELOR'S OR EQUIVALENT"
+					| "POSTGRADUATE DIPLOMA / CERTIFICATE (EXCLUDING MASTER'S AND DOCTORATE)"
+					| "MASTER'S AND DOCTORATE OR EQUIVALENT"
+					| "MODULAR CERTIFICATION (NON-AWARD COURSES / NON-FULL QUALIFICATIONS)";
+			};
+			/**
+			 * GradYear
+			 * Year of Graduation of Person. Format: YYYY
+			 */
+			gradyear?: {
+				/**
+				 * example:
+				 * 2006
+				 */
+				value?: string; // [0-9]{4}
+			};
+			/**
+			 * SchoolName
+			 * Name of School of Person.
+			 */
+			schoolname?: {
+				/**
+				 * Code value of school name.
+				 *
+				 * **Note:** Code+desc and value are mutually exclusive.
+				 * example:
+				 * T07GS3011J
+				 */
+				code?: string;
+				/**
+				 * Name of school represented by 'code'
+				 *
+				 * **Note:** Code+desc and value are mutually exclusive.
+				 * example:
+				 * SIGLAP SECONDARY SCHOOL
+				 */
+				desc?: string;
+				/**
+				 * Free text value of school name.
+				 *
+				 * **Note:** Code+desc and value are mutually exclusive.
+				 * example:
+				 *
+				 */
+				value?: string;
+			};
+			/**
+			 * HouseholdIncome
+			 * Household Income of Person in SGD.
+			 */
+			householdincome?: {
+				/**
+				 * upper bound of the range of household income bracket
+				 */
+				high?: {
+					/**
+					 * example:
+					 * 5999
+					 */
+					value?: number;
+				};
+				/**
+				 * lower bound of the range of household income bracket
+				 */
+				low?: {
+					/**
+					 * example:
+					 * 5000
+					 */
+					value?: number;
+				};
+			};
+			/**
+			 * HomeNo
+			 * Home Contact Number of Person.
+			 */
+			homeno?: {
+				/**
+				 * Prefix of Phone Number. Defaults to '+'. If phone number is blank, prefix will be returned as blank.
+				 */
+				prefix?: {
+					/**
+					 * example:
+					 * +
+					 */
+					value?: string;
+				};
+				/**
+				 * Area Code of Phone Number. Default to '65'. If phone number is blank, code will be returned as blank.
+				 */
+				areacode?: {
+					/**
+					 * example:
+					 * 65
+					 */
+					value?: string;
+				};
+				/**
+				 * Phone Number.
+				 */
+				nbr?: {
+					/**
+					 * example:
+					 * 66132665
+					 */
+					value?: string;
+				};
+			};
+			/**
+			 * VocationalLicences
+			 * Vocational Licences.
+			 */
+			vocationallicences?: {
+				licences?: {
+					/**
+					 * Unique licence number assigned by issuing agency
+					 */
+					number?: {
+						value?: number;
+					};
+					/**
+					 * Licence name
+					 */
+					name?: {
+						value?: string;
+					};
+					/**
+					 * Status of licence
+					 */
+					status?: {
+						code?: "ACT" | "IPA";
+						desc?: "Active" | "In-Principal Approval";
+					};
+					/**
+					 * Agency that issued the licence
+					 */
+					issuanceagency?: {
+						code?: string;
+						desc?: string;
+					};
+					/**
+					 * Licence issue date. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+					 */
+					issuedate?: {
+						value?: string;
+					};
+					/**
+					 * Licence expiry date. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+					 */
+					expirydate?: {
+						value?: string;
+					};
+				}[];
+			};
+			/**
+			 * BillAdd
+			 * Billing Address of Person
+			 *
+			 * **Note:**
+			 * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
+			 * - check the `type` discriminator property to differentiate between the two address formats
+			 *
+			 */
+			billadd?: /**
+			 * BillAdd
+			 * Billing Address of Person
+			 *
+			 * **Note:**
+			 * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
+			 * - check the `type` discriminator property to differentiate between the two address formats
+			 *
+			 */
+			/**
+			 * Address details (Singapore Format)
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			| DataitemAddressSg /**
+				 * Address details (Non-Singapore Format)
+				 * example:
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 */
+				| DataitemAddressUnformatted;
+			/**
+			 * MailAdd
+			 * Mailing Address of Person
+			 *
+			 * **Note:**
+			 * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
+			 * - check the `type` discriminator property to differentiate between the two address formats
+			 *
+			 */
+			mailadd?: /**
+			 * MailAdd
+			 * Mailing Address of Person
+			 *
+			 * **Note:**
+			 * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
+			 * - check the `type` discriminator property to differentiate between the two address formats
+			 *
+			 */
+			/**
+			 * Address details (Singapore Format)
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			| DataitemAddressSg /**
+				 * Address details (Non-Singapore Format)
+				 * example:
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 */
+				| DataitemAddressUnformatted;
+			/**
+			 * GSTVoucher
+			 * GST Voucher scheme details.
+			 */
+			gstvoucher?: {
+				exclusion?: {
+					value?: boolean;
+				};
+				signup?: {
+					value?: boolean;
+				};
+				gstmedisave?: {
+					value?: number;
+				};
+				gstregular?: {
+					value?: number;
+				};
+				gstspecial?: {
+					value?: number;
+				};
+				year?: {
+					value?: string;
+				};
+			};
+			/**
+			 * SilverSupport
+			 * Silver Support scheme details.
+			 */
+			silversupport?: {
+				eligibility?: {
+					value?: boolean;
+				};
+				amount?: {
+					value?: number;
+				};
+				year?: {
+					value?: string;
+				};
+			};
+			/**
+			 * Uuid
+			 * Whole-of-Government UUID of Person.
+			 */
+			uuid?: {
+				value?: string;
+			};
 		}
 		/**
 		 * Person instance's details
@@ -18437,6 +19170,21 @@ export declare namespace MyInfoComponentsV4 {
 			desc?: "FEMALE" | "MALE" | "UNKNOWN";
 		}
 		/**
+		 * SilverSupport
+		 * Silver Support scheme details.
+		 */
+		export interface Silversupport {
+			eligibility?: {
+				value?: boolean;
+			};
+			amount?: {
+				value?: number;
+			};
+			year?: {
+				value?: string;
+			};
+		}
+		/**
 		 * example:
 		 * {
 		 *   "classification": "C",
@@ -18740,6 +19488,13 @@ export declare namespace MyInfoComponentsV4 {
 			 * example:
 			 * S1111111D
 			 */
+			value?: string;
+		}
+		/**
+		 * Uuid
+		 * Whole-of-Government UUID of Person.
+		 */
+		export interface Uuid {
 			value?: string;
 		}
 		export type Vehicles = {

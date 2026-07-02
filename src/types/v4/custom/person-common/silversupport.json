@@ -1,0 +1,33 @@
+{
+	"silversupport": {
+		"type": "object",
+		"title": "SilverSupport",
+		"description": "Silver Support scheme details.",
+		"properties": {
+			"eligibility": {
+				"type": "object",
+				"properties": {
+					"value": {
+						"type": "boolean"
+					}
+				}
+			},
+			"amount": {
+				"type": "object",
+				"properties": {
+					"value": {
+						"type": "number"
+					}
+				}
+			},
+			"year": {
+				"type": "object",
+				"properties": {
+					"value": {
+						"type": "string"
+					}
+				}
+			}
+		}
+	}
+}
