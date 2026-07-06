@@ -1,423 +1,13 @@
 /* eslint-disable */
 // =============================================================================
-// This file was generated with `npm run generate-myinfo-typings` on 2026-07-02
+// This file was generated with `npm run generate-myinfo-typings` on 2026-07-06
 // Any modifications to this file may be overwritten when the script runs again
 // Check README.md for more information
 // =============================================================================
-export declare namespace MyInfoComponents {
+
+export declare namespace MyInfoComponentsV4 {
 	export namespace Schemas {
 		/**
-		 * Academic Qualifications
-		 * Academic Qualifications achieved
-		 */
-		export interface Academicqualifications {
-			/**
-			 * Transcript of qualification
-			 */
-			transcripts?: {
-				/**
-				 * Qualification's Name
-				 */
-				name?: {
-					/**
-					 * example:
-					 * SINGAPORE-CAMBRIDGE GENERAL CERTIFICATE OF EDUCATION ORDINARY LEVEL
-					 */
-					value?: string;
-				};
-				/**
-				 * Year this qualification was attained
-				 *
-				 * See "date-fullyear" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6'
-				 */
-				yearattained?: {
-					/**
-					 * example:
-					 * 2018
-					 */
-					value?: string; // date
-				};
-				results?: {
-					/**
-					 * Subject taken
-					 */
-					subject?: {
-						/**
-						 * example:
-						 * English Language
-						 */
-						value?: string;
-					};
-					/**
-					 * Level of subject taken
-					 */
-					level?: {
-						/**
-						 * example:
-						 * Ordinary
-						 */
-						value?: string;
-					};
-					/**
-					 * Grade attained
-					 */
-					grade?: {
-						/**
-						 * example:
-						 * A
-						 */
-						value?: string;
-					};
-					/**
-					 * Optional Sub Subject taken
-					 */
-					subsubject?: {
-						/**
-						 * example:
-						 * SPECIAL PAPER
-						 */
-						value?: string;
-					};
-					/**
-					 * Optional grade attained for subSubject
-					 */
-					subgrade?: {
-						/**
-						 * example:
-						 * One
-						 */
-						value?: string;
-					};
-				}[];
-				/**
-				 * Explanatory Notes
-				 */
-				explanatorynotes?: {
-					value?: string;
-				};
-			}[];
-			/**
-			 * Electronic Certificates Uploaded
-			 */
-			certificates?: {
-				/**
-				 * File name of the electronic certificate
-				 */
-				name?: {
-					/**
-					 * example:
-					 * nus.opencert
-					 */
-					value?: string;
-				};
-				/**
-				 * File content of the electronic certificate, Base64 encoded
-				 */
-				content?: {
-					value?: string;
-				};
-				/**
-				 * Open Certificate Information
-				 *
-				 * Note: The test environment for OpenCert is at https://dev.opencerts.io/ while production is
-				 * at https://opencerts.io/
-				 */
-				opencertificate?: {
-					/**
-					 * The OpenCert serial number.
-					 */
-					id?: {
-						/**
-						 * example:
-						 * 100000000343840
-						 */
-						value?: string;
-					};
-					/**
-					 * Indicate whether this open certificate is primary certificate
-					 */
-					primary?: {
-						/**
-						 * example:
-						 * true
-						 */
-						value?: boolean;
-					};
-				};
-				/**
-				 * Indicate whether this file is open certificate
-				 */
-				opencertificateindicator?: {
-					/**
-					 * example:
-					 * true
-					 */
-					value?: boolean;
-				};
-			}[];
-		}
-		/**
-		 * Address details (Singapore Format)
-		 */
-		export interface AddressSG {
-			/**
-			 * Type of Address (SG or UNFORMATTED for non SG)
-			 */
-			type?: "SG" | "UNFORMATTED";
-			/**
-			 * Block/House of Address
-			 */
-			block?: {
-				/**
-				 * example:
-				 * 548
-				 */
-				value?: string;
-			};
-			/**
-			 * Building of Address
-			 */
-			building?: {
-				/**
-				 * example:
-				 *
-				 */
-				value?: string;
-			};
-			/**
-			 * Floor of Address
-			 */
-			floor?: {
-				/**
-				 * example:
-				 * 09
-				 */
-				value?: string;
-			};
-			/**
-			 * Unit of Address
-			 */
-			unit?: {
-				/**
-				 * example:
-				 * 128
-				 */
-				value?: string;
-			};
-			/**
-			 * Street of Address
-			 */
-			street?: {
-				/**
-				 * example:
-				 * BEDOK NORTH AVENUE 1
-				 */
-				value?: string;
-			};
-			/**
-			 * Postal Code of Address
-			 */
-			postal?: {
-				/**
-				 * example:
-				 * 460548
-				 */
-				value?: string;
-			};
-			/**
-			 * Country/Place of Address. For AddressSG this will always be "SG".
-			 */
-			country?: {
-				code?: string;
-				desc?: string;
-			};
-		}
-		/**
-		 * Address details (Non-Singapore Format)
-		 */
-		export interface AddressUnformatted {
-			/**
-			 * Type of Address (SG or UNFORMATTED for non SG)
-			 */
-			type?: "SG" | "UNFORMATTED";
-			/**
-			 * Unregistered Foreign address line 1
-			 */
-			line1?: {
-				/**
-				 * example:
-				 * 4578 SMITHFIELD AVENUE
-				 */
-				value?: string;
-			};
-			/**
-			 * Unregistered Foreign address line 2
-			 */
-			line2?: {
-				/**
-				 * example:
-				 * HARTFORD CT 06120
-				 */
-				value?: string;
-			};
-		}
-		/**
-		 * Alias
-		 * Alias name of the Person.
-		 *
-		 * *Presentation Logic - If there is a value to `aliasname` (i.e. not empty), then `aliasname` should be displayed in a new line below `hanyupinyinname`, and prefixed with the ''@'' symbol i.e. "@`aliasname`".'*
-		 */
-		export interface Aliasname {
-			/**
-			 * value of the field.
-			 * example:
-			 * TRICIA TAN XIAO HUI
-			 */
-			value?: string;
-		}
-		/**
-		 * Response from succsssful backchannel authentication
-		 */
-		export interface BackchannelAuthResponse {
-			/**
-			 * Unique string generated after successful backchannel authentication. This short-lived value should be used in the authorise call, which verifies the authentication done and creates browser session.
-			 */
-			bc_session?: string;
-			/**
-			 * Unique value (user's session/transaction ID) generated by serverside that is used for reconciliation of requests and responses across bc-authenticate, authorise and token calls.
-			 */
-			state?: string;
-		}
-		/**
-		 * BillAdd
-		 * Billing Address of Person
-		 *
-		 * **Note:**
-		 * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
-		 * - check the `type` discriminator property to differentiate between the two address formats
-		 *
-		 */
-		export type Billadd =
-			/**
-			 * BillAdd
-			 * Billing Address of Person
-			 *
-			 * **Note:**
-			 * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
-			 * - check the `type` discriminator property to differentiate between the two address formats
-			 *
-			 */
-			/**
-			 * Address details (Singapore Format)
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			| DataitemAddressSg /**
-			 * Address details (Non-Singapore Format)
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			| DataitemAddressUnformatted;
-		/**
-		 * BirthCountry
-		 * Country/Place of Birth of Person.
-		 *
-		 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-		 */
-		export interface Birthcountry {
-			/**
-			 *
-			 * example:
-			 * SG
-			 */
-			code?: string; // [a-zA-Z]{2}
-			/**
-			 *
-			 * example:
-			 * SINGAPORE
-			 */
-			desc?: string;
-		}
-		/**
-		 * Community Health Assist Scheme
-		 * Community Health Assist Scheme (CHAS) card details - Card Type, Date of Issue, Date of Expiry
-		 */
-		export interface Chas {
-			cardtype?: {
-				/**
-				 * example:
-				 * C
-				 */
-				code?: any;
-				/**
-				 * example:
-				 * Green
-				 */
-				desc?: any;
-			};
-			indicator?: {
-				/**
-				 * example:
-				 * C
-				 */
-				code?: any;
-				/**
-				 * example:
-				 * Green
-				 */
-				desc?: any;
-			};
-			/**
-			 * CHAS Expiry Date
-			 */
-			expirydate?: {
-				/**
-				 * example:
-				 * 2020-06-15
-				 */
-				value?: string; // date
-			};
-			/**
-			 * CHAS Issue Date
-			 */
-			issuedate?: {
-				/**
-				 * example:
-				 * 2020-06-15
-				 */
-				value?: string; // date
-			};
-			/**
-			 * CHAS Issue Date
-			 */
-			lastupdated?: {
-				/**
-				 * example:
-				 * 2020-06-15
-				 */
-				value?: string; // date
-			};
-			/**
-			 * Name
-			 * Full Name of the Person.
-			 */
-			name?: {
-				/**
-				 * example:
-				 * TAN XIAO HUI
-				 */
-				value?: string;
-			};
-		}
-		/**
 		 * example:
 		 * {
 		 *   "classification": "C",
@@ -425,4806 +15,272 @@ export declare namespace MyInfoComponents {
 		 *   "lastupdated": "2019-03-26"
 		 * }
 		 */
-		export interface Childrenbirthrecords {
+		export interface Meta {
 			/**
 			 * Data classification of data field. Default 'C' - Confidential.
+			 * example:
+			 * C
 			 */
-			classification: "C";
+			classification: string;
 			/**
-			 * Source of data.
-			 *
-			 * * '1' - Government-verified
-			 * * '2' - User provided
-			 * * '3' - Field is Not Applicable to Person
-			 * * '4' - Verified by SingPass
-			 *
-			 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-			 */
-			source: "1" | "2" | "3" | "4";
-			/**
-			 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
+			 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+			 * example:
+			 * 2019-03-26
 			 */
 			lastupdated: string; // date
 			/**
-			 * Optional flag to indicate if data is unavailable from data source.
-			 *
-			 * **NOTE:**
-			 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-			 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-			 *   - If data is available from the data source, this property will not be present.
-			 *
-			 */
-			unavailable?: boolean;
-			/**
-			 * Birth certificate number of child.
-			 */
-			birthcertno?: {
-				/**
-				 * example:
-				 * S5562882C
-				 */
-				value?: string;
-			};
-			/**
-			 * Full Name of child
-			 */
-			name?: {
-				/**
-				 * example:
-				 * Jo Tan Pei Ni
-				 */
-				value?: string;
-			};
-			/**
-			 * Han Yu Pin Yin name of child.
-			 *
-			 * *Presentation Logic - If there is a value to `hanyupinyinname` (i.e. not empty), then `hanyupinyinname` should be displayed in a new line below `name`, and formatted with round brackets i.e. \"(`hanyupinyinname`)\".*
-			 */
-			hanyupinyinname?: {
-				/**
-				 * example:
-				 * Cheng Pei Ni
-				 */
-				value?: string;
-			};
-			/**
-			 * Alias name of child.
-			 *
-			 * *Presentation Logic - If there is a value to `aliasname` (i.e. not empty), then `aliasname` should be displayed in a new line below `hanyupinyinname`, and prefixed with the ''@'' symbol i.e. \"@`aliasname`\".*
-			 */
-			aliasname?: {
-				/**
-				 * example:
-				 *
-				 */
-				value?: string;
-			};
-			/**
-			 * Han Yu Pin Yin Alias name of child.
-			 *
-			 * *Presentation Logic - If there is a value to `hanyupinyinaliasname` (i.e. not empty), then `hanyupinyinaliasname` should be displayed in a new line below `aliasname`, and prefixed with the ''@'' symbol i.e. \"@`hanyupinyinaliasname`\".*
-			 */
-			hanyupinyinaliasname?: {
-				/**
-				 * example:
-				 *
-				 */
-				value?: string;
-			};
-			/**
-			 * Married name of child.
-			 *
-			 * *Presentation Logic - If there is a value to `marriedname` (i.e. not empty), then `marriedname` should be displayed in a new line below `hanyupinyinaliasname`.*
-			 */
-			marriedname?: {
-				/**
-				 * example:
-				 *
-				 */
-				value?: string;
-			};
-			/**
-			 * Sex of child. Possible values:
-			 *
-			 * * 'F' - FEMALE
-			 * * 'M' - MALE
-			 * * 'U' - UNKNOWN
-			 */
-			sex?: {
-				/**
-				 * example:
-				 * F
-				 */
-				code?: "F" | "M" | "U";
-				/**
-				 * example:
-				 * FEMALE
-				 */
-				desc?: "FEMALE" | "MALE" | "UNKNOWN";
-			};
-			/**
-			 * Race of child.
-			 *
-			 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-			 *
-			 */
-			race?: {
-				/**
-				 * example:
-				 * CN
-				 */
-				code?: string; // [a-zA-Z]{2}
-				/**
-				 * example:
-				 * CHINESE
-				 */
-				desc?: string;
-			};
-			/**
-			 * Secondary Race of child.
-			 *
-			 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-			 */
-			secondaryrace?: {
-				/**
-				 * example:
-				 *
-				 */
-				code?: string; // [a-zA-Z]{2}
-				/**
-				 * example:
-				 *
-				 */
-				desc?: string;
-			};
-			/**
-			 * Dialect of child.
-			 *
-			 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-			 */
-			dialect?: {
-				/**
-				 * example:
-				 * HK
-				 */
-				code?: string; // [a-zA-Z]{2}
-				/**
-				 * example:
-				 * HOKKIEN
-				 */
-				desc?: string;
-			};
-			/**
-			 * Life Status of child. Possible values:
-			 *
-			 * * A - ALIVE
-			 * * D - DECEASED
-			 */
-			lifestatus?: {
-				/**
-				 * example:
-				 * D
-				 */
-				code?: "A" | "D";
-				/**
-				 * example:
-				 * DECEASED
-				 */
-				desc?: "ALIVE" | "DECEASED";
-			};
-			/**
-			 * Date of Birth of child.
-			 *
-			 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-			 */
-			dob?: {
-				/**
-				 * example:
-				 * 2011-09-10
-				 */
-				value?: string; // date
-			};
-			/**
-			 * Time of Birth of child.
-			 *
-			 * Format: HHMM
-			 */
-			tob?: {
-				/**
-				 * example:
-				 * 0901
-				 */
-				value?: string;
-			};
-			vaccinationrequirements?: {
-				/**
-				 * Vaccination Requirement.
-				 *
-				 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-				 */
-				requirement?: {
-					/**
-					 * example:
-					 * 1M3D
-					 */
-					code?: string;
-					/**
-					 * example:
-					 * MINIMUM VACCINATION REQUIREMENT FOR PRESCHOOL
-					 */
-					desc?: string;
-				};
-				fulfilled?: {
-					/**
-					 * example:
-					 * true
-					 */
-					value?: boolean;
-				};
-			}[];
-			/**
-			 * Indicates whether the child is a Singapore Citizen at the time of birth.
-			 *
-			 * * Y - Yes
-			 * * N - No
-			 * * < BLANK > - Not applicable
-			 */
-			sgcitizenatbirthind?: {
-				/**
-				 * example:
-				 * Y
-				 */
-				value?: "Y" | "N" | "";
-			};
-		}
-		/**
-		 * CountryOfMarriage
-		 * Country/Place of the latest marriage.
-		 *
-		 *
-		 * **Note:** This field must be made **editable** on your digital service form even though `source` is '1' (Government Verified).
-		 */
-		export interface Countryofmarriage {
-			/**
-			 *
-			 * example:
-			 * SG
-			 */
-			code?: string;
-			/**
-			 *
-			 * example:
-			 * SINGAPORE
-			 */
-			desc?: string;
-		}
-		/**
-		 * CPFBalances
-		 * CPF Balances of Person in SGD.
-		 */
-		export interface Cpfbalances {
-			/**
-			 * Amount Balance in CPF-MA
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			ma?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * example:
-				 * 11470.71
-				 */
-				value?: number; // double
-			};
-			/**
-			 * Amount Balance in CPF-OA
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			oa?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * example:
-				 * 1581.48
-				 */
-				value?: number; // double
-			};
-			/**
-			 * Amount Balance in CPF-SA
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			sa?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * example:
-				 * 21967.09
-				 */
-				value?: number; // double
-			};
-			/**
-			 * Amount Balance in CPF-RA
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			ra?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * example:
-				 * 0.01
-				 */
-				value?: number; // double
-			};
-		}
-		/**
-		 * CPFContributions
-		 * Employer CPF Contributions of Person in SGD. Does not include any non-employer contributions.
-		 * Maximum past 15 months' of contributions.
-		 *
-		 */
-		export interface Cpfcontributions {
-			/**
-			 * example:
-			 * [
-			 *   {
-			 *     "date": {
-			 *       "value": "2016-12-01"
-			 *     },
-			 *     "amount": {
-			 *       "value": 500
-			 *     },
-			 *     "month": {
-			 *       "value": "2016-11"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2016-12-12"
-			 *     },
-			 *     "amount": {
-			 *       "value": 500
-			 *     },
-			 *     "month": {
-			 *       "value": "2016-12"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2016-12-21"
-			 *     },
-			 *     "amount": {
-			 *       "value": 500
-			 *     },
-			 *     "month": {
-			 *       "value": "2016-12"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-01-01"
-			 *     },
-			 *     "amount": {
-			 *       "value": 500
-			 *     },
-			 *     "month": {
-			 *       "value": "2016-12"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-01-12"
-			 *     },
-			 *     "amount": {
-			 *       "value": 500
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-01"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-01-21"
-			 *     },
-			 *     "amount": {
-			 *       "value": 500
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-01"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-02-01"
-			 *     },
-			 *     "amount": {
-			 *       "value": 500
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-01"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-02-12"
-			 *     },
-			 *     "amount": {
-			 *       "value": 500
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-02"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-02-21"
-			 *     },
-			 *     "amount": {
-			 *       "value": 500
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-02"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-03-01"
-			 *     },
-			 *     "amount": {
-			 *       "value": 500
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-02"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-03-12"
-			 *     },
-			 *     "amount": {
-			 *       "value": 500
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-03"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-03-21"
-			 *     },
-			 *     "amount": {
-			 *       "value": 500
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-03"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-04-01"
-			 *     },
-			 *     "amount": {
-			 *       "value": 500
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-03"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-04-12"
-			 *     },
-			 *     "amount": {
-			 *       "value": 500
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-04"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-04-21"
-			 *     },
-			 *     "amount": {
-			 *       "value": 500
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-04"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-05-01"
-			 *     },
-			 *     "amount": {
-			 *       "value": 500
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-04"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-05-12"
-			 *     },
-			 *     "amount": {
-			 *       "value": 500
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-05"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-05-21"
-			 *     },
-			 *     "amount": {
-			 *       "value": 500
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-05"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-06-01"
-			 *     },
-			 *     "amount": {
-			 *       "value": 500
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-05"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-06-12"
-			 *     },
-			 *     "amount": {
-			 *       "value": 500
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-06"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-06-21"
-			 *     },
-			 *     "amount": {
-			 *       "value": 500
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-06"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-07-01"
-			 *     },
-			 *     "amount": {
-			 *       "value": 500
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-06"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-07-12"
-			 *     },
-			 *     "amount": {
-			 *       "value": 500
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-07"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-07-21"
-			 *     },
-			 *     "amount": {
-			 *       "value": 500
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-07"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-08-01"
-			 *     },
-			 *     "amount": {
-			 *       "value": 500
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-07"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-08-12"
-			 *     },
-			 *     "amount": {
-			 *       "value": 750
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-08"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-08-21"
-			 *     },
-			 *     "amount": {
-			 *       "value": 750
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-08"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-09-01"
-			 *     },
-			 *     "amount": {
-			 *       "value": 750
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-08"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-09-12"
-			 *     },
-			 *     "amount": {
-			 *       "value": 750
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-09"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-09-21"
-			 *     },
-			 *     "amount": {
-			 *       "value": 750
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-09"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-10-01"
-			 *     },
-			 *     "amount": {
-			 *       "value": 750
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-09"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-10-12"
-			 *     },
-			 *     "amount": {
-			 *       "value": 750
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-10"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-10-21"
-			 *     },
-			 *     "amount": {
-			 *       "value": 750
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-10"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-11-01"
-			 *     },
-			 *     "amount": {
-			 *       "value": 750
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-10"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-11-12"
-			 *     },
-			 *     "amount": {
-			 *       "value": 750
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-11"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-11-21"
-			 *     },
-			 *     "amount": {
-			 *       "value": 750
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-11"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-12-01"
-			 *     },
-			 *     "amount": {
-			 *       "value": 750
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-11"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-12-12"
-			 *     },
-			 *     "amount": {
-			 *       "value": 750
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-12"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2017-12-21"
-			 *     },
-			 *     "amount": {
-			 *       "value": 750
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-12"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2018-01-01"
-			 *     },
-			 *     "amount": {
-			 *       "value": 750
-			 *     },
-			 *     "month": {
-			 *       "value": "2017-12"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2018-01-12"
-			 *     },
-			 *     "amount": {
-			 *       "value": 750
-			 *     },
-			 *     "month": {
-			 *       "value": "2018-01"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "date": {
-			 *       "value": "2018-01-21"
-			 *     },
-			 *     "amount": {
-			 *       "value": 750
-			 *     },
-			 *     "month": {
-			 *       "value": "2018-01"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   }
-			 * ]
-			 */
-			history?: {
-				/**
-				 * Employer who paid the Contribution.
-				 */
-				employer?: {
-					/**
-					 * example:
-					 * Crystal Horse Invest Pte Ltd
-					 */
-					value?: string;
-				};
-				/**
-				 * Date of Contribution Paid. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-				 */
-				date?: {
-					/**
-					 * example:
-					 * 2017-03-01
-					 */
-					value?: string; // date
-				};
-				/**
-				 * Month for which CPF Contribution was paid. Format: YYYY-MM
-				 */
-				month?: {
-					/**
-					 * example:
-					 * 2017-02
-					 */
-					value?: string;
-				};
-				/**
-				 * Amount of contribution in SGD
-				 */
-				amount?: {
-					/**
-					 * example:
-					 * 500
-					 */
-					value?: number; // double
-				};
-			}[];
-		}
-		/**
-		 * CPF Dependant Protection Scheme
-		 * CPF Dependant Protection Scheme
-		 */
-		export interface Cpfdependantprotectionscheme {
-			coverage?: {
-				/**
-				 * Indicator
-				 * example:
-				 * true
-				 */
-				value?: boolean;
-			};
-			insurercode?: {
-				/**
-				 * Insurer Code
-				 * example:
-				 * 9GEL
-				 */
-				value?: string;
-			};
-			sumassuredamount?: {
-				/**
-				 * Sum assured. OPTIONAL attribute, present only if 'coverage' is true
-				 * example:
-				 * 70000
-				 */
-				value?: number;
-			};
-		}
-		/**
-		 * CPFEmployers
-		 * Employers who paid CPF Contributions. Maximum up to past 14 months.
-		 *
-		 */
-		export interface Cpfemployers {
-			/**
-			 * example:
-			 * [
-			 *   {
-			 *     "month": {
-			 *       "value": "2016-11"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2016-12"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2016-12"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2016-12"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-01"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-01"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-01"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-02"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-02"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-02"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-03"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-03"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-03"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-04"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-04"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-04"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-05"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-05"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-05"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-06"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-06"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-06"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-07"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-07"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-07"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Crystal Horse Invest Pte Ltd"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-08"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-08"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-08"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-09"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-09"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-09"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-10"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-10"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-10"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-11"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-11"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-11"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-12"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-12"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2017-12"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2018-01"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   },
-			 *   {
-			 *     "month": {
-			 *       "value": "2018-01"
-			 *     },
-			 *     "employer": {
-			 *       "value": "Delta Marine Consultants PL"
-			 *     }
-			 *   }
-			 * ]
-			 */
-			history?: {
-				/**
-				 * Employer who paid the Contribution.
-				 */
-				employer?: {
-					/**
-					 * example:
-					 * Crystal Horse Invest Pte Ltd
-					 */
-					value?: string;
-				};
-				/**
-				 * Month for which CPF Contribution was paid. Format: YYYY-MM
-				 */
-				month?: {
-					/**
-					 * example:
-					 * 2017-03
-					 */
-					value?: string; // date
-				};
-			}[];
-		}
-		/**
-		 * CPF Home Protection Scheme
-		 * CPF Home Protection Scheme
-		 */
-		export interface Cpfhomeprotectionscheme {
-			coverage?: {
-				/**
-				 * Indicator
-				 * example:
-				 * true
-				 */
-				value?: boolean;
-			};
-			premium?: {
-				/**
-				 * Coverage premium. OPTIONAL attribute, present only if 'coverage' is true
-				 * example:
-				 * 100.01
-				 */
-				value?: number;
-			};
-			shareofcover?: {
-				/**
-				 * Share of coverage (in percentage). OPTIONAL attribute, present only if 'coverage' is true
-				 * example:
-				 * 20
-				 */
-				value?: number;
-			};
-		}
-		/**
-		 * CPFHousingWithdrawal
-		 * CPF Housing Withdrawal of Person. Amounts in SGD.
-		 */
-		export interface Cpfhousingwithdrawal {
-			/**
-			 * Withdrawal details for properties
-			 */
-			withdrawaldetails?: {
-				/**
-				 * Registered Address of Property which withdrawal is made.
-				 *
-				 *   **Note:**
-				 *   - address can be either Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
-				 *   - check the `type` discriminator property to differentiate between the two address formats
-				 *
-				 */
-				address?: /**
-				 * Registered Address of Property which withdrawal is made.
-				 *
-				 *   **Note:**
-				 *   - address can be either Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
-				 *   - check the `type` discriminator property to differentiate between the two address formats
-				 *
-				 */
-				/* Address details (Singapore Format) */ | AddressSG
-					| /* Address details (Non-Singapore Format) */ AddressUnformatted;
-				/**
-				 *
-				 */
-				accruedinterestamt?: {
-					/**
-					 * example:
-					 * 1581.48
-					 */
-					value?: number; // double
-				};
-				/**
-				 *
-				 */
-				monthlyinstalmentamt?: {
-					/**
-					 * example:
-					 * 1196.09
-					 */
-					value?: number; // double
-				};
-				/**
-				 *
-				 */
-				principalwithdrawalamt?: {
-					/**
-					 * example:
-					 * 2897.01
-					 */
-					value?: number; // double
-				};
-				/**
-				 *
-				 */
-				totalamountofcpfallowedforproperty?: {
-					/**
-					 * example:
-					 * 10000.01
-					 */
-					value?: number; // double
-				};
-			}[];
-		}
-		/**
-		 * CPFInvestmentScheme
-		 * CPF Investment Scheme
-		 */
-		export interface Cpfinvestmentscheme {
-			/**
-			 * Number of Discounted Singtel Shares
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			sdsnetshareholdingqty?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * example:
-				 * 1360
-				 */
-				value?: number;
-			};
-			/**
-			 * Account Details
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			account?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * Agent Bank Code
-				 */
-				agentbankcode?: {
-					/**
-					 * example:
-					 * OCBC
-					 */
-					value?: string;
-				};
-				/**
-				 * Account Number
-				 */
-				invbankacctno?: {
-					/**
-					 * example:
-					 * 098-26644-4
-					 */
-					value?: string;
-				};
-			};
-			/**
-			 * Self-Awareness Questionnaire (SAQ) Participation Status
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			saqparticipationstatus?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * Possible values:
-				 *
-				 * * 'Y' – Participated
-				 * * 'X' – Existing CPFIS participant
-				 * * 'N' – Did not participate
-				 * example:
-				 * X
-				 */
-				code?: "Y" | "X" | "N";
-				/**
-				 * example:
-				 * Participated
-				 */
-				desc?: string;
-			};
-		}
-		/**
-		 * CPFLife
-		 * CPF Lifelong Income For the Elderly (CPF LIFE)
-		 * example:
-		 * {
-		 *   "classification": "C",
-		 *   "source": "1",
-		 *   "lastupdated": "2019-03-26"
-		 * }
-		 */
-		export interface Cpflife {
-			/**
-			 * Data classification of data field. Default 'C' - Confidential.
-			 */
-			classification: "C";
-			/**
 			 * Source of data.
 			 *
-			 * * '1' - Government-verified
-			 * * '2' - User provided
-			 * * '3' - Field is Not Applicable to Person
-			 * * '4' - Verified by SingPass
-			 *
-			 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+			 * - '1': Government-verified
+			 * - '2': User provided
+			 * - '3': Not Applicable (applies only to Person data, not Entity data)
+			 * - '4': Verified by SingPass
+			 * example:
+			 * 1
 			 */
 			source: "1" | "2" | "3" | "4";
-			/**
-			 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-			 */
-			lastupdated: string; // date
-			/**
-			 * Optional flag to indicate if data is unavailable from data source.
-			 *
-			 * **NOTE:**
-			 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-			 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-			 *   - If data is available from the data source, this property will not be present.
-			 *
-			 */
-			unavailable?: boolean;
-			/**
-			 * Flag to indicate the CPF Life membership of the user
-			 */
-			cpflifecoverage?: {
-				/**
-				 * example:
-				 * true
-				 */
-				value?: boolean;
-			};
-			/**
-			 * CPF Life plan chosen
-			 */
-			cpflifeplan?: {
-				/**
-				 * example:
-				 * Standard Plan
-				 */
-				value?: string;
-			};
-			/**
-			 * Monthly payout from CPF Life in SGD
-			 */
-			cpflifemonthlypayout?: {
-				/**
-				 * example:
-				 * 1000
-				 */
-				value?: number;
-			};
-			/**
-			 * Flag to indicate if user is currently receiving monthly payouts from CPF LIFE
-			 */
-			cpflifepaymentcommencement?: {
-				/**
-				 * example:
-				 * true
-				 */
-				value?: boolean;
-			};
-			/**
-			 * Date of latest CPF Life payment. Can be blank.
-			 *
-			 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-			 */
-			cpflifepaymentdate?: {
-				/**
-				 * example:
-				 * 2019-09-02
-				 */
-				value?: string; // date
-			};
-		}
-		/**
-		 * CPFMedishieldLife
-		 * CPF MediShield Life
-		 * example:
-		 * {
-		 *   "classification": "C",
-		 *   "source": "1",
-		 *   "lastupdated": "2019-03-26"
-		 * }
-		 */
-		export interface Cpfmedishieldlife {
-			/**
-			 * Data classification of data field. Default 'C' - Confidential.
-			 */
-			classification: "C";
-			/**
-			 * Source of data.
-			 *
-			 * * '1' - Government-verified
-			 * * '2' - User provided
-			 * * '3' - Field is Not Applicable to Person
-			 * * '4' - Verified by SingPass
-			 *
-			 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-			 */
-			source: "1" | "2" | "3" | "4";
-			/**
-			 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-			 */
-			lastupdated: string; // date
-			/**
-			 * Optional flag to indicate if data is unavailable from data source.
-			 *
-			 * **NOTE:**
-			 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-			 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-			 *   - If data is available from the data source, this property will not be present.
-			 *
-			 */
-			unavailable?: boolean;
-			/**
-			 * Present only if underlying 'hascovertag' is not empty (true or false) from CPF
-			 */
-			medishieldlifecoverage?: {
-				/**
-				 * Status of cover of user.
-				 */
-				hascovertag?: {
-					/**
-					 * example:
-					 * true
-					 */
-					value?: boolean;
-				};
-				/**
-				 * Name of the current payer who pay for this policy for current policy renewal date.
-				 *
-				 * Present only if 'hascovertag' is true.
-				 */
-				payername?: {
-					value?: string;
-				};
-				/**
-				 * Net Premium Payable in SGD after subsidies, Additional Premium Support and Government Benefit (if applicable) for current policy year.
-				 *
-				 * Present only if 'hascovertag' is true.
-				 *
-				 */
-				netpremiumpayable?: {
-					/**
-					 * example:
-					 * 1000
-					 */
-					value?: number;
-				};
-				/**
-				 * Renewal date for current policy year.
-				 *
-				 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-				 *
-				 * Present only if 'hascovertag' is true.
-				 *
-				 */
-				policyrenewaldate?: {
-					/**
-					 * example:
-					 * 2019-07-02
-					 */
-					value?: string; // date
-				};
-			};
-			/**
-			 * Present only if underlying 'hascovertag' is not empty (true or false) from CPF
-			 */
-			integratedshieldplancoverage?: {
-				/**
-				 * Status of cover of user.
-				 */
-				hascovertag?: {
-					/**
-					 * example:
-					 * true
-					 */
-					value?: boolean;
-				};
-				/**
-				 * Name of the current payer who pay for this policy for current policy renewal date.
-				 *
-				 * Present only if 'hascovertag' is true.
-				 */
-				payername?: {
-					value?: string;
-				};
-				/**
-				 * Company code of private insurer. Refer to 'Code Listing (InsurerCode)' in https://public.cloud.myinfo.gov.sg/dpp/frontend/assets/api-lib/myinfo/downloads/myinfo-api-code-tables.xlsx for list of possible values
-				 *
-				 * Present only if 'hascovertag' is true.
-				 */
-				insurercode?: {
-					value?: string;
-				};
-			};
-			/**
-			 * Empty array will be returned if there is no data
-			 */
-			medishieldlifedependants?: {
-				/**
-				 * Name of dependants whom the enquirer is paying for.
-				 */
-				dependantname?: {
-					value?: string;
-				};
-				/**
-				 * Net Premium Payable in SGD after subsidies, Additional Premium Support and Government Benefit (if applicable) for current policy year
-				 */
-				netpremiumpayable?: {
-					/**
-					 * example:
-					 * 1000
-					 */
-					value?: number;
-				};
-				/**
-				 * Renewal date for current policy year.
-				 *
-				 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-				 *
-				 * Present only if 'hascovertag' is true.
-				 *
-				 */
-				policyrenewaldate?: {
-					/**
-					 * example:
-					 * 2019-07-02
-					 */
-					value?: string; // date
-				};
-			}[];
-			/**
-			 * Empty array will be returned if there is no data
-			 */
-			integratedshieldplandependants?: {
-				/**
-				 * Name of dependants whom the enquirer is paying for.
-				 */
-				dependantname?: {
-					value?: string;
-				};
-				/**
-				 * Company code of private insurer. Refer to 'Code Listing (InsurerCode)' in https://public.cloud.myinfo.gov.sg/dpp/frontend/assets/api-lib/myinfo/downloads/myinfo-api-code-tables.xlsx for list of possible values
-				 *
-				 * Present only if 'hascovertag' is true.
-				 */
-				insurercode?: {
-					value?: string;
-				};
-			}[];
-		}
-		/**
-		 * CPFMonthlyPayouts
-		 * CPF Monthly Payouts (Non-LIFE)
-		 * example:
-		 * {
-		 *   "classification": "C",
-		 *   "source": "1",
-		 *   "lastupdated": "2019-03-26"
-		 * }
-		 */
-		export interface Cpfmonthlypayouts {
-			/**
-			 * Data classification of data field. Default 'C' - Confidential.
-			 */
-			classification: "C";
-			/**
-			 * Source of data.
-			 *
-			 * * '1' - Government-verified
-			 * * '2' - User provided
-			 * * '3' - Field is Not Applicable to Person
-			 * * '4' - Verified by SingPass
-			 *
-			 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-			 */
-			source: "1" | "2" | "3" | "4";
-			/**
-			 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-			 */
-			lastupdated: string; // date
-			/**
-			 * Optional flag to indicate if data is unavailable from data source.
-			 *
-			 * **NOTE:**
-			 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-			 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-			 *   - If data is available from the data source, this property will not be present.
-			 *
-			 */
-			unavailable?: boolean;
-			/**
-			 * Monthly payout amount in SGD
-			 */
-			monthlypayout?: {
-				/**
-				 * example:
-				 * 1000
-				 */
-				value?: number;
-			};
-			/**
-			 * Flag to indicate if user is currently receiving monthly payouts
-			 */
-			paymentcommencement?: {
-				/**
-				 * example:
-				 * true
-				 */
-				value?: boolean;
-			};
-		}
-		/**
-		 * CPFRSTUCurrentYearTaxRelief
-		 * CPF Retirement Savings Topping-up Scheme - Current Year Tax Relief
-		 * example:
-		 * {
-		 *   "classification": "C",
-		 *   "source": "1",
-		 *   "lastupdated": "2019-03-26"
-		 * }
-		 */
-		export interface Cpfrstucurrentyeartaxrelief {
-			/**
-			 * Data classification of data field. Default 'C' - Confidential.
-			 */
-			classification: "C";
-			/**
-			 * Source of data.
-			 *
-			 * * '1' - Government-verified
-			 * * '2' - User provided
-			 * * '3' - Field is Not Applicable to Person
-			 * * '4' - Verified by SingPass
-			 *
-			 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-			 */
-			source: "1" | "2" | "3" | "4";
-			/**
-			 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-			 */
-			lastupdated: string; // date
-			/**
-			 * Optional flag to indicate if data is unavailable from data source.
-			 *
-			 * **NOTE:**
-			 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-			 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-			 *   - If data is available from the data source, this property will not be present.
-			 *
-			 */
-			unavailable?: boolean;
-			/**
-			 * Total tax relief from self top-up in SGD
-			 */
-			totaltaxreliefself?: {
-				/**
-				 * example:
-				 * 1000
-				 */
-				value?: number;
-			};
-			/**
-			 * Remaining tax relief from self top-up in SGD
-			 */
-			remainingtaxreliefself?: {
-				/**
-				 * example:
-				 * 1000
-				 */
-				value?: number;
-			};
-			/**
-			 * Total tax relief from top-up by loved ones in SGD
-			 */
-			totaltaxrelieflovedones?: {
-				/**
-				 * example:
-				 * 1000
-				 */
-				value?: number;
-			};
-			/**
-			 * Remaining tax relief from top-up by loved ones in SGD
-			 */
-			remainingtaxrelieflovedones?: {
-				/**
-				 * example:
-				 * 1000
-				 */
-				value?: number;
-			};
-		}
-		/**
-		 * CPFRSTUSelfTopupAmount
-		 * CPF Retirement Savings Topping-up Scheme - Maximum amount you can top-up using cash and CPF
-		 * example:
-		 * {
-		 *   "classification": "C",
-		 *   "source": "1",
-		 *   "lastupdated": "2019-03-26"
-		 * }
-		 */
-		export interface Cpfrstuselftopupamount {
-			/**
-			 * Data classification of data field. Default 'C' - Confidential.
-			 */
-			classification: "C";
-			/**
-			 * Source of data.
-			 *
-			 * * '1' - Government-verified
-			 * * '2' - User provided
-			 * * '3' - Field is Not Applicable to Person
-			 * * '4' - Verified by SingPass
-			 *
-			 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-			 */
-			source: "1" | "2" | "3" | "4";
-			/**
-			 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-			 */
-			lastupdated: string; // date
-			/**
-			 * Optional flag to indicate if data is unavailable from data source.
-			 *
-			 * **NOTE:**
-			 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-			 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-			 *   - If data is available from the data source, this property will not be present.
-			 *
-			 */
-			unavailable?: boolean;
-			/**
-			 * Maximum amount you can top up using cash
-			 */
-			selftopupusingcash?: {
-				/**
-				 * example:
-				 * 1000
-				 */
-				value?: number;
-			};
-			/**
-			 * Maximum amount you can transfer using CPF
-			 */
-			selftopupusingcpf?: {
-				/**
-				 * example:
-				 * 1000
-				 */
-				value?: number;
-			};
-		}
-		/**
-		 * CPFTransactions
-		 * CPF Transaction History of Person in SGD.
-		 * Maximum past 15 months' of transactions.
-		 *
-		 */
-		export interface Cpftransactions {
-			history?: {
-				/**
-				 * Type of transaction
-				 */
-				txntype?: {
-					/**
-					 * example:
-					 * CON
-					 */
-					code?: string;
-					/**
-					 * example:
-					 * Contributions/Government Cash Grant/Government Top-up
-					 */
-					desc?: string;
-				};
-				/**
-				 * Account Number. May be present if txntype code is 'TRF'.
-				 */
-				accountno?: {
-					value?: string;
-				};
-				/**
-				 * Month of transaction. Format: YYYY-MM
-				 *
-				 * Present if txntype code is 'CON'/'RFD'/'ADJ'
-				 */
-				month?: {
-					/**
-					 * example:
-					 * 2017-02
-					 */
-					value?: string;
-				};
-				/**
-				 * Date of Transaction. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-				 */
-				date?: {
-					/**
-					 * example:
-					 * 2017-03-01
-					 */
-					value?: string; // date
-				};
-				/**
-				 * Footer reference
-				 */
-				referenceno?: {
-					value?: string;
-				};
-				/**
-				 * Transaction Amount to Ordinary Account in SGD
-				 */
-				oatxnamt?: {
-					/**
-					 * example:
-					 * 500
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Transaction Amount to Special Account in SGD
-				 */
-				satxnamt?: {
-					/**
-					 * example:
-					 * 500
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Transaction Amount to Medisave Account in SGD
-				 */
-				matxnamt?: {
-					/**
-					 * example:
-					 * 500
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Transaction Amount to Retirement Account in SGD. Only present if user has Retirement Account
-				 */
-				ratxnamt?: {
-					/**
-					 * example:
-					 * 500
-					 */
-					value?: number; // double
-				};
-			}[];
-			/**
-			 * example:
-			 * [
-			 *   {
-			 *     "message": {
-			 *       "value": "REF A: EMPLOYER XXXX"
-			 *     }
-			 *   },
-			 *   {
-			 *     "message": {
-			 *       "value": "B: EMPLOYER YYYY"
-			 *     }
-			 *   }
-			 * ]
-			 */
-			footers?: {
-				message?: {
-					/**
-					 * example:
-					 * REF A: EMPLOYER XXXX
-					 */
-					value?: string;
-				};
-			}[];
-		}
-		/**
-		 * example:
-		 * {
-		 *   "classification": "C",
-		 *   "source": "1",
-		 *   "lastupdated": "2019-03-26"
-		 * }
-		 */
-		export interface DataFieldProperties {
-			/**
-			 * Data classification of data field. Default 'C' - Confidential.
-			 */
-			classification: "C";
-			/**
-			 * Source of data.
-			 *
-			 * * '1' - Government-verified
-			 * * '2' - User provided
-			 * * '3' - Field is Not Applicable to Person
-			 * * '4' - Verified by SingPass
-			 *
-			 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-			 */
-			source: "1" | "2" | "3" | "4";
-			/**
-			 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-			 */
-			lastupdated: string; // date
-			/**
-			 * Optional flag to indicate if data is unavailable from data source.
-			 *
-			 * **NOTE:**
-			 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-			 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-			 *   - If data is available from the data source, this property will not be present.
-			 *
-			 */
-			unavailable?: boolean;
-		}
-		/**
-		 * Address details (Singapore Format)
-		 * example:
-		 * {
-		 *   "classification": "C",
-		 *   "source": "1",
-		 *   "lastupdated": "2019-03-26"
-		 * }
-		 */
-		export interface DataitemAddressSg {
-			/**
-			 * Type of Address (SG or UNFORMATTED for non SG)
-			 */
-			type?: "SG" | "UNFORMATTED";
-			/**
-			 * Block/House of Address
-			 */
-			block?: {
-				/**
-				 * example:
-				 * 548
-				 */
-				value?: string;
-			};
-			/**
-			 * Building of Address
-			 */
-			building?: {
-				/**
-				 * example:
-				 *
-				 */
-				value?: string;
-			};
-			/**
-			 * Floor of Address
-			 */
-			floor?: {
-				/**
-				 * example:
-				 * 09
-				 */
-				value?: string;
-			};
-			/**
-			 * Unit of Address
-			 */
-			unit?: {
-				/**
-				 * example:
-				 * 128
-				 */
-				value?: string;
-			};
-			/**
-			 * Street of Address
-			 */
-			street?: {
-				/**
-				 * example:
-				 * BEDOK NORTH AVENUE 1
-				 */
-				value?: string;
-			};
-			/**
-			 * Postal Code of Address
-			 */
-			postal?: {
-				/**
-				 * example:
-				 * 460548
-				 */
-				value?: string;
-			};
-			/**
-			 * Country/Place of Address. For AddressSG this will always be "SG".
-			 */
-			country?: {
-				code?: string;
-				desc?: string;
-			};
-			/**
-			 * Data classification of data field. Default 'C' - Confidential.
-			 */
-			classification: "C";
-			/**
-			 * Source of data.
-			 *
-			 * * '1' - Government-verified
-			 * * '2' - User provided
-			 * * '3' - Field is Not Applicable to Person
-			 * * '4' - Verified by SingPass
-			 *
-			 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-			 */
-			source: "1" | "2" | "3" | "4";
-			/**
-			 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-			 */
-			lastupdated: string; // date
-			/**
-			 * Optional flag to indicate if data is unavailable from data source.
-			 *
-			 * **NOTE:**
-			 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-			 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-			 *   - If data is available from the data source, this property will not be present.
-			 *
-			 */
-			unavailable?: boolean;
-		}
-		/**
-		 * Address details (Non-Singapore Format)
-		 * example:
-		 * {
-		 *   "classification": "C",
-		 *   "source": "1",
-		 *   "lastupdated": "2019-03-26"
-		 * }
-		 */
-		export interface DataitemAddressUnformatted {
-			/**
-			 * Type of Address (SG or UNFORMATTED for non SG)
-			 */
-			type?: "SG" | "UNFORMATTED";
-			/**
-			 * Unregistered Foreign address line 1
-			 */
-			line1?: {
-				/**
-				 * example:
-				 * 4578 SMITHFIELD AVENUE
-				 */
-				value?: string;
-			};
-			/**
-			 * Unregistered Foreign address line 2
-			 */
-			line2?: {
-				/**
-				 * example:
-				 * HARTFORD CT 06120
-				 */
-				value?: string;
-			};
-			/**
-			 * Data classification of data field. Default 'C' - Confidential.
-			 */
-			classification: "C";
-			/**
-			 * Source of data.
-			 *
-			 * * '1' - Government-verified
-			 * * '2' - User provided
-			 * * '3' - Field is Not Applicable to Person
-			 * * '4' - Verified by SingPass
-			 *
-			 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-			 */
-			source: "1" | "2" | "3" | "4";
-			/**
-			 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-			 */
-			lastupdated: string; // date
-			/**
-			 * Optional flag to indicate if data is unavailable from data source.
-			 *
-			 * **NOTE:**
-			 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-			 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-			 *   - If data is available from the data source, this property will not be present.
-			 *
-			 */
-			unavailable?: boolean;
-		}
-		/**
-		 * Dialect
-		 * Dialect of Person.
-		 *
-		 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-		 */
-		export interface Dialect {
-			/**
-			 *
-			 * example:
-			 * SG
-			 */
-			code?: string; // [a-zA-Z]{2}
-			/**
-			 *
-			 * example:
-			 * SWISS GERMAN
-			 */
-			desc?: string;
-		}
-		/**
-		 * DivorceDate
-		 * Last Divorce Date of Person.
-		 *
-		 *
-		 * **Note:** This field must be made **editable** on your digital service form even though `source` is '1' (Government Verified).
-		 *
-		 */
-		export interface Divorcedate {
-			/**
-			 * Value of data field.
-			 *
-			 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-			 * example:
-			 *
-			 */
-			value?: string; // date
-		}
-		/**
-		 * DOB
-		 * Date of Birth of Person.
-		 */
-		export interface Dob {
-			/**
-			 * Value of data field.
-			 * Format can be one of the below (with reference tohttps://datatracker.ietf.org/doc/html/rfc3339#section-5.6):
-			 * - full-date
-			 * - date-fullyear "-" date-month
-			 * - date-fullyear
-			 * example:
-			 * 1958-05-17
-			 */
-			value?: string; // date
-		}
-		/**
-		 * Driving Licence details of Person.
-		 *
-		 */
-		export interface Drivinglicence {
-			/**
-			 * Status of Certificate of Merit. Possible values:
-			 *
-			 * * Y - ELIGIBLE
-			 * * N - NOT ELIGIBLE
-			 */
-			comstatus?: {
-				/**
-				 * example:
-				 * Y
-				 */
-				code?: "Y" | "N";
-				/**
-				 *
-				 * example:
-				 * ELIGIBLE
-				 */
-				desc?: "ELIGIBLE" | "NOT ELIGIBLE";
-			};
-			/**
-			 * Total Demerit Points
-			 */
-			totaldemeritpoints?: {
-				/**
-				 * example:
-				 * 0
-				 */
-				value?: number;
-			};
-			/**
-			 *
-			 */
-			suspension?: {
-				/**
-				 * Suspension Start Date
-				 */
-				startdate?: {
-					/**
-					 * example:
-					 *
-					 */
-					value?: string; // date
-				};
-				/**
-				 * Suspension End Date
-				 */
-				enddate?: {
-					/**
-					 * example:
-					 *
-					 */
-					value?: string; // date
-				};
-			};
-			/**
-			 *
-			 */
-			disqualification?: {
-				/**
-				 * Disqualification Start Date
-				 */
-				startdate?: {
-					/**
-					 * example:
-					 *
-					 */
-					value?: string; // date
-				};
-				/**
-				 * Disqualification End Date
-				 */
-				enddate?: {
-					/**
-					 * example:
-					 *
-					 */
-					value?: string; // date
-				};
-			};
-			/**
-			 *
-			 */
-			revocation?: {
-				/**
-				 * Revocation Start Date
-				 */
-				startdate?: {
-					/**
-					 * example:
-					 *
-					 */
-					value?: string; // date
-				};
-				/**
-				 * Revocation End Date
-				 */
-				enddate?: {
-					/**
-					 * example:
-					 *
-					 */
-					value?: string; // date
-				};
-			};
-			/**
-			 * Provisional Driving Licence (PDL)
-			 */
-			pdl?: {
-				/**
-				 * Validity of PDL. Possible values:
-				 *
-				 * * V - VALID
-				 * * E - EXPIRED
-				 * * I - INVALID
-				 * * N - NOT HOLDING
-				 */
-				validity?: {
-					/**
-					 * example:
-					 * V
-					 */
-					code?: "V" | "E" | "I" | "N";
-					/**
-					 *
-					 * example:
-					 * VALID
-					 */
-					desc?: "VALID" | "EXPIRED" | "INVALID" | "NOT HOLDING";
-				};
-				/**
-				 * PDL Expiry Date
-				 */
-				expirydate?: {
-					/**
-					 * example:
-					 * 2020-06-15
-					 */
-					value?: string; // date
-				};
-				/**
-				 * PDL Classes
-				 * example:
-				 * [
-				 *   {
-				 *     "class": {
-				 *       "value": "2A"
-				 *     }
-				 *   },
-				 *   {
-				 *     "class": {
-				 *       "value": "3A"
-				 *     }
-				 *   },
-				 *   {
-				 *     "class": {
-				 *       "value": "4P"
-				 *     }
-				 *   },
-				 *   {
-				 *     "class": {
-				 *       "value": "4AP"
-				 *     }
-				 *   },
-				 *   {
-				 *     "class": {
-				 *       "value": "5P"
-				 *     }
-				 *   }
-				 * ]
-				 */
-				classes?: {
-					class?: {
-						value?: string;
-					};
-				}[];
-			};
-			/**
-			 * Qualified Driving Licence (QDL)
-			 */
-			qdl?: {
-				/**
-				 * Validity of QDL. Possible values:
-				 *
-				 * * V - VALID
-				 * * E - EXPIRED
-				 * * I - INVALID
-				 * * N - NOT HOLDING
-				 */
-				validity?: {
-					/**
-					 * example:
-					 * V
-					 */
-					code?: "V" | "E" | "I" | "N";
-					/**
-					 *
-					 * example:
-					 * VALID
-					 */
-					desc?: "VALID" | "EXPIRED" | "INVALID" | "NOT HOLDING";
-				};
-				/**
-				 * QDL Expiry Date
-				 */
-				expirydate?: {
-					/**
-					 * example:
-					 * 2020-06-15
-					 */
-					value?: string; // date
-				};
-				/**
-				 * QDL Classes. Includes Issue Date (e.g. 2B, 2018-01-01)
-				 * example:
-				 * [
-				 *   {
-				 *     "class": {
-				 *       "value": "2A"
-				 *     },
-				 *     "issuedate": {
-				 *       "value": "2018-06-06"
-				 *     }
-				 *   },
-				 *   {
-				 *     "class": {
-				 *       "value": "3A"
-				 *     },
-				 *     "issuedate": {
-				 *       "value": "2018-06-06"
-				 *     }
-				 *   },
-				 *   {
-				 *     "class": {
-				 *       "value": "4P"
-				 *     },
-				 *     "issuedate": {
-				 *       "value": "2018-06-06"
-				 *     }
-				 *   },
-				 *   {
-				 *     "class": {
-				 *       "value": "4AP"
-				 *     },
-				 *     "issuedate": {
-				 *       "value": "2018-06-06"
-				 *     }
-				 *   },
-				 *   {
-				 *     "class": {
-				 *       "value": "5P"
-				 *     },
-				 *     "issuedate": {
-				 *       "value": "2018-06-06"
-				 *     }
-				 *   }
-				 * ]
-				 */
-				classes?: {
-					class?: {
-						value?: string;
-					};
-					issuedate?: {
-						value?: string; // date
-					};
-				}[];
-			};
-			/**
-			 * Serial Number of the Photo Card
-			 */
-			photocardserialno?: {
-				/**
-				 * example:
-				 * 115616
-				 */
-				value?: string;
-			};
-		}
-		/**
-		 * EduLevel
-		 * Highest Education Level of Person.
-		 *
-		 * * '0' - NO FORMAL QUALIFICATION / PRE-PRIMARY / LOWER PRIMARY
-		 * * '1' - PRIMARY
-		 * * '2' - LOWER SECONDARY
-		 * * '3' - SECONDARY
-		 * * '4' - POST-SECONDARY (NON-TERTIARY): GENERAL & VOCATION
-		 * * '5' - POLYTECHNIC DIPLOMA
-		 * * '6' - PROFESSIONAL QUALIFICATION AND OTHER DIPLOMA
-		 * * '7' - BACHELOR'S OR EQUIVALENT
-		 * * '8' - POSTGRADUATE DIPLOMA / CERTIFICATE (EXCLUDING MASTER'S AND DOCTORATE)
-		 * * '9' - MASTER'S AND DOCTORATE OR EQUIVALENT
-		 * * 'N' - MODULAR CERTIFICATION (NON-AWARD COURSES / NON-FULL QUALIFICATIONS)
-		 */
-		export interface Edulevel {
-			/**
-			 *
-			 * example:
-			 * 7
-			 */
-			code?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "N";
-			/**
-			 * example:
-			 * BACHELOR'S OR EQUIVALENT
-			 */
-			desc?:
-				| "NO FORMAL QUALIFICATION / PRE-PRIMARY / LOWER PRIMARY"
-				| "PRIMARY"
-				| "LOWER SECONDARY"
-				| "SECONDARY"
-				| "POST-SECONDARY (NON-TERTIARY): GENERAL & VOCATION"
-				| "POLYTECHNIC DIPLOMA"
-				| "PROFESSIONAL QUALIFICATION AND OTHER DIPLOMA"
-				| "BACHELOR'S OR EQUIVALENT"
-				| "POSTGRADUATE DIPLOMA / CERTIFICATE (EXCLUDING MASTER'S AND DOCTORATE)"
-				| "MASTER'S AND DOCTORATE OR EQUIVALENT"
-				| "MODULAR CERTIFICATION (NON-AWARD COURSES / NON-FULL QUALIFICATIONS)";
-		}
-		/**
-		 * Email
-		 * Email Address of Person.
-		 */
-		export interface Email {
-			/**
-			 * Value of data field.
-			 * example:
-			 * test@gmail.com
-			 */
-			value?: string;
-		}
-		/**
-		 * Employment
-		 * Name of Employer.
-		 */
-		export interface Employment {
-			/**
-			 * example:
-			 * ALPHA
-			 */
-			value?: string;
-		}
-		/**
-		 * EmploymentSector
-		 * Employment Sector of a FIN holder.
-		 *
-		 * **Note:** Only applies to a foreigner with a valid work pass.
-		 *
-		 * Some examples of possible values are:
-		 * * MANUFACTURING
-		 * * CONSTRUCTION
-		 * * RECLAMATION
-		 * * SERVICE
-		 * * GRI-TECHNOLOGY
-		 * * LANDSCAPING
-		 * * INCINERATOR PLANT
-		 * * MARINE SHIPYARD
-		 * * PROCESS
-		 * * HARBOURCRAFT
-		 * * DOMESTIC
-		 */
-		export interface Employmentsector {
-			/**
-			 * example:
-			 * MANUFACTURING
-			 */
-			value?: string;
-		}
-		/**
-		 * GradYear
-		 * Year of Graduation of Person. Format: YYYY
-		 */
-		export interface Gradyear {
-			/**
-			 * example:
-			 * 2006
-			 */
-			value?: string; // [0-9]{4}
-		}
-		/**
-		 * GSTVoucher
-		 * GST Voucher scheme details.
-		 */
-		export interface Gstvoucher {
-			exclusion?: {
-				value?: boolean;
-			};
-			signup?: {
-				value?: boolean;
-			};
-			gstmedisave?: {
-				value?: number;
-			};
-			gstregular?: {
-				value?: number;
-			};
-			gstspecial?: {
-				value?: number;
-			};
-			year?: {
-				value?: string;
-			};
-		}
-		/**
-		 * HDBOwnership
-		 * HDB Ownership details
-		 *
-		 * **TODO: is this tied to the registered address or the person (UINFIN) or both?**
-		 *
-		 */
-		export interface HDBOwnership {
-			/**
-			 * Number of Owners. Note that this does not include executors, administrators or trustees.
-			 */
-			noofowners?: {
-				/**
-				 * example:
-				 * 2
-				 */
-				value?: number;
-			};
-			/**
-			 * Address details (Singapore Format)
-			 */
-			address?: {
-				/**
-				 * Type of Address (SG or UNFORMATTED for non SG)
-				 */
-				type?: "SG" | "UNFORMATTED";
-				/**
-				 * Block/House of Address
-				 */
-				block?: {
-					/**
-					 * example:
-					 * 548
-					 */
-					value?: string;
-				};
-				/**
-				 * Building of Address
-				 */
-				building?: {
-					/**
-					 * example:
-					 *
-					 */
-					value?: string;
-				};
-				/**
-				 * Floor of Address
-				 */
-				floor?: {
-					/**
-					 * example:
-					 * 09
-					 */
-					value?: string;
-				};
-				/**
-				 * Unit of Address
-				 */
-				unit?: {
-					/**
-					 * example:
-					 * 128
-					 */
-					value?: string;
-				};
-				/**
-				 * Street of Address
-				 */
-				street?: {
-					/**
-					 * example:
-					 * BEDOK NORTH AVENUE 1
-					 */
-					value?: string;
-				};
-				/**
-				 * Postal Code of Address
-				 */
-				postal?: {
-					/**
-					 * example:
-					 * 460548
-					 */
-					value?: string;
-				};
-				/**
-				 * Country/Place of Address. For AddressSG this will always be "SG".
-				 */
-				country?: {
-					code?: string;
-					desc?: string;
-				};
-			};
-			/**
-			 * HDBType
-			 * Flat Type of the HDB flat.
-			 *
-			 * **Note 1:** that this excludes Rental Flats, Pre-War SIT flat, PSA flat, HUDC flat, Executive Condominium and Shophouse.
-			 *
-			 * **Note 2:** If `housingtype` is available, this value will be null.
-			 *
-			 * **Note 3:** If `housingtype` &  `hdbtype` are unavailable, make this field user editable.
-			 *
-			 * * '111' - 1-ROOM FLAT (HDB)
-			 * * '112' - 2-ROOM FLAT (HDB)
-			 * * '113' - 3-ROOM FLAT (HDB)
-			 * * '114' - 4-ROOM FLAT (HDB)
-			 * * '115' - 5-ROOM FLAT (HDB)
-			 * * '116' - EXECUTIVE FLAT (HDB)
-			 * * '118' - STUDIO APARTMENT (HDB)
-			 */
-			hdbtype?: {
-				/**
-				 *
-				 * example:
-				 * 112
-				 */
-				code?: "111" | "112" | "113" | "114" | "115" | "116" | "118";
-				/**
-				 *
-				 * example:
-				 * 2-ROOM FLAT (HDB)
-				 */
-				desc?:
-					| "1-ROOM FLAT (HDB)"
-					| "2-ROOM FLAT (HDB)"
-					| "3-ROOM FLAT (HDB)"
-					| "4-ROOM FLAT (HDB)"
-					| "5-ROOM FLAT (HDB)"
-					| "EXECUTIVE FLAT (HDB)"
-					| "STUDIO APARTMENT (HDB)";
-			};
-			/**
-			 * Date from which the lease period starts. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-			 */
-			leasecommencementdate?: {
-				/**
-				 * example:
-				 * 2008-06-13
-				 */
-				value?: string; // date
-			};
-			/**
-			 * Term of lease (in years) for the property computed from the lease commencement date.
-			 */
-			termoflease?: {
-				/**
-				 * example:
-				 * 99
-				 */
-				value?: number;
-			};
-			/**
-			 * Effective date of flat purchase. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-			 */
-			dateofpurchase?: {
-				/**
-				 * example:
-				 * 2008-06-13
-				 */
-				value?: string; // date
-			};
-			/**
-			 * Effective date of partial transfer without monetary consideration (e.g. addition, deletion or substitution of a co-owner) for an HDB sold flat.
-			 *
-			 * For partial transfer of flat where at least one of the current owner remains in the household, the Date of Purchase remains unchanged while the date of transfer of ownership will be updated.
-			 *
-			 * For outright transfer where there is a total change of all owner(s), only the Date of Purchase will be updated.
-			 *
-			 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6'
-			 */
-			dateofownershiptransfer?: {
-				/**
-				 * example:
-				 * 2018-06-13
-				 */
-				value?: string; // date
-			};
-			/**
-			 * The amount of housing loan granted to owner(s) by HDB in SGD.
-			 */
-			loangranted?: {
-				/**
-				 * example:
-				 * 310000.01
-				 */
-				value?: number; // double
-			};
-			/**
-			 * The number of years of loan repaymnet opted by owner(s) at the time the loan is first granted to him/her.
-			 */
-			originalloanrepayment?: {
-				/**
-				 * example:
-				 * 25
-				 */
-				value?: number;
-			};
-			/**
-			 * The remaining term of repayment for the loan in the format `years` + `months`.
-			 */
-			balanceloanrepayment?: {
-				years?: {
-					/**
-					 * example:
-					 * 2
-					 */
-					value?: number;
-				};
-				months?: {
-					/**
-					 * example:
-					 * 6
-					 */
-					value?: number;
-				};
-			};
-			/**
-			 * The amount of outstanding HDB loan owed by owner(s) in SGD.
-			 */
-			outstandingloanbalance?: {
-				/**
-				 * example:
-				 * 50000.01
-				 */
-				value?: number; // double
-			};
-			/**
-			 * The amount of monthly instalment the owner(s) have to pay for his/her loan in SGD.
-			 */
-			monthlyloaninstalment?: {
-				/**
-				 * example:
-				 * 1000.01
-				 */
-				value?: number; // double
-			};
-			/**
-			 * The amount of outstanding instalment the owner(s) have to pay for his/her loan in SGD.
-			 */
-			outstandinginstalment?: {
-				/**
-				 * example:
-				 * 1000.01
-				 */
-				value?: number; // double
-			};
-			/**
-			 * The purchase price of the HDB flat in SGD.
-			 */
-			purchaseprice?: {
-				/**
-				 * example:
-				 * 1000.01
-				 */
-				value?: number; // double
-			};
-		}
-		/**
-		 * HanYuPinYinAlias
-		 * Han Yu Pin Yin Alias name of the Person.
-		 *
-		 * *Presentation Logic - If there is a value to `hanyupinyinaliasname` (i.e. not empty), then `hanyupinyinaliasname` should be displayed in a new line below `aliasname`, and prefixed with the ''@'' symbol i.e. "@`hanyupinyinaliasname`".*
-		 */
-		export interface Hanyupinyinaliasname {
-			/**
-			 * example:
-			 * TRICIA CHEN XIAO HUI
-			 */
-			value?: string;
-		}
-		/**
-		 * HanYuPinYin
-		 * Han Yu Pin Yin name of the Person.
-		 *
-		 * *Presentation Logic - If there is a value to `hanyupinyinname` (i.e. not empty), then `hanyupinyinname` should be displayed in a new line below `name`, and formatted with round brackets i.e. "(`hanyupinyinname`)"'*
-		 */
-		export interface Hanyupinyinname {
-			/**
-			 * example:
-			 * CHEN XIAO HUI
-			 */
-			value?: string;
-		}
-		/**
-		 * HDBOwnership
-		 * HDB Ownership details
-		 *
-		 * **TODO: is this tied to the registered address or the person (UINFIN) or both?**
-		 *
-		 */
-		export interface Hdbownership {
-			/**
-			 * Number of Owners. Note that this does not include executors, administrators or trustees.
-			 */
-			noofowners?: {
-				/**
-				 * example:
-				 * 2
-				 */
-				value?: number;
-			};
-			/**
-			 * Address details (Singapore Format)
-			 */
-			address?: {
-				/**
-				 * Type of Address (SG or UNFORMATTED for non SG)
-				 */
-				type?: "SG" | "UNFORMATTED";
-				/**
-				 * Block/House of Address
-				 */
-				block?: {
-					/**
-					 * example:
-					 * 548
-					 */
-					value?: string;
-				};
-				/**
-				 * Building of Address
-				 */
-				building?: {
-					/**
-					 * example:
-					 *
-					 */
-					value?: string;
-				};
-				/**
-				 * Floor of Address
-				 */
-				floor?: {
-					/**
-					 * example:
-					 * 09
-					 */
-					value?: string;
-				};
-				/**
-				 * Unit of Address
-				 */
-				unit?: {
-					/**
-					 * example:
-					 * 128
-					 */
-					value?: string;
-				};
-				/**
-				 * Street of Address
-				 */
-				street?: {
-					/**
-					 * example:
-					 * BEDOK NORTH AVENUE 1
-					 */
-					value?: string;
-				};
-				/**
-				 * Postal Code of Address
-				 */
-				postal?: {
-					/**
-					 * example:
-					 * 460548
-					 */
-					value?: string;
-				};
-				/**
-				 * Country/Place of Address. For AddressSG this will always be "SG".
-				 */
-				country?: {
-					code?: string;
-					desc?: string;
-				};
-			};
-			/**
-			 * HDBType
-			 * Flat Type of the HDB flat.
-			 *
-			 * **Note 1:** that this excludes Rental Flats, Pre-War SIT flat, PSA flat, HUDC flat, Executive Condominium and Shophouse.
-			 *
-			 * **Note 2:** If `housingtype` is available, this value will be null.
-			 *
-			 * **Note 3:** If `housingtype` &  `hdbtype` are unavailable, make this field user editable.
-			 *
-			 * * '111' - 1-ROOM FLAT (HDB)
-			 * * '112' - 2-ROOM FLAT (HDB)
-			 * * '113' - 3-ROOM FLAT (HDB)
-			 * * '114' - 4-ROOM FLAT (HDB)
-			 * * '115' - 5-ROOM FLAT (HDB)
-			 * * '116' - EXECUTIVE FLAT (HDB)
-			 * * '118' - STUDIO APARTMENT (HDB)
-			 */
-			hdbtype?: {
-				/**
-				 *
-				 * example:
-				 * 112
-				 */
-				code?: "111" | "112" | "113" | "114" | "115" | "116" | "118";
-				/**
-				 *
-				 * example:
-				 * 2-ROOM FLAT (HDB)
-				 */
-				desc?:
-					| "1-ROOM FLAT (HDB)"
-					| "2-ROOM FLAT (HDB)"
-					| "3-ROOM FLAT (HDB)"
-					| "4-ROOM FLAT (HDB)"
-					| "5-ROOM FLAT (HDB)"
-					| "EXECUTIVE FLAT (HDB)"
-					| "STUDIO APARTMENT (HDB)";
-			};
-			/**
-			 * Date from which the lease period starts. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-			 */
-			leasecommencementdate?: {
-				/**
-				 * example:
-				 * 2008-06-13
-				 */
-				value?: string; // date
-			};
-			/**
-			 * Term of lease (in years) for the property computed from the lease commencement date.
-			 */
-			termoflease?: {
-				/**
-				 * example:
-				 * 99
-				 */
-				value?: number;
-			};
-			/**
-			 * Effective date of flat purchase. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-			 */
-			dateofpurchase?: {
-				/**
-				 * example:
-				 * 2008-06-13
-				 */
-				value?: string; // date
-			};
-			/**
-			 * Effective date of partial transfer without monetary consideration (e.g. addition, deletion or substitution of a co-owner) for an HDB sold flat.
-			 *
-			 * For partial transfer of flat where at least one of the current owner remains in the household, the Date of Purchase remains unchanged while the date of transfer of ownership will be updated.
-			 *
-			 * For outright transfer where there is a total change of all owner(s), only the Date of Purchase will be updated.
-			 *
-			 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6'
-			 */
-			dateofownershiptransfer?: {
-				/**
-				 * example:
-				 * 2018-06-13
-				 */
-				value?: string; // date
-			};
-			/**
-			 * The amount of housing loan granted to owner(s) by HDB in SGD.
-			 */
-			loangranted?: {
-				/**
-				 * example:
-				 * 310000.01
-				 */
-				value?: number; // double
-			};
-			/**
-			 * The number of years of loan repaymnet opted by owner(s) at the time the loan is first granted to him/her.
-			 */
-			originalloanrepayment?: {
-				/**
-				 * example:
-				 * 25
-				 */
-				value?: number;
-			};
-			/**
-			 * The remaining term of repayment for the loan in the format `years` + `months`.
-			 */
-			balanceloanrepayment?: {
-				years?: {
-					/**
-					 * example:
-					 * 2
-					 */
-					value?: number;
-				};
-				months?: {
-					/**
-					 * example:
-					 * 6
-					 */
-					value?: number;
-				};
-			};
-			/**
-			 * The amount of outstanding HDB loan owed by owner(s) in SGD.
-			 */
-			outstandingloanbalance?: {
-				/**
-				 * example:
-				 * 50000.01
-				 */
-				value?: number; // double
-			};
-			/**
-			 * The amount of monthly instalment the owner(s) have to pay for his/her loan in SGD.
-			 */
-			monthlyloaninstalment?: {
-				/**
-				 * example:
-				 * 1000.01
-				 */
-				value?: number; // double
-			};
-			/**
-			 * The amount of outstanding instalment the owner(s) have to pay for his/her loan in SGD.
-			 */
-			outstandinginstalment?: {
-				/**
-				 * example:
-				 * 1000.01
-				 */
-				value?: number; // double
-			};
-			/**
-			 * The purchase price of the HDB flat in SGD.
-			 */
-			purchaseprice?: {
-				/**
-				 * example:
-				 * 1000.01
-				 */
-				value?: number; // double
-			};
-		}
-		/**
-		 * HDBType
-		 * Flat Type of the HDB flat.
-		 *
-		 * **Note 1:** that this excludes Rental Flats, Pre-War SIT flat, PSA flat, HUDC flat, Executive Condominium and Shophouse.
-		 *
-		 * **Note 2:** If `housingtype` is available, this value will be null.
-		 *
-		 * **Note 3:** If `housingtype` &  `hdbtype` are unavailable, make this field user editable.
-		 *
-		 * * '111' - 1-ROOM FLAT (HDB)
-		 * * '112' - 2-ROOM FLAT (HDB)
-		 * * '113' - 3-ROOM FLAT (HDB)
-		 * * '114' - 4-ROOM FLAT (HDB)
-		 * * '115' - 5-ROOM FLAT (HDB)
-		 * * '116' - EXECUTIVE FLAT (HDB)
-		 * * '118' - STUDIO APARTMENT (HDB)
-		 */
-		export interface Hdbtype {
-			/**
-			 *
-			 * example:
-			 * 112
-			 */
-			code?: "111" | "112" | "113" | "114" | "115" | "116" | "118";
-			/**
-			 *
-			 * example:
-			 * 2-ROOM FLAT (HDB)
-			 */
-			desc?:
-				| "1-ROOM FLAT (HDB)"
-				| "2-ROOM FLAT (HDB)"
-				| "3-ROOM FLAT (HDB)"
-				| "4-ROOM FLAT (HDB)"
-				| "5-ROOM FLAT (HDB)"
-				| "EXECUTIVE FLAT (HDB)"
-				| "STUDIO APARTMENT (HDB)";
-		}
-		/**
-		 * HomeNo
-		 * Home Contact Number of Person.
-		 */
-		export interface Homeno {
-			/**
-			 * Prefix of Phone Number. Defaults to '+'. If phone number is blank, prefix will be returned as blank.
-			 */
-			prefix?: {
-				/**
-				 * example:
-				 * +
-				 */
-				value?: string;
-			};
-			/**
-			 * Area Code of Phone Number. Default to '65'. If phone number is blank, code will be returned as blank.
-			 */
-			areacode?: {
-				/**
-				 * example:
-				 * 65
-				 */
-				value?: string;
-			};
-			/**
-			 * Phone Number.
-			 */
-			nbr?: {
-				/**
-				 * example:
-				 * 66132665
-				 */
-				value?: string;
-			};
-		}
-		/**
-		 * HouseholdIncome
-		 * Household Income of Person in SGD.
-		 */
-		export interface Householdincome {
-			/**
-			 * upper bound of the range of household income bracket
-			 */
-			high?: {
-				/**
-				 * example:
-				 * 5999
-				 */
-				value?: number;
-			};
-			/**
-			 * lower bound of the range of household income bracket
-			 */
-			low?: {
-				/**
-				 * example:
-				 * 5000
-				 */
-				value?: number;
-			};
-		}
-		/**
-		 * HousingType
-		 * Housing Type of Person (non-HDB only).
-		 *
-		 * **Note 1:** If `hdbtype` is available, this value will be null.
-		 *
-		 * **Note 2:** If `housingtype` &  `hdbtype` are unavailable, make this field user editable.
-		 *
-		 * Refer to `hdbtype` for detailed HDB type.
-		 *
-		 * * '121' - DETACHED HOUSE
-		 * * '122' - SEMI-DETACHED HOUSE
-		 * * '123' - TERRACE HOUSE
-		 * * '131' - CONDOMINIUM
-		 * * '132' - EXECUTIVE CONDOMINIUM
-		 * * '139' - APARTMENT
-		 */
-		export interface Housingtype {
-			/**
-			 *
-			 * example:
-			 * 123
-			 */
-			code?: "121" | "122" | "123" | "131" | "132" | "139";
-			/**
-			 *
-			 * example:
-			 * TERRACE HOUSE
-			 */
-			desc?:
-				| "DETACHED HOUSE"
-				| "SEMI-DETACHED HOUSE"
-				| "TERRACE HOUSE"
-				| "CONDOMINIUM"
-				| "EXECUTIVE CONDOMINIUM"
-				| "APARTMENT";
-		}
-		/**
-		 * LTAVocationalLicences
-		 * LTA Vocational Licence.
-		 */
-		export interface Ltavocationallicences {
-			/**
-			 * Taxi driver's vocational licence
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			tdvl?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * Licence Name of Taxi Driver's LTA Vocational Licence
-				 */
-				licencename?: {
-					/**
-					 * example:
-					 * TAXI DRIVER'S VOCATIONAL LICENCE (TDVL)
-					 */
-					value?: string;
-				};
-				/**
-				 * Unique Vocational Licence Number for Taxi Driver's LTA Vocational Licence holder
-				 */
-				vocationallicencenumber?: {
-					/**
-					 * example:
-					 * E00000001
-					 */
-					value?: string;
-				};
-				/**
-				 * Expiry date of Taxi Driver's LTA Vocational Licence
-				 */
-				expirydate?: {
-					/**
-					 * example:
-					 * 2025-03-30
-					 */
-					value?: string; // date
-				};
-				/**
-				 * Status of Taxi Driver's LTA Vocational Licence
-				 */
-				status?: {
-					/**
-					 * example:
-					 * ACT
-					 */
-					code?: string;
-					/**
-					 * example:
-					 * ACTIVE
-					 */
-					desc?: string;
-				};
-			};
-			/**
-			 * Private Hire Car driver's vocational licence
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			pdvl?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * Licence Name of Private Hire Car driver's LTA Vocational Licence
-				 */
-				licencename?: {
-					/**
-					 * example:
-					 * PRIVATE HIRE CAR DRIVER'S VOCATIONAL LICENCE (PDVL)
-					 */
-					value?: string;
-				};
-				/**
-				 * Unique Vocational Licence Number for Private Hire Car driver's LTA Vocational Licence holder
-				 */
-				vocationallicencenumber?: {
-					/**
-					 * example:
-					 * E00000001
-					 */
-					value?: string;
-				};
-				/**
-				 * Expiry date of Private Hire Car driver's LTA Vocational Licence
-				 */
-				expirydate?: {
-					/**
-					 * example:
-					 * 2025-03-30
-					 */
-					value?: string; // date
-				};
-				/**
-				 * Status of Private Hire Car driver's LTA Vocational Licence
-				 */
-				status?: {
-					/**
-					 * example:
-					 * ACT
-					 */
-					code?: string;
-					/**
-					 * example:
-					 * ACTIVE
-					 */
-					desc?: string;
-				};
-			};
-			/**
-			 * Bus driver's vocational licence
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			bdvl?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * Licence Name of Bus driver's LTA Vocational Licence
-				 */
-				licencename?: {
-					/**
-					 * example:
-					 * BUS DRIVER'S VOCATIONAL LICENCE (BDVL)
-					 */
-					value?: string;
-				};
-				/**
-				 * Unique Vocational Licence Number for  Bus driver's LTA Vocational Licence holder
-				 */
-				vocationallicencenumber?: {
-					/**
-					 * example:
-					 * E00000001
-					 */
-					value?: string;
-				};
-				/**
-				 * Expiry date of  Bus driver's LTA Vocational Licence
-				 */
-				expirydate?: {
-					/**
-					 * example:
-					 * 2025-03-30
-					 */
-					value?: string; // date
-				};
-				/**
-				 * Status of Bus driver's LTA Vocational Licence
-				 */
-				status?: {
-					/**
-					 * example:
-					 * ACT
-					 */
-					code?: string;
-					/**
-					 * example:
-					 * ACTIVE
-					 */
-					desc?: string;
-				};
-			};
-			/**
-			 * Bus Attendant's vocational licence
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			bavl?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * Licence Name of Bus Attendant's LTA Vocational Licence
-				 */
-				licencename?: {
-					/**
-					 * example:
-					 * BUS ATTENDANT VOCATIONAL LICENCE (BAVL)
-					 */
-					value?: string;
-				};
-				/**
-				 * Unique Vocational Licence Number for Bus Attendant's LTA Vocational Licence holder
-				 */
-				vocationallicencenumber?: {
-					/**
-					 * example:
-					 * E00000001
-					 */
-					value?: string;
-				};
-				/**
-				 * Expiry date of Bus Attendant's LTA Vocational Licence
-				 */
-				expirydate?: {
-					/**
-					 * example:
-					 * 2025-03-30
-					 */
-					value?: string; // date
-				};
-				/**
-				 * Status of Bus Attendant's LTA Vocational Licence
-				 */
-				status?: {
-					/**
-					 * example:
-					 * ACT
-					 */
-					code?: string;
-					/**
-					 * example:
-					 * ACTIVE
-					 */
-					desc?: string;
-				};
-			};
-			/**
-			 * Omnibus driver's vocational licence
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			odvl?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * Licence Name of Omnibus driver's LTA Vocational Licence
-				 */
-				licencename?: {
-					/**
-					 * example:
-					 * OMNIBUS DRIVER'S VOCATIONAL LICENCE
-					 */
-					value?: string;
-				};
-				/**
-				 * Unique Vocational Licence Number for Omnibus driver's LTA Vocational Licence holder
-				 */
-				vocationallicencenumber?: {
-					/**
-					 * example:
-					 * E00000001
-					 */
-					value?: string;
-				};
-				/**
-				 * Expiry date of Omnibus driver's LTA Vocational Licence
-				 */
-				expirydate?: {
-					/**
-					 * example:
-					 * 2025-03-30
-					 */
-					value?: string; // date
-				};
-				/**
-				 * Status of Omnibus driver's LTA Vocational Licence
-				 */
-				status?: {
-					/**
-					 * example:
-					 * ACT
-					 */
-					code?: string;
-					/**
-					 * example:
-					 * ACTIVE
-					 */
-					desc?: string;
-				};
-			};
-		}
-		/**
-		 * MailAdd
-		 * Mailing Address of Person
-		 *
-		 * **Note:**
-		 * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
-		 * - check the `type` discriminator property to differentiate between the two address formats
-		 *
-		 */
-		export type Mailadd =
-			/**
-			 * MailAdd
-			 * Mailing Address of Person
-			 *
-			 * **Note:**
-			 * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
-			 * - check the `type` discriminator property to differentiate between the two address formats
-			 *
-			 */
-			/**
-			 * Address details (Singapore Format)
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			| DataitemAddressSg /**
-			 * Address details (Non-Singapore Format)
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			| DataitemAddressUnformatted;
-		/**
-		 * Marital
-		 * Marital Status of Person.
-		 *
-		 * * '1' - SINGLE
-		 * * '2' - MARRIED
-		 * * '3' - WIDOWED
-		 * * '5' - DIVORCED
-		 *
-		 * **Note:** This field must be made **editable** on your digital service form even though `source` is '1' (Government Verified).
-		 */
-		export interface Marital {
-			/**
-			 *
-			 * example:
-			 * 2
-			 */
-			code?: "1" | "2" | "3" | "5";
-			/**
-			 *
-			 * example:
-			 * MARRIED
-			 */
-			desc?: "SINGLE" | "MARRIED" | "WIDOWED" | "DIVORCED";
-		}
-		/**
-		 * MarriageCertNo
-		 * Certificate number of the latest marriage.
-		 *
-		 *
-		 * **Note:** This field must be made **editable** on your digital service form even though `source` is '1' (Government Verified).
-		 */
-		export interface Marriagecertno {
-			/**
-			 * Value of data field.
-			 * example:
-			 * 123456789012345
-			 */
-			value?: string;
-		}
-		/**
-		 * MarriageDate
-		 * Latest Marriage Date of Person.
-		 *
-		 *
-		 * **Note:** This field must be made **editable** on your digital service form even though `source` is '1' (Government Verified).
-		 *
-		 */
-		export interface Marriagedate {
-			/**
-			 * Value of data field.
-			 *
-			 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-			 * example:
-			 * 2007-01-01
-			 */
-			value?: string; // date
-		}
-		/**
-		 * MarriedName
-		 * Married name of the Person.
-		 *
-		 * *Presentation Logic - If there is a value to `marriedname` (i.e. not empty), then `marriedname` should be displayed in a new line below `hanyupinyinaliasname`.*
-		 */
-		export interface Marriedname {
-			/**
-			 * value of the field, should be displayed as it is.
-			 * example:
-			 *
-			 */
-			value?: string;
-		}
-		/**
-		 * MerdekaGen
-		 * Merdekagen details
-		 */
-		export interface Merdekagen {
-			/**
-			 * Eligibility
-			 */
-			eligibility?: {
-				/**
-				 * example:
-				 * true
-				 */
-				value?: boolean;
-			};
-			/**
-			 * Amount eligible for
-			 */
-			quantum?: {
-				/**
-				 * example:
-				 * 100
-				 */
-				value?: number;
-			};
-			/**
-			 * Suggested user friendly display
-			 */
-			message?: {
-				/**
-				 * example:
-				 * 2
-				 */
-				code?: string;
-				/**
-				 * example:
-				 * You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888.
-				 */
-				desc?: string;
-			};
-		}
-		/**
-		 * MobileNo
-		 * Mobile Number of Person.
-		 */
-		export interface Mobileno {
-			/**
-			 * Prefix of Phone Number. Defaults to '+'. If phone number is blank, prefix will be returned as blank.
-			 */
-			prefix?: {
-				/**
-				 * example:
-				 * +
-				 */
-				value?: string;
-			};
-			/**
-			 * Area Code of Phone Number. Default to '65'. If phone number is blank, code will be returned as blank.
-			 */
-			areacode?: {
-				/**
-				 * example:
-				 * 65
-				 */
-				value?: string;
-			};
-			/**
-			 * Phone Number.
-			 */
-			nbr?: {
-				/**
-				 * example:
-				 * 66132665
-				 */
-				value?: string;
-			};
-		}
-		export interface NOA {
-			/**
-			 * Assessable Income
-			 */
-			amount?: {
-				/**
-				 * example:
-				 * 100000.01
-				 */
-				value?: number; // double
-			};
-			/**
-			 * value of data field
-			 */
-			yearofassessment?: {
-				/**
-				 * example:
-				 * 2018
-				 */
-				value?: string; // [0-9]{4}
-			};
-			/**
-			 * Assessable Income from employment
-			 */
-			employment?: {
-				/**
-				 * example:
-				 * 100000.01
-				 */
-				value?: number; // double
-			};
-			/**
-			 * Assessable Income from trade
-			 */
-			trade?: {
-				/**
-				 * example:
-				 * 0
-				 */
-				value?: number; // double
-			};
-			/**
-			 * Assessable Income from rent
-			 */
-			rent?: {
-				/**
-				 * example:
-				 * 0
-				 */
-				value?: number; // double
-			};
-			/**
-			 * Assessable Income from interest
-			 */
-			interest?: {
-				/**
-				 * example:
-				 * 0
-				 */
-				value?: number; // double
-			};
-			/**
-			 * Tax Clearance indicator. This means that tax clearance has been sought by the employer for this NOA assessment. For more information, please refer to [this](https://www.iras.gov.sg/irashome/Businesses/Employers/Tax-Clearance-for-Foreign-SPR-Employees/Getting-Tax-Clearance--A-Step-by-Step-Guide/)
-			 */
-			taxclearance?: {
-				/**
-				 * example:
-				 * N
-				 */
-				value?: "Y" | "N";
-			};
-			/**
-			 * Type of 'Notice of Assessment' (NOA)
-			 */
-			category?: {
-				/**
-				 * example:
-				 * ORIGINAL
-				 */
-				value?: "ADDITIONAL" | "AMENDED" | "ORIGINAL" | "REPAYMENT";
-			};
-		}
-		export interface NOABasic {
-			/**
-			 * Assessable Income
-			 */
-			amount?: {
-				/**
-				 * example:
-				 * 100000.01
-				 */
-				value?: number; // double
-			};
-			/**
-			 * The second latest annual assessable income available from IRAS within the past 3 years.
-			 */
-			yearofassessment?: {
-				/**
-				 * example:
-				 * 2018
-				 */
-				value?: string; // [0-9]{4}
-			};
-		}
-		/**
-		 * Name
-		 * Full Name of the Person.
-		 */
-		export interface Name {
-			/**
-			 * value of the field, should be displayed as it is.
-			 * example:
-			 * TAN XIAO HUI
-			 */
-			value?: string;
-		}
-		/**
-		 * Nationality
-		 * Nationality/Citizenship of Person.
-		 *
-		 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-		 */
-		export interface Nationality {
-			/**
-			 *
-			 * example:
-			 * SG
-			 */
-			code?: string; // [a-zA-Z]{2}
-			/**
-			 *
-			 * example:
-			 * SINGAPORE CITIZEN
-			 */
-			desc?: string;
-		}
-		/**
-		 * History of Notice Of Assessment
-		 * Detailed breakdown of latest 2 Notice of Assessments within the past three years.
-		 */
-		export interface Noahistory {
-			noas?: NOA[];
-		}
-		/**
-		 * History of Notice Of Assessment (Basic)
-		 * Summary of latest 2 Notice of Assessments within the past three years.
-		 */
-		export interface NoahistoryBasic {
-			noas?: NOABasic[];
-		}
-		/**
-		 * Occupation
-		 * Occupation of Person.
-		 */
-		export interface Occupation {
-			/**
-			 * Free text.
-			 *
-			 * For SC/PR holders, blank will be returned.
-			 * example:
-			 *
-			 */
-			value?: string;
-		}
-		/**
-		 * OwnerPrivate
-		 * Ownership of Private Property Status of Person (based on IRAS information).
-		 *
-		 * * true
-		 * * false
-		 * * null (data not available)
-		 */
-		export interface Ownerprivate {
-			/**
-			 * Value of data field.
-			 * example:
-			 * false
-			 */
-			value?: boolean;
-		}
-		/**
-		 * Partial UINFIN
-		 * Masked Singapore issued identification number of the Person. Only the last 3 digit and ending alphabet will be in clear.
-		 */
-		export interface Partialuinfin {
-			/**
-			 * Value of the field, should be displayed as it is.
-			 * example:
-			 * *****111D
-			 */
-			value?: string;
-		}
-		/**
-		 * PassExpiryDate
-		 * Pass expiry of a foreigner. <br/>**Note:** Only applies to a foreigner with a valid pass.
-		 */
-		export interface Passexpirydate {
-			/**
-			 * Value of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-			 * example:
-			 * 2022-12-31
-			 */
-			value?: string; // date
-		}
-		/**
-		 * PassportExpiryDate
-		 * Passport Expiry Date of Person.
-		 */
-		export interface Passportexpirydate {
-			/**
-			 * Value of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-			 * example:
-			 * 2020-01-01
-			 */
-			value?: string; // date
-		}
-		/**
-		 * PassportNumber
-		 * Passport Number of Person.
-		 */
-		export interface Passportnumber {
-			/**
-			 * Value of data field.
-			 * example:
-			 * E35463874W
-			 */
-			value?: string;
-		}
-		/**
-		 * PassStatus
-		 * Pass status of a FIN holder. <br/>**Note:** Only applies to a foreigner with a valid pass.
-		 * *	Live
-		 * *	Approved
-		 *
-		 */
-		export interface Passstatus {
-			/**
-			 * Value of data field.
-			 * example:
-			 * Live
-			 */
-			value?: "Live" | "Approved";
-		}
-		/**
-		 * PassType
-		 * Pass type of a FIN holder. <br/>**Note:** Only applies to a foreigner with a valid pass.
-		 *
-		 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-		 */
-		export interface Passtype {
-			/**
-			 * Value of data field.
-			 * example:
-			 * RPass
-			 */
-			code?: string;
-			/**
-			 * example:
-			 * Work Permit
-			 */
-			desc?: string;
 		}
 		/**
 		 * Person instance's details
 		 */
 		export interface Person {
 			/**
-			 * Partial UINFIN
-			 * Masked Singapore issued identification number of the Person. Only the last 3 digit and ending alphabet will be in clear.
+			 * Academic qualifications achieved.
 			 * example:
 			 * {
 			 *   "classification": "C",
 			 *   "source": "1",
 			 *   "lastupdated": "2019-03-26"
 			 * }
+			 * {
+			 *   "certificates": [
+			 *     {
+			 *       "name": {
+			 *         "value": "nus.opencert"
+			 *       },
+			 *       "content": {
+			 *         "value": "base64-string"
+			 *       },
+			 *       "opencertificate": {
+			 *         "id": {
+			 *           "value": "100000000343840"
+			 *         },
+			 *         "primary": {
+			 *           "value": true
+			 *         }
+			 *       },
+			 *       "opencertificateindicator": {
+			 *         "value": true
+			 *       }
+			 *     }
+			 *   ],
+			 *   "transcripts": [
+			 *     {
+			 *       "name": {
+			 *         "value": "SINGAPORE-CAMBRIDGE GENERAL CERTIFICATE OF EDUCATION ORDINARY LEVEL"
+			 *       },
+			 *       "yearattained": {
+			 *         "value": "2018"
+			 *       },
+			 *       "results": [
+			 *         {
+			 *           "subject": {
+			 *             "value": "English Language"
+			 *           },
+			 *           "level": {
+			 *             "value": "Ordinary"
+			 *           },
+			 *           "grade": {
+			 *             "value": "A"
+			 *           },
+			 *           "subsubject": {
+			 *             "value": "SPECIAL PAPER"
+			 *           },
+			 *           "subgrade": {
+			 *             "value": "One"
+			 *           }
+			 *         }
+			 *       ],
+			 *       "explanatorynotes": {
+			 *         "value": "https://public.cloud.myinfo.gov.sg/myinfo/spm/seab-explanatory-notes/SEAB_Cert_A.html"
+			 *       }
+			 *     }
+			 *   ],
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
 			 */
-			partialuinfin?: {
-				/**
-				 * Value of the field, should be displayed as it is.
-				 * example:
-				 * *****111D
-				 */
-				value?: string;
+			academicqualifications?: {
 				/**
 				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
 				 */
-				classification: "C";
+				classification: string;
 				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
 				 */
 				lastupdated: string; // date
 				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
 				 * Optional flag to indicate if data is unavailable from data source.
 				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
+				 * NOTE:
 				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
 				 */
 				unavailable?: boolean;
+				/**
+				 * Electronic certificates uploaded.
+				 * example:
+				 * {
+				 *   "name": {
+				 *     "value": "nus.opencert"
+				 *   },
+				 *   "content": {
+				 *     "value": "base64-string"
+				 *   },
+				 *   "opencertificate": {
+				 *     "id": {
+				 *       "value": 100000000343840
+				 *     },
+				 *     "primary": {
+				 *       "value": true
+				 *     }
+				 *   },
+				 *   "opencertificateindicator": {
+				 *     "value": true
+				 *   }
+				 * }
+				 */
+				certificates?:
+					| {
+							/**
+							 * File content of the electronic certificate, Base64 encoded.
+							 */
+							content?: {
+								value?: string;
+							};
+							/**
+							 * File name of the electronic certificate.
+							 */
+							name?: {
+								value?: string;
+							};
+							/**
+							 * Open Certificate Information.
+							 *
+							 * Note: The test environment for OpenCert is at https://dev.opencerts.io/
+							 * while production is at https://opencerts.io/
+							 */
+							opencertificate?: {
+								id?: {
+									value?: string;
+								};
+								primary?: {
+									value?: boolean;
+								};
+							};
+							/**
+							 * Indicate whether this file is open certificate.
+							 */
+							opencertificateindicator?: {
+								value?: boolean;
+							};
+					  }[]
+					| null;
+				/**
+				 * Transcript of qualification.
+				 */
+				transcripts?:
+					| {
+							/**
+							 * Explanatory Notes. For an example, see https://public.cloud.myinfo.gov.sg/myinfo/spm/seab-explanatory-notes/SEAB_Cert_A.html
+							 * example:
+							 * https://public.cloud.myinfo.gov.sg/myinfo/spm/seab-explanatory-notes/SEAB_Cert_A.html
+							 */
+							explanatorynotes?: {
+								value?: string;
+							};
+							/**
+							 * Qualification's Name.
+							 */
+							name?: {
+								value?: string;
+							};
+							/**
+							 * Array of results for the qualification.
+							 */
+							results?: {
+								/**
+								 * Grade attained.
+								 */
+								grade?: {
+									value?: string;
+								};
+								/**
+								 * Level of subject taken.
+								 */
+								level?: {
+									value?: string;
+								};
+								/**
+								 * Optional grade attained for subSubject.
+								 */
+								subgrade?: {
+									value?: string;
+								};
+								/**
+								 * Subject taken.
+								 */
+								subject?: {
+									value?: string;
+								};
+								/**
+								 * Optional Sub Subject taken.
+								 */
+								subsubject?: {
+									value?: string;
+								};
+							}[];
+							/**
+							 * Year this qualification was attained. See "date-fullyear" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+							 * example:
+							 * 2019
+							 */
+							yearattained?: {
+								value?: string; // [0-9]{4}
+							};
+					  }[]
+					| null;
 			};
 			/**
-			 * UINFIN
-			 * Singapore issued identification number of the Person.
+			 * Alias name of the Person
 			 * example:
 			 * {
 			 *   "classification": "C",
 			 *   "source": "1",
 			 *   "lastupdated": "2019-03-26"
 			 * }
-			 */
-			uinfin?: {
-				/**
-				 * value of the field, should be displayed as it is.
-				 * example:
-				 * S1111111D
-				 */
-				value?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * Name
-			 * Full Name of the Person.
-			 * example:
 			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			name?: {
-				/**
-				 * value of the field, should be displayed as it is.
-				 * example:
-				 * TAN XIAO HUI
-				 */
-				value?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * HanYuPinYin
-			 * Han Yu Pin Yin name of the Person.
-			 *
-			 * *Presentation Logic - If there is a value to `hanyupinyinname` (i.e. not empty), then `hanyupinyinname` should be displayed in a new line below `name`, and formatted with round brackets i.e. "(`hanyupinyinname`)"'*
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			hanyupinyinname?: {
-				/**
-				 * example:
-				 * CHEN XIAO HUI
-				 */
-				value?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * Alias
-			 * Alias name of the Person.
-			 *
-			 * *Presentation Logic - If there is a value to `aliasname` (i.e. not empty), then `aliasname` should be displayed in a new line below `hanyupinyinname`, and prefixed with the ''@'' symbol i.e. "@`aliasname`".'*
-			 * example:
-			 * {
+			 *   "value": "TRICIA TAN XIAO HUI",
 			 *   "classification": "C",
 			 *   "source": "1",
 			 *   "lastupdated": "2019-03-26"
@@ -5232,469 +288,59 @@ export declare namespace MyInfoComponents {
 			 */
 			aliasname?: {
 				/**
-				 * value of the field.
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
 				 * example:
 				 * TRICIA TAN XIAO HUI
 				 */
 				value?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
 			};
 			/**
-			 * HanYuPinYinAlias
-			 * Han Yu Pin Yin Alias name of the Person.
-			 *
-			 * *Presentation Logic - If there is a value to `hanyupinyinaliasname` (i.e. not empty), then `hanyupinyinaliasname` should be displayed in a new line below `aliasname`, and prefixed with the ''@'' symbol i.e. "@`hanyupinyinaliasname`".*
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			hanyupinyinaliasname?: {
-				/**
-				 * example:
-				 * TRICIA CHEN XIAO HUI
-				 */
-				value?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * MarriedName
-			 * Married name of the Person.
-			 *
-			 * *Presentation Logic - If there is a value to `marriedname` (i.e. not empty), then `marriedname` should be displayed in a new line below `hanyupinyinaliasname`.*
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			marriedname?: {
-				/**
-				 * value of the field, should be displayed as it is.
-				 * example:
-				 *
-				 */
-				value?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * Sex
-			 * Sex of Person.
-			 * * 'F' - FEMALE
-			 * * 'M' - MALE
-			 * * 'U' - UNKNOWN
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			sex?: {
-				/**
-				 * example:
-				 * F
-				 */
-				code?: "F" | "M" | "U";
-				/**
-				 *
-				 * example:
-				 * FEMALE
-				 */
-				desc?: "FEMALE" | "MALE" | "UNKNOWN";
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * Race
-			 * Race of Person.
-			 *
-			 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			race?: {
-				/**
-				 * example:
-				 * CN
-				 */
-				code?: string; // [a-zA-Z]{2}
-				/**
-				 * example:
-				 * CHINESE
-				 */
-				desc?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * SecondaryRace
-			 * Secondary Race of Person.
-			 *
-			 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			secondaryrace?: {
-				/**
-				 *
-				 * example:
-				 * EU
-				 */
-				code?: string; // [a-zA-Z]{2}
-				/**
-				 *
-				 * example:
-				 * EURASIAN
-				 */
-				desc?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * Dialect
-			 * Dialect of Person.
-			 *
-			 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			dialect?: {
-				/**
-				 *
-				 * example:
-				 * SG
-				 */
-				code?: string; // [a-zA-Z]{2}
-				/**
-				 *
-				 * example:
-				 * SWISS GERMAN
-				 */
-				desc?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * Nationality
-			 * Nationality/Citizenship of Person.
-			 *
-			 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			nationality?: {
-				/**
-				 *
-				 * example:
-				 * SG
-				 */
-				code?: string; // [a-zA-Z]{2}
-				/**
-				 *
-				 * example:
-				 * SINGAPORE CITIZEN
-				 */
-				desc?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * DOB
-			 * Date of Birth of Person.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			dob?: {
-				/**
-				 * Value of data field.
-				 * Format can be one of the below (with reference tohttps://datatracker.ietf.org/doc/html/rfc3339#section-5.6):
-				 * - full-date
-				 * - date-fullyear "-" date-month
-				 * - date-fullyear
-				 * example:
-				 * 1958-05-17
-				 */
-				value?: string; // date
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * BirthCountry
 			 * Country/Place of Birth of Person.
 			 *
-			 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
+			 * Refer to the Code reference tables in the Support section for list of possible values.
 			 * example:
 			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "code": "SG",
+			 *   "desc": "SINGAPORE",
 			 *   "classification": "C",
 			 *   "source": "1",
 			 *   "lastupdated": "2019-03-26"
@@ -5702,331 +348,1273 @@ export declare namespace MyInfoComponents {
 			 */
 			birthcountry?: {
 				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
 				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
 				 * example:
 				 * SG
-				 */
-				code?: string; // [a-zA-Z]{2}
-				/**
 				 *
+				 */
+				code?: string; // ^(?:[A-Za-z]{2})?$
+				/**
 				 * example:
 				 * SINGAPORE
 				 */
 				desc?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
 			};
 			/**
-			 * ResidentialStatus
-			 * Residential Status of Person. Applicable to Singapore Citizens and Permanent Residents.
-			 *
-			 *
-			 * **Note:** This data item is not applicable for FIN holders i.e. `source` will be '3'.
-			 * In such cases, the `code` and `desc` properties will be blank or empty string ("").
-			 *
-			 * * A - ALIEN
-			 * * C - CITIZEN
-			 * * P - PR
-			 * * U - UNKNOWN
-			 * * N - NOT APPLICABLE
-			 * * &lt; BLANK &gt; (for FIN holders only)
+			 * Community Health Assist Scheme (CHAS) card details - Card Type, Date of Issue, Date of Expiry
 			 * example:
 			 * {
 			 *   "classification": "C",
 			 *   "source": "1",
 			 *   "lastupdated": "2019-03-26"
 			 * }
+			 * {
+			 *   "cardtype": {
+			 *     "code": "C",
+			 *     "desc": "Green"
+			 *   },
+			 *   "indicator": {
+			 *     "code": "C",
+			 *     "desc": "Green"
+			 *   },
+			 *   "expirydate": {
+			 *     "value": "2020-06-15"
+			 *   },
+			 *   "issuedate": {
+			 *     "value": "2020-06-15"
+			 *   },
+			 *   "lastupdated": "2019-03-26",
+			 *   "name": {
+			 *     "value": "TAN XIAO HUI"
+			 *   },
+			 *   "classification": "C",
+			 *   "source": "1"
+			 * }
 			 */
-			residentialstatus?: {
+			chas?: {
 				/**
+				 * Data classification of data field. Default 'C' - Confidential.
 				 * example:
 				 * C
 				 */
-				code?: "A" | "C" | "P" | "U" | "N" | ""; // [a-zA-Z]{1}
+				classification: string;
 				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
 				 * example:
-				 * CITIZEN
-				 */
-				desc?: "ALIEN" | "CITIZEN" | "PR" | "UNKNOWN" | "NOT APPLICABLE" | "";
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
+				 * 2019-03-26
 				 */
 				lastupdated: string; // date
 				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
 				 * Optional flag to indicate if data is unavailable from data source.
 				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
+				 * NOTE:
 				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
 				 */
 				unavailable?: boolean;
+				/**
+				 * CHAS Card Type.
+				 */
+				cardtype?: {
+					code?: "A" | "B" | "C" | "NA";
+					desc?: string;
+				};
+				/**
+				 * CHAS Expiry Date. Value of data field in YYYY-MM-DD format.
+				 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+				 */
+				expirydate?: {
+					value?: string; // date
+				};
+				/**
+				 * CHAS Indicator.
+				 */
+				indicator?: {
+					code?: "PGA" | "PGB" | "PGC" | "MGA" | "MGB" | "MGC" | "PG" | "MG" | "A" | "B" | "C" | "NA";
+					desc?: string;
+				};
+				/**
+				 * CHAS Issue Date. Value of data field in YYYY-MM-DD format.
+				 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+				 */
+				issuedate?: {
+					value?: string; // date
+				};
+				/**
+				 * Full Name of the Person.
+				 */
+				name?: {
+					value?: string;
+				};
 			};
 			/**
-			 * PassportNumber
-			 * Passport Number of Person.
+			 * This refers to only local registered birth records (based on ICA’s electronic Birth Certificate Records from 1985 onwards).
+			 * This includes adoption of locally registered child.
+			 * For child below 21, the child’s Birth Cert No, Name, Sex, Race, Dialect, Date of Birth and Time of Birth will be shown.
+			 * For child above 21, only the child’s Birth Cert Number will be shown.
+			 */
+			childrenbirthrecords?: any;
+			/**
+			 * Country/Place of the latest marriage.
+			 * Note: This field must be made editable on your digital service form even though
+			 * source is '1' (Government Verified).
 			 * example:
 			 * {
 			 *   "classification": "C",
 			 *   "source": "1",
 			 *   "lastupdated": "2019-03-26"
 			 * }
+			 * {
+			 *   "code": "SG",
+			 *   "desc": "SINGAPORE",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
 			 */
-			passportnumber?: {
-				/**
-				 * Value of data field.
-				 * example:
-				 * E35463874W
-				 */
-				value?: string;
+			countryofmarriage?: {
 				/**
 				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
 				 */
-				classification: "C";
+				classification: string;
 				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
 				 */
 				lastupdated: string; // date
 				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
 				 * Optional flag to indicate if data is unavailable from data source.
 				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
+				 * NOTE:
 				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
 				 */
 				unavailable?: boolean;
+				/**
+				 * The 2-character country code.
+				 * example:
+				 * SG
+				 */
+				code?: string;
+				/**
+				 * The full name of the country.
+				 * example:
+				 * SINGAPORE
+				 */
+				desc?: string;
 			};
 			/**
-			 * PassportExpiryDate
-			 * Passport Expiry Date of Person.
+			 * Dialect of Person.
+			 *
+			 *   Refer to the Code reference tables in the Support section for list of possible values.
 			 * example:
 			 * {
 			 *   "classification": "C",
 			 *   "source": "1",
 			 *   "lastupdated": "2019-03-26"
 			 * }
+			 * {
+			 *   "code": "SG",
+			 *   "desc": "SWISS GERMAN",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
 			 */
-			passportexpirydate?: {
+			dialect?: {
 				/**
-				 * Value of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+				 * Data classification of data field. Default 'C' - Confidential.
 				 * example:
-				 * 2020-01-01
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * example:
+				 * SG
+				 */
+				code?: string; // ^(?:[A-Za-z]{2})?$
+				/**
+				 * example:
+				 * SWISS GERMAN
+				 */
+				desc?: string;
+			};
+			/**
+			 * Last Divorce Date of Person.
+			 * Note: This field must be made editable on your digital service form even though
+			 * source is '1' (Government Verified).
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "2018-01-01",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			divorcedate?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * Value of data field in YYYY-MM-DD format. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
 				 */
 				value?: string; // date
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
 			};
 			/**
-			 * RegAdd
-			 * Registered Address of Person (including FIN holders)
-			 *
-			 * **Note:**
-			 * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
-			 * - check the `type` discriminator property to differentiate between the two address formats
-			 * - may be unavailable for some FIN holders
-			 */
-			regadd?: /**
-			 * RegAdd
-			 * Registered Address of Person (including FIN holders)
-			 *
-			 * **Note:**
-			 * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
-			 * - check the `type` discriminator property to differentiate between the two address formats
-			 * - may be unavailable for some FIN holders
-			 */
-			/**
-			 * Address details (Singapore Format)
+			 * Date of Birth of Person.
 			 * example:
 			 * {
 			 *   "classification": "C",
 			 *   "source": "1",
 			 *   "lastupdated": "2019-03-26"
 			 * }
+			 * {
+			 *   "value": "1958-05-17",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
 			 */
-			| DataitemAddressSg /**
-				 * Address details (Non-Singapore Format)
+			dob?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
 				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
+				 * C
 				 */
-				| DataitemAddressUnformatted;
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * Value of data field. Format can be one of the below (with reference to https://datatracker.ietf.org/doc/html/rfc3339#section-5.6):
+				 *
+				 * - full-date (YYYY-MM-DD)
+				 * - date-fullyear "-" date-month (YYYY-MM)
+				 * - date-fullyear (YYYY)
+				 * example:
+				 * 1958-05-17
+				 * 1958-05
+				 * 1958
+				 */
+				value: string; // date
+			};
 			/**
-			 * HousingType
-			 * Housing Type of Person (non-HDB only).
-			 *
-			 * **Note 1:** If `hdbtype` is available, this value will be null.
-			 *
-			 * **Note 2:** If `housingtype` &  `hdbtype` are unavailable, make this field user editable.
-			 *
-			 * Refer to `hdbtype` for detailed HDB type.
-			 *
-			 * * '121' - DETACHED HOUSE
-			 * * '122' - SEMI-DETACHED HOUSE
-			 * * '123' - TERRACE HOUSE
-			 * * '131' - CONDOMINIUM
-			 * * '132' - EXECUTIVE CONDOMINIUM
-			 * * '139' - APARTMENT
+			 * Driving Licence details of Person.
 			 * example:
 			 * {
 			 *   "classification": "C",
 			 *   "source": "1",
 			 *   "lastupdated": "2019-03-26"
 			 * }
+			 * {
+			 *   "comstatus": {
+			 *     "code": "Y",
+			 *     "desc": "ELIGIBLE"
+			 *   },
+			 *   "totaldemeritpoints": {
+			 *     "value": 0
+			 *   },
+			 *   "suspension": {
+			 *     "startdate": {
+			 *       "value": "1900-01-01"
+			 *     },
+			 *     "enddate": {
+			 *       "value": "1900-01-01"
+			 *     }
+			 *   },
+			 *   "disqualification": {
+			 *     "startdate": {
+			 *       "value": "1900-01-01"
+			 *     },
+			 *     "enddate": {
+			 *       "value": "1900-01-01"
+			 *     }
+			 *   },
+			 *   "revocation": {
+			 *     "startdate": {
+			 *       "value": "1900-01-01"
+			 *     },
+			 *     "enddate": {
+			 *       "value": "1900-01-01"
+			 *     }
+			 *   },
+			 *   "pdl": {
+			 *     "validity": {
+			 *       "code": "V",
+			 *       "desc": "VALID"
+			 *     },
+			 *     "expirydate": {
+			 *       "value": "2020-06-15"
+			 *     },
+			 *     "classes": [
+			 *       {
+			 *         "class": {
+			 *           "value": "2A"
+			 *         }
+			 *       },
+			 *       {
+			 *         "class": {
+			 *           "value": "3A"
+			 *         }
+			 *       },
+			 *       {
+			 *         "class": {
+			 *           "value": "4P"
+			 *         }
+			 *       },
+			 *       {
+			 *         "class": {
+			 *           "value": "4AP"
+			 *         }
+			 *       },
+			 *       {
+			 *         "class": {
+			 *           "value": "5P"
+			 *         }
+			 *       }
+			 *     ]
+			 *   },
+			 *   "qdl": {
+			 *     "validity": {
+			 *       "code": "V",
+			 *       "desc": "VALID"
+			 *     },
+			 *     "expirydate": {
+			 *       "value": "2020-06-15"
+			 *     },
+			 *     "classes": [
+			 *       {
+			 *         "class": {
+			 *           "value": "2A"
+			 *         },
+			 *         "issuedate": {
+			 *           "value": "2018-06-06"
+			 *         }
+			 *       },
+			 *       {
+			 *         "class": {
+			 *           "value": "3A"
+			 *         },
+			 *         "issuedate": {
+			 *           "value": "2018-06-06"
+			 *         }
+			 *       },
+			 *       {
+			 *         "class": {
+			 *           "value": "4P"
+			 *         },
+			 *         "issuedate": {
+			 *           "value": "2018-06-06"
+			 *         }
+			 *       },
+			 *       {
+			 *         "class": {
+			 *           "value": "4AP"
+			 *         },
+			 *         "issuedate": {
+			 *           "value": "2018-06-06"
+			 *         }
+			 *       },
+			 *       {
+			 *         "class": {
+			 *           "value": "5P"
+			 *         },
+			 *         "issuedate": {
+			 *           "value": "2018-06-06"
+			 *         }
+			 *       }
+			 *     ]
+			 *   },
+			 *   "photocardserialno": {
+			 *     "value": "115616"
+			 *   },
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
 			 */
-			housingtype?: {
-				/**
-				 *
-				 * example:
-				 * 123
-				 */
-				code?: "121" | "122" | "123" | "131" | "132" | "139";
-				/**
-				 *
-				 * example:
-				 * TERRACE HOUSE
-				 */
-				desc?:
-					| "DETACHED HOUSE"
-					| "SEMI-DETACHED HOUSE"
-					| "TERRACE HOUSE"
-					| "CONDOMINIUM"
-					| "EXECUTIVE CONDOMINIUM"
-					| "APARTMENT";
+			drivinglicence?: {
 				/**
 				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
 				 */
-				classification: "C";
+				classification: string;
 				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
 				 */
 				lastupdated: string; // date
 				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
 				 * Optional flag to indicate if data is unavailable from data source.
 				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
+				 * NOTE:
 				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
 				 */
 				unavailable?: boolean;
+				/**
+				 * Status of Certificate of Merit. Possible values:
+				 *
+				 * - 'Y': ELIGIBLE
+				 * - 'N': NOT ELIGIBLE
+				 * - '': No data yet
+				 */
+				comstatus?: {
+					code?: "Y" | "N" | "";
+					desc?: "ELIGIBLE" | "NOT ELIGIBLE" | "";
+				};
+				/**
+				 * Disqualification date
+				 */
+				disqualification?: {
+					/**
+					 * End date
+					 */
+					enddate?: {
+						value?: string; // date
+					};
+					/**
+					 * Start date
+					 */
+					startdate?: {
+						value?: string; // date
+					};
+				};
+				/**
+				 * Provisional Driving Licence (PDL)
+				 */
+				pdl?: {
+					/**
+					 * Licence Classes. Includes Issue Date(e.g. 2B, 2018-01-01)
+					 */
+					classes?:
+						| {
+								class?: {
+									value?: string;
+								};
+								issuedate?: {
+									value?: string; // date
+								};
+						  }[]
+						| null;
+					/**
+					 * Licence Expiry Date
+					 */
+					expirydate?: {
+						value?: string; // date
+					};
+					/**
+					 * Validity of QDL. Possible values:
+					 *
+					 * - 'V': VALID
+					 * - 'E': EXPIRED
+					 * - 'I': INVALID
+					 * - 'N': NOT HOLDING
+					 * - '': No data yet
+					 */
+					validity?: {
+						code?: string;
+						desc?: string;
+					};
+				};
+				/**
+				 * Serial Number of the Photo Card
+				 */
+				photocardserialno?: {
+					value?: string;
+				};
+				/**
+				 * Qualified Driving Licence (QDL)
+				 */
+				qdl?: {
+					/**
+					 * Licence Classes. Includes Issue Date(e.g. 2B, 2018-01-01)
+					 */
+					classes?:
+						| {
+								class?: {
+									value?: string;
+								};
+								issuedate?: {
+									value?: string; // date
+								};
+						  }[]
+						| null;
+					/**
+					 * Licence Expiry Date
+					 */
+					expirydate?: {
+						value?: string; // date
+					};
+					/**
+					 * Validity of QDL. Possible values:
+					 *
+					 * - 'V': VALID
+					 * - 'E': EXPIRED
+					 * - 'I': INVALID
+					 * - 'N': NOT HOLDING
+					 * - '': No data yet
+					 */
+					validity?: {
+						code?: string;
+						desc?: string;
+					};
+				};
+				/**
+				 * Revocation date
+				 */
+				revocation?: {
+					/**
+					 * End date
+					 */
+					enddate?: {
+						value?: string; // date
+					};
+					/**
+					 * Start date
+					 */
+					startdate?: {
+						value?: string; // date
+					};
+				};
+				/**
+				 * Suspension date
+				 */
+				suspension?: {
+					/**
+					 * End date
+					 */
+					enddate?: {
+						value?: string; // date
+					};
+					/**
+					 * Start date
+					 */
+					startdate?: {
+						value?: string; // date
+					};
+				};
+				/**
+				 * Total Demerit Points
+				 */
+				totaldemeritpoints?: {
+					value?: number;
+				};
 			};
 			/**
-			 * HDBType
+			 * Email Address of Person.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "test@gmail.com",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			email?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				value?: string;
+			};
+			/**
+			 * Name of Employer.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "ALPHA",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			employment?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				value?: string;
+			};
+			/**
+			 * Employment Sector of a FIN holder.
+			 *
+			 * Note: Only applies to a foreigner with a valid work pass.
+			 *
+			 * Some examples of possible values are:
+			 * - MANUFACTURING
+			 * - CONSTRUCTION
+			 * - RECLAMATION
+			 * - SERVICE
+			 * - GRI-TECHNOLOGY
+			 * - LANDSCAPING
+			 * - INCINERATOR PLANT
+			 * - MARINE SHIPYSHIPYARD
+			 * - PROCESS
+			 * - HARBOURCRAFT
+			 * - DOMESTIC
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "MANUFACTURING",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			employmentsector?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				value?: string;
+			};
+			/**
+			 * Han Yu Pin Yin Alias name of the Person.
+			 *
+			 * Presentation Logic - If there is a value to hanyupinyinaliasname (i.e. not empty),
+			 * then hanyupinyinaliasname should be displayed in a new line below aliasname,
+			 * and prefixed with the '@' symbol i.e. "@hanyupinyinaliasname".
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "TRICIA CHEN XIAO HUI",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			hanyupinyinaliasname?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				value?: string;
+			};
+			/**
+			 * Han Yu Pin Yin name of the Person.
+			 *
+			 * Presentation Logic - If there is a value to hanyupinyinname (i.e. not empty),
+			 * then hanyupinyinname should be displayed in a new line below name, and
+			 * formatted with round brackets i.e. "(hanyupinyinname)"
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "CHEN XIAO HUI",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			hanyupinyinname?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				value?: string;
+			};
+			/**
+			 * HDB Ownership details.
+			 * example:
+			 * {
+			 *   "noofowners": {
+			 *     "value": 2
+			 *   },
+			 *   "address": {
+			 *     "type": "SG",
+			 *     "block": {
+			 *       "value": "548"
+			 *     },
+			 *     "building": {
+			 *       "value": ""
+			 *     },
+			 *     "floor": {
+			 *       "value": "09"
+			 *     },
+			 *     "unit": {
+			 *       "value": "128"
+			 *     },
+			 *     "street": {
+			 *       "value": "BEDOK NORTH AVENUE 1"
+			 *     },
+			 *     "postal": {
+			 *       "value": "460548"
+			 *     },
+			 *     "country": {
+			 *       "code": "SG",
+			 *       "desc": "SINGAPORE"
+			 *     }
+			 *   },
+			 *   "hdbtype": {
+			 *     "code": "112",
+			 *     "desc": "2-ROOM FLAT (HDB)"
+			 *   },
+			 *   "leasecommencementdate": {
+			 *     "value": "2008-06-13"
+			 *   },
+			 *   "termoflease": {
+			 *     "value": 99
+			 *   },
+			 *   "dateofpurchase": {
+			 *     "value": "2008-06-13"
+			 *   },
+			 *   "dateofownershiptransfer": {
+			 *     "value": "2018-06-13"
+			 *   },
+			 *   "loangranted": {
+			 *     "value": 310000.01
+			 *   },
+			 *   "originalloanrepayment": {
+			 *     "value": 25
+			 *   },
+			 *   "balanceloanrepayment": {
+			 *     "years": {
+			 *       "value": 2
+			 *     },
+			 *     "months": {
+			 *       "value": 6
+			 *     }
+			 *   },
+			 *   "outstandingloanbalance": {
+			 *     "value": 50000.01
+			 *   },
+			 *   "monthlyloaninstalment": {
+			 *     "value": 1000.01
+			 *   },
+			 *   "outstandinginstalment": {
+			 *     "value": 1000.01
+			 *   },
+			 *   "purchaseprice": {
+			 *     "value": 1000.01
+			 *   },
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			hdbownership?:
+				| {
+						/**
+						 * Data classification of data field. Default 'C' - Confidential.
+						 * example:
+						 * C
+						 */
+						classification: string;
+						/**
+						 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+						 * example:
+						 * 2019-03-26
+						 */
+						lastupdated: string; // date
+						/**
+						 * Source of data.
+						 *
+						 * - '1': Government-verified
+						 * - '2': User provided
+						 * - '3': Not Applicable (applies only to Person data, not Entity data)
+						 * - '4': Verified by SingPass
+						 * example:
+						 * 1
+						 */
+						source: "1" | "2" | "3" | "4";
+						/**
+						 * Optional flag to indicate if data is unavailable from data source.
+						 *
+						 * NOTE:
+						 *
+						 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+						 *
+						 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+						 *
+						 * - If data is available from the data source, this property will not be present.
+						 */
+						unavailable?: boolean;
+						/**
+						 * SG
+						 * Address details (Singapore Format).
+						 */
+						address?: {
+							/**
+							 * Block/House of Address.
+							 */
+							block?: {
+								value?: string;
+							};
+							/**
+							 * Building of Address.
+							 */
+							building?: {
+								value?: string;
+							};
+							/**
+							 * Country/Place of Address. For AddressSG this will always be 'SG'.
+							 */
+							country?: {
+								code?: string;
+								desc?: string;
+							};
+							/**
+							 * Floor of Address.
+							 */
+							floor?: {
+								value?: string;
+							};
+							/**
+							 * Postal Code of Address.
+							 */
+							postal?: {
+								value?: string;
+							};
+							/**
+							 * Street of Address.
+							 */
+							street?: {
+								value?: string;
+							};
+							/**
+							 * Type of Address (SG or UNFORMATTED for non SG).
+							 */
+							type?: "SG";
+							/**
+							 * Unit of Address.
+							 */
+							unit?: {
+								value?: string;
+							};
+						};
+						balanceloanrepayment?: {
+							months?: {
+								value?: number; // int64
+							};
+							years?: {
+								value?: number; // int64
+							};
+						};
+						dateofownershiptransfer?: {
+							/**
+							 * Value of data field in YYYY-MM-DD format. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+							 */
+							value?: string; // date
+						};
+						dateofpurchase?: {
+							/**
+							 * Value of data field in YYYY-MM-DD format. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+							 */
+							value?: string; // date
+						};
+						/**
+						 * HDB Ownership details.
+						 */
+						hdbtype?: {
+							code?: "111" | "112" | "113" | "114" | "115" | "116" | "118";
+							desc?:
+								| "1-ROOM FLAT (HDB)"
+								| "2-ROOM FLAT (HDB)"
+								| "3-ROOM FLAT (HDB)"
+								| "4-ROOM FLAT (HDB)"
+								| "5-ROOM FLAT (HDB)"
+								| "EXECUTIVE FLAT (HDB)"
+								| "STUDIO APARTMENT (HDB)";
+						};
+						leasecommencementdate?: {
+							/**
+							 * Value of data field in YYYY-MM-DD format. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+							 */
+							value?: string; // date
+						};
+						loangranted?: {
+							value?: number; // double
+						};
+						monthlyloaninstalment?: {
+							value?: number; // double
+						};
+						noofowners?: {
+							value?: number; // int64
+						};
+						originalloanrepayment?: {
+							value?: number; // int64
+						};
+						outstandinginstalment?: {
+							value?: number; // double
+						};
+						outstandingloanbalance?: {
+							value?: number; // double
+						};
+						purchaseprice?: {
+							value?: number; // double
+						};
+						termoflease?: {
+							value?: number; // int64
+						};
+				  }[]
+				| null;
+			/**
 			 * Flat Type of the HDB flat.
-			 *
-			 * **Note 1:** that this excludes Rental Flats, Pre-War SIT flat, PSA flat, HUDC flat, Executive Condominium and Shophouse.
-			 *
-			 * **Note 2:** If `housingtype` is available, this value will be null.
-			 *
-			 * **Note 3:** If `housingtype` &  `hdbtype` are unavailable, make this field user editable.
-			 *
-			 * * '111' - 1-ROOM FLAT (HDB)
-			 * * '112' - 2-ROOM FLAT (HDB)
-			 * * '113' - 3-ROOM FLAT (HDB)
-			 * * '114' - 4-ROOM FLAT (HDB)
-			 * * '115' - 5-ROOM FLAT (HDB)
-			 * * '116' - EXECUTIVE FLAT (HDB)
-			 * * '118' - STUDIO APARTMENT (HDB)
+			 * Note 1: that this excludes Rental Flats, Pre-War SIT flat, PSA flat, HUDC flat,
+			 * Executive Condominium and Shophouse.
+			 * Note 2: If housingtype is available, this value will be blank.
+			 * Note 3: If housingtype & hdbtype are unavailable, make this field user editable.
 			 * example:
 			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "code": "112",
+			 *   "desc": "2-ROOM FLAT (HDB)",
 			 *   "classification": "C",
 			 *   "source": "1",
 			 *   "lastupdated": "2019-03-26"
@@ -6034,13 +1622,46 @@ export declare namespace MyInfoComponents {
 			 */
 			hdbtype?: {
 				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
 				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
 				 * example:
 				 * 112
 				 */
-				code?: "111" | "112" | "113" | "114" | "115" | "116" | "118";
+				code?: "111" | "112" | "113" | "114" | "115" | "116" | "118" | "";
 				/**
-				 *
 				 * example:
 				 * 2-ROOM FLAT (HDB)
 				 */
@@ -6051,504 +1672,643 @@ export declare namespace MyInfoComponents {
 					| "4-ROOM FLAT (HDB)"
 					| "5-ROOM FLAT (HDB)"
 					| "EXECUTIVE FLAT (HDB)"
-					| "STUDIO APARTMENT (HDB)";
+					| "STUDIO APARTMENT (HDB)"
+					| "";
+			};
+			/**
+			 * Housing Type of Person (non-HDB only).
+			 * Note 1: If hdbtype is available, this value will be blank.
+			 * Note 2: If housingtype & hdbtype are unavailable, make this field user editable.
+			 * Refer to hdbtype for detailed HDB type.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "code": "123",
+			 *   "desc": "TERRACE HOUSE",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			housingtype?: {
 				/**
 				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
 				 */
-				classification: "C";
+				classification: string;
 				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
 				 */
 				lastupdated: string; // date
 				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
 				 * Optional flag to indicate if data is unavailable from data source.
 				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
+				 * NOTE:
 				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
 				 */
 				unavailable?: boolean;
+				/**
+				 * example:
+				 * 123
+				 */
+				code?: "121" | "122" | "123" | "131" | "132" | "139" | "";
+				/**
+				 * example:
+				 * TERRACE HOUSE
+				 */
+				desc?:
+					| "DETACHED HOUSE"
+					| "SEMI-DETACHED HOUSE"
+					| "TERRACE HOUSE"
+					| "CONDOMINIUM"
+					| "EXECUTIVE CONDOMINIUM"
+					| "APARTMENT"
+					| "";
 			};
 			/**
-			 * HDBOwnership
-			 * HDB Ownership details
-			 *
+			 * LTA vocational licence.
+			 * example:
+			 * {
+			 *   "tdvl": {
+			 *     "licencename": {
+			 *       "value": "TAXI DRIVER'S VOCATIONAL LICENCE (TDVL)"
+			 *     },
+			 *     "vocationallicencenumber": {
+			 *       "value": "E00000001"
+			 *     },
+			 *     "expirydate": {
+			 *       "value": "2025-03-30"
+			 *     },
+			 *     "status": {
+			 *       "code": "ACT",
+			 *       "desc": "ACTIVE"
+			 *     },
+			 *     "classification": "C",
+			 *     "source": "1",
+			 *     "lastupdated": "2019-03-26"
+			 *   },
+			 *   "pdvl": {
+			 *     "licencename": {
+			 *       "value": "PRIVATE HIRE CAR DRIVER'S VOCATIONAL LICENCE (PDVL)"
+			 *     },
+			 *     "vocationallicencenumber": {
+			 *       "value": "E00000001"
+			 *     },
+			 *     "expirydate": {
+			 *       "value": "2025-03-30"
+			 *     },
+			 *     "status": {
+			 *       "code": "ACT",
+			 *       "desc": "ACTIVE"
+			 *     },
+			 *     "classification": "C",
+			 *     "source": "1",
+			 *     "lastupdated": "2019-03-26"
+			 *   },
+			 *   "bdvl": {
+			 *     "licencename": {
+			 *       "value": "BUS DRIVER'S VOCATIONAL LICENCE (BDVL)"
+			 *     },
+			 *     "vocationallicencenumber": {
+			 *       "value": "E00000001"
+			 *     },
+			 *     "expirydate": {
+			 *       "value": "2025-03-30"
+			 *     },
+			 *     "status": {
+			 *       "code": "ACT",
+			 *       "desc": "ACTIVE"
+			 *     },
+			 *     "classification": "C",
+			 *     "source": "1",
+			 *     "lastupdated": "2019-03-26"
+			 *   },
+			 *   "bavl": {
+			 *     "licencename": {
+			 *       "value": "BUS ATTENDANT VOCATIONAL LICENCE (BAVL)"
+			 *     },
+			 *     "vocationallicencenumber": {
+			 *       "value": "E00000001"
+			 *     },
+			 *     "expirydate": {
+			 *       "value": "2025-03-30"
+			 *     },
+			 *     "status": {
+			 *       "code": "ACT",
+			 *       "desc": "ACTIVE"
+			 *     },
+			 *     "classification": "C",
+			 *     "source": "1",
+			 *     "lastupdated": "2019-03-26"
+			 *   },
+			 *   "odvl": {
+			 *     "licencename": {
+			 *       "value": "OMNIBUS DRIVER'S VOCATIONAL LICENCE"
+			 *     },
+			 *     "vocationallicencenumber": {
+			 *       "value": "E00000001"
+			 *     },
+			 *     "expirydate": {
+			 *       "value": "2025-03-30"
+			 *     },
+			 *     "status": {
+			 *       "code": "ACT",
+			 *       "desc": "ACTIVE"
+			 *     },
+			 *     "classification": "C",
+			 *     "source": "1",
+			 *     "lastupdated": "2019-03-26"
+			 *   }
+			 * }
 			 */
-			hdbownership?: {
+			ltavocationallicences?: {
 				/**
-				 * Number of Owners. Note that this does not include executors, administrators or trustees.
+				 * LTAVocationalLicence
+				 * Bus Attendant's vocational licence.
+				 * example:
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 * {
+				 *   "licencename": {
+				 *     "value": "TAXI DRIVER'S VOCATIONAL LICENCE (TDVL)"
+				 *   },
+				 *   "vocationallicencenumber": {
+				 *     "value": "E00000001"
+				 *   },
+				 *   "expirydate": {
+				 *     "value": "2025-03-30"
+				 *   },
+				 *   "status": {
+				 *     "code": "ACT",
+				 *     "desc": "ACTIVE"
+				 *   },
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
 				 */
-				noofowners?: {
+				bavl?: {
 					/**
+					 * Data classification of data field. Default 'C' - Confidential.
 					 * example:
-					 * 2
+					 * C
 					 */
-					value?: number;
-				};
-				/**
-				 * Address details (Singapore Format)
-				 */
-				address?: {
+					classification: string;
 					/**
-					 * Type of Address (SG or UNFORMATTED for non SG)
+					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+					 * example:
+					 * 2019-03-26
 					 */
-					type?: "SG" | "UNFORMATTED";
+					lastupdated: string; // date
 					/**
-					 * Block/House of Address
+					 * Source of data.
+					 *
+					 * - '1': Government-verified
+					 * - '2': User provided
+					 * - '3': Not Applicable (applies only to Person data, not Entity data)
+					 * - '4': Verified by SingPass
+					 * example:
+					 * 1
 					 */
-					block?: {
-						/**
-						 * example:
-						 * 548
-						 */
+					source: "1" | "2" | "3" | "4";
+					/**
+					 * Optional flag to indicate if data is unavailable from data source.
+					 *
+					 * NOTE:
+					 *
+					 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+					 *
+					 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+					 *
+					 * - If data is available from the data source, this property will not be present.
+					 */
+					unavailable?: boolean;
+					/**
+					 * Expiry date of the LTA Vocational Licence.
+					 */
+					expirydate?: {
+						value?: string; // date
+					};
+					/**
+					 * Licence Name of LTA Vocational Licence.
+					 */
+					licencename?: {
 						value?: string;
 					};
 					/**
-					 * Building of Address
+					 * Status of the LTA Vocational Licence.
 					 */
-					building?: {
-						/**
-						 * example:
-						 *
-						 */
-						value?: string;
-					};
-					/**
-					 * Floor of Address
-					 */
-					floor?: {
-						/**
-						 * example:
-						 * 09
-						 */
-						value?: string;
-					};
-					/**
-					 * Unit of Address
-					 */
-					unit?: {
-						/**
-						 * example:
-						 * 128
-						 */
-						value?: string;
-					};
-					/**
-					 * Street of Address
-					 */
-					street?: {
-						/**
-						 * example:
-						 * BEDOK NORTH AVENUE 1
-						 */
-						value?: string;
-					};
-					/**
-					 * Postal Code of Address
-					 */
-					postal?: {
-						/**
-						 * example:
-						 * 460548
-						 */
-						value?: string;
-					};
-					/**
-					 * Country/Place of Address. For AddressSG this will always be "SG".
-					 */
-					country?: {
-						code?: string;
+					status?: {
+						code?: "ACT" | "ACTIVE";
 						desc?: string;
 					};
-				};
-				/**
-				 * HDBType
-				 * Flat Type of the HDB flat.
-				 *
-				 * **Note 1:** that this excludes Rental Flats, Pre-War SIT flat, PSA flat, HUDC flat, Executive Condominium and Shophouse.
-				 *
-				 * **Note 2:** If `housingtype` is available, this value will be null.
-				 *
-				 * **Note 3:** If `housingtype` &  `hdbtype` are unavailable, make this field user editable.
-				 *
-				 * * '111' - 1-ROOM FLAT (HDB)
-				 * * '112' - 2-ROOM FLAT (HDB)
-				 * * '113' - 3-ROOM FLAT (HDB)
-				 * * '114' - 4-ROOM FLAT (HDB)
-				 * * '115' - 5-ROOM FLAT (HDB)
-				 * * '116' - EXECUTIVE FLAT (HDB)
-				 * * '118' - STUDIO APARTMENT (HDB)
-				 */
-				hdbtype?: {
 					/**
-					 *
-					 * example:
-					 * 112
+					 * Unique Vocational Licence Number for the licence holder.
 					 */
-					code?: "111" | "112" | "113" | "114" | "115" | "116" | "118";
-					/**
-					 *
-					 * example:
-					 * 2-ROOM FLAT (HDB)
-					 */
-					desc?:
-						| "1-ROOM FLAT (HDB)"
-						| "2-ROOM FLAT (HDB)"
-						| "3-ROOM FLAT (HDB)"
-						| "4-ROOM FLAT (HDB)"
-						| "5-ROOM FLAT (HDB)"
-						| "EXECUTIVE FLAT (HDB)"
-						| "STUDIO APARTMENT (HDB)";
-				};
-				/**
-				 * Date from which the lease period starts. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-				 */
-				leasecommencementdate?: {
-					/**
-					 * example:
-					 * 2008-06-13
-					 */
-					value?: string; // date
-				};
-				/**
-				 * Term of lease (in years) for the property computed from the lease commencement date.
-				 */
-				termoflease?: {
-					/**
-					 * example:
-					 * 99
-					 */
-					value?: number;
-				};
-				/**
-				 * Effective date of flat purchase. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-				 */
-				dateofpurchase?: {
-					/**
-					 * example:
-					 * 2008-06-13
-					 */
-					value?: string; // date
-				};
-				/**
-				 * Effective date of partial transfer without monetary consideration (e.g. addition, deletion or substitution of a co-owner) for an HDB sold flat.
-				 *
-				 * For partial transfer of flat where at least one of the current owner remains in the household, the Date of Purchase remains unchanged while the date of transfer of ownership will be updated.
-				 *
-				 * For outright transfer where there is a total change of all owner(s), only the Date of Purchase will be updated.
-				 *
-				 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6'
-				 */
-				dateofownershiptransfer?: {
-					/**
-					 * example:
-					 * 2018-06-13
-					 */
-					value?: string; // date
-				};
-				/**
-				 * The amount of housing loan granted to owner(s) by HDB in SGD.
-				 */
-				loangranted?: {
-					/**
-					 * example:
-					 * 310000.01
-					 */
-					value?: number; // double
-				};
-				/**
-				 * The number of years of loan repaymnet opted by owner(s) at the time the loan is first granted to him/her.
-				 */
-				originalloanrepayment?: {
-					/**
-					 * example:
-					 * 25
-					 */
-					value?: number;
-				};
-				/**
-				 * The remaining term of repayment for the loan in the format `years` + `months`.
-				 */
-				balanceloanrepayment?: {
-					years?: {
-						/**
-						 * example:
-						 * 2
-						 */
-						value?: number;
-					};
-					months?: {
-						/**
-						 * example:
-						 * 6
-						 */
-						value?: number;
+					vocationallicencenumber?: {
+						value?: string;
 					};
 				};
 				/**
-				 * The amount of outstanding HDB loan owed by owner(s) in SGD.
-				 */
-				outstandingloanbalance?: {
-					/**
-					 * example:
-					 * 50000.01
-					 */
-					value?: number; // double
-				};
-				/**
-				 * The amount of monthly instalment the owner(s) have to pay for his/her loan in SGD.
-				 */
-				monthlyloaninstalment?: {
-					/**
-					 * example:
-					 * 1000.01
-					 */
-					value?: number; // double
-				};
-				/**
-				 * The amount of outstanding instalment the owner(s) have to pay for his/her loan in SGD.
-				 */
-				outstandinginstalment?: {
-					/**
-					 * example:
-					 * 1000.01
-					 */
-					value?: number; // double
-				};
-				/**
-				 * The purchase price of the HDB flat in SGD.
-				 */
-				purchaseprice?: {
-					/**
-					 * example:
-					 * 1000.01
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			}[];
-			/**
-			 * OwnerPrivate
-			 * Ownership of Private Property Status of Person (based on IRAS information).
-			 *
-			 * * true
-			 * * false
-			 * * null (data not available)
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			ownerprivate?: {
-				/**
-				 * Value of data field.
+				 * LTAVocationalLicence
+				 * Bus driver's vocational licence.
 				 * example:
-				 * false
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 * {
+				 *   "licencename": {
+				 *     "value": "BUS DRIVER'S VOCATIONAL LICENCE (BDVL)"
+				 *   },
+				 *   "vocationallicencenumber": {
+				 *     "value": "E00000001"
+				 *   },
+				 *   "expirydate": {
+				 *     "value": "2025-03-30"
+				 *   },
+				 *   "status": {
+				 *     "code": "ACT",
+				 *     "desc": "ACTIVE"
+				 *   },
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
 				 */
-				value?: boolean;
+				bdvl?: {
+					/**
+					 * Data classification of data field. Default 'C' - Confidential.
+					 * example:
+					 * C
+					 */
+					classification: string;
+					/**
+					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+					 * example:
+					 * 2019-03-26
+					 */
+					lastupdated: string; // date
+					/**
+					 * Source of data.
+					 *
+					 * - '1': Government-verified
+					 * - '2': User provided
+					 * - '3': Not Applicable (applies only to Person data, not Entity data)
+					 * - '4': Verified by SingPass
+					 * example:
+					 * 1
+					 */
+					source: "1" | "2" | "3" | "4";
+					/**
+					 * Optional flag to indicate if data is unavailable from data source.
+					 *
+					 * NOTE:
+					 *
+					 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+					 *
+					 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+					 *
+					 * - If data is available from the data source, this property will not be present.
+					 */
+					unavailable?: boolean;
+					/**
+					 * Expiry date of the LTA Vocational Licence.
+					 */
+					expirydate?: {
+						value?: string; // date
+					};
+					/**
+					 * Licence Name of LTA Vocational Licence.
+					 */
+					licencename?: {
+						value?: string;
+					};
+					/**
+					 * Status of the LTA Vocational Licence.
+					 */
+					status?: {
+						code?: "ACT" | "ACTIVE";
+						desc?: string;
+					};
+					/**
+					 * Unique Vocational Licence Number for the licence holder.
+					 */
+					vocationallicencenumber?: {
+						value?: string;
+					};
+				};
 				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * Email
-			 * Email Address of Person.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			email?: {
-				/**
-				 * Value of data field.
+				 * LTAVocationalLicence
+				 * Omnibus driver's vocational licence.
 				 * example:
-				 * test@gmail.com
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 * {
+				 *   "licencename": {
+				 *     "value": "OMNIBUS DRIVER'S VOCATIONAL LICENCE"
+				 *   },
+				 *   "vocationallicencenumber": {
+				 *     "value": "E00000001"
+				 *   },
+				 *   "expirydate": {
+				 *     "value": "2025-03-30"
+				 *   },
+				 *   "status": {
+				 *     "code": "ACT",
+				 *     "desc": "ACTIVE"
+				 *   },
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
 				 */
-				value?: string;
+				odvl?: {
+					/**
+					 * Data classification of data field. Default 'C' - Confidential.
+					 * example:
+					 * C
+					 */
+					classification: string;
+					/**
+					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+					 * example:
+					 * 2019-03-26
+					 */
+					lastupdated: string; // date
+					/**
+					 * Source of data.
+					 *
+					 * - '1': Government-verified
+					 * - '2': User provided
+					 * - '3': Not Applicable (applies only to Person data, not Entity data)
+					 * - '4': Verified by SingPass
+					 * example:
+					 * 1
+					 */
+					source: "1" | "2" | "3" | "4";
+					/**
+					 * Optional flag to indicate if data is unavailable from data source.
+					 *
+					 * NOTE:
+					 *
+					 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+					 *
+					 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+					 *
+					 * - If data is available from the data source, this property will not be present.
+					 */
+					unavailable?: boolean;
+					/**
+					 * Expiry date of the LTA Vocational Licence.
+					 */
+					expirydate?: {
+						value?: string; // date
+					};
+					/**
+					 * Licence Name of LTA Vocational Licence.
+					 */
+					licencename?: {
+						value?: string;
+					};
+					/**
+					 * Status of the LTA Vocational Licence.
+					 */
+					status?: {
+						code?: "ACT" | "ACTIVE";
+						desc?: string;
+					};
+					/**
+					 * Unique Vocational Licence Number for the licence holder.
+					 */
+					vocationallicencenumber?: {
+						value?: string;
+					};
+				};
 				/**
-				 * Data classification of data field. Default 'C' - Confidential.
+				 * LTAVocationalLicence
+				 * Private Hire Car driver's vocational licence.
+				 * example:
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 * {
+				 *   "licencename": {
+				 *     "value": "PRIVATE HIRE CAR DRIVER'S VOCATIONAL LICENCE (PDVL)"
+				 *   },
+				 *   "vocationallicencenumber": {
+				 *     "value": "E00000001"
+				 *   },
+				 *   "expirydate": {
+				 *     "value": "2025-03-30"
+				 *   },
+				 *   "status": {
+				 *     "code": "ACT",
+				 *     "desc": "ACTIVE"
+				 *   },
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
 				 */
-				classification: "C";
+				pdvl?: {
+					/**
+					 * Data classification of data field. Default 'C' - Confidential.
+					 * example:
+					 * C
+					 */
+					classification: string;
+					/**
+					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+					 * example:
+					 * 2019-03-26
+					 */
+					lastupdated: string; // date
+					/**
+					 * Source of data.
+					 *
+					 * - '1': Government-verified
+					 * - '2': User provided
+					 * - '3': Not Applicable (applies only to Person data, not Entity data)
+					 * - '4': Verified by SingPass
+					 * example:
+					 * 1
+					 */
+					source: "1" | "2" | "3" | "4";
+					/**
+					 * Optional flag to indicate if data is unavailable from data source.
+					 *
+					 * NOTE:
+					 *
+					 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+					 *
+					 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+					 *
+					 * - If data is available from the data source, this property will not be present.
+					 */
+					unavailable?: boolean;
+					/**
+					 * Expiry date of the LTA Vocational Licence.
+					 */
+					expirydate?: {
+						value?: string; // date
+					};
+					/**
+					 * Licence Name of LTA Vocational Licence.
+					 */
+					licencename?: {
+						value?: string;
+					};
+					/**
+					 * Status of the LTA Vocational Licence.
+					 */
+					status?: {
+						code?: "ACT" | "ACTIVE";
+						desc?: string;
+					};
+					/**
+					 * Unique Vocational Licence Number for the licence holder.
+					 */
+					vocationallicencenumber?: {
+						value?: string;
+					};
+				};
 				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
+				 * LTAVocationalLicence
+				 * Taxi driver's vocational licence.
+				 * example:
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 * {
+				 *   "licencename": {
+				 *     "value": "TAXI DRIVER'S VOCATIONAL LICENCE (TDVL)"
+				 *   },
+				 *   "vocationallicencenumber": {
+				 *     "value": "E00000001"
+				 *   },
+				 *   "expirydate": {
+				 *     "value": "2025-03-30"
+				 *   },
+				 *   "status": {
+				 *     "code": "ACT",
+				 *     "desc": "ACTIVE"
+				 *   },
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
 				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
+				tdvl?: {
+					/**
+					 * Data classification of data field. Default 'C' - Confidential.
+					 * example:
+					 * C
+					 */
+					classification: string;
+					/**
+					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+					 * example:
+					 * 2019-03-26
+					 */
+					lastupdated: string; // date
+					/**
+					 * Source of data.
+					 *
+					 * - '1': Government-verified
+					 * - '2': User provided
+					 * - '3': Not Applicable (applies only to Person data, not Entity data)
+					 * - '4': Verified by SingPass
+					 * example:
+					 * 1
+					 */
+					source: "1" | "2" | "3" | "4";
+					/**
+					 * Optional flag to indicate if data is unavailable from data source.
+					 *
+					 * NOTE:
+					 *
+					 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+					 *
+					 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+					 *
+					 * - If data is available from the data source, this property will not be present.
+					 */
+					unavailable?: boolean;
+					/**
+					 * Expiry date of the LTA Vocational Licence.
+					 */
+					expirydate?: {
+						value?: string; // date
+					};
+					/**
+					 * Licence Name of LTA Vocational Licence.
+					 */
+					licencename?: {
+						value?: string;
+					};
+					/**
+					 * Status of the LTA Vocational Licence.
+					 */
+					status?: {
+						code?: "ACT" | "ACTIVE";
+						desc?: string;
+					};
+					/**
+					 * Unique Vocational Licence Number for the licence holder.
+					 */
+					vocationallicencenumber?: {
+						value?: string;
+					};
+				};
 			};
 			/**
-			 * MobileNo
-			 * Mobile Number of Person.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			mobileno?: {
-				/**
-				 * Prefix of Phone Number. Defaults to '+'. If phone number is blank, prefix will be returned as blank.
-				 */
-				prefix?: {
-					/**
-					 * example:
-					 * +
-					 */
-					value?: string;
-				};
-				/**
-				 * Area Code of Phone Number. Default to '65'. If phone number is blank, code will be returned as blank.
-				 */
-				areacode?: {
-					/**
-					 * example:
-					 * 65
-					 */
-					value?: string;
-				};
-				/**
-				 * Phone Number.
-				 */
-				nbr?: {
-					/**
-					 * example:
-					 * 66132665
-					 */
-					value?: string;
-				};
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * Marital
 			 * Marital Status of Person.
-			 *
-			 * * '1' - SINGLE
-			 * * '2' - MARRIED
-			 * * '3' - WIDOWED
-			 * * '5' - DIVORCED
-			 *
-			 * **Note:** This field must be made **editable** on your digital service form even though `source` is '1' (Government Verified).
+			 * Note: This field must be made editable on your digital service form even though source
+			 * is '1' (Government Verified).
 			 * example:
 			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "code": "2",
+			 *   "desc": "MARRIED",
 			 *   "classification": "C",
 			 *   "source": "1",
 			 *   "lastupdated": "2019-03-26"
@@ -6556,55 +2316,71 @@ export declare namespace MyInfoComponents {
 			 */
 			marital?: {
 				/**
-				 *
-				 * example:
-				 * 2
-				 */
-				code?: "1" | "2" | "3" | "5";
-				/**
-				 *
-				 * example:
-				 * MARRIED
-				 */
-				desc?: "SINGLE" | "MARRIED" | "WIDOWED" | "DIVORCED";
-				/**
 				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
 				 */
-				classification: "C";
+				classification: string;
 				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
 				 */
 				lastupdated: string; // date
 				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
 				 * Optional flag to indicate if data is unavailable from data source.
 				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
+				 * NOTE:
 				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
 				 */
 				unavailable?: boolean;
+				/**
+				 * The code for the marital status.
+				 *
+				 * - '1': SINGLE
+				 * - '2': MARRIED
+				 * - '3': WIDOWED
+				 * - '5': DIVORCED
+				 * - '': No data yet
+				 * example:
+				 * 2
+				 */
+				code?: "1" | "2" | "3" | "5" | "";
+				/**
+				 * The full description of the marital status.
+				 * example:
+				 * MARRIED
+				 */
+				desc?: "SINGLE" | "MARRIED" | "WIDOWED" | "DIVORCED" | "";
 			};
 			/**
-			 * MarriageCertNo
 			 * Certificate number of the latest marriage.
-			 *
-			 *
-			 * **Note:** This field must be made **editable** on your digital service form even though `source` is '1' (Government Verified).
+			 * Note: This field must be made editable on your digital service form even though
+			 * source is '1' (Government Verified).
 			 * example:
 			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "123456789012345",
 			 *   "classification": "C",
 			 *   "source": "1",
 			 *   "lastupdated": "2019-03-26"
@@ -6612,106 +2388,59 @@ export declare namespace MyInfoComponents {
 			 */
 			marriagecertno?: {
 				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
 				 * Value of data field.
 				 * example:
 				 * 123456789012345
 				 */
 				value?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
 			};
 			/**
-			 * CountryOfMarriage
-			 * Country/Place of the latest marriage.
-			 *
-			 *
-			 * **Note:** This field must be made **editable** on your digital service form even though `source` is '1' (Government Verified).
+			 * Latest Marriage Date of Person.
+			 * Note: This field must be made editable on your digital service form even
+			 * though source is '1' (Government Verified).
 			 * example:
 			 * {
 			 *   "classification": "C",
 			 *   "source": "1",
 			 *   "lastupdated": "2019-03-26"
 			 * }
-			 */
-			countryofmarriage?: {
-				/**
-				 *
-				 * example:
-				 * SG
-				 */
-				code?: string;
-				/**
-				 *
-				 * example:
-				 * SINGAPORE
-				 */
-				desc?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * MarriageDate
-			 * Latest Marriage Date of Person.
-			 *
-			 *
-			 * **Note:** This field must be made **editable** on your digital service form even though `source` is '1' (Government Verified).
-			 *
-			 * example:
 			 * {
+			 *   "value": "2007-01-01",
 			 *   "classification": "C",
 			 *   "source": "1",
 			 *   "lastupdated": "2019-03-26"
@@ -6719,657 +2448,314 @@ export declare namespace MyInfoComponents {
 			 */
 			marriagedate?: {
 				/**
-				 * Value of data field.
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
 				 *
-				 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * Value of data field in YYYY-MM-DD format. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
 				 * example:
 				 * 2007-01-01
 				 */
 				value?: string; // date
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
 			};
 			/**
-			 * DivorceDate
-			 * Last Divorce Date of Person.
+			 * Married name of the Person.
 			 *
-			 *
-			 * **Note:** This field must be made **editable** on your digital service form even though `source` is '1' (Government Verified).
-			 *
+			 * Presentation Logic - If there is a value to marriedname (i.e. not empty),
+			 * then marriedname should be displayed in a new line below hanyupinyinaliasname.
 			 * example:
 			 * {
 			 *   "classification": "C",
 			 *   "source": "1",
 			 *   "lastupdated": "2019-03-26"
 			 * }
+			 * {
+			 *   "value": "TAN XIAO HUI",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
 			 */
-			divorcedate?: {
-				/**
-				 * Value of data field.
-				 *
-				 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-				 * example:
-				 *
-				 */
-				value?: string; // date
+			marriedname?: {
 				/**
 				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
 				 */
-				classification: "C";
+				classification: string;
 				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
 				 */
 				lastupdated: string; // date
 				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
 				 * Optional flag to indicate if data is unavailable from data source.
 				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
+				 * NOTE:
 				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
 				 */
 				unavailable?: boolean;
+				/**
+				 * example:
+				 * TAN XIAO HUI
+				 */
+				value?: string;
 			};
 			/**
-			 * ChildrenBirthRecords
-			 * This refers to only local registered birth records(based on ICA’s electronic Birth Certificate Records from 1985 onwards).
-			 *
-			 * This includes adoption of locally registered child.
-			 *
-			 * For child below 21, the child’s Birth Cert No, Name, Sex, Race, Dialect, Date of Birth and Time of Birth will be shown.
-			 *
-			 * For child above 21, only the child’s Birth Cert Number will be shown.
-			 */
-			childrenbirthrecords?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * Birth certificate number of child.
-				 */
-				birthcertno?: {
-					/**
-					 * example:
-					 * S5562882C
-					 */
-					value?: string;
-				};
-				/**
-				 * Full Name of child
-				 */
-				name?: {
-					/**
-					 * example:
-					 * Jo Tan Pei Ni
-					 */
-					value?: string;
-				};
-				/**
-				 * Han Yu Pin Yin name of child.
-				 *
-				 * *Presentation Logic - If there is a value to `hanyupinyinname` (i.e. not empty), then `hanyupinyinname` should be displayed in a new line below `name`, and formatted with round brackets i.e. \"(`hanyupinyinname`)\".*
-				 */
-				hanyupinyinname?: {
-					/**
-					 * example:
-					 * Cheng Pei Ni
-					 */
-					value?: string;
-				};
-				/**
-				 * Alias name of child.
-				 *
-				 * *Presentation Logic - If there is a value to `aliasname` (i.e. not empty), then `aliasname` should be displayed in a new line below `hanyupinyinname`, and prefixed with the ''@'' symbol i.e. \"@`aliasname`\".*
-				 */
-				aliasname?: {
-					/**
-					 * example:
-					 *
-					 */
-					value?: string;
-				};
-				/**
-				 * Han Yu Pin Yin Alias name of child.
-				 *
-				 * *Presentation Logic - If there is a value to `hanyupinyinaliasname` (i.e. not empty), then `hanyupinyinaliasname` should be displayed in a new line below `aliasname`, and prefixed with the ''@'' symbol i.e. \"@`hanyupinyinaliasname`\".*
-				 */
-				hanyupinyinaliasname?: {
-					/**
-					 * example:
-					 *
-					 */
-					value?: string;
-				};
-				/**
-				 * Married name of child.
-				 *
-				 * *Presentation Logic - If there is a value to `marriedname` (i.e. not empty), then `marriedname` should be displayed in a new line below `hanyupinyinaliasname`.*
-				 */
-				marriedname?: {
-					/**
-					 * example:
-					 *
-					 */
-					value?: string;
-				};
-				/**
-				 * Sex of child. Possible values:
-				 *
-				 * * 'F' - FEMALE
-				 * * 'M' - MALE
-				 * * 'U' - UNKNOWN
-				 */
-				sex?: {
-					/**
-					 * example:
-					 * F
-					 */
-					code?: "F" | "M" | "U";
-					/**
-					 * example:
-					 * FEMALE
-					 */
-					desc?: "FEMALE" | "MALE" | "UNKNOWN";
-				};
-				/**
-				 * Race of child.
-				 *
-				 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-				 *
-				 */
-				race?: {
-					/**
-					 * example:
-					 * CN
-					 */
-					code?: string; // [a-zA-Z]{2}
-					/**
-					 * example:
-					 * CHINESE
-					 */
-					desc?: string;
-				};
-				/**
-				 * Secondary Race of child.
-				 *
-				 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-				 */
-				secondaryrace?: {
-					/**
-					 * example:
-					 *
-					 */
-					code?: string; // [a-zA-Z]{2}
-					/**
-					 * example:
-					 *
-					 */
-					desc?: string;
-				};
-				/**
-				 * Dialect of child.
-				 *
-				 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-				 */
-				dialect?: {
-					/**
-					 * example:
-					 * HK
-					 */
-					code?: string; // [a-zA-Z]{2}
-					/**
-					 * example:
-					 * HOKKIEN
-					 */
-					desc?: string;
-				};
-				/**
-				 * Life Status of child. Possible values:
-				 *
-				 * * A - ALIVE
-				 * * D - DECEASED
-				 */
-				lifestatus?: {
-					/**
-					 * example:
-					 * D
-					 */
-					code?: "A" | "D";
-					/**
-					 * example:
-					 * DECEASED
-					 */
-					desc?: "ALIVE" | "DECEASED";
-				};
-				/**
-				 * Date of Birth of child.
-				 *
-				 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-				 */
-				dob?: {
-					/**
-					 * example:
-					 * 2011-09-10
-					 */
-					value?: string; // date
-				};
-				/**
-				 * Time of Birth of child.
-				 *
-				 * Format: HHMM
-				 */
-				tob?: {
-					/**
-					 * example:
-					 * 0901
-					 */
-					value?: string;
-				};
-				vaccinationrequirements?: {
-					/**
-					 * Vaccination Requirement.
-					 *
-					 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-					 */
-					requirement?: {
-						/**
-						 * example:
-						 * 1M3D
-						 */
-						code?: string;
-						/**
-						 * example:
-						 * MINIMUM VACCINATION REQUIREMENT FOR PRESCHOOL
-						 */
-						desc?: string;
-					};
-					fulfilled?: {
-						/**
-						 * example:
-						 * true
-						 */
-						value?: boolean;
-					};
-				}[];
-				/**
-				 * Indicates whether the child is a Singapore Citizen at the time of birth.
-				 *
-				 * * Y - Yes
-				 * * N - No
-				 * * < BLANK > - Not applicable
-				 */
-				sgcitizenatbirthind?: {
-					/**
-					 * example:
-					 * Y
-					 */
-					value?: "Y" | "N" | "";
-				};
-			}[];
-			/**
-			 * SponsoredChildrenRecords
-			 * Details of children sponsored to be SC/PR/LTVP
-			 *
-			 * For child below 21, the child's NRIC/FIN, Name, Sex, Race, Secondary Race, Dialect, Date of Birth, Country/Place of Birth, Residential Status and SC/PR/LTVP grant date will be shown.
-			 *
-			 * For child above 21, only the child's last known NRIC/FIN will be shown.
-			 */
-			sponsoredchildrenrecords?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * NRIC/FIN of child
-				 */
-				nric?: {
-					/**
-					 * example:
-					 * S5562882C
-					 */
-					value?: string;
-				};
-				/**
-				 * Full Name of child
-				 */
-				name?: {
-					/**
-					 * example:
-					 * Jo Tan Pei Ni
-					 */
-					value?: string;
-				};
-				/**
-				 * Han Yu Pin Yin name of child.
-				 */
-				hanyupinyinname?: {
-					/**
-					 * example:
-					 * Cheng Pei Ni
-					 */
-					value?: string;
-				};
-				/**
-				 * Alias name of child.
-				 */
-				aliasname?: {
-					/**
-					 * example:
-					 *
-					 */
-					value?: string;
-				};
-				/**
-				 * Han Yu Pin Yin Alias name of child.
-				 */
-				hanyupinyinaliasname?: {
-					/**
-					 * example:
-					 *
-					 */
-					value?: string;
-				};
-				/**
-				 * Married name of child.
-				 */
-				marriedname?: {
-					/**
-					 * example:
-					 *
-					 */
-					value?: string;
-				};
-				/**
-				 * Sex of child. Possible values:
-				 *
-				 * * 'F' - FEMALE
-				 * * 'M' - MALE
-				 * * 'U' - UNKNOWN
-				 */
-				sex?: {
-					/**
-					 * example:
-					 * F
-					 */
-					code?: "F" | "M" | "U";
-					/**
-					 * example:
-					 * FEMALE
-					 */
-					desc?: "FEMALE" | "MALE" | "UNKNOWN";
-				};
-				/**
-				 * Race of child.
-				 *
-				 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-				 */
-				race?: {
-					/**
-					 * example:
-					 * CN
-					 */
-					code?: string; // [a-zA-Z]{2}
-					/**
-					 * example:
-					 * CHINESE
-					 */
-					desc?: string;
-				};
-				/**
-				 * Secondary Race of child.
-				 *
-				 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-				 */
-				secondaryrace?: {
-					/**
-					 * example:
-					 *
-					 */
-					code?: string; // [a-zA-Z]{2}
-					/**
-					 * example:
-					 *
-					 */
-					desc?: string;
-				};
-				/**
-				 * Dialect of child.
-				 *
-				 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-				 */
-				dialect?: {
-					/**
-					 * example:
-					 * HK
-					 */
-					code?: string; // [a-zA-Z]{2}
-					/**
-					 * example:
-					 * HOKKIEN
-					 */
-					desc?: string;
-				};
-				/**
-				 * Date of Birth of child.
-				 *
-				 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-				 */
-				dob?: {
-					/**
-					 * example:
-					 * 2011-09-10
-					 */
-					value?: string; // date
-				};
-				/**
-				 * BirthCountry
-				 * Country/Place of Birth of child.
-				 *
-				 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-				 */
-				birthcountry?: {
-					/**
-					 * example:
-					 * SG
-					 */
-					code?: string; // [a-zA-Z]{2}
-					/**
-					 * example:
-					 * SINGAPORE
-					 */
-					desc?: string;
-				};
-				/**
-				 * Life Status of child. Possible values:
-				 *
-				 * * A - ALIVE
-				 * * D - DECEASED
-				 */
-				lifestatus?: {
-					/**
-					 * example:
-					 * A
-					 */
-					code?: "A" | "D";
-					/**
-					 * example:
-					 * ALIVE
-					 */
-					desc?: "ALIVE" | "DECEASED";
-				};
-				/**
-				 * ResidentialStatus
-				 * Residential Status of child. Possible values:
-				 *
-				 * * A - ALIEN
-				 * * C - CITIZEN
-				 * * P - PR
-				 * * U - UNKNOWN
-				 * * N - NOT APPLICABLE
-				 */
-				residentialstatus?: {
-					/**
-					 * example:
-					 * C
-					 */
-					code?: "A" | "C" | "P" | "U" | "N"; // [a-zA-Z]{1}
-					/**
-					 * example:
-					 * Citizen
-					 */
-					desc?: "ALIEN" | "CITIZEN" | "PR" | "UNKNOWN" | "NOT APPLICABLE";
-				};
-				/**
-				 * Nationality/Citizenship of child.
-				 *
-				 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-				 */
-				nationality?: {
-					/**
-					 * example:
-					 * SG
-					 */
-					code?: string; // [a-zA-Z]{2}
-					/**
-					 * example:
-					 * SINGAPORE CITIZEN
-					 */
-					desc?: string;
-				};
-				/**
-				 * Date granted Singapore Citizenship, Permanent Resident or Long-term Visit Pass
-				 *
-				 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-				 */
-				scprgrantdate?: {
-					/**
-					 * example:
-					 * 2015-06-13
-					 */
-					value?: string; // date
-				};
-				vaccinationrequirements?: {
-					/**
-					 * Vaccination Requirement
-					 *
-					 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-					 */
-					requirement?: {
-						/**
-						 * example:
-						 * 1M3D
-						 */
-						code?: string;
-						/**
-						 * example:
-						 * MINIMUM VACCINATION REQUIREMENT FOR PRESCHOOL
-						 */
-						desc?: string;
-					};
-					fulfilled?: {
-						/**
-						 * example:
-						 * true
-						 */
-						value?: boolean;
-					};
-				}[];
-			}[];
-			/**
-			 * Occupation
-			 * Occupation of Person.
+			 * Mobile Number of Person.
 			 * example:
 			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "prefix": {
+			 *     "value": "+"
+			 *   },
+			 *   "areacode": {
+			 *     "value": "65"
+			 *   },
+			 *   "nbr": {
+			 *     "value": "66132665"
+			 *   },
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			mobileno?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				areacode?: {
+					/**
+					 * Area Code of Phone Number. Default to '65'.
+					 */
+					value?: string;
+				};
+				nbr?: {
+					/**
+					 * Phone Number.
+					 */
+					value?: string;
+				};
+				prefix?: {
+					/**
+					 * Prefix of Phone Number. Defaults to '+'.
+					 */
+					value?: string;
+				};
+			};
+			/**
+			 * Full Name of the Person.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "TAN XIAO HUI",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			name?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				value: string;
+			};
+			/**
+			 * Nationality/Citizenship of Person.
+			 *
+			 *   Refer to the Code reference tables in the Support section for list of possible values.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "code": "SG",
+			 *   "desc": "SINGAPORE CITIZEN",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			nationality?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * example:
+				 * SG
+				 */
+				code: string; // ^[A-Z]{2}$
+				/**
+				 * example:
+				 * SINGAPORE CITIZEN
+				 */
+				desc: string;
+			};
+			/**
+			 * Occupation of Person.
+			 * For SC/PR holders, blank will be returned.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "Software Engineer",
 			 *   "classification": "C",
 			 *   "source": "1",
 			 *   "lastupdated": "2019-03-26"
@@ -7377,102 +2763,434 @@ export declare namespace MyInfoComponents {
 			 */
 			occupation?: {
 				/**
-				 * Free text.
-				 *
-				 * For SC/PR holders, blank will be returned.
-				 * example:
-				 *
-				 */
-				value?: string;
-				/**
 				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
 				 */
-				classification: "C";
+				classification: string;
 				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
 				 */
 				lastupdated: string; // date
 				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
 				 * Optional flag to indicate if data is unavailable from data source.
 				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
+				 * NOTE:
 				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
 				 */
 				unavailable?: boolean;
+				/**
+				 * Free text.
+				 */
+				value?: string;
 			};
 			/**
-			 * Employment
-			 * Name of Employer.
+			 * Ownership of Private Property Status of Person (based on IRAS information).
+			 * Can be true, false, or null (if data is not available).
 			 * example:
 			 * {
 			 *   "classification": "C",
 			 *   "source": "1",
 			 *   "lastupdated": "2019-03-26"
 			 * }
+			 * {
+			 *   "value": false,
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
 			 */
-			employment?: {
-				/**
-				 * example:
-				 * ALPHA
-				 */
-				value?: string;
+			ownerprivate?: {
 				/**
 				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
 				 */
-				classification: "C";
+				classification: string;
 				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
 				 */
 				lastupdated: string; // date
 				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
 				 * Optional flag to indicate if data is unavailable from data source.
 				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
+				 * NOTE:
 				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
 				 */
 				unavailable?: boolean;
+				/**
+				 * Value of data field.
+				 */
+				value?: boolean;
 			};
 			/**
-			 * PassType
-			 * Pass type of a FIN holder. <br/>**Note:** Only applies to a foreigner with a valid pass.
-			 *
-			 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
+			 * Masked Singapore issued identification number of the Person.
+			 * Only the last 3 digit and ending alphabet will be in clear.
 			 * example:
 			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "*****111D",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			partialuinfin?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				value?: string;
+			};
+			/**
+			 * Pass expiry of a foreigner.
+			 * Note: Only applies to a foreigner with a valid pass.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "2022-12-31",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			passexpirydate?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * Value of data field in YYYY-MM-DD format. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+				 */
+				value?: string; // date
+			};
+			/**
+			 * Passport Expiry Date of Person.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "2020-01-01",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			passportexpirydate?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * Value of data field in YYYY-MM-DD format. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+				 */
+				value?: string; // date
+			};
+			/**
+			 * Passport Number of Person.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "E35463874W",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			passportnumber?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				value?: string;
+			};
+			/**
+			 * Pass status of a FIN holder.
+			 * Note: Only applies to a foreigner with a valid pass.
+			 * Note: Currently this field is set as empty string for SG/PR and meta source set to '3'
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "Live",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			passstatus?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * Value of data field.
+				 */
+				value?: "Live" | "Approved" | "";
+			};
+			/**
+			 * Pass type of a FIN holder.
+			 * Note: Only applies to a foreigner with a valid pass.
+			 * Refer to the Code reference tables in the Support section for list of possible values.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "code": "RPass",
+			 *   "desc": "Work Permit",
 			 *   "classification": "C",
 			 *   "source": "1",
 			 *   "lastupdated": "2019-03-26"
 			 * }
 			 */
 			passtype?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
 				/**
 				 * Value of data field.
 				 * example:
@@ -7484,4902 +3202,20 @@ export declare namespace MyInfoComponents {
 				 * Work Permit
 				 */
 				desc?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
 			};
 			/**
-			 * PassStatus
-			 * Pass status of a FIN holder. <br/>**Note:** Only applies to a foreigner with a valid pass.
-			 * *	Live
-			 * *	Approved
-			 *
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			passstatus?: {
-				/**
-				 * Value of data field.
-				 * example:
-				 * Live
-				 */
-				value?: "Live" | "Approved";
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * PassExpiryDate
-			 * Pass expiry of a foreigner. <br/>**Note:** Only applies to a foreigner with a valid pass.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			passexpirydate?: {
-				/**
-				 * Value of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-				 * example:
-				 * 2022-12-31
-				 */
-				value?: string; // date
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * EmploymentSector
-			 * Employment Sector of a FIN holder.
-			 *
-			 * **Note:** Only applies to a foreigner with a valid work pass.
-			 *
-			 * Some examples of possible values are:
-			 * * MANUFACTURING
-			 * * CONSTRUCTION
-			 * * RECLAMATION
-			 * * SERVICE
-			 * * GRI-TECHNOLOGY
-			 * * LANDSCAPING
-			 * * INCINERATOR PLANT
-			 * * MARINE SHIPYARD
-			 * * PROCESS
-			 * * HARBOURCRAFT
-			 * * DOMESTIC
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			employmentsector?: {
-				/**
-				 * example:
-				 * MANUFACTURING
-				 */
-				value?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			vehicles?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * Vehicle Registration Number displayed on the vehicle number plates
-				 */
-				vehicleno?: {
-					/**
-					 * example:
-					 * SDF1235A
-					 */
-					value?: string;
-				};
-				/**
-				 * Type of Vehicles such as 'MOTOR CAR', 'STATION /WAGON/JEEP/LAND ROVER'
-				 */
-				type?: {
-					/**
-					 * example:
-					 * PASSENGER MOTOR CAR
-					 */
-					value?: string;
-				};
-				/**
-				 * In-Vehicle Unit (IU) number of the device fitted in Singapore-registered vehicles for Electronic Road Pricing (ERP) gantries and Electronic Parking System (EPS) car parks.
-				 */
-				iulabelno?: {
-					/**
-					 * example:
-					 *
-					 */
-					value?: string;
-				};
-				/**
-				 * Vehicle Make such as 'TOYOTA', 'HONDA', 'AUDI'
-				 */
-				make?: {
-					/**
-					 * example:
-					 * TOYOTA
-					 */
-					value?: string;
-				};
-				/**
-				 * Vehicle Model such as 'COROLLA ALTIS CLASSIC 1.6 CVT', 'HRV 1.5 DX CVT'
-				 */
-				model?: {
-					/**
-					 * example:
-					 * COROLLA ALTIS
-					 */
-					value?: string;
-				};
-				/**
-				 * Vehicle Chassis Number
-				 */
-				chassisno?: {
-					/**
-					 * example:
-					 * ZC11S1735800
-					 */
-					value?: string;
-				};
-				/**
-				 * Vehicle Engine Number
-				 */
-				engineno?: {
-					/**
-					 * example:
-					 * M13A1837453
-					 */
-					value?: string;
-				};
-				/**
-				 * Vehicle Motor Number
-				 */
-				motorno?: {
-					/**
-					 * example:
-					 *
-					 */
-					value?: string;
-				};
-				/**
-				 * Manufacturing year
-				 */
-				yearofmanufacture?: {
-					/**
-					 * example:
-					 * 2010
-					 */
-					value?: string;
-				};
-				/**
-				 * Date when vehicle is registered with LTA. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6'
-				 */
-				firstregistrationdate?: {
-					/**
-					 * example:
-					 * 2010-06-06
-					 */
-					value?: string; // date
-				};
-				/**
-				 * Date when vehicle is first registered in the country of origin. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6'
-				 */
-				originalregistrationdate?: {
-					/**
-					 * example:
-					 * 2010-06-06
-					 */
-					value?: string; // date
-				};
-				/**
-				 * Vehicle Certificate of Entitlement (COE) bid category
-				 */
-				coecategory?: {
-					/**
-					 * example:
-					 * A - CAR UP TO 1600CC & 97KW (130BHP)
-					 */
-					value?: string;
-				};
-				/**
-				 * Vehicle Certificate of Entitlement (COE) expiry date. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6'
-				 */
-				coeexpirydate?: {
-					/**
-					 * example:
-					 * 2020-06-05
-					 */
-					value?: string; // date
-				};
-				/**
-				 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6'
-				 */
-				roadtaxexpirydate?: {
-					/**
-					 * example:
-					 * 2020-06-05
-					 */
-					value?: string; // date
-				};
-				/**
-				 * Actual Quota Premium (QP) amount payable for the COE upon registration, conversion or COE revalidation in Singapore dollars (SGD). For renewal of COE, the value will contain actual PQP paid.
-				 */
-				quotapremium?: {
-					/**
-					 * example:
-					 * 14000.01
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Open Market Value is the value of manufacturer invoice price, freight and insurance in Singapore dollars (SGD).
-				 */
-				openmarketvalue?: {
-					/**
-					 * example:
-					 * 25000.01
-					 */
-					value?: number; // double
-				};
-				/**
-				 * CO2 emission rate
-				 */
-				co2emission?: {
-					/**
-					 * example:
-					 * 146.01
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Status of the Vehicle.
-				 *
-				 * * 1 - LIVE
-				 * * 2 - DE-REGISTERED
-				 */
-				status?: {
-					/**
-					 * example:
-					 * 1
-					 */
-					code?: "1" | "2";
-					/**
-					 * example:
-					 * LIVE
-					 */
-					desc?: "LIVE" | "DE-REGISTERED";
-				};
-				/**
-				 * Vehicle Primary Colour (e.g. BLACK)
-				 */
-				primarycolour?: {
-					/**
-					 * example:
-					 * BLACK
-					 */
-					value?: string;
-				};
-				/**
-				 * Vehicle Primary Colour (e.g. WHITE)
-				 */
-				secondarycolour?: {
-					/**
-					 * example:
-					 * WHITE
-					 */
-					value?: string;
-				};
-				/**
-				 * Vehicle Attachment 1 (e.g. DISABLED)
-				 */
-				attachment1?: {
-					/**
-					 * example:
-					 * DISABLED
-					 */
-					value?: string;
-				};
-				/**
-				 * Vehicle Attachment 2 (e.g. WITH SUN ROOF)
-				 */
-				attachment2?: {
-					/**
-					 * example:
-					 * WITH SUN ROOF
-					 */
-					value?: string;
-				};
-				/**
-				 * Vehicle Attachment 3 (e.g. SIDE CURTAIN)
-				 */
-				attachment3?: {
-					/**
-					 * example:
-					 * SIDE CURTAIN
-					 */
-					value?: string;
-				};
-				/**
-				 * Vehicle Scheme (e.g. REVISED OFF-PEAK CAR)
-				 */
-				scheme?: {
-					/**
-					 * example:
-					 * REVISED OFF-PEAK CAR
-					 */
-					value?: string;
-				};
-				/**
-				 * Total Hydro Carbon (THC) emission rate
-				 */
-				thcemission?: {
-					/**
-					 * example:
-					 * 1.011001
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Carbon Monoxide emission rate
-				 */
-				coemission?: {
-					/**
-					 * example:
-					 * 1.100001
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Nitrogen Oxide (NOx) emission rate.
-				 */
-				noxemission?: {
-					/**
-					 * example:
-					 * 0.011001
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Particulates (PM - Atmospheric Particulate Matter) emission rate.
-				 */
-				pmemission?: {
-					/**
-					 * example:
-					 * 0.007
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Engine Capacity in cubic centimeter (cc)
-				 */
-				enginecapacity?: {
-					/**
-					 * example:
-					 * 1600
-					 */
-					value?: number;
-				};
-				/**
-				 * Power Rate. Applicable to Electric and Hybrid vehicles powered by electric motors. Unit is Kilowatt.
-				 */
-				powerrate?: {
-					/**
-					 * example:
-					 * 1.41
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Effective Date/Time of Ownership. See "date-time" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6'
-				 */
-				effectiveownership?: {
-					/**
-					 * example:
-					 * 2010-08-31T20:12:12+08:00
-					 */
-					value?: string; // date-time
-				};
-				/**
-				 * Propellant (e.g. Compressed Natural Gas, Diesel, Diesel-CNG, Diesel-Electric, Diesel-Electric (Plug-In), Electric, Gas, Liquefied Petroleum Gas (LPG), Petrol, Petrol-CNG, Petrol-Electric, Petrol-Electric (Plug-In), Petrol-LPG
-				 */
-				propellant?: {
-					/**
-					 * example:
-					 * Compressed Natural Gas
-					 */
-					value?: string;
-				};
-				/**
-				 * Maximum Unladen Weight in kilograms (kg)
-				 */
-				maximumunladenweight?: {
-					/**
-					 * example:
-					 * 1500
-					 */
-					value?: number;
-				};
-				/**
-				 * Maximum Laden Weight in kilograms (kg)
-				 */
-				maximumladenweight?: {
-					/**
-					 * example:
-					 * 1795
-					 */
-					value?: number;
-				};
-				/**
-				 * Minimum PARF Benefit in Singapore dollars (SGD).
-				 */
-				minimumparfbenefit?: {
-					/**
-					 * example:
-					 * 8770.01
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Number of Transfer
-				 */
-				nooftransfers?: {
-					/**
-					 * example:
-					 * 2
-					 */
-					value?: number;
-				};
-				/**
-				 * Vehicle Parking Certificate. Applicable for Heavy Vehicles.
-				 */
-				vpc?: {
-					/**
-					 * example:
-					 * 1234567890
-					 */
-					value?: string;
-				};
-			}[];
-			/**
-			 * Driving Licence details of Person.
-			 *
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			drivinglicence?: {
-				/**
-				 * Status of Certificate of Merit. Possible values:
-				 *
-				 * * Y - ELIGIBLE
-				 * * N - NOT ELIGIBLE
-				 */
-				comstatus?: {
-					/**
-					 * example:
-					 * Y
-					 */
-					code?: "Y" | "N";
-					/**
-					 *
-					 * example:
-					 * ELIGIBLE
-					 */
-					desc?: "ELIGIBLE" | "NOT ELIGIBLE";
-				};
-				/**
-				 * Total Demerit Points
-				 */
-				totaldemeritpoints?: {
-					/**
-					 * example:
-					 * 0
-					 */
-					value?: number;
-				};
-				/**
-				 *
-				 */
-				suspension?: {
-					/**
-					 * Suspension Start Date
-					 */
-					startdate?: {
-						/**
-						 * example:
-						 *
-						 */
-						value?: string; // date
-					};
-					/**
-					 * Suspension End Date
-					 */
-					enddate?: {
-						/**
-						 * example:
-						 *
-						 */
-						value?: string; // date
-					};
-				};
-				/**
-				 *
-				 */
-				disqualification?: {
-					/**
-					 * Disqualification Start Date
-					 */
-					startdate?: {
-						/**
-						 * example:
-						 *
-						 */
-						value?: string; // date
-					};
-					/**
-					 * Disqualification End Date
-					 */
-					enddate?: {
-						/**
-						 * example:
-						 *
-						 */
-						value?: string; // date
-					};
-				};
-				/**
-				 *
-				 */
-				revocation?: {
-					/**
-					 * Revocation Start Date
-					 */
-					startdate?: {
-						/**
-						 * example:
-						 *
-						 */
-						value?: string; // date
-					};
-					/**
-					 * Revocation End Date
-					 */
-					enddate?: {
-						/**
-						 * example:
-						 *
-						 */
-						value?: string; // date
-					};
-				};
-				/**
-				 * Provisional Driving Licence (PDL)
-				 */
-				pdl?: {
-					/**
-					 * Validity of PDL. Possible values:
-					 *
-					 * * V - VALID
-					 * * E - EXPIRED
-					 * * I - INVALID
-					 * * N - NOT HOLDING
-					 */
-					validity?: {
-						/**
-						 * example:
-						 * V
-						 */
-						code?: "V" | "E" | "I" | "N";
-						/**
-						 *
-						 * example:
-						 * VALID
-						 */
-						desc?: "VALID" | "EXPIRED" | "INVALID" | "NOT HOLDING";
-					};
-					/**
-					 * PDL Expiry Date
-					 */
-					expirydate?: {
-						/**
-						 * example:
-						 * 2020-06-15
-						 */
-						value?: string; // date
-					};
-					/**
-					 * PDL Classes
-					 * example:
-					 * [
-					 *   {
-					 *     "class": {
-					 *       "value": "2A"
-					 *     }
-					 *   },
-					 *   {
-					 *     "class": {
-					 *       "value": "3A"
-					 *     }
-					 *   },
-					 *   {
-					 *     "class": {
-					 *       "value": "4P"
-					 *     }
-					 *   },
-					 *   {
-					 *     "class": {
-					 *       "value": "4AP"
-					 *     }
-					 *   },
-					 *   {
-					 *     "class": {
-					 *       "value": "5P"
-					 *     }
-					 *   }
-					 * ]
-					 */
-					classes?: {
-						class?: {
-							value?: string;
-						};
-					}[];
-				};
-				/**
-				 * Qualified Driving Licence (QDL)
-				 */
-				qdl?: {
-					/**
-					 * Validity of QDL. Possible values:
-					 *
-					 * * V - VALID
-					 * * E - EXPIRED
-					 * * I - INVALID
-					 * * N - NOT HOLDING
-					 */
-					validity?: {
-						/**
-						 * example:
-						 * V
-						 */
-						code?: "V" | "E" | "I" | "N";
-						/**
-						 *
-						 * example:
-						 * VALID
-						 */
-						desc?: "VALID" | "EXPIRED" | "INVALID" | "NOT HOLDING";
-					};
-					/**
-					 * QDL Expiry Date
-					 */
-					expirydate?: {
-						/**
-						 * example:
-						 * 2020-06-15
-						 */
-						value?: string; // date
-					};
-					/**
-					 * QDL Classes. Includes Issue Date (e.g. 2B, 2018-01-01)
-					 * example:
-					 * [
-					 *   {
-					 *     "class": {
-					 *       "value": "2A"
-					 *     },
-					 *     "issuedate": {
-					 *       "value": "2018-06-06"
-					 *     }
-					 *   },
-					 *   {
-					 *     "class": {
-					 *       "value": "3A"
-					 *     },
-					 *     "issuedate": {
-					 *       "value": "2018-06-06"
-					 *     }
-					 *   },
-					 *   {
-					 *     "class": {
-					 *       "value": "4P"
-					 *     },
-					 *     "issuedate": {
-					 *       "value": "2018-06-06"
-					 *     }
-					 *   },
-					 *   {
-					 *     "class": {
-					 *       "value": "4AP"
-					 *     },
-					 *     "issuedate": {
-					 *       "value": "2018-06-06"
-					 *     }
-					 *   },
-					 *   {
-					 *     "class": {
-					 *       "value": "5P"
-					 *     },
-					 *     "issuedate": {
-					 *       "value": "2018-06-06"
-					 *     }
-					 *   }
-					 * ]
-					 */
-					classes?: {
-						class?: {
-							value?: string;
-						};
-						issuedate?: {
-							value?: string; // date
-						};
-					}[];
-				};
-				/**
-				 * Serial Number of the Photo Card
-				 */
-				photocardserialno?: {
-					/**
-					 * example:
-					 * 115616
-					 */
-					value?: string;
-				};
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * Academic Qualifications
-			 * Academic Qualifications achieved
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			academicqualifications?: {
-				/**
-				 * Transcript of qualification
-				 */
-				transcripts?: {
-					/**
-					 * Qualification's Name
-					 */
-					name?: {
-						/**
-						 * example:
-						 * SINGAPORE-CAMBRIDGE GENERAL CERTIFICATE OF EDUCATION ORDINARY LEVEL
-						 */
-						value?: string;
-					};
-					/**
-					 * Year this qualification was attained
-					 *
-					 * See "date-fullyear" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6'
-					 */
-					yearattained?: {
-						/**
-						 * example:
-						 * 2018
-						 */
-						value?: string; // date
-					};
-					results?: {
-						/**
-						 * Subject taken
-						 */
-						subject?: {
-							/**
-							 * example:
-							 * English Language
-							 */
-							value?: string;
-						};
-						/**
-						 * Level of subject taken
-						 */
-						level?: {
-							/**
-							 * example:
-							 * Ordinary
-							 */
-							value?: string;
-						};
-						/**
-						 * Grade attained
-						 */
-						grade?: {
-							/**
-							 * example:
-							 * A
-							 */
-							value?: string;
-						};
-						/**
-						 * Optional Sub Subject taken
-						 */
-						subsubject?: {
-							/**
-							 * example:
-							 * SPECIAL PAPER
-							 */
-							value?: string;
-						};
-						/**
-						 * Optional grade attained for subSubject
-						 */
-						subgrade?: {
-							/**
-							 * example:
-							 * One
-							 */
-							value?: string;
-						};
-					}[];
-					/**
-					 * Explanatory Notes
-					 */
-					explanatorynotes?: {
-						value?: string;
-					};
-				}[];
-				/**
-				 * Electronic Certificates Uploaded
-				 */
-				certificates?: {
-					/**
-					 * File name of the electronic certificate
-					 */
-					name?: {
-						/**
-						 * example:
-						 * nus.opencert
-						 */
-						value?: string;
-					};
-					/**
-					 * File content of the electronic certificate, Base64 encoded
-					 */
-					content?: {
-						value?: string;
-					};
-					/**
-					 * Open Certificate Information
-					 *
-					 * Note: The test environment for OpenCert is at https://dev.opencerts.io/ while production is
-					 * at https://opencerts.io/
-					 */
-					opencertificate?: {
-						/**
-						 * The OpenCert serial number.
-						 */
-						id?: {
-							/**
-							 * example:
-							 * 100000000343840
-							 */
-							value?: string;
-						};
-						/**
-						 * Indicate whether this open certificate is primary certificate
-						 */
-						primary?: {
-							/**
-							 * example:
-							 * true
-							 */
-							value?: boolean;
-						};
-					};
-					/**
-					 * Indicate whether this file is open certificate
-					 */
-					opencertificateindicator?: {
-						/**
-						 * example:
-						 * true
-						 */
-						value?: boolean;
-					};
-				}[];
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * LTAVocationalLicences
-			 * LTA Vocational Licence.
-			 */
-			ltavocationallicences?: {
-				/**
-				 * Taxi driver's vocational licence
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				tdvl?: {
-					/**
-					 * Data classification of data field. Default 'C' - Confidential.
-					 */
-					classification: "C";
-					/**
-					 * Source of data.
-					 *
-					 * * '1' - Government-verified
-					 * * '2' - User provided
-					 * * '3' - Field is Not Applicable to Person
-					 * * '4' - Verified by SingPass
-					 *
-					 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-					 */
-					source: "1" | "2" | "3" | "4";
-					/**
-					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-					 */
-					lastupdated: string; // date
-					/**
-					 * Optional flag to indicate if data is unavailable from data source.
-					 *
-					 * **NOTE:**
-					 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-					 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-					 *   - If data is available from the data source, this property will not be present.
-					 *
-					 */
-					unavailable?: boolean;
-					/**
-					 * Licence Name of Taxi Driver's LTA Vocational Licence
-					 */
-					licencename?: {
-						/**
-						 * example:
-						 * TAXI DRIVER'S VOCATIONAL LICENCE (TDVL)
-						 */
-						value?: string;
-					};
-					/**
-					 * Unique Vocational Licence Number for Taxi Driver's LTA Vocational Licence holder
-					 */
-					vocationallicencenumber?: {
-						/**
-						 * example:
-						 * E00000001
-						 */
-						value?: string;
-					};
-					/**
-					 * Expiry date of Taxi Driver's LTA Vocational Licence
-					 */
-					expirydate?: {
-						/**
-						 * example:
-						 * 2025-03-30
-						 */
-						value?: string; // date
-					};
-					/**
-					 * Status of Taxi Driver's LTA Vocational Licence
-					 */
-					status?: {
-						/**
-						 * example:
-						 * ACT
-						 */
-						code?: string;
-						/**
-						 * example:
-						 * ACTIVE
-						 */
-						desc?: string;
-					};
-				};
-				/**
-				 * Private Hire Car driver's vocational licence
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				pdvl?: {
-					/**
-					 * Data classification of data field. Default 'C' - Confidential.
-					 */
-					classification: "C";
-					/**
-					 * Source of data.
-					 *
-					 * * '1' - Government-verified
-					 * * '2' - User provided
-					 * * '3' - Field is Not Applicable to Person
-					 * * '4' - Verified by SingPass
-					 *
-					 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-					 */
-					source: "1" | "2" | "3" | "4";
-					/**
-					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-					 */
-					lastupdated: string; // date
-					/**
-					 * Optional flag to indicate if data is unavailable from data source.
-					 *
-					 * **NOTE:**
-					 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-					 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-					 *   - If data is available from the data source, this property will not be present.
-					 *
-					 */
-					unavailable?: boolean;
-					/**
-					 * Licence Name of Private Hire Car driver's LTA Vocational Licence
-					 */
-					licencename?: {
-						/**
-						 * example:
-						 * PRIVATE HIRE CAR DRIVER'S VOCATIONAL LICENCE (PDVL)
-						 */
-						value?: string;
-					};
-					/**
-					 * Unique Vocational Licence Number for Private Hire Car driver's LTA Vocational Licence holder
-					 */
-					vocationallicencenumber?: {
-						/**
-						 * example:
-						 * E00000001
-						 */
-						value?: string;
-					};
-					/**
-					 * Expiry date of Private Hire Car driver's LTA Vocational Licence
-					 */
-					expirydate?: {
-						/**
-						 * example:
-						 * 2025-03-30
-						 */
-						value?: string; // date
-					};
-					/**
-					 * Status of Private Hire Car driver's LTA Vocational Licence
-					 */
-					status?: {
-						/**
-						 * example:
-						 * ACT
-						 */
-						code?: string;
-						/**
-						 * example:
-						 * ACTIVE
-						 */
-						desc?: string;
-					};
-				};
-				/**
-				 * Bus driver's vocational licence
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				bdvl?: {
-					/**
-					 * Data classification of data field. Default 'C' - Confidential.
-					 */
-					classification: "C";
-					/**
-					 * Source of data.
-					 *
-					 * * '1' - Government-verified
-					 * * '2' - User provided
-					 * * '3' - Field is Not Applicable to Person
-					 * * '4' - Verified by SingPass
-					 *
-					 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-					 */
-					source: "1" | "2" | "3" | "4";
-					/**
-					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-					 */
-					lastupdated: string; // date
-					/**
-					 * Optional flag to indicate if data is unavailable from data source.
-					 *
-					 * **NOTE:**
-					 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-					 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-					 *   - If data is available from the data source, this property will not be present.
-					 *
-					 */
-					unavailable?: boolean;
-					/**
-					 * Licence Name of Bus driver's LTA Vocational Licence
-					 */
-					licencename?: {
-						/**
-						 * example:
-						 * BUS DRIVER'S VOCATIONAL LICENCE (BDVL)
-						 */
-						value?: string;
-					};
-					/**
-					 * Unique Vocational Licence Number for  Bus driver's LTA Vocational Licence holder
-					 */
-					vocationallicencenumber?: {
-						/**
-						 * example:
-						 * E00000001
-						 */
-						value?: string;
-					};
-					/**
-					 * Expiry date of  Bus driver's LTA Vocational Licence
-					 */
-					expirydate?: {
-						/**
-						 * example:
-						 * 2025-03-30
-						 */
-						value?: string; // date
-					};
-					/**
-					 * Status of Bus driver's LTA Vocational Licence
-					 */
-					status?: {
-						/**
-						 * example:
-						 * ACT
-						 */
-						code?: string;
-						/**
-						 * example:
-						 * ACTIVE
-						 */
-						desc?: string;
-					};
-				};
-				/**
-				 * Bus Attendant's vocational licence
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				bavl?: {
-					/**
-					 * Data classification of data field. Default 'C' - Confidential.
-					 */
-					classification: "C";
-					/**
-					 * Source of data.
-					 *
-					 * * '1' - Government-verified
-					 * * '2' - User provided
-					 * * '3' - Field is Not Applicable to Person
-					 * * '4' - Verified by SingPass
-					 *
-					 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-					 */
-					source: "1" | "2" | "3" | "4";
-					/**
-					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-					 */
-					lastupdated: string; // date
-					/**
-					 * Optional flag to indicate if data is unavailable from data source.
-					 *
-					 * **NOTE:**
-					 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-					 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-					 *   - If data is available from the data source, this property will not be present.
-					 *
-					 */
-					unavailable?: boolean;
-					/**
-					 * Licence Name of Bus Attendant's LTA Vocational Licence
-					 */
-					licencename?: {
-						/**
-						 * example:
-						 * BUS ATTENDANT VOCATIONAL LICENCE (BAVL)
-						 */
-						value?: string;
-					};
-					/**
-					 * Unique Vocational Licence Number for Bus Attendant's LTA Vocational Licence holder
-					 */
-					vocationallicencenumber?: {
-						/**
-						 * example:
-						 * E00000001
-						 */
-						value?: string;
-					};
-					/**
-					 * Expiry date of Bus Attendant's LTA Vocational Licence
-					 */
-					expirydate?: {
-						/**
-						 * example:
-						 * 2025-03-30
-						 */
-						value?: string; // date
-					};
-					/**
-					 * Status of Bus Attendant's LTA Vocational Licence
-					 */
-					status?: {
-						/**
-						 * example:
-						 * ACT
-						 */
-						code?: string;
-						/**
-						 * example:
-						 * ACTIVE
-						 */
-						desc?: string;
-					};
-				};
-				/**
-				 * Omnibus driver's vocational licence
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				odvl?: {
-					/**
-					 * Data classification of data field. Default 'C' - Confidential.
-					 */
-					classification: "C";
-					/**
-					 * Source of data.
-					 *
-					 * * '1' - Government-verified
-					 * * '2' - User provided
-					 * * '3' - Field is Not Applicable to Person
-					 * * '4' - Verified by SingPass
-					 *
-					 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-					 */
-					source: "1" | "2" | "3" | "4";
-					/**
-					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-					 */
-					lastupdated: string; // date
-					/**
-					 * Optional flag to indicate if data is unavailable from data source.
-					 *
-					 * **NOTE:**
-					 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-					 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-					 *   - If data is available from the data source, this property will not be present.
-					 *
-					 */
-					unavailable?: boolean;
-					/**
-					 * Licence Name of Omnibus driver's LTA Vocational Licence
-					 */
-					licencename?: {
-						/**
-						 * example:
-						 * OMNIBUS DRIVER'S VOCATIONAL LICENCE
-						 */
-						value?: string;
-					};
-					/**
-					 * Unique Vocational Licence Number for Omnibus driver's LTA Vocational Licence holder
-					 */
-					vocationallicencenumber?: {
-						/**
-						 * example:
-						 * E00000001
-						 */
-						value?: string;
-					};
-					/**
-					 * Expiry date of Omnibus driver's LTA Vocational Licence
-					 */
-					expirydate?: {
-						/**
-						 * example:
-						 * 2025-03-30
-						 */
-						value?: string; // date
-					};
-					/**
-					 * Status of Omnibus driver's LTA Vocational Licence
-					 */
-					status?: {
-						/**
-						 * example:
-						 * ACT
-						 */
-						code?: string;
-						/**
-						 * example:
-						 * ACTIVE
-						 */
-						desc?: string;
-					};
-				};
-			};
-			/**
-			 * Community Health Assist Scheme
-			 * Community Health Assist Scheme (CHAS) card details - Card Type, Date of Issue, Date of Expiry
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			chas?: {
-				cardtype?: {
-					/**
-					 * example:
-					 * C
-					 */
-					code?: any;
-					/**
-					 * example:
-					 * Green
-					 */
-					desc?: any;
-				};
-				indicator?: {
-					/**
-					 * example:
-					 * C
-					 */
-					code?: any;
-					/**
-					 * example:
-					 * Green
-					 */
-					desc?: any;
-				};
-				/**
-				 * CHAS Expiry Date
-				 */
-				expirydate?: {
-					/**
-					 * example:
-					 * 2020-06-15
-					 */
-					value?: string; // date
-				};
-				/**
-				 * CHAS Issue Date
-				 */
-				issuedate?: {
-					/**
-					 * example:
-					 * 2020-06-15
-					 */
-					value?: string; // date
-				};
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Name
-				 * Full Name of the Person.
-				 */
-				name?: {
-					/**
-					 * example:
-					 * TAN XIAO HUI
-					 */
-					value?: string;
-				};
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * EduLevel
-			 * Highest Education Level of Person.
-			 *
-			 * * '0' - NO FORMAL QUALIFICATION / PRE-PRIMARY / LOWER PRIMARY
-			 * * '1' - PRIMARY
-			 * * '2' - LOWER SECONDARY
-			 * * '3' - SECONDARY
-			 * * '4' - POST-SECONDARY (NON-TERTIARY): GENERAL & VOCATION
-			 * * '5' - POLYTECHNIC DIPLOMA
-			 * * '6' - PROFESSIONAL QUALIFICATION AND OTHER DIPLOMA
-			 * * '7' - BACHELOR'S OR EQUIVALENT
-			 * * '8' - POSTGRADUATE DIPLOMA / CERTIFICATE (EXCLUDING MASTER'S AND DOCTORATE)
-			 * * '9' - MASTER'S AND DOCTORATE OR EQUIVALENT
-			 * * 'N' - MODULAR CERTIFICATION (NON-AWARD COURSES / NON-FULL QUALIFICATIONS)
-			 */
-			edulevel?: {
-				/**
-				 *
-				 * example:
-				 * 7
-				 */
-				code?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "N";
-				/**
-				 * example:
-				 * BACHELOR'S OR EQUIVALENT
-				 */
-				desc?:
-					| "NO FORMAL QUALIFICATION / PRE-PRIMARY / LOWER PRIMARY"
-					| "PRIMARY"
-					| "LOWER SECONDARY"
-					| "SECONDARY"
-					| "POST-SECONDARY (NON-TERTIARY): GENERAL & VOCATION"
-					| "POLYTECHNIC DIPLOMA"
-					| "PROFESSIONAL QUALIFICATION AND OTHER DIPLOMA"
-					| "BACHELOR'S OR EQUIVALENT"
-					| "POSTGRADUATE DIPLOMA / CERTIFICATE (EXCLUDING MASTER'S AND DOCTORATE)"
-					| "MASTER'S AND DOCTORATE OR EQUIVALENT"
-					| "MODULAR CERTIFICATION (NON-AWARD COURSES / NON-FULL QUALIFICATIONS)";
-			};
-			/**
-			 * GradYear
-			 * Year of Graduation of Person. Format: YYYY
-			 */
-			gradyear?: {
-				/**
-				 * example:
-				 * 2006
-				 */
-				value?: string; // [0-9]{4}
-			};
-			/**
-			 * SchoolName
-			 * Name of School of Person.
-			 */
-			schoolname?: {
-				/**
-				 * Code value of school name.
-				 *
-				 * **Note:** Code+desc and value are mutually exclusive.
-				 * example:
-				 * T07GS3011J
-				 */
-				code?: string;
-				/**
-				 * Name of school represented by 'code'
-				 *
-				 * **Note:** Code+desc and value are mutually exclusive.
-				 * example:
-				 * SIGLAP SECONDARY SCHOOL
-				 */
-				desc?: string;
-				/**
-				 * Free text value of school name.
-				 *
-				 * **Note:** Code+desc and value are mutually exclusive.
-				 * example:
-				 *
-				 */
-				value?: string;
-			};
-			/**
-			 * HouseholdIncome
-			 * Household Income of Person in SGD.
-			 */
-			householdincome?: {
-				/**
-				 * upper bound of the range of household income bracket
-				 */
-				high?: {
-					/**
-					 * example:
-					 * 5999
-					 */
-					value?: number;
-				};
-				/**
-				 * lower bound of the range of household income bracket
-				 */
-				low?: {
-					/**
-					 * example:
-					 * 5000
-					 */
-					value?: number;
-				};
-			};
-			/**
-			 * HomeNo
-			 * Home Contact Number of Person.
-			 */
-			homeno?: {
-				/**
-				 * Prefix of Phone Number. Defaults to '+'. If phone number is blank, prefix will be returned as blank.
-				 */
-				prefix?: {
-					/**
-					 * example:
-					 * +
-					 */
-					value?: string;
-				};
-				/**
-				 * Area Code of Phone Number. Default to '65'. If phone number is blank, code will be returned as blank.
-				 */
-				areacode?: {
-					/**
-					 * example:
-					 * 65
-					 */
-					value?: string;
-				};
-				/**
-				 * Phone Number.
-				 */
-				nbr?: {
-					/**
-					 * example:
-					 * 66132665
-					 */
-					value?: string;
-				};
-			};
-			/**
-			 * VocationalLicences
-			 * Vocational Licences.
-			 */
-			vocationallicences?: {
-				licences?: {
-					/**
-					 * Unique licence number assigned by issuing agency
-					 */
-					number?: {
-						value?: number;
-					};
-					/**
-					 * Licence name
-					 */
-					name?: {
-						value?: string;
-					};
-					/**
-					 * Status of licence
-					 */
-					status?: {
-						code?: "ACT" | "IPA";
-						desc?: "Active" | "In-Principal Approval";
-					};
-					/**
-					 * Agency that issued the licence
-					 */
-					issuanceagency?: {
-						code?: string;
-						desc?: string;
-					};
-					/**
-					 * Licence issue date. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-					 */
-					issuedate?: {
-						value?: string;
-					};
-					/**
-					 * Licence expiry date. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-					 */
-					expirydate?: {
-						value?: string;
-					};
-				}[];
-			};
-			/**
-			 * BillAdd
-			 * Billing Address of Person
-			 *
-			 * **Note:**
-			 * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
-			 * - check the `type` discriminator property to differentiate between the two address formats
-			 *
-			 */
-			billadd?: /**
-			 * BillAdd
-			 * Billing Address of Person
-			 *
-			 * **Note:**
-			 * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
-			 * - check the `type` discriminator property to differentiate between the two address formats
-			 *
-			 */
-			/**
-			 * Address details (Singapore Format)
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			| DataitemAddressSg /**
-				 * Address details (Non-Singapore Format)
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				| DataitemAddressUnformatted;
-			/**
-			 * MailAdd
-			 * Mailing Address of Person
-			 *
-			 * **Note:**
-			 * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
-			 * - check the `type` discriminator property to differentiate between the two address formats
-			 *
-			 */
-			mailadd?: /**
-			 * MailAdd
-			 * Mailing Address of Person
-			 *
-			 * **Note:**
-			 * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
-			 * - check the `type` discriminator property to differentiate between the two address formats
-			 *
-			 */
-			/**
-			 * Address details (Singapore Format)
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			| DataitemAddressSg /**
-				 * Address details (Non-Singapore Format)
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				| DataitemAddressUnformatted;
-			/**
-			 * GSTVoucher
-			 * GST Voucher scheme details.
-			 */
-			gstvoucher?: {
-				exclusion?: {
-					value?: boolean;
-				};
-				signup?: {
-					value?: boolean;
-				};
-				gstmedisave?: {
-					value?: number;
-				};
-				gstregular?: {
-					value?: number;
-				};
-				gstspecial?: {
-					value?: number;
-				};
-				year?: {
-					value?: string;
-				};
-			};
-			/**
-			 * SilverSupport
-			 * Silver Support scheme details.
-			 */
-			silversupport?: {
-				eligibility?: {
-					value?: boolean;
-				};
-				amount?: {
-					value?: number;
-				};
-				year?: {
-					value?: string;
-				};
-			};
-			/**
-			 * Uuid
-			 * Whole-of-Government UUID of Person.
-			 */
-			uuid?: {
-				value?: string;
-			};
-			/**
-			 * MerdekaGen
-			 * Merdekagen details
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			merdekagen?: {
-				/**
-				 * Eligibility
-				 */
-				eligibility?: {
-					/**
-					 * example:
-					 * true
-					 */
-					value?: boolean;
-				};
-				/**
-				 * Amount eligible for
-				 */
-				quantum?: {
-					/**
-					 * example:
-					 * 100
-					 */
-					value?: number;
-				};
-				/**
-				 * Suggested user friendly display
-				 */
-				message?: {
-					/**
-					 * example:
-					 * 2
-					 */
-					code?: string;
-					/**
-					 * example:
-					 * You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888.
-					 */
-					desc?: string;
-				};
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * PioneerGen
-			 * Pioneergen details
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			pioneergen?: {
-				/**
-				 * Eligibility
-				 */
-				eligibility?: {
-					/**
-					 * example:
-					 * true
-					 */
-					value?: boolean;
-				};
-				/**
-				 * Amount eligible for
-				 */
-				quantum?: {
-					/**
-					 * example:
-					 * 100
-					 */
-					value?: number;
-				};
-				/**
-				 * Suggested user friendly display
-				 */
-				message?: {
-					/**
-					 * example:
-					 * 2
-					 */
-					code?: string;
-					/**
-					 * example:
-					 * You are eligible for the Pioneer Generation Package. For further enquiries, please contact 1800-2222-888.
-					 */
-					desc?: string;
-				};
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * Summary of latest Notice of Assessment within the past three years.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			"noa-basic"?: {
-				/**
-				 * Assessable Income
-				 */
-				amount?: {
-					/**
-					 * example:
-					 * 100000.01
-					 */
-					value?: number; // double
-				};
-				/**
-				 * The second latest annual assessable income available from IRAS within the past 3 years.
-				 */
-				yearofassessment?: {
-					/**
-					 * example:
-					 * 2018
-					 */
-					value?: string; // [0-9]{4}
-				};
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * Detailed breakdown of latest Notice of Assessment within the past three years.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			noa?: {
-				/**
-				 * Assessable Income
-				 */
-				amount?: {
-					/**
-					 * example:
-					 * 100000.01
-					 */
-					value?: number; // double
-				};
-				/**
-				 * value of data field
-				 */
-				yearofassessment?: {
-					/**
-					 * example:
-					 * 2018
-					 */
-					value?: string; // [0-9]{4}
-				};
-				/**
-				 * Assessable Income from employment
-				 */
-				employment?: {
-					/**
-					 * example:
-					 * 100000.01
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Assessable Income from trade
-				 */
-				trade?: {
-					/**
-					 * example:
-					 * 0
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Assessable Income from rent
-				 */
-				rent?: {
-					/**
-					 * example:
-					 * 0
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Assessable Income from interest
-				 */
-				interest?: {
-					/**
-					 * example:
-					 * 0
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Tax Clearance indicator. This means that tax clearance has been sought by the employer for this NOA assessment. For more information, please refer to [this](https://www.iras.gov.sg/irashome/Businesses/Employers/Tax-Clearance-for-Foreign-SPR-Employees/Getting-Tax-Clearance--A-Step-by-Step-Guide/)
-				 */
-				taxclearance?: {
-					/**
-					 * example:
-					 * N
-					 */
-					value?: "Y" | "N";
-				};
-				/**
-				 * Type of 'Notice of Assessment' (NOA)
-				 */
-				category?: {
-					/**
-					 * example:
-					 * ORIGINAL
-					 */
-					value?: "ADDITIONAL" | "AMENDED" | "ORIGINAL" | "REPAYMENT";
-				};
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * History of Notice Of Assessment (Basic)
-			 * Summary of latest 2 Notice of Assessments within the past three years.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			"noahistory-basic"?: {
-				noas?: NOABasic[];
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * History of Notice Of Assessment
-			 * Detailed breakdown of latest 2 Notice of Assessments within the past three years.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			noahistory?: {
-				noas?: NOA[];
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * CPFContributions
-			 * Employer CPF Contributions of Person in SGD. Does not include any non-employer contributions.
-			 * Maximum past 15 months' of contributions.
-			 *
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			cpfcontributions?: {
-				/**
-				 * example:
-				 * [
-				 *   {
-				 *     "date": {
-				 *       "value": "2016-12-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2016-11"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2016-12-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2016-12"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2016-12-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2016-12"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-01-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2016-12"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-01-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-01"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-01-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-01"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-02-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-01"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-02-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-02"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-02-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-02"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-03-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-02"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-03-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-03"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-03-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-03"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-04-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-03"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-04-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-04"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-04-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-04"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-05-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-04"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-05-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-05"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-05-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-05"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-06-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-05"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-06-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-06"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-06-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-06"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-07-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-06"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-07-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-07"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-07-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-07"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-08-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-07"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-08-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-08"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-08-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-08"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-09-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-08"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-09-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-09"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-09-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-09"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-10-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-09"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-10-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-10"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-10-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-10"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-11-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-10"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-11-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-11"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-11-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-11"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-12-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-11"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-12-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-12"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-12-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-12"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2018-01-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-12"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2018-01-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2018-01"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2018-01-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2018-01"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   }
-				 * ]
-				 */
-				history?: {
-					/**
-					 * Employer who paid the Contribution.
-					 */
-					employer?: {
-						/**
-						 * example:
-						 * Crystal Horse Invest Pte Ltd
-						 */
-						value?: string;
-					};
-					/**
-					 * Date of Contribution Paid. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-					 */
-					date?: {
-						/**
-						 * example:
-						 * 2017-03-01
-						 */
-						value?: string; // date
-					};
-					/**
-					 * Month for which CPF Contribution was paid. Format: YYYY-MM
-					 */
-					month?: {
-						/**
-						 * example:
-						 * 2017-02
-						 */
-						value?: string;
-					};
-					/**
-					 * Amount of contribution in SGD
-					 */
-					amount?: {
-						/**
-						 * example:
-						 * 500
-						 */
-						value?: number; // double
-					};
-				}[];
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * CPFEmployers
-			 * Employers who paid CPF Contributions. Maximum up to past 14 months.
-			 *
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			cpfemployers?: {
-				/**
-				 * example:
-				 * [
-				 *   {
-				 *     "month": {
-				 *       "value": "2016-11"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2016-12"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2016-12"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2016-12"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-01"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-01"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-01"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-02"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-02"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-02"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-03"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-03"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-03"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-04"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-04"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-04"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-05"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-05"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-05"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-06"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-06"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-06"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-07"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-07"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-07"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-08"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-08"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-08"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-09"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-09"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-09"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-10"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-10"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-10"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-11"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-11"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-11"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-12"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-12"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-12"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2018-01"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2018-01"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   }
-				 * ]
-				 */
-				history?: {
-					/**
-					 * Employer who paid the Contribution.
-					 */
-					employer?: {
-						/**
-						 * example:
-						 * Crystal Horse Invest Pte Ltd
-						 */
-						value?: string;
-					};
-					/**
-					 * Month for which CPF Contribution was paid. Format: YYYY-MM
-					 */
-					month?: {
-						/**
-						 * example:
-						 * 2017-03
-						 */
-						value?: string; // date
-					};
-				}[];
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * CPFBalances
-			 * CPF Balances of Person in SGD.
-			 */
-			cpfbalances?: {
-				/**
-				 * Amount Balance in CPF-MA
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				ma?: {
-					/**
-					 * Data classification of data field. Default 'C' - Confidential.
-					 */
-					classification: "C";
-					/**
-					 * Source of data.
-					 *
-					 * * '1' - Government-verified
-					 * * '2' - User provided
-					 * * '3' - Field is Not Applicable to Person
-					 * * '4' - Verified by SingPass
-					 *
-					 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-					 */
-					source: "1" | "2" | "3" | "4";
-					/**
-					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-					 */
-					lastupdated: string; // date
-					/**
-					 * Optional flag to indicate if data is unavailable from data source.
-					 *
-					 * **NOTE:**
-					 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-					 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-					 *   - If data is available from the data source, this property will not be present.
-					 *
-					 */
-					unavailable?: boolean;
-					/**
-					 * example:
-					 * 11470.71
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Amount Balance in CPF-OA
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				oa?: {
-					/**
-					 * Data classification of data field. Default 'C' - Confidential.
-					 */
-					classification: "C";
-					/**
-					 * Source of data.
-					 *
-					 * * '1' - Government-verified
-					 * * '2' - User provided
-					 * * '3' - Field is Not Applicable to Person
-					 * * '4' - Verified by SingPass
-					 *
-					 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-					 */
-					source: "1" | "2" | "3" | "4";
-					/**
-					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-					 */
-					lastupdated: string; // date
-					/**
-					 * Optional flag to indicate if data is unavailable from data source.
-					 *
-					 * **NOTE:**
-					 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-					 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-					 *   - If data is available from the data source, this property will not be present.
-					 *
-					 */
-					unavailable?: boolean;
-					/**
-					 * example:
-					 * 1581.48
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Amount Balance in CPF-SA
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				sa?: {
-					/**
-					 * Data classification of data field. Default 'C' - Confidential.
-					 */
-					classification: "C";
-					/**
-					 * Source of data.
-					 *
-					 * * '1' - Government-verified
-					 * * '2' - User provided
-					 * * '3' - Field is Not Applicable to Person
-					 * * '4' - Verified by SingPass
-					 *
-					 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-					 */
-					source: "1" | "2" | "3" | "4";
-					/**
-					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-					 */
-					lastupdated: string; // date
-					/**
-					 * Optional flag to indicate if data is unavailable from data source.
-					 *
-					 * **NOTE:**
-					 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-					 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-					 *   - If data is available from the data source, this property will not be present.
-					 *
-					 */
-					unavailable?: boolean;
-					/**
-					 * example:
-					 * 21967.09
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Amount Balance in CPF-RA
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				ra?: {
-					/**
-					 * Data classification of data field. Default 'C' - Confidential.
-					 */
-					classification: "C";
-					/**
-					 * Source of data.
-					 *
-					 * * '1' - Government-verified
-					 * * '2' - User provided
-					 * * '3' - Field is Not Applicable to Person
-					 * * '4' - Verified by SingPass
-					 *
-					 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-					 */
-					source: "1" | "2" | "3" | "4";
-					/**
-					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-					 */
-					lastupdated: string; // date
-					/**
-					 * Optional flag to indicate if data is unavailable from data source.
-					 *
-					 * **NOTE:**
-					 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-					 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-					 *   - If data is available from the data source, this property will not be present.
-					 *
-					 */
-					unavailable?: boolean;
-					/**
-					 * example:
-					 * 0.01
-					 */
-					value?: number; // double
-				};
-			};
-			/**
-			 * CPFHousingWithdrawal
-			 * CPF Housing Withdrawal of Person. Amounts in SGD.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			cpfhousingwithdrawal?: {
-				/**
-				 * Withdrawal details for properties
-				 */
-				withdrawaldetails?: {
-					/**
-					 * Registered Address of Property which withdrawal is made.
-					 *
-					 *   **Note:**
-					 *   - address can be either Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
-					 *   - check the `type` discriminator property to differentiate between the two address formats
-					 *
-					 */
-					address?: /**
-					 * Registered Address of Property which withdrawal is made.
-					 *
-					 *   **Note:**
-					 *   - address can be either Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
-					 *   - check the `type` discriminator property to differentiate between the two address formats
-					 *
-					 */
-					/* Address details (Singapore Format) */ | AddressSG
-						| /* Address details (Non-Singapore Format) */ AddressUnformatted;
-					/**
-					 *
-					 */
-					accruedinterestamt?: {
-						/**
-						 * example:
-						 * 1581.48
-						 */
-						value?: number; // double
-					};
-					/**
-					 *
-					 */
-					monthlyinstalmentamt?: {
-						/**
-						 * example:
-						 * 1196.09
-						 */
-						value?: number; // double
-					};
-					/**
-					 *
-					 */
-					principalwithdrawalamt?: {
-						/**
-						 * example:
-						 * 2897.01
-						 */
-						value?: number; // double
-					};
-					/**
-					 *
-					 */
-					totalamountofcpfallowedforproperty?: {
-						/**
-						 * example:
-						 * 10000.01
-						 */
-						value?: number; // double
-					};
-				}[];
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * CPF Home Protection Scheme
-			 * CPF Home Protection Scheme
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			cpfhomeprotectionscheme?: {
-				coverage?: {
-					/**
-					 * Indicator
-					 * example:
-					 * true
-					 */
-					value?: boolean;
-				};
-				premium?: {
-					/**
-					 * Coverage premium. OPTIONAL attribute, present only if 'coverage' is true
-					 * example:
-					 * 100.01
-					 */
-					value?: number;
-				};
-				shareofcover?: {
-					/**
-					 * Share of coverage (in percentage). OPTIONAL attribute, present only if 'coverage' is true
-					 * example:
-					 * 20
-					 */
-					value?: number;
-				};
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * CPF Dependant Protection Scheme
-			 * CPF Dependant Protection Scheme
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			cpfdependantprotectionscheme?: {
-				coverage?: {
-					/**
-					 * Indicator
-					 * example:
-					 * true
-					 */
-					value?: boolean;
-				};
-				insurercode?: {
-					/**
-					 * Insurer Code
-					 * example:
-					 * 9GEL
-					 */
-					value?: string;
-				};
-				sumassuredamount?: {
-					/**
-					 * Sum assured. OPTIONAL attribute, present only if 'coverage' is true
-					 * example:
-					 * 70000
-					 */
-					value?: number;
-				};
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * CPFInvestmentScheme
-			 * CPF Investment Scheme
-			 */
-			cpfinvestmentscheme?: {
-				/**
-				 * Number of Discounted Singtel Shares
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				sdsnetshareholdingqty?: {
-					/**
-					 * Data classification of data field. Default 'C' - Confidential.
-					 */
-					classification: "C";
-					/**
-					 * Source of data.
-					 *
-					 * * '1' - Government-verified
-					 * * '2' - User provided
-					 * * '3' - Field is Not Applicable to Person
-					 * * '4' - Verified by SingPass
-					 *
-					 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-					 */
-					source: "1" | "2" | "3" | "4";
-					/**
-					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-					 */
-					lastupdated: string; // date
-					/**
-					 * Optional flag to indicate if data is unavailable from data source.
-					 *
-					 * **NOTE:**
-					 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-					 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-					 *   - If data is available from the data source, this property will not be present.
-					 *
-					 */
-					unavailable?: boolean;
-					/**
-					 * example:
-					 * 1360
-					 */
-					value?: number;
-				};
-				/**
-				 * Account Details
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				account?: {
-					/**
-					 * Data classification of data field. Default 'C' - Confidential.
-					 */
-					classification: "C";
-					/**
-					 * Source of data.
-					 *
-					 * * '1' - Government-verified
-					 * * '2' - User provided
-					 * * '3' - Field is Not Applicable to Person
-					 * * '4' - Verified by SingPass
-					 *
-					 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-					 */
-					source: "1" | "2" | "3" | "4";
-					/**
-					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-					 */
-					lastupdated: string; // date
-					/**
-					 * Optional flag to indicate if data is unavailable from data source.
-					 *
-					 * **NOTE:**
-					 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-					 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-					 *   - If data is available from the data source, this property will not be present.
-					 *
-					 */
-					unavailable?: boolean;
-					/**
-					 * Agent Bank Code
-					 */
-					agentbankcode?: {
-						/**
-						 * example:
-						 * OCBC
-						 */
-						value?: string;
-					};
-					/**
-					 * Account Number
-					 */
-					invbankacctno?: {
-						/**
-						 * example:
-						 * 098-26644-4
-						 */
-						value?: string;
-					};
-				};
-				/**
-				 * Self-Awareness Questionnaire (SAQ) Participation Status
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				saqparticipationstatus?: {
-					/**
-					 * Data classification of data field. Default 'C' - Confidential.
-					 */
-					classification: "C";
-					/**
-					 * Source of data.
-					 *
-					 * * '1' - Government-verified
-					 * * '2' - User provided
-					 * * '3' - Field is Not Applicable to Person
-					 * * '4' - Verified by SingPass
-					 *
-					 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-					 */
-					source: "1" | "2" | "3" | "4";
-					/**
-					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-					 */
-					lastupdated: string; // date
-					/**
-					 * Optional flag to indicate if data is unavailable from data source.
-					 *
-					 * **NOTE:**
-					 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-					 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-					 *   - If data is available from the data source, this property will not be present.
-					 *
-					 */
-					unavailable?: boolean;
-					/**
-					 * Possible values:
-					 *
-					 * * 'Y' – Participated
-					 * * 'X' – Existing CPFIS participant
-					 * * 'N' – Did not participate
-					 * example:
-					 * X
-					 */
-					code?: "Y" | "X" | "N";
-					/**
-					 * example:
-					 * Participated
-					 */
-					desc?: string;
-				};
-			};
-			/**
-			 * CPFMedishieldLife
-			 * CPF MediShield Life
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			cpfmedishieldlife?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * Present only if underlying 'hascovertag' is not empty (true or false) from CPF
-				 */
-				medishieldlifecoverage?: {
-					/**
-					 * Status of cover of user.
-					 */
-					hascovertag?: {
-						/**
-						 * example:
-						 * true
-						 */
-						value?: boolean;
-					};
-					/**
-					 * Name of the current payer who pay for this policy for current policy renewal date.
-					 *
-					 * Present only if 'hascovertag' is true.
-					 */
-					payername?: {
-						value?: string;
-					};
-					/**
-					 * Net Premium Payable in SGD after subsidies, Additional Premium Support and Government Benefit (if applicable) for current policy year.
-					 *
-					 * Present only if 'hascovertag' is true.
-					 *
-					 */
-					netpremiumpayable?: {
-						/**
-						 * example:
-						 * 1000
-						 */
-						value?: number;
-					};
-					/**
-					 * Renewal date for current policy year.
-					 *
-					 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-					 *
-					 * Present only if 'hascovertag' is true.
-					 *
-					 */
-					policyrenewaldate?: {
-						/**
-						 * example:
-						 * 2019-07-02
-						 */
-						value?: string; // date
-					};
-				};
-				/**
-				 * Present only if underlying 'hascovertag' is not empty (true or false) from CPF
-				 */
-				integratedshieldplancoverage?: {
-					/**
-					 * Status of cover of user.
-					 */
-					hascovertag?: {
-						/**
-						 * example:
-						 * true
-						 */
-						value?: boolean;
-					};
-					/**
-					 * Name of the current payer who pay for this policy for current policy renewal date.
-					 *
-					 * Present only if 'hascovertag' is true.
-					 */
-					payername?: {
-						value?: string;
-					};
-					/**
-					 * Company code of private insurer. Refer to 'Code Listing (InsurerCode)' in https://public.cloud.myinfo.gov.sg/dpp/frontend/assets/api-lib/myinfo/downloads/myinfo-api-code-tables.xlsx for list of possible values
-					 *
-					 * Present only if 'hascovertag' is true.
-					 */
-					insurercode?: {
-						value?: string;
-					};
-				};
-				/**
-				 * Empty array will be returned if there is no data
-				 */
-				medishieldlifedependants?: {
-					/**
-					 * Name of dependants whom the enquirer is paying for.
-					 */
-					dependantname?: {
-						value?: string;
-					};
-					/**
-					 * Net Premium Payable in SGD after subsidies, Additional Premium Support and Government Benefit (if applicable) for current policy year
-					 */
-					netpremiumpayable?: {
-						/**
-						 * example:
-						 * 1000
-						 */
-						value?: number;
-					};
-					/**
-					 * Renewal date for current policy year.
-					 *
-					 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-					 *
-					 * Present only if 'hascovertag' is true.
-					 *
-					 */
-					policyrenewaldate?: {
-						/**
-						 * example:
-						 * 2019-07-02
-						 */
-						value?: string; // date
-					};
-				}[];
-				/**
-				 * Empty array will be returned if there is no data
-				 */
-				integratedshieldplandependants?: {
-					/**
-					 * Name of dependants whom the enquirer is paying for.
-					 */
-					dependantname?: {
-						value?: string;
-					};
-					/**
-					 * Company code of private insurer. Refer to 'Code Listing (InsurerCode)' in https://public.cloud.myinfo.gov.sg/dpp/frontend/assets/api-lib/myinfo/downloads/myinfo-api-code-tables.xlsx for list of possible values
-					 *
-					 * Present only if 'hascovertag' is true.
-					 */
-					insurercode?: {
-						value?: string;
-					};
-				}[];
-			};
-			/**
-			 * CPFRSTUCurrentYearTaxRelief
-			 * CPF Retirement Savings Topping-up Scheme - Current Year Tax Relief
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			cpfrstucurrentyeartaxrelief?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * Total tax relief from self top-up in SGD
-				 */
-				totaltaxreliefself?: {
-					/**
-					 * example:
-					 * 1000
-					 */
-					value?: number;
-				};
-				/**
-				 * Remaining tax relief from self top-up in SGD
-				 */
-				remainingtaxreliefself?: {
-					/**
-					 * example:
-					 * 1000
-					 */
-					value?: number;
-				};
-				/**
-				 * Total tax relief from top-up by loved ones in SGD
-				 */
-				totaltaxrelieflovedones?: {
-					/**
-					 * example:
-					 * 1000
-					 */
-					value?: number;
-				};
-				/**
-				 * Remaining tax relief from top-up by loved ones in SGD
-				 */
-				remainingtaxrelieflovedones?: {
-					/**
-					 * example:
-					 * 1000
-					 */
-					value?: number;
-				};
-			};
-			/**
-			 * CPFRSTUSelfTopupAmount
-			 * CPF Retirement Savings Topping-up Scheme - Maximum amount you can top-up using cash and CPF
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			cpfrstuselftopupamount?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * Maximum amount you can top up using cash
-				 */
-				selftopupusingcash?: {
-					/**
-					 * example:
-					 * 1000
-					 */
-					value?: number;
-				};
-				/**
-				 * Maximum amount you can transfer using CPF
-				 */
-				selftopupusingcpf?: {
-					/**
-					 * example:
-					 * 1000
-					 */
-					value?: number;
-				};
-			};
-			/**
-			 * CPFLife
-			 * CPF Lifelong Income For the Elderly (CPF LIFE)
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			cpflife?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * Flag to indicate the CPF Life membership of the user
-				 */
-				cpflifecoverage?: {
-					/**
-					 * example:
-					 * true
-					 */
-					value?: boolean;
-				};
-				/**
-				 * CPF Life plan chosen
-				 */
-				cpflifeplan?: {
-					/**
-					 * example:
-					 * Standard Plan
-					 */
-					value?: string;
-				};
-				/**
-				 * Monthly payout from CPF Life in SGD
-				 */
-				cpflifemonthlypayout?: {
-					/**
-					 * example:
-					 * 1000
-					 */
-					value?: number;
-				};
-				/**
-				 * Flag to indicate if user is currently receiving monthly payouts from CPF LIFE
-				 */
-				cpflifepaymentcommencement?: {
-					/**
-					 * example:
-					 * true
-					 */
-					value?: boolean;
-				};
-				/**
-				 * Date of latest CPF Life payment. Can be blank.
-				 *
-				 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-				 */
-				cpflifepaymentdate?: {
-					/**
-					 * example:
-					 * 2019-09-02
-					 */
-					value?: string; // date
-				};
-			};
-			/**
-			 * CPFMonthlyPayouts
-			 * CPF Monthly Payouts (Non-LIFE)
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			cpfmonthlypayouts?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * Monthly payout amount in SGD
-				 */
-				monthlypayout?: {
-					/**
-					 * example:
-					 * 1000
-					 */
-					value?: number;
-				};
-				/**
-				 * Flag to indicate if user is currently receiving monthly payouts
-				 */
-				paymentcommencement?: {
-					/**
-					 * example:
-					 * true
-					 */
-					value?: boolean;
-				};
-			};
-		}
-		/**
-		 * Person instance's details
-		 */
-		export interface PersonCommon {
-			/**
-			 * Partial UINFIN
-			 * Masked Singapore issued identification number of the Person. Only the last 3 digit and ending alphabet will be in clear.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			partialuinfin?: {
-				/**
-				 * Value of the field, should be displayed as it is.
-				 * example:
-				 * *****111D
-				 */
-				value?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * UINFIN
-			 * Singapore issued identification number of the Person.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			uinfin?: {
-				/**
-				 * value of the field, should be displayed as it is.
-				 * example:
-				 * S1111111D
-				 */
-				value?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * Name
-			 * Full Name of the Person.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			name?: {
-				/**
-				 * value of the field, should be displayed as it is.
-				 * example:
-				 * TAN XIAO HUI
-				 */
-				value?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * HanYuPinYin
-			 * Han Yu Pin Yin name of the Person.
-			 *
-			 * *Presentation Logic - If there is a value to `hanyupinyinname` (i.e. not empty), then `hanyupinyinname` should be displayed in a new line below `name`, and formatted with round brackets i.e. "(`hanyupinyinname`)"'*
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			hanyupinyinname?: {
-				/**
-				 * example:
-				 * CHEN XIAO HUI
-				 */
-				value?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * Alias
-			 * Alias name of the Person.
-			 *
-			 * *Presentation Logic - If there is a value to `aliasname` (i.e. not empty), then `aliasname` should be displayed in a new line below `hanyupinyinname`, and prefixed with the ''@'' symbol i.e. "@`aliasname`".'*
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			aliasname?: {
-				/**
-				 * value of the field.
-				 * example:
-				 * TRICIA TAN XIAO HUI
-				 */
-				value?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * HanYuPinYinAlias
-			 * Han Yu Pin Yin Alias name of the Person.
-			 *
-			 * *Presentation Logic - If there is a value to `hanyupinyinaliasname` (i.e. not empty), then `hanyupinyinaliasname` should be displayed in a new line below `aliasname`, and prefixed with the ''@'' symbol i.e. "@`hanyupinyinaliasname`".*
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			hanyupinyinaliasname?: {
-				/**
-				 * example:
-				 * TRICIA CHEN XIAO HUI
-				 */
-				value?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * MarriedName
-			 * Married name of the Person.
-			 *
-			 * *Presentation Logic - If there is a value to `marriedname` (i.e. not empty), then `marriedname` should be displayed in a new line below `hanyupinyinaliasname`.*
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			marriedname?: {
-				/**
-				 * value of the field, should be displayed as it is.
-				 * example:
-				 *
-				 */
-				value?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * Sex
-			 * Sex of Person.
-			 * * 'F' - FEMALE
-			 * * 'M' - MALE
-			 * * 'U' - UNKNOWN
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			sex?: {
-				/**
-				 * example:
-				 * F
-				 */
-				code?: "F" | "M" | "U";
-				/**
-				 *
-				 * example:
-				 * FEMALE
-				 */
-				desc?: "FEMALE" | "MALE" | "UNKNOWN";
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * Race
 			 * Race of Person.
 			 *
-			 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
+			 *   Refer to the Code reference tables in the Support section for list of possible values.
 			 * example:
 			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "code": "CN",
+			 *   "desc": "CHINESE",
 			 *   "classification": "C",
 			 *   "source": "1",
 			 *   "lastupdated": "2019-03-26"
@@ -12387,7570 +3223,9974 @@ export declare namespace MyInfoComponents {
 			 */
 			race?: {
 				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
 				 * example:
 				 * CN
 				 */
-				code?: string; // [a-zA-Z]{2}
+				code: string; // ^[A-Z]{2}$
 				/**
 				 * example:
 				 * CHINESE
 				 */
-				desc?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
+				desc: string;
 			};
 			/**
-			 * SecondaryRace
-			 * Secondary Race of Person.
+			 * Registered Address of Person (including FIN holders).
 			 *
-			 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
+			 * Note:
+			 * - Address can be either a Singapore address (type: 'SG'), non Singapore address (type: 'UNFORMATTED') or empty type address ('')
+			 * - May be unavailable for some FIN holders.
 			 * example:
 			 * {
+			 *   "type": "SG",
+			 *   "block": {
+			 *     "value": "548"
+			 *   },
+			 *   "building": {
+			 *     "value": ""
+			 *   },
+			 *   "floor": {
+			 *     "value": "09"
+			 *   },
+			 *   "unit": {
+			 *     "value": "128"
+			 *   },
+			 *   "street": {
+			 *     "value": "BEDOK NORTH AVENUE 1"
+			 *   },
+			 *   "postal": {
+			 *     "value": "460548"
+			 *   },
+			 *   "country": {
+			 *     "code": "SG",
+			 *     "desc": "SINGAPORE"
+			 *   },
 			 *   "classification": "C",
 			 *   "source": "1",
 			 *   "lastupdated": "2019-03-26"
 			 * }
-			 */
-			secondaryrace?: {
-				/**
-				 *
-				 * example:
-				 * EU
-				 */
-				code?: string; // [a-zA-Z]{2}
-				/**
-				 *
-				 * example:
-				 * EURASIAN
-				 */
-				desc?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * Dialect
-			 * Dialect of Person.
-			 *
-			 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			dialect?: {
-				/**
-				 *
-				 * example:
-				 * SG
-				 */
-				code?: string; // [a-zA-Z]{2}
-				/**
-				 *
-				 * example:
-				 * SWISS GERMAN
-				 */
-				desc?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * Nationality
-			 * Nationality/Citizenship of Person.
-			 *
-			 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			nationality?: {
-				/**
-				 *
-				 * example:
-				 * SG
-				 */
-				code?: string; // [a-zA-Z]{2}
-				/**
-				 *
-				 * example:
-				 * SINGAPORE CITIZEN
-				 */
-				desc?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * DOB
-			 * Date of Birth of Person.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			dob?: {
-				/**
-				 * Value of data field.
-				 * Format can be one of the below (with reference tohttps://datatracker.ietf.org/doc/html/rfc3339#section-5.6):
-				 * - full-date
-				 * - date-fullyear "-" date-month
-				 * - date-fullyear
-				 * example:
-				 * 1958-05-17
-				 */
-				value?: string; // date
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * BirthCountry
-			 * Country/Place of Birth of Person.
-			 *
-			 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			birthcountry?: {
-				/**
-				 *
-				 * example:
-				 * SG
-				 */
-				code?: string; // [a-zA-Z]{2}
-				/**
-				 *
-				 * example:
-				 * SINGAPORE
-				 */
-				desc?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * ResidentialStatus
-			 * Residential Status of Person. Applicable to Singapore Citizens and Permanent Residents.
-			 *
-			 *
-			 * **Note:** This data item is not applicable for FIN holders i.e. `source` will be '3'.
-			 * In such cases, the `code` and `desc` properties will be blank or empty string ("").
-			 *
-			 * * A - ALIEN
-			 * * C - CITIZEN
-			 * * P - PR
-			 * * U - UNKNOWN
-			 * * N - NOT APPLICABLE
-			 * * &lt; BLANK &gt; (for FIN holders only)
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			residentialstatus?: {
-				/**
-				 * example:
-				 * C
-				 */
-				code?: "A" | "C" | "P" | "U" | "N" | ""; // [a-zA-Z]{1}
-				/**
-				 * example:
-				 * CITIZEN
-				 */
-				desc?: "ALIEN" | "CITIZEN" | "PR" | "UNKNOWN" | "NOT APPLICABLE" | "";
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * PassportNumber
-			 * Passport Number of Person.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			passportnumber?: {
-				/**
-				 * Value of data field.
-				 * example:
-				 * E35463874W
-				 */
-				value?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * PassportExpiryDate
-			 * Passport Expiry Date of Person.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			passportexpirydate?: {
-				/**
-				 * Value of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-				 * example:
-				 * 2020-01-01
-				 */
-				value?: string; // date
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * RegAdd
-			 * Registered Address of Person (including FIN holders)
-			 *
-			 * **Note:**
-			 * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
-			 * - check the `type` discriminator property to differentiate between the two address formats
-			 * - may be unavailable for some FIN holders
 			 */
 			regadd?: /**
-			 * RegAdd
-			 * Registered Address of Person (including FIN holders)
+			 * Registered Address of Person (including FIN holders).
 			 *
-			 * **Note:**
-			 * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
-			 * - check the `type` discriminator property to differentiate between the two address formats
-			 * - may be unavailable for some FIN holders
-			 */
-			/**
-			 * Address details (Singapore Format)
+			 * Note:
+			 * - Address can be either a Singapore address (type: 'SG'), non Singapore address (type: 'UNFORMATTED') or empty type address ('')
+			 * - May be unavailable for some FIN holders.
 			 * example:
 			 * {
+			 *   "type": "SG",
+			 *   "block": {
+			 *     "value": "548"
+			 *   },
+			 *   "building": {
+			 *     "value": ""
+			 *   },
+			 *   "floor": {
+			 *     "value": "09"
+			 *   },
+			 *   "unit": {
+			 *     "value": "128"
+			 *   },
+			 *   "street": {
+			 *     "value": "BEDOK NORTH AVENUE 1"
+			 *   },
+			 *   "postal": {
+			 *     "value": "460548"
+			 *   },
+			 *   "country": {
+			 *     "code": "SG",
+			 *     "desc": "SINGAPORE"
+			 *   },
 			 *   "classification": "C",
 			 *   "source": "1",
 			 *   "lastupdated": "2019-03-26"
 			 * }
 			 */
-			| DataitemAddressSg /**
-				 * Address details (Non-Singapore Format)
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				| DataitemAddressUnformatted;
-			/**
-			 * HousingType
-			 * Housing Type of Person (non-HDB only).
-			 *
-			 * **Note 1:** If `hdbtype` is available, this value will be null.
-			 *
-			 * **Note 2:** If `housingtype` &  `hdbtype` are unavailable, make this field user editable.
-			 *
-			 * Refer to `hdbtype` for detailed HDB type.
-			 *
-			 * * '121' - DETACHED HOUSE
-			 * * '122' - SEMI-DETACHED HOUSE
-			 * * '123' - TERRACE HOUSE
-			 * * '131' - CONDOMINIUM
-			 * * '132' - EXECUTIVE CONDOMINIUM
-			 * * '139' - APARTMENT
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			housingtype?: {
-				/**
-				 *
-				 * example:
-				 * 123
-				 */
-				code?: "121" | "122" | "123" | "131" | "132" | "139";
-				/**
-				 *
-				 * example:
-				 * TERRACE HOUSE
-				 */
-				desc?:
-					| "DETACHED HOUSE"
-					| "SEMI-DETACHED HOUSE"
-					| "TERRACE HOUSE"
-					| "CONDOMINIUM"
-					| "EXECUTIVE CONDOMINIUM"
-					| "APARTMENT";
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * HDBType
-			 * Flat Type of the HDB flat.
-			 *
-			 * **Note 1:** that this excludes Rental Flats, Pre-War SIT flat, PSA flat, HUDC flat, Executive Condominium and Shophouse.
-			 *
-			 * **Note 2:** If `housingtype` is available, this value will be null.
-			 *
-			 * **Note 3:** If `housingtype` &  `hdbtype` are unavailable, make this field user editable.
-			 *
-			 * * '111' - 1-ROOM FLAT (HDB)
-			 * * '112' - 2-ROOM FLAT (HDB)
-			 * * '113' - 3-ROOM FLAT (HDB)
-			 * * '114' - 4-ROOM FLAT (HDB)
-			 * * '115' - 5-ROOM FLAT (HDB)
-			 * * '116' - EXECUTIVE FLAT (HDB)
-			 * * '118' - STUDIO APARTMENT (HDB)
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			hdbtype?: {
-				/**
-				 *
-				 * example:
-				 * 112
-				 */
-				code?: "111" | "112" | "113" | "114" | "115" | "116" | "118";
-				/**
-				 *
-				 * example:
-				 * 2-ROOM FLAT (HDB)
-				 */
-				desc?:
-					| "1-ROOM FLAT (HDB)"
-					| "2-ROOM FLAT (HDB)"
-					| "3-ROOM FLAT (HDB)"
-					| "4-ROOM FLAT (HDB)"
-					| "5-ROOM FLAT (HDB)"
-					| "EXECUTIVE FLAT (HDB)"
-					| "STUDIO APARTMENT (HDB)";
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * HDBOwnership
-			 * HDB Ownership details
-			 *
-			 */
-			hdbownership?: {
-				/**
-				 * Number of Owners. Note that this does not include executors, administrators or trustees.
-				 */
-				noofowners?: {
-					/**
-					 * example:
-					 * 2
-					 */
-					value?: number;
-				};
-				/**
-				 * Address details (Singapore Format)
-				 */
-				address?: {
-					/**
-					 * Type of Address (SG or UNFORMATTED for non SG)
-					 */
-					type?: "SG" | "UNFORMATTED";
-					/**
-					 * Block/House of Address
-					 */
-					block?: {
+			| {
 						/**
+						 * Data classification of data field. Default 'C' - Confidential.
 						 * example:
-						 * 548
+						 * C
 						 */
-						value?: string;
-					};
-					/**
-					 * Building of Address
-					 */
-					building?: {
+						classification: string;
 						/**
+						 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
 						 * example:
+						 * 2019-03-26
+						 */
+						lastupdated: string; // date
+						/**
+						 * Source of data.
 						 *
-						 */
-						value?: string;
-					};
-					/**
-					 * Floor of Address
-					 */
-					floor?: {
-						/**
+						 * - '1': Government-verified
+						 * - '2': User provided
+						 * - '3': Not Applicable (applies only to Person data, not Entity data)
+						 * - '4': Verified by SingPass
 						 * example:
-						 * 09
+						 * 1
 						 */
-						value?: string;
-					};
-					/**
-					 * Unit of Address
-					 */
-					unit?: {
+						source: "1" | "2" | "3" | "4";
 						/**
-						 * example:
-						 * 128
-						 */
-						value?: string;
-					};
-					/**
-					 * Street of Address
-					 */
-					street?: {
-						/**
-						 * example:
-						 * BEDOK NORTH AVENUE 1
-						 */
-						value?: string;
-					};
-					/**
-					 * Postal Code of Address
-					 */
-					postal?: {
-						/**
-						 * example:
-						 * 460548
-						 */
-						value?: string;
-					};
-					/**
-					 * Country/Place of Address. For AddressSG this will always be "SG".
-					 */
-					country?: {
-						code?: string;
-						desc?: string;
-					};
-				};
-				/**
-				 * HDBType
-				 * Flat Type of the HDB flat.
-				 *
-				 * **Note 1:** that this excludes Rental Flats, Pre-War SIT flat, PSA flat, HUDC flat, Executive Condominium and Shophouse.
-				 *
-				 * **Note 2:** If `housingtype` is available, this value will be null.
-				 *
-				 * **Note 3:** If `housingtype` &  `hdbtype` are unavailable, make this field user editable.
-				 *
-				 * * '111' - 1-ROOM FLAT (HDB)
-				 * * '112' - 2-ROOM FLAT (HDB)
-				 * * '113' - 3-ROOM FLAT (HDB)
-				 * * '114' - 4-ROOM FLAT (HDB)
-				 * * '115' - 5-ROOM FLAT (HDB)
-				 * * '116' - EXECUTIVE FLAT (HDB)
-				 * * '118' - STUDIO APARTMENT (HDB)
-				 */
-				hdbtype?: {
-					/**
-					 *
-					 * example:
-					 * 112
-					 */
-					code?: "111" | "112" | "113" | "114" | "115" | "116" | "118";
-					/**
-					 *
-					 * example:
-					 * 2-ROOM FLAT (HDB)
-					 */
-					desc?:
-						| "1-ROOM FLAT (HDB)"
-						| "2-ROOM FLAT (HDB)"
-						| "3-ROOM FLAT (HDB)"
-						| "4-ROOM FLAT (HDB)"
-						| "5-ROOM FLAT (HDB)"
-						| "EXECUTIVE FLAT (HDB)"
-						| "STUDIO APARTMENT (HDB)";
-				};
-				/**
-				 * Date from which the lease period starts. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-				 */
-				leasecommencementdate?: {
-					/**
-					 * example:
-					 * 2008-06-13
-					 */
-					value?: string; // date
-				};
-				/**
-				 * Term of lease (in years) for the property computed from the lease commencement date.
-				 */
-				termoflease?: {
-					/**
-					 * example:
-					 * 99
-					 */
-					value?: number;
-				};
-				/**
-				 * Effective date of flat purchase. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-				 */
-				dateofpurchase?: {
-					/**
-					 * example:
-					 * 2008-06-13
-					 */
-					value?: string; // date
-				};
-				/**
-				 * Effective date of partial transfer without monetary consideration (e.g. addition, deletion or substitution of a co-owner) for an HDB sold flat.
-				 *
-				 * For partial transfer of flat where at least one of the current owner remains in the household, the Date of Purchase remains unchanged while the date of transfer of ownership will be updated.
-				 *
-				 * For outright transfer where there is a total change of all owner(s), only the Date of Purchase will be updated.
-				 *
-				 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6'
-				 */
-				dateofownershiptransfer?: {
-					/**
-					 * example:
-					 * 2018-06-13
-					 */
-					value?: string; // date
-				};
-				/**
-				 * The amount of housing loan granted to owner(s) by HDB in SGD.
-				 */
-				loangranted?: {
-					/**
-					 * example:
-					 * 310000.01
-					 */
-					value?: number; // double
-				};
-				/**
-				 * The number of years of loan repaymnet opted by owner(s) at the time the loan is first granted to him/her.
-				 */
-				originalloanrepayment?: {
-					/**
-					 * example:
-					 * 25
-					 */
-					value?: number;
-				};
-				/**
-				 * The remaining term of repayment for the loan in the format `years` + `months`.
-				 */
-				balanceloanrepayment?: {
-					years?: {
-						/**
-						 * example:
-						 * 2
-						 */
-						value?: number;
-					};
-					months?: {
-						/**
-						 * example:
-						 * 6
-						 */
-						value?: number;
-					};
-				};
-				/**
-				 * The amount of outstanding HDB loan owed by owner(s) in SGD.
-				 */
-				outstandingloanbalance?: {
-					/**
-					 * example:
-					 * 50000.01
-					 */
-					value?: number; // double
-				};
-				/**
-				 * The amount of monthly instalment the owner(s) have to pay for his/her loan in SGD.
-				 */
-				monthlyloaninstalment?: {
-					/**
-					 * example:
-					 * 1000.01
-					 */
-					value?: number; // double
-				};
-				/**
-				 * The amount of outstanding instalment the owner(s) have to pay for his/her loan in SGD.
-				 */
-				outstandinginstalment?: {
-					/**
-					 * example:
-					 * 1000.01
-					 */
-					value?: number; // double
-				};
-				/**
-				 * The purchase price of the HDB flat in SGD.
-				 */
-				purchaseprice?: {
-					/**
-					 * example:
-					 * 1000.01
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			}[];
-			/**
-			 * OwnerPrivate
-			 * Ownership of Private Property Status of Person (based on IRAS information).
-			 *
-			 * * true
-			 * * false
-			 * * null (data not available)
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			ownerprivate?: {
-				/**
-				 * Value of data field.
-				 * example:
-				 * false
-				 */
-				value?: boolean;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * Email
-			 * Email Address of Person.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			email?: {
-				/**
-				 * Value of data field.
-				 * example:
-				 * test@gmail.com
-				 */
-				value?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * MobileNo
-			 * Mobile Number of Person.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			mobileno?: {
-				/**
-				 * Prefix of Phone Number. Defaults to '+'. If phone number is blank, prefix will be returned as blank.
-				 */
-				prefix?: {
-					/**
-					 * example:
-					 * +
-					 */
-					value?: string;
-				};
-				/**
-				 * Area Code of Phone Number. Default to '65'. If phone number is blank, code will be returned as blank.
-				 */
-				areacode?: {
-					/**
-					 * example:
-					 * 65
-					 */
-					value?: string;
-				};
-				/**
-				 * Phone Number.
-				 */
-				nbr?: {
-					/**
-					 * example:
-					 * 66132665
-					 */
-					value?: string;
-				};
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * Marital
-			 * Marital Status of Person.
-			 *
-			 * * '1' - SINGLE
-			 * * '2' - MARRIED
-			 * * '3' - WIDOWED
-			 * * '5' - DIVORCED
-			 *
-			 * **Note:** This field must be made **editable** on your digital service form even though `source` is '1' (Government Verified).
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			marital?: {
-				/**
-				 *
-				 * example:
-				 * 2
-				 */
-				code?: "1" | "2" | "3" | "5";
-				/**
-				 *
-				 * example:
-				 * MARRIED
-				 */
-				desc?: "SINGLE" | "MARRIED" | "WIDOWED" | "DIVORCED";
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * MarriageCertNo
-			 * Certificate number of the latest marriage.
-			 *
-			 *
-			 * **Note:** This field must be made **editable** on your digital service form even though `source` is '1' (Government Verified).
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			marriagecertno?: {
-				/**
-				 * Value of data field.
-				 * example:
-				 * 123456789012345
-				 */
-				value?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * CountryOfMarriage
-			 * Country/Place of the latest marriage.
-			 *
-			 *
-			 * **Note:** This field must be made **editable** on your digital service form even though `source` is '1' (Government Verified).
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			countryofmarriage?: {
-				/**
-				 *
-				 * example:
-				 * SG
-				 */
-				code?: string;
-				/**
-				 *
-				 * example:
-				 * SINGAPORE
-				 */
-				desc?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * MarriageDate
-			 * Latest Marriage Date of Person.
-			 *
-			 *
-			 * **Note:** This field must be made **editable** on your digital service form even though `source` is '1' (Government Verified).
-			 *
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			marriagedate?: {
-				/**
-				 * Value of data field.
-				 *
-				 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-				 * example:
-				 * 2007-01-01
-				 */
-				value?: string; // date
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * DivorceDate
-			 * Last Divorce Date of Person.
-			 *
-			 *
-			 * **Note:** This field must be made **editable** on your digital service form even though `source` is '1' (Government Verified).
-			 *
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			divorcedate?: {
-				/**
-				 * Value of data field.
-				 *
-				 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-				 * example:
-				 *
-				 */
-				value?: string; // date
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * ChildrenBirthRecords
-			 * This refers to only local registered birth records(based on ICA’s electronic Birth Certificate Records from 1985 onwards).
-			 *
-			 * This includes adoption of locally registered child.
-			 *
-			 * For child below 21, the child’s Birth Cert No, Name, Sex, Race, Dialect, Date of Birth and Time of Birth will be shown.
-			 *
-			 * For child above 21, only the child’s Birth Cert Number will be shown.
-			 */
-			childrenbirthrecords?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * Birth certificate number of child.
-				 */
-				birthcertno?: {
-					/**
-					 * example:
-					 * S5562882C
-					 */
-					value?: string;
-				};
-				/**
-				 * Full Name of child
-				 */
-				name?: {
-					/**
-					 * example:
-					 * Jo Tan Pei Ni
-					 */
-					value?: string;
-				};
-				/**
-				 * Han Yu Pin Yin name of child.
-				 *
-				 * *Presentation Logic - If there is a value to `hanyupinyinname` (i.e. not empty), then `hanyupinyinname` should be displayed in a new line below `name`, and formatted with round brackets i.e. \"(`hanyupinyinname`)\".*
-				 */
-				hanyupinyinname?: {
-					/**
-					 * example:
-					 * Cheng Pei Ni
-					 */
-					value?: string;
-				};
-				/**
-				 * Alias name of child.
-				 *
-				 * *Presentation Logic - If there is a value to `aliasname` (i.e. not empty), then `aliasname` should be displayed in a new line below `hanyupinyinname`, and prefixed with the ''@'' symbol i.e. \"@`aliasname`\".*
-				 */
-				aliasname?: {
-					/**
-					 * example:
-					 *
-					 */
-					value?: string;
-				};
-				/**
-				 * Han Yu Pin Yin Alias name of child.
-				 *
-				 * *Presentation Logic - If there is a value to `hanyupinyinaliasname` (i.e. not empty), then `hanyupinyinaliasname` should be displayed in a new line below `aliasname`, and prefixed with the ''@'' symbol i.e. \"@`hanyupinyinaliasname`\".*
-				 */
-				hanyupinyinaliasname?: {
-					/**
-					 * example:
-					 *
-					 */
-					value?: string;
-				};
-				/**
-				 * Married name of child.
-				 *
-				 * *Presentation Logic - If there is a value to `marriedname` (i.e. not empty), then `marriedname` should be displayed in a new line below `hanyupinyinaliasname`.*
-				 */
-				marriedname?: {
-					/**
-					 * example:
-					 *
-					 */
-					value?: string;
-				};
-				/**
-				 * Sex of child. Possible values:
-				 *
-				 * * 'F' - FEMALE
-				 * * 'M' - MALE
-				 * * 'U' - UNKNOWN
-				 */
-				sex?: {
-					/**
-					 * example:
-					 * F
-					 */
-					code?: "F" | "M" | "U";
-					/**
-					 * example:
-					 * FEMALE
-					 */
-					desc?: "FEMALE" | "MALE" | "UNKNOWN";
-				};
-				/**
-				 * Race of child.
-				 *
-				 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-				 *
-				 */
-				race?: {
-					/**
-					 * example:
-					 * CN
-					 */
-					code?: string; // [a-zA-Z]{2}
-					/**
-					 * example:
-					 * CHINESE
-					 */
-					desc?: string;
-				};
-				/**
-				 * Secondary Race of child.
-				 *
-				 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-				 */
-				secondaryrace?: {
-					/**
-					 * example:
-					 *
-					 */
-					code?: string; // [a-zA-Z]{2}
-					/**
-					 * example:
-					 *
-					 */
-					desc?: string;
-				};
-				/**
-				 * Dialect of child.
-				 *
-				 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-				 */
-				dialect?: {
-					/**
-					 * example:
-					 * HK
-					 */
-					code?: string; // [a-zA-Z]{2}
-					/**
-					 * example:
-					 * HOKKIEN
-					 */
-					desc?: string;
-				};
-				/**
-				 * Life Status of child. Possible values:
-				 *
-				 * * A - ALIVE
-				 * * D - DECEASED
-				 */
-				lifestatus?: {
-					/**
-					 * example:
-					 * D
-					 */
-					code?: "A" | "D";
-					/**
-					 * example:
-					 * DECEASED
-					 */
-					desc?: "ALIVE" | "DECEASED";
-				};
-				/**
-				 * Date of Birth of child.
-				 *
-				 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-				 */
-				dob?: {
-					/**
-					 * example:
-					 * 2011-09-10
-					 */
-					value?: string; // date
-				};
-				/**
-				 * Time of Birth of child.
-				 *
-				 * Format: HHMM
-				 */
-				tob?: {
-					/**
-					 * example:
-					 * 0901
-					 */
-					value?: string;
-				};
-				vaccinationrequirements?: {
-					/**
-					 * Vaccination Requirement.
-					 *
-					 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-					 */
-					requirement?: {
-						/**
-						 * example:
-						 * 1M3D
-						 */
-						code?: string;
-						/**
-						 * example:
-						 * MINIMUM VACCINATION REQUIREMENT FOR PRESCHOOL
-						 */
-						desc?: string;
-					};
-					fulfilled?: {
-						/**
-						 * example:
-						 * true
-						 */
-						value?: boolean;
-					};
-				}[];
-				/**
-				 * Indicates whether the child is a Singapore Citizen at the time of birth.
-				 *
-				 * * Y - Yes
-				 * * N - No
-				 * * < BLANK > - Not applicable
-				 */
-				sgcitizenatbirthind?: {
-					/**
-					 * example:
-					 * Y
-					 */
-					value?: "Y" | "N" | "";
-				};
-			}[];
-			/**
-			 * SponsoredChildrenRecords
-			 * Details of children sponsored to be SC/PR/LTVP
-			 *
-			 * For child below 21, the child's NRIC/FIN, Name, Sex, Race, Secondary Race, Dialect, Date of Birth, Country/Place of Birth, Residential Status and SC/PR/LTVP grant date will be shown.
-			 *
-			 * For child above 21, only the child's last known NRIC/FIN will be shown.
-			 */
-			sponsoredchildrenrecords?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * NRIC/FIN of child
-				 */
-				nric?: {
-					/**
-					 * example:
-					 * S5562882C
-					 */
-					value?: string;
-				};
-				/**
-				 * Full Name of child
-				 */
-				name?: {
-					/**
-					 * example:
-					 * Jo Tan Pei Ni
-					 */
-					value?: string;
-				};
-				/**
-				 * Han Yu Pin Yin name of child.
-				 */
-				hanyupinyinname?: {
-					/**
-					 * example:
-					 * Cheng Pei Ni
-					 */
-					value?: string;
-				};
-				/**
-				 * Alias name of child.
-				 */
-				aliasname?: {
-					/**
-					 * example:
-					 *
-					 */
-					value?: string;
-				};
-				/**
-				 * Han Yu Pin Yin Alias name of child.
-				 */
-				hanyupinyinaliasname?: {
-					/**
-					 * example:
-					 *
-					 */
-					value?: string;
-				};
-				/**
-				 * Married name of child.
-				 */
-				marriedname?: {
-					/**
-					 * example:
-					 *
-					 */
-					value?: string;
-				};
-				/**
-				 * Sex of child. Possible values:
-				 *
-				 * * 'F' - FEMALE
-				 * * 'M' - MALE
-				 * * 'U' - UNKNOWN
-				 */
-				sex?: {
-					/**
-					 * example:
-					 * F
-					 */
-					code?: "F" | "M" | "U";
-					/**
-					 * example:
-					 * FEMALE
-					 */
-					desc?: "FEMALE" | "MALE" | "UNKNOWN";
-				};
-				/**
-				 * Race of child.
-				 *
-				 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-				 */
-				race?: {
-					/**
-					 * example:
-					 * CN
-					 */
-					code?: string; // [a-zA-Z]{2}
-					/**
-					 * example:
-					 * CHINESE
-					 */
-					desc?: string;
-				};
-				/**
-				 * Secondary Race of child.
-				 *
-				 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-				 */
-				secondaryrace?: {
-					/**
-					 * example:
-					 *
-					 */
-					code?: string; // [a-zA-Z]{2}
-					/**
-					 * example:
-					 *
-					 */
-					desc?: string;
-				};
-				/**
-				 * Dialect of child.
-				 *
-				 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-				 */
-				dialect?: {
-					/**
-					 * example:
-					 * HK
-					 */
-					code?: string; // [a-zA-Z]{2}
-					/**
-					 * example:
-					 * HOKKIEN
-					 */
-					desc?: string;
-				};
-				/**
-				 * Date of Birth of child.
-				 *
-				 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-				 */
-				dob?: {
-					/**
-					 * example:
-					 * 2011-09-10
-					 */
-					value?: string; // date
-				};
-				/**
-				 * BirthCountry
-				 * Country/Place of Birth of child.
-				 *
-				 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-				 */
-				birthcountry?: {
-					/**
-					 * example:
-					 * SG
-					 */
-					code?: string; // [a-zA-Z]{2}
-					/**
-					 * example:
-					 * SINGAPORE
-					 */
-					desc?: string;
-				};
-				/**
-				 * Life Status of child. Possible values:
-				 *
-				 * * A - ALIVE
-				 * * D - DECEASED
-				 */
-				lifestatus?: {
-					/**
-					 * example:
-					 * A
-					 */
-					code?: "A" | "D";
-					/**
-					 * example:
-					 * ALIVE
-					 */
-					desc?: "ALIVE" | "DECEASED";
-				};
-				/**
-				 * ResidentialStatus
-				 * Residential Status of child. Possible values:
-				 *
-				 * * A - ALIEN
-				 * * C - CITIZEN
-				 * * P - PR
-				 * * U - UNKNOWN
-				 * * N - NOT APPLICABLE
-				 */
-				residentialstatus?: {
-					/**
-					 * example:
-					 * C
-					 */
-					code?: "A" | "C" | "P" | "U" | "N"; // [a-zA-Z]{1}
-					/**
-					 * example:
-					 * Citizen
-					 */
-					desc?: "ALIEN" | "CITIZEN" | "PR" | "UNKNOWN" | "NOT APPLICABLE";
-				};
-				/**
-				 * Nationality/Citizenship of child.
-				 *
-				 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-				 */
-				nationality?: {
-					/**
-					 * example:
-					 * SG
-					 */
-					code?: string; // [a-zA-Z]{2}
-					/**
-					 * example:
-					 * SINGAPORE CITIZEN
-					 */
-					desc?: string;
-				};
-				/**
-				 * Date granted Singapore Citizenship, Permanent Resident or Long-term Visit Pass
-				 *
-				 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-				 */
-				scprgrantdate?: {
-					/**
-					 * example:
-					 * 2015-06-13
-					 */
-					value?: string; // date
-				};
-				vaccinationrequirements?: {
-					/**
-					 * Vaccination Requirement
-					 *
-					 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-					 */
-					requirement?: {
-						/**
-						 * example:
-						 * 1M3D
-						 */
-						code?: string;
-						/**
-						 * example:
-						 * MINIMUM VACCINATION REQUIREMENT FOR PRESCHOOL
-						 */
-						desc?: string;
-					};
-					fulfilled?: {
-						/**
-						 * example:
-						 * true
-						 */
-						value?: boolean;
-					};
-				}[];
-			}[];
-			/**
-			 * Occupation
-			 * Occupation of Person.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			occupation?: {
-				/**
-				 * Free text.
-				 *
-				 * For SC/PR holders, blank will be returned.
-				 * example:
-				 *
-				 */
-				value?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * Employment
-			 * Name of Employer.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			employment?: {
-				/**
-				 * example:
-				 * ALPHA
-				 */
-				value?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * PassType
-			 * Pass type of a FIN holder. <br/>**Note:** Only applies to a foreigner with a valid pass.
-			 *
-			 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			passtype?: {
-				/**
-				 * Value of data field.
-				 * example:
-				 * RPass
-				 */
-				code?: string;
-				/**
-				 * example:
-				 * Work Permit
-				 */
-				desc?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * PassStatus
-			 * Pass status of a FIN holder. <br/>**Note:** Only applies to a foreigner with a valid pass.
-			 * *	Live
-			 * *	Approved
-			 *
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			passstatus?: {
-				/**
-				 * Value of data field.
-				 * example:
-				 * Live
-				 */
-				value?: "Live" | "Approved";
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * PassExpiryDate
-			 * Pass expiry of a foreigner. <br/>**Note:** Only applies to a foreigner with a valid pass.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			passexpirydate?: {
-				/**
-				 * Value of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-				 * example:
-				 * 2022-12-31
-				 */
-				value?: string; // date
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * EmploymentSector
-			 * Employment Sector of a FIN holder.
-			 *
-			 * **Note:** Only applies to a foreigner with a valid work pass.
-			 *
-			 * Some examples of possible values are:
-			 * * MANUFACTURING
-			 * * CONSTRUCTION
-			 * * RECLAMATION
-			 * * SERVICE
-			 * * GRI-TECHNOLOGY
-			 * * LANDSCAPING
-			 * * INCINERATOR PLANT
-			 * * MARINE SHIPYARD
-			 * * PROCESS
-			 * * HARBOURCRAFT
-			 * * DOMESTIC
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			employmentsector?: {
-				/**
-				 * example:
-				 * MANUFACTURING
-				 */
-				value?: string;
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			vehicles?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * Vehicle Registration Number displayed on the vehicle number plates
-				 */
-				vehicleno?: {
-					/**
-					 * example:
-					 * SDF1235A
-					 */
-					value?: string;
-				};
-				/**
-				 * Type of Vehicles such as 'MOTOR CAR', 'STATION /WAGON/JEEP/LAND ROVER'
-				 */
-				type?: {
-					/**
-					 * example:
-					 * PASSENGER MOTOR CAR
-					 */
-					value?: string;
-				};
-				/**
-				 * In-Vehicle Unit (IU) number of the device fitted in Singapore-registered vehicles for Electronic Road Pricing (ERP) gantries and Electronic Parking System (EPS) car parks.
-				 */
-				iulabelno?: {
-					/**
-					 * example:
-					 *
-					 */
-					value?: string;
-				};
-				/**
-				 * Vehicle Make such as 'TOYOTA', 'HONDA', 'AUDI'
-				 */
-				make?: {
-					/**
-					 * example:
-					 * TOYOTA
-					 */
-					value?: string;
-				};
-				/**
-				 * Vehicle Model such as 'COROLLA ALTIS CLASSIC 1.6 CVT', 'HRV 1.5 DX CVT'
-				 */
-				model?: {
-					/**
-					 * example:
-					 * COROLLA ALTIS
-					 */
-					value?: string;
-				};
-				/**
-				 * Vehicle Chassis Number
-				 */
-				chassisno?: {
-					/**
-					 * example:
-					 * ZC11S1735800
-					 */
-					value?: string;
-				};
-				/**
-				 * Vehicle Engine Number
-				 */
-				engineno?: {
-					/**
-					 * example:
-					 * M13A1837453
-					 */
-					value?: string;
-				};
-				/**
-				 * Vehicle Motor Number
-				 */
-				motorno?: {
-					/**
-					 * example:
-					 *
-					 */
-					value?: string;
-				};
-				/**
-				 * Manufacturing year
-				 */
-				yearofmanufacture?: {
-					/**
-					 * example:
-					 * 2010
-					 */
-					value?: string;
-				};
-				/**
-				 * Date when vehicle is registered with LTA. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6'
-				 */
-				firstregistrationdate?: {
-					/**
-					 * example:
-					 * 2010-06-06
-					 */
-					value?: string; // date
-				};
-				/**
-				 * Date when vehicle is first registered in the country of origin. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6'
-				 */
-				originalregistrationdate?: {
-					/**
-					 * example:
-					 * 2010-06-06
-					 */
-					value?: string; // date
-				};
-				/**
-				 * Vehicle Certificate of Entitlement (COE) bid category
-				 */
-				coecategory?: {
-					/**
-					 * example:
-					 * A - CAR UP TO 1600CC & 97KW (130BHP)
-					 */
-					value?: string;
-				};
-				/**
-				 * Vehicle Certificate of Entitlement (COE) expiry date. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6'
-				 */
-				coeexpirydate?: {
-					/**
-					 * example:
-					 * 2020-06-05
-					 */
-					value?: string; // date
-				};
-				/**
-				 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6'
-				 */
-				roadtaxexpirydate?: {
-					/**
-					 * example:
-					 * 2020-06-05
-					 */
-					value?: string; // date
-				};
-				/**
-				 * Actual Quota Premium (QP) amount payable for the COE upon registration, conversion or COE revalidation in Singapore dollars (SGD). For renewal of COE, the value will contain actual PQP paid.
-				 */
-				quotapremium?: {
-					/**
-					 * example:
-					 * 14000.01
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Open Market Value is the value of manufacturer invoice price, freight and insurance in Singapore dollars (SGD).
-				 */
-				openmarketvalue?: {
-					/**
-					 * example:
-					 * 25000.01
-					 */
-					value?: number; // double
-				};
-				/**
-				 * CO2 emission rate
-				 */
-				co2emission?: {
-					/**
-					 * example:
-					 * 146.01
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Status of the Vehicle.
-				 *
-				 * * 1 - LIVE
-				 * * 2 - DE-REGISTERED
-				 */
-				status?: {
-					/**
-					 * example:
-					 * 1
-					 */
-					code?: "1" | "2";
-					/**
-					 * example:
-					 * LIVE
-					 */
-					desc?: "LIVE" | "DE-REGISTERED";
-				};
-				/**
-				 * Vehicle Primary Colour (e.g. BLACK)
-				 */
-				primarycolour?: {
-					/**
-					 * example:
-					 * BLACK
-					 */
-					value?: string;
-				};
-				/**
-				 * Vehicle Primary Colour (e.g. WHITE)
-				 */
-				secondarycolour?: {
-					/**
-					 * example:
-					 * WHITE
-					 */
-					value?: string;
-				};
-				/**
-				 * Vehicle Attachment 1 (e.g. DISABLED)
-				 */
-				attachment1?: {
-					/**
-					 * example:
-					 * DISABLED
-					 */
-					value?: string;
-				};
-				/**
-				 * Vehicle Attachment 2 (e.g. WITH SUN ROOF)
-				 */
-				attachment2?: {
-					/**
-					 * example:
-					 * WITH SUN ROOF
-					 */
-					value?: string;
-				};
-				/**
-				 * Vehicle Attachment 3 (e.g. SIDE CURTAIN)
-				 */
-				attachment3?: {
-					/**
-					 * example:
-					 * SIDE CURTAIN
-					 */
-					value?: string;
-				};
-				/**
-				 * Vehicle Scheme (e.g. REVISED OFF-PEAK CAR)
-				 */
-				scheme?: {
-					/**
-					 * example:
-					 * REVISED OFF-PEAK CAR
-					 */
-					value?: string;
-				};
-				/**
-				 * Total Hydro Carbon (THC) emission rate
-				 */
-				thcemission?: {
-					/**
-					 * example:
-					 * 1.011001
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Carbon Monoxide emission rate
-				 */
-				coemission?: {
-					/**
-					 * example:
-					 * 1.100001
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Nitrogen Oxide (NOx) emission rate.
-				 */
-				noxemission?: {
-					/**
-					 * example:
-					 * 0.011001
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Particulates (PM - Atmospheric Particulate Matter) emission rate.
-				 */
-				pmemission?: {
-					/**
-					 * example:
-					 * 0.007
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Engine Capacity in cubic centimeter (cc)
-				 */
-				enginecapacity?: {
-					/**
-					 * example:
-					 * 1600
-					 */
-					value?: number;
-				};
-				/**
-				 * Power Rate. Applicable to Electric and Hybrid vehicles powered by electric motors. Unit is Kilowatt.
-				 */
-				powerrate?: {
-					/**
-					 * example:
-					 * 1.41
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Effective Date/Time of Ownership. See "date-time" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6'
-				 */
-				effectiveownership?: {
-					/**
-					 * example:
-					 * 2010-08-31T20:12:12+08:00
-					 */
-					value?: string; // date-time
-				};
-				/**
-				 * Propellant (e.g. Compressed Natural Gas, Diesel, Diesel-CNG, Diesel-Electric, Diesel-Electric (Plug-In), Electric, Gas, Liquefied Petroleum Gas (LPG), Petrol, Petrol-CNG, Petrol-Electric, Petrol-Electric (Plug-In), Petrol-LPG
-				 */
-				propellant?: {
-					/**
-					 * example:
-					 * Compressed Natural Gas
-					 */
-					value?: string;
-				};
-				/**
-				 * Maximum Unladen Weight in kilograms (kg)
-				 */
-				maximumunladenweight?: {
-					/**
-					 * example:
-					 * 1500
-					 */
-					value?: number;
-				};
-				/**
-				 * Maximum Laden Weight in kilograms (kg)
-				 */
-				maximumladenweight?: {
-					/**
-					 * example:
-					 * 1795
-					 */
-					value?: number;
-				};
-				/**
-				 * Minimum PARF Benefit in Singapore dollars (SGD).
-				 */
-				minimumparfbenefit?: {
-					/**
-					 * example:
-					 * 8770.01
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Number of Transfer
-				 */
-				nooftransfers?: {
-					/**
-					 * example:
-					 * 2
-					 */
-					value?: number;
-				};
-				/**
-				 * Vehicle Parking Certificate. Applicable for Heavy Vehicles.
-				 */
-				vpc?: {
-					/**
-					 * example:
-					 * 1234567890
-					 */
-					value?: string;
-				};
-			}[];
-			/**
-			 * Driving Licence details of Person.
-			 *
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			drivinglicence?: {
-				/**
-				 * Status of Certificate of Merit. Possible values:
-				 *
-				 * * Y - ELIGIBLE
-				 * * N - NOT ELIGIBLE
-				 */
-				comstatus?: {
-					/**
-					 * example:
-					 * Y
-					 */
-					code?: "Y" | "N";
-					/**
-					 *
-					 * example:
-					 * ELIGIBLE
-					 */
-					desc?: "ELIGIBLE" | "NOT ELIGIBLE";
-				};
-				/**
-				 * Total Demerit Points
-				 */
-				totaldemeritpoints?: {
-					/**
-					 * example:
-					 * 0
-					 */
-					value?: number;
-				};
-				/**
-				 *
-				 */
-				suspension?: {
-					/**
-					 * Suspension Start Date
-					 */
-					startdate?: {
-						/**
-						 * example:
+						 * Optional flag to indicate if data is unavailable from data source.
 						 *
-						 */
-						value?: string; // date
-					};
-					/**
-					 * Suspension End Date
-					 */
-					enddate?: {
-						/**
-						 * example:
+						 * NOTE:
 						 *
-						 */
-						value?: string; // date
-					};
-				};
-				/**
-				 *
-				 */
-				disqualification?: {
-					/**
-					 * Disqualification Start Date
-					 */
-					startdate?: {
-						/**
-						 * example:
+						 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
 						 *
-						 */
-						value?: string; // date
-					};
-					/**
-					 * Disqualification End Date
-					 */
-					enddate?: {
-						/**
-						 * example:
+						 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
 						 *
+						 * - If data is available from the data source, this property will not be present.
 						 */
-						value?: string; // date
-					};
-				};
-				/**
-				 *
-				 */
-				revocation?: {
-					/**
-					 * Revocation Start Date
-					 */
-					startdate?: {
+						unavailable?: boolean;
 						/**
-						 * example:
-						 *
+						 * Block/House of Address.
 						 */
-						value?: string; // date
-					};
-					/**
-					 * Revocation End Date
-					 */
-					enddate?: {
-						/**
-						 * example:
-						 *
-						 */
-						value?: string; // date
-					};
-				};
-				/**
-				 * Provisional Driving Licence (PDL)
-				 */
-				pdl?: {
-					/**
-					 * Validity of PDL. Possible values:
-					 *
-					 * * V - VALID
-					 * * E - EXPIRED
-					 * * I - INVALID
-					 * * N - NOT HOLDING
-					 */
-					validity?: {
-						/**
-						 * example:
-						 * V
-						 */
-						code?: "V" | "E" | "I" | "N";
-						/**
-						 *
-						 * example:
-						 * VALID
-						 */
-						desc?: "VALID" | "EXPIRED" | "INVALID" | "NOT HOLDING";
-					};
-					/**
-					 * PDL Expiry Date
-					 */
-					expirydate?: {
-						/**
-						 * example:
-						 * 2020-06-15
-						 */
-						value?: string; // date
-					};
-					/**
-					 * PDL Classes
-					 * example:
-					 * [
-					 *   {
-					 *     "class": {
-					 *       "value": "2A"
-					 *     }
-					 *   },
-					 *   {
-					 *     "class": {
-					 *       "value": "3A"
-					 *     }
-					 *   },
-					 *   {
-					 *     "class": {
-					 *       "value": "4P"
-					 *     }
-					 *   },
-					 *   {
-					 *     "class": {
-					 *       "value": "4AP"
-					 *     }
-					 *   },
-					 *   {
-					 *     "class": {
-					 *       "value": "5P"
-					 *     }
-					 *   }
-					 * ]
-					 */
-					classes?: {
-						class?: {
-							value?: string;
-						};
-					}[];
-				};
-				/**
-				 * Qualified Driving Licence (QDL)
-				 */
-				qdl?: {
-					/**
-					 * Validity of QDL. Possible values:
-					 *
-					 * * V - VALID
-					 * * E - EXPIRED
-					 * * I - INVALID
-					 * * N - NOT HOLDING
-					 */
-					validity?: {
-						/**
-						 * example:
-						 * V
-						 */
-						code?: "V" | "E" | "I" | "N";
-						/**
-						 *
-						 * example:
-						 * VALID
-						 */
-						desc?: "VALID" | "EXPIRED" | "INVALID" | "NOT HOLDING";
-					};
-					/**
-					 * QDL Expiry Date
-					 */
-					expirydate?: {
-						/**
-						 * example:
-						 * 2020-06-15
-						 */
-						value?: string; // date
-					};
-					/**
-					 * QDL Classes. Includes Issue Date (e.g. 2B, 2018-01-01)
-					 * example:
-					 * [
-					 *   {
-					 *     "class": {
-					 *       "value": "2A"
-					 *     },
-					 *     "issuedate": {
-					 *       "value": "2018-06-06"
-					 *     }
-					 *   },
-					 *   {
-					 *     "class": {
-					 *       "value": "3A"
-					 *     },
-					 *     "issuedate": {
-					 *       "value": "2018-06-06"
-					 *     }
-					 *   },
-					 *   {
-					 *     "class": {
-					 *       "value": "4P"
-					 *     },
-					 *     "issuedate": {
-					 *       "value": "2018-06-06"
-					 *     }
-					 *   },
-					 *   {
-					 *     "class": {
-					 *       "value": "4AP"
-					 *     },
-					 *     "issuedate": {
-					 *       "value": "2018-06-06"
-					 *     }
-					 *   },
-					 *   {
-					 *     "class": {
-					 *       "value": "5P"
-					 *     },
-					 *     "issuedate": {
-					 *       "value": "2018-06-06"
-					 *     }
-					 *   }
-					 * ]
-					 */
-					classes?: {
-						class?: {
-							value?: string;
-						};
-						issuedate?: {
-							value?: string; // date
-						};
-					}[];
-				};
-				/**
-				 * Serial Number of the Photo Card
-				 */
-				photocardserialno?: {
-					/**
-					 * example:
-					 * 115616
-					 */
-					value?: string;
-				};
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * Academic Qualifications
-			 * Academic Qualifications achieved
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			academicqualifications?: {
-				/**
-				 * Transcript of qualification
-				 */
-				transcripts?: {
-					/**
-					 * Qualification's Name
-					 */
-					name?: {
-						/**
-						 * example:
-						 * SINGAPORE-CAMBRIDGE GENERAL CERTIFICATE OF EDUCATION ORDINARY LEVEL
-						 */
-						value?: string;
-					};
-					/**
-					 * Year this qualification was attained
-					 *
-					 * See "date-fullyear" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6'
-					 */
-					yearattained?: {
-						/**
-						 * example:
-						 * 2018
-						 */
-						value?: string; // date
-					};
-					results?: {
-						/**
-						 * Subject taken
-						 */
-						subject?: {
-							/**
-							 * example:
-							 * English Language
-							 */
+						block?: {
 							value?: string;
 						};
 						/**
-						 * Level of subject taken
+						 * Building of Address.
 						 */
-						level?: {
-							/**
-							 * example:
-							 * Ordinary
-							 */
+						building?: {
 							value?: string;
 						};
 						/**
-						 * Grade attained
+						 * Country/Place of Address. For AddressSG this will always be 'SG'.
 						 */
-						grade?: {
-							/**
-							 * example:
-							 * A
-							 */
+						country?: {
+							code?: string;
+							desc?: string;
+						};
+						/**
+						 * Floor of Address.
+						 */
+						floor?: {
 							value?: string;
 						};
 						/**
-						 * Optional Sub Subject taken
+						 * Postal Code of Address.
 						 */
-						subsubject?: {
-							/**
-							 * example:
-							 * SPECIAL PAPER
-							 */
+						postal?: {
 							value?: string;
 						};
 						/**
-						 * Optional grade attained for subSubject
+						 * Street of Address.
 						 */
-						subgrade?: {
-							/**
-							 * example:
-							 * One
-							 */
-							value?: string;
-						};
-					}[];
-					/**
-					 * Explanatory Notes
-					 */
-					explanatorynotes?: {
-						value?: string;
-					};
-				}[];
-				/**
-				 * Electronic Certificates Uploaded
-				 */
-				certificates?: {
-					/**
-					 * File name of the electronic certificate
-					 */
-					name?: {
-						/**
-						 * example:
-						 * nus.opencert
-						 */
-						value?: string;
-					};
-					/**
-					 * File content of the electronic certificate, Base64 encoded
-					 */
-					content?: {
-						value?: string;
-					};
-					/**
-					 * Open Certificate Information
-					 *
-					 * Note: The test environment for OpenCert is at https://dev.opencerts.io/ while production is
-					 * at https://opencerts.io/
-					 */
-					opencertificate?: {
-						/**
-						 * The OpenCert serial number.
-						 */
-						id?: {
-							/**
-							 * example:
-							 * 100000000343840
-							 */
+						street?: {
 							value?: string;
 						};
 						/**
-						 * Indicate whether this open certificate is primary certificate
+						 * Type of Address (SG or UNFORMATTED for non SG).
 						 */
-						primary?: {
-							/**
-							 * example:
-							 * true
-							 */
-							value?: boolean;
+						type?: "SG";
+						/**
+						 * Unit of Address.
+						 */
+						unit?: {
+							value?: string;
 						};
-					};
-					/**
-					 * Indicate whether this file is open certificate
-					 */
-					opencertificateindicator?: {
+				  }
+				| {
 						/**
+						 * Data classification of data field. Default 'C' - Confidential.
 						 * example:
-						 * true
+						 * C
 						 */
-						value?: boolean;
-					};
-				}[];
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
+						classification: string;
+						/**
+						 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+						 * example:
+						 * 2019-03-26
+						 */
+						lastupdated: string; // date
+						/**
+						 * Source of data.
+						 *
+						 * - '1': Government-verified
+						 * - '2': User provided
+						 * - '3': Not Applicable (applies only to Person data, not Entity data)
+						 * - '4': Verified by SingPass
+						 * example:
+						 * 1
+						 */
+						source: "1" | "2" | "3" | "4";
+						/**
+						 * Optional flag to indicate if data is unavailable from data source.
+						 *
+						 * NOTE:
+						 *
+						 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+						 *
+						 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+						 *
+						 * - If data is available from the data source, this property will not be present.
+						 */
+						unavailable?: boolean;
+						/**
+						 * Unregistered Foreign address line 1
+						 */
+						line1?: {
+							value?: string;
+						};
+						/**
+						 * Unregistered Foreign address line 2
+						 */
+						line2?: {
+							value?: string;
+						};
+						/**
+						 * Type of Address (SG or UNFORMATTED for non SG).
+						 */
+						type?: "UNFORMATTED";
+				  };
 			/**
-			 * LTAVocationalLicences
-			 * LTA Vocational Licence.
-			 */
-			ltavocationallicences?: {
-				/**
-				 * Taxi driver's vocational licence
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				tdvl?: {
-					/**
-					 * Data classification of data field. Default 'C' - Confidential.
-					 */
-					classification: "C";
-					/**
-					 * Source of data.
-					 *
-					 * * '1' - Government-verified
-					 * * '2' - User provided
-					 * * '3' - Field is Not Applicable to Person
-					 * * '4' - Verified by SingPass
-					 *
-					 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-					 */
-					source: "1" | "2" | "3" | "4";
-					/**
-					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-					 */
-					lastupdated: string; // date
-					/**
-					 * Optional flag to indicate if data is unavailable from data source.
-					 *
-					 * **NOTE:**
-					 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-					 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-					 *   - If data is available from the data source, this property will not be present.
-					 *
-					 */
-					unavailable?: boolean;
-					/**
-					 * Licence Name of Taxi Driver's LTA Vocational Licence
-					 */
-					licencename?: {
-						/**
-						 * example:
-						 * TAXI DRIVER'S VOCATIONAL LICENCE (TDVL)
-						 */
-						value?: string;
-					};
-					/**
-					 * Unique Vocational Licence Number for Taxi Driver's LTA Vocational Licence holder
-					 */
-					vocationallicencenumber?: {
-						/**
-						 * example:
-						 * E00000001
-						 */
-						value?: string;
-					};
-					/**
-					 * Expiry date of Taxi Driver's LTA Vocational Licence
-					 */
-					expirydate?: {
-						/**
-						 * example:
-						 * 2025-03-30
-						 */
-						value?: string; // date
-					};
-					/**
-					 * Status of Taxi Driver's LTA Vocational Licence
-					 */
-					status?: {
-						/**
-						 * example:
-						 * ACT
-						 */
-						code?: string;
-						/**
-						 * example:
-						 * ACTIVE
-						 */
-						desc?: string;
-					};
-				};
-				/**
-				 * Private Hire Car driver's vocational licence
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				pdvl?: {
-					/**
-					 * Data classification of data field. Default 'C' - Confidential.
-					 */
-					classification: "C";
-					/**
-					 * Source of data.
-					 *
-					 * * '1' - Government-verified
-					 * * '2' - User provided
-					 * * '3' - Field is Not Applicable to Person
-					 * * '4' - Verified by SingPass
-					 *
-					 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-					 */
-					source: "1" | "2" | "3" | "4";
-					/**
-					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-					 */
-					lastupdated: string; // date
-					/**
-					 * Optional flag to indicate if data is unavailable from data source.
-					 *
-					 * **NOTE:**
-					 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-					 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-					 *   - If data is available from the data source, this property will not be present.
-					 *
-					 */
-					unavailable?: boolean;
-					/**
-					 * Licence Name of Private Hire Car driver's LTA Vocational Licence
-					 */
-					licencename?: {
-						/**
-						 * example:
-						 * PRIVATE HIRE CAR DRIVER'S VOCATIONAL LICENCE (PDVL)
-						 */
-						value?: string;
-					};
-					/**
-					 * Unique Vocational Licence Number for Private Hire Car driver's LTA Vocational Licence holder
-					 */
-					vocationallicencenumber?: {
-						/**
-						 * example:
-						 * E00000001
-						 */
-						value?: string;
-					};
-					/**
-					 * Expiry date of Private Hire Car driver's LTA Vocational Licence
-					 */
-					expirydate?: {
-						/**
-						 * example:
-						 * 2025-03-30
-						 */
-						value?: string; // date
-					};
-					/**
-					 * Status of Private Hire Car driver's LTA Vocational Licence
-					 */
-					status?: {
-						/**
-						 * example:
-						 * ACT
-						 */
-						code?: string;
-						/**
-						 * example:
-						 * ACTIVE
-						 */
-						desc?: string;
-					};
-				};
-				/**
-				 * Bus driver's vocational licence
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				bdvl?: {
-					/**
-					 * Data classification of data field. Default 'C' - Confidential.
-					 */
-					classification: "C";
-					/**
-					 * Source of data.
-					 *
-					 * * '1' - Government-verified
-					 * * '2' - User provided
-					 * * '3' - Field is Not Applicable to Person
-					 * * '4' - Verified by SingPass
-					 *
-					 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-					 */
-					source: "1" | "2" | "3" | "4";
-					/**
-					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-					 */
-					lastupdated: string; // date
-					/**
-					 * Optional flag to indicate if data is unavailable from data source.
-					 *
-					 * **NOTE:**
-					 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-					 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-					 *   - If data is available from the data source, this property will not be present.
-					 *
-					 */
-					unavailable?: boolean;
-					/**
-					 * Licence Name of Bus driver's LTA Vocational Licence
-					 */
-					licencename?: {
-						/**
-						 * example:
-						 * BUS DRIVER'S VOCATIONAL LICENCE (BDVL)
-						 */
-						value?: string;
-					};
-					/**
-					 * Unique Vocational Licence Number for  Bus driver's LTA Vocational Licence holder
-					 */
-					vocationallicencenumber?: {
-						/**
-						 * example:
-						 * E00000001
-						 */
-						value?: string;
-					};
-					/**
-					 * Expiry date of  Bus driver's LTA Vocational Licence
-					 */
-					expirydate?: {
-						/**
-						 * example:
-						 * 2025-03-30
-						 */
-						value?: string; // date
-					};
-					/**
-					 * Status of Bus driver's LTA Vocational Licence
-					 */
-					status?: {
-						/**
-						 * example:
-						 * ACT
-						 */
-						code?: string;
-						/**
-						 * example:
-						 * ACTIVE
-						 */
-						desc?: string;
-					};
-				};
-				/**
-				 * Bus Attendant's vocational licence
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				bavl?: {
-					/**
-					 * Data classification of data field. Default 'C' - Confidential.
-					 */
-					classification: "C";
-					/**
-					 * Source of data.
-					 *
-					 * * '1' - Government-verified
-					 * * '2' - User provided
-					 * * '3' - Field is Not Applicable to Person
-					 * * '4' - Verified by SingPass
-					 *
-					 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-					 */
-					source: "1" | "2" | "3" | "4";
-					/**
-					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-					 */
-					lastupdated: string; // date
-					/**
-					 * Optional flag to indicate if data is unavailable from data source.
-					 *
-					 * **NOTE:**
-					 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-					 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-					 *   - If data is available from the data source, this property will not be present.
-					 *
-					 */
-					unavailable?: boolean;
-					/**
-					 * Licence Name of Bus Attendant's LTA Vocational Licence
-					 */
-					licencename?: {
-						/**
-						 * example:
-						 * BUS ATTENDANT VOCATIONAL LICENCE (BAVL)
-						 */
-						value?: string;
-					};
-					/**
-					 * Unique Vocational Licence Number for Bus Attendant's LTA Vocational Licence holder
-					 */
-					vocationallicencenumber?: {
-						/**
-						 * example:
-						 * E00000001
-						 */
-						value?: string;
-					};
-					/**
-					 * Expiry date of Bus Attendant's LTA Vocational Licence
-					 */
-					expirydate?: {
-						/**
-						 * example:
-						 * 2025-03-30
-						 */
-						value?: string; // date
-					};
-					/**
-					 * Status of Bus Attendant's LTA Vocational Licence
-					 */
-					status?: {
-						/**
-						 * example:
-						 * ACT
-						 */
-						code?: string;
-						/**
-						 * example:
-						 * ACTIVE
-						 */
-						desc?: string;
-					};
-				};
-				/**
-				 * Omnibus driver's vocational licence
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				odvl?: {
-					/**
-					 * Data classification of data field. Default 'C' - Confidential.
-					 */
-					classification: "C";
-					/**
-					 * Source of data.
-					 *
-					 * * '1' - Government-verified
-					 * * '2' - User provided
-					 * * '3' - Field is Not Applicable to Person
-					 * * '4' - Verified by SingPass
-					 *
-					 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-					 */
-					source: "1" | "2" | "3" | "4";
-					/**
-					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-					 */
-					lastupdated: string; // date
-					/**
-					 * Optional flag to indicate if data is unavailable from data source.
-					 *
-					 * **NOTE:**
-					 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-					 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-					 *   - If data is available from the data source, this property will not be present.
-					 *
-					 */
-					unavailable?: boolean;
-					/**
-					 * Licence Name of Omnibus driver's LTA Vocational Licence
-					 */
-					licencename?: {
-						/**
-						 * example:
-						 * OMNIBUS DRIVER'S VOCATIONAL LICENCE
-						 */
-						value?: string;
-					};
-					/**
-					 * Unique Vocational Licence Number for Omnibus driver's LTA Vocational Licence holder
-					 */
-					vocationallicencenumber?: {
-						/**
-						 * example:
-						 * E00000001
-						 */
-						value?: string;
-					};
-					/**
-					 * Expiry date of Omnibus driver's LTA Vocational Licence
-					 */
-					expirydate?: {
-						/**
-						 * example:
-						 * 2025-03-30
-						 */
-						value?: string; // date
-					};
-					/**
-					 * Status of Omnibus driver's LTA Vocational Licence
-					 */
-					status?: {
-						/**
-						 * example:
-						 * ACT
-						 */
-						code?: string;
-						/**
-						 * example:
-						 * ACTIVE
-						 */
-						desc?: string;
-					};
-				};
-			};
-			/**
-			 * Community Health Assist Scheme
-			 * Community Health Assist Scheme (CHAS) card details - Card Type, Date of Issue, Date of Expiry
+			 * Residential Status of Person. Applicable to Singapore Citizens and Permanent Residents.
+			 * Note: This data item is not applicable for FIN holders i.e. source will be '3'.
+			 * In such cases, the code and desc properties will be blank or empty string ('').
+			 *
+			 * Possible values:
+			 * - A - ALIEN
+			 * - C - CITIZEN
+			 * - P - PR
+			 * - U - UNKNOWN
+			 * - N - NOT APPLICABLE
+			 * - < BLANK > - (for FIN holders only)
 			 * example:
 			 * {
 			 *   "classification": "C",
 			 *   "source": "1",
 			 *   "lastupdated": "2019-03-26"
 			 * }
-			 */
-			chas?: {
-				cardtype?: {
-					/**
-					 * example:
-					 * C
-					 */
-					code?: any;
-					/**
-					 * example:
-					 * Green
-					 */
-					desc?: any;
-				};
-				indicator?: {
-					/**
-					 * example:
-					 * C
-					 */
-					code?: any;
-					/**
-					 * example:
-					 * Green
-					 */
-					desc?: any;
-				};
-				/**
-				 * CHAS Expiry Date
-				 */
-				expirydate?: {
-					/**
-					 * example:
-					 * 2020-06-15
-					 */
-					value?: string; // date
-				};
-				/**
-				 * CHAS Issue Date
-				 */
-				issuedate?: {
-					/**
-					 * example:
-					 * 2020-06-15
-					 */
-					value?: string; // date
-				};
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Name
-				 * Full Name of the Person.
-				 */
-				name?: {
-					/**
-					 * example:
-					 * TAN XIAO HUI
-					 */
-					value?: string;
-				};
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * EduLevel
-			 * Highest Education Level of Person.
-			 *
-			 * * '0' - NO FORMAL QUALIFICATION / PRE-PRIMARY / LOWER PRIMARY
-			 * * '1' - PRIMARY
-			 * * '2' - LOWER SECONDARY
-			 * * '3' - SECONDARY
-			 * * '4' - POST-SECONDARY (NON-TERTIARY): GENERAL & VOCATION
-			 * * '5' - POLYTECHNIC DIPLOMA
-			 * * '6' - PROFESSIONAL QUALIFICATION AND OTHER DIPLOMA
-			 * * '7' - BACHELOR'S OR EQUIVALENT
-			 * * '8' - POSTGRADUATE DIPLOMA / CERTIFICATE (EXCLUDING MASTER'S AND DOCTORATE)
-			 * * '9' - MASTER'S AND DOCTORATE OR EQUIVALENT
-			 * * 'N' - MODULAR CERTIFICATION (NON-AWARD COURSES / NON-FULL QUALIFICATIONS)
-			 */
-			edulevel?: {
-				/**
-				 *
-				 * example:
-				 * 7
-				 */
-				code?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "N";
-				/**
-				 * example:
-				 * BACHELOR'S OR EQUIVALENT
-				 */
-				desc?:
-					| "NO FORMAL QUALIFICATION / PRE-PRIMARY / LOWER PRIMARY"
-					| "PRIMARY"
-					| "LOWER SECONDARY"
-					| "SECONDARY"
-					| "POST-SECONDARY (NON-TERTIARY): GENERAL & VOCATION"
-					| "POLYTECHNIC DIPLOMA"
-					| "PROFESSIONAL QUALIFICATION AND OTHER DIPLOMA"
-					| "BACHELOR'S OR EQUIVALENT"
-					| "POSTGRADUATE DIPLOMA / CERTIFICATE (EXCLUDING MASTER'S AND DOCTORATE)"
-					| "MASTER'S AND DOCTORATE OR EQUIVALENT"
-					| "MODULAR CERTIFICATION (NON-AWARD COURSES / NON-FULL QUALIFICATIONS)";
-			};
-			/**
-			 * GradYear
-			 * Year of Graduation of Person. Format: YYYY
-			 */
-			gradyear?: {
-				/**
-				 * example:
-				 * 2006
-				 */
-				value?: string; // [0-9]{4}
-			};
-			/**
-			 * SchoolName
-			 * Name of School of Person.
-			 */
-			schoolname?: {
-				/**
-				 * Code value of school name.
-				 *
-				 * **Note:** Code+desc and value are mutually exclusive.
-				 * example:
-				 * T07GS3011J
-				 */
-				code?: string;
-				/**
-				 * Name of school represented by 'code'
-				 *
-				 * **Note:** Code+desc and value are mutually exclusive.
-				 * example:
-				 * SIGLAP SECONDARY SCHOOL
-				 */
-				desc?: string;
-				/**
-				 * Free text value of school name.
-				 *
-				 * **Note:** Code+desc and value are mutually exclusive.
-				 * example:
-				 *
-				 */
-				value?: string;
-			};
-			/**
-			 * HouseholdIncome
-			 * Household Income of Person in SGD.
-			 */
-			householdincome?: {
-				/**
-				 * upper bound of the range of household income bracket
-				 */
-				high?: {
-					/**
-					 * example:
-					 * 5999
-					 */
-					value?: number;
-				};
-				/**
-				 * lower bound of the range of household income bracket
-				 */
-				low?: {
-					/**
-					 * example:
-					 * 5000
-					 */
-					value?: number;
-				};
-			};
-			/**
-			 * HomeNo
-			 * Home Contact Number of Person.
-			 */
-			homeno?: {
-				/**
-				 * Prefix of Phone Number. Defaults to '+'. If phone number is blank, prefix will be returned as blank.
-				 */
-				prefix?: {
-					/**
-					 * example:
-					 * +
-					 */
-					value?: string;
-				};
-				/**
-				 * Area Code of Phone Number. Default to '65'. If phone number is blank, code will be returned as blank.
-				 */
-				areacode?: {
-					/**
-					 * example:
-					 * 65
-					 */
-					value?: string;
-				};
-				/**
-				 * Phone Number.
-				 */
-				nbr?: {
-					/**
-					 * example:
-					 * 66132665
-					 */
-					value?: string;
-				};
-			};
-			/**
-			 * VocationalLicences
-			 * Vocational Licences.
-			 */
-			vocationallicences?: {
-				licences?: {
-					/**
-					 * Unique licence number assigned by issuing agency
-					 */
-					number?: {
-						value?: number;
-					};
-					/**
-					 * Licence name
-					 */
-					name?: {
-						value?: string;
-					};
-					/**
-					 * Status of licence
-					 */
-					status?: {
-						code?: "ACT" | "IPA";
-						desc?: "Active" | "In-Principal Approval";
-					};
-					/**
-					 * Agency that issued the licence
-					 */
-					issuanceagency?: {
-						code?: string;
-						desc?: string;
-					};
-					/**
-					 * Licence issue date. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-					 */
-					issuedate?: {
-						value?: string;
-					};
-					/**
-					 * Licence expiry date. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-					 */
-					expirydate?: {
-						value?: string;
-					};
-				}[];
-			};
-			/**
-			 * BillAdd
-			 * Billing Address of Person
-			 *
-			 * **Note:**
-			 * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
-			 * - check the `type` discriminator property to differentiate between the two address formats
-			 *
-			 */
-			billadd?: /**
-			 * BillAdd
-			 * Billing Address of Person
-			 *
-			 * **Note:**
-			 * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
-			 * - check the `type` discriminator property to differentiate between the two address formats
-			 *
-			 */
-			/**
-			 * Address details (Singapore Format)
-			 * example:
 			 * {
+			 *   "code": "C",
+			 *   "desc": "Citizen",
 			 *   "classification": "C",
 			 *   "source": "1",
 			 *   "lastupdated": "2019-03-26"
 			 * }
-			 */
-			| DataitemAddressSg /**
-				 * Address details (Non-Singapore Format)
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				| DataitemAddressUnformatted;
-			/**
-			 * MailAdd
-			 * Mailing Address of Person
-			 *
-			 * **Note:**
-			 * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
-			 * - check the `type` discriminator property to differentiate between the two address formats
-			 *
-			 */
-			mailadd?: /**
-			 * MailAdd
-			 * Mailing Address of Person
-			 *
-			 * **Note:**
-			 * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
-			 * - check the `type` discriminator property to differentiate between the two address formats
-			 *
-			 */
-			/**
-			 * Address details (Singapore Format)
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			| DataitemAddressSg /**
-				 * Address details (Non-Singapore Format)
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				| DataitemAddressUnformatted;
-			/**
-			 * GSTVoucher
-			 * GST Voucher scheme details.
-			 */
-			gstvoucher?: {
-				exclusion?: {
-					value?: boolean;
-				};
-				signup?: {
-					value?: boolean;
-				};
-				gstmedisave?: {
-					value?: number;
-				};
-				gstregular?: {
-					value?: number;
-				};
-				gstspecial?: {
-					value?: number;
-				};
-				year?: {
-					value?: string;
-				};
-			};
-			/**
-			 * SilverSupport
-			 * Silver Support scheme details.
-			 */
-			silversupport?: {
-				eligibility?: {
-					value?: boolean;
-				};
-				amount?: {
-					value?: number;
-				};
-				year?: {
-					value?: string;
-				};
-			};
-			/**
-			 * Uuid
-			 * Whole-of-Government UUID of Person.
-			 */
-			uuid?: {
-				value?: string;
-			};
-		}
-		/**
-		 * Person instance's details
-		 */
-		export interface PersonCommunityCommercial {
-			/**
-			 * MerdekaGen
-			 * Merdekagen details
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			merdekagen?: {
-				/**
-				 * Eligibility
-				 */
-				eligibility?: {
-					/**
-					 * example:
-					 * true
-					 */
-					value?: boolean;
-				};
-				/**
-				 * Amount eligible for
-				 */
-				quantum?: {
-					/**
-					 * example:
-					 * 100
-					 */
-					value?: number;
-				};
-				/**
-				 * Suggested user friendly display
-				 */
-				message?: {
-					/**
-					 * example:
-					 * 2
-					 */
-					code?: string;
-					/**
-					 * example:
-					 * You are eligible for the Merdeka Generation Package. For further enquiries, please contact 1800-2222-888.
-					 */
-					desc?: string;
-				};
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * PioneerGen
-			 * Pioneergen details
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			pioneergen?: {
-				/**
-				 * Eligibility
-				 */
-				eligibility?: {
-					/**
-					 * example:
-					 * true
-					 */
-					value?: boolean;
-				};
-				/**
-				 * Amount eligible for
-				 */
-				quantum?: {
-					/**
-					 * example:
-					 * 100
-					 */
-					value?: number;
-				};
-				/**
-				 * Suggested user friendly display
-				 */
-				message?: {
-					/**
-					 * example:
-					 * 2
-					 */
-					code?: string;
-					/**
-					 * example:
-					 * You are eligible for the Pioneer Generation Package. For further enquiries, please contact 1800-2222-888.
-					 */
-					desc?: string;
-				};
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-		}
-		/**
-		 * Person instance's details
-		 */
-		export interface PersonFinancial {
-			/**
-			 * Summary of latest Notice of Assessment within the past three years.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			"noa-basic"?: {
-				/**
-				 * Assessable Income
-				 */
-				amount?: {
-					/**
-					 * example:
-					 * 100000.01
-					 */
-					value?: number; // double
-				};
-				/**
-				 * The second latest annual assessable income available from IRAS within the past 3 years.
-				 */
-				yearofassessment?: {
-					/**
-					 * example:
-					 * 2018
-					 */
-					value?: string; // [0-9]{4}
-				};
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * Detailed breakdown of latest Notice of Assessment within the past three years.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			noa?: {
-				/**
-				 * Assessable Income
-				 */
-				amount?: {
-					/**
-					 * example:
-					 * 100000.01
-					 */
-					value?: number; // double
-				};
-				/**
-				 * value of data field
-				 */
-				yearofassessment?: {
-					/**
-					 * example:
-					 * 2018
-					 */
-					value?: string; // [0-9]{4}
-				};
-				/**
-				 * Assessable Income from employment
-				 */
-				employment?: {
-					/**
-					 * example:
-					 * 100000.01
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Assessable Income from trade
-				 */
-				trade?: {
-					/**
-					 * example:
-					 * 0
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Assessable Income from rent
-				 */
-				rent?: {
-					/**
-					 * example:
-					 * 0
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Assessable Income from interest
-				 */
-				interest?: {
-					/**
-					 * example:
-					 * 0
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Tax Clearance indicator. This means that tax clearance has been sought by the employer for this NOA assessment. For more information, please refer to [this](https://www.iras.gov.sg/irashome/Businesses/Employers/Tax-Clearance-for-Foreign-SPR-Employees/Getting-Tax-Clearance--A-Step-by-Step-Guide/)
-				 */
-				taxclearance?: {
-					/**
-					 * example:
-					 * N
-					 */
-					value?: "Y" | "N";
-				};
-				/**
-				 * Type of 'Notice of Assessment' (NOA)
-				 */
-				category?: {
-					/**
-					 * example:
-					 * ORIGINAL
-					 */
-					value?: "ADDITIONAL" | "AMENDED" | "ORIGINAL" | "REPAYMENT";
-				};
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * History of Notice Of Assessment (Basic)
-			 * Summary of latest 2 Notice of Assessments within the past three years.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			"noahistory-basic"?: {
-				noas?: NOABasic[];
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * History of Notice Of Assessment
-			 * Detailed breakdown of latest 2 Notice of Assessments within the past three years.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			noahistory?: {
-				noas?: NOA[];
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * CPFContributions
-			 * Employer CPF Contributions of Person in SGD. Does not include any non-employer contributions.
-			 * Maximum past 15 months' of contributions.
-			 *
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			cpfcontributions?: {
-				/**
-				 * example:
-				 * [
-				 *   {
-				 *     "date": {
-				 *       "value": "2016-12-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2016-11"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2016-12-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2016-12"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2016-12-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2016-12"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-01-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2016-12"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-01-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-01"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-01-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-01"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-02-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-01"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-02-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-02"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-02-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-02"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-03-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-02"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-03-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-03"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-03-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-03"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-04-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-03"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-04-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-04"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-04-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-04"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-05-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-04"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-05-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-05"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-05-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-05"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-06-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-05"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-06-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-06"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-06-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-06"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-07-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-06"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-07-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-07"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-07-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-07"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-08-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 500
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-07"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-08-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-08"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-08-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-08"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-09-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-08"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-09-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-09"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-09-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-09"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-10-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-09"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-10-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-10"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-10-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-10"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-11-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-10"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-11-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-11"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-11-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-11"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-12-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-11"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-12-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-12"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2017-12-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-12"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2018-01-01"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2017-12"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2018-01-12"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2018-01"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "date": {
-				 *       "value": "2018-01-21"
-				 *     },
-				 *     "amount": {
-				 *       "value": 750
-				 *     },
-				 *     "month": {
-				 *       "value": "2018-01"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   }
-				 * ]
-				 */
-				history?: {
-					/**
-					 * Employer who paid the Contribution.
-					 */
-					employer?: {
-						/**
-						 * example:
-						 * Crystal Horse Invest Pte Ltd
-						 */
-						value?: string;
-					};
-					/**
-					 * Date of Contribution Paid. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-					 */
-					date?: {
-						/**
-						 * example:
-						 * 2017-03-01
-						 */
-						value?: string; // date
-					};
-					/**
-					 * Month for which CPF Contribution was paid. Format: YYYY-MM
-					 */
-					month?: {
-						/**
-						 * example:
-						 * 2017-02
-						 */
-						value?: string;
-					};
-					/**
-					 * Amount of contribution in SGD
-					 */
-					amount?: {
-						/**
-						 * example:
-						 * 500
-						 */
-						value?: number; // double
-					};
-				}[];
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * CPFEmployers
-			 * Employers who paid CPF Contributions. Maximum up to past 14 months.
-			 *
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			cpfemployers?: {
-				/**
-				 * example:
-				 * [
-				 *   {
-				 *     "month": {
-				 *       "value": "2016-11"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2016-12"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2016-12"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2016-12"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-01"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-01"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-01"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-02"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-02"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-02"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-03"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-03"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-03"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-04"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-04"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-04"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-05"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-05"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-05"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-06"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-06"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-06"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-07"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-07"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-07"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Crystal Horse Invest Pte Ltd"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-08"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-08"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-08"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-09"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-09"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-09"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-10"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-10"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-10"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-11"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-11"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-11"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-12"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-12"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2017-12"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2018-01"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   },
-				 *   {
-				 *     "month": {
-				 *       "value": "2018-01"
-				 *     },
-				 *     "employer": {
-				 *       "value": "Delta Marine Consultants PL"
-				 *     }
-				 *   }
-				 * ]
-				 */
-				history?: {
-					/**
-					 * Employer who paid the Contribution.
-					 */
-					employer?: {
-						/**
-						 * example:
-						 * Crystal Horse Invest Pte Ltd
-						 */
-						value?: string;
-					};
-					/**
-					 * Month for which CPF Contribution was paid. Format: YYYY-MM
-					 */
-					month?: {
-						/**
-						 * example:
-						 * 2017-03
-						 */
-						value?: string; // date
-					};
-				}[];
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * CPFBalances
-			 * CPF Balances of Person in SGD.
-			 */
-			cpfbalances?: {
-				/**
-				 * Amount Balance in CPF-MA
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				ma?: {
-					/**
-					 * Data classification of data field. Default 'C' - Confidential.
-					 */
-					classification: "C";
-					/**
-					 * Source of data.
-					 *
-					 * * '1' - Government-verified
-					 * * '2' - User provided
-					 * * '3' - Field is Not Applicable to Person
-					 * * '4' - Verified by SingPass
-					 *
-					 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-					 */
-					source: "1" | "2" | "3" | "4";
-					/**
-					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-					 */
-					lastupdated: string; // date
-					/**
-					 * Optional flag to indicate if data is unavailable from data source.
-					 *
-					 * **NOTE:**
-					 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-					 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-					 *   - If data is available from the data source, this property will not be present.
-					 *
-					 */
-					unavailable?: boolean;
-					/**
-					 * example:
-					 * 11470.71
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Amount Balance in CPF-OA
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				oa?: {
-					/**
-					 * Data classification of data field. Default 'C' - Confidential.
-					 */
-					classification: "C";
-					/**
-					 * Source of data.
-					 *
-					 * * '1' - Government-verified
-					 * * '2' - User provided
-					 * * '3' - Field is Not Applicable to Person
-					 * * '4' - Verified by SingPass
-					 *
-					 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-					 */
-					source: "1" | "2" | "3" | "4";
-					/**
-					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-					 */
-					lastupdated: string; // date
-					/**
-					 * Optional flag to indicate if data is unavailable from data source.
-					 *
-					 * **NOTE:**
-					 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-					 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-					 *   - If data is available from the data source, this property will not be present.
-					 *
-					 */
-					unavailable?: boolean;
-					/**
-					 * example:
-					 * 1581.48
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Amount Balance in CPF-SA
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				sa?: {
-					/**
-					 * Data classification of data field. Default 'C' - Confidential.
-					 */
-					classification: "C";
-					/**
-					 * Source of data.
-					 *
-					 * * '1' - Government-verified
-					 * * '2' - User provided
-					 * * '3' - Field is Not Applicable to Person
-					 * * '4' - Verified by SingPass
-					 *
-					 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-					 */
-					source: "1" | "2" | "3" | "4";
-					/**
-					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-					 */
-					lastupdated: string; // date
-					/**
-					 * Optional flag to indicate if data is unavailable from data source.
-					 *
-					 * **NOTE:**
-					 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-					 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-					 *   - If data is available from the data source, this property will not be present.
-					 *
-					 */
-					unavailable?: boolean;
-					/**
-					 * example:
-					 * 21967.09
-					 */
-					value?: number; // double
-				};
-				/**
-				 * Amount Balance in CPF-RA
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				ra?: {
-					/**
-					 * Data classification of data field. Default 'C' - Confidential.
-					 */
-					classification: "C";
-					/**
-					 * Source of data.
-					 *
-					 * * '1' - Government-verified
-					 * * '2' - User provided
-					 * * '3' - Field is Not Applicable to Person
-					 * * '4' - Verified by SingPass
-					 *
-					 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-					 */
-					source: "1" | "2" | "3" | "4";
-					/**
-					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-					 */
-					lastupdated: string; // date
-					/**
-					 * Optional flag to indicate if data is unavailable from data source.
-					 *
-					 * **NOTE:**
-					 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-					 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-					 *   - If data is available from the data source, this property will not be present.
-					 *
-					 */
-					unavailable?: boolean;
-					/**
-					 * example:
-					 * 0.01
-					 */
-					value?: number; // double
-				};
-			};
-			/**
-			 * CPFHousingWithdrawal
-			 * CPF Housing Withdrawal of Person. Amounts in SGD.
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			cpfhousingwithdrawal?: {
-				/**
-				 * Withdrawal details for properties
-				 */
-				withdrawaldetails?: {
-					/**
-					 * Registered Address of Property which withdrawal is made.
-					 *
-					 *   **Note:**
-					 *   - address can be either Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
-					 *   - check the `type` discriminator property to differentiate between the two address formats
-					 *
-					 */
-					address?: /**
-					 * Registered Address of Property which withdrawal is made.
-					 *
-					 *   **Note:**
-					 *   - address can be either Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
-					 *   - check the `type` discriminator property to differentiate between the two address formats
-					 *
-					 */
-					/* Address details (Singapore Format) */ | AddressSG
-						| /* Address details (Non-Singapore Format) */ AddressUnformatted;
-					/**
-					 *
-					 */
-					accruedinterestamt?: {
-						/**
-						 * example:
-						 * 1581.48
-						 */
-						value?: number; // double
-					};
-					/**
-					 *
-					 */
-					monthlyinstalmentamt?: {
-						/**
-						 * example:
-						 * 1196.09
-						 */
-						value?: number; // double
-					};
-					/**
-					 *
-					 */
-					principalwithdrawalamt?: {
-						/**
-						 * example:
-						 * 2897.01
-						 */
-						value?: number; // double
-					};
-					/**
-					 *
-					 */
-					totalamountofcpfallowedforproperty?: {
-						/**
-						 * example:
-						 * 10000.01
-						 */
-						value?: number; // double
-					};
-				}[];
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * CPF Home Protection Scheme
-			 * CPF Home Protection Scheme
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			cpfhomeprotectionscheme?: {
-				coverage?: {
-					/**
-					 * Indicator
-					 * example:
-					 * true
-					 */
-					value?: boolean;
-				};
-				premium?: {
-					/**
-					 * Coverage premium. OPTIONAL attribute, present only if 'coverage' is true
-					 * example:
-					 * 100.01
-					 */
-					value?: number;
-				};
-				shareofcover?: {
-					/**
-					 * Share of coverage (in percentage). OPTIONAL attribute, present only if 'coverage' is true
-					 * example:
-					 * 20
-					 */
-					value?: number;
-				};
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * CPF Dependant Protection Scheme
-			 * CPF Dependant Protection Scheme
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			cpfdependantprotectionscheme?: {
-				coverage?: {
-					/**
-					 * Indicator
-					 * example:
-					 * true
-					 */
-					value?: boolean;
-				};
-				insurercode?: {
-					/**
-					 * Insurer Code
-					 * example:
-					 * 9GEL
-					 */
-					value?: string;
-				};
-				sumassuredamount?: {
-					/**
-					 * Sum assured. OPTIONAL attribute, present only if 'coverage' is true
-					 * example:
-					 * 70000
-					 */
-					value?: number;
-				};
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-			};
-			/**
-			 * CPFInvestmentScheme
-			 * CPF Investment Scheme
-			 */
-			cpfinvestmentscheme?: {
-				/**
-				 * Number of Discounted Singtel Shares
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				sdsnetshareholdingqty?: {
-					/**
-					 * Data classification of data field. Default 'C' - Confidential.
-					 */
-					classification: "C";
-					/**
-					 * Source of data.
-					 *
-					 * * '1' - Government-verified
-					 * * '2' - User provided
-					 * * '3' - Field is Not Applicable to Person
-					 * * '4' - Verified by SingPass
-					 *
-					 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-					 */
-					source: "1" | "2" | "3" | "4";
-					/**
-					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-					 */
-					lastupdated: string; // date
-					/**
-					 * Optional flag to indicate if data is unavailable from data source.
-					 *
-					 * **NOTE:**
-					 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-					 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-					 *   - If data is available from the data source, this property will not be present.
-					 *
-					 */
-					unavailable?: boolean;
-					/**
-					 * example:
-					 * 1360
-					 */
-					value?: number;
-				};
-				/**
-				 * Account Details
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				account?: {
-					/**
-					 * Data classification of data field. Default 'C' - Confidential.
-					 */
-					classification: "C";
-					/**
-					 * Source of data.
-					 *
-					 * * '1' - Government-verified
-					 * * '2' - User provided
-					 * * '3' - Field is Not Applicable to Person
-					 * * '4' - Verified by SingPass
-					 *
-					 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-					 */
-					source: "1" | "2" | "3" | "4";
-					/**
-					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-					 */
-					lastupdated: string; // date
-					/**
-					 * Optional flag to indicate if data is unavailable from data source.
-					 *
-					 * **NOTE:**
-					 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-					 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-					 *   - If data is available from the data source, this property will not be present.
-					 *
-					 */
-					unavailable?: boolean;
-					/**
-					 * Agent Bank Code
-					 */
-					agentbankcode?: {
-						/**
-						 * example:
-						 * OCBC
-						 */
-						value?: string;
-					};
-					/**
-					 * Account Number
-					 */
-					invbankacctno?: {
-						/**
-						 * example:
-						 * 098-26644-4
-						 */
-						value?: string;
-					};
-				};
-				/**
-				 * Self-Awareness Questionnaire (SAQ) Participation Status
-				 * example:
-				 * {
-				 *   "classification": "C",
-				 *   "source": "1",
-				 *   "lastupdated": "2019-03-26"
-				 * }
-				 */
-				saqparticipationstatus?: {
-					/**
-					 * Data classification of data field. Default 'C' - Confidential.
-					 */
-					classification: "C";
-					/**
-					 * Source of data.
-					 *
-					 * * '1' - Government-verified
-					 * * '2' - User provided
-					 * * '3' - Field is Not Applicable to Person
-					 * * '4' - Verified by SingPass
-					 *
-					 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-					 */
-					source: "1" | "2" | "3" | "4";
-					/**
-					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-					 */
-					lastupdated: string; // date
-					/**
-					 * Optional flag to indicate if data is unavailable from data source.
-					 *
-					 * **NOTE:**
-					 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-					 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-					 *   - If data is available from the data source, this property will not be present.
-					 *
-					 */
-					unavailable?: boolean;
-					/**
-					 * Possible values:
-					 *
-					 * * 'Y' – Participated
-					 * * 'X' – Existing CPFIS participant
-					 * * 'N' – Did not participate
-					 * example:
-					 * X
-					 */
-					code?: "Y" | "X" | "N";
-					/**
-					 * example:
-					 * Participated
-					 */
-					desc?: string;
-				};
-			};
-			/**
-			 * CPFMedishieldLife
-			 * CPF MediShield Life
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			cpfmedishieldlife?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * Present only if underlying 'hascovertag' is not empty (true or false) from CPF
-				 */
-				medishieldlifecoverage?: {
-					/**
-					 * Status of cover of user.
-					 */
-					hascovertag?: {
-						/**
-						 * example:
-						 * true
-						 */
-						value?: boolean;
-					};
-					/**
-					 * Name of the current payer who pay for this policy for current policy renewal date.
-					 *
-					 * Present only if 'hascovertag' is true.
-					 */
-					payername?: {
-						value?: string;
-					};
-					/**
-					 * Net Premium Payable in SGD after subsidies, Additional Premium Support and Government Benefit (if applicable) for current policy year.
-					 *
-					 * Present only if 'hascovertag' is true.
-					 *
-					 */
-					netpremiumpayable?: {
-						/**
-						 * example:
-						 * 1000
-						 */
-						value?: number;
-					};
-					/**
-					 * Renewal date for current policy year.
-					 *
-					 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-					 *
-					 * Present only if 'hascovertag' is true.
-					 *
-					 */
-					policyrenewaldate?: {
-						/**
-						 * example:
-						 * 2019-07-02
-						 */
-						value?: string; // date
-					};
-				};
-				/**
-				 * Present only if underlying 'hascovertag' is not empty (true or false) from CPF
-				 */
-				integratedshieldplancoverage?: {
-					/**
-					 * Status of cover of user.
-					 */
-					hascovertag?: {
-						/**
-						 * example:
-						 * true
-						 */
-						value?: boolean;
-					};
-					/**
-					 * Name of the current payer who pay for this policy for current policy renewal date.
-					 *
-					 * Present only if 'hascovertag' is true.
-					 */
-					payername?: {
-						value?: string;
-					};
-					/**
-					 * Company code of private insurer. Refer to 'Code Listing (InsurerCode)' in https://public.cloud.myinfo.gov.sg/dpp/frontend/assets/api-lib/myinfo/downloads/myinfo-api-code-tables.xlsx for list of possible values
-					 *
-					 * Present only if 'hascovertag' is true.
-					 */
-					insurercode?: {
-						value?: string;
-					};
-				};
-				/**
-				 * Empty array will be returned if there is no data
-				 */
-				medishieldlifedependants?: {
-					/**
-					 * Name of dependants whom the enquirer is paying for.
-					 */
-					dependantname?: {
-						value?: string;
-					};
-					/**
-					 * Net Premium Payable in SGD after subsidies, Additional Premium Support and Government Benefit (if applicable) for current policy year
-					 */
-					netpremiumpayable?: {
-						/**
-						 * example:
-						 * 1000
-						 */
-						value?: number;
-					};
-					/**
-					 * Renewal date for current policy year.
-					 *
-					 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-					 *
-					 * Present only if 'hascovertag' is true.
-					 *
-					 */
-					policyrenewaldate?: {
-						/**
-						 * example:
-						 * 2019-07-02
-						 */
-						value?: string; // date
-					};
-				}[];
-				/**
-				 * Empty array will be returned if there is no data
-				 */
-				integratedshieldplandependants?: {
-					/**
-					 * Name of dependants whom the enquirer is paying for.
-					 */
-					dependantname?: {
-						value?: string;
-					};
-					/**
-					 * Company code of private insurer. Refer to 'Code Listing (InsurerCode)' in https://public.cloud.myinfo.gov.sg/dpp/frontend/assets/api-lib/myinfo/downloads/myinfo-api-code-tables.xlsx for list of possible values
-					 *
-					 * Present only if 'hascovertag' is true.
-					 */
-					insurercode?: {
-						value?: string;
-					};
-				}[];
-			};
-			/**
-			 * CPFRSTUCurrentYearTaxRelief
-			 * CPF Retirement Savings Topping-up Scheme - Current Year Tax Relief
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			cpfrstucurrentyeartaxrelief?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * Total tax relief from self top-up in SGD
-				 */
-				totaltaxreliefself?: {
-					/**
-					 * example:
-					 * 1000
-					 */
-					value?: number;
-				};
-				/**
-				 * Remaining tax relief from self top-up in SGD
-				 */
-				remainingtaxreliefself?: {
-					/**
-					 * example:
-					 * 1000
-					 */
-					value?: number;
-				};
-				/**
-				 * Total tax relief from top-up by loved ones in SGD
-				 */
-				totaltaxrelieflovedones?: {
-					/**
-					 * example:
-					 * 1000
-					 */
-					value?: number;
-				};
-				/**
-				 * Remaining tax relief from top-up by loved ones in SGD
-				 */
-				remainingtaxrelieflovedones?: {
-					/**
-					 * example:
-					 * 1000
-					 */
-					value?: number;
-				};
-			};
-			/**
-			 * CPFRSTUSelfTopupAmount
-			 * CPF Retirement Savings Topping-up Scheme - Maximum amount you can top-up using cash and CPF
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			cpfrstuselftopupamount?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * Maximum amount you can top up using cash
-				 */
-				selftopupusingcash?: {
-					/**
-					 * example:
-					 * 1000
-					 */
-					value?: number;
-				};
-				/**
-				 * Maximum amount you can transfer using CPF
-				 */
-				selftopupusingcpf?: {
-					/**
-					 * example:
-					 * 1000
-					 */
-					value?: number;
-				};
-			};
-			/**
-			 * CPFLife
-			 * CPF Lifelong Income For the Elderly (CPF LIFE)
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			cpflife?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * Flag to indicate the CPF Life membership of the user
-				 */
-				cpflifecoverage?: {
-					/**
-					 * example:
-					 * true
-					 */
-					value?: boolean;
-				};
-				/**
-				 * CPF Life plan chosen
-				 */
-				cpflifeplan?: {
-					/**
-					 * example:
-					 * Standard Plan
-					 */
-					value?: string;
-				};
-				/**
-				 * Monthly payout from CPF Life in SGD
-				 */
-				cpflifemonthlypayout?: {
-					/**
-					 * example:
-					 * 1000
-					 */
-					value?: number;
-				};
-				/**
-				 * Flag to indicate if user is currently receiving monthly payouts from CPF LIFE
-				 */
-				cpflifepaymentcommencement?: {
-					/**
-					 * example:
-					 * true
-					 */
-					value?: boolean;
-				};
-				/**
-				 * Date of latest CPF Life payment. Can be blank.
-				 *
-				 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-				 */
-				cpflifepaymentdate?: {
-					/**
-					 * example:
-					 * 2019-09-02
-					 */
-					value?: string; // date
-				};
-			};
-			/**
-			 * CPFMonthlyPayouts
-			 * CPF Monthly Payouts (Non-LIFE)
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			cpfmonthlypayouts?: {
-				/**
-				 * Data classification of data field. Default 'C' - Confidential.
-				 */
-				classification: "C";
-				/**
-				 * Source of data.
-				 *
-				 * * '1' - Government-verified
-				 * * '2' - User provided
-				 * * '3' - Field is Not Applicable to Person
-				 * * '4' - Verified by SingPass
-				 *
-				 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-				 */
-				source: "1" | "2" | "3" | "4";
-				/**
-				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-				 */
-				lastupdated: string; // date
-				/**
-				 * Optional flag to indicate if data is unavailable from data source.
-				 *
-				 * **NOTE:**
-				 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-				 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-				 *   - If data is available from the data source, this property will not be present.
-				 *
-				 */
-				unavailable?: boolean;
-				/**
-				 * Monthly payout amount in SGD
-				 */
-				monthlypayout?: {
-					/**
-					 * example:
-					 * 1000
-					 */
-					value?: number;
-				};
-				/**
-				 * Flag to indicate if user is currently receiving monthly payouts
-				 */
-				paymentcommencement?: {
-					/**
-					 * example:
-					 * true
-					 */
-					value?: boolean;
-				};
-			};
-		}
-		export interface PhoneNumLocal {
-			/**
-			 * Prefix of Phone Number. Defaults to '+'. If phone number is blank, prefix will be returned as blank.
-			 */
-			prefix?: {
-				/**
-				 * example:
-				 * +
-				 */
-				value?: string;
-			};
-			/**
-			 * Area Code of Phone Number. Default to '65'. If phone number is blank, code will be returned as blank.
-			 */
-			areacode?: {
-				/**
-				 * example:
-				 * 65
-				 */
-				value?: string;
-			};
-			/**
-			 * Phone Number.
-			 */
-			nbr?: {
-				/**
-				 * example:
-				 * 66132665
-				 */
-				value?: string;
-			};
-		}
-		/**
-		 * PioneerGen
-		 * Pioneergen details
-		 */
-		export interface Pioneergen {
-			/**
-			 * Eligibility
-			 */
-			eligibility?: {
-				/**
-				 * example:
-				 * true
-				 */
-				value?: boolean;
-			};
-			/**
-			 * Amount eligible for
-			 */
-			quantum?: {
-				/**
-				 * example:
-				 * 100
-				 */
-				value?: number;
-			};
-			/**
-			 * Suggested user friendly display
-			 */
-			message?: {
-				/**
-				 * example:
-				 * 2
-				 */
-				code?: string;
-				/**
-				 * example:
-				 * You are eligible for the Pioneer Generation Package. For further enquiries, please contact 1800-2222-888.
-				 */
-				desc?: string;
-			};
-		}
-		/**
-		 * Race
-		 * Race of Person.
-		 *
-		 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-		 */
-		export interface Race {
-			/**
-			 * example:
-			 * CN
-			 */
-			code?: string; // [a-zA-Z]{2}
-			/**
-			 * example:
-			 * CHINESE
-			 */
-			desc?: string;
-		}
-		/**
-		 * RegAdd
-		 * Registered Address of Person (including FIN holders)
-		 *
-		 * **Note:**
-		 * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
-		 * - check the `type` discriminator property to differentiate between the two address formats
-		 * - may be unavailable for some FIN holders
-		 */
-		export type Regadd =
-			/**
-			 * RegAdd
-			 * Registered Address of Person (including FIN holders)
-			 *
-			 * **Note:**
-			 * - address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED')
-			 * - check the `type` discriminator property to differentiate between the two address formats
-			 * - may be unavailable for some FIN holders
-			 */
-			/**
-			 * Address details (Singapore Format)
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			| DataitemAddressSg /**
-			 * Address details (Non-Singapore Format)
-			 * example:
-			 * {
-			 *   "classification": "C",
-			 *   "source": "1",
-			 *   "lastupdated": "2019-03-26"
-			 * }
-			 */
-			| DataitemAddressUnformatted;
-		/**
-		 * ResidentialStatus
-		 * Residential Status of Person. Applicable to Singapore Citizens and Permanent Residents.
-		 *
-		 *
-		 * **Note:** This data item is not applicable for FIN holders i.e. `source` will be '3'.
-		 * In such cases, the `code` and `desc` properties will be blank or empty string ("").
-		 *
-		 * * A - ALIEN
-		 * * C - CITIZEN
-		 * * P - PR
-		 * * U - UNKNOWN
-		 * * N - NOT APPLICABLE
-		 * * &lt; BLANK &gt; (for FIN holders only)
-		 */
-		export interface Residentialstatus {
-			/**
-			 * example:
-			 * C
-			 */
-			code?: "A" | "C" | "P" | "U" | "N" | ""; // [a-zA-Z]{1}
-			/**
-			 * example:
-			 * CITIZEN
-			 */
-			desc?: "ALIEN" | "CITIZEN" | "PR" | "UNKNOWN" | "NOT APPLICABLE" | "";
-		}
-		/**
-		 * SchoolName
-		 * Name of School of Person.
-		 */
-		export interface Schoolname {
-			/**
-			 * Code value of school name.
-			 *
-			 * **Note:** Code+desc and value are mutually exclusive.
-			 * example:
-			 * T07GS3011J
-			 */
-			code?: string;
-			/**
-			 * Name of school represented by 'code'
-			 *
-			 * **Note:** Code+desc and value are mutually exclusive.
-			 * example:
-			 * SIGLAP SECONDARY SCHOOL
-			 */
-			desc?: string;
-			/**
-			 * Free text value of school name.
-			 *
-			 * **Note:** Code+desc and value are mutually exclusive.
-			 * example:
-			 *
-			 */
-			value?: string;
-		}
-		/**
-		 * SecondaryRace
-		 * Secondary Race of Person.
-		 *
-		 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-		 */
-		export interface Secondaryrace {
-			/**
-			 *
-			 * example:
-			 * EU
-			 */
-			code?: string; // [a-zA-Z]{2}
-			/**
-			 *
-			 * example:
-			 * EURASIAN
-			 */
-			desc?: string;
-		}
-		/**
-		 * Sex
-		 * Sex of Person.
-		 * * 'F' - FEMALE
-		 * * 'M' - MALE
-		 * * 'U' - UNKNOWN
-		 */
-		export interface Sex {
-			/**
-			 * example:
-			 * F
-			 */
-			code?: "F" | "M" | "U";
-			/**
-			 *
-			 * example:
-			 * FEMALE
-			 */
-			desc?: "FEMALE" | "MALE" | "UNKNOWN";
-		}
-		/**
-		 * SilverSupport
-		 * Silver Support scheme details.
-		 */
-		export interface Silversupport {
-			eligibility?: {
-				value?: boolean;
-			};
-			amount?: {
-				value?: number;
-			};
-			year?: {
-				value?: string;
-			};
-		}
-		/**
-		 * example:
-		 * {
-		 *   "classification": "C",
-		 *   "source": "1",
-		 *   "lastupdated": "2019-03-26"
-		 * }
-		 */
-		export interface Sponsoredchildrenrecords {
-			/**
-			 * Data classification of data field. Default 'C' - Confidential.
-			 */
-			classification: "C";
-			/**
-			 * Source of data.
-			 *
-			 * * '1' - Government-verified
-			 * * '2' - User provided
-			 * * '3' - Field is Not Applicable to Person
-			 * * '4' - Verified by SingPass
-			 *
-			 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-			 */
-			source: "1" | "2" | "3" | "4";
-			/**
-			 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-			 */
-			lastupdated: string; // date
-			/**
-			 * Optional flag to indicate if data is unavailable from data source.
-			 *
-			 * **NOTE:**
-			 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-			 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-			 *   - If data is available from the data source, this property will not be present.
-			 *
-			 */
-			unavailable?: boolean;
-			/**
-			 * NRIC/FIN of child
-			 */
-			nric?: {
-				/**
-				 * example:
-				 * S5562882C
-				 */
-				value?: string;
-			};
-			/**
-			 * Full Name of child
-			 */
-			name?: {
-				/**
-				 * example:
-				 * Jo Tan Pei Ni
-				 */
-				value?: string;
-			};
-			/**
-			 * Han Yu Pin Yin name of child.
-			 */
-			hanyupinyinname?: {
-				/**
-				 * example:
-				 * Cheng Pei Ni
-				 */
-				value?: string;
-			};
-			/**
-			 * Alias name of child.
-			 */
-			aliasname?: {
-				/**
-				 * example:
-				 *
-				 */
-				value?: string;
-			};
-			/**
-			 * Han Yu Pin Yin Alias name of child.
-			 */
-			hanyupinyinaliasname?: {
-				/**
-				 * example:
-				 *
-				 */
-				value?: string;
-			};
-			/**
-			 * Married name of child.
-			 */
-			marriedname?: {
-				/**
-				 * example:
-				 *
-				 */
-				value?: string;
-			};
-			/**
-			 * Sex of child. Possible values:
-			 *
-			 * * 'F' - FEMALE
-			 * * 'M' - MALE
-			 * * 'U' - UNKNOWN
-			 */
-			sex?: {
-				/**
-				 * example:
-				 * F
-				 */
-				code?: "F" | "M" | "U";
-				/**
-				 * example:
-				 * FEMALE
-				 */
-				desc?: "FEMALE" | "MALE" | "UNKNOWN";
-			};
-			/**
-			 * Race of child.
-			 *
-			 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-			 */
-			race?: {
-				/**
-				 * example:
-				 * CN
-				 */
-				code?: string; // [a-zA-Z]{2}
-				/**
-				 * example:
-				 * CHINESE
-				 */
-				desc?: string;
-			};
-			/**
-			 * Secondary Race of child.
-			 *
-			 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-			 */
-			secondaryrace?: {
-				/**
-				 * example:
-				 *
-				 */
-				code?: string; // [a-zA-Z]{2}
-				/**
-				 * example:
-				 *
-				 */
-				desc?: string;
-			};
-			/**
-			 * Dialect of child.
-			 *
-			 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-			 */
-			dialect?: {
-				/**
-				 * example:
-				 * HK
-				 */
-				code?: string; // [a-zA-Z]{2}
-				/**
-				 * example:
-				 * HOKKIEN
-				 */
-				desc?: string;
-			};
-			/**
-			 * Date of Birth of child.
-			 *
-			 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-			 */
-			dob?: {
-				/**
-				 * example:
-				 * 2011-09-10
-				 */
-				value?: string; // date
-			};
-			/**
-			 * BirthCountry
-			 * Country/Place of Birth of child.
-			 *
-			 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-			 */
-			birthcountry?: {
-				/**
-				 * example:
-				 * SG
-				 */
-				code?: string; // [a-zA-Z]{2}
-				/**
-				 * example:
-				 * SINGAPORE
-				 */
-				desc?: string;
-			};
-			/**
-			 * Life Status of child. Possible values:
-			 *
-			 * * A - ALIVE
-			 * * D - DECEASED
-			 */
-			lifestatus?: {
-				/**
-				 * example:
-				 * A
-				 */
-				code?: "A" | "D";
-				/**
-				 * example:
-				 * ALIVE
-				 */
-				desc?: "ALIVE" | "DECEASED";
-			};
-			/**
-			 * ResidentialStatus
-			 * Residential Status of child. Possible values:
-			 *
-			 * * A - ALIEN
-			 * * C - CITIZEN
-			 * * P - PR
-			 * * U - UNKNOWN
-			 * * N - NOT APPLICABLE
 			 */
 			residentialstatus?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
 				/**
 				 * example:
 				 * C
 				 */
-				code?: "A" | "C" | "P" | "U" | "N"; // [a-zA-Z]{1}
+				code?: "A" | "C" | "P" | "U" | "N" | ""; // ^[A-Za-z]{0,1}$
 				/**
 				 * example:
 				 * Citizen
 				 */
-				desc?: "ALIEN" | "CITIZEN" | "PR" | "UNKNOWN" | "NOT APPLICABLE";
+				desc?: "ALIEN" | "CITIZEN" | "PR" | "UNKNOWN" | "NOT APPLICABLE" | "";
 			};
 			/**
-			 * Nationality/Citizenship of child.
+			 * Secondary Race of Person.
 			 *
-			 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
+			 *   Refer to the Code reference tables in the Support section for list of possible values.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "code": "EU",
+			 *   "desc": "EURASIAN",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
 			 */
-			nationality?: {
+			secondaryrace?: {
 				/**
+				 * Data classification of data field. Default 'C' - Confidential.
 				 * example:
-				 * SG
+				 * C
 				 */
-				code?: string; // [a-zA-Z]{2}
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
 				/**
 				 * example:
-				 * SINGAPORE CITIZEN
+				 * EU
+				 */
+				code?: string; // ^(?:[A-Za-z]{2})?$
+				/**
+				 * example:
+				 * EURASIAN
 				 */
 				desc?: string;
 			};
 			/**
-			 * Date granted Singapore Citizenship, Permanent Resident or Long-term Visit Pass
-			 *
-			 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
-			 */
-			scprgrantdate?: {
-				/**
-				 * example:
-				 * 2015-06-13
-				 */
-				value?: string; // date
-			};
-			vaccinationrequirements?: {
-				/**
-				 * Vaccination Requirement
-				 *
-				 * Refer to the [Code reference tables](#section/Support) in the Support section for list of possible values.
-				 */
-				requirement?: {
-					/**
-					 * example:
-					 * 1M3D
-					 */
-					code?: string;
-					/**
-					 * example:
-					 * MINIMUM VACCINATION REQUIREMENT FOR PRESCHOOL
-					 */
-					desc?: string;
-				};
-				fulfilled?: {
-					/**
-					 * example:
-					 * true
-					 */
-					value?: boolean;
-				};
-			}[];
-		}
-		/**
-		 * UINFIN
-		 * Singapore issued identification number of the Person.
-		 */
-		export interface Uinfin {
-			/**
-			 * value of the field, should be displayed as it is.
+			 * Sex of Person.
 			 * example:
-			 * S1111111D
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "code": "F",
+			 *   "desc": "FEMALE",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
 			 */
-			value?: string;
-		}
-		/**
-		 * Uuid
-		 * Whole-of-Government UUID of Person.
-		 */
-		export interface Uuid {
-			value?: string;
-		}
-		export type Vehicles = {
-			/**
-			 * Data classification of data field. Default 'C' - Confidential.
-			 */
-			classification: "C";
-			/**
-			 * Source of data.
-			 *
-			 * * '1' - Government-verified
-			 * * '2' - User provided
-			 * * '3' - Field is Not Applicable to Person
-			 * * '4' - Verified by SingPass
-			 *
-			 * **Note:** All Government-verified fields must be **non-editable** on your digital service form (some exceptions apply - see individual field descriptions).
-			 */
-			source: "1" | "2" | "3" | "4";
-			/**
-			 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6. Can be blank if the source agency does not have record for the user.
-			 */
-			lastupdated: string; // date
-			/**
-			 * Optional flag to indicate if data is unavailable from data source.
-			 *
-			 * **NOTE:**
-			 *   - This optional property will be only present with value `true` if there is no data available from the data source; i.e. record not found.
-			 *   - When this flag is `true`, no other data attributes will be present (other than `classification`, `source`, and `lastupdated`).
-			 *   - If data is available from the data source, this property will not be present.
-			 *
-			 */
-			unavailable?: boolean;
-			/**
-			 * Vehicle Registration Number displayed on the vehicle number plates
-			 */
-			vehicleno?: {
+			sex?: {
 				/**
+				 * Data classification of data field. Default 'C' - Confidential.
 				 * example:
-				 * SDF1235A
+				 * C
 				 */
-				value?: string;
-			};
-			/**
-			 * Type of Vehicles such as 'MOTOR CAR', 'STATION /WAGON/JEEP/LAND ROVER'
-			 */
-			type?: {
+				classification: string;
 				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
 				 * example:
-				 * PASSENGER MOTOR CAR
+				 * 2019-03-26
 				 */
-				value?: string;
-			};
-			/**
-			 * In-Vehicle Unit (IU) number of the device fitted in Singapore-registered vehicles for Electronic Road Pricing (ERP) gantries and Electronic Parking System (EPS) car parks.
-			 */
-			iulabelno?: {
+				lastupdated: string; // date
 				/**
-				 * example:
+				 * Source of data.
 				 *
-				 */
-				value?: string;
-			};
-			/**
-			 * Vehicle Make such as 'TOYOTA', 'HONDA', 'AUDI'
-			 */
-			make?: {
-				/**
-				 * example:
-				 * TOYOTA
-				 */
-				value?: string;
-			};
-			/**
-			 * Vehicle Model such as 'COROLLA ALTIS CLASSIC 1.6 CVT', 'HRV 1.5 DX CVT'
-			 */
-			model?: {
-				/**
-				 * example:
-				 * COROLLA ALTIS
-				 */
-				value?: string;
-			};
-			/**
-			 * Vehicle Chassis Number
-			 */
-			chassisno?: {
-				/**
-				 * example:
-				 * ZC11S1735800
-				 */
-				value?: string;
-			};
-			/**
-			 * Vehicle Engine Number
-			 */
-			engineno?: {
-				/**
-				 * example:
-				 * M13A1837453
-				 */
-				value?: string;
-			};
-			/**
-			 * Vehicle Motor Number
-			 */
-			motorno?: {
-				/**
-				 * example:
-				 *
-				 */
-				value?: string;
-			};
-			/**
-			 * Manufacturing year
-			 */
-			yearofmanufacture?: {
-				/**
-				 * example:
-				 * 2010
-				 */
-				value?: string;
-			};
-			/**
-			 * Date when vehicle is registered with LTA. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6'
-			 */
-			firstregistrationdate?: {
-				/**
-				 * example:
-				 * 2010-06-06
-				 */
-				value?: string; // date
-			};
-			/**
-			 * Date when vehicle is first registered in the country of origin. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6'
-			 */
-			originalregistrationdate?: {
-				/**
-				 * example:
-				 * 2010-06-06
-				 */
-				value?: string; // date
-			};
-			/**
-			 * Vehicle Certificate of Entitlement (COE) bid category
-			 */
-			coecategory?: {
-				/**
-				 * example:
-				 * A - CAR UP TO 1600CC & 97KW (130BHP)
-				 */
-				value?: string;
-			};
-			/**
-			 * Vehicle Certificate of Entitlement (COE) expiry date. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6'
-			 */
-			coeexpirydate?: {
-				/**
-				 * example:
-				 * 2020-06-05
-				 */
-				value?: string; // date
-			};
-			/**
-			 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6'
-			 */
-			roadtaxexpirydate?: {
-				/**
-				 * example:
-				 * 2020-06-05
-				 */
-				value?: string; // date
-			};
-			/**
-			 * Actual Quota Premium (QP) amount payable for the COE upon registration, conversion or COE revalidation in Singapore dollars (SGD). For renewal of COE, the value will contain actual PQP paid.
-			 */
-			quotapremium?: {
-				/**
-				 * example:
-				 * 14000.01
-				 */
-				value?: number; // double
-			};
-			/**
-			 * Open Market Value is the value of manufacturer invoice price, freight and insurance in Singapore dollars (SGD).
-			 */
-			openmarketvalue?: {
-				/**
-				 * example:
-				 * 25000.01
-				 */
-				value?: number; // double
-			};
-			/**
-			 * CO2 emission rate
-			 */
-			co2emission?: {
-				/**
-				 * example:
-				 * 146.01
-				 */
-				value?: number; // double
-			};
-			/**
-			 * Status of the Vehicle.
-			 *
-			 * * 1 - LIVE
-			 * * 2 - DE-REGISTERED
-			 */
-			status?: {
-				/**
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
 				 * example:
 				 * 1
 				 */
-				code?: "1" | "2";
+				source: "1" | "2" | "3" | "4";
 				/**
-				 * example:
-				 * LIVE
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
 				 */
-				desc?: "LIVE" | "DE-REGISTERED";
+				unavailable?: boolean;
+				/**
+				 * The 1-character code for the sex.
+				 *
+				 * - 'F': FEMALE
+				 * - 'M': MALE
+				 * - 'U': UNKNOWN
+				 * example:
+				 * F
+				 */
+				code: "F" | "M" | "U";
+				/**
+				 * The full description of the sex.
+				 * example:
+				 * FEMALE
+				 */
+				desc: "FEMALE" | "MALE" | "UNKNOWN";
 			};
 			/**
-			 * Vehicle Primary Colour (e.g. BLACK)
+			 * Details of children sponsored to be SC/PR/LTVP.
+			 *
+			 * For child below 21, the child's NRIC/FIN, Name, Sex, Race, Secondary Race, Dialect,
+			 * Date of Birth, Country/Place of Birth, Residential Status and SC/PR/LTVP grant date will be shown.
+			 *
+			 * For child above 21, only the child's last known NRIC/FIN will be shown.
+			 * example:
+			 * {
+			 *   "nric": {
+			 *     "value": "S5562882C"
+			 *   },
+			 *   "name": {
+			 *     "value": "Jo Tan Pei Ni"
+			 *   },
+			 *   "hanyupinyinname": {
+			 *     "value": "Cheng Pei Ni"
+			 *   },
+			 *   "aliasname": {
+			 *     "value": ""
+			 *   },
+			 *   "hanyupinyinaliasname": {
+			 *     "value": ""
+			 *   },
+			 *   "marriedname": {
+			 *     "value": ""
+			 *   },
+			 *   "sex": {
+			 *     "code": "F",
+			 *     "desc": "FEMALE"
+			 *   },
+			 *   "race": {
+			 *     "code": "CN",
+			 *     "desc": "CHINESE"
+			 *   },
+			 *   "secondaryrace": {
+			 *     "code": "",
+			 *     "desc": ""
+			 *   },
+			 *   "dialect": {
+			 *     "code": "HK",
+			 *     "desc": "HOKKIEN"
+			 *   },
+			 *   "dob": {
+			 *     "value": "2011-09-10"
+			 *   },
+			 *   "birthcountry": {
+			 *     "code": "SG",
+			 *     "desc": "SINGAPORE"
+			 *   },
+			 *   "lifestatus": {
+			 *     "code": "A",
+			 *     "desc": "ALIVE"
+			 *   },
+			 *   "residentialstatus": {
+			 *     "code": "C",
+			 *     "desc": "Citizen"
+			 *   },
+			 *   "nationality": {
+			 *     "code": "SG",
+			 *     "desc": "SINGAPORE CITIZEN"
+			 *   },
+			 *   "scprgrantdate": {
+			 *     "value": "2015-06-13"
+			 *   },
+			 *   "vaccinationrequirements": [
+			 *     {
+			 *       "requirement": {
+			 *         "code": "1M3D",
+			 *         "desc": "MINIMUM VACCINATION REQUIREMENT FOR PRESCHOOL"
+			 *       },
+			 *       "fulfilled": {
+			 *         "value": true
+			 *       }
+			 *     }
+			 *   ],
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
 			 */
-			primarycolour?: {
+			sponsoredchildrenrecords?:
+				| {
+						/**
+						 * Data classification of data field. Default 'C' - Confidential.
+						 * example:
+						 * C
+						 */
+						classification: string;
+						/**
+						 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+						 * example:
+						 * 2019-03-26
+						 */
+						lastupdated: string; // date
+						/**
+						 * Source of data.
+						 *
+						 * - '1': Government-verified
+						 * - '2': User provided
+						 * - '3': Not Applicable (applies only to Person data, not Entity data)
+						 * - '4': Verified by SingPass
+						 * example:
+						 * 1
+						 */
+						source: "1" | "2" | "3" | "4";
+						/**
+						 * Optional flag to indicate if data is unavailable from data source.
+						 *
+						 * NOTE:
+						 *
+						 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+						 *
+						 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+						 *
+						 * - If data is available from the data source, this property will not be present.
+						 */
+						unavailable?: boolean;
+						/**
+						 * Alias name of child.
+						 */
+						aliasname?: {
+							value?: string;
+						};
+						/**
+						 * Country/Place of Birth of child.
+						 * Refer to the Code reference tables in the Support section for list of possible values.
+						 */
+						birthcountry?: {
+							code?: string; // ^(?:[A-Za-z]{2})?$
+							desc?: string;
+						};
+						/**
+						 * Dialect of child.
+						 * Refer to the Code reference tables in the Support section for list of possible values.
+						 */
+						dialect?: {
+							code?: string; // ^(?:[A-Za-z]{2})?$
+							desc?: string;
+						};
+						/**
+						 * Date of Birth of child.
+						 */
+						dob?: {
+							/**
+							 * Value of data field in YYYY-MM-DD format. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+							 */
+							value?: string; // date
+						};
+						/**
+						 * Han Yu Pin Yin Alias name of child.
+						 */
+						hanyupinyinaliasname?: {
+							value?: string;
+						};
+						/**
+						 * Han Yu Pin Yin name of child.
+						 */
+						hanyupinyinname?: {
+							value?: string;
+						};
+						/**
+						 * Life Status of child.
+						 */
+						lifestatus?: {
+							code?: "A" | "D" | "";
+							desc?: "ALIVE" | "DECEASED" | "";
+						};
+						/**
+						 * Married name of child.
+						 */
+						marriedname?: {
+							value?: string;
+						};
+						/**
+						 * Full Name of child.
+						 */
+						name?: {
+							value?: string;
+						};
+						/**
+						 * Nationality/Citizenship of child.
+						 * Refer to the Code reference tables in the Support section for list of possible values.
+						 */
+						nationality?: {
+							code?: string; // ^(?:[A-Za-z]{2})?$
+							desc?: string;
+						};
+						/**
+						 * NRIC/FIN of child.
+						 */
+						nric?: {
+							value?: string;
+						};
+						/**
+						 * Race of child.
+						 * Refer to the Code reference tables in the Support section for list of possible values.
+						 */
+						race?: {
+							code?: string; // ^(?:[A-Za-z]{2})?$
+							desc?: string;
+						};
+						/**
+						 * Date granted Singapore Citizenship, Permanent Resident or Long-term Visit Pass.
+						 */
+						scprgrantdate?: {
+							/**
+							 * Value of data field in YYYY-MM-DD format. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+							 */
+							value?: string; // date
+						};
+						/**
+						 * Secondary Race of child.
+						 * Refer to the Code reference tables in the Support section for list of possible values.
+						 */
+						secondaryrace?: {
+							code?: string; // ^(?:[A-Za-z]{2})?$
+							desc?: string;
+						};
+						/**
+						 * Sex of child.
+						 */
+						sex?: {
+							/**
+							 * The 1-character code for the sex.
+							 *
+							 * - 'F': FEMALE
+							 * - 'M': MALE
+							 * - 'U': UNKNOWN
+							 * - '': No data yet
+							 */
+							code?: "F" | "M" | "U" | "";
+							/**
+							 * The full description of the sex.
+							 */
+							desc?: "FEMALE" | "MALE" | "UNKNOWN" | "";
+						};
+						vaccinationrequirements?: {
+							fulfilled?: {
+								value?: boolean;
+							};
+							/**
+							 * Vaccination Requirement.
+							 * Refer to the Code reference tables in the Support section for list of possible values.
+							 */
+							requirement?: {
+								code?: string;
+								desc?: string;
+							};
+						}[];
+				  }[]
+				| null;
+			/**
+			 * Singapore issued identification number of the Person.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "S1111111D",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			uinfin?: {
 				/**
+				 * Data classification of data field. Default 'C' - Confidential.
 				 * example:
-				 * BLACK
+				 * C
 				 */
-				value?: string;
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				value: string; // \b[STFGM]\d{7}[A-Z]\b
 			};
 			/**
-			 * Vehicle Primary Colour (e.g. WHITE)
+			 * Vehicle information of the Person.
+			 * example:
+			 * {
+			 *   "vehicleno": {
+			 *     "value": "SDF1235A"
+			 *   },
+			 *   "type": {
+			 *     "value": "PASSENGER MOTOR CAR"
+			 *   },
+			 *   "iulabelno": {
+			 *     "value": ""
+			 *   },
+			 *   "make": {
+			 *     "value": "TOYOTA"
+			 *   },
+			 *   "model": {
+			 *     "value": "COROLLA ALTIS"
+			 *   },
+			 *   "chassisno": {
+			 *     "value": "ZC11S1735800"
+			 *   },
+			 *   "engineno": {
+			 *     "value": "M13A1837453"
+			 *   },
+			 *   "motorno": {
+			 *     "value": ""
+			 *   },
+			 *   "yearofmanufacture": {
+			 *     "value": "2010"
+			 *   },
+			 *   "firstregistrationdate": {
+			 *     "value": "2010-06-06"
+			 *   },
+			 *   "originalregistrationdate": {
+			 *     "value": "2010-06-06"
+			 *   },
+			 *   "coecategory": {
+			 *     "value": "A - CAR UP TO 1600CC & 97KW (130BHP)"
+			 *   },
+			 *   "coeexpirydate": {
+			 *     "value": "2020-06-05"
+			 *   },
+			 *   "roadtaxexpirydate": {
+			 *     "value": "2020-06-05"
+			 *   },
+			 *   "quotapremium": {
+			 *     "value": 14000.01
+			 *   },
+			 *   "openmarketvalue": {
+			 *     "value": 25000.01
+			 *   },
+			 *   "co2emission": {
+			 *     "value": 146.01
+			 *   },
+			 *   "status": {
+			 *     "code": "1",
+			 *     "desc": "LIVE"
+			 *   },
+			 *   "primarycolour": {
+			 *     "value": "BLACK"
+			 *   },
+			 *   "secondarycolour": {
+			 *     "value": "WHITE"
+			 *   },
+			 *   "attachment1": {
+			 *     "value": "DISABLED"
+			 *   },
+			 *   "attachment2": {
+			 *     "value": "WITH SUN ROOF"
+			 *   },
+			 *   "attachment3": {
+			 *     "value": "SIDE CURTAIN"
+			 *   },
+			 *   "scheme": {
+			 *     "value": "REVISED OFF-PEAK CAR"
+			 *   },
+			 *   "thcemission": {
+			 *     "value": 1.011001
+			 *   },
+			 *   "coemission": {
+			 *     "value": 1.100001
+			 *   },
+			 *   "noxemission": {
+			 *     "value": 0.011001
+			 *   },
+			 *   "pmemission": {
+			 *     "value": 0.007
+			 *   },
+			 *   "enginecapacity": {
+			 *     "value": 1600
+			 *   },
+			 *   "powerrate": {
+			 *     "value": 1.41
+			 *   },
+			 *   "effectiveownership": {
+			 *     "value": "2010-08-31T20:12:12+08:00"
+			 *   },
+			 *   "propellant": {
+			 *     "value": "Compressed Natural Gas"
+			 *   },
+			 *   "maximumunladenweight": {
+			 *     "value": 1500
+			 *   },
+			 *   "maximumladenweight": {
+			 *     "value": 1795
+			 *   },
+			 *   "minimumparfbenefit": {
+			 *     "value": 8770.01
+			 *   },
+			 *   "nooftransfers": {
+			 *     "value": 2
+			 *   },
+			 *   "vpc": {
+			 *     "value": "1234567890"
+			 *   },
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
 			 */
-			secondarycolour?: {
+			vehicles?:
+				| {
+						/**
+						 * Data classification of data field. Default 'C' - Confidential.
+						 * example:
+						 * C
+						 */
+						classification: string;
+						/**
+						 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+						 * example:
+						 * 2019-03-26
+						 */
+						lastupdated: string; // date
+						/**
+						 * Source of data.
+						 *
+						 * - '1': Government-verified
+						 * - '2': User provided
+						 * - '3': Not Applicable (applies only to Person data, not Entity data)
+						 * - '4': Verified by SingPass
+						 * example:
+						 * 1
+						 */
+						source: "1" | "2" | "3" | "4";
+						/**
+						 * Optional flag to indicate if data is unavailable from data source.
+						 *
+						 * NOTE:
+						 *
+						 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+						 *
+						 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+						 *
+						 * - If data is available from the data source, this property will not be present.
+						 */
+						unavailable?: boolean;
+						/**
+						 * Vehicle Attachment 1 (e.g. DISABLED).
+						 */
+						attachment1?: {
+							value?: string;
+						};
+						/**
+						 * Vehicle Attachment 2 (e.g. WITH SUN ROOF).
+						 */
+						attachment2?: {
+							value?: string;
+						};
+						/**
+						 * Vehicle Attachment 3 (e.g. SIDE CURTAIN).
+						 */
+						attachment3?: {
+							value?: string;
+						};
+						/**
+						 * Vehicle Chassis Number.
+						 */
+						chassisno?: {
+							value?: string;
+						};
+						/**
+						 * CO2 emission rate.
+						 */
+						co2emission?: {
+							value?: number; // double
+						};
+						/**
+						 * Vehicle Certificate of Entitlement (COE) bid category.
+						 */
+						coecategory?: {
+							value?: string;
+						};
+						/**
+						 * Vehicle Certificate of Entitlement (COE) expiry date.
+						 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+						 */
+						coeexpirydate?: {
+							value?: string; // date
+						};
+						/**
+						 * Carbon Monoxide emission rate.
+						 */
+						coemission?: {
+							value?: number; // double
+						};
+						/**
+						 * Effective Date/Time of Ownership.
+						 * See "date-time" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+						 */
+						effectiveownership?: {
+							value?: string; // date-time
+						}; // date-time
+						/**
+						 * Engine Capacity in cubic centimeter (cc).
+						 */
+						enginecapacity?: {
+							value?: number; // int64
+						};
+						/**
+						 * Vehicle Engine Number.
+						 */
+						engineno?: {
+							value?: string;
+						};
+						/**
+						 * Date when vehicle is registered with LTA.
+						 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+						 */
+						firstregistrationdate?: {
+							value?: string; // date
+						};
+						/**
+						 * In-Vehicle Unit (IU) number of the device fitted in Singapore-registered vehicles for
+						 * Electronic Road Pricing (ERP) gantries and Electronic Parking System (EPS) car parks.
+						 */
+						iulabelno?: {
+							value?: string;
+						};
+						/**
+						 * Vehicle Make such as 'TOYOTA', 'HONDA', 'AUDI'.
+						 */
+						make?: {
+							value?: string;
+						};
+						/**
+						 * Maximum Laden Weight in kilograms (kg).
+						 */
+						maximumladenweight?: {
+							value?: number; // int64
+						};
+						/**
+						 * Maximum Unladen Weight in kilograms (kg).
+						 */
+						maximumunladenweight?: {
+							value?: number; // int64
+						};
+						/**
+						 * Minimum PARF Benefit in Singapore dollars (SGD).
+						 */
+						minimumparfbenefit?: {
+							value?: number; // double
+						};
+						/**
+						 * Vehicle Model such as 'COROLLA ALTIS CLASSIC 1.6 CVT', 'HRV 1.5 DX CVT'.
+						 */
+						model?: {
+							value?: string;
+						};
+						/**
+						 * Vehicle Motor Number.
+						 */
+						motorno?: {
+							value?: string;
+						};
+						/**
+						 * Number of Transfer.
+						 */
+						nooftransfers?: {
+							value?: number; // int64
+						};
+						/**
+						 * Nitrogen Oxide (NOx) emission rate.
+						 */
+						noxemission?: {
+							value?: number; // double
+						};
+						/**
+						 * Open Market Value is the value of manufacturer invoice price, freight and
+						 * insurance in Singapore dollars (SGD).
+						 */
+						openmarketvalue?: {
+							value?: number; // double
+						};
+						/**
+						 * Date when vehicle is first registered in the country of origin.
+						 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+						 */
+						originalregistrationdate?: {
+							value?: string; // date
+						};
+						/**
+						 * Particulates (PM - Atmospheric Particulate Matter) emission rate.
+						 */
+						pmemission?: {
+							value?: number; // double
+						};
+						/**
+						 * Power Rate.
+						 * Applicable to Electric and Hybrid vehicles powered by electric motors. Unit is Kilowatt.
+						 */
+						powerrate?: {
+							value?: number; // double
+						};
+						/**
+						 * Vehicle Primary Colour (e.g. BLACK).
+						 */
+						primarycolour?: {
+							value?: string;
+						};
+						/**
+						 * Propellant (e.g. Compressed Natural Gas, Diesel, Diesel-CNG, Diesel-Electric,
+						 * Diesel-Electric (Plug-In), Electric, Gas, Liquefied Petroleum Gas (LPG),
+						 * Petrol, Petrol-CNG, Petrol-Electric, Petrol-Electric (Plug-In), Petrol-LPG.
+						 */
+						propellant?: {
+							value?: string;
+						};
+						/**
+						 * Actual Quota Premium (QP) amount payable for the COE upon registration, conversion or COE
+						 * revalidation in Singapore dollars (SGD). For renewal of COE, the value will contain
+						 * actual PQP paid.
+						 */
+						quotapremium?: {
+							value?: number; // double
+						};
+						/**
+						 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+						 */
+						roadtaxexpirydate?: {
+							value?: string; // date
+						};
+						/**
+						 * Vehicle Scheme (e.g. REVISED OFF-PEAK CAR).
+						 */
+						scheme?: {
+							value?: string;
+						};
+						/**
+						 * Vehicle Secondary Colour (e.g. WHITE).
+						 */
+						secondarycolour?: {
+							value?: string;
+						};
+						/**
+						 * Status of the Vehicle.
+						 */
+						status?: {
+							code?: "1" | "2";
+							desc?: "LIVE" | "DE-REGISTERED";
+						};
+						/**
+						 * Total Hydro Carbon (THC) emission rate.
+						 */
+						thcemission?: {
+							value?: number; // double
+						};
+						/**
+						 * Type of Vehicles such as 'MOTOR CAR', 'STATION /WAGON/JEEP/LAND ROVER'.
+						 */
+						type?: {
+							value?: string;
+						};
+						/**
+						 * Vehicle Registration Number displayed on the vehicle number plates.
+						 */
+						vehicleno?: {
+							value?: string;
+						};
+						/**
+						 * Vehicle Parking Certificate. Applicable for Heavy Vehicles.
+						 */
+						vpc?: {
+							value?: string;
+						};
+						/**
+						 * Manufacturing year.
+						 */
+						yearofmanufacture?: {
+							value?: string;
+						};
+				  }[]
+				| null;
+			/**
+			 * Merdekagen details.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "eligibility": {
+			 *     "value": true
+			 *   },
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			merdekagen?: {
 				/**
+				 * Data classification of data field. Default 'C' - Confidential.
 				 * example:
-				 * WHITE
+				 * C
 				 */
-				value?: string;
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * Eligibility.
+				 */
+				eligibility?: {
+					value?: boolean;
+				};
 			};
 			/**
-			 * Vehicle Attachment 1 (e.g. DISABLED)
+			 * Pioneergen details.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "eligibility": {
+			 *     "value": true
+			 *   },
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
 			 */
-			attachment1?: {
+			pioneergen?: {
 				/**
+				 * Data classification of data field. Default 'C' - Confidential.
 				 * example:
-				 * DISABLED
+				 * C
 				 */
-				value?: string;
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * Eligibility.
+				 */
+				eligibility?: {
+					value?: boolean;
+				};
 			};
 			/**
-			 * Vehicle Attachment 2 (e.g. WITH SUN ROOF)
+			 * CPF Balances of Person in SGD.
 			 */
-			attachment2?: {
+			cpfbalances?: {
 				/**
+				 * Amount Balance in CPF-MA.
 				 * example:
-				 * WITH SUN ROOF
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 * {
+				 *   "value": 11470.71,
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
 				 */
-				value?: string;
-			};
-			/**
-			 * Vehicle Attachment 3 (e.g. SIDE CURTAIN)
-			 */
-			attachment3?: {
-				/**
-				 * example:
-				 * SIDE CURTAIN
-				 */
-				value?: string;
-			};
-			/**
-			 * Vehicle Scheme (e.g. REVISED OFF-PEAK CAR)
-			 */
-			scheme?: {
-				/**
-				 * example:
-				 * REVISED OFF-PEAK CAR
-				 */
-				value?: string;
-			};
-			/**
-			 * Total Hydro Carbon (THC) emission rate
-			 */
-			thcemission?: {
-				/**
-				 * example:
-				 * 1.011001
-				 */
-				value?: number; // double
-			};
-			/**
-			 * Carbon Monoxide emission rate
-			 */
-			coemission?: {
-				/**
-				 * example:
-				 * 1.100001
-				 */
-				value?: number; // double
-			};
-			/**
-			 * Nitrogen Oxide (NOx) emission rate.
-			 */
-			noxemission?: {
-				/**
-				 * example:
-				 * 0.011001
-				 */
-				value?: number; // double
-			};
-			/**
-			 * Particulates (PM - Atmospheric Particulate Matter) emission rate.
-			 */
-			pmemission?: {
-				/**
-				 * example:
-				 * 0.007
-				 */
-				value?: number; // double
-			};
-			/**
-			 * Engine Capacity in cubic centimeter (cc)
-			 */
-			enginecapacity?: {
-				/**
-				 * example:
-				 * 1600
-				 */
-				value?: number;
-			};
-			/**
-			 * Power Rate. Applicable to Electric and Hybrid vehicles powered by electric motors. Unit is Kilowatt.
-			 */
-			powerrate?: {
-				/**
-				 * example:
-				 * 1.41
-				 */
-				value?: number; // double
-			};
-			/**
-			 * Effective Date/Time of Ownership. See "date-time" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6'
-			 */
-			effectiveownership?: {
-				/**
-				 * example:
-				 * 2010-08-31T20:12:12+08:00
-				 */
-				value?: string; // date-time
-			};
-			/**
-			 * Propellant (e.g. Compressed Natural Gas, Diesel, Diesel-CNG, Diesel-Electric, Diesel-Electric (Plug-In), Electric, Gas, Liquefied Petroleum Gas (LPG), Petrol, Petrol-CNG, Petrol-Electric, Petrol-Electric (Plug-In), Petrol-LPG
-			 */
-			propellant?: {
-				/**
-				 * example:
-				 * Compressed Natural Gas
-				 */
-				value?: string;
-			};
-			/**
-			 * Maximum Unladen Weight in kilograms (kg)
-			 */
-			maximumunladenweight?: {
-				/**
-				 * example:
-				 * 1500
-				 */
-				value?: number;
-			};
-			/**
-			 * Maximum Laden Weight in kilograms (kg)
-			 */
-			maximumladenweight?: {
-				/**
-				 * example:
-				 * 1795
-				 */
-				value?: number;
-			};
-			/**
-			 * Minimum PARF Benefit in Singapore dollars (SGD).
-			 */
-			minimumparfbenefit?: {
-				/**
-				 * example:
-				 * 8770.01
-				 */
-				value?: number; // double
-			};
-			/**
-			 * Number of Transfer
-			 */
-			nooftransfers?: {
-				/**
-				 * example:
-				 * 2
-				 */
-				value?: number;
-			};
-			/**
-			 * Vehicle Parking Certificate. Applicable for Heavy Vehicles.
-			 */
-			vpc?: {
-				/**
-				 * example:
-				 * 1234567890
-				 */
-				value?: string;
-			};
-		}[];
-		/**
-		 * VocationalLicences
-		 * Vocational Licences.
-		 */
-		export interface Vocationallicences {
-			licences?: {
-				/**
-				 * Unique licence number assigned by issuing agency
-				 */
-				number?: {
-					value?: number;
+				ma?: {
+					/**
+					 * Data classification of data field. Default 'C' - Confidential.
+					 * example:
+					 * C
+					 */
+					classification: string;
+					/**
+					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+					 * example:
+					 * 2019-03-26
+					 */
+					lastupdated: string; // date
+					/**
+					 * Source of data.
+					 *
+					 * - '1': Government-verified
+					 * - '2': User provided
+					 * - '3': Not Applicable (applies only to Person data, not Entity data)
+					 * - '4': Verified by SingPass
+					 * example:
+					 * 1
+					 */
+					source: "1" | "2" | "3" | "4";
+					/**
+					 * Optional flag to indicate if data is unavailable from data source.
+					 *
+					 * NOTE:
+					 *
+					 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+					 *
+					 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+					 *
+					 * - If data is available from the data source, this property will not be present.
+					 */
+					unavailable?: boolean;
+					/**
+					 * Value of CPF-MA balance.
+					 */
+					value?: number; // double
 				};
 				/**
-				 * Licence name
+				 * Amount Balance in CPF-OA.
+				 * example:
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 * {
+				 *   "value": 1581.48,
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 */
+				oa?: {
+					/**
+					 * Data classification of data field. Default 'C' - Confidential.
+					 * example:
+					 * C
+					 */
+					classification: string;
+					/**
+					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+					 * example:
+					 * 2019-03-26
+					 */
+					lastupdated: string; // date
+					/**
+					 * Source of data.
+					 *
+					 * - '1': Government-verified
+					 * - '2': User provided
+					 * - '3': Not Applicable (applies only to Person data, not Entity data)
+					 * - '4': Verified by SingPass
+					 * example:
+					 * 1
+					 */
+					source: "1" | "2" | "3" | "4";
+					/**
+					 * Optional flag to indicate if data is unavailable from data source.
+					 *
+					 * NOTE:
+					 *
+					 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+					 *
+					 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+					 *
+					 * - If data is available from the data source, this property will not be present.
+					 */
+					unavailable?: boolean;
+					/**
+					 * Value of CPF-OA balance.
+					 */
+					value?: number; // double
+				};
+				/**
+				 * Amount Balance in CPF-RA.
+				 * example:
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 * {
+				 *   "value": 0.01,
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 */
+				ra?: {
+					/**
+					 * Data classification of data field. Default 'C' - Confidential.
+					 * example:
+					 * C
+					 */
+					classification: string;
+					/**
+					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+					 * example:
+					 * 2019-03-26
+					 */
+					lastupdated: string; // date
+					/**
+					 * Source of data.
+					 *
+					 * - '1': Government-verified
+					 * - '2': User provided
+					 * - '3': Not Applicable (applies only to Person data, not Entity data)
+					 * - '4': Verified by SingPass
+					 * example:
+					 * 1
+					 */
+					source: "1" | "2" | "3" | "4";
+					/**
+					 * Optional flag to indicate if data is unavailable from data source.
+					 *
+					 * NOTE:
+					 *
+					 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+					 *
+					 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+					 *
+					 * - If data is available from the data source, this property will not be present.
+					 */
+					unavailable?: boolean;
+					/**
+					 * Value of CPF-RA balance.
+					 */
+					value?: number; // double
+				};
+				/**
+				 * Amount Balance in CPF-SA.
+				 * example:
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 * {
+				 *   "value": 21967.09,
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 */
+				sa?: {
+					/**
+					 * Data classification of data field. Default 'C' - Confidential.
+					 * example:
+					 * C
+					 */
+					classification: string;
+					/**
+					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+					 * example:
+					 * 2019-03-26
+					 */
+					lastupdated: string; // date
+					/**
+					 * Source of data.
+					 *
+					 * - '1': Government-verified
+					 * - '2': User provided
+					 * - '3': Not Applicable (applies only to Person data, not Entity data)
+					 * - '4': Verified by SingPass
+					 * example:
+					 * 1
+					 */
+					source: "1" | "2" | "3" | "4";
+					/**
+					 * Optional flag to indicate if data is unavailable from data source.
+					 *
+					 * NOTE:
+					 *
+					 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+					 *
+					 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+					 *
+					 * - If data is available from the data source, this property will not be present.
+					 */
+					unavailable?: boolean;
+					/**
+					 * Value of CPF-SA balance.
+					 */
+					value?: number; // double
+				};
+			};
+			/**
+			 * Employer CPF Contributions of Person in SGD. Does not include any non-employer contributions. Maximum past 15 months' of contributions.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "history": [
+			 *     {
+			 *       "date": {
+			 *         "value": "2016-12-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2016-11"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2016-12-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2016-12"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2016-12-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2016-12"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-01-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2016-12"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-01-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-01"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-01-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-01"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-02-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-01"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-02-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-02"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-02-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-02"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-03-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-02"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-03-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-03"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-03-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-03"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-04-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-03"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-04-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-04"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-04-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-04"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-05-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-04"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-05-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-05"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-05-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-05"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-06-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-05"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-06-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-06"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-06-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-06"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-07-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-06"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-07-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-07"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-07-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-07"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-08-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-07"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-08-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-08"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-08-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-08"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-09-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-08"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-09-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-09"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-09-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-09"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-10-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-09"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-10-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-10"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-10-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-10"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-11-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-10"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-11-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-11"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-11-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-11"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-12-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-11"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-12-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-12"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-12-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-12"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2018-01-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-12"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2018-01-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2018-01"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2018-01-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2018-01"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     }
+			 *   ],
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			cpfcontributions?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				history?: {
+					/**
+					 * Amount of contribution in SGD.
+					 */
+					amount?: {
+						value?: number; // double
+					};
+					/**
+					 * Date of Contribution Paid. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+					 */
+					date?: {
+						value?: string; // date
+					};
+					/**
+					 * Employer who paid the Contribution.
+					 */
+					employer?: {
+						value?: string;
+					};
+					/**
+					 * Month for which CPF Contribution was paid. Format: YYYY-MM
+					 */
+					month?: {
+						value?: string;
+					};
+				}[];
+			};
+			/**
+			 * Employers who paid CPF Contributions. Maximum up to past 14 months.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "history": [
+			 *     {
+			 *       "month": {
+			 *         "value": "2016-11"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2016-12"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2016-12"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2016-12"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-01"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-01"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-01"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-02"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-02"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-02"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-03"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-03"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-03"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-04"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-04"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-04"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-05"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-05"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-05"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-06"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-06"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-06"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-07"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-07"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-07"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-08"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-08"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-08"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-09"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-09"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-09"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-10"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-10"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-10"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-11"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-11"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-11"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-12"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-12"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-12"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2018-01"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2018-01"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     }
+			 *   ],
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			cpfemployers?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				history?: {
+					/**
+					 * Employer who paid the Contribution.
+					 */
+					employer?: {
+						value?: string;
+					};
+					/**
+					 * Month for which CPF Contribution was paid. Format: YYYY-MM
+					 */
+					month?: {
+						value?: string; // ^\d{4}-\d{2}$
+					};
+				}[];
+			};
+			/**
+			 * CPF Housing Withdrawal information.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "withdrawaldetails": [
+			 *     {
+			 *       "address": {
+			 *         "type": "SG",
+			 *         "block": {
+			 *           "value": "548"
+			 *         },
+			 *         "building": {
+			 *           "value": ""
+			 *         },
+			 *         "floor": {
+			 *           "value": "09"
+			 *         },
+			 *         "unit": {
+			 *           "value": "128"
+			 *         },
+			 *         "street": {
+			 *           "value": "BEDOK NORTH AVENUE 1"
+			 *         },
+			 *         "postal": {
+			 *           "value": "460548"
+			 *         },
+			 *         "country": {
+			 *           "code": "SG",
+			 *           "desc": "SINGAPORE"
+			 *         }
+			 *       },
+			 *       "accruedinterestamt": {
+			 *         "value": 1581.48
+			 *       },
+			 *       "monthlyinstalmentamt": {
+			 *         "value": 1196.09
+			 *       },
+			 *       "principalwithdrawalamt": {
+			 *         "value": 2897.01
+			 *       },
+			 *       "totalamountofcpfallowedforproperty": {
+			 *         "value": 10000.01
+			 *       }
+			 *     }
+			 *   ],
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			cpfhousingwithdrawal?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				withdrawaldetails?: {
+					/**
+					 * Accrued interest amount.
+					 */
+					accruedinterestamt?: {
+						value?: number; // double
+					};
+					/**
+					 * Registered Address of Person (including FIN holders).
+					 *
+					 * Note:
+					 * - Address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED').
+					 * - May be unavailable for some FIN holders.
+					 */
+					address?: /**
+					 * Registered Address of Person (including FIN holders).
+					 *
+					 * Note:
+					 * - Address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED').
+					 * - May be unavailable for some FIN holders.
+					 */
+					| {
+								/**
+								 * Block/House of Address.
+								 */
+								block?: {
+									value?: string;
+								};
+								/**
+								 * Building of Address.
+								 */
+								building?: {
+									value?: string;
+								};
+								/**
+								 * Country/Place of Address. For AddressSG this will always be 'SG'.
+								 */
+								country?: {
+									code?: string;
+									desc?: string;
+								};
+								/**
+								 * Floor of Address.
+								 */
+								floor?: {
+									value?: string;
+								};
+								/**
+								 * Postal Code of Address.
+								 */
+								postal?: {
+									value?: string;
+								};
+								/**
+								 * Street of Address.
+								 */
+								street?: {
+									value?: string;
+								};
+								/**
+								 * Type of Address (SG or UNFORMATTED for non SG).
+								 */
+								type?: "SG";
+								/**
+								 * Unit of Address.
+								 */
+								unit?: {
+									value?: string;
+								};
+						  }
+						| {
+								/**
+								 * Unregistered Foreign address line 1
+								 */
+								line1?: {
+									value?: string;
+								};
+								/**
+								 * Unregistered Foreign address line 2
+								 */
+								line2?: {
+									value?: string;
+								};
+								/**
+								 * Type of Address (SG or UNFORMATTED for non SG).
+								 */
+								type?: "UNFORMATTED";
+						  };
+					/**
+					 * Monthly instalment amount.
+					 */
+					monthlyinstalmentamt?: {
+						value?: number; // double
+					};
+					/**
+					 * Principal withdrawal amount.
+					 */
+					principalwithdrawalamt?: {
+						value?: number; // double
+					};
+					/**
+					 * Total amount of CPF allowed for the property.
+					 */
+					totalamountofcpfallowedforproperty?: {
+						value?: number; // double
+					};
+				}[];
+			};
+			/**
+			 * CPF Investment Scheme.
+			 */
+			cpfinvestmentscheme?: {
+				/**
+				 * Account Details.
+				 * example:
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 * {
+				 *   "agentbankcode": {
+				 *     "value": "OCBC"
+				 *   },
+				 *   "invbankacctno": {
+				 *     "value": "098-26644-4"
+				 *   },
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 */
+				account?: {
+					/**
+					 * Data classification of data field. Default 'C' - Confidential.
+					 * example:
+					 * C
+					 */
+					classification: string;
+					/**
+					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+					 * example:
+					 * 2019-03-26
+					 */
+					lastupdated: string; // date
+					/**
+					 * Source of data.
+					 *
+					 * - '1': Government-verified
+					 * - '2': User provided
+					 * - '3': Not Applicable (applies only to Person data, not Entity data)
+					 * - '4': Verified by SingPass
+					 * example:
+					 * 1
+					 */
+					source: "1" | "2" | "3" | "4";
+					/**
+					 * Optional flag to indicate if data is unavailable from data source.
+					 *
+					 * NOTE:
+					 *
+					 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+					 *
+					 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+					 *
+					 * - If data is available from the data source, this property will not be present.
+					 */
+					unavailable?: boolean;
+					/**
+					 * Agent Bank Code.
+					 * example:
+					 * {
+					 *   "value": "OCBC"
+					 * }
+					 */
+					agentbankcode?: {
+						value?: string;
+					};
+					/**
+					 * Account Number.
+					 * example:
+					 * {
+					 *   "value": "098-26644-4"
+					 * }
+					 */
+					invbankacctno?: {
+						value?: string;
+					};
+				};
+				/**
+				 * Self-Awareness Questionnaire (SAQ) Participation Status.
+				 * example:
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 * {
+				 *   "code": "X",
+				 *   "desc": "Participated",
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 */
+				saqparticipationstatus?: {
+					/**
+					 * Data classification of data field. Default 'C' - Confidential.
+					 * example:
+					 * C
+					 */
+					classification: string;
+					/**
+					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+					 * example:
+					 * 2019-03-26
+					 */
+					lastupdated: string; // date
+					/**
+					 * Source of data.
+					 *
+					 * - '1': Government-verified
+					 * - '2': User provided
+					 * - '3': Not Applicable (applies only to Person data, not Entity data)
+					 * - '4': Verified by SingPass
+					 * example:
+					 * 1
+					 */
+					source: "1" | "2" | "3" | "4";
+					/**
+					 * Optional flag to indicate if data is unavailable from data source.
+					 *
+					 * NOTE:
+					 *
+					 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+					 *
+					 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+					 *
+					 * - If data is available from the data source, this property will not be present.
+					 */
+					unavailable?: boolean;
+					/**
+					 * Possible values:
+					 * - 'Y': Participated
+					 * - 'X': Existing CPFIS participant
+					 * - 'N': Did not participate
+					 * example:
+					 * X
+					 */
+					code?: "Y" | "X" | "N";
+					/**
+					 * example:
+					 * Participated
+					 */
+					desc?: string;
+				};
+				/**
+				 * Number of Discounted Singtel Shares.
+				 * example:
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 * {
+				 *   "value": 1360,
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 */
+				sdsnetshareholdingqty?: {
+					/**
+					 * Data classification of data field. Default 'C' - Confidential.
+					 * example:
+					 * C
+					 */
+					classification: string;
+					/**
+					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+					 * example:
+					 * 2019-03-26
+					 */
+					lastupdated: string; // date
+					/**
+					 * Source of data.
+					 *
+					 * - '1': Government-verified
+					 * - '2': User provided
+					 * - '3': Not Applicable (applies only to Person data, not Entity data)
+					 * - '4': Verified by SingPass
+					 * example:
+					 * 1
+					 */
+					source: "1" | "2" | "3" | "4";
+					/**
+					 * Optional flag to indicate if data is unavailable from data source.
+					 *
+					 * NOTE:
+					 *
+					 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+					 *
+					 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+					 *
+					 * - If data is available from the data source, this property will not be present.
+					 */
+					unavailable?: boolean;
+					/**
+					 * example:
+					 * 1360
+					 */
+					value?: number;
+				};
+			};
+			/**
+			 * Detailed breakdown of the latest Notice of Assessment (NOA) within the past three years.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "amount": {
+			 *     "value": 100000.01
+			 *   },
+			 *   "yearofassessment": {
+			 *     "value": "2018"
+			 *   },
+			 *   "employment": {
+			 *     "value": 100000.01
+			 *   },
+			 *   "trade": {
+			 *     "value": 0
+			 *   },
+			 *   "rent": {
+			 *     "value": 0
+			 *   },
+			 *   "interest": {
+			 *     "value": 0
+			 *   },
+			 *   "taxclearance": {
+			 *     "value": "N"
+			 *   },
+			 *   "category": {
+			 *     "value": "ORIGINAL"
+			 *   },
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			noa?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * Total Assessable Income from the latest NOA.
+				 */
+				amount?: {
+					value?: number; // double
+				};
+				/**
+				 * Type of 'Notice of Assessment' (NOA).
+				 */
+				category?: {
+					value?: "ADDITIONAL" | "AMENDED" | "ORIGINAL" | "REPAYMENT";
+				};
+				/**
+				 * Assessable Income from employment for the latest NOA.
+				 */
+				employment?: {
+					value?: number; // double
+				};
+				/**
+				 * Assessable Income from interest for the latest NOA.
+				 */
+				interest?: {
+					value?: number; // double
+				};
+				/**
+				 * Assessable Income from rent for the latest NOA.
+				 */
+				rent?: {
+					value?: number; // double
+				};
+				/**
+				 * Tax Clearance indicator.
+				 */
+				taxclearance?: {
+					value?: "Y" | "N";
+				};
+				/**
+				 * Assessable Income from trade for the latest NOA.
+				 */
+				trade?: {
+					value?: number; // double
+				};
+				/**
+				 * The year of assessment (YYYY) for the latest NOA.
+				 */
+				yearofassessment?: {
+					value?: string; // [0-9]{4}
+				};
+			};
+			/**
+			 * Summary of latest Notice of Assessment within the past three years.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "amount": {
+			 *     "value": 100000.01
+			 *   },
+			 *   "yearofassessment": {
+			 *     "value": "2018"
+			 *   },
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			"noa-basic"?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * The assessable income amount from the latest Notice of Assessment.
+				 */
+				amount?: {
+					value?: number; // double
+				};
+				/**
+				 * The year of assessment (YYYY) for the latest Notice of Assessment.
+				 */
+				yearofassessment?: {
+					value?: string; // [0-9]{4}
+				};
+			};
+			/**
+			 * Detailed breakdown of latest 2 Notice of Assessments within the past three years.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "noas": [
+			 *     {
+			 *       "amount": {
+			 *         "value": 100000.01
+			 *       },
+			 *       "yearofassessment": {
+			 *         "value": "2018"
+			 *       },
+			 *       "employment": {
+			 *         "value": 100000.01
+			 *       },
+			 *       "trade": {
+			 *         "value": 0
+			 *       },
+			 *       "rent": {
+			 *         "value": 0
+			 *       },
+			 *       "interest": {
+			 *         "value": 0
+			 *       },
+			 *       "taxclearance": {
+			 *         "value": "N"
+			 *       },
+			 *       "category": {
+			 *         "value": "ORIGINAL"
+			 *       }
+			 *     }
+			 *   ],
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			noahistory?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				noas?: {
+					/**
+					 * Total Assessable Income for this historical NOA.
+					 */
+					amount?: {
+						value?: number; // double
+					};
+					/**
+					 * Type of 'Notice of Assessment' (NOA) for this historical NOA.
+					 */
+					category?: {
+						value?: "ADDITIONAL" | "AMENDED" | "ORIGINAL" | "REPAYMENT";
+					};
+					/**
+					 * Assessable Income from employment for this historical NOA.
+					 */
+					employment?: {
+						value?: number; // double
+					};
+					/**
+					 * Assessable Income from interest for this historical NOA.
+					 */
+					interest?: {
+						value?: number; // double
+					};
+					/**
+					 * Assessable Income from rent for this historical NOA.
+					 */
+					rent?: {
+						value?: number; // double
+					};
+					/**
+					 * Tax Clearance indicator for this historical NOA.
+					 */
+					taxclearance?: {
+						value?: "Y" | "N";
+					};
+					/**
+					 * Assessable Income from trade for this historical NOA.
+					 */
+					trade?: {
+						value?: number; // double
+					};
+					/**
+					 * The year of assessment (YYYY) for this historical NOA.
+					 */
+					yearofassessment?: {
+						value?: string; // [0-9]{4}
+					};
+				}[];
+			};
+			/**
+			 * Summary of latest 2 Notice of Assessments within the past three years.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "noas": [
+			 *     {
+			 *       "amount": {
+			 *         "value": 100000.01
+			 *       },
+			 *       "yearofassessment": {
+			 *         "value": "2018"
+			 *       }
+			 *     }
+			 *   ],
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			"noahistory-basic"?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				noas?: {
+					/**
+					 * Assessable Income for this historical NOA.
+					 */
+					amount?: {
+						value?: number; // double
+					};
+					/**
+					 * The year of assessment (YYYY) for this historical NOA.
+					 */
+					yearofassessment?: {
+						value?: string; // [0-9]{4}
+					};
+				}[];
+			};
+		}
+		/**
+		 * Person common data items
+		 */
+		export interface PersonCommon {
+			/**
+			 * Academic qualifications achieved.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "certificates": [
+			 *     {
+			 *       "name": {
+			 *         "value": "nus.opencert"
+			 *       },
+			 *       "content": {
+			 *         "value": "base64-string"
+			 *       },
+			 *       "opencertificate": {
+			 *         "id": {
+			 *           "value": "100000000343840"
+			 *         },
+			 *         "primary": {
+			 *           "value": true
+			 *         }
+			 *       },
+			 *       "opencertificateindicator": {
+			 *         "value": true
+			 *       }
+			 *     }
+			 *   ],
+			 *   "transcripts": [
+			 *     {
+			 *       "name": {
+			 *         "value": "SINGAPORE-CAMBRIDGE GENERAL CERTIFICATE OF EDUCATION ORDINARY LEVEL"
+			 *       },
+			 *       "yearattained": {
+			 *         "value": "2018"
+			 *       },
+			 *       "results": [
+			 *         {
+			 *           "subject": {
+			 *             "value": "English Language"
+			 *           },
+			 *           "level": {
+			 *             "value": "Ordinary"
+			 *           },
+			 *           "grade": {
+			 *             "value": "A"
+			 *           },
+			 *           "subsubject": {
+			 *             "value": "SPECIAL PAPER"
+			 *           },
+			 *           "subgrade": {
+			 *             "value": "One"
+			 *           }
+			 *         }
+			 *       ],
+			 *       "explanatorynotes": {
+			 *         "value": "https://public.cloud.myinfo.gov.sg/myinfo/spm/seab-explanatory-notes/SEAB_Cert_A.html"
+			 *       }
+			 *     }
+			 *   ],
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			academicqualifications?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * Electronic certificates uploaded.
+				 * example:
+				 * {
+				 *   "name": {
+				 *     "value": "nus.opencert"
+				 *   },
+				 *   "content": {
+				 *     "value": "base64-string"
+				 *   },
+				 *   "opencertificate": {
+				 *     "id": {
+				 *       "value": 100000000343840
+				 *     },
+				 *     "primary": {
+				 *       "value": true
+				 *     }
+				 *   },
+				 *   "opencertificateindicator": {
+				 *     "value": true
+				 *   }
+				 * }
+				 */
+				certificates?:
+					| {
+							/**
+							 * File content of the electronic certificate, Base64 encoded.
+							 */
+							content?: {
+								value?: string;
+							};
+							/**
+							 * File name of the electronic certificate.
+							 */
+							name?: {
+								value?: string;
+							};
+							/**
+							 * Open Certificate Information.
+							 *
+							 * Note: The test environment for OpenCert is at https://dev.opencerts.io/
+							 * while production is at https://opencerts.io/
+							 */
+							opencertificate?: {
+								id?: {
+									value?: string;
+								};
+								primary?: {
+									value?: boolean;
+								};
+							};
+							/**
+							 * Indicate whether this file is open certificate.
+							 */
+							opencertificateindicator?: {
+								value?: boolean;
+							};
+					  }[]
+					| null;
+				/**
+				 * Transcript of qualification.
+				 */
+				transcripts?:
+					| {
+							/**
+							 * Explanatory Notes. For an example, see https://public.cloud.myinfo.gov.sg/myinfo/spm/seab-explanatory-notes/SEAB_Cert_A.html
+							 * example:
+							 * https://public.cloud.myinfo.gov.sg/myinfo/spm/seab-explanatory-notes/SEAB_Cert_A.html
+							 */
+							explanatorynotes?: {
+								value?: string;
+							};
+							/**
+							 * Qualification's Name.
+							 */
+							name?: {
+								value?: string;
+							};
+							/**
+							 * Array of results for the qualification.
+							 */
+							results?: {
+								/**
+								 * Grade attained.
+								 */
+								grade?: {
+									value?: string;
+								};
+								/**
+								 * Level of subject taken.
+								 */
+								level?: {
+									value?: string;
+								};
+								/**
+								 * Optional grade attained for subSubject.
+								 */
+								subgrade?: {
+									value?: string;
+								};
+								/**
+								 * Subject taken.
+								 */
+								subject?: {
+									value?: string;
+								};
+								/**
+								 * Optional Sub Subject taken.
+								 */
+								subsubject?: {
+									value?: string;
+								};
+							}[];
+							/**
+							 * Year this qualification was attained. See "date-fullyear" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+							 * example:
+							 * 2019
+							 */
+							yearattained?: {
+								value?: string; // [0-9]{4}
+							};
+					  }[]
+					| null;
+			};
+			/**
+			 * Alias name of the Person
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "TRICIA TAN XIAO HUI",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			aliasname?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * example:
+				 * TRICIA TAN XIAO HUI
+				 */
+				value?: string;
+			};
+			/**
+			 * Country/Place of Birth of Person.
+			 *
+			 * Refer to the Code reference tables in the Support section for list of possible values.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "code": "SG",
+			 *   "desc": "SINGAPORE",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			birthcountry?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * example:
+				 * SG
+				 *
+				 */
+				code?: string; // ^(?:[A-Za-z]{2})?$
+				/**
+				 * example:
+				 * SINGAPORE
+				 */
+				desc?: string;
+			};
+			/**
+			 * Community Health Assist Scheme (CHAS) card details - Card Type, Date of Issue, Date of Expiry
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "cardtype": {
+			 *     "code": "C",
+			 *     "desc": "Green"
+			 *   },
+			 *   "indicator": {
+			 *     "code": "C",
+			 *     "desc": "Green"
+			 *   },
+			 *   "expirydate": {
+			 *     "value": "2020-06-15"
+			 *   },
+			 *   "issuedate": {
+			 *     "value": "2020-06-15"
+			 *   },
+			 *   "lastupdated": "2019-03-26",
+			 *   "name": {
+			 *     "value": "TAN XIAO HUI"
+			 *   },
+			 *   "classification": "C",
+			 *   "source": "1"
+			 * }
+			 */
+			chas?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * CHAS Card Type.
+				 */
+				cardtype?: {
+					code?: "A" | "B" | "C" | "NA";
+					desc?: string;
+				};
+				/**
+				 * CHAS Expiry Date. Value of data field in YYYY-MM-DD format.
+				 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+				 */
+				expirydate?: {
+					value?: string; // date
+				};
+				/**
+				 * CHAS Indicator.
+				 */
+				indicator?: {
+					code?: "PGA" | "PGB" | "PGC" | "MGA" | "MGB" | "MGC" | "PG" | "MG" | "A" | "B" | "C" | "NA";
+					desc?: string;
+				};
+				/**
+				 * CHAS Issue Date. Value of data field in YYYY-MM-DD format.
+				 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+				 */
+				issuedate?: {
+					value?: string; // date
+				};
+				/**
+				 * Full Name of the Person.
 				 */
 				name?: {
 					value?: string;
 				};
+			};
+			/**
+			 * This refers to only local registered birth records (based on ICA’s electronic Birth Certificate Records from 1985 onwards).
+			 * This includes adoption of locally registered child.
+			 * For child below 21, the child’s Birth Cert No, Name, Sex, Race, Dialect, Date of Birth and Time of Birth will be shown.
+			 * For child above 21, only the child’s Birth Cert Number will be shown.
+			 */
+			childrenbirthrecords?: any;
+			/**
+			 * Country/Place of the latest marriage.
+			 * Note: This field must be made editable on your digital service form even though
+			 * source is '1' (Government Verified).
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "code": "SG",
+			 *   "desc": "SINGAPORE",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			countryofmarriage?: {
 				/**
-				 * Status of licence
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
 				 */
-				status?: {
-					code?: "ACT" | "IPA";
-					desc?: "Active" | "In-Principal Approval";
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * The 2-character country code.
+				 * example:
+				 * SG
+				 */
+				code?: string;
+				/**
+				 * The full name of the country.
+				 * example:
+				 * SINGAPORE
+				 */
+				desc?: string;
+			};
+			/**
+			 * Dialect of Person.
+			 *
+			 *   Refer to the Code reference tables in the Support section for list of possible values.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "code": "SG",
+			 *   "desc": "SWISS GERMAN",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			dialect?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * example:
+				 * SG
+				 */
+				code?: string; // ^(?:[A-Za-z]{2})?$
+				/**
+				 * example:
+				 * SWISS GERMAN
+				 */
+				desc?: string;
+			};
+			/**
+			 * Last Divorce Date of Person.
+			 * Note: This field must be made editable on your digital service form even though
+			 * source is '1' (Government Verified).
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "2018-01-01",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			divorcedate?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * Value of data field in YYYY-MM-DD format. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+				 */
+				value?: string; // date
+			};
+			/**
+			 * Date of Birth of Person.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "1958-05-17",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			dob?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * Value of data field. Format can be one of the below (with reference to https://datatracker.ietf.org/doc/html/rfc3339#section-5.6):
+				 *
+				 * - full-date (YYYY-MM-DD)
+				 * - date-fullyear "-" date-month (YYYY-MM)
+				 * - date-fullyear (YYYY)
+				 * example:
+				 * 1958-05-17
+				 * 1958-05
+				 * 1958
+				 */
+				value: string; // date
+			};
+			/**
+			 * Driving Licence details of Person.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "comstatus": {
+			 *     "code": "Y",
+			 *     "desc": "ELIGIBLE"
+			 *   },
+			 *   "totaldemeritpoints": {
+			 *     "value": 0
+			 *   },
+			 *   "suspension": {
+			 *     "startdate": {
+			 *       "value": "1900-01-01"
+			 *     },
+			 *     "enddate": {
+			 *       "value": "1900-01-01"
+			 *     }
+			 *   },
+			 *   "disqualification": {
+			 *     "startdate": {
+			 *       "value": "1900-01-01"
+			 *     },
+			 *     "enddate": {
+			 *       "value": "1900-01-01"
+			 *     }
+			 *   },
+			 *   "revocation": {
+			 *     "startdate": {
+			 *       "value": "1900-01-01"
+			 *     },
+			 *     "enddate": {
+			 *       "value": "1900-01-01"
+			 *     }
+			 *   },
+			 *   "pdl": {
+			 *     "validity": {
+			 *       "code": "V",
+			 *       "desc": "VALID"
+			 *     },
+			 *     "expirydate": {
+			 *       "value": "2020-06-15"
+			 *     },
+			 *     "classes": [
+			 *       {
+			 *         "class": {
+			 *           "value": "2A"
+			 *         }
+			 *       },
+			 *       {
+			 *         "class": {
+			 *           "value": "3A"
+			 *         }
+			 *       },
+			 *       {
+			 *         "class": {
+			 *           "value": "4P"
+			 *         }
+			 *       },
+			 *       {
+			 *         "class": {
+			 *           "value": "4AP"
+			 *         }
+			 *       },
+			 *       {
+			 *         "class": {
+			 *           "value": "5P"
+			 *         }
+			 *       }
+			 *     ]
+			 *   },
+			 *   "qdl": {
+			 *     "validity": {
+			 *       "code": "V",
+			 *       "desc": "VALID"
+			 *     },
+			 *     "expirydate": {
+			 *       "value": "2020-06-15"
+			 *     },
+			 *     "classes": [
+			 *       {
+			 *         "class": {
+			 *           "value": "2A"
+			 *         },
+			 *         "issuedate": {
+			 *           "value": "2018-06-06"
+			 *         }
+			 *       },
+			 *       {
+			 *         "class": {
+			 *           "value": "3A"
+			 *         },
+			 *         "issuedate": {
+			 *           "value": "2018-06-06"
+			 *         }
+			 *       },
+			 *       {
+			 *         "class": {
+			 *           "value": "4P"
+			 *         },
+			 *         "issuedate": {
+			 *           "value": "2018-06-06"
+			 *         }
+			 *       },
+			 *       {
+			 *         "class": {
+			 *           "value": "4AP"
+			 *         },
+			 *         "issuedate": {
+			 *           "value": "2018-06-06"
+			 *         }
+			 *       },
+			 *       {
+			 *         "class": {
+			 *           "value": "5P"
+			 *         },
+			 *         "issuedate": {
+			 *           "value": "2018-06-06"
+			 *         }
+			 *       }
+			 *     ]
+			 *   },
+			 *   "photocardserialno": {
+			 *     "value": "115616"
+			 *   },
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			drivinglicence?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * Status of Certificate of Merit. Possible values:
+				 *
+				 * - 'Y': ELIGIBLE
+				 * - 'N': NOT ELIGIBLE
+				 * - '': No data yet
+				 */
+				comstatus?: {
+					code?: "Y" | "N" | "";
+					desc?: "ELIGIBLE" | "NOT ELIGIBLE" | "";
 				};
 				/**
-				 * Agency that issued the licence
+				 * Disqualification date
 				 */
-				issuanceagency?: {
-					code?: string;
+				disqualification?: {
+					/**
+					 * End date
+					 */
+					enddate?: {
+						value?: string; // date
+					};
+					/**
+					 * Start date
+					 */
+					startdate?: {
+						value?: string; // date
+					};
+				};
+				/**
+				 * Provisional Driving Licence (PDL)
+				 */
+				pdl?: {
+					/**
+					 * Licence Classes. Includes Issue Date(e.g. 2B, 2018-01-01)
+					 */
+					classes?:
+						| {
+								class?: {
+									value?: string;
+								};
+								issuedate?: {
+									value?: string; // date
+								};
+						  }[]
+						| null;
+					/**
+					 * Licence Expiry Date
+					 */
+					expirydate?: {
+						value?: string; // date
+					};
+					/**
+					 * Validity of QDL. Possible values:
+					 *
+					 * - 'V': VALID
+					 * - 'E': EXPIRED
+					 * - 'I': INVALID
+					 * - 'N': NOT HOLDING
+					 * - '': No data yet
+					 */
+					validity?: {
+						code?: string;
+						desc?: string;
+					};
+				};
+				/**
+				 * Serial Number of the Photo Card
+				 */
+				photocardserialno?: {
+					value?: string;
+				};
+				/**
+				 * Qualified Driving Licence (QDL)
+				 */
+				qdl?: {
+					/**
+					 * Licence Classes. Includes Issue Date(e.g. 2B, 2018-01-01)
+					 */
+					classes?:
+						| {
+								class?: {
+									value?: string;
+								};
+								issuedate?: {
+									value?: string; // date
+								};
+						  }[]
+						| null;
+					/**
+					 * Licence Expiry Date
+					 */
+					expirydate?: {
+						value?: string; // date
+					};
+					/**
+					 * Validity of QDL. Possible values:
+					 *
+					 * - 'V': VALID
+					 * - 'E': EXPIRED
+					 * - 'I': INVALID
+					 * - 'N': NOT HOLDING
+					 * - '': No data yet
+					 */
+					validity?: {
+						code?: string;
+						desc?: string;
+					};
+				};
+				/**
+				 * Revocation date
+				 */
+				revocation?: {
+					/**
+					 * End date
+					 */
+					enddate?: {
+						value?: string; // date
+					};
+					/**
+					 * Start date
+					 */
+					startdate?: {
+						value?: string; // date
+					};
+				};
+				/**
+				 * Suspension date
+				 */
+				suspension?: {
+					/**
+					 * End date
+					 */
+					enddate?: {
+						value?: string; // date
+					};
+					/**
+					 * Start date
+					 */
+					startdate?: {
+						value?: string; // date
+					};
+				};
+				/**
+				 * Total Demerit Points
+				 */
+				totaldemeritpoints?: {
+					value?: number;
+				};
+			};
+			/**
+			 * Email Address of Person.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "test@gmail.com",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			email?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				value?: string;
+			};
+			/**
+			 * Name of Employer.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "ALPHA",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			employment?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				value?: string;
+			};
+			/**
+			 * Employment Sector of a FIN holder.
+			 *
+			 * Note: Only applies to a foreigner with a valid work pass.
+			 *
+			 * Some examples of possible values are:
+			 * - MANUFACTURING
+			 * - CONSTRUCTION
+			 * - RECLAMATION
+			 * - SERVICE
+			 * - GRI-TECHNOLOGY
+			 * - LANDSCAPING
+			 * - INCINERATOR PLANT
+			 * - MARINE SHIPYSHIPYARD
+			 * - PROCESS
+			 * - HARBOURCRAFT
+			 * - DOMESTIC
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "MANUFACTURING",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			employmentsector?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				value?: string;
+			};
+			/**
+			 * Han Yu Pin Yin Alias name of the Person.
+			 *
+			 * Presentation Logic - If there is a value to hanyupinyinaliasname (i.e. not empty),
+			 * then hanyupinyinaliasname should be displayed in a new line below aliasname,
+			 * and prefixed with the '@' symbol i.e. "@hanyupinyinaliasname".
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "TRICIA CHEN XIAO HUI",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			hanyupinyinaliasname?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				value?: string;
+			};
+			/**
+			 * Han Yu Pin Yin name of the Person.
+			 *
+			 * Presentation Logic - If there is a value to hanyupinyinname (i.e. not empty),
+			 * then hanyupinyinname should be displayed in a new line below name, and
+			 * formatted with round brackets i.e. "(hanyupinyinname)"
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "CHEN XIAO HUI",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			hanyupinyinname?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				value?: string;
+			};
+			/**
+			 * HDB Ownership details.
+			 * example:
+			 * {
+			 *   "noofowners": {
+			 *     "value": 2
+			 *   },
+			 *   "address": {
+			 *     "type": "SG",
+			 *     "block": {
+			 *       "value": "548"
+			 *     },
+			 *     "building": {
+			 *       "value": ""
+			 *     },
+			 *     "floor": {
+			 *       "value": "09"
+			 *     },
+			 *     "unit": {
+			 *       "value": "128"
+			 *     },
+			 *     "street": {
+			 *       "value": "BEDOK NORTH AVENUE 1"
+			 *     },
+			 *     "postal": {
+			 *       "value": "460548"
+			 *     },
+			 *     "country": {
+			 *       "code": "SG",
+			 *       "desc": "SINGAPORE"
+			 *     }
+			 *   },
+			 *   "hdbtype": {
+			 *     "code": "112",
+			 *     "desc": "2-ROOM FLAT (HDB)"
+			 *   },
+			 *   "leasecommencementdate": {
+			 *     "value": "2008-06-13"
+			 *   },
+			 *   "termoflease": {
+			 *     "value": 99
+			 *   },
+			 *   "dateofpurchase": {
+			 *     "value": "2008-06-13"
+			 *   },
+			 *   "dateofownershiptransfer": {
+			 *     "value": "2018-06-13"
+			 *   },
+			 *   "loangranted": {
+			 *     "value": 310000.01
+			 *   },
+			 *   "originalloanrepayment": {
+			 *     "value": 25
+			 *   },
+			 *   "balanceloanrepayment": {
+			 *     "years": {
+			 *       "value": 2
+			 *     },
+			 *     "months": {
+			 *       "value": 6
+			 *     }
+			 *   },
+			 *   "outstandingloanbalance": {
+			 *     "value": 50000.01
+			 *   },
+			 *   "monthlyloaninstalment": {
+			 *     "value": 1000.01
+			 *   },
+			 *   "outstandinginstalment": {
+			 *     "value": 1000.01
+			 *   },
+			 *   "purchaseprice": {
+			 *     "value": 1000.01
+			 *   },
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			hdbownership?:
+				| {
+						/**
+						 * Data classification of data field. Default 'C' - Confidential.
+						 * example:
+						 * C
+						 */
+						classification: string;
+						/**
+						 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+						 * example:
+						 * 2019-03-26
+						 */
+						lastupdated: string; // date
+						/**
+						 * Source of data.
+						 *
+						 * - '1': Government-verified
+						 * - '2': User provided
+						 * - '3': Not Applicable (applies only to Person data, not Entity data)
+						 * - '4': Verified by SingPass
+						 * example:
+						 * 1
+						 */
+						source: "1" | "2" | "3" | "4";
+						/**
+						 * Optional flag to indicate if data is unavailable from data source.
+						 *
+						 * NOTE:
+						 *
+						 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+						 *
+						 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+						 *
+						 * - If data is available from the data source, this property will not be present.
+						 */
+						unavailable?: boolean;
+						/**
+						 * SG
+						 * Address details (Singapore Format).
+						 */
+						address?: {
+							/**
+							 * Block/House of Address.
+							 */
+							block?: {
+								value?: string;
+							};
+							/**
+							 * Building of Address.
+							 */
+							building?: {
+								value?: string;
+							};
+							/**
+							 * Country/Place of Address. For AddressSG this will always be 'SG'.
+							 */
+							country?: {
+								code?: string;
+								desc?: string;
+							};
+							/**
+							 * Floor of Address.
+							 */
+							floor?: {
+								value?: string;
+							};
+							/**
+							 * Postal Code of Address.
+							 */
+							postal?: {
+								value?: string;
+							};
+							/**
+							 * Street of Address.
+							 */
+							street?: {
+								value?: string;
+							};
+							/**
+							 * Type of Address (SG or UNFORMATTED for non SG).
+							 */
+							type?: "SG";
+							/**
+							 * Unit of Address.
+							 */
+							unit?: {
+								value?: string;
+							};
+						};
+						balanceloanrepayment?: {
+							months?: {
+								value?: number; // int64
+							};
+							years?: {
+								value?: number; // int64
+							};
+						};
+						dateofownershiptransfer?: {
+							/**
+							 * Value of data field in YYYY-MM-DD format. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+							 */
+							value?: string; // date
+						};
+						dateofpurchase?: {
+							/**
+							 * Value of data field in YYYY-MM-DD format. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+							 */
+							value?: string; // date
+						};
+						/**
+						 * HDB Ownership details.
+						 */
+						hdbtype?: {
+							code?: "111" | "112" | "113" | "114" | "115" | "116" | "118";
+							desc?:
+								| "1-ROOM FLAT (HDB)"
+								| "2-ROOM FLAT (HDB)"
+								| "3-ROOM FLAT (HDB)"
+								| "4-ROOM FLAT (HDB)"
+								| "5-ROOM FLAT (HDB)"
+								| "EXECUTIVE FLAT (HDB)"
+								| "STUDIO APARTMENT (HDB)";
+						};
+						leasecommencementdate?: {
+							/**
+							 * Value of data field in YYYY-MM-DD format. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+							 */
+							value?: string; // date
+						};
+						loangranted?: {
+							value?: number; // double
+						};
+						monthlyloaninstalment?: {
+							value?: number; // double
+						};
+						noofowners?: {
+							value?: number; // int64
+						};
+						originalloanrepayment?: {
+							value?: number; // int64
+						};
+						outstandinginstalment?: {
+							value?: number; // double
+						};
+						outstandingloanbalance?: {
+							value?: number; // double
+						};
+						purchaseprice?: {
+							value?: number; // double
+						};
+						termoflease?: {
+							value?: number; // int64
+						};
+				  }[]
+				| null;
+			/**
+			 * Flat Type of the HDB flat.
+			 * Note 1: that this excludes Rental Flats, Pre-War SIT flat, PSA flat, HUDC flat,
+			 * Executive Condominium and Shophouse.
+			 * Note 2: If housingtype is available, this value will be blank.
+			 * Note 3: If housingtype & hdbtype are unavailable, make this field user editable.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "code": "112",
+			 *   "desc": "2-ROOM FLAT (HDB)",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			hdbtype?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * example:
+				 * 112
+				 */
+				code?: "111" | "112" | "113" | "114" | "115" | "116" | "118" | "";
+				/**
+				 * example:
+				 * 2-ROOM FLAT (HDB)
+				 */
+				desc?:
+					| "1-ROOM FLAT (HDB)"
+					| "2-ROOM FLAT (HDB)"
+					| "3-ROOM FLAT (HDB)"
+					| "4-ROOM FLAT (HDB)"
+					| "5-ROOM FLAT (HDB)"
+					| "EXECUTIVE FLAT (HDB)"
+					| "STUDIO APARTMENT (HDB)"
+					| "";
+			};
+			/**
+			 * Housing Type of Person (non-HDB only).
+			 * Note 1: If hdbtype is available, this value will be blank.
+			 * Note 2: If housingtype & hdbtype are unavailable, make this field user editable.
+			 * Refer to hdbtype for detailed HDB type.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "code": "123",
+			 *   "desc": "TERRACE HOUSE",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			housingtype?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * example:
+				 * 123
+				 */
+				code?: "121" | "122" | "123" | "131" | "132" | "139" | "";
+				/**
+				 * example:
+				 * TERRACE HOUSE
+				 */
+				desc?:
+					| "DETACHED HOUSE"
+					| "SEMI-DETACHED HOUSE"
+					| "TERRACE HOUSE"
+					| "CONDOMINIUM"
+					| "EXECUTIVE CONDOMINIUM"
+					| "APARTMENT"
+					| "";
+			};
+			/**
+			 * LTA vocational licence.
+			 * example:
+			 * {
+			 *   "tdvl": {
+			 *     "licencename": {
+			 *       "value": "TAXI DRIVER'S VOCATIONAL LICENCE (TDVL)"
+			 *     },
+			 *     "vocationallicencenumber": {
+			 *       "value": "E00000001"
+			 *     },
+			 *     "expirydate": {
+			 *       "value": "2025-03-30"
+			 *     },
+			 *     "status": {
+			 *       "code": "ACT",
+			 *       "desc": "ACTIVE"
+			 *     },
+			 *     "classification": "C",
+			 *     "source": "1",
+			 *     "lastupdated": "2019-03-26"
+			 *   },
+			 *   "pdvl": {
+			 *     "licencename": {
+			 *       "value": "PRIVATE HIRE CAR DRIVER'S VOCATIONAL LICENCE (PDVL)"
+			 *     },
+			 *     "vocationallicencenumber": {
+			 *       "value": "E00000001"
+			 *     },
+			 *     "expirydate": {
+			 *       "value": "2025-03-30"
+			 *     },
+			 *     "status": {
+			 *       "code": "ACT",
+			 *       "desc": "ACTIVE"
+			 *     },
+			 *     "classification": "C",
+			 *     "source": "1",
+			 *     "lastupdated": "2019-03-26"
+			 *   },
+			 *   "bdvl": {
+			 *     "licencename": {
+			 *       "value": "BUS DRIVER'S VOCATIONAL LICENCE (BDVL)"
+			 *     },
+			 *     "vocationallicencenumber": {
+			 *       "value": "E00000001"
+			 *     },
+			 *     "expirydate": {
+			 *       "value": "2025-03-30"
+			 *     },
+			 *     "status": {
+			 *       "code": "ACT",
+			 *       "desc": "ACTIVE"
+			 *     },
+			 *     "classification": "C",
+			 *     "source": "1",
+			 *     "lastupdated": "2019-03-26"
+			 *   },
+			 *   "bavl": {
+			 *     "licencename": {
+			 *       "value": "BUS ATTENDANT VOCATIONAL LICENCE (BAVL)"
+			 *     },
+			 *     "vocationallicencenumber": {
+			 *       "value": "E00000001"
+			 *     },
+			 *     "expirydate": {
+			 *       "value": "2025-03-30"
+			 *     },
+			 *     "status": {
+			 *       "code": "ACT",
+			 *       "desc": "ACTIVE"
+			 *     },
+			 *     "classification": "C",
+			 *     "source": "1",
+			 *     "lastupdated": "2019-03-26"
+			 *   },
+			 *   "odvl": {
+			 *     "licencename": {
+			 *       "value": "OMNIBUS DRIVER'S VOCATIONAL LICENCE"
+			 *     },
+			 *     "vocationallicencenumber": {
+			 *       "value": "E00000001"
+			 *     },
+			 *     "expirydate": {
+			 *       "value": "2025-03-30"
+			 *     },
+			 *     "status": {
+			 *       "code": "ACT",
+			 *       "desc": "ACTIVE"
+			 *     },
+			 *     "classification": "C",
+			 *     "source": "1",
+			 *     "lastupdated": "2019-03-26"
+			 *   }
+			 * }
+			 */
+			ltavocationallicences?: {
+				/**
+				 * LTAVocationalLicence
+				 * Bus Attendant's vocational licence.
+				 * example:
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 * {
+				 *   "licencename": {
+				 *     "value": "TAXI DRIVER'S VOCATIONAL LICENCE (TDVL)"
+				 *   },
+				 *   "vocationallicencenumber": {
+				 *     "value": "E00000001"
+				 *   },
+				 *   "expirydate": {
+				 *     "value": "2025-03-30"
+				 *   },
+				 *   "status": {
+				 *     "code": "ACT",
+				 *     "desc": "ACTIVE"
+				 *   },
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 */
+				bavl?: {
+					/**
+					 * Data classification of data field. Default 'C' - Confidential.
+					 * example:
+					 * C
+					 */
+					classification: string;
+					/**
+					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+					 * example:
+					 * 2019-03-26
+					 */
+					lastupdated: string; // date
+					/**
+					 * Source of data.
+					 *
+					 * - '1': Government-verified
+					 * - '2': User provided
+					 * - '3': Not Applicable (applies only to Person data, not Entity data)
+					 * - '4': Verified by SingPass
+					 * example:
+					 * 1
+					 */
+					source: "1" | "2" | "3" | "4";
+					/**
+					 * Optional flag to indicate if data is unavailable from data source.
+					 *
+					 * NOTE:
+					 *
+					 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+					 *
+					 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+					 *
+					 * - If data is available from the data source, this property will not be present.
+					 */
+					unavailable?: boolean;
+					/**
+					 * Expiry date of the LTA Vocational Licence.
+					 */
+					expirydate?: {
+						value?: string; // date
+					};
+					/**
+					 * Licence Name of LTA Vocational Licence.
+					 */
+					licencename?: {
+						value?: string;
+					};
+					/**
+					 * Status of the LTA Vocational Licence.
+					 */
+					status?: {
+						code?: "ACT" | "ACTIVE";
+						desc?: string;
+					};
+					/**
+					 * Unique Vocational Licence Number for the licence holder.
+					 */
+					vocationallicencenumber?: {
+						value?: string;
+					};
+				};
+				/**
+				 * LTAVocationalLicence
+				 * Bus driver's vocational licence.
+				 * example:
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 * {
+				 *   "licencename": {
+				 *     "value": "BUS DRIVER'S VOCATIONAL LICENCE (BDVL)"
+				 *   },
+				 *   "vocationallicencenumber": {
+				 *     "value": "E00000001"
+				 *   },
+				 *   "expirydate": {
+				 *     "value": "2025-03-30"
+				 *   },
+				 *   "status": {
+				 *     "code": "ACT",
+				 *     "desc": "ACTIVE"
+				 *   },
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 */
+				bdvl?: {
+					/**
+					 * Data classification of data field. Default 'C' - Confidential.
+					 * example:
+					 * C
+					 */
+					classification: string;
+					/**
+					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+					 * example:
+					 * 2019-03-26
+					 */
+					lastupdated: string; // date
+					/**
+					 * Source of data.
+					 *
+					 * - '1': Government-verified
+					 * - '2': User provided
+					 * - '3': Not Applicable (applies only to Person data, not Entity data)
+					 * - '4': Verified by SingPass
+					 * example:
+					 * 1
+					 */
+					source: "1" | "2" | "3" | "4";
+					/**
+					 * Optional flag to indicate if data is unavailable from data source.
+					 *
+					 * NOTE:
+					 *
+					 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+					 *
+					 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+					 *
+					 * - If data is available from the data source, this property will not be present.
+					 */
+					unavailable?: boolean;
+					/**
+					 * Expiry date of the LTA Vocational Licence.
+					 */
+					expirydate?: {
+						value?: string; // date
+					};
+					/**
+					 * Licence Name of LTA Vocational Licence.
+					 */
+					licencename?: {
+						value?: string;
+					};
+					/**
+					 * Status of the LTA Vocational Licence.
+					 */
+					status?: {
+						code?: "ACT" | "ACTIVE";
+						desc?: string;
+					};
+					/**
+					 * Unique Vocational Licence Number for the licence holder.
+					 */
+					vocationallicencenumber?: {
+						value?: string;
+					};
+				};
+				/**
+				 * LTAVocationalLicence
+				 * Omnibus driver's vocational licence.
+				 * example:
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 * {
+				 *   "licencename": {
+				 *     "value": "OMNIBUS DRIVER'S VOCATIONAL LICENCE"
+				 *   },
+				 *   "vocationallicencenumber": {
+				 *     "value": "E00000001"
+				 *   },
+				 *   "expirydate": {
+				 *     "value": "2025-03-30"
+				 *   },
+				 *   "status": {
+				 *     "code": "ACT",
+				 *     "desc": "ACTIVE"
+				 *   },
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 */
+				odvl?: {
+					/**
+					 * Data classification of data field. Default 'C' - Confidential.
+					 * example:
+					 * C
+					 */
+					classification: string;
+					/**
+					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+					 * example:
+					 * 2019-03-26
+					 */
+					lastupdated: string; // date
+					/**
+					 * Source of data.
+					 *
+					 * - '1': Government-verified
+					 * - '2': User provided
+					 * - '3': Not Applicable (applies only to Person data, not Entity data)
+					 * - '4': Verified by SingPass
+					 * example:
+					 * 1
+					 */
+					source: "1" | "2" | "3" | "4";
+					/**
+					 * Optional flag to indicate if data is unavailable from data source.
+					 *
+					 * NOTE:
+					 *
+					 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+					 *
+					 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+					 *
+					 * - If data is available from the data source, this property will not be present.
+					 */
+					unavailable?: boolean;
+					/**
+					 * Expiry date of the LTA Vocational Licence.
+					 */
+					expirydate?: {
+						value?: string; // date
+					};
+					/**
+					 * Licence Name of LTA Vocational Licence.
+					 */
+					licencename?: {
+						value?: string;
+					};
+					/**
+					 * Status of the LTA Vocational Licence.
+					 */
+					status?: {
+						code?: "ACT" | "ACTIVE";
+						desc?: string;
+					};
+					/**
+					 * Unique Vocational Licence Number for the licence holder.
+					 */
+					vocationallicencenumber?: {
+						value?: string;
+					};
+				};
+				/**
+				 * LTAVocationalLicence
+				 * Private Hire Car driver's vocational licence.
+				 * example:
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 * {
+				 *   "licencename": {
+				 *     "value": "PRIVATE HIRE CAR DRIVER'S VOCATIONAL LICENCE (PDVL)"
+				 *   },
+				 *   "vocationallicencenumber": {
+				 *     "value": "E00000001"
+				 *   },
+				 *   "expirydate": {
+				 *     "value": "2025-03-30"
+				 *   },
+				 *   "status": {
+				 *     "code": "ACT",
+				 *     "desc": "ACTIVE"
+				 *   },
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 */
+				pdvl?: {
+					/**
+					 * Data classification of data field. Default 'C' - Confidential.
+					 * example:
+					 * C
+					 */
+					classification: string;
+					/**
+					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+					 * example:
+					 * 2019-03-26
+					 */
+					lastupdated: string; // date
+					/**
+					 * Source of data.
+					 *
+					 * - '1': Government-verified
+					 * - '2': User provided
+					 * - '3': Not Applicable (applies only to Person data, not Entity data)
+					 * - '4': Verified by SingPass
+					 * example:
+					 * 1
+					 */
+					source: "1" | "2" | "3" | "4";
+					/**
+					 * Optional flag to indicate if data is unavailable from data source.
+					 *
+					 * NOTE:
+					 *
+					 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+					 *
+					 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+					 *
+					 * - If data is available from the data source, this property will not be present.
+					 */
+					unavailable?: boolean;
+					/**
+					 * Expiry date of the LTA Vocational Licence.
+					 */
+					expirydate?: {
+						value?: string; // date
+					};
+					/**
+					 * Licence Name of LTA Vocational Licence.
+					 */
+					licencename?: {
+						value?: string;
+					};
+					/**
+					 * Status of the LTA Vocational Licence.
+					 */
+					status?: {
+						code?: "ACT" | "ACTIVE";
+						desc?: string;
+					};
+					/**
+					 * Unique Vocational Licence Number for the licence holder.
+					 */
+					vocationallicencenumber?: {
+						value?: string;
+					};
+				};
+				/**
+				 * LTAVocationalLicence
+				 * Taxi driver's vocational licence.
+				 * example:
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 * {
+				 *   "licencename": {
+				 *     "value": "TAXI DRIVER'S VOCATIONAL LICENCE (TDVL)"
+				 *   },
+				 *   "vocationallicencenumber": {
+				 *     "value": "E00000001"
+				 *   },
+				 *   "expirydate": {
+				 *     "value": "2025-03-30"
+				 *   },
+				 *   "status": {
+				 *     "code": "ACT",
+				 *     "desc": "ACTIVE"
+				 *   },
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 */
+				tdvl?: {
+					/**
+					 * Data classification of data field. Default 'C' - Confidential.
+					 * example:
+					 * C
+					 */
+					classification: string;
+					/**
+					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+					 * example:
+					 * 2019-03-26
+					 */
+					lastupdated: string; // date
+					/**
+					 * Source of data.
+					 *
+					 * - '1': Government-verified
+					 * - '2': User provided
+					 * - '3': Not Applicable (applies only to Person data, not Entity data)
+					 * - '4': Verified by SingPass
+					 * example:
+					 * 1
+					 */
+					source: "1" | "2" | "3" | "4";
+					/**
+					 * Optional flag to indicate if data is unavailable from data source.
+					 *
+					 * NOTE:
+					 *
+					 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+					 *
+					 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+					 *
+					 * - If data is available from the data source, this property will not be present.
+					 */
+					unavailable?: boolean;
+					/**
+					 * Expiry date of the LTA Vocational Licence.
+					 */
+					expirydate?: {
+						value?: string; // date
+					};
+					/**
+					 * Licence Name of LTA Vocational Licence.
+					 */
+					licencename?: {
+						value?: string;
+					};
+					/**
+					 * Status of the LTA Vocational Licence.
+					 */
+					status?: {
+						code?: "ACT" | "ACTIVE";
+						desc?: string;
+					};
+					/**
+					 * Unique Vocational Licence Number for the licence holder.
+					 */
+					vocationallicencenumber?: {
+						value?: string;
+					};
+				};
+			};
+			/**
+			 * Marital Status of Person.
+			 * Note: This field must be made editable on your digital service form even though source
+			 * is '1' (Government Verified).
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "code": "2",
+			 *   "desc": "MARRIED",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			marital?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * The code for the marital status.
+				 *
+				 * - '1': SINGLE
+				 * - '2': MARRIED
+				 * - '3': WIDOWED
+				 * - '5': DIVORCED
+				 * - '': No data yet
+				 * example:
+				 * 2
+				 */
+				code?: "1" | "2" | "3" | "5" | "";
+				/**
+				 * The full description of the marital status.
+				 * example:
+				 * MARRIED
+				 */
+				desc?: "SINGLE" | "MARRIED" | "WIDOWED" | "DIVORCED" | "";
+			};
+			/**
+			 * Certificate number of the latest marriage.
+			 * Note: This field must be made editable on your digital service form even though
+			 * source is '1' (Government Verified).
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "123456789012345",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			marriagecertno?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * Value of data field.
+				 * example:
+				 * 123456789012345
+				 */
+				value?: string;
+			};
+			/**
+			 * Latest Marriage Date of Person.
+			 * Note: This field must be made editable on your digital service form even
+			 * though source is '1' (Government Verified).
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "2007-01-01",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			marriagedate?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * Value of data field in YYYY-MM-DD format. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+				 * example:
+				 * 2007-01-01
+				 */
+				value?: string; // date
+			};
+			/**
+			 * Married name of the Person.
+			 *
+			 * Presentation Logic - If there is a value to marriedname (i.e. not empty),
+			 * then marriedname should be displayed in a new line below hanyupinyinaliasname.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "TAN XIAO HUI",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			marriedname?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * example:
+				 * TAN XIAO HUI
+				 */
+				value?: string;
+			};
+			/**
+			 * Mobile Number of Person.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "prefix": {
+			 *     "value": "+"
+			 *   },
+			 *   "areacode": {
+			 *     "value": "65"
+			 *   },
+			 *   "nbr": {
+			 *     "value": "66132665"
+			 *   },
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			mobileno?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				areacode?: {
+					/**
+					 * Area Code of Phone Number. Default to '65'.
+					 */
+					value?: string;
+				};
+				nbr?: {
+					/**
+					 * Phone Number.
+					 */
+					value?: string;
+				};
+				prefix?: {
+					/**
+					 * Prefix of Phone Number. Defaults to '+'.
+					 */
+					value?: string;
+				};
+			};
+			/**
+			 * Full Name of the Person.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "TAN XIAO HUI",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			name?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				value: string;
+			};
+			/**
+			 * Nationality/Citizenship of Person.
+			 *
+			 *   Refer to the Code reference tables in the Support section for list of possible values.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "code": "SG",
+			 *   "desc": "SINGAPORE CITIZEN",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			nationality?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * example:
+				 * SG
+				 */
+				code: string; // ^[A-Z]{2}$
+				/**
+				 * example:
+				 * SINGAPORE CITIZEN
+				 */
+				desc: string;
+			};
+			/**
+			 * Occupation of Person.
+			 * For SC/PR holders, blank will be returned.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "Software Engineer",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			occupation?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * Free text.
+				 */
+				value?: string;
+			};
+			/**
+			 * Ownership of Private Property Status of Person (based on IRAS information).
+			 * Can be true, false, or null (if data is not available).
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": false,
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			ownerprivate?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * Value of data field.
+				 */
+				value?: boolean;
+			};
+			/**
+			 * Masked Singapore issued identification number of the Person.
+			 * Only the last 3 digit and ending alphabet will be in clear.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "*****111D",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			partialuinfin?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				value?: string;
+			};
+			/**
+			 * Pass expiry of a foreigner.
+			 * Note: Only applies to a foreigner with a valid pass.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "2022-12-31",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			passexpirydate?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * Value of data field in YYYY-MM-DD format. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+				 */
+				value?: string; // date
+			};
+			/**
+			 * Passport Expiry Date of Person.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "2020-01-01",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			passportexpirydate?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * Value of data field in YYYY-MM-DD format. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+				 */
+				value?: string; // date
+			};
+			/**
+			 * Passport Number of Person.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "E35463874W",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			passportnumber?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				value?: string;
+			};
+			/**
+			 * Pass status of a FIN holder.
+			 * Note: Only applies to a foreigner with a valid pass.
+			 * Note: Currently this field is set as empty string for SG/PR and meta source set to '3'
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "Live",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			passstatus?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * Value of data field.
+				 */
+				value?: "Live" | "Approved" | "";
+			};
+			/**
+			 * Pass type of a FIN holder.
+			 * Note: Only applies to a foreigner with a valid pass.
+			 * Refer to the Code reference tables in the Support section for list of possible values.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "code": "RPass",
+			 *   "desc": "Work Permit",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			passtype?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * Value of data field.
+				 * example:
+				 * RPass
+				 */
+				code?: string;
+				/**
+				 * example:
+				 * Work Permit
+				 */
+				desc?: string;
+			};
+			/**
+			 * Race of Person.
+			 *
+			 *   Refer to the Code reference tables in the Support section for list of possible values.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "code": "CN",
+			 *   "desc": "CHINESE",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			race?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * example:
+				 * CN
+				 */
+				code: string; // ^[A-Z]{2}$
+				/**
+				 * example:
+				 * CHINESE
+				 */
+				desc: string;
+			};
+			/**
+			 * Registered Address of Person (including FIN holders).
+			 *
+			 * Note:
+			 * - Address can be either a Singapore address (type: 'SG'), non Singapore address (type: 'UNFORMATTED') or empty type address ('')
+			 * - May be unavailable for some FIN holders.
+			 * example:
+			 * {
+			 *   "type": "SG",
+			 *   "block": {
+			 *     "value": "548"
+			 *   },
+			 *   "building": {
+			 *     "value": ""
+			 *   },
+			 *   "floor": {
+			 *     "value": "09"
+			 *   },
+			 *   "unit": {
+			 *     "value": "128"
+			 *   },
+			 *   "street": {
+			 *     "value": "BEDOK NORTH AVENUE 1"
+			 *   },
+			 *   "postal": {
+			 *     "value": "460548"
+			 *   },
+			 *   "country": {
+			 *     "code": "SG",
+			 *     "desc": "SINGAPORE"
+			 *   },
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			regadd?: /**
+			 * Registered Address of Person (including FIN holders).
+			 *
+			 * Note:
+			 * - Address can be either a Singapore address (type: 'SG'), non Singapore address (type: 'UNFORMATTED') or empty type address ('')
+			 * - May be unavailable for some FIN holders.
+			 * example:
+			 * {
+			 *   "type": "SG",
+			 *   "block": {
+			 *     "value": "548"
+			 *   },
+			 *   "building": {
+			 *     "value": ""
+			 *   },
+			 *   "floor": {
+			 *     "value": "09"
+			 *   },
+			 *   "unit": {
+			 *     "value": "128"
+			 *   },
+			 *   "street": {
+			 *     "value": "BEDOK NORTH AVENUE 1"
+			 *   },
+			 *   "postal": {
+			 *     "value": "460548"
+			 *   },
+			 *   "country": {
+			 *     "code": "SG",
+			 *     "desc": "SINGAPORE"
+			 *   },
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			| {
+						/**
+						 * Data classification of data field. Default 'C' - Confidential.
+						 * example:
+						 * C
+						 */
+						classification: string;
+						/**
+						 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+						 * example:
+						 * 2019-03-26
+						 */
+						lastupdated: string; // date
+						/**
+						 * Source of data.
+						 *
+						 * - '1': Government-verified
+						 * - '2': User provided
+						 * - '3': Not Applicable (applies only to Person data, not Entity data)
+						 * - '4': Verified by SingPass
+						 * example:
+						 * 1
+						 */
+						source: "1" | "2" | "3" | "4";
+						/**
+						 * Optional flag to indicate if data is unavailable from data source.
+						 *
+						 * NOTE:
+						 *
+						 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+						 *
+						 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+						 *
+						 * - If data is available from the data source, this property will not be present.
+						 */
+						unavailable?: boolean;
+						/**
+						 * Block/House of Address.
+						 */
+						block?: {
+							value?: string;
+						};
+						/**
+						 * Building of Address.
+						 */
+						building?: {
+							value?: string;
+						};
+						/**
+						 * Country/Place of Address. For AddressSG this will always be 'SG'.
+						 */
+						country?: {
+							code?: string;
+							desc?: string;
+						};
+						/**
+						 * Floor of Address.
+						 */
+						floor?: {
+							value?: string;
+						};
+						/**
+						 * Postal Code of Address.
+						 */
+						postal?: {
+							value?: string;
+						};
+						/**
+						 * Street of Address.
+						 */
+						street?: {
+							value?: string;
+						};
+						/**
+						 * Type of Address (SG or UNFORMATTED for non SG).
+						 */
+						type?: "SG";
+						/**
+						 * Unit of Address.
+						 */
+						unit?: {
+							value?: string;
+						};
+				  }
+				| {
+						/**
+						 * Data classification of data field. Default 'C' - Confidential.
+						 * example:
+						 * C
+						 */
+						classification: string;
+						/**
+						 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+						 * example:
+						 * 2019-03-26
+						 */
+						lastupdated: string; // date
+						/**
+						 * Source of data.
+						 *
+						 * - '1': Government-verified
+						 * - '2': User provided
+						 * - '3': Not Applicable (applies only to Person data, not Entity data)
+						 * - '4': Verified by SingPass
+						 * example:
+						 * 1
+						 */
+						source: "1" | "2" | "3" | "4";
+						/**
+						 * Optional flag to indicate if data is unavailable from data source.
+						 *
+						 * NOTE:
+						 *
+						 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+						 *
+						 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+						 *
+						 * - If data is available from the data source, this property will not be present.
+						 */
+						unavailable?: boolean;
+						/**
+						 * Unregistered Foreign address line 1
+						 */
+						line1?: {
+							value?: string;
+						};
+						/**
+						 * Unregistered Foreign address line 2
+						 */
+						line2?: {
+							value?: string;
+						};
+						/**
+						 * Type of Address (SG or UNFORMATTED for non SG).
+						 */
+						type?: "UNFORMATTED";
+				  };
+			/**
+			 * Residential Status of Person. Applicable to Singapore Citizens and Permanent Residents.
+			 * Note: This data item is not applicable for FIN holders i.e. source will be '3'.
+			 * In such cases, the code and desc properties will be blank or empty string ('').
+			 *
+			 * Possible values:
+			 * - A - ALIEN
+			 * - C - CITIZEN
+			 * - P - PR
+			 * - U - UNKNOWN
+			 * - N - NOT APPLICABLE
+			 * - < BLANK > - (for FIN holders only)
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "code": "C",
+			 *   "desc": "Citizen",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			residentialstatus?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * example:
+				 * C
+				 */
+				code?: "A" | "C" | "P" | "U" | "N" | ""; // ^[A-Za-z]{0,1}$
+				/**
+				 * example:
+				 * Citizen
+				 */
+				desc?: "ALIEN" | "CITIZEN" | "PR" | "UNKNOWN" | "NOT APPLICABLE" | "";
+			};
+			/**
+			 * Secondary Race of Person.
+			 *
+			 *   Refer to the Code reference tables in the Support section for list of possible values.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "code": "EU",
+			 *   "desc": "EURASIAN",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			secondaryrace?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * example:
+				 * EU
+				 */
+				code?: string; // ^(?:[A-Za-z]{2})?$
+				/**
+				 * example:
+				 * EURASIAN
+				 */
+				desc?: string;
+			};
+			/**
+			 * Sex of Person.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "code": "F",
+			 *   "desc": "FEMALE",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			sex?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * The 1-character code for the sex.
+				 *
+				 * - 'F': FEMALE
+				 * - 'M': MALE
+				 * - 'U': UNKNOWN
+				 * example:
+				 * F
+				 */
+				code: "F" | "M" | "U";
+				/**
+				 * The full description of the sex.
+				 * example:
+				 * FEMALE
+				 */
+				desc: "FEMALE" | "MALE" | "UNKNOWN";
+			};
+			/**
+			 * Details of children sponsored to be SC/PR/LTVP.
+			 *
+			 * For child below 21, the child's NRIC/FIN, Name, Sex, Race, Secondary Race, Dialect,
+			 * Date of Birth, Country/Place of Birth, Residential Status and SC/PR/LTVP grant date will be shown.
+			 *
+			 * For child above 21, only the child's last known NRIC/FIN will be shown.
+			 * example:
+			 * {
+			 *   "nric": {
+			 *     "value": "S5562882C"
+			 *   },
+			 *   "name": {
+			 *     "value": "Jo Tan Pei Ni"
+			 *   },
+			 *   "hanyupinyinname": {
+			 *     "value": "Cheng Pei Ni"
+			 *   },
+			 *   "aliasname": {
+			 *     "value": ""
+			 *   },
+			 *   "hanyupinyinaliasname": {
+			 *     "value": ""
+			 *   },
+			 *   "marriedname": {
+			 *     "value": ""
+			 *   },
+			 *   "sex": {
+			 *     "code": "F",
+			 *     "desc": "FEMALE"
+			 *   },
+			 *   "race": {
+			 *     "code": "CN",
+			 *     "desc": "CHINESE"
+			 *   },
+			 *   "secondaryrace": {
+			 *     "code": "",
+			 *     "desc": ""
+			 *   },
+			 *   "dialect": {
+			 *     "code": "HK",
+			 *     "desc": "HOKKIEN"
+			 *   },
+			 *   "dob": {
+			 *     "value": "2011-09-10"
+			 *   },
+			 *   "birthcountry": {
+			 *     "code": "SG",
+			 *     "desc": "SINGAPORE"
+			 *   },
+			 *   "lifestatus": {
+			 *     "code": "A",
+			 *     "desc": "ALIVE"
+			 *   },
+			 *   "residentialstatus": {
+			 *     "code": "C",
+			 *     "desc": "Citizen"
+			 *   },
+			 *   "nationality": {
+			 *     "code": "SG",
+			 *     "desc": "SINGAPORE CITIZEN"
+			 *   },
+			 *   "scprgrantdate": {
+			 *     "value": "2015-06-13"
+			 *   },
+			 *   "vaccinationrequirements": [
+			 *     {
+			 *       "requirement": {
+			 *         "code": "1M3D",
+			 *         "desc": "MINIMUM VACCINATION REQUIREMENT FOR PRESCHOOL"
+			 *       },
+			 *       "fulfilled": {
+			 *         "value": true
+			 *       }
+			 *     }
+			 *   ],
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			sponsoredchildrenrecords?:
+				| {
+						/**
+						 * Data classification of data field. Default 'C' - Confidential.
+						 * example:
+						 * C
+						 */
+						classification: string;
+						/**
+						 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+						 * example:
+						 * 2019-03-26
+						 */
+						lastupdated: string; // date
+						/**
+						 * Source of data.
+						 *
+						 * - '1': Government-verified
+						 * - '2': User provided
+						 * - '3': Not Applicable (applies only to Person data, not Entity data)
+						 * - '4': Verified by SingPass
+						 * example:
+						 * 1
+						 */
+						source: "1" | "2" | "3" | "4";
+						/**
+						 * Optional flag to indicate if data is unavailable from data source.
+						 *
+						 * NOTE:
+						 *
+						 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+						 *
+						 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+						 *
+						 * - If data is available from the data source, this property will not be present.
+						 */
+						unavailable?: boolean;
+						/**
+						 * Alias name of child.
+						 */
+						aliasname?: {
+							value?: string;
+						};
+						/**
+						 * Country/Place of Birth of child.
+						 * Refer to the Code reference tables in the Support section for list of possible values.
+						 */
+						birthcountry?: {
+							code?: string; // ^(?:[A-Za-z]{2})?$
+							desc?: string;
+						};
+						/**
+						 * Dialect of child.
+						 * Refer to the Code reference tables in the Support section for list of possible values.
+						 */
+						dialect?: {
+							code?: string; // ^(?:[A-Za-z]{2})?$
+							desc?: string;
+						};
+						/**
+						 * Date of Birth of child.
+						 */
+						dob?: {
+							/**
+							 * Value of data field in YYYY-MM-DD format. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+							 */
+							value?: string; // date
+						};
+						/**
+						 * Han Yu Pin Yin Alias name of child.
+						 */
+						hanyupinyinaliasname?: {
+							value?: string;
+						};
+						/**
+						 * Han Yu Pin Yin name of child.
+						 */
+						hanyupinyinname?: {
+							value?: string;
+						};
+						/**
+						 * Life Status of child.
+						 */
+						lifestatus?: {
+							code?: "A" | "D" | "";
+							desc?: "ALIVE" | "DECEASED" | "";
+						};
+						/**
+						 * Married name of child.
+						 */
+						marriedname?: {
+							value?: string;
+						};
+						/**
+						 * Full Name of child.
+						 */
+						name?: {
+							value?: string;
+						};
+						/**
+						 * Nationality/Citizenship of child.
+						 * Refer to the Code reference tables in the Support section for list of possible values.
+						 */
+						nationality?: {
+							code?: string; // ^(?:[A-Za-z]{2})?$
+							desc?: string;
+						};
+						/**
+						 * NRIC/FIN of child.
+						 */
+						nric?: {
+							value?: string;
+						};
+						/**
+						 * Race of child.
+						 * Refer to the Code reference tables in the Support section for list of possible values.
+						 */
+						race?: {
+							code?: string; // ^(?:[A-Za-z]{2})?$
+							desc?: string;
+						};
+						/**
+						 * Date granted Singapore Citizenship, Permanent Resident or Long-term Visit Pass.
+						 */
+						scprgrantdate?: {
+							/**
+							 * Value of data field in YYYY-MM-DD format. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+							 */
+							value?: string; // date
+						};
+						/**
+						 * Secondary Race of child.
+						 * Refer to the Code reference tables in the Support section for list of possible values.
+						 */
+						secondaryrace?: {
+							code?: string; // ^(?:[A-Za-z]{2})?$
+							desc?: string;
+						};
+						/**
+						 * Sex of child.
+						 */
+						sex?: {
+							/**
+							 * The 1-character code for the sex.
+							 *
+							 * - 'F': FEMALE
+							 * - 'M': MALE
+							 * - 'U': UNKNOWN
+							 * - '': No data yet
+							 */
+							code?: "F" | "M" | "U" | "";
+							/**
+							 * The full description of the sex.
+							 */
+							desc?: "FEMALE" | "MALE" | "UNKNOWN" | "";
+						};
+						vaccinationrequirements?: {
+							fulfilled?: {
+								value?: boolean;
+							};
+							/**
+							 * Vaccination Requirement.
+							 * Refer to the Code reference tables in the Support section for list of possible values.
+							 */
+							requirement?: {
+								code?: string;
+								desc?: string;
+							};
+						}[];
+				  }[]
+				| null;
+			/**
+			 * Singapore issued identification number of the Person.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "value": "S1111111D",
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			uinfin?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				value: string; // \b[STFGM]\d{7}[A-Z]\b
+			};
+			/**
+			 * Vehicle information of the Person.
+			 * example:
+			 * {
+			 *   "vehicleno": {
+			 *     "value": "SDF1235A"
+			 *   },
+			 *   "type": {
+			 *     "value": "PASSENGER MOTOR CAR"
+			 *   },
+			 *   "iulabelno": {
+			 *     "value": ""
+			 *   },
+			 *   "make": {
+			 *     "value": "TOYOTA"
+			 *   },
+			 *   "model": {
+			 *     "value": "COROLLA ALTIS"
+			 *   },
+			 *   "chassisno": {
+			 *     "value": "ZC11S1735800"
+			 *   },
+			 *   "engineno": {
+			 *     "value": "M13A1837453"
+			 *   },
+			 *   "motorno": {
+			 *     "value": ""
+			 *   },
+			 *   "yearofmanufacture": {
+			 *     "value": "2010"
+			 *   },
+			 *   "firstregistrationdate": {
+			 *     "value": "2010-06-06"
+			 *   },
+			 *   "originalregistrationdate": {
+			 *     "value": "2010-06-06"
+			 *   },
+			 *   "coecategory": {
+			 *     "value": "A - CAR UP TO 1600CC & 97KW (130BHP)"
+			 *   },
+			 *   "coeexpirydate": {
+			 *     "value": "2020-06-05"
+			 *   },
+			 *   "roadtaxexpirydate": {
+			 *     "value": "2020-06-05"
+			 *   },
+			 *   "quotapremium": {
+			 *     "value": 14000.01
+			 *   },
+			 *   "openmarketvalue": {
+			 *     "value": 25000.01
+			 *   },
+			 *   "co2emission": {
+			 *     "value": 146.01
+			 *   },
+			 *   "status": {
+			 *     "code": "1",
+			 *     "desc": "LIVE"
+			 *   },
+			 *   "primarycolour": {
+			 *     "value": "BLACK"
+			 *   },
+			 *   "secondarycolour": {
+			 *     "value": "WHITE"
+			 *   },
+			 *   "attachment1": {
+			 *     "value": "DISABLED"
+			 *   },
+			 *   "attachment2": {
+			 *     "value": "WITH SUN ROOF"
+			 *   },
+			 *   "attachment3": {
+			 *     "value": "SIDE CURTAIN"
+			 *   },
+			 *   "scheme": {
+			 *     "value": "REVISED OFF-PEAK CAR"
+			 *   },
+			 *   "thcemission": {
+			 *     "value": 1.011001
+			 *   },
+			 *   "coemission": {
+			 *     "value": 1.100001
+			 *   },
+			 *   "noxemission": {
+			 *     "value": 0.011001
+			 *   },
+			 *   "pmemission": {
+			 *     "value": 0.007
+			 *   },
+			 *   "enginecapacity": {
+			 *     "value": 1600
+			 *   },
+			 *   "powerrate": {
+			 *     "value": 1.41
+			 *   },
+			 *   "effectiveownership": {
+			 *     "value": "2010-08-31T20:12:12+08:00"
+			 *   },
+			 *   "propellant": {
+			 *     "value": "Compressed Natural Gas"
+			 *   },
+			 *   "maximumunladenweight": {
+			 *     "value": 1500
+			 *   },
+			 *   "maximumladenweight": {
+			 *     "value": 1795
+			 *   },
+			 *   "minimumparfbenefit": {
+			 *     "value": 8770.01
+			 *   },
+			 *   "nooftransfers": {
+			 *     "value": 2
+			 *   },
+			 *   "vpc": {
+			 *     "value": "1234567890"
+			 *   },
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			vehicles?:
+				| {
+						/**
+						 * Data classification of data field. Default 'C' - Confidential.
+						 * example:
+						 * C
+						 */
+						classification: string;
+						/**
+						 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+						 * example:
+						 * 2019-03-26
+						 */
+						lastupdated: string; // date
+						/**
+						 * Source of data.
+						 *
+						 * - '1': Government-verified
+						 * - '2': User provided
+						 * - '3': Not Applicable (applies only to Person data, not Entity data)
+						 * - '4': Verified by SingPass
+						 * example:
+						 * 1
+						 */
+						source: "1" | "2" | "3" | "4";
+						/**
+						 * Optional flag to indicate if data is unavailable from data source.
+						 *
+						 * NOTE:
+						 *
+						 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+						 *
+						 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+						 *
+						 * - If data is available from the data source, this property will not be present.
+						 */
+						unavailable?: boolean;
+						/**
+						 * Vehicle Attachment 1 (e.g. DISABLED).
+						 */
+						attachment1?: {
+							value?: string;
+						};
+						/**
+						 * Vehicle Attachment 2 (e.g. WITH SUN ROOF).
+						 */
+						attachment2?: {
+							value?: string;
+						};
+						/**
+						 * Vehicle Attachment 3 (e.g. SIDE CURTAIN).
+						 */
+						attachment3?: {
+							value?: string;
+						};
+						/**
+						 * Vehicle Chassis Number.
+						 */
+						chassisno?: {
+							value?: string;
+						};
+						/**
+						 * CO2 emission rate.
+						 */
+						co2emission?: {
+							value?: number; // double
+						};
+						/**
+						 * Vehicle Certificate of Entitlement (COE) bid category.
+						 */
+						coecategory?: {
+							value?: string;
+						};
+						/**
+						 * Vehicle Certificate of Entitlement (COE) expiry date.
+						 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+						 */
+						coeexpirydate?: {
+							value?: string; // date
+						};
+						/**
+						 * Carbon Monoxide emission rate.
+						 */
+						coemission?: {
+							value?: number; // double
+						};
+						/**
+						 * Effective Date/Time of Ownership.
+						 * See "date-time" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+						 */
+						effectiveownership?: {
+							value?: string; // date-time
+						}; // date-time
+						/**
+						 * Engine Capacity in cubic centimeter (cc).
+						 */
+						enginecapacity?: {
+							value?: number; // int64
+						};
+						/**
+						 * Vehicle Engine Number.
+						 */
+						engineno?: {
+							value?: string;
+						};
+						/**
+						 * Date when vehicle is registered with LTA.
+						 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+						 */
+						firstregistrationdate?: {
+							value?: string; // date
+						};
+						/**
+						 * In-Vehicle Unit (IU) number of the device fitted in Singapore-registered vehicles for
+						 * Electronic Road Pricing (ERP) gantries and Electronic Parking System (EPS) car parks.
+						 */
+						iulabelno?: {
+							value?: string;
+						};
+						/**
+						 * Vehicle Make such as 'TOYOTA', 'HONDA', 'AUDI'.
+						 */
+						make?: {
+							value?: string;
+						};
+						/**
+						 * Maximum Laden Weight in kilograms (kg).
+						 */
+						maximumladenweight?: {
+							value?: number; // int64
+						};
+						/**
+						 * Maximum Unladen Weight in kilograms (kg).
+						 */
+						maximumunladenweight?: {
+							value?: number; // int64
+						};
+						/**
+						 * Minimum PARF Benefit in Singapore dollars (SGD).
+						 */
+						minimumparfbenefit?: {
+							value?: number; // double
+						};
+						/**
+						 * Vehicle Model such as 'COROLLA ALTIS CLASSIC 1.6 CVT', 'HRV 1.5 DX CVT'.
+						 */
+						model?: {
+							value?: string;
+						};
+						/**
+						 * Vehicle Motor Number.
+						 */
+						motorno?: {
+							value?: string;
+						};
+						/**
+						 * Number of Transfer.
+						 */
+						nooftransfers?: {
+							value?: number; // int64
+						};
+						/**
+						 * Nitrogen Oxide (NOx) emission rate.
+						 */
+						noxemission?: {
+							value?: number; // double
+						};
+						/**
+						 * Open Market Value is the value of manufacturer invoice price, freight and
+						 * insurance in Singapore dollars (SGD).
+						 */
+						openmarketvalue?: {
+							value?: number; // double
+						};
+						/**
+						 * Date when vehicle is first registered in the country of origin.
+						 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+						 */
+						originalregistrationdate?: {
+							value?: string; // date
+						};
+						/**
+						 * Particulates (PM - Atmospheric Particulate Matter) emission rate.
+						 */
+						pmemission?: {
+							value?: number; // double
+						};
+						/**
+						 * Power Rate.
+						 * Applicable to Electric and Hybrid vehicles powered by electric motors. Unit is Kilowatt.
+						 */
+						powerrate?: {
+							value?: number; // double
+						};
+						/**
+						 * Vehicle Primary Colour (e.g. BLACK).
+						 */
+						primarycolour?: {
+							value?: string;
+						};
+						/**
+						 * Propellant (e.g. Compressed Natural Gas, Diesel, Diesel-CNG, Diesel-Electric,
+						 * Diesel-Electric (Plug-In), Electric, Gas, Liquefied Petroleum Gas (LPG),
+						 * Petrol, Petrol-CNG, Petrol-Electric, Petrol-Electric (Plug-In), Petrol-LPG.
+						 */
+						propellant?: {
+							value?: string;
+						};
+						/**
+						 * Actual Quota Premium (QP) amount payable for the COE upon registration, conversion or COE
+						 * revalidation in Singapore dollars (SGD). For renewal of COE, the value will contain
+						 * actual PQP paid.
+						 */
+						quotapremium?: {
+							value?: number; // double
+						};
+						/**
+						 * See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+						 */
+						roadtaxexpirydate?: {
+							value?: string; // date
+						};
+						/**
+						 * Vehicle Scheme (e.g. REVISED OFF-PEAK CAR).
+						 */
+						scheme?: {
+							value?: string;
+						};
+						/**
+						 * Vehicle Secondary Colour (e.g. WHITE).
+						 */
+						secondarycolour?: {
+							value?: string;
+						};
+						/**
+						 * Status of the Vehicle.
+						 */
+						status?: {
+							code?: "1" | "2";
+							desc?: "LIVE" | "DE-REGISTERED";
+						};
+						/**
+						 * Total Hydro Carbon (THC) emission rate.
+						 */
+						thcemission?: {
+							value?: number; // double
+						};
+						/**
+						 * Type of Vehicles such as 'MOTOR CAR', 'STATION /WAGON/JEEP/LAND ROVER'.
+						 */
+						type?: {
+							value?: string;
+						};
+						/**
+						 * Vehicle Registration Number displayed on the vehicle number plates.
+						 */
+						vehicleno?: {
+							value?: string;
+						};
+						/**
+						 * Vehicle Parking Certificate. Applicable for Heavy Vehicles.
+						 */
+						vpc?: {
+							value?: string;
+						};
+						/**
+						 * Manufacturing year.
+						 */
+						yearofmanufacture?: {
+							value?: string;
+						};
+				  }[]
+				| null;
+		}
+		/**
+		 * Person community/commercial data items
+		 */
+		export interface PersonCommunityCommercial {
+			/**
+			 * Merdekagen details.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "eligibility": {
+			 *     "value": true
+			 *   },
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			merdekagen?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * Eligibility.
+				 */
+				eligibility?: {
+					value?: boolean;
+				};
+			};
+			/**
+			 * Pioneergen details.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "eligibility": {
+			 *     "value": true
+			 *   },
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			pioneergen?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * Eligibility.
+				 */
+				eligibility?: {
+					value?: boolean;
+				};
+			};
+		}
+		/**
+		 * Person financial data items
+		 */
+		export interface PersonFinancial {
+			/**
+			 * CPF Balances of Person in SGD.
+			 */
+			cpfbalances?: {
+				/**
+				 * Amount Balance in CPF-MA.
+				 * example:
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 * {
+				 *   "value": 11470.71,
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 */
+				ma?: {
+					/**
+					 * Data classification of data field. Default 'C' - Confidential.
+					 * example:
+					 * C
+					 */
+					classification: string;
+					/**
+					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+					 * example:
+					 * 2019-03-26
+					 */
+					lastupdated: string; // date
+					/**
+					 * Source of data.
+					 *
+					 * - '1': Government-verified
+					 * - '2': User provided
+					 * - '3': Not Applicable (applies only to Person data, not Entity data)
+					 * - '4': Verified by SingPass
+					 * example:
+					 * 1
+					 */
+					source: "1" | "2" | "3" | "4";
+					/**
+					 * Optional flag to indicate if data is unavailable from data source.
+					 *
+					 * NOTE:
+					 *
+					 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+					 *
+					 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+					 *
+					 * - If data is available from the data source, this property will not be present.
+					 */
+					unavailable?: boolean;
+					/**
+					 * Value of CPF-MA balance.
+					 */
+					value?: number; // double
+				};
+				/**
+				 * Amount Balance in CPF-OA.
+				 * example:
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 * {
+				 *   "value": 1581.48,
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 */
+				oa?: {
+					/**
+					 * Data classification of data field. Default 'C' - Confidential.
+					 * example:
+					 * C
+					 */
+					classification: string;
+					/**
+					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+					 * example:
+					 * 2019-03-26
+					 */
+					lastupdated: string; // date
+					/**
+					 * Source of data.
+					 *
+					 * - '1': Government-verified
+					 * - '2': User provided
+					 * - '3': Not Applicable (applies only to Person data, not Entity data)
+					 * - '4': Verified by SingPass
+					 * example:
+					 * 1
+					 */
+					source: "1" | "2" | "3" | "4";
+					/**
+					 * Optional flag to indicate if data is unavailable from data source.
+					 *
+					 * NOTE:
+					 *
+					 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+					 *
+					 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+					 *
+					 * - If data is available from the data source, this property will not be present.
+					 */
+					unavailable?: boolean;
+					/**
+					 * Value of CPF-OA balance.
+					 */
+					value?: number; // double
+				};
+				/**
+				 * Amount Balance in CPF-RA.
+				 * example:
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 * {
+				 *   "value": 0.01,
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 */
+				ra?: {
+					/**
+					 * Data classification of data field. Default 'C' - Confidential.
+					 * example:
+					 * C
+					 */
+					classification: string;
+					/**
+					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+					 * example:
+					 * 2019-03-26
+					 */
+					lastupdated: string; // date
+					/**
+					 * Source of data.
+					 *
+					 * - '1': Government-verified
+					 * - '2': User provided
+					 * - '3': Not Applicable (applies only to Person data, not Entity data)
+					 * - '4': Verified by SingPass
+					 * example:
+					 * 1
+					 */
+					source: "1" | "2" | "3" | "4";
+					/**
+					 * Optional flag to indicate if data is unavailable from data source.
+					 *
+					 * NOTE:
+					 *
+					 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+					 *
+					 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+					 *
+					 * - If data is available from the data source, this property will not be present.
+					 */
+					unavailable?: boolean;
+					/**
+					 * Value of CPF-RA balance.
+					 */
+					value?: number; // double
+				};
+				/**
+				 * Amount Balance in CPF-SA.
+				 * example:
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 * {
+				 *   "value": 21967.09,
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 */
+				sa?: {
+					/**
+					 * Data classification of data field. Default 'C' - Confidential.
+					 * example:
+					 * C
+					 */
+					classification: string;
+					/**
+					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+					 * example:
+					 * 2019-03-26
+					 */
+					lastupdated: string; // date
+					/**
+					 * Source of data.
+					 *
+					 * - '1': Government-verified
+					 * - '2': User provided
+					 * - '3': Not Applicable (applies only to Person data, not Entity data)
+					 * - '4': Verified by SingPass
+					 * example:
+					 * 1
+					 */
+					source: "1" | "2" | "3" | "4";
+					/**
+					 * Optional flag to indicate if data is unavailable from data source.
+					 *
+					 * NOTE:
+					 *
+					 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+					 *
+					 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+					 *
+					 * - If data is available from the data source, this property will not be present.
+					 */
+					unavailable?: boolean;
+					/**
+					 * Value of CPF-SA balance.
+					 */
+					value?: number; // double
+				};
+			};
+			/**
+			 * Employer CPF Contributions of Person in SGD. Does not include any non-employer contributions. Maximum past 15 months' of contributions.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "history": [
+			 *     {
+			 *       "date": {
+			 *         "value": "2016-12-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2016-11"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2016-12-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2016-12"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2016-12-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2016-12"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-01-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2016-12"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-01-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-01"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-01-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-01"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-02-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-01"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-02-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-02"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-02-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-02"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-03-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-02"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-03-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-03"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-03-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-03"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-04-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-03"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-04-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-04"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-04-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-04"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-05-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-04"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-05-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-05"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-05-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-05"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-06-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-05"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-06-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-06"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-06-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-06"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-07-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-06"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-07-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-07"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-07-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-07"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-08-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 500
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-07"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-08-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-08"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-08-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-08"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-09-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-08"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-09-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-09"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-09-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-09"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-10-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-09"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-10-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-10"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-10-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-10"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-11-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-10"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-11-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-11"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-11-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-11"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-12-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-11"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-12-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-12"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2017-12-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-12"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2018-01-01"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2017-12"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2018-01-12"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2018-01"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "date": {
+			 *         "value": "2018-01-21"
+			 *       },
+			 *       "amount": {
+			 *         "value": 750
+			 *       },
+			 *       "month": {
+			 *         "value": "2018-01"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     }
+			 *   ],
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			cpfcontributions?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				history?: {
+					/**
+					 * Amount of contribution in SGD.
+					 */
+					amount?: {
+						value?: number; // double
+					};
+					/**
+					 * Date of Contribution Paid. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+					 */
+					date?: {
+						value?: string; // date
+					};
+					/**
+					 * Employer who paid the Contribution.
+					 */
+					employer?: {
+						value?: string;
+					};
+					/**
+					 * Month for which CPF Contribution was paid. Format: YYYY-MM
+					 */
+					month?: {
+						value?: string;
+					};
+				}[];
+			};
+			/**
+			 * Employers who paid CPF Contributions. Maximum up to past 14 months.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "history": [
+			 *     {
+			 *       "month": {
+			 *         "value": "2016-11"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2016-12"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2016-12"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2016-12"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-01"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-01"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-01"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-02"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-02"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-02"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-03"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-03"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-03"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-04"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-04"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-04"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-05"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-05"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-05"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-06"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-06"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-06"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-07"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-07"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-07"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Crystal Horse Invest Pte Ltd"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-08"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-08"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-08"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-09"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-09"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-09"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-10"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-10"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-10"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-11"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-11"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-11"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-12"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-12"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2017-12"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2018-01"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     },
+			 *     {
+			 *       "month": {
+			 *         "value": "2018-01"
+			 *       },
+			 *       "employer": {
+			 *         "value": "Delta Marine Consultants PL"
+			 *       }
+			 *     }
+			 *   ],
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			cpfemployers?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				history?: {
+					/**
+					 * Employer who paid the Contribution.
+					 */
+					employer?: {
+						value?: string;
+					};
+					/**
+					 * Month for which CPF Contribution was paid. Format: YYYY-MM
+					 */
+					month?: {
+						value?: string; // ^\d{4}-\d{2}$
+					};
+				}[];
+			};
+			/**
+			 * CPF Housing Withdrawal information.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "withdrawaldetails": [
+			 *     {
+			 *       "address": {
+			 *         "type": "SG",
+			 *         "block": {
+			 *           "value": "548"
+			 *         },
+			 *         "building": {
+			 *           "value": ""
+			 *         },
+			 *         "floor": {
+			 *           "value": "09"
+			 *         },
+			 *         "unit": {
+			 *           "value": "128"
+			 *         },
+			 *         "street": {
+			 *           "value": "BEDOK NORTH AVENUE 1"
+			 *         },
+			 *         "postal": {
+			 *           "value": "460548"
+			 *         },
+			 *         "country": {
+			 *           "code": "SG",
+			 *           "desc": "SINGAPORE"
+			 *         }
+			 *       },
+			 *       "accruedinterestamt": {
+			 *         "value": 1581.48
+			 *       },
+			 *       "monthlyinstalmentamt": {
+			 *         "value": 1196.09
+			 *       },
+			 *       "principalwithdrawalamt": {
+			 *         "value": 2897.01
+			 *       },
+			 *       "totalamountofcpfallowedforproperty": {
+			 *         "value": 10000.01
+			 *       }
+			 *     }
+			 *   ],
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			cpfhousingwithdrawal?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				withdrawaldetails?: {
+					/**
+					 * Accrued interest amount.
+					 */
+					accruedinterestamt?: {
+						value?: number; // double
+					};
+					/**
+					 * Registered Address of Person (including FIN holders).
+					 *
+					 * Note:
+					 * - Address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED').
+					 * - May be unavailable for some FIN holders.
+					 */
+					address?: /**
+					 * Registered Address of Person (including FIN holders).
+					 *
+					 * Note:
+					 * - Address can be either a Singapore address (type: 'SG') or non Singapore address (type: 'UNFORMATTED').
+					 * - May be unavailable for some FIN holders.
+					 */
+					| {
+								/**
+								 * Block/House of Address.
+								 */
+								block?: {
+									value?: string;
+								};
+								/**
+								 * Building of Address.
+								 */
+								building?: {
+									value?: string;
+								};
+								/**
+								 * Country/Place of Address. For AddressSG this will always be 'SG'.
+								 */
+								country?: {
+									code?: string;
+									desc?: string;
+								};
+								/**
+								 * Floor of Address.
+								 */
+								floor?: {
+									value?: string;
+								};
+								/**
+								 * Postal Code of Address.
+								 */
+								postal?: {
+									value?: string;
+								};
+								/**
+								 * Street of Address.
+								 */
+								street?: {
+									value?: string;
+								};
+								/**
+								 * Type of Address (SG or UNFORMATTED for non SG).
+								 */
+								type?: "SG";
+								/**
+								 * Unit of Address.
+								 */
+								unit?: {
+									value?: string;
+								};
+						  }
+						| {
+								/**
+								 * Unregistered Foreign address line 1
+								 */
+								line1?: {
+									value?: string;
+								};
+								/**
+								 * Unregistered Foreign address line 2
+								 */
+								line2?: {
+									value?: string;
+								};
+								/**
+								 * Type of Address (SG or UNFORMATTED for non SG).
+								 */
+								type?: "UNFORMATTED";
+						  };
+					/**
+					 * Monthly instalment amount.
+					 */
+					monthlyinstalmentamt?: {
+						value?: number; // double
+					};
+					/**
+					 * Principal withdrawal amount.
+					 */
+					principalwithdrawalamt?: {
+						value?: number; // double
+					};
+					/**
+					 * Total amount of CPF allowed for the property.
+					 */
+					totalamountofcpfallowedforproperty?: {
+						value?: number; // double
+					};
+				}[];
+			};
+			/**
+			 * CPF Investment Scheme.
+			 */
+			cpfinvestmentscheme?: {
+				/**
+				 * Account Details.
+				 * example:
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 * {
+				 *   "agentbankcode": {
+				 *     "value": "OCBC"
+				 *   },
+				 *   "invbankacctno": {
+				 *     "value": "098-26644-4"
+				 *   },
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 */
+				account?: {
+					/**
+					 * Data classification of data field. Default 'C' - Confidential.
+					 * example:
+					 * C
+					 */
+					classification: string;
+					/**
+					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+					 * example:
+					 * 2019-03-26
+					 */
+					lastupdated: string; // date
+					/**
+					 * Source of data.
+					 *
+					 * - '1': Government-verified
+					 * - '2': User provided
+					 * - '3': Not Applicable (applies only to Person data, not Entity data)
+					 * - '4': Verified by SingPass
+					 * example:
+					 * 1
+					 */
+					source: "1" | "2" | "3" | "4";
+					/**
+					 * Optional flag to indicate if data is unavailable from data source.
+					 *
+					 * NOTE:
+					 *
+					 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+					 *
+					 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+					 *
+					 * - If data is available from the data source, this property will not be present.
+					 */
+					unavailable?: boolean;
+					/**
+					 * Agent Bank Code.
+					 * example:
+					 * {
+					 *   "value": "OCBC"
+					 * }
+					 */
+					agentbankcode?: {
+						value?: string;
+					};
+					/**
+					 * Account Number.
+					 * example:
+					 * {
+					 *   "value": "098-26644-4"
+					 * }
+					 */
+					invbankacctno?: {
+						value?: string;
+					};
+				};
+				/**
+				 * Self-Awareness Questionnaire (SAQ) Participation Status.
+				 * example:
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 * {
+				 *   "code": "X",
+				 *   "desc": "Participated",
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 */
+				saqparticipationstatus?: {
+					/**
+					 * Data classification of data field. Default 'C' - Confidential.
+					 * example:
+					 * C
+					 */
+					classification: string;
+					/**
+					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+					 * example:
+					 * 2019-03-26
+					 */
+					lastupdated: string; // date
+					/**
+					 * Source of data.
+					 *
+					 * - '1': Government-verified
+					 * - '2': User provided
+					 * - '3': Not Applicable (applies only to Person data, not Entity data)
+					 * - '4': Verified by SingPass
+					 * example:
+					 * 1
+					 */
+					source: "1" | "2" | "3" | "4";
+					/**
+					 * Optional flag to indicate if data is unavailable from data source.
+					 *
+					 * NOTE:
+					 *
+					 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+					 *
+					 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+					 *
+					 * - If data is available from the data source, this property will not be present.
+					 */
+					unavailable?: boolean;
+					/**
+					 * Possible values:
+					 * - 'Y': Participated
+					 * - 'X': Existing CPFIS participant
+					 * - 'N': Did not participate
+					 * example:
+					 * X
+					 */
+					code?: "Y" | "X" | "N";
+					/**
+					 * example:
+					 * Participated
+					 */
 					desc?: string;
 				};
 				/**
-				 * Licence issue date. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+				 * Number of Discounted Singtel Shares.
+				 * example:
+				 * {
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
+				 * {
+				 *   "value": 1360,
+				 *   "classification": "C",
+				 *   "source": "1",
+				 *   "lastupdated": "2019-03-26"
+				 * }
 				 */
-				issuedate?: {
-					value?: string;
+				sdsnetshareholdingqty?: {
+					/**
+					 * Data classification of data field. Default 'C' - Confidential.
+					 * example:
+					 * C
+					 */
+					classification: string;
+					/**
+					 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+					 * example:
+					 * 2019-03-26
+					 */
+					lastupdated: string; // date
+					/**
+					 * Source of data.
+					 *
+					 * - '1': Government-verified
+					 * - '2': User provided
+					 * - '3': Not Applicable (applies only to Person data, not Entity data)
+					 * - '4': Verified by SingPass
+					 * example:
+					 * 1
+					 */
+					source: "1" | "2" | "3" | "4";
+					/**
+					 * Optional flag to indicate if data is unavailable from data source.
+					 *
+					 * NOTE:
+					 *
+					 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+					 *
+					 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+					 *
+					 * - If data is available from the data source, this property will not be present.
+					 */
+					unavailable?: boolean;
+					/**
+					 * example:
+					 * 1360
+					 */
+					value?: number;
+				};
+			};
+			/**
+			 * Detailed breakdown of the latest Notice of Assessment (NOA) within the past three years.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "amount": {
+			 *     "value": 100000.01
+			 *   },
+			 *   "yearofassessment": {
+			 *     "value": "2018"
+			 *   },
+			 *   "employment": {
+			 *     "value": 100000.01
+			 *   },
+			 *   "trade": {
+			 *     "value": 0
+			 *   },
+			 *   "rent": {
+			 *     "value": 0
+			 *   },
+			 *   "interest": {
+			 *     "value": 0
+			 *   },
+			 *   "taxclearance": {
+			 *     "value": "N"
+			 *   },
+			 *   "category": {
+			 *     "value": "ORIGINAL"
+			 *   },
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			noa?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * Total Assessable Income from the latest NOA.
+				 */
+				amount?: {
+					value?: number; // double
 				};
 				/**
-				 * Licence expiry date. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6
+				 * Type of 'Notice of Assessment' (NOA).
 				 */
-				expirydate?: {
-					value?: string;
+				category?: {
+					value?: "ADDITIONAL" | "AMENDED" | "ORIGINAL" | "REPAYMENT";
 				};
-			}[];
+				/**
+				 * Assessable Income from employment for the latest NOA.
+				 */
+				employment?: {
+					value?: number; // double
+				};
+				/**
+				 * Assessable Income from interest for the latest NOA.
+				 */
+				interest?: {
+					value?: number; // double
+				};
+				/**
+				 * Assessable Income from rent for the latest NOA.
+				 */
+				rent?: {
+					value?: number; // double
+				};
+				/**
+				 * Tax Clearance indicator.
+				 */
+				taxclearance?: {
+					value?: "Y" | "N";
+				};
+				/**
+				 * Assessable Income from trade for the latest NOA.
+				 */
+				trade?: {
+					value?: number; // double
+				};
+				/**
+				 * The year of assessment (YYYY) for the latest NOA.
+				 */
+				yearofassessment?: {
+					value?: string; // [0-9]{4}
+				};
+			};
+			/**
+			 * Summary of latest Notice of Assessment within the past three years.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "amount": {
+			 *     "value": 100000.01
+			 *   },
+			 *   "yearofassessment": {
+			 *     "value": "2018"
+			 *   },
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			"noa-basic"?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				/**
+				 * The assessable income amount from the latest Notice of Assessment.
+				 */
+				amount?: {
+					value?: number; // double
+				};
+				/**
+				 * The year of assessment (YYYY) for the latest Notice of Assessment.
+				 */
+				yearofassessment?: {
+					value?: string; // [0-9]{4}
+				};
+			};
+			/**
+			 * Detailed breakdown of latest 2 Notice of Assessments within the past three years.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "noas": [
+			 *     {
+			 *       "amount": {
+			 *         "value": 100000.01
+			 *       },
+			 *       "yearofassessment": {
+			 *         "value": "2018"
+			 *       },
+			 *       "employment": {
+			 *         "value": 100000.01
+			 *       },
+			 *       "trade": {
+			 *         "value": 0
+			 *       },
+			 *       "rent": {
+			 *         "value": 0
+			 *       },
+			 *       "interest": {
+			 *         "value": 0
+			 *       },
+			 *       "taxclearance": {
+			 *         "value": "N"
+			 *       },
+			 *       "category": {
+			 *         "value": "ORIGINAL"
+			 *       }
+			 *     }
+			 *   ],
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			noahistory?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				noas?: {
+					/**
+					 * Total Assessable Income for this historical NOA.
+					 */
+					amount?: {
+						value?: number; // double
+					};
+					/**
+					 * Type of 'Notice of Assessment' (NOA) for this historical NOA.
+					 */
+					category?: {
+						value?: "ADDITIONAL" | "AMENDED" | "ORIGINAL" | "REPAYMENT";
+					};
+					/**
+					 * Assessable Income from employment for this historical NOA.
+					 */
+					employment?: {
+						value?: number; // double
+					};
+					/**
+					 * Assessable Income from interest for this historical NOA.
+					 */
+					interest?: {
+						value?: number; // double
+					};
+					/**
+					 * Assessable Income from rent for this historical NOA.
+					 */
+					rent?: {
+						value?: number; // double
+					};
+					/**
+					 * Tax Clearance indicator for this historical NOA.
+					 */
+					taxclearance?: {
+						value?: "Y" | "N";
+					};
+					/**
+					 * Assessable Income from trade for this historical NOA.
+					 */
+					trade?: {
+						value?: number; // double
+					};
+					/**
+					 * The year of assessment (YYYY) for this historical NOA.
+					 */
+					yearofassessment?: {
+						value?: string; // [0-9]{4}
+					};
+				}[];
+			};
+			/**
+			 * Summary of latest 2 Notice of Assessments within the past three years.
+			 * example:
+			 * {
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 * {
+			 *   "noas": [
+			 *     {
+			 *       "amount": {
+			 *         "value": 100000.01
+			 *       },
+			 *       "yearofassessment": {
+			 *         "value": "2018"
+			 *       }
+			 *     }
+			 *   ],
+			 *   "classification": "C",
+			 *   "source": "1",
+			 *   "lastupdated": "2019-03-26"
+			 * }
+			 */
+			"noahistory-basic"?: {
+				/**
+				 * Data classification of data field. Default 'C' - Confidential.
+				 * example:
+				 * C
+				 */
+				classification: string;
+				/**
+				 * Last updated date of data field. See "full-date" in https://datatracker.ietf.org/doc/html/rfc3339#section-5.6.
+				 * example:
+				 * 2019-03-26
+				 */
+				lastupdated: string; // date
+				/**
+				 * Source of data.
+				 *
+				 * - '1': Government-verified
+				 * - '2': User provided
+				 * - '3': Not Applicable (applies only to Person data, not Entity data)
+				 * - '4': Verified by SingPass
+				 * example:
+				 * 1
+				 */
+				source: "1" | "2" | "3" | "4";
+				/**
+				 * Optional flag to indicate if data is unavailable from data source.
+				 *
+				 * NOTE:
+				 *
+				 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+				 *
+				 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+				 *
+				 * - If data is available from the data source, this property will not be present.
+				 */
+				unavailable?: boolean;
+				noas?: {
+					/**
+					 * Assessable Income for this historical NOA.
+					 */
+					amount?: {
+						value?: number; // double
+					};
+					/**
+					 * The year of assessment (YYYY) for this historical NOA.
+					 */
+					yearofassessment?: {
+						value?: string; // [0-9]{4}
+					};
+				}[];
+			};
+		}
+		export interface UnavailableFlag {
+			/**
+			 * Optional flag to indicate if data is unavailable from data source.
+			 *
+			 * NOTE:
+			 *
+			 * - This optional property will be only present with value true if there is no data available from the data source; i.e. record not found.
+			 *
+			 * - When this flag is true, no other data attributes will be present (other than classification, source, and lastupdated).
+			 *
+			 * - If data is available from the data source, this property will not be present.
+			 */
+			unavailable?: boolean;
 		}
 	}
 }
