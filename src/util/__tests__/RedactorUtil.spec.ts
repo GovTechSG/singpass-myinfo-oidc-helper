@@ -14,6 +14,18 @@ describe("Redactor", () => {
 			expect(redactUinfin(input)).toEqual(expectedOutput);
 		});
 
+		it("should redact an uppercase M series fin", () => {
+			const input = "M1234567A";
+			const expectedOutput = "M***4567A";
+			expect(redactUinfin(input)).toEqual(expectedOutput);
+		});
+
+		it("should redact a lowercase M series fin", () => {
+			const input = "m1234567a";
+			const expectedOutput = "m***4567a";
+			expect(redactUinfin(input)).toEqual(expectedOutput);
+		});
+
 		it("should not redact a non-nric", () => {
 			const input = "Z1234567Z";
 			expect(redactUinfin(input)).toEqual(input);
